@@ -1,8 +1,74 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Map, Compass, HardHat, Mountain } from 'lucide-react';
+import { ArrowRight, Map, Compass, HardHat, Mountain, Home as HomeIcon, Trees, Waves, Scale, FileText, Building } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function Home() {
+  const [activeUseCase, setActiveUseCase] = useState(0);
+
+  const useCases = [
+    {
+      title: "Fence Replacements and Boundary Staking",
+      icon: <Map className="w-6 h-6" />,
+      content: "Homeowners frequently discover that their existing fence—which they assumed was the boundary—is actually several feet off-course. A BCLS provides the objective proof needed to install a new fence with confidence.",
+      image: "https://picsum.photos/seed/fence-survey/800/600?grayscale"
+    },
+    {
+      title: "Retaining Wall Construction",
+      icon: <HardHat className="w-6 h-6" />,
+      content: "In the steep terrain of Squamish, retaining walls are essential for creating usable yard space. Municipalities require a BCLS survey to ensure walls don't encroach and to determine the building heights allowed under local bylaws.",
+      image: "https://picsum.photos/seed/retaining-wall/800/600?grayscale"
+    },
+    {
+      title: "Deck and Pool Permits",
+      icon: <HomeIcon className="w-6 h-6" />,
+      content: "Municipalities require a site plan prepared by a BCLS to ensure that new decks, pools, or accessory buildings meet the \"site coverage\" and \"setback\" requirements of the zoning bylaw.",
+      image: "https://picsum.photos/seed/deck-pool/800/600?grayscale"
+    },
+    {
+      title: "Purchasing an Older Home",
+      icon: <Building className="w-6 h-6" />,
+      content: "Buyers of older homes in the Lower Mainland often want to \"verify\" what they are buying. A Building Location Certificate identifies if any past owners have built structures over the property line, potentially saving the buyer from future litigation.",
+      image: "https://picsum.photos/seed/older-home/800/600?grayscale"
+    },
+    {
+      title: "Strata Conversions (Duplexes and Garden Suites)",
+      icon: <Building className="w-6 h-6" />,
+      content: "With the provincial push for \"missing middle\" housing, many owners are looking to convert single-family lots or duplexes into stratified units. This requires a BCLS to define the strata lots and common property.",
+      image: "https://picsum.photos/seed/strata-conversion/800/600?grayscale"
+    },
+    {
+      title: "Septic System Design (Rural Pemberton/Squamish)",
+      icon: <Map className="w-6 h-6" />,
+      content: "In rural areas not served by city sewers, a BCLS provides the topographic and boundary data needed for engineers to design and place septic fields in compliance with health regulations.",
+      image: "https://picsum.photos/seed/septic-design/800/600?grayscale"
+    },
+    {
+      title: "Tree Cutting and Covenants",
+      icon: <Trees className="w-6 h-6" />,
+      content: "In the Sea-to-Sky region, many titles have \"Restricted Covenant Areas\" that forbid tree removal due to slope stability. A BCLS identifies these zones on the ground so owners don't inadvertently violate provincial environmental laws.",
+      image: "https://picsum.photos/seed/tree-cutting/800/600?grayscale"
+    },
+    {
+      title: "Mortgage Refinancing",
+      icon: <FileText className="w-6 h-6" />,
+      content: "Lenders often require a current Building Location Certificate to ensure their security (the house) is properly situated on the land before approving a new loan or line of credit.",
+      image: "https://picsum.photos/seed/mortgage-refi/800/600?grayscale"
+    },
+    {
+      title: "Natural Boundary Identification",
+      icon: <Waves className="w-6 h-6" />,
+      content: "Owners of properties on the Squamish River or Howe Sound need a BCLS to determine the \"Present Natural Boundary\" for dock applications or to verify the impact of erosion on their lot size.",
+      image: "https://picsum.photos/seed/waterfront/800/600?grayscale"
+    },
+    {
+      title: "Civil Litigation and Expert Witness",
+      icon: <Scale className="w-6 h-6" />,
+      content: "When neighbor disputes escalate to court, a BCLS is called as an expert witness. Their plans and testimony are the definitive evidence used by judges to settle boundary and encroachment cases.",
+      image: "https://picsum.photos/seed/litigation/800/600?grayscale"
+    }
+  ];
+
   return (
     <div className="flex flex-col bg-brand-black">
       <SEO 
@@ -15,33 +81,23 @@ export default function Home() {
       <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://picsum.photos/seed/squamish-mountains/1920/1080?blur=2"
-            alt="Squamish Mountains"
-            className="w-full h-full object-cover opacity-20 mix-blend-overlay grayscale"
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000"
+            alt="Sea-to-Sky Mountains"
+            className="w-full h-full object-cover opacity-60 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/50 to-brand-black" />
-          
-          {/* Geometric pattern from business card */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 opacity-20 pointer-events-none overflow-hidden">
-            <svg viewBox="0 0 100 400" preserveAspectRatio="none" className="w-full h-full text-brand-green stroke-current" fill="none" strokeWidth="1">
-              <path d="M0,0 L100,50 L100,100 L0,50 Z" />
-              <path d="M0,100 L100,150 L100,200 L0,150 Z" />
-              <path d="M0,200 L100,250 L100,300 L0,250 Z" />
-              <path d="M0,300 L100,350 L100,400 L0,350 Z" />
-            </svg>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight">
-            Tantalus Geomatics: Precision from the <span className="text-brand-green font-medium">Ground Up</span>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+            Precision <span className="text-brand-green font-medium">Land Surveying</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/70 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-            Precision Measurement for the Sea-to-Sky Corridor
+          <p className="text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
+            Expert geomatics for the Sea-to-Sky Corridor.
           </p>
-          <p className="text-lg text-white/60 mb-10 max-w-4xl mx-auto font-light leading-relaxed">
-            From the steep granite slopes of Squamish to the high-density resort infrastructure of Whistler, your project depends on data you can trust. Tantalus Geomatics provides BC Land Surveying and 3D Reality Capture services designed to meet the unique challenges of the Coast Mountain corridor. We combine the legal authority of a BCLS practice with the digital innovation of 3D laser scanning to deliver field-to-finish precision.
+          <p className="text-lg md:text-xl text-white/70 mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
+            Your project depends on data you can trust. We combine the legal authority of a BCLS practice with advanced 3D Reality Capture to deliver field-to-finish precision in the Coast Mountains.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -52,7 +108,7 @@ export default function Home() {
             </Link>
             <Link
               to="/services"
-              className="px-8 py-4 bg-transparent hover:bg-white/5 text-white font-medium transition-all border border-brand-green flex items-center justify-center"
+              className="px-8 py-4 bg-transparent hover:bg-white/5 text-white font-medium transition-all border border-brand-green flex items-center justify-center backdrop-blur-sm"
             >
               Explore Services
             </Link>
@@ -60,8 +116,75 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Interactive Use Cases Section */}
+      <section className="py-32 bg-brand-dark border-b border-white/10 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Surveyor?</h2>
+            <p className="text-xl text-white/60 font-light max-w-2xl mx-auto">
+              Explore common scenarios where professional geomatics expertise is essential.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+            {/* Interactive List */}
+            <div className="lg:col-span-5 space-y-2">
+              {useCases.map((useCase, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveUseCase(index)}
+                  className={`w-full text-left px-6 py-5 rounded-2xl transition-all flex items-center justify-between group ${
+                    activeUseCase === index 
+                      ? 'bg-brand-green text-brand-black shadow-lg shadow-brand-green/20' 
+                      : 'bg-brand-black/50 text-white/70 hover:bg-white/5 hover:text-white border border-white/5'
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`transition-colors ${activeUseCase === index ? 'text-brand-black' : 'text-brand-green group-hover:text-brand-green-light'}`}>
+                      {useCase.icon}
+                    </div>
+                    <span className={`font-medium text-lg ${activeUseCase === index ? 'text-brand-black' : ''}`}>
+                      {useCase.title}
+                    </span>
+                  </div>
+                  <ArrowRight className={`w-5 h-5 transition-transform ${activeUseCase === index ? 'translate-x-1' : 'opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0'}`} />
+                </button>
+              ))}
+            </div>
+
+            {/* Dynamic Display */}
+            <div className="lg:col-span-7">
+              <div className="sticky top-32">
+                <div className="bg-brand-black rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+                  <div className="aspect-[16/9] relative overflow-hidden">
+                    <img 
+                      src={useCases[activeUseCase].image} 
+                      alt={useCases[activeUseCase].title}
+                      className="w-full h-full object-cover grayscale opacity-80 transition-opacity duration-500"
+                      key={useCases[activeUseCase].image} // Force re-render for animation
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-transparent"></div>
+                  </div>
+                  <div className="p-8 md:p-12 relative -mt-20 z-10">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-green text-brand-black mb-6 shadow-xl">
+                      {useCases[activeUseCase].icon}
+                    </div>
+                    <h3 className="text-3xl font-light text-white mb-6">
+                      {useCases[activeUseCase].title}
+                    </h3>
+                    <p className="text-xl text-white/70 font-light leading-relaxed">
+                      {useCases[activeUseCase].content}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Overview */}
-      <section className="py-24 bg-brand-dark border-b border-white/10">
+      <section className="py-24 bg-brand-black border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-light text-white mb-4">Our Core Pillars of Service</h2>
