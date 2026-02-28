@@ -139,11 +139,11 @@ export default function Services() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-green/30 bg-brand-green/10 text-brand-green text-sm font-medium mb-8 rounded-full">
             Our Expertise
           </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
-            Professional Geomatics Services
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+            Professional <span className="text-brand-green font-medium">Land Surveying</span> Services
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed drop-shadow-md max-w-2xl mx-auto">
-            Four Pillars of Geomatics
+          <p className="text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
+            Comprehensive geomatics and reality capture for your most demanding projects.
           </p>
         </div>
       </section>

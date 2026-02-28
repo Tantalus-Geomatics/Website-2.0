@@ -22,11 +22,11 @@ export default function About() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
-            About Tantalus Geomatics
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+            About Our <span className="text-brand-green font-medium">Land Surveying</span> Practice
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed drop-shadow-md max-w-2xl mx-auto">
-            Agility, Personalized Service, and Technical Mastery
+          <p className="text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
+            Agility, personalized service, and technical mastery in the Sea-to-Sky corridor.
           </p>
         </div>
       </section>
