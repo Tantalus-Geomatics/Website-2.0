@@ -35,10 +35,13 @@ export default function Home() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight">
-            Precision Surveying in the <span className="text-brand-green font-medium">Sea to Sky</span>
+            Tantalus Geomatics: Precision from the <span className="text-brand-green font-medium">Ground Up</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/70 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-            Professional Land Surveying and Reality Capture for homeowners, industry professionals, and real estate experts.
+            Precision Measurement for the Sea-to-Sky Corridor
+          </p>
+          <p className="text-lg text-white/60 mb-10 max-w-4xl mx-auto font-light leading-relaxed">
+            From the steep granite slopes of Squamish to the high-density resort infrastructure of Whistler, your project depends on data you can trust. Tantalus Geomatics provides BC Land Surveying and 3D Reality Capture services designed to meet the unique challenges of the Coast Mountain corridor. We combine the legal authority of a BCLS practice with the digital innovation of 3D laser scanning to deliver field-to-finish precision.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -61,7 +64,7 @@ export default function Home() {
       <section className="py-24 bg-brand-dark border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-white mb-4">Comprehensive Geomatics Solutions</h2>
+            <h2 className="text-3xl md:text-4xl font-light text-white mb-4">Our Core Pillars of Service</h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto font-light">
               Delivering accurate, reliable, and timely spatial data to support your projects from conception to completion.
             </p>
@@ -72,22 +75,22 @@ export default function Home() {
               {
                 title: 'Land Development',
                 icon: <Map className="w-8 h-8 text-brand-green" />,
-                items: ['Site Plans', 'Topographic Surveys', 'Building Certificates', 'Boundary Staking'],
+                description: 'Site plans and topographic mapping for residential and commercial growth.',
               },
               {
-                title: 'Construction',
+                title: 'Construction & Infrastructure',
                 icon: <HardHat className="w-8 h-8 text-brand-green" />,
-                items: ['Layout and Staking', 'Monitoring Surveys', 'Volumetric Surveys', 'Control'],
+                description: 'High-accuracy layout and monitoring for road, bridge, and building projects.',
               },
               {
-                title: 'Legal & Strata',
-                icon: <Compass className="w-8 h-8 text-brand-green" />,
-                items: ['Subdivisions', 'Easements', 'Property Boundaries', 'Strata Plans'],
-              },
-              {
-                title: 'Reality Capture',
+                title: '3D Reality Capture',
                 icon: <Mountain className="w-8 h-8 text-brand-green" />,
-                items: ['3D Laser Scanning', 'Photogrammetry', 'Drone Imagery', 'LiDAR'],
+                description: 'UAV LiDAR and terrestrial laser scanning for digital twins and BIM coordination.',
+              },
+              {
+                title: 'Legal Surveys',
+                icon: <Compass className="w-8 h-8 text-brand-green" />,
+                description: 'Licensed BCLS expertise for subdivisions, strata plans, and property boundaries.',
               },
             ].map((service, idx) => (
               <div key={idx} className="bg-brand-black p-8 border border-white/10 hover:border-brand-green/50 transition-all group flex flex-col">
@@ -95,14 +98,9 @@ export default function Home() {
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-medium text-white mb-4">{service.title}</h3>
-                <ul className="text-white/60 mb-8 font-light space-y-2">
-                  {service.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-white/60 mb-8 font-light">
+                  {service.description}
+                </p>
                 <Link to="/services" className="text-brand-green font-medium flex items-center gap-1 hover:gap-2 transition-all mt-auto">
                   Learn more <ArrowRight size={16} />
                 </Link>
@@ -126,19 +124,31 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl md:text-5xl font-light mb-6 leading-tight">
-                Trusted by <br />
-                <span className="text-brand-green font-medium">Homeowners & Professionals</span>
+                Why Local Expertise Matters in the <br />
+                <span className="text-brand-green font-medium">Sea-to-Sky</span>
               </h2>
               <p className="text-lg text-white/70 mb-8 font-light leading-relaxed">
-                We understand the unique demands of projects in challenging mountainous terrain. From private homeowners to large-scale developers, our expertise ensures your project starts on solid ground.
+                Development in Squamish and Whistler isn't just about measuring land—it's about navigating a complex web of hazardous terrain, riparian setbacks, and evolving municipal bylaws.
               </p>
-              <ul className="space-y-4 mb-8">
-                {['Home Owners', 'Architects and Designers', 'Civil and structural engineers', 'General Contractors', 'Developers and Planners', 'Real Estate and Legal Professionals'].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-white/80 font-light">
-                    <div className="w-1.5 h-1.5 bg-brand-green rounded-full" />
-                    {item}
-                  </li>
-                ))}
+              <ul className="space-y-6 mb-8">
+                <li className="flex items-start gap-3 text-white/80 font-light">
+                  <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
+                  <div>
+                    <strong className="text-white font-medium">Steep Slope Compliance:</strong> We help you meet the District of Squamish's rigorous Steep Slope Development Permit Area (DPA) requirements with high-density contour mapping.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3 text-white/80 font-light">
+                  <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
+                  <div>
+                    <strong className="text-white font-medium">Riparian Navigation:</strong> Our team works alongside environmental professionals to precisely delineate Streamside Protection and Enhancement Areas (SPEA), ensuring your project respects provincial regulations.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3 text-white/80 font-light">
+                  <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
+                  <div>
+                    <strong className="text-white font-medium">Municipal Mastery:</strong> Whether it’s meeting Whistler’s foundation formwork checks or Squamish’s subdivision standards, we provide the documentation needed for rapid approval.
+                  </div>
+                </li>
               </ul>
               <Link
                 to="/about"

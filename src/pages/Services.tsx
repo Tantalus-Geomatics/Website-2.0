@@ -5,64 +5,46 @@ export default function Services() {
   const services = [
     {
       id: 'land-development',
-      title: 'Land Development Surveys',
+      title: '1. Land Development',
       icon: <Map className="w-10 h-10 text-brand-green" />,
-      description: 'Essential spatial data and legal boundaries for planning and developing land.',
+      description: 'The road to a successful subdivision or site plan begins with accurate data. We help you navigate the municipal approval process by providing the foundational measurements required for architectural and engineering design.',
       items: [
-        'Site Plans',
-        'Topographic Surveys',
-        'Building Certificates',
-        'Boundary Staking'
+        { name: 'Topographic Surveys', desc: 'Capturing the physical features of your land to support design and hazard mitigation.' },
+        { name: 'Site Planning', desc: 'Detailed drawings showing building footprints, setbacks, and utility locations in compliance with local bylaws.' },
+        { name: 'Subdivision Plans', desc: 'Guiding developers through the creation of new lots, from initial design to final filing at the Land Title Office.' }
       ]
     },
     {
       id: 'construction',
-      title: 'Construction Surveys',
+      title: '2. Construction & Infrastructure',
       icon: <HardHat className="w-10 h-10 text-brand-green" />,
-      description: 'Precision layout and monitoring to ensure your project is built exactly as designed.',
+      description: 'We ensure that what is designed is what is built. Our layout and monitoring services reduce the risk of costly rework and project delays.',
       items: [
-        'Layout and Staking',
-        'Monitoring Surveys',
-        'Volumetric Surveys',
-        'Control Surveys'
-      ]
-    },
-    {
-      id: 'legal',
-      title: 'Legal Surveys',
-      icon: <Compass className="w-10 h-10 text-brand-green" />,
-      description: 'Defining and documenting property boundaries under the Land Title Act.',
-      items: [
-        'Subdivision and Consolidation Surveys',
-        'Easement, Covenant and Right of Way Surveys',
-        'Property Boundary Surveys',
-        'Air Space Surveys',
-        'Land Act Surveys'
-      ]
-    },
-    {
-      id: 'strata',
-      title: 'Strata Surveys',
-      icon: <Building className="w-10 h-10 text-brand-green" />,
-      description: 'Comprehensive strata plans for multi-unit developments and bare land stratas.',
-      items: [
-        'Building Strata',
-        'Bare Land Strata',
-        'Phased Strata',
-        'Strata Plan Amendments',
-        'Common Property Conversions'
+        { name: 'Building Layouts', desc: 'Precise marking of foundations and structural elements to ensure compliance with municipal setbacks.' },
+        { name: 'As-Built Surveys', desc: 'Documenting the final location of newly constructed improvements for occupancy permits and record drawings.' },
+        { name: 'Monitoring & Deformation', desc: 'High-precision tracking of slopes and structures during construction to ensure site safety and stability.' }
       ]
     },
     {
       id: 'reality-capture',
-      title: 'Reality Capture',
+      title: '3. 3D Reality Capture',
       icon: <Mountain className="w-10 h-10 text-brand-green" />,
-      description: 'Advanced 3D data collection for complex environments and detailed modeling.',
+      description: 'Using the latest in LiDAR and photogrammetry, we create accurate 3D replicas of physical sites and buildings.',
       items: [
-        '3D Laser Scanning',
-        'Photogrammetry',
-        'Drone Imagery',
-        'LiDAR'
+        { name: 'UAV LiDAR', desc: 'Aerial scanning that penetrates vegetation to reveal the true terrain, ideal for large or inaccessible Sea-to-Sky sites.' },
+        { name: 'Terrestrial 3D Laser Scanning', desc: 'Millimeter-accurate documentation of building facades, mechanical rooms, and heritage structures.' },
+        { name: 'Scan-to-BIM', desc: 'Converting point cloud data into intelligent 3D models for architects and facility managers.' }
+      ]
+    },
+    {
+      id: 'legal',
+      title: '4. Legal Surveys (BCLS Certified)',
+      icon: <Compass className="w-10 h-10 text-brand-green" />,
+      description: 'Legal surveying is a regulated profession in BC. We provide the certified plans required for land registration and property transfer.',
+      items: [
+        { name: 'Boundary Surveys', desc: 'Locating property corners and marking boundaries to resolve disputes or facilitate renovations.' },
+        { name: 'Strata Plans', desc: 'Creating legal plans for multi-unit housing and air-space parcels in Squamish and Whistler.' },
+        { name: 'Surveyor’s Certificates', desc: 'Professional documents showing the location of buildings relative to property lines, often required by mortgage lenders.' }
       ]
     }
   ];
@@ -77,9 +59,9 @@ export default function Services() {
       {/* Hero */}
       <section className="bg-brand-dark py-24 text-center border-b border-white/10 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 className="text-4xl md:text-5xl font-light text-white mb-6">Our Services</h1>
+          <h1 className="text-4xl md:text-5xl font-light text-white mb-6">Professional Geomatics Services</h1>
           <p className="text-xl text-white/70 font-light max-w-2xl mx-auto">
-            Comprehensive geomatics solutions tailored for homeowners, industry professionals, and developers.
+            Four Pillars of Geomatics
           </p>
         </div>
       </section>
@@ -103,11 +85,14 @@ export default function Services() {
                   <p className="text-lg text-white/70 font-light mb-8 leading-relaxed">
                     {service.description}
                   </p>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <ul className="grid grid-cols-1 gap-6">
                     {service.items.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-6 h-6 text-brand-green shrink-0" />
-                        <span className="text-white/80 font-light">{item}</span>
+                        <CheckCircle2 className="w-6 h-6 text-brand-green shrink-0 mt-1" />
+                        <div>
+                          <strong className="text-white font-medium block mb-1">{item.name}</strong>
+                          <span className="text-white/70 font-light leading-relaxed block">{item.desc}</span>
+                        </div>
                       </li>
                     ))}
                   </ul>

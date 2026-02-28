@@ -42,9 +42,9 @@ export default function Contact() {
       {/* Hero */}
       <section className="bg-brand-dark py-24 text-center border-b border-white/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-light text-white mb-6">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-light text-white mb-6">Contact Tantalus Geomatics</h1>
           <p className="text-xl text-white/70 font-light max-w-2xl mx-auto">
-            Get in touch for a quote or to discuss your next project in the Sea to Sky corridor.
+            Ready to Build? Let’s Get to Work.
           </p>
         </div>
       </section>
@@ -56,9 +56,14 @@ export default function Contact() {
             
             {/* Contact Info */}
             <div>
-              <h2 className="text-3xl font-light text-white mb-6">Let's build something great.</h2>
+              <h2 className="text-3xl font-light text-white mb-6">Request a Quote</h2>
               <p className="text-lg text-white/70 font-light mb-12 leading-relaxed">
-                Whether you're planning a subdivision in Squamish, a resort expansion in Whistler, or need reality capture for a complex site, Tantalus Geomatics is ready to provide the precision data you need.
+                Provide us with your property's PID (Parcel Identifier) and a brief description of your project requirements. Our team will provide a detailed scope of work and estimate tailored to your timeline.
+              </p>
+              
+              <h2 className="text-3xl font-light text-white mb-6">Professional Consultation</h2>
+              <p className="text-lg text-white/70 font-light mb-12 leading-relaxed">
+                Not sure where to start? We offer consultations to help you navigate the municipal permit process in Squamish, Whistler, and Pemberton. Let us help you identify the specific geomatics requirements for your site.
               </p>
 
               <div className="space-y-8">
@@ -67,8 +72,8 @@ export default function Contact() {
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-white mb-1">Service Area</h3>
-                    <p className="text-white/60 font-light">Squamish, Whistler, Pemberton, Lillooet, West Vancouver and Bowen Island.</p>
+                    <h3 className="font-medium text-white mb-1">Office</h3>
+                    <p className="text-white/60 font-light">Squamish, BC</p>
                   </div>
                 </div>
 

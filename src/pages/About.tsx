@@ -23,7 +23,7 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h1 className="text-4xl md:text-5xl font-light text-white mb-6">About Tantalus Geomatics</h1>
           <p className="text-xl text-white/70 font-light">
-            Rooted in the Sea to Sky corridor, delivering precision surveying for the mountains we call home.
+            Agility, Personalized Service, and Technical Mastery
           </p>
         </div>
       </section>
@@ -33,12 +33,12 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-light text-white mb-6">Our Story</h2>
+              <h2 className="text-3xl font-light text-white mb-6">The Tantalus Namesake</h2>
               <p className="text-lg text-white/70 mb-6 font-light leading-relaxed">
-                Tantalus Geomatics Land Surveying Ltd. was founded on a deep appreciation for the unique landscape of British Columbia's Sea to Sky corridor. Based in Squamish, we understand the specific challenges and opportunities that come with developing and building in mountainous terrain.
+                Tantalus Geomatics was founded to bring a new level of technical agility to the Sea-to-Sky surveying market. While larger firms may offer breadth, we offer depth and a personalized approach that prioritizes your project's timeline and precision. We are not just data collectors; we are strategic partners in your development journey.
               </p>
               <p className="text-lg text-white/70 mb-8 font-light leading-relaxed">
-                We cater to a diverse range of clients including homeowners, architects, engineers, contractors, developers, and real estate professionals, providing the foundational spatial data required for successful projects. Our clients share our passion for the outdoors, and we bring that same energy and dedication to every survey we conduct.
+                Our firm is named after the Tantalus Range, the iconic granite spires that dominate the Squamish horizon. For locals, Tantalus represents the ultimate technical challenge—a remote, rugged environment that requires every tool in the box to navigate. This is the same spirit we bring to our professional practice: a commitment to reliability, local presence, and the technical skill required to succeed in the most demanding landscapes.
               </p>
               
               <div className="grid grid-cols-2 gap-6">
@@ -85,14 +85,14 @@ export default function About() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 border border-brand-green text-brand-green text-sm font-medium mb-6 w-fit">
                   <Users size={16} /> Principal
                 </div>
-                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">Dennis Sherman</h2>
-                <p className="text-xl text-brand-green font-medium mb-8">BC Land Surveyor & Professional Engineer</p>
+                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">Technical Principal: Dennis</h2>
+                <p className="text-xl text-brand-green font-medium mb-8">BCLS, PEng</p>
                 
                 <p className="text-lg text-white/70 mb-6 font-light leading-relaxed">
-                  Dennis brings a unique dual-perspective to every project as both a registered BC Land Surveyor and a Professional Engineer. This comprehensive understanding of both the legal boundaries and the engineering requirements ensures that your project starts with the most reliable data possible.
+                  The practice is led by Dennis, a licensed British Columbia Land Surveyor and Professional Engineer with extensive experience in both legal cadastral surveying, engineering surveys and advanced 3D geomatics. Dennis’s expertise ensures that every project—from a simple boundary stakeout to a complex UAV LiDAR mission—is conducted with the highest degree of professional accountability.
                 </p>
                 <p className="text-lg text-white/70 font-light leading-relaxed">
-                  When he's not behind the total station or analyzing spatial data, Dennis can usually be found enjoying the world-class mountain biking, skiing, and climbing that the Sea to Sky corridor has to offer.
+                  Under his leadership, Tantalus Geomatics maintains a "public first" ethic, protecting the integrity of the survey fabric while driving innovation for our clients.
                 </p>
               </div>
             </div>

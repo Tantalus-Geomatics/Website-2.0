@@ -4,24 +4,16 @@ import SEO from '../components/SEO';
 
 const faqs = [
   {
-    question: "What is a topographic survey and when do I need one?",
-    answer: "A topographic survey maps the physical features of a property, including elevation changes, trees, buildings, and utilities. You typically need one before starting any significant design or construction project, as architects and engineers rely on this data to create accurate plans."
+    question: "Why do I need a BCLS for my project?",
+    answer: "In British Columbia, the practice of land surveying is governed by the Land Surveyors Act. Only a licensed British Columbia Land Surveyor (BCLS) is authorized to determine the location of property boundaries. This regulation ensures that the person responsible for the legal survey fabric is held to the highest ethical and technical standards, protecting the public interest and the security of land ownership."
   },
   {
-    question: "Do I need a land survey to build a fence?",
-    answer: "Yes, it is highly recommended. Building a fence without knowing your exact property lines can lead to costly disputes with neighbors or the municipality if the fence encroaches on adjacent land."
+    question: "How long is a topographic survey valid for in Squamish or Whistler?",
+    answer: "For the purposes of municipal permit applications, topographic surveys are generally considered valid for six months. Municipalities like the District of Squamish and RMOW require current data to ensure that site conditions have not changed significantly—due to grading, tree removal, or infrastructure work—before a permit is issued. If your project has been on hold, you may need a \"re-survey\" to confirm the data is still accurate."
   },
   {
-    question: "How much does a land survey cost?",
-    answer: "The cost of a survey varies depending on the size of the property, the type of survey required, the terrain, and the availability of historical survey records. Please contact us with your property details for a customized quote."
-  },
-  {
-    question: "What is Reality Capture?",
-    answer: "Reality capture involves using advanced technologies like 3D laser scanning, photogrammetry, and LiDAR to create highly accurate 3D digital models of physical spaces. It's invaluable for complex renovations, heritage preservation, and detailed site analysis."
-  },
-  {
-    question: "How long does a typical survey take?",
-    answer: "Fieldwork can often be completed in one to two days, depending on the site's complexity. However, the entire process—including research, fieldwork, drafting, and quality control—typically takes 2-4 weeks. We will provide a specific timeline when you request a quote."
+    question: "What is the difference between Title Insurance and a Surveyor’s Certificate?",
+    answer: "While both provide protection in a real estate transaction, they serve very different purposes. Title Insurance is an insurance policy that protects against financial loss related to title defects or unknown encroachments; it is a financial product, not a boundary measurement. A Surveyor’s Certificate (or Plan of Survey) is a physical document created by a BCLS that shows the exact location of buildings and property lines. While Title Insurance may help \"close\" a transaction, only a Surveyor's Certificate shows you exactly what you are buying and where the boundaries truly lie."
   }
 ];
 
