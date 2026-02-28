@@ -10,19 +10,22 @@ export default function About() {
         canonicalUrl="https://tantalusgeomatics.com/about"
       />
       {/* Hero */}
-      <section className="bg-brand-dark py-24 text-center border-b border-white/10 relative overflow-hidden">
-        {/* Geometric pattern */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 opacity-20 pointer-events-none overflow-hidden scale-x-[-1]">
-          <svg viewBox="0 0 100 400" preserveAspectRatio="none" className="w-full h-full text-brand-green stroke-current" fill="none" strokeWidth="1">
-            <path d="M0,0 L100,50 L100,100 L0,50 Z" />
-            <path d="M0,100 L100,150 L100,200 L0,150 Z" />
-            <path d="M0,200 L100,250 L100,300 L0,250 Z" />
-            <path d="M0,300 L100,350 L100,400 L0,350 Z" />
-          </svg>
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000"
+            alt="Sea-to-Sky Mountains"
+            className="w-full h-full object-cover opacity-60 mix-blend-overlay"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
         </div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 className="text-4xl md:text-5xl font-light text-white mb-6">About Tantalus Geomatics</h1>
-          <p className="text-xl text-white/70 font-light">
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+            About Tantalus Geomatics
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed drop-shadow-md max-w-2xl mx-auto">
             Agility, Personalized Service, and Technical Mastery
           </p>
         </div>

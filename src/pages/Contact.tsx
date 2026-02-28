@@ -40,10 +40,22 @@ export default function Contact() {
         canonicalUrl="https://tantalusgeomatics.com/contact"
       />
       {/* Hero */}
-      <section className="bg-brand-dark py-24 text-center border-b border-white/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-light text-white mb-6">Contact Tantalus Geomatics</h1>
-          <p className="text-xl text-white/70 font-light max-w-2xl mx-auto">
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000"
+            alt="Sea-to-Sky Mountains"
+            className="w-full h-full object-cover opacity-60 mix-blend-overlay"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
+        </div>
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+            Contact Tantalus Geomatics
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed drop-shadow-md max-w-2xl mx-auto">
             Ready to Build? Let’s Get to Work.
           </p>
         </div>

@@ -187,16 +187,25 @@ export default function FAQ() {
       />
       
       {/* Hero */}
-      <section className="relative bg-brand-dark py-32 text-center border-b border-white/10 overflow-hidden">
-        {/* Technical Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000"
+            alt="Sea-to-Sky Mountains"
+            className="w-full h-full object-cover opacity-60 mix-blend-overlay"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
+        </div>
         
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-green/30 bg-brand-green/10 text-brand-green text-sm font-medium mb-8 rounded-full">
             Knowledge Base
           </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight">Frequently Asked Questions</h1>
-          <p className="text-xl text-white/60 font-light max-w-2xl mx-auto leading-relaxed">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+            Frequently Asked Questions
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed drop-shadow-md max-w-2xl mx-auto">
             Expert insights on land surveying, reality capture, and navigating municipal regulations in the Sea to Sky corridor.
           </p>
         </div>
