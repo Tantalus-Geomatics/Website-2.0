@@ -36,12 +36,12 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-light text-white mb-6">The Tantalus Namesake</h2>
+              <h2 className="text-3xl font-light text-white mb-6">Supporting the Sea-to-Sky Corridor</h2>
               <p className="text-base sm:text-lg text-white/70 mb-6 font-light leading-relaxed">
-                Tantalus Geomatics was founded to bring a new level of technical agility to the Sea-to-Sky surveying market. While larger firms may offer breadth, we offer depth and a personalized approach that prioritizes your project's timeline and precision. We are not just data collectors; we are strategic partners in your development journey.
+                Tantalus Geomatics is a dedicated professional service provider, playing a critical role in the responsible development and management of the Sea-to-Sky corridor. From Squamish to Whistler and beyond, we support a wide range of activities—including residential development, large-scale infrastructure projects, and environmental conservation efforts. We are not just data collectors; we are strategic partners who provide the foundational spatial data required for informed decision-making.
               </p>
               <p className="text-base sm:text-lg text-white/70 mb-8 font-light leading-relaxed">
-                Our firm is named after the Tantalus Range, the iconic granite spires that dominate the Squamish horizon. For locals, Tantalus represents the ultimate technical challenge—a remote, rugged environment that requires every tool in the box to navigate. This is the same spirit we bring to our professional practice: a commitment to reliability, local presence, and the technical skill required to succeed in the most demanding landscapes.
+                Our commitment is to deliver precision, reliability, and local expertise to ensure that every project we touch contributes positively to the communities and landscapes we serve. We navigate the unique challenges of our rugged, remote environment with a technical agility that prioritizes your project's timeline without compromising on professional quality.
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -88,14 +88,14 @@ export default function About() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 border border-brand-green text-brand-green text-sm font-medium mb-6 w-fit">
                   <Users size={16} /> Principal
                 </div>
-                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">Technical Principal: Dennis</h2>
-                <p className="text-xl text-brand-green font-medium mb-8">BCLS, PEng</p>
+                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">Dennis Sherman BCLS PEng</h2>
+                <p className="text-xl text-brand-green font-medium mb-8">Principal</p>
                 
                 <p className="text-base sm:text-lg text-white/70 mb-6 font-light leading-relaxed">
-                  The practice is led by Dennis, a licensed British Columbia Land Surveyor and Professional Engineer with extensive experience in both legal cadastral surveying, engineering surveys and advanced 3D geomatics. Dennis’s expertise ensures that every project—from a simple boundary stakeout to a complex UAV LiDAR mission—is conducted with the highest degree of professional accountability.
+                  Dennis is a dual-registered professional, holding commissions as both a British Columbia Land Surveyor (BCLS) and a Professional Engineer (PEng). This unique combination of qualifications allows him to bridge the gap between legal boundary determination and complex engineering design. With extensive experience in cadastral surveying, construction layout, and advanced 3D reality capture, Dennis brings a rigorous, multi-disciplinary approach to every project.
                 </p>
                 <p className="text-base sm:text-lg text-white/70 font-light leading-relaxed">
-                  Under his leadership, Tantalus Geomatics maintains a "public first" ethic, protecting the integrity of the survey fabric while driving innovation for our clients.
+                  He is committed to upholding the highest standards of professional accountability, protecting the public interest, and delivering innovative geomatics solutions tailored to the unique challenges of the Sea-to-Sky region.
                 </p>
               </div>
             </div>
