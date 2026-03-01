@@ -5,9 +5,10 @@ interface SEOProps {
   description: string;
   keywords?: string;
   canonicalUrl?: string;
+  schema?: object | object[];
 }
 
-export default function SEO({ title, description, keywords, canonicalUrl }: SEOProps) {
+export default function SEO({ title, description, keywords, canonicalUrl, schema }: SEOProps) {
   const siteName = "Tantalus Geomatics";
   const fullTitle = `${title} | ${siteName}`;
 
@@ -30,6 +31,13 @@ export default function SEO({ title, description, keywords, canonicalUrl }: SEOP
       <meta name="twitter:description" content={description} />
       
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+      
+      {/* JSON-LD Schema */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 }

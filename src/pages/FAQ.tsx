@@ -12,7 +12,7 @@ const faqCategories = [
       },
       {
         question: "What differentiates a \"legal\" survey from a general site plan or a contractor's measurement?",
-        answer: "In British Columbia, a \"legal\" or \"statutory\" plan, such as those prepared under the Land Title Act or the Strata Property Act, is filed in a public registry (Land Title Office or Crown Land Registry). These plans legally define ownership limits, create new parcels, establish rights-of-way, or define strata lots. \"Non-statutory\" plans, like topographic site plans or as-built surveys, are used for design or internal management and are not publicly filed. While anyone can estimate a distance, only a British Columbia Land Surveyor (BCLS) has the legal authority to certify that a measurement accurately reflects a property's registered boundaries based on historical and physical evidence."
+        answer: "In British Columbia, a \"legal\" or \"statutory\" plan, such as those prepared under the Land Title Act or the Strata Property Act, is filed in a public registry (Land Title Office or Crown Land Registry). These plans legally define ownership limits, create new parcels, establish rights-of-way, or define strata lots. \"Non-statutory\" plans, like topographic site plans or as-built surveys, are used for design or internal management and are not publicly filed. While anyone can estimate a distance, only a British Columbia Land Surveyor (BCLS) has the legal authority to certify that a measurement accurately reflects a property's registered boundaries based on historical and physical evidence. Learn more about our <a href='/services' class='text-brand-green hover:underline'>legal boundary survey services</a>."
       },
       {
         question: "Why does a surveyor need to look for iron pins that were placed 100 years ago?",
@@ -60,7 +60,7 @@ const faqCategories = [
     faqs: [
       {
         question: "Why does my architect require a \"Topographic Survey\" before designing my home?",
-        answer: "Architects need a Topographic Survey (\"Topo\") to understand the three-dimensional lay of the land, not just lot dimensions. A Topo captures elevations (contours), trees, utilities, and structures. In Squamish, this data is crucial for engineers to design proper drainage and stormwater management. Furthermore, local zoning uses \"average finished grade\" (determined accurately by a BCLS Topo) to calculate building height."
+        answer: "Architects need a Topographic Survey (\"Topo\") to understand the three-dimensional lay of the land, not just lot dimensions. A Topo captures elevations (contours), trees, utilities, and structures. In Squamish, this data is crucial for engineers to design proper drainage and stormwater management. Furthermore, local zoning uses \"average finished grade\" (determined accurately by a BCLS Topo) to calculate building height. Visit our <a href='/services' class='text-brand-green hover:underline'>services page</a> to learn more about our topographic mapping."
       },
       {
         question: "What is a \"Building Location Certificate\", and when do I need one?",
@@ -178,12 +178,29 @@ export default function FAQ() {
     }
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqCategories.flatMap(category => 
+      category.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    )
+  };
+
   return (
     <div className="bg-brand-black min-h-screen">
       <SEO 
-        title="Frequently Asked Questions"
-        description="Find answers to common questions about land surveying, reality capture, and our geomatics services in the Sea to Sky corridor."
+        title="Land Surveying FAQ | Squamish & Whistler"
+        description="Answers to common questions about land surveying, property boundaries, topographic surveys, and hiring a BCLS in the Sea to Sky corridor."
+        keywords="Land Survey Cost BC, Property Line Dispute Surveyor, Riparian Area Survey Squamish, BCLS FAQ, Topographic Survey Cost"
         canonicalUrl="https://tantalusgeomatics.com/faq"
+        schema={faqSchema}
       />
       
       {/* Hero */}
@@ -281,9 +298,7 @@ export default function FAQ() {
                               isOpen ? 'max-h-[1000px] opacity-100 pb-6 sm:pb-8' : 'max-h-0 opacity-0'
                             }`}
                           >
-                            <p className="text-white/60 font-light leading-relaxed text-base sm:text-lg">
-                              {faq.answer}
-                            </p>
+                            <p className="text-white/60 font-light leading-relaxed text-base sm:text-lg" dangerouslySetInnerHTML={{ __html: faq.answer }} />
                             
                             {/* Callouts */}
                             {faq.callout && (

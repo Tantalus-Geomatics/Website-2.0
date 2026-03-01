@@ -83,12 +83,31 @@ export default function Contact() {
     }
   };
 
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "Tantalus Geomatics Land Surveying Ltd.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Squamish",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "email": "contact@tantalusgeomatics.com",
+      "areaServed": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island"]
+    }
+  };
+
   return (
     <div className="bg-brand-black min-h-screen">
       <SEO 
-        title="Contact Us"
+        title="Contact a BC Land Surveyor | Request a Quote"
         description="Get in touch with Tantalus Geomatics for your land surveying needs in Squamish, Whistler, Pemberton, Lillooet, West Vancouver, and Bowen Island."
+        keywords="Hire a land surveyor Squamish, Request a survey quote Whistler, BCLS Contact, Sea to Sky Geomatics"
         canonicalUrl="https://tantalusgeomatics.com/contact"
+        schema={contactSchema}
       />
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
@@ -119,14 +138,14 @@ export default function Contact() {
             
             {/* Contact Info */}
             <div>
-              <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 sm:mb-6">Request a Quote</h2>
+              <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 sm:mb-6">Request a Land Survey Quote</h2>
               <p className="text-base sm:text-lg text-white/70 font-light mb-8 sm:mb-12 leading-relaxed">
-                Provide us with your property's PID (Parcel Identifier) and a brief description of your project requirements. Our team will provide a detailed scope of work and estimate tailored to your timeline.
+                Provide us with your property's PID (Parcel Identifier) and a brief description of your project requirements. Our team of professionals will provide a detailed scope of work and estimate tailored to your timeline.
               </p>
               
-              <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 sm:mb-6">Professional Consultation</h2>
+              <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 sm:mb-6">Professional Geomatics Consultation</h2>
               <p className="text-base sm:text-lg text-white/70 font-light mb-8 sm:mb-12 leading-relaxed">
-                Not sure where to start? We offer consultations to help you navigate the municipal permit process in Squamish, Whistler, and Pemberton. Let us help you identify the specific geomatics requirements for your site.
+                Not sure where to start? We offer consultations to help you navigate the municipal permit process in Squamish, Whistler, and Pemberton. Let us help you identify the specific geomatics and <a href="/services" className="text-brand-green hover:underline">boundary survey requirements</a> for your site.
               </p>
 
               <div className="space-y-8">

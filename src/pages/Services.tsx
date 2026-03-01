@@ -115,12 +115,32 @@ export default function Services() {
     }
   ];
 
+  const servicesSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": services.map((service, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Service",
+        "name": service.title,
+        "description": service.description,
+        "provider": {
+          "@type": "ProfessionalService",
+          "name": "Tantalus Geomatics Land Surveying Ltd."
+        }
+      }
+    }))
+  };
+
   return (
     <div className="bg-brand-black min-h-screen">
       <SEO 
-        title="Land Surveying Services"
-        description="Comprehensive geomatics solutions including Land Development Surveys, Construction Surveys, Legal Surveys, Strata Surveys, and Reality Capture."
+        title="Land Surveying Services in Squamish & Whistler"
+        description="Comprehensive geomatics solutions including Land Development Surveys, Construction Surveys, Legal Boundary Surveys, Strata Surveys, and 3D Reality Capture."
+        keywords="Land Development Surveying BC, Construction Surveying Whistler, 3D Reality Capture Squamish, UAV LiDAR, Legal Boundary Survey, Strata Plans, Topographic Surveys"
         canonicalUrl="https://tantalusgeomatics.com/services"
+        schema={servicesSchema}
       />
       
       {/* Hero */}
@@ -143,7 +163,7 @@ export default function Services() {
             Professional <span className="text-brand-green font-medium">Land Surveying</span> Services
           </h1>
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
-            Comprehensive geomatics and reality capture for your most demanding projects.
+            Comprehensive geomatics, topographic mapping, and reality capture for your most demanding projects.
           </p>
         </div>
       </section>

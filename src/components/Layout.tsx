@@ -138,12 +138,12 @@ export default function Layout() {
           <div>
             <h3 className="text-white font-medium mb-4">Service Areas</h3>
             <ul className="grid grid-cols-2 gap-2 text-sm text-white/60">
-              <li>Squamish</li>
-              <li>Whistler</li>
-              <li>Pemberton</li>
-              <li>Lillooet</li>
-              <li>West Vancouver</li>
-              <li>Bowen Island</li>
+              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Squamish</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Whistler</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Pemberton</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Lillooet</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-green transition-colors">West Vancouver</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Bowen Island</Link></li>
             </ul>
           </div>
         </div>

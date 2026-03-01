@@ -2,12 +2,29 @@ import { Mountain, Award, Users, MapPin } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function About() {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Tantalus Geomatics Land Surveying Ltd.",
+      "founder": {
+        "@type": "Person",
+        "name": "Dennis Sherman",
+        "jobTitle": "Principal, BCLS, PEng",
+        "url": "https://www.linkedin.com/in/dennis-sherman/"
+      }
+    }
+  };
+
   return (
     <div className="bg-brand-black min-h-screen">
       <SEO 
-        title="About Us"
-        description="Learn about Tantalus Geomatics, a professional land surveying company rooted in the Sea to Sky corridor, delivering precision surveying for the mountains we call home."
+        title="About Our BC Land Surveying Practice"
+        description="Learn about Tantalus Geomatics, a professional land surveying company led by Dennis Sherman BCLS PEng, delivering precision surveying in the Sea to Sky."
+        keywords="Dennis Sherman BCLS PEng, Licensed Land Surveyor Sea to Sky, Professional Geomatics Firm, Squamish Surveyor, Whistler Surveyor"
         canonicalUrl="https://tantalusgeomatics.com/about"
+        schema={aboutSchema}
       />
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
@@ -38,7 +55,7 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-light text-white mb-6">Supporting the Sea-to-Sky Corridor</h2>
               <p className="text-base sm:text-lg text-white/70 mb-6 font-light leading-relaxed">
-                Tantalus Geomatics is a dedicated professional service provider, playing a critical role in the responsible development and management of the Sea-to-Sky corridor. From Squamish to Whistler and beyond, we support a wide range of activities—including residential development, large-scale infrastructure projects, and environmental conservation efforts. We are not just data collectors; we are strategic partners who provide the foundational spatial data required for informed decision-making.
+                Tantalus Geomatics is a dedicated professional service provider, playing a critical role in the responsible development and management of the Sea-to-Sky corridor. From Squamish to Whistler and beyond, we support a wide range of activities—including residential development, large-scale infrastructure projects, and environmental conservation efforts. We are not just data collectors; we are strategic partners who provide the foundational spatial data required for informed decision-making. Learn more about our <a href="/services" className="text-brand-green hover:underline">comprehensive geomatics services</a>.
               </p>
               <p className="text-base sm:text-lg text-white/70 mb-8 font-light leading-relaxed">
                 Our commitment is to deliver precision, reliability, and local expertise to ensure that every project we touch contributes positively to the communities and landscapes we serve. We navigate the unique challenges of our rugged, remote environment with a technical agility that prioritizes your project's timeline without compromising on professional quality.
@@ -95,7 +112,7 @@ export default function About() {
                   Dennis is a dual-registered professional, holding commissions as both a British Columbia Land Surveyor (BCLS) and a Professional Engineer (PEng). This unique combination of qualifications allows him to bridge the gap between legal boundary determination and complex engineering design. With extensive experience in cadastral surveying, construction layout, and advanced 3D reality capture, Dennis brings a rigorous, multi-disciplinary approach to every project.
                 </p>
                 <p className="text-base sm:text-lg text-white/70 font-light leading-relaxed">
-                  He is committed to upholding the highest standards of professional accountability, protecting the public interest, and delivering innovative geomatics solutions tailored to the unique challenges of the Sea-to-Sky region.
+                  He is committed to upholding the highest standards of professional accountability, protecting the public interest, and delivering innovative geomatics solutions tailored to the unique challenges of the Sea-to-Sky region. <a href="/contact" className="text-brand-green hover:underline">Contact Dennis and the team</a> to discuss your next project.
                 </p>
               </div>
             </div>

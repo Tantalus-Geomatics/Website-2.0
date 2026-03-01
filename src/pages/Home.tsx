@@ -69,13 +69,30 @@ export default function Home() {
     }
   ];
 
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Tantalus Geomatics Land Surveying Ltd.",
+    "image": "https://tantalusgeomatics.com/logo.svg",
+    "url": "https://tantalusgeomatics.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Squamish",
+      "addressRegion": "BC",
+      "addressCountry": "CA"
+    },
+    "areaServed": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island"],
+    "description": "Professional Land Surveying and Reality Capture for homeowners, industry professionals, and real estate experts in the Sea to Sky corridor."
+  };
+
   return (
     <div className="flex flex-col bg-brand-black">
       <SEO 
-        title="Land Surveying in Squamish, Whistler & Sea to Sky"
-        description="Professional Land Surveying and Reality Capture for homeowners, industry professionals, and real estate experts in the Sea to Sky corridor."
-        keywords="Land Surveying, Geomatics, Squamish, Whistler, Pemberton, Sea to Sky, Topographic Surveys, Legal Surveys, Reality Capture, 3D Laser Scanning"
+        title="BC Land Surveyor in Squamish, Whistler & Sea to Sky"
+        description="Hire a professional BC Land Surveyor (BCLS) for topographic surveys, legal boundaries, and 3D reality capture in Squamish, Whistler, and Pemberton."
+        keywords="BC Land Surveyor, Land Surveying Squamish, Topographic Survey Whistler, Property Boundary Survey, 3D Reality Capture, Geomatics Sea to Sky, BCLS"
         canonicalUrl="https://tantalusgeomatics.com/"
+        schema={homeSchema}
       />
       {/* Hero Section */}
       <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden border-b border-white/10">
@@ -94,10 +111,10 @@ export default function Home() {
             Precision <span className="text-brand-green font-medium">Land Surveying</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
-            Expert geomatics for the Sea-to-Sky Corridor.
+            Expert geomatics and boundary surveys for the Sea-to-Sky Corridor.
           </p>
           <p className="text-base sm:text-lg md:text-xl text-white/70 mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
-            Your project depends on data you can trust. We combine the legal authority of a BCLS practice with advanced 3D Reality Capture to deliver field-to-finish precision in the Coast Mountains.
+            Your project depends on data you can trust. We combine the legal authority of a licensed BC Land Surveyor (BCLS) practice with advanced 3D Reality Capture to deliver field-to-finish precision in Squamish, Whistler, and beyond.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -120,9 +137,9 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-brand-dark border-b border-white/10 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Surveyor?</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Land Surveyor?</h2>
             <p className="text-lg sm:text-xl text-white/60 font-light max-w-2xl mx-auto">
-              Explore common scenarios where professional geomatics expertise is essential.
+              Explore common scenarios where professional geomatics expertise is essential for your property. <Link to="/faq" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
             </p>
           </div>
 
