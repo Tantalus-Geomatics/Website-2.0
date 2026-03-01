@@ -90,13 +90,13 @@ export default function Home() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
             Precision <span className="text-brand-green font-medium">Land Surveying</span>
           </h1>
-          <p className="text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
+          <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
             Expert geomatics for the Sea-to-Sky Corridor.
           </p>
-          <p className="text-lg md:text-xl text-white/70 mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
             Your project depends on data you can trust. We combine the legal authority of a BCLS practice with advanced 3D Reality Capture to deliver field-to-finish precision in the Coast Mountains.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -117,18 +117,52 @@ export default function Home() {
       </section>
 
       {/* Interactive Use Cases Section */}
-      <section className="py-32 bg-brand-dark border-b border-white/10 relative overflow-hidden">
+      <section className="py-20 md:py-32 bg-brand-dark border-b border-white/10 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Surveyor?</h2>
-            <p className="text-xl text-white/60 font-light max-w-2xl mx-auto">
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Surveyor?</h2>
+            <p className="text-lg sm:text-xl text-white/60 font-light max-w-2xl mx-auto">
               Explore common scenarios where professional geomatics expertise is essential.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-            {/* Interactive List */}
-            <div className="lg:col-span-5 space-y-2">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
+            {/* Mobile Accordion */}
+            <div className="lg:hidden space-y-4">
+              {useCases.map((useCase, index) => (
+                <div key={index} className="bg-brand-black/50 border border-white/10 rounded-2xl overflow-hidden">
+                  <button
+                    onClick={() => setActiveUseCase(activeUseCase === index ? -1 : index)}
+                    className={`w-full text-left px-5 py-4 flex items-center justify-between ${activeUseCase === index ? 'bg-brand-green text-brand-black' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className={`${activeUseCase === index ? 'text-brand-black' : 'text-brand-green'}`}>
+                        {useCase.icon}
+                      </div>
+                      <span className="font-medium text-base sm:text-lg pr-4">
+                        {useCase.title}
+                      </span>
+                    </div>
+                    <ArrowRight className={`w-5 h-5 shrink-0 transition-transform ${activeUseCase === index ? 'rotate-90 text-brand-black' : ''}`} />
+                  </button>
+                  {activeUseCase === index && (
+                    <div className="p-5 sm:p-6 bg-brand-black border-t border-white/10">
+                      <img 
+                        src={useCase.image} 
+                        alt={useCase.title}
+                        className="w-full h-40 sm:h-48 object-cover rounded-xl mb-5 grayscale opacity-80"
+                      />
+                      <p className="text-white/70 font-light leading-relaxed text-sm sm:text-base">
+                        {useCase.content}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Interactive List */}
+            <div className="hidden lg:block lg:col-span-5 space-y-2">
               {useCases.map((useCase, index) => (
                 <button
                   key={index}
@@ -152,28 +186,28 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Dynamic Display */}
-            <div className="lg:col-span-7">
+            {/* Desktop Dynamic Display */}
+            <div className="hidden lg:block lg:col-span-7">
               <div className="sticky top-32">
                 <div className="bg-brand-black rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
                   <div className="aspect-[16/9] relative overflow-hidden">
                     <img 
-                      src={useCases[activeUseCase].image} 
-                      alt={useCases[activeUseCase].title}
+                      src={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} 
+                      alt={useCases[activeUseCase === -1 ? 0 : activeUseCase].title}
                       className="w-full h-full object-cover grayscale opacity-80 transition-opacity duration-500"
-                      key={useCases[activeUseCase].image} // Force re-render for animation
+                      key={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} // Force re-render for animation
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-transparent"></div>
                   </div>
                   <div className="p-8 md:p-12 relative -mt-20 z-10">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-green text-brand-black mb-6 shadow-xl">
-                      {useCases[activeUseCase].icon}
+                      {useCases[activeUseCase === -1 ? 0 : activeUseCase].icon}
                     </div>
                     <h3 className="text-3xl font-light text-white mb-6">
-                      {useCases[activeUseCase].title}
+                      {useCases[activeUseCase === -1 ? 0 : activeUseCase].title}
                     </h3>
                     <p className="text-xl text-white/70 font-light leading-relaxed">
-                      {useCases[activeUseCase].content}
+                      {useCases[activeUseCase === -1 ? 0 : activeUseCase].content}
                     </p>
                   </div>
                 </div>
@@ -234,7 +268,7 @@ export default function Home() {
       </section>
 
       {/* Target Market Section */}
-      <section className="py-24 bg-brand-black relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-brand-black relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <img
             src="https://picsum.photos/seed/construction-site/1920/1080?grayscale"
@@ -244,13 +278,13 @@ export default function Home() {
           />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-5xl font-light mb-6 leading-tight">
-                Why Local Expertise Matters in the <br />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 leading-tight">
+                Why Local Expertise Matters in the <br className="hidden sm:block" />
                 <span className="text-brand-green font-medium">Sea-to-Sky</span>
               </h2>
-              <p className="text-lg text-white/70 mb-8 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-white/70 mb-8 font-light leading-relaxed">
                 Development in Squamish and Whistler isn't just about measuring land—it's about navigating a complex web of hazardous terrain, riparian setbacks, and evolving municipal bylaws.
               </p>
               <ul className="space-y-6 mb-8">

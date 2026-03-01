@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { Turnstile } from '@marsidev/react-turnstile';
 import SEO from '../components/SEO';
 
 export default function Contact() {
@@ -15,6 +16,7 @@ export default function Contact() {
     website_url: ''
   });
   const [status, setStatus] = useState<{ type: 'idle' | 'loading' | 'success' | 'error', message: React.ReactNode }>({ type: 'idle', message: '' });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   useEffect(() => {
     emailjs.init({
@@ -37,6 +39,11 @@ export default function Contact() {
     // Honeypot check
     if (formData.website_url) {
       // Silently reject bot submissions
+      return;
+    }
+
+    if (!turnstileToken) {
+      setStatus({ type: 'error', message: 'Please complete the CAPTCHA verification.' });
       return;
     }
 
@@ -96,29 +103,29 @@ export default function Contact() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
             Contact Our <span className="text-brand-green font-medium">Land Surveying</span> Team
           </h1>
-          <p className="text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             Ready to build? Get precise data for your next project.
           </p>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-24">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             
             {/* Contact Info */}
             <div>
-              <h2 className="text-3xl font-light text-white mb-6">Request a Quote</h2>
-              <p className="text-lg text-white/70 font-light mb-12 leading-relaxed">
+              <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 sm:mb-6">Request a Quote</h2>
+              <p className="text-base sm:text-lg text-white/70 font-light mb-8 sm:mb-12 leading-relaxed">
                 Provide us with your property's PID (Parcel Identifier) and a brief description of your project requirements. Our team will provide a detailed scope of work and estimate tailored to your timeline.
               </p>
               
-              <h2 className="text-3xl font-light text-white mb-6">Professional Consultation</h2>
-              <p className="text-lg text-white/70 font-light mb-12 leading-relaxed">
+              <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 sm:mb-6">Professional Consultation</h2>
+              <p className="text-base sm:text-lg text-white/70 font-light mb-8 sm:mb-12 leading-relaxed">
                 Not sure where to start? We offer consultations to help you navigate the municipal permit process in Squamish, Whistler, and Pemberton. Let us help you identify the specific geomatics requirements for your site.
               </p>
 
@@ -279,6 +286,17 @@ export default function Contact() {
                     placeholder="Please provide details about your project location and requirements..."
                     aria-required="true"
                   ></textarea>
+                </div>
+
+                {/* Cloudflare Turnstile */}
+                <div className="flex justify-center my-4">
+                  <Turnstile
+                    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'}
+                    onSuccess={(token) => setTurnstileToken(token)}
+                    onError={() => setTurnstileToken(null)}
+                    onExpire={() => setTurnstileToken(null)}
+                    options={{ theme: 'dark' }}
+                  />
                 </div>
 
                 {/* Status Message Container */}

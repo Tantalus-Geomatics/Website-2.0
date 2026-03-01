@@ -17,31 +17,31 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col font-sans text-white bg-brand-black">
       {/* Top Banner */}
-      <div className="bg-brand-green text-black py-2 px-4 text-sm font-semibold text-center flex items-center justify-center gap-2">
-        <MapPin size={16} />
-        <span>Squamish • Whistler • Pemberton • Lillooet • West Vancouver • Bowen Island</span>
+      <div className="bg-brand-green text-black py-2 px-4 text-xs sm:text-sm font-semibold text-center flex items-center justify-center gap-2">
+        <MapPin size={16} className="shrink-0" />
+        <span className="truncate sm:whitespace-normal">Squamish • Whistler • Pemberton • Lillooet • West Vancouver • Bowen Island</span>
       </div>
 
       {/* Navigation */}
       <header className="bg-brand-black border-b border-white/10 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-24 items-center">
+          <div className="flex justify-between h-20 sm:h-24 items-center">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3">
               <img 
                 src="/logo.svg" 
                 alt="Tantalus Geomatics Logo" 
-                className="h-12 w-auto object-contain"
+                className="h-10 sm:h-12 w-auto object-contain"
                 onError={(e) => {
                   // Fallback to the Mountain icon if the image isn't found
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling?.classList.remove('hidden');
                 }}
               />
-              <Mountain size={40} className="text-white hidden" />
+              <Mountain size={32} className="text-white hidden sm:w-10 sm:h-10" />
               <div className="flex flex-col">
-                <span className="font-normal text-2xl leading-tight text-white tracking-wide">Tantalus Geomatics</span>
-                <span className="text-sm font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
+                <span className="font-normal text-xl sm:text-2xl leading-tight text-white tracking-wide">Tantalus Geomatics</span>
+                <span className="text-xs sm:text-sm font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
               </div>
             </Link>
 

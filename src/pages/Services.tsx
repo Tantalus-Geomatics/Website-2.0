@@ -139,48 +139,48 @@ export default function Services() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-green/30 bg-brand-green/10 text-brand-green text-sm font-medium mb-8 rounded-full">
             Our Expertise
           </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
             Professional <span className="text-brand-green font-medium">Land Surveying</span> Services
           </h1>
-          <p className="text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             Comprehensive geomatics and reality capture for your most demanding projects.
           </p>
         </div>
       </section>
 
       {/* Services List - Improved Styling */}
-      <section className="py-24 relative">
+      <section className="py-16 md:py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-32">
+          <div className="space-y-20 md:space-y-32">
             {services.map((service, index) => (
               <div 
                 key={service.id} 
-                className={`flex flex-col lg:flex-row gap-16 items-center ${
+                className={`flex flex-col lg:flex-row gap-12 lg:gap-16 items-center ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
               >
                 <div className="flex-1 w-full">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-dark border border-white/10 mb-8 shadow-2xl">
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-brand-dark border border-white/10 mb-6 sm:mb-8 shadow-2xl">
                     {service.icon}
                   </div>
-                  <h2 className="text-4xl font-light text-white mb-6 tracking-tight">{service.title}</h2>
-                  <p className="text-xl text-white/60 font-light mb-10 leading-relaxed">
+                  <h2 className="text-3xl sm:text-4xl font-light text-white mb-4 sm:mb-6 tracking-tight">{service.title}</h2>
+                  <p className="text-lg sm:text-xl text-white/60 font-light mb-8 sm:mb-10 leading-relaxed">
                     {service.description}
                   </p>
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     {service.items.map((item, i) => (
-                      <div key={i} className="flex items-start gap-4 p-6 rounded-2xl bg-brand-dark/50 border border-white/5 hover:border-brand-green/30 transition-colors">
-                        <CheckCircle2 className="w-6 h-6 text-brand-green shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-4 p-4 sm:p-6 rounded-2xl bg-brand-dark/50 border border-white/5 hover:border-brand-green/30 transition-colors">
+                        <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-brand-green shrink-0 mt-0.5" />
                         <div>
-                          <strong className="text-white font-medium block mb-2 text-lg">{item.name}</strong>
-                          <span className="text-white/60 font-light leading-relaxed block">{item.desc}</span>
+                          <strong className="text-white font-medium block mb-1 sm:mb-2 text-base sm:text-lg">{item.name}</strong>
+                          <span className="text-white/60 font-light leading-relaxed block text-sm sm:text-base">{item.desc}</span>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="flex-1 w-full relative">
-                  <div className="aspect-[4/5] relative rounded-3xl overflow-hidden border border-white/10">
+                  <div className="aspect-square sm:aspect-[4/5] relative rounded-3xl overflow-hidden border border-white/10">
                     <div className="absolute inset-0 bg-brand-green/20 mix-blend-overlay z-10"></div>
                     <img
                       src={`https://picsum.photos/seed/${service.id}-survey/800/1000?grayscale`}

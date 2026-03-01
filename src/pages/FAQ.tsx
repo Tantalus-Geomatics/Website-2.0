@@ -202,19 +202,19 @@ export default function FAQ() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-green/30 bg-brand-green/10 text-brand-green text-sm font-medium mb-8 rounded-full">
             Knowledge Base
           </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
             <span className="text-brand-green font-medium">Land Surveying</span> FAQ
           </h1>
-          <p className="text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             Expert insights on boundaries, reality capture, and municipal regulations.
           </p>
         </div>
       </section>
 
       {/* Main Content - Split Layout */}
-      <section className="py-24">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             
             {/* Sticky Sidebar */}
             <div className="hidden lg:block lg:col-span-4">
@@ -242,12 +242,12 @@ export default function FAQ() {
             </div>
 
             {/* FAQ Accordions */}
-            <div className="lg:col-span-8 space-y-24">
+            <div className="lg:col-span-8 space-y-16 md:space-y-24">
               {faqCategories.map((category, catIndex) => (
                 <div key={catIndex} id={`category-${catIndex}`} className="scroll-mt-32">
-                  <div className="flex items-baseline gap-4 mb-8 border-b border-white/10 pb-4">
-                    <span className="text-3xl font-mono text-brand-green font-light">0{catIndex + 1}</span>
-                    <h2 className="text-3xl font-light text-white">{category.title}</h2>
+                  <div className="flex items-baseline gap-4 mb-6 sm:mb-8 border-b border-white/10 pb-4">
+                    <span className="text-2xl sm:text-3xl font-mono text-brand-green font-light">0{catIndex + 1}</span>
+                    <h2 className="text-2xl sm:text-3xl font-light text-white">{category.title}</h2>
                   </div>
                   
                   <div className="space-y-2">
@@ -261,10 +261,10 @@ export default function FAQ() {
                           className="border-b border-white/10 group"
                         >
                           <button
-                            className="w-full py-6 text-left flex justify-between items-center focus:outline-none"
+                            className="w-full py-4 sm:py-6 text-left flex justify-between items-center focus:outline-none"
                             onClick={() => setOpenId(isOpen ? null : id)}
                           >
-                            <span className={`text-xl font-light transition-colors pr-8 ${isOpen ? 'text-brand-green' : 'text-white group-hover:text-brand-green'}`}>
+                            <span className={`text-lg sm:text-xl font-light transition-colors pr-4 sm:pr-8 ${isOpen ? 'text-brand-green' : 'text-white group-hover:text-brand-green'}`}>
                               {faq.question}
                             </span>
                             <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-colors ${isOpen ? 'border-brand-green bg-brand-green/10 text-brand-green' : 'border-white/20 text-white/40 group-hover:border-brand-green group-hover:text-brand-green'}`}>
@@ -278,33 +278,33 @@ export default function FAQ() {
                           
                           <div 
                             className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                              isOpen ? 'max-h-[1000px] opacity-100 pb-8' : 'max-h-0 opacity-0'
+                              isOpen ? 'max-h-[1000px] opacity-100 pb-6 sm:pb-8' : 'max-h-0 opacity-0'
                             }`}
                           >
-                            <p className="text-white/60 font-light leading-relaxed text-lg">
+                            <p className="text-white/60 font-light leading-relaxed text-base sm:text-lg">
                               {faq.answer}
                             </p>
                             
                             {/* Callouts */}
                             {faq.callout && (
-                              <div className={`mt-6 p-5 rounded-r-lg border-l-2 flex gap-4 items-start ${
+                              <div className={`mt-4 sm:mt-6 p-4 sm:p-5 rounded-r-lg border-l-2 flex gap-3 sm:gap-4 items-start ${
                                 faq.callout.type === 'pro-tip' 
                                   ? 'bg-brand-green/10 border-brand-green' 
                                   : 'bg-white/5 border-white/30'
                               }`}>
                                 {faq.callout.type === 'pro-tip' ? (
-                                  <Lightbulb className="w-6 h-6 text-brand-green shrink-0 mt-0.5" />
+                                  <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-brand-green shrink-0 mt-0.5" />
                                 ) : (
-                                  <AlertCircle className="w-6 h-6 text-white/60 shrink-0 mt-0.5" />
+                                  <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white/60 shrink-0 mt-0.5" />
                                 )}
                                 <div>
-                                  <strong className={`block font-medium mb-1 ${
+                                  <strong className={`block font-medium mb-1 text-sm sm:text-base ${
                                     faq.callout.type === 'pro-tip' ? 'text-brand-green' : 'text-white/80'
                                   }`}>
                                     {faq.callout.type === 'pro-tip' ? 'Pro-Tip: ' : 'Liability Note: '}
                                     {faq.callout.title}
                                   </strong>
-                                  <p className={`font-light text-sm leading-relaxed ${
+                                  <p className={`font-light text-sm sm:text-base leading-relaxed ${
                                     faq.callout.type === 'pro-tip' ? 'text-brand-green/80' : 'text-white/60'
                                   }`}>
                                     {faq.callout.content}
