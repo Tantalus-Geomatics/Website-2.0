@@ -21,7 +21,7 @@ export default function About() {
     <div className="bg-brand-black min-h-screen">
       <SEO 
         title="About Our BC Land Surveying Practice"
-        description="Learn about Tantalus Geomatics, a professional land surveying company led by Dennis Sherman BCLS PEng, delivering precision surveying in the Sea to Sky."
+        description="Learn about Tantalus Geomatics, a professional land surveying company led by Dennis Sherman BCLS PEng, delivering professional land surveying in the Sea to Sky."
         keywords="Dennis Sherman BCLS PEng, Licensed Land Surveyor Sea to Sky, Professional Geomatics Firm, Squamish Surveyor, Whistler Surveyor"
         canonicalUrl="https://tantalusgeomatics.com/about"
         schema={aboutSchema}
@@ -43,7 +43,7 @@ export default function About() {
             About Our <span className="text-brand-green font-medium">Land Surveying</span> Practice
           </h1>
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
-            Agility, personalized service, and technical mastery in the Sea-to-Sky corridor.
+            Local knowledge and personalized service to support your projects in the Sea-to-Sky corridor.
           </p>
         </div>
       </section>
@@ -53,19 +53,16 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-light text-white mb-6">Supporting the Sea-to-Sky Corridor</h2>
+              <h2 className="text-3xl font-light text-white mb-6">Your projects. Our solutions.</h2>
               <p className="text-base sm:text-lg text-white/70 mb-6 font-light leading-relaxed">
-                Tantalus Geomatics is a dedicated professional service provider, playing a critical role in the responsible development and management of the Sea-to-Sky corridor. From Squamish to Whistler and beyond, we support a wide range of activities—including residential development, large-scale infrastructure projects, and environmental conservation efforts. We are not just data collectors; we are strategic partners who provide the foundational spatial data required for informed decision-making. Learn more about our <a href="/services" className="text-brand-green hover:underline">comprehensive geomatics services</a>.
+                Tantalus Geomatics is a team of BC Land Surveyors and Professional Engineers, who play a critical role supporting responsible development throughout the Sea-to-Sky corridor. We support a wide range of activities including residential development, large-scale infrastructure projects, and environmental protection efforts. We are more than measurement specialists; we are strategic partners who provide actionable data to support design and informed decision-making. Learn more about our <a href="/services" className="text-brand-green hover:underline">professional services</a>.
               </p>
-              <p className="text-base sm:text-lg text-white/70 mb-8 font-light leading-relaxed">
-                Our commitment is to deliver precision, reliability, and local expertise to ensure that every project we touch contributes positively to the communities and landscapes we serve. We navigate the unique challenges of our rugged, remote environment with a technical agility that prioritizes your project's timeline without compromising on professional quality.
-              </p>
-              
+                            
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="bg-brand-dark p-6 border border-white/10">
                   <MapPin className="text-brand-green mb-3 w-8 h-8" />
                   <h3 className="font-medium text-white mb-2">Local Expertise</h3>
-                  <p className="text-sm text-white/60 font-light">Deep knowledge of local regulations and terrain from Bowen Island to Lillooet.</p>
+                  <p className="text-sm text-white/60 font-light">Deep knowledge of municipal regulations and the local landscape from Bowen Island to Lillooet.</p>
                 </div>
                 <div className="bg-brand-dark p-6 border border-white/10">
                   <Award className="text-brand-green mb-3 w-8 h-8" />
@@ -103,16 +100,16 @@ export default function About() {
               </div>
               <div className="lg:col-span-3 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1 border border-brand-green text-brand-green text-sm font-medium mb-6 w-fit">
-                  <Users size={16} /> Principal
+                  <Users size={16} /> Owner
                 </div>
-                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">Dennis Sherman BCLS PEng</h2>
-                <p className="text-xl text-brand-green font-medium mb-8">Principal</p>
+                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">Dennis Sherman</h2>
+                <p className="text-xl text-brand-green font-medium mb-8">British Columbia Land Surveyor and Professional Engineer</p>
                 
                 <p className="text-base sm:text-lg text-white/70 mb-6 font-light leading-relaxed">
-                  Dennis is a dual-registered professional, holding commissions as both a British Columbia Land Surveyor (BCLS) and a Professional Engineer (PEng). This unique combination of qualifications allows him to bridge the gap between legal boundary determination and complex engineering design. With extensive experience in cadastral surveying, construction layout, and advanced 3D reality capture, Dennis brings a rigorous, multi-disciplinary approach to every project.
+                  Dennis is a dual-registered professional, holding commissions as both a British Columbia Land Surveyor (BCLS) and a Professional Engineer (PEng). Dennis has a diverse background supporting residential, professional and construction clients achieve their project goals. His extensive experience surveying in the Sea-to-Sky has established him as an industry leader in the region.
                 </p>
                 <p className="text-base sm:text-lg text-white/70 font-light leading-relaxed">
-                  He is committed to upholding the highest standards of professional accountability, protecting the public interest, and delivering innovative geomatics solutions tailored to the unique challenges of the Sea-to-Sky region. <a href="/contact" className="text-brand-green hover:underline">Contact Dennis and the team</a> to discuss your next project.
+                  Dennis received his Bachelors of Engineering in Geomatics Engineering from the Lassonde School of Engineering at York University in 2015. His career in Land Surveying has taken him throughout Canada, from the shores of Haida Gwaii to the busy 400 series highways of the Greater Toronto Area. His comittment to professional accountability, customer service and high quality products is at the center of our pursuit of excellence. <a href="/contact" className="text-brand-green hover:underline">Contact Dennis and the team</a> to discuss your next project.
                 </p>
               </div>
             </div>

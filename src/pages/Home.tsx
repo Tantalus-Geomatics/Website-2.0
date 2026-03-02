@@ -8,63 +8,69 @@ export default function Home() {
 
   const useCases = [
     {
-      title: "Fence Replacements and Boundary Staking",
+      title: "Fence Installation and Boundary Staking",
       icon: <Map className="w-6 h-6" />,
-      content: "Homeowners frequently discover that their existing fence—which they assumed was the boundary—is actually several feet off-course. A BCLS provides the objective proof needed to install a new fence with confidence.",
+      content: "Homeowners frequently discover that their existing fence is actually several feet off-course from their property line. A BCLS is the only professional qualified to mark out the property line, and replace your property corners, allowing you to install a new fence with confidence.",
       image: "https://picsum.photos/seed/fence-survey/800/600?grayscale"
     },
     {
       title: "Retaining Wall Construction",
       icon: <HardHat className="w-6 h-6" />,
-      content: "In the steep terrain of Squamish, retaining walls are essential for creating usable yard space. Municipalities require a BCLS survey to ensure walls don't encroach and to determine the building heights allowed under local bylaws.",
+      content: "In the steep terrain of Squamish, retaining walls are essential for slope stability. Municipalities require a BCLS survey to ensure retaining walls don't encroach onto neighbouring properties and to ensure they conform to local bylaws.",
       image: "https://picsum.photos/seed/retaining-wall/800/600?grayscale"
+    },
+    {
+      title: "ADUs and Coach Homes",
+      icon: <HomeIcon className="w-6 h-6" />,
+      content: "Provincial Bill 25 encourages the development of Small Scale Multi-Unit Houses (SSMUH) to address the housing supply shortage. Architects and designers require topographic survey data prepared by a BC Land Surveyor to ensure their designs meet the site's physical conditions and the \"site coverage\" and \"setback\" requirements of the zoning bylaw.",
+      image: "https://picsum.photos/seed/deck-pool/800/600?grayscale"
     },
     {
       title: "Deck and Pool Permits",
       icon: <HomeIcon className="w-6 h-6" />,
-      content: "Municipalities require a site plan prepared by a BCLS to ensure that new decks, pools, or accessory buildings meet the \"site coverage\" and \"setback\" requirements of the zoning bylaw.",
+      content: "Municipalities require a site plan prepared by a BC Land Surveyor to confirm that new decks, pools, or accessory buildings meet the \"site coverage\" and \"setback\" requirements of the zoning bylaw.",
       image: "https://picsum.photos/seed/deck-pool/800/600?grayscale"
     },
     {
       title: "Purchasing an Older Home",
       icon: <Building className="w-6 h-6" />,
-      content: "Buyers of older homes in the Lower Mainland often want to \"verify\" what they are buying. A Building Location Certificate identifies if any past owners have built structures over the property line, potentially saving the buyer from future litigation.",
+      content: "A Building Location Certificate helps prospective purchasers identify any structures built over the property line, or do not conform with municipal bylaws, preventing costly litigations, legal remedies and fines.",
       image: "https://picsum.photos/seed/older-home/800/600?grayscale"
     },
     {
-      title: "Strata Conversions (Duplexes and Garden Suites)",
+      title: "Strata Developments",
       icon: <Building className="w-6 h-6" />,
-      content: "With the provincial push for \"missing middle\" housing, many owners are looking to convert single-family lots or duplexes into stratified units. This requires a BCLS to define the strata lots and common property.",
+      content: "With the Provincial Bill 25 enouraging the development of \"missing middle\" and \"densified\" housing, many owners are looking to construct Small Scale Multi-Unit Houses (SSMUH), such as duplexes, on single family home lots. This requires a BC Land Surveyor to define the strata lots boundaries and common property.",
       image: "https://picsum.photos/seed/strata-conversion/800/600?grayscale"
     },
     {
-      title: "Septic System Design (Rural Pemberton/Squamish)",
+      title: "Septic System Design",
       icon: <Map className="w-6 h-6" />,
-      content: "In rural areas not served by city sewers, a BCLS provides the topographic and boundary data needed for engineers to design and place septic fields in compliance with health regulations.",
+      content: "In rural areas, a BCLS provides the topographic data and \"Restricted Covenant Survey\" needed for engineers to design and site septic fields in compliance with health regulations.",
       image: "https://picsum.photos/seed/septic-design/800/600?grayscale"
     },
     {
-      title: "Tree Cutting and Covenants",
+      title: "Tree Removal",
       icon: <Trees className="w-6 h-6" />,
-      content: "In the Sea-to-Sky region, many titles have \"Restricted Covenant Areas\" that forbid tree removal due to slope stability. A BCLS identifies these zones on the ground so owners don't inadvertently violate provincial environmental laws.",
+      content: "In the Sea-to-Sky region, municipal tree bylaws and \"Restricted Covenant Areas\" often limit or restrict tree removal. A BCLS identifies these zones on the ground so owners don't face large fines for unlawful tree removal.",
       image: "https://picsum.photos/seed/tree-cutting/800/600?grayscale"
     },
     {
       title: "Mortgage Refinancing",
       icon: <FileText className="w-6 h-6" />,
-      content: "Lenders often require a current Building Location Certificate to ensure their security (the house) is properly situated on the land before approving a new loan or line of credit.",
+      content: "Lenders often require a recent Building Location Certificate to confirm all structures on the property conform to municipal bylaws and to determine the total lot area prior to approving a new loan or line of credit.",
       image: "https://picsum.photos/seed/mortgage-refi/800/600?grayscale"
     },
     {
       title: "Natural Boundary Identification",
       icon: <Waves className="w-6 h-6" />,
-      content: "Owners of properties on the Squamish River or Howe Sound need a BCLS to determine the \"Present Natural Boundary\" for dock applications or to verify the impact of erosion on their lot size.",
+      content: "Owners of properties adjacent to the Squamish River or Howe Sound need a BCLS to determine the location of the \"Present Natural Boundary\" for dock applications or to verify the impact of erosion on their extent of ownership.",
       image: "https://picsum.photos/seed/waterfront/800/600?grayscale"
     },
     {
-      title: "Civil Litigation and Expert Witness",
+      title: "BC Land Surveyor: Your Expert Witness",
       icon: <Scale className="w-6 h-6" />,
-      content: "When neighbor disputes escalate to court, a BCLS is called as an expert witness. Their plans and testimony are the definitive evidence used by judges to settle boundary and encroachment cases.",
+      content: "If a neighbor dispute escalate to court, a BCLS is often called as an expert witness. Their plans and testimony are used as evidence the courts to settle boundary and encroachment cases.",
       image: "https://picsum.photos/seed/litigation/800/600?grayscale"
     }
   ];
@@ -77,7 +83,7 @@ export default function Home() {
     "url": "https://tantalusgeomatics.com",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Squamish",
+      "addressLocality": ["Squamish", "Whistler", "Pemberton", "West Vancouver", "Lillooet", "Bowen Island"],
       "addressRegion": "BC",
       "addressCountry": "CA"
     },
@@ -90,7 +96,7 @@ export default function Home() {
       <SEO 
         title="BC Land Surveyor in Squamish, Whistler & Sea to Sky"
         description="Hire a professional BC Land Surveyor (BCLS) for topographic surveys, legal boundaries, and 3D reality capture in Squamish, Whistler, and Pemberton."
-        keywords="BC Land Surveyor, Land Surveying Squamish, Topographic Survey Whistler, Property Boundary Survey, 3D Reality Capture, Geomatics Sea to Sky, BCLS"
+        keywords="BC Land Surveyor, Land Surveying Squamish, Land Surveying Sea to Sky, Land Surveying Whistler, Topographic Survey Squamish, Topographic Survey Sea to Sky, Topographic Survey Whistler, Property Boundary Survey, 3D Reality Capture, Land Surveying Sea to Sky, BCLS"
         canonicalUrl="https://tantalusgeomatics.com/"
         schema={homeSchema}
       />
@@ -108,13 +114,13 @@ export default function Home() {
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
-            Precision <span className="text-brand-green font-medium">Land Surveying</span>
+            Professional <span className="text-brand-green font-medium">Land Surveying</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
-            Expert geomatics and boundary surveys for the Sea-to-Sky Corridor.
+            Professional Land Surveying throughout the Sea-to-Sky Corridor.
           </p>
           <p className="text-base sm:text-lg md:text-xl text-white/70 mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
-            Your project depends on data you can trust. We combine the legal authority of a licensed BC Land Surveyor (BCLS) practice with advanced 3D Reality Capture to deliver field-to-finish precision in Squamish, Whistler, and beyond.
+            Your project depends on data you can trust and a team you can rely on. We combine the precision of Professional Land Surveying with advanced 3D technologies to deliver cutting edge support to our clients.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -139,7 +145,7 @@ export default function Home() {
           <div className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Land Surveyor?</h2>
             <p className="text-lg sm:text-xl text-white/60 font-light max-w-2xl mx-auto">
-              Explore common scenarios where professional geomatics expertise is essential for your property. <Link to="/faq" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
+              Explore common scenarios where a land survey is required. <Link to="/faq" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
             </p>
           </div>
 
@@ -238,9 +244,9 @@ export default function Home() {
       <section className="py-24 bg-brand-black border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-white mb-4">Our Core Pillars of Service</h2>
+            <h2 className="text-3xl md:text-4xl font-light text-white mb-4">Our Core Services</h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto font-light">
-              Delivering accurate, reliable, and timely spatial data to support your projects from conception to completion.
+              Supporting your projects from conception to completion.
             </p>
           </div>
 
@@ -249,22 +255,22 @@ export default function Home() {
               {
                 title: 'Land Development',
                 icon: <Map className="w-8 h-8 text-brand-green" />,
-                description: 'Site plans and topographic mapping for residential and commercial growth.',
+                description: 'Site plans and topographic mapping to support residential and commercial growth.',
               },
               {
                 title: 'Construction & Infrastructure',
                 icon: <HardHat className="w-8 h-8 text-brand-green" />,
-                description: 'High-accuracy layout and monitoring for road, bridge, and building projects.',
-              },
-              {
-                title: '3D Reality Capture',
-                icon: <Mountain className="w-8 h-8 text-brand-green" />,
-                description: 'UAV LiDAR and terrestrial laser scanning for digital twins and BIM coordination.',
+                description: 'High-accuracy layout and monitoring for buildings, roads, utilities and large infrastructure.',
               },
               {
                 title: 'Legal Surveys',
                 icon: <Compass className="w-8 h-8 text-brand-green" />,
-                description: 'Licensed BCLS expertise for subdivisions, strata plans, and property boundaries.',
+                description: 'Professional expertise for property boundaries, subdivisions, and strata plans.',
+              },
+              {
+                title: '3D Reality Capture',
+                icon: <Mountain className="w-8 h-8 text-brand-green" />,
+                description: 'UAV mapping and terrestrial laser scanning for design, digital twins and BIM coordination.',
               },
             ].map((service, idx) => (
               <div key={idx} className="bg-brand-black p-8 border border-white/10 hover:border-brand-green/50 transition-all group flex flex-col">
@@ -302,25 +308,25 @@ export default function Home() {
                 <span className="text-brand-green font-medium">Sea-to-Sky</span>
               </h2>
               <p className="text-base sm:text-lg text-white/70 mb-8 font-light leading-relaxed">
-                Development in Squamish and Whistler isn't just about measuring land—it's about navigating a complex web of hazardous terrain, riparian setbacks, and evolving municipal bylaws.
+                Development in the Sea-to-Sky involves navigating the challenges of hazardous terrain, riparian setbacks, and evolving municipal bylaws.
               </p>
               <ul className="space-y-6 mb-8">
                 <li className="flex items-start gap-3 text-white/80 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-white font-medium">Steep Slope Compliance:</strong> We help you meet the District of Squamish's rigorous Steep Slope Development Permit Area (DPA) requirements with high-density contour mapping.
+                    <strong className="text-white font-medium">Steep Slope Compliance:</strong> Our high-density contour mapping helps you meet the District of Squamish's Steep Slope Development Permit Area (DPA) requirements.
                   </div>
                 </li>
                 <li className="flex items-start gap-3 text-white/80 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-white font-medium">Riparian Navigation:</strong> Our team works alongside environmental professionals to precisely delineate Streamside Protection and Enhancement Areas (SPEA), ensuring your project respects provincial regulations.
+                    <strong className="text-white font-medium">Riparian Boundaries:</strong> Our team works with environmental professionals to accurately identify Streamside Protection and Enhancement Areas (SPEA), ensuring your project conforms to provincial regulations.
                   </div>
                 </li>
                 <li className="flex items-start gap-3 text-white/80 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-white font-medium">Municipal Mastery:</strong> Whether it’s meeting Whistler’s foundation formwork checks or Squamish’s subdivision standards, we provide the documentation needed for rapid approval.
+                    <strong className="text-white font-medium">Municipal Experience:</strong> Whether it’s a certificate for the location of a new foundation, or supporting subdivision applications, we provide the essential documentation needed for rapid approval.
                   </div>
                 </li>
               </ul>
