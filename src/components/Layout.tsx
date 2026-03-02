@@ -121,6 +121,19 @@ export default function Layout() {
             <p className="text-sm text-white/60 mb-4">
               Professional Land Surveying services for homeowners, developers, and industry professionals in the Sea to Sky corridor.
             </p>
+            <div className="mt-6 flex flex-col items-start gap-3">
+              <p className="text-xs text-white/50 leading-relaxed">
+                Tantalus Geomatics Land Surveying Ltd is a proud member of the Association of BC Land Surveyors.
+              </p>
+              <div className="bg-white/10 p-2 rounded-sm inline-block">
+                <img 
+                  src="https://picsum.photos/seed/abcls-logo/150/50?grayscale" 
+                  alt="Association of BC Land Surveyors Logo Placeholder" 
+                  className="h-8 w-auto object-contain opacity-80"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
           </div>
           <div>
             <h3 className="text-white font-medium mb-4">Contact</h3>
