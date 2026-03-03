@@ -127,7 +127,7 @@ export default function Layout() {
               </p>
               <div className="bg-white/10 p-2 rounded-sm inline-block">
                 <img 
-                  src="https://picsum.photos/seed/abcls-logo/150/50?grayscale" 
+                  src="images/abcls-logo-horizontal.svg" 
                   alt="Association of BC Land Surveyors Logo Placeholder" 
                   className="h-8 w-auto object-contain opacity-80"
                   referrerPolicy="no-referrer"
