@@ -195,8 +195,8 @@ export default function FAQ() {
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000"
-            alt="Sea-to-Sky Mountains"
+            src="images/tantalus-hero-banner.webp"
+            alt="Tantalus Lookout"
             className="w-full h-full object-cover opacity-60 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />

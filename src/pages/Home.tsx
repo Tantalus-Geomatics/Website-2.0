@@ -11,67 +11,67 @@ export default function Home() {
       title: "Fence Installation and Boundary Staking",
       icon: <Map className="w-6 h-6" />,
       content: "Homeowners frequently discover that their existing fence is actually several feet off-course from their property line. A BCLS is the only professional qualified to mark out the property line, and replace your property corners, allowing you to install a new fence with confidence.",
-      image: "https://picsum.photos/seed/fence-survey/800/600?grayscale"
+      image: "images/fence-boundary-staking.webp"
     },
     {
       title: "Retaining Wall Construction",
       icon: <HardHat className="w-6 h-6" />,
       content: "In the steep terrain of Squamish, retaining walls are essential for slope stability. Municipalities require a BCLS survey to ensure retaining walls don't encroach onto neighbouring properties and to ensure they conform to local bylaws.",
-      image: "https://picsum.photos/seed/retaining-wall/800/600?grayscale"
+      image: "images/retaining-wall.webp"
     },
     {
       title: "ADUs and Coach Homes",
       icon: <HomeIcon className="w-6 h-6" />,
       content: "Provincial Bill 25 encourages the development of Small Scale Multi-Unit Houses (SSMUH) to address the housing supply shortage. Architects and designers require topographic survey data prepared by a BC Land Surveyor to ensure their designs meet the site's physical conditions and the \"site coverage\" and \"setback\" requirements of the zoning bylaw.",
-      image: "https://picsum.photos/seed/deck-pool/800/600?grayscale"
+      image: "images/adu.webp"
     },
     {
       title: "Deck and Pool Permits",
       icon: <HomeIcon className="w-6 h-6" />,
       content: "Municipalities require a site plan prepared by a BC Land Surveyor to confirm that new decks, pools, or accessory buildings meet the \"site coverage\" and \"setback\" requirements of the zoning bylaw.",
-      image: "https://picsum.photos/seed/deck-pool/800/600?grayscale"
+      image: "images/deck-pool.webp"
     },
     {
       title: "Purchasing an Older Home",
       icon: <Building className="w-6 h-6" />,
       content: "A Building Location Certificate helps prospective purchasers identify any structures built over the property line, or do not conform with municipal bylaws, preventing costly litigations, legal remedies and fines.",
-      image: "https://picsum.photos/seed/older-home/800/600?grayscale"
+      image: "images/old-home.webp"
     },
     {
       title: "Strata Developments",
       icon: <Building className="w-6 h-6" />,
       content: "With the Provincial Bill 25 enouraging the development of \"missing middle\" and \"densified\" housing, many owners are looking to construct Small Scale Multi-Unit Houses (SSMUH), such as duplexes, on single family home lots. This requires a BC Land Surveyor to define the strata lots boundaries and common property.",
-      image: "https://picsum.photos/seed/strata-conversion/800/600?grayscale"
+      image: "images/strata.webp"
     },
     {
       title: "Septic System Design",
       icon: <Map className="w-6 h-6" />,
       content: "In rural areas, a BCLS provides the topographic data and \"Restricted Covenant Survey\" needed for engineers to design and site septic fields in compliance with health regulations.",
-      image: "https://picsum.photos/seed/septic-design/800/600?grayscale"
+      image: "images/septic.webp"
     },
     {
       title: "Tree Removal",
       icon: <Trees className="w-6 h-6" />,
       content: "In the Sea-to-Sky region, municipal tree bylaws and \"Restricted Covenant Areas\" often limit or restrict tree removal. A BCLS identifies these zones on the ground so owners don't face large fines for unlawful tree removal.",
-      image: "https://picsum.photos/seed/tree-cutting/800/600?grayscale"
+      image: "images/tree.webp"
     },
     {
       title: "Mortgage Refinancing",
       icon: <FileText className="w-6 h-6" />,
       content: "Lenders often require a recent Building Location Certificate to confirm all structures on the property conform to municipal bylaws and to determine the total lot area prior to approving a new loan or line of credit.",
-      image: "https://picsum.photos/seed/mortgage-refi/800/600?grayscale"
+      image: "images/mortgage.webp"
     },
     {
       title: "Natural Boundary Identification",
       icon: <Waves className="w-6 h-6" />,
       content: "Owners of properties adjacent to the Squamish River or Howe Sound need a BCLS to determine the location of the \"Present Natural Boundary\" for dock applications or to verify the impact of erosion on their extent of ownership.",
-      image: "https://picsum.photos/seed/waterfront/800/600?grayscale"
+      image: "images/natural-boundary.webp"
     },
     {
       title: "BC Land Surveyor: Your Expert Witness",
       icon: <Scale className="w-6 h-6" />,
       content: "If a neighbor dispute escalate to court, a BCLS is often called as an expert witness. Their plans and testimony are used as evidence the courts to settle boundary and encroachment cases.",
-      image: "https://picsum.photos/seed/litigation/800/600?grayscale"
+      image: "images/expert-witness.webp"
     }
   ];
 
@@ -105,7 +105,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <img
             src="images/tantalus-hero-banner.webp"
-            alt="Sea-to-Sky Mountains"
+            alt="Tantalus Lookout"
             className="w-full h-full object-cover opacity-60 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
@@ -339,20 +339,20 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="https://picsum.photos/seed/survey-equipment/600/800?grayscale"
+                src="images/steep-slope.webp"
                 alt="Survey Equipment"
                 className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                 referrerPolicy="no-referrer"
               />
               <div className="grid grid-rows-2 gap-4">
                 <img
-                  src="https://picsum.photos/seed/mountain-biking/600/400?grayscale"
+                  src="images/spea-rar.webp"
                   alt="Mountain Lifestyle"
                   className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
                 <img
-                  src="https://picsum.photos/seed/architecture-plan/600/400?grayscale"
+                  src="images/muni-ex.webp"
                   alt="Architecture Plans"
                   className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
