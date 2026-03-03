@@ -125,12 +125,12 @@ export default function Layout() {
               <p className="text-xs text-white/50 leading-relaxed">
                 Tantalus Geomatics Land Surveying Ltd is a proud member of the Association of BC Land Surveyors.
               </p>
-              <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="inline-block transition-transform hover:scale-105">
-                <div className="bg-white p-2 rounded-sm inline-block">
+              <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="w-full transition-transform hover:scale-105">
+                <div className="bg-white p-2 rounded-sm w-full">
                   <img 
                     src="images/abcls-logo-horizontal.svg" 
                     alt="Association of BC Land Surveyors Logo Placeholder" 
-                    className="h-8 w-auto object-contain opacity-100"
+                    className="w-full object-contain opacity-100"
                     referrerPolicy="no-referrer"
                   />
                 </div>

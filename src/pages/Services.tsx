@@ -10,6 +10,7 @@ export default function Services() {
       id: 'land-development',
       title: 'Land Development',
       icon: <Map className="w-10 h-10 text-brand-green" />,
+      image: "images/land-development.webp",
       description: 'A successful subdivision or land development project starts with accurate data. Our local expertise and professional services provide the essentials required for architectural and engineering design, helping you efficiently navigate the municipal approval process.',
       items: [
         { name: 'Topographic Surveys and Site Plans', desc: 'Detailed drawings showing building footprints, setbacks, utility locations and the physical terrain to support design and demonstrate compliance with local bylaws.' },
@@ -21,6 +22,7 @@ export default function Services() {
       id: 'construction',
       title: 'Construction & Infrastructure',
       icon: <HardHat className="w-10 h-10 text-brand-green" />,
+      image: "images/construction.webp",
       description: 'What is built must match your designs. Our layout and monitoring services reduce the risk of costly rework and project delays.',
       items: [
         { name: 'Building Layouts', desc: 'Precise marking of foundations and structural elements to ensure accurate construction and compliance with municipal setbacks.' },
@@ -32,6 +34,7 @@ export default function Services() {
       id: 'legal',
       title: 'Legal Surveys',
       icon: <Compass className="w-10 h-10 text-brand-green" />,
+      image: "images/survey-marker-post.webp",
       description: 'BC Land Surveyors are the only professionals qualified to determine the locations of property boundaries. We physically define these boundaries on the ground and prepare statutory plans for registration at the Land Title Office.',
       items: [
         { name: 'Boundary Surveys', desc: 'Locating property corners and marking existing boundaries to support the construction of fences, resolve disputes or facilitate renovations and landscaping.' },
@@ -43,6 +46,7 @@ export default function Services() {
       id: 'reality-capture',
       title: '3D Reality Capture',
       icon: <Mountain className="w-10 h-10 text-brand-green" />,
+      image: "images/reality-capture.webp",
       description: 'Using the latest in LiDAR and photogrammetry, we create accurate 3D replicas of physical sites and buildings.',
       items: [
         { name: 'UAV Mapping', desc: 'Aerial mapping ideal for large or inaccessible Sea-to-Sky sites.' },
@@ -93,9 +97,6 @@ export default function Services() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-green/30 bg-brand-green/10 text-brand-green text-sm font-medium mb-8 rounded-full">
-            Our Expertise
-          </div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
             Professional <span className="text-brand-green font-medium">Land Surveying</span> Services
           </h1>
@@ -140,7 +141,7 @@ export default function Services() {
                   <div className="aspect-square sm:aspect-[4/5] relative rounded-3xl overflow-hidden border border-white/10">
                     <div className="absolute inset-0 bg-brand-green/20 mix-blend-overlay z-10"></div>
                     <img
-                      src={`https://picsum.photos/seed/${service.id}-survey/800/1000?grayscale`}
+                      src={service.image}
                       alt={service.title}
                       className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-100"
                       referrerPolicy="no-referrer"
