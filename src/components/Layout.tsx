@@ -29,7 +29,7 @@ export default function Layout() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 sm:gap-3">
               <img 
-                src="/tantalus-logo.webp" 
+                src="tantalus-logo.webp" 
                 alt="Tantalus Geomatics Logo" 
                 className="h-10 sm:h-12 w-auto object-contain"
                 onError={(e) => {
@@ -104,7 +104,7 @@ export default function Layout() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img 
-                src="/tantalus-logo.webp" 
+                src="tantalus-logo.webp" 
                 alt="Tantalus Geomatics Logo" 
                 className="h-8 w-auto object-contain"
                 onError={(e) => {
