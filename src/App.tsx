@@ -13,7 +13,7 @@ import Contact from './pages/Contact';
 
 export default function App() {
   return (
-    <Router basename="/Website-2.0/">
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
