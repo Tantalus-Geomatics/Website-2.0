@@ -129,7 +129,7 @@ export default function Layout() {
                 <img 
                   src="images/abcls-logo-horizontal.svg" 
                   alt="Association of BC Land Surveyors Logo Placeholder" 
-                  className="h-8 w-auto object-contain opacity-80"
+                  className="h-8 w-auto object-contain opacity-0"
                   referrerPolicy="no-referrer"
                 />
               </div>

@@ -75,7 +75,7 @@ export default function About() {
             <div className="relative mt-8 lg:mt-0">
               <div className="absolute inset-0 border border-brand-green transform translate-x-4 translate-y-4 -z-10 hidden sm:block"></div>
               <img
-                src="https://picsum.photos/seed/squamish-chief/800/1000?grayscale"
+                src="images/tantalus-square.webp"
                 alt="Squamish Chief Mountain"
                 className="object-cover w-full h-[400px] sm:h-[600px] grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -92,7 +92,7 @@ export default function About() {
             <div className="grid grid-cols-1 lg:grid-cols-5">
               <div className="lg:col-span-2">
                 <img
-                  src="https://picsum.photos/seed/surveyor-portrait/600/800?grayscale"
+                  src="images/dennis-sherman-mugshot.webp"
                   alt="Dennis Sherman"
                   className="w-full h-full object-cover min-h-[300px] sm:min-h-[400px] grayscale hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
