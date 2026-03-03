@@ -79,7 +79,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Tantalus Geomatics Land Surveying Ltd.",
-    "image": "https://tantalusgeomatics.com/logo.svg",
+    "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
     "url": "https://tantalusgeomatics.com",
     "address": {
       "@type": "PostalAddress",

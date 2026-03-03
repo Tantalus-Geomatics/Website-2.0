@@ -29,7 +29,7 @@ export default function Layout() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 sm:gap-3">
               <img 
-                src="/logo.svg" 
+                src="/tantalus-logo.webp" 
                 alt="Tantalus Geomatics Logo" 
                 className="h-10 sm:h-12 w-auto object-contain"
                 onError={(e) => {
@@ -104,7 +104,7 @@ export default function Layout() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img 
-                src="/logo.svg" 
+                src="/tantalus-logo.webp" 
                 alt="Tantalus Geomatics Logo" 
                 className="h-8 w-auto object-contain"
                 onError={(e) => {
@@ -129,7 +129,7 @@ export default function Layout() {
                 <img 
                   src="images/abcls-logo-horizontal.svg" 
                   alt="Association of BC Land Surveyors Logo Placeholder" 
-                  className="h-8 w-auto object-contain opacity-0"
+                  className="h-8 w-auto object-contain opacity-100"
                   referrerPolicy="no-referrer"
                 />
               </div>
