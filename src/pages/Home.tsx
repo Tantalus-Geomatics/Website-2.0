@@ -88,7 +88,7 @@ export default function Home() {
       "addressCountry": "CA"
     },
     "areaServed": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island"],
-    "description": "Professional Land Surveying and Reality Capture for homeowners, industry professionals, and real estate experts in the Sea to Sky corridor."
+    "description": "Professional Land Surveying and 3D Reality Capture for homeowners, AEC industry professionals, and real estate experts in the Sea to Sky corridor."
   };
 
   return (
@@ -120,7 +120,7 @@ export default function Home() {
             Professional Land Surveying throughout the Sea-to-Sky Corridor.
           </p>
           <p className="text-base sm:text-lg md:text-xl text-white/70 mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
-            Your project depends on data you can trust and a team you can rely on. We combine the precision of Professional Land Surveying with advanced 3D technologies to support your projects.
+            Your project depends on data you can trust and a team you can rely on. We combine Professional Land Surveying with advanced 3D technologies to support your projects.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
