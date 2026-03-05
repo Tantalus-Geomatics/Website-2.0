@@ -173,7 +173,7 @@ export default function Home() {
                       <img 
                         src={useCase.image} 
                         alt={useCase.title}
-                        className="w-full h-40 sm:h-48 object-cover rounded-xl mb-5 grayscale opacity-100"
+                        className="w-full h-40 sm:h-48 object-cover rounded-xl mb-5 grayscale-25"
                         //className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                       />
                       <p className="text-white/70 font-light leading-relaxed text-sm sm:text-base">
@@ -218,7 +218,7 @@ export default function Home() {
                     <img 
                       src={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} 
                       alt={useCases[activeUseCase === -1 ? 0 : activeUseCase].title}
-                      className="w-full h-full object-cover opacity-100 transition-opacity duration-500"
+                      className="w-full h-full object-cover opacity-100 transition-opacity grayscale-25 duration-500"
                       key={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} // Force re-render for animation
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-transparent"></div>
@@ -293,14 +293,6 @@ export default function Home() {
 
       {/* Target Market Section */}
       <section className="py-16 md:py-24 bg-brand-black relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10">
-          <img
-            src="https://picsum.photos/seed/construction-site/1920/1080?grayscale"
-            alt="Construction background"
-            className="w-full h-full object-cover grayscale"
-            referrerPolicy="no-referrer"
-          />
-        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -341,20 +333,20 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               <img
                 src="images/steep-slope.webp"
-                alt="Survey Equipment"
+                alt="Steep Slope"
                 className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                 referrerPolicy="no-referrer"
               />
               <div className="grid grid-rows-2 gap-4">
                 <img
                   src="images/spea-rar.webp"
-                  alt="Mountain Lifestyle"
+                  alt="SPEA and RAR"
                   className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
                 <img
                   src="images/muni-ex.webp"
-                  alt="Architecture Plans"
+                  alt="Municipal Expertise"
                   className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
