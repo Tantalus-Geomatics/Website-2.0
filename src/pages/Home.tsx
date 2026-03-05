@@ -218,7 +218,7 @@ export default function Home() {
                     <img 
                       src={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} 
                       alt={useCases[activeUseCase === -1 ? 0 : activeUseCase].title}
-                      className="w-full h-full object-cover grayscale opacity-100 transition-opacity duration-500"
+                      className="w-full h-full object-cover opacity-100 transition-opacity duration-500"
                       key={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} // Force re-render for animation
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-transparent"></div>
