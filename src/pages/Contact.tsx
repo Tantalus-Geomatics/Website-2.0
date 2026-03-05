@@ -20,7 +20,7 @@ export default function Contact() {
 
   useEffect(() => {
     emailjs.init({
-      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY',
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'r37yPY3ALEbiW4YxU',
       blockHeadless: true,
       limitRate: {
         id: 'app',
@@ -51,8 +51,8 @@ export default function Contact() {
 
     try {
       await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_3rqnrju',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_uvo8zyr',
         e.currentTarget
       );
       
@@ -310,7 +310,7 @@ export default function Contact() {
                 {/* Cloudflare Turnstile */}
                 <div className="flex justify-center my-4">
                   <Turnstile
-                    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'}
+                    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAACkcoQ4pjVYMr-l8'}
                     onSuccess={(token) => setTurnstileToken(token)}
                     onError={() => setTurnstileToken(null)}
                     onExpire={() => setTurnstileToken(null)}
