@@ -173,7 +173,7 @@ export default function Home() {
                       <img 
                         src={useCase.image} 
                         alt={useCase.title}
-                        className="w-full h-40 sm:h-48 object-cover rounded-xl mb-5"
+                        className="w-full h-40 sm:h-48 object-cover rounded-xl mb-5 grayscale opacity-100"
                         //className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                       />
                       <p className="text-white/70 font-light leading-relaxed text-sm sm:text-base">
@@ -218,7 +218,7 @@ export default function Home() {
                     <img 
                       src={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} 
                       alt={useCases[activeUseCase === -1 ? 0 : activeUseCase].title}
-                      className="w-full h-full object-cover grayscale opacity-80 transition-opacity duration-500"
+                      className="w-full h-full object-cover grayscale opacity-100 transition-opacity duration-500"
                       key={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} // Force re-render for animation
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-transparent"></div>
