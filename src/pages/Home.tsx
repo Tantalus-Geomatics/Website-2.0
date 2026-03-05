@@ -173,7 +173,7 @@ export default function Home() {
                       <img 
                         src={useCase.image} 
                         alt={useCase.title}
-                        className="w-full h-40 sm:h-48 object-cover rounded-xl mb-5 grayscale opacity-80"
+                        className="w-full h-40 sm:h-48 object-cover rounded-xl mb-5 grayscale opacity-100"
                       />
                       <p className="text-white/70 font-light leading-relaxed text-sm sm:text-base">
                         {useCase.content}
