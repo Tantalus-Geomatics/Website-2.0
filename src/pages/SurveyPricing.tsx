@@ -42,6 +42,27 @@ export default function SurveyPricing() {
     });
   }, []);
 
+  useEffect(() => {
+    // #region agent log
+    fetch('http://127.0.0.1:7653/ingest/ffaf70c6-84ad-4d70-9b95-4a13d56a1dbb', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Debug-Session-Id': 'd764f9',
+      },
+      body: JSON.stringify({
+        sessionId: 'd764f9',
+        location: 'SurveyPricing.tsx:mount',
+        message: 'survey pricing hero uses',
+        data: { heroSrc: 'images/tantalus-hero-banner.webp' },
+        timestamp: Date.now(),
+        hypothesisId: 'H1',
+        runId: 'verify-404-fix',
+      }),
+    }).catch(() => {});
+    // #endregion
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -151,9 +172,10 @@ export default function SurveyPricing() {
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="/assets/img/residential-bg.jpg"
+            src="images/tantalus-hero-banner.webp"
             alt=""
             className="w-full h-full object-cover opacity-50 mix-blend-overlay"
+            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-black/45 via-brand-black/65 to-brand-black" />
         </div>

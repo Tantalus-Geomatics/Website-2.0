@@ -10,7 +10,8 @@ const HERO_FALLBACK = 'images/tantalus-hero-banner.webp';
 const PHONE_TEL = 'tel:+16042139934';
 
 export default function Residential() {
-  const [heroSrc, setHeroSrc] = useState(HERO_PLACEHOLDER);
+  // Default to shipped hero to avoid 404 until public/assets/img/residential-bg.jpg exists.
+  const [heroSrc, setHeroSrc] = useState(HERO_FALLBACK);
   const [formData, setFormData] = useState({
     from_name: '',
     reply_to: '',
@@ -35,6 +36,27 @@ export default function Residential() {
       },
     });
   }, []);
+
+  useEffect(() => {
+    // #region agent log
+    fetch('http://127.0.0.1:7653/ingest/ffaf70c6-84ad-4d70-9b95-4a13d56a1dbb', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Debug-Session-Id': 'd764f9',
+      },
+      body: JSON.stringify({
+        sessionId: 'd764f9',
+        location: 'Residential.tsx:mount',
+        message: 'residential initial hero',
+        data: { heroSrc: heroSrc },
+        timestamp: Date.now(),
+        hypothesisId: 'H1',
+        runId: 'verify-404-fix',
+      }),
+    }).catch(() => {});
+    // #endregion
+  }, [heroSrc]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

@@ -85,6 +85,34 @@ export default function TopographicSurveys() {
     });
   }, []);
 
+  useEffect(() => {
+    // #region agent log
+    const imgs = Array.from(document.querySelectorAll('img')).map(
+      (el) => el.getAttribute('src') || ''
+    );
+    fetch('http://127.0.0.1:7653/ingest/ffaf70c6-84ad-4d70-9b95-4a13d56a1dbb', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Debug-Session-Id': 'd764f9',
+      },
+      body: JSON.stringify({
+        sessionId: 'd764f9',
+        location: 'TopographicSurveys.tsx:mount',
+        message: 'topographic mount img audit',
+        data: {
+          route: window.location.pathname,
+          imgSrcs: imgs,
+          hasResidentialBg: imgs.some((s) => s.includes('residential-bg')),
+        },
+        timestamp: Date.now(),
+        hypothesisId: 'H2',
+        runId: 'verify-404-fix',
+      }),
+    }).catch(() => {});
+    // #endregion
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
