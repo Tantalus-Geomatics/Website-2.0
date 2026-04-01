@@ -524,8 +524,7 @@ export default function TopographicSurveys() {
         </div>
       </section>
 
-      {/* Sticky CTA + form */}
-      <section className="py-16 md:py-24 bg-brand-dark border-t border-brand-green/30 lg:sticky lg:bottom-0 lg:z-40 lg:shadow-[0_-8px_32px_rgba(0,0,0,0.45)]">
+      <section className="py-16 md:py-24 bg-brand-dark border-t border-brand-green/30 lg:bottom-0 lg:z-40 lg:shadow-[0_-8px_32px_rgba(0,0,0,0.45)]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-brand-black border border-brand-green/40 p-8 md:p-10 mb-10">
             <h2 className="text-2xl sm:text-3xl font-light text-white mb-3">
