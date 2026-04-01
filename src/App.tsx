@@ -12,6 +12,7 @@ import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Residential from './pages/Residential';
 import SurveyPricing from './pages/SurveyPricing';
+import TopographicSurveys from './pages/TopographicSurveys';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="residential" element={<Residential />} />
           <Route path="survey-pricing" element={<SurveyPricing />} />
+          <Route path="topographic-surveys" element={<TopographicSurveys />} />
         </Route>
       </Routes>
     </Router>

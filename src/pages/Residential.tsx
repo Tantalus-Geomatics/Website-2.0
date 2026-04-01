@@ -112,12 +112,14 @@ export default function Residential() {
     title: string;
     description: string;
     to?: string;
+    linkLabel?: string;
   }[] = [
     {
       title: 'Survey costs',
       description:
         'What affects pricing for a residential survey and how quotes are prepared.',
       to: '/survey-pricing',
+      linkLabel: 'Survey pricing & cost factors →',
     },
     {
       title: 'Title insurance vs. a survey',
@@ -133,6 +135,8 @@ export default function Residential() {
       title: 'Do you want to build?',
       description:
         'Permits, setbacks, and survey data your designer or builder may need.',
+      to: '/topographic-surveys',
+      linkLabel: 'Topographic surveys & building →',
     },
   ];
 
@@ -436,8 +440,8 @@ export default function Residential() {
             Common questions
           </h2>
           <p className="text-center text-white/55 font-light text-sm max-w-2xl mx-auto mb-12">
-            Dedicated guides for more topics are coming soon. Survey costs links to our
-            pricing overview; other cards are placeholders until those pages are ready.
+            Survey costs and building with a topographic survey link to dedicated guides;
+            other cards are placeholders until those pages are ready.
           </p>
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -455,7 +459,7 @@ export default function Residential() {
                       {topic.description}
                     </p>
                     <span className="inline-block mt-4 text-xs text-brand-green uppercase tracking-wide">
-                      Survey pricing & cost factors →
+                      {topic.linkLabel ?? 'Read more →'}
                     </span>
                   </Link>
                 ) : (
