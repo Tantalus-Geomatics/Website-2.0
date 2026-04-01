@@ -108,11 +108,16 @@ export default function Residential() {
     url: 'https://tantalusgeomatics.com/residential',
   };
 
-  const resourceTopics = [
+  const resourceTopics: {
+    title: string;
+    description: string;
+    to?: string;
+  }[] = [
     {
       title: 'Survey costs',
       description:
         'What affects pricing for a residential survey and how quotes are prepared.',
+      to: '/survey-pricing',
     },
     {
       title: 'Title insurance vs. a survey',
@@ -431,27 +436,44 @@ export default function Residential() {
             Common questions
           </h2>
           <p className="text-center text-white/55 font-light text-sm max-w-2xl mx-auto mb-12">
-            Dedicated guides for these topics are coming soon. Links below are
-            placeholders—swap them for your FAQ or resource URLs when ready.
+            Dedicated guides for more topics are coming soon. Survey costs links to our
+            pricing overview; other cards are placeholders until those pages are ready.
           </p>
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {resourceTopics.map((topic) => (
               <li key={topic.title}>
-                <button
-                  type="button"
-                  className="block h-full w-full text-left p-6 bg-brand-black border border-white/10 hover:border-brand-green/40 transition-colors group cursor-default"
-                >
-                  <h3 className="text-lg font-medium text-white group-hover:text-brand-green transition-colors mb-2">
-                    {topic.title}
-                  </h3>
-                  <p className="text-sm text-white/55 font-light leading-relaxed">
-                    {topic.description}
-                  </p>
-                  <span className="inline-block mt-4 text-xs text-brand-green/80 uppercase tracking-wide">
-                    Link placeholder — replace with your URL
-                  </span>
-                </button>
+                {topic.to ? (
+                  <Link
+                    to={topic.to}
+                    className="block h-full w-full text-left p-6 bg-brand-black border border-white/10 hover:border-brand-green/40 transition-colors group"
+                  >
+                    <h3 className="text-lg font-medium text-white group-hover:text-brand-green transition-colors mb-2">
+                      {topic.title}
+                    </h3>
+                    <p className="text-sm text-white/55 font-light leading-relaxed">
+                      {topic.description}
+                    </p>
+                    <span className="inline-block mt-4 text-xs text-brand-green uppercase tracking-wide">
+                      Survey pricing & cost factors →
+                    </span>
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className="block h-full w-full text-left p-6 bg-brand-black border border-white/10 hover:border-brand-green/40 transition-colors group cursor-default"
+                  >
+                    <h3 className="text-lg font-medium text-white group-hover:text-brand-green transition-colors mb-2">
+                      {topic.title}
+                    </h3>
+                    <p className="text-sm text-white/55 font-light leading-relaxed">
+                      {topic.description}
+                    </p>
+                    <span className="inline-block mt-4 text-xs text-brand-green/80 uppercase tracking-wide">
+                      Link placeholder — replace with your URL
+                    </span>
+                  </button>
+                )}
               </li>
             ))}
           </ul>
