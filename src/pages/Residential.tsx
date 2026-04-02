@@ -37,27 +37,6 @@ export default function Residential() {
     });
   }, []);
 
-  useEffect(() => {
-    // #region agent log
-    fetch('http://127.0.0.1:7653/ingest/ffaf70c6-84ad-4d70-9b95-4a13d56a1dbb', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Debug-Session-Id': 'd764f9',
-      },
-      body: JSON.stringify({
-        sessionId: 'd764f9',
-        location: 'Residential.tsx:mount',
-        message: 'residential initial hero',
-        data: { heroSrc: heroSrc },
-        timestamp: Date.now(),
-        hypothesisId: 'H1',
-        runId: 'verify-404-fix',
-      }),
-    }).catch(() => {});
-    // #endregion
-  }, [heroSrc]);
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -152,6 +131,8 @@ export default function Residential() {
       title: 'Fences, trees & property lines',
       description:
         'Boundaries, encroachments, and why a BCLS is qualified to mark your lines.',
+      to: '/sea-to-sky-property-line-staking',
+      linkLabel: 'Property line staking & boundaries →',
     },
     {
       title: 'Do you want to build?',
@@ -462,8 +443,8 @@ export default function Residential() {
             Common questions
           </h2>
           <p className="text-center text-white/55 font-light text-sm max-w-2xl mx-auto mb-12">
-            Survey costs and building with a topographic survey link to dedicated guides;
-            other cards are placeholders until those pages are ready.
+            Survey costs, property line staking, and topographic surveys for building link
+            to dedicated guides; other cards are placeholders until those pages are ready.
           </p>
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">

@@ -42,27 +42,6 @@ export default function SurveyPricing() {
     });
   }, []);
 
-  useEffect(() => {
-    // #region agent log
-    fetch('http://127.0.0.1:7653/ingest/ffaf70c6-84ad-4d70-9b95-4a13d56a1dbb', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Debug-Session-Id': 'd764f9',
-      },
-      body: JSON.stringify({
-        sessionId: 'd764f9',
-        location: 'SurveyPricing.tsx:mount',
-        message: 'survey pricing hero uses',
-        data: { heroSrc: 'images/tantalus-hero-banner.webp' },
-        timestamp: Date.now(),
-        hypothesisId: 'H1',
-        runId: 'verify-404-fix',
-      }),
-    }).catch(() => {});
-    // #endregion
-  }, []);
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
