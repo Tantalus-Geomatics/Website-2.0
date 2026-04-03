@@ -289,18 +289,7 @@ export default function Contact() {
                       placeholder="1234 Main St, Squamish"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="pid" className="block text-sm font-medium text-white/80 mb-2">PID (Parcel Identifier)</label>
-                    <input
-                      type="text"
-                      id="pid"
-                      name="pid"
-                      value={formData.pid}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-black border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light"
-                      placeholder="012-345-678"
-                    />
-                  </div>
+                  
                 </div>
 
                 <div>
