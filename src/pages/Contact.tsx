@@ -11,7 +11,7 @@ export default function Contact() {
     phone: '',
     address: '',
     pid: '',
-    project_type: '3D Reality Capture',
+    project_type: 'Site Plan',
     message: '',
     website_url: ''
   });
@@ -63,7 +63,7 @@ export default function Contact() {
         phone: '',
         address: '',
         pid: '',
-        project_type: '3D Reality Capture',
+        project_type: 'Site Plan',
         message: '',
         website_url: ''
       });
@@ -246,7 +246,7 @@ export default function Contact() {
                       placeholder="(604) 555-0123"
                     />
                   </div>
-                  <div>
+                  {/* <div>
                     <label htmlFor="project_type" className="block text-sm font-medium text-white/80 mb-2">Project Type</label>
                     <select
                       id="project_type"
@@ -257,12 +257,23 @@ export default function Contact() {
                       className="w-full px-4 py-3 bg-brand-black border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light appearance-none"
                       aria-required="true"
                     >
-                      <option value="3D Reality Capture">3D Reality Capture</option>
-                      <option value="Land Development">Land Development</option>
-                      <option value="Infrastructure Survey">Infrastructure Survey</option>
-                      <option value="Data Processing Support">Data Processing Support</option>
+                      <option value="Site Plan">Site Plan</option>
+                      <option value="Topographic Survey">Topographic Survey</option>
+                      <option value="Property Line Survey">Property Line Survey</option>
+                      <option value="Foundation Survey">Foundation Survey</option>
+                      <option value="Building Location Certificate">Building Location Certificate</option>
+                      <option value="Construction Layout">Construction Layout</option>
+                      <option value="Legal Survey">Legal Survey</option>
+                      <option value="Building Permit Survey">Building Permit Survey</option>
+                      <option value="Strata Survey">Strata Survey</option>
+                      <option value="Subdivision Survey">Subdivision Survey</option>
+                      <option value="Boundary Survey">Boundary Survey</option>
+                      <option value="Easement Survey">Easement Survey</option>
+                      <option value="Covenant Survey">Covenant Survey</option>
+                      <option value="Right of Way Survey">Right of Way Survey</option>
+                      <option value="Other">Other</option>
                     </select>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
