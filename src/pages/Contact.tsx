@@ -274,9 +274,6 @@ export default function Contact() {
                       <option value="Other">Other</option>
                     </select>
                   </div> */}
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="address" className="block text-sm font-medium text-white/80 mb-2">Property Address</label>
                     <input
@@ -289,7 +286,6 @@ export default function Contact() {
                       placeholder="1234 Main St, Squamish"
                     />
                   </div>
-                  
                 </div>
 
                 <div>
