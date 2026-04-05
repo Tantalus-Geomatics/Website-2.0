@@ -105,7 +105,7 @@ export default function PropertyLineStaking() {
           </p>
           <ul className="list-disc list-inside">
             <li>Costly Deconstruction: Homeowners may be forced to tear down and relocate new fences or structures if they are accidentally built on the wrong side of the property line.</li>
-            <li>Fines: There may be significant legal repercussions and fines for clearing trees on land you don't own and without securing the necessary permits.</li>
+            <li>Fines: There may be significant legal repercussions and fines for clearing trees on land you don&apos;t own and without securing the necessary permits.</li>
             <li>Neighbor Disputes: There may be protracted disputes with neighbors that can permanently affect your home environment and resale value.</li>
           </ul>
           <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
@@ -126,7 +126,7 @@ export default function PropertyLineStaking() {
             Our land survey process
           </h2>
           <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-            Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. Following an initial consultation, where we discuss your project's needs, we follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
+            Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. Following an initial consultation, where we discuss your project&apos;s needs, we follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
