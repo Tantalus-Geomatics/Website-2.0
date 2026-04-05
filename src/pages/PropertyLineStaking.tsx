@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const CANONICAL = 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking';
@@ -169,6 +169,7 @@ export default function PropertyLineStaking() {
           </div>
         </div>
       </section>
+
       {/* Regulatory maze */}
       <section id="regional-standards" className="py-14 md:py-20 border-b border-white/10 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
