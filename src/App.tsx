@@ -28,9 +28,7 @@ export default function App() {
           <Route path="residential" element={<Residential />} />
           <Route path="survey-pricing" element={<SurveyPricing />} />
           <Route path="topographic-surveys" element={<TopographicSurveys />} />
-          <Route
-            path="sea-to-sky-property-line-staking"
-            element={<PropertyLineStaking />}
+          <Route path="sea-to-sky-property-line-and-boundary-staking" element={<PropertyLineStaking />}
           />
         </Route>
       </Routes>

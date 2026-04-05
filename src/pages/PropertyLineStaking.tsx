@@ -29,27 +29,6 @@ const regionalRows = [
   },
 ];
 
-const surveyTypeRows = [
-  {
-    type: 'Topographical Survey',
-    bestFor: 'Site planning, design, and contour mapping.',
-    staking: 'No',
-    ltsa: 'No',
-  },
-  {
-    type: 'Posting Plan',
-    bestFor: 'Physical boundary staking and re-establishing lost markers.',
-    staking: 'Yes',
-    ltsa: 'Yes',
-  },
-  {
-    type: 'Building Location Cert',
-    bestFor: 'Mortgage approvals and building inspections.',
-    staking: 'No',
-    ltsa: 'No',
-  },
-];
-
 const myths = [
   {
     myth: 'The Municipal GIS map shows my line clearly.',
@@ -101,12 +80,10 @@ export default function PropertyLineStaking() {
             Sea to Sky homeowners
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
-            Proactive Property Protection: Why Your Property Line is Not a
-            &quot;Guessing Game&quot;
+            Eliminate the Guesswork. Protect Your Land with a Certified Boundary Survey.
           </h1>
           <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
-            Building a new fence in West Vancouver? Clearing trees for a view in
-            Whistler? Or perhaps installing a tiered retaining wall in Squamish?
+            Are you planning to build a fence, remove a tree, or install a retaining wall near your property line? A certified boundary survey provides the peace of mind you need to avoid costly fines and legal disputes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
             <Link
@@ -116,12 +93,6 @@ export default function PropertyLineStaking() {
               Request a Professional Consultation
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
             </Link>
-            <a
-              href="#regional-standards"
-              className="inline-flex items-center justify-center px-8 py-4 border border-white/25 text-white font-medium hover:border-brand-green hover:text-brand-green transition-colors"
-            >
-              See regional standards
-            </a>
           </div>
         </div>
       </section>
@@ -130,16 +101,14 @@ export default function PropertyLineStaking() {
       <section className="py-14 md:py-20 border-b border-white/10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-white/80 font-light leading-relaxed text-base sm:text-lg mb-8">
-            In the Sea-to-Sky corridor, our stunning, rugged terrain means the margin
-            for error is virtually non-existent. In British Columbia, your property
-            isn&apos;t just defined by where your lawn ends; it is a complex legal
-            intersection of municipal bylaws, provincial statutes, and the Land Title
-            and Survey Authority (LTSA) records.
+            Property improvements should provide value, not legal headaches. Whether you are preparing to invest in a new perimeter fence, clearing trees to reclaim your view, or watching a neighbor&apos;s new construction creep closer to your boundary, guessing where your property ends is a significant financial risk. Without a certified BCLS survey, a few inches of error can lead to:
           </p>
-          <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">
-            Before you dig, build, or cut, you need to understand the &quot;Invisible
-            Reality&quot; of your land.
-          </blockquote>
+          <ul className="list-disc list-inside">
+            <li>Costly Deconstruction: Homeowners may be forced to tear down and relocate new fences or structures if they are accidentally built on the wrong side of the property line.</li>
+            <li>Fines: There may be significant legal repercussions and fines for clearing trees on land you don't own and without securing the necessary permits.</li>
+            <li>Neighbor Disputes: There may be protracted disputes with neighbors that can permanently affect your home environment and resale value.</li>
+          </ul>
+          <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
           <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark aspect-[21/9] min-h-[200px] flex items-center justify-center">
@@ -150,19 +119,67 @@ export default function PropertyLineStaking() {
         </div>
       </section>
 
+      {/* 3-step process */}
+      <section className="py-16 md:py-24 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
+            Our land survey process
+          </h2>
+          <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+            Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. Following an initial consultation, where we discuss your project's needs, we follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+            {[
+              {
+                step: '1',
+                title: 'Research',
+                body: "Every survey begins with a review of the existing records. We pull the original land titles and survey plans from the Land Title and Survey Authority of BC (LTSA). This allows us to understand the legal history of your lot and the surrounding properties before we arrive on-site.",
+                icon: ClipboardList,
+              },
+              {
+                step: '2',
+                title: 'Field visit',
+                body: 'Once we have the data, our crew visits your property to perform a field survey. We search for original iron pins and use professional-grade equipment to take precise measurements. If markers are missing, we use the surrounding evidence to determine their correct legal position and set new ones as needed.',
+                icon: MapPinned,
+              },
+              {
+                step: '3',
+                title: 'Certified survey plan',
+                body: 'After the field work, we process the data and draft a formal survey plan. This document is signed and sealed by a British Columbia Land Surveyor (BCLS). This is the official document you will need for your building permit, your fence contractor, or to resolve any questions with a neighbor.',
+                icon: FileCheck,
+              },
+            ].map(({ step, title, body, icon: Icon }) => (
+              <div
+                key={step}
+                className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center"
+              >
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+                  <Icon className="h-8 w-8" strokeWidth={1.5} />
+                </div>
+                <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
+                  Step {step}
+                </span>
+                <h3 className="text-xl font-medium text-white mb-3">{title}</h3>
+                <p className="text-white/65 font-light leading-relaxed text-sm sm:text-base">
+                  {body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Regulatory maze */}
       <section id="regional-standards" className="py-14 md:py-20 border-b border-white/10 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
-            The Sea-to-Sky Regulatory Maze
+            Case Study: Tree Removal in the District of Squamish
           </h2>
           <p className="text-white/75 font-light leading-relaxed mb-4 max-w-3xl">
-            Each municipality has its own &quot;playbook.&quot; What is legal on Bowen
-            Island could trigger a stop-work order in Squamish or a $10,000 fine in
-            Vancouver.
+            Tree removal often involves more than an agreement with a neighbour. Covenants on title and municipal bylaws typically introduce futher restrictions and permitting requirements prior to proceeding with your project.
           </p>
           <p className="text-sm text-brand-green/90 font-medium mb-8 uppercase tracking-wide">
-            Quick glance: Regional standards
+            District of Squamish: What to consider
           </p>
 
           <div className="overflow-x-auto rounded-lg border border-white/10 shadow-lg">
@@ -212,64 +229,6 @@ export default function PropertyLineStaking() {
         </div>
       </section>
 
-      {/* Common disasters */}
-      <section className="py-14 md:py-20 border-b border-white/10 bg-brand-dark/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-3">
-            &quot;Common Disasters&quot;: Why Intuition is Expensive
-          </h2>
-          <p className="text-white/70 font-light mb-10 max-w-3xl">
-            As a retired surveyor, I&apos;ve seen homeowners rely on &quot;fences of
-            convenience&quot; or their smartphone GPS. Here is the reality of what
-            happens when those guesses are wrong:
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <article className="rounded-xl border border-red-500/25 bg-gradient-to-b from-red-950/40 to-brand-black p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
-              <p className="text-xs uppercase tracking-wider text-red-300/90 mb-2">
-                Case law
-              </p>
-              <h3 className="text-lg font-medium text-white mb-3">
-                1. The $50,000 Swimming Pool (Oyelese v. Sorensen)
-              </h3>
-              <p className="text-white/70 font-light text-sm leading-relaxed">
-                In a landmark BC case, a homeowner discovered their pool crossed the
-                property line by several feet. Despite the pool being years old, the
-                court ordered its total removal within 75 days. Encroachments are
-                &quot;latent liabilities&quot;—they don&apos;t go away with time; they
-                emerge when you try to sell your home.
-              </p>
-            </article>
-            <article className="rounded-xl border border-amber-500/25 bg-gradient-to-b from-amber-950/30 to-brand-black p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
-              <p className="text-xs uppercase tracking-wider text-amber-200/80 mb-2">
-                Liability
-              </p>
-              <h3 className="text-lg font-medium text-white mb-3">2. Timber Trespass</h3>
-              <p className="text-white/70 font-light text-sm leading-relaxed">
-                Think you&apos;re just pruning a &quot;neighbor&apos;s&quot; tree? If
-                that trunk straddles the line, it is shared property. Cutting it without
-                written consent can trigger &quot;timber trespass&quot; charges, which
-                often lead to triple (treble) damages in BC courts.
-              </p>
-            </article>
-            <article className="rounded-xl border border-orange-500/25 bg-gradient-to-b from-orange-950/25 to-brand-black p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
-              <p className="text-xs uppercase tracking-wider text-orange-200/80 mb-2">
-                Hidden structure
-              </p>
-              <h3 className="text-lg font-medium text-white mb-3">
-                3. Footing Encroachments
-              </h3>
-              <p className="text-white/70 font-light text-sm leading-relaxed">
-                A retaining wall might look like it&apos;s on your side, but its
-                structural underground footing often extends wider than the wall itself.
-                If that footing crosses the line, you are committing a &quot;permanent
-                trespass&quot; that complicates future property sales.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       {/* Image placeholder */}
       <section className="py-10 border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -286,11 +245,10 @@ export default function PropertyLineStaking() {
       <section className="py-14 md:py-20 border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-8">
-            Debunking the &quot;Boundary Myths&quot;
+            Common Misconceptions
           </h2>
           <p className="text-white/65 font-light mb-10 max-w-3xl">
-            Don&apos;t let these common misconceptions lead to a Section 36 Property Law
-            Act dispute.
+            Don&apos;t let these common misconceptions lead to adverse outcomes.
           </p>
           <div className="space-y-6">
             {myths.map((item) => (
@@ -341,64 +299,6 @@ export default function PropertyLineStaking() {
               conflict with physical markers).
             </li>
           </ol>
-        </div>
-      </section>
-
-      {/* Survey type table */}
-      <section className="py-14 md:py-20 border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-8">
-            Choosing the Right Tool for Your Project
-          </h2>
-          <div className="overflow-x-auto rounded-lg border border-white/10 shadow-lg">
-            <table className="w-full min-w-[560px] text-left text-sm">
-              <thead>
-                <tr className="bg-brand-dark border-b border-white/10">
-                  <th className="p-4 font-medium text-white">Survey Type</th>
-                  <th className="p-4 font-medium text-white">Best for…</th>
-                  <th className="p-4 font-medium text-brand-green whitespace-nowrap">
-                    Staking included?
-                  </th>
-                  <th className="p-4 font-medium text-brand-green whitespace-nowrap">
-                    Registered with LTSA?
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {surveyTypeRows.map((row) => (
-                  <tr
-                    key={row.type}
-                    className="border-b border-white/10 last:border-0 bg-brand-black/40"
-                  >
-                    <td className="p-4 text-white font-medium align-top">{row.type}</td>
-                    <td className="p-4 text-white/70 font-light align-top">{row.bestFor}</td>
-                    <td className="p-4 text-white/85 align-top">{row.staking}</td>
-                    <td className="p-4 text-white/85 align-top">{row.ltsa}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* Insurance blockquote */}
-      <section className="py-14 md:py-20 border-b border-white/10">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-8">
-            Don&apos;t Build on Uncertainty
-          </h2>
-          <blockquote className="rounded-xl border border-white/15 bg-brand-dark/80 p-8 md:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
-            <p className="text-white/90 font-light leading-relaxed text-base sm:text-lg mb-6">
-              The average cost of a professional boundary staking is approximately
-              $2,000. Compare that to the $20,000 to $50,000 in legal fees required to
-              fight a Section 36 petition in the Supreme Court.
-            </p>
-            <p className="text-brand-green/95 font-light text-lg border-t border-white/10 pt-6">
-              A survey isn&apos;t a project cost; it&apos;s the most effective insurance
-              policy you can buy for your real estate investment.
-            </p>
-          </blockquote>
         </div>
       </section>
 
