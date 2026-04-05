@@ -100,15 +100,28 @@ export default function PropertyLineStaking() {
       {/* Intro + image placeholder */}
       <section className="py-14 md:py-20 border-b border-white/10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
           <p className="text-white/80 font-light leading-relaxed text-base sm:text-lg mb-8">
             Property improvements should provide value, not legal headaches. Whether you are preparing to invest in a new perimeter fence, clearing trees to reclaim your view, or watching a neighbor&apos;s new construction creep closer to your boundary, guessing where your property ends is a significant financial risk. Without a certified BCLS survey, a few inches of error can lead to:
           </p>
-          <ul className="list-disc list-inside">
-            <li>Costly Deconstruction: Homeowners may be forced to tear down and relocate new fences or structures if they are accidentally built on the wrong side of the property line.</li>
-            <li>Fines: There may be significant legal repercussions and fines for clearing trees on land you don&apos;t own and without securing the necessary permits.</li>
-            <li>Neighbor Disputes: There may be protracted disputes with neighbors that can permanently affect your home environment and resale value.</li>
-          </ul>
-          <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
+          <p className="text-brand-green font-medium mb-2">
+            Costly Deconstruction
+          </p>
+          <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
+            <span className="text-white font-medium">Homeowners may be forced to tear down and relocate new fences or structures if they are accidentally built on the wrong side of the property line.</span>
+          </p>
+          <p className="text-brand-green font-medium mb-2">
+            Fines:
+          </p>
+          <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
+            <span className="text-white font-medium">There may be significant legal repercussions and fines for clearing trees on land you don&apos;t own and without securing the necessary permits.</span>
+          </p>
+          <p className="text-brand-green font-medium mb-2">
+            Neighbor Disputes:
+          </p>
+          <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
+            <span className="text-white font-medium">There may be protracted disputes with neighbors that can permanently affect your home environment and resale value.</span>
+          </p>
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
           <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark aspect-[21/9] min-h-[200px] flex items-center justify-center">
