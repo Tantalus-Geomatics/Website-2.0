@@ -161,9 +161,7 @@ export default function PropertyLineStaking() {
       <section className="py-10 border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark aspect-video flex items-center justify-center">
-            <span className="text-white/40 text-sm font-light px-6 text-center">
-              <img alt="Tree Line" class="object-cover h-full w-full border border-white/10 duration-500" referrerpolicy="no-referrer" src="images/hedge-line.webp"/>
-            </span>
+            <img alt="Tree Line" class="object-cover h-full w-full border border-white/10 duration-500" referrerpolicy="no-referrer" src="images/hedge-line.webp"/>
           </div>
         </div>
       </section>
