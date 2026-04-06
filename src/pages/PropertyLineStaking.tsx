@@ -157,66 +157,6 @@ export default function PropertyLineStaking() {
         </div>
       </section>
 
-      {/* Regulatory maze */}
-      <section id="regional-standards" className="py-14 md:py-20 border-b border-white/10 scroll-mt-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
-            Case Study: Tree Removal in the District of Squamish
-          </h2>
-          <p className="text-white/75 font-light leading-relaxed mb-4 max-w-3xl">
-            Tree removal often involves more than an agreement with a neighbour. Covenants on title and municipal bylaws typically introduce futher restrictions and permitting requirements prior to proceeding with your project.
-          </p>
-          <p className="text-sm text-brand-green/90 font-medium mb-8 uppercase tracking-wide">
-            District of Squamish: What to consider
-          </p>
-
-          <div className="overflow-x-auto rounded-lg border border-white/10 shadow-lg">
-            <table className="w-full min-w-[640px] text-left text-sm">
-              <thead>
-                <tr className="bg-brand-dark border-b border-white/10">
-                  <th className="p-4 font-medium text-white whitespace-nowrap">Feature</th>
-                  <th className="p-4 font-medium text-brand-green whitespace-nowrap">
-                    Whistler (RMOW)
-                  </th>
-                  <th className="p-4 font-medium text-brand-green whitespace-nowrap">
-                    Squamish
-                  </th>
-                  <th className="p-4 font-medium text-brand-green whitespace-nowrap">
-                    West Vancouver
-                  </th>
-                  <th className="p-4 font-medium text-brand-green whitespace-nowrap">
-                    Bowen Island
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {regionalRows.map((row) => (
-                  <tr
-                    key={row.feature}
-                    className="border-b border-white/10 last:border-0 bg-brand-black/40"
-                  >
-                    <td className="p-4 text-white/90 font-medium align-top">{row.feature}</td>
-                    <td className="p-4 text-white/70 font-light align-top">{row.whistler}</td>
-                    <td className="p-4 text-white/70 font-light align-top">{row.squamish}</td>
-                    <td className="p-4 text-white/70 font-light align-top">{row.westVan}</td>
-                    <td className="p-4 text-white/70 font-light align-top">{row.bowen}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <aside className="mt-8 p-5 md:p-6 bg-brand-dark/80 border border-brand-green/30 rounded-lg">
-            <p className="text-white/90 font-light leading-relaxed text-sm sm:text-base">
-              <span className="text-brand-green font-medium">Note for Squamish homeowners:</span>{' '}
-              A critical nuance exists here—if you place a fence atop a retaining wall
-              within 1.22 m of your property line, the combined height cannot exceed
-              2.44 m.
-            </p>
-          </aside>
-        </div>
-      </section>
-
       {/* Image placeholder */}
       <section className="py-10 border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
