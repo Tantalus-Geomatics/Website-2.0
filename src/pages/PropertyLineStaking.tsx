@@ -176,7 +176,7 @@ export default function PropertyLineStaking() {
             Ready to start your project with confidence?
           </h2>
           <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
-          antalus Geomatics provides the local expertise and BCLS certification required for projects in the Sea-to-Sky corridor. Tell us about your property so we can help you move forward with confidence.
+          Tantalus Geomatics provides the local expertise and BCLS certification required for projects in the Sea-to-Sky corridor. Tell us about your property so we can help you move forward with confidence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
