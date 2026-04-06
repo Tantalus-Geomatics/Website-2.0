@@ -165,6 +165,118 @@ export default function PropertyLineStaking() {
           </div>
         </div>
       </section>
+      
+      {/* Case Study Section */}
+      <section className="py-16 md:py-24 border-b border-white/10 bg-brand-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-3">
+              Real World Example
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
+              Case Study: Removing a tree in the District of Squamish
+            </h2>
+            <p className="text-white/65 font-light leading-relaxed">
+              Tree removal often involves more than an agreement with a neighbour. Restrictive covenants on title and municipal bylaws can introduce further restrictions and permitting requirements prior to proceeding with your project.
+            </p>
+          </div>
+
+          {/* Three Things to Consider Box */}
+          <div className="max-w-4xl mx-auto rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
+            <h3 className="text-brand-green font-medium mb-4 text-lg">Three things to consider:</h3>
+            <ol className="list-decimal list-inside text-white/80 font-light leading-relaxed space-y-3">
+              <li>Is the tree located on my lot?</li>
+              <li>Do I need a permit to remove the tree?</li>
+              <li>Have I checked my property title for any restrictive covenants that prohibit removing the tree?</li>
+            </ol>
+          </div>
+
+          <p className="text-center text-white/80 font-light max-w-2xl mx-auto mb-12 md:mb-16 text-lg">
+            Tantalus Geomatics Land Surveying can help guide you navigate this process with our three step process:
+          </p>
+
+          {/* Case Study 3-Step Process */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+            
+            {/* Step 1 */}
+            <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+                <ClipboardList className="h-8 w-8" strokeWidth={1.5} />
+              </div>
+              <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
+                Step 1
+              </span>
+              <h3 className="text-xl font-medium text-white mb-6">Research</h3>
+              <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+                <li>Complete an initial consultation to confirm exactly what you are seeking to accomplish.</li>
+                <li>Obtain property title, legal charge documents and relevant survey plans from the land title office.</li>
+                <li>Confirm whether there are any restrictive covenants that would prohibit tree clearing.</li>
+                <li>
+                  Confirm whether a municipal tree permit is required for your specific situation:
+                  <div className="mt-3 flex flex-col gap-2">
+                    <a 
+                      href="https://squamish.ca/building-and-land-development/home-land-and-property-development/trees-and-soils-management/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-brand-green hover:text-brand-green-light transition-colors break-words underline underline-offset-2"
+                    >
+                      Trees and Soils Management Guidelines
+                    </a>
+                    <a 
+                      href="https://squamish.ca/assets/Planning-forms/Tree-Management-Application-Form-v2.pdf" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-brand-green hover:text-brand-green-light transition-colors break-words underline underline-offset-2"
+                    >
+                      Tree Management Application Form (PDF)
+                    </a>
+                  </div>
+                </li>
+                <li>Preparation of field reference data to ensure we capture everything necessary to move your project forward.</li>
+              </ul>
+            </div>
+
+            {/* Step 2 */}
+            <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+                <MapPinned className="h-8 w-8" strokeWidth={1.5} />
+              </div>
+              <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
+                Step 2
+              </span>
+              <h3 className="text-xl font-medium text-white mb-6">Field Visit</h3>
+              <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+                <li>We first search for each of the relevant property corner posts.</li>
+                <li>If any of the posts are missing, we expand our search until we have found enough adjacent evidence to accurately re-establish the corner's location.</li>
+                <li>We then measure all the features you request along the property line (e.g. trees, fences, retaining walls, etc...).</li>
+                <li>If a municipal permit is required, we collect the site and topographic data required to prepare a tree removal plan to accompany your permit submission.</li>
+                <li>If staking is required, we set new iron posts at any of the missing corners and set stakes at intermediate positions along the line.</li>
+              </ul>
+            </div>
+
+            {/* Step 3 */}
+            <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+                <FileCheck className="h-8 w-8" strokeWidth={1.5} />
+              </div>
+              <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
+                Step 3
+              </span>
+              <h3 className="text-xl font-medium text-white mb-6">Certified Survey Plan</h3>
+              <p className="text-left text-white/80 font-light text-sm sm:text-base mb-4 w-full">
+                A tree removal property line survey may result in the preparation of one or more plans, depending on your needs:
+              </p>
+              <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+                <li><strong className="text-white/90 font-medium">Certified sketch of site features:</strong> A certified plan that depicts the locations of site features relative to your property line.</li>
+                <li><strong className="text-white/90 font-medium">Tree Removal Plan:</strong> A tree removal plan consistent with the District of Squamish's Tree management permit requirements.</li>
+                <li><strong className="text-white/90 font-medium">Posting Plan:</strong> If one or more property corner posts are re-established during the survey, a posting plan is prepared for filing at the land title office.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       {/* Final CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-brand-green/15 via-brand-black to-brand-black border-t border-brand-green/40">
