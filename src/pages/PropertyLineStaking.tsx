@@ -98,7 +98,7 @@ export default function PropertyLineStaking() {
             Eliminate the Guesswork. Protect Your Land with a Certified Boundary Survey.
           </h1>
           <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
-            Are you planning to build a fence, remove a tree, or install a retaining wall near your property line? A certified boundary survey provides the peace of mind you need to avoid costly fines and legal disputes.
+            Building a fence? Planning to remove a tree? Installing a retaining wall? A certified boundary survey provides the peace of mind you need to avoid costly fines and legal disputes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
             <Link
