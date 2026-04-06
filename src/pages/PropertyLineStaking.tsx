@@ -134,7 +134,7 @@ export default function PropertyLineStaking() {
               </div>
             ))}
           </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
+            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg shadow-brand-green/15"
