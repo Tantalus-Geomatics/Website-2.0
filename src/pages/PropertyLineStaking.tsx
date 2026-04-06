@@ -45,11 +45,11 @@ export default function PropertyLineStaking() {
         <div className="absolute inset-0 z-0">
           <img
             src="images/hedge-line.webp"
-            alt=""
+            alt="Hedge Line"
             className="w-full h-full object-cover opacity-60 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/60 via-brand-black/75 to-brand-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
