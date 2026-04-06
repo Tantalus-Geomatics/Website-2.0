@@ -5,45 +5,6 @@ import SEO from '../components/SEO';
 
 const CANONICAL = 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking';
 
-const regionalRows = [
-  {
-    feature: 'Max Fence Height',
-    whistler: '1.8 m (typical); 2.44 m (combined height)',
-    squamish: '1.8 m – 2.0 m',
-    westVan: '2.5 m',
-    bowen: 'Varies by zone — confirm with district',
-  },
-  {
-    feature: 'Un-engineered Wall Max',
-    whistler: '1.22 m',
-    squamish: '1.22 m',
-    westVan: '1.2 m',
-    bowen: '1.5 m',
-  },
-  {
-    feature: 'Tree Protection Threshold',
-    whistler: '15 cm DBH',
-    squamish: '30 cm DBH',
-    westVan: 'Varies by species',
-    bowen: 'Private (N/A)',
-  },
-];
-
-const myths = [
-  {
-    myth: 'The Municipal GIS map shows my line clearly.',
-    fact: 'GIS layers are for visualization only and often "float" 1 to 5 meters off-center. They have no legal standing in a dispute.',
-  },
-  {
-    myth: "Squatter's Rights (Adverse Possession) apply to me.",
-    fact: 'This was largely abolished in BC in 1975. Even if a fence has been in the wrong place for 40 years, it does not change your legal boundary.',
-  },
-  {
-    myth: 'My Realtor showed me where the pins were.',
-    fact: 'Only a British Columbia Land Surveyor (BCLS) is legally authorized to establish property boundaries.',
-  },
-];
-
 const problems = [
   {
     problem: 'Encroaching Structures and Costly Deconstruction',
@@ -112,7 +73,6 @@ export default function PropertyLineStaking() {
         </div>
       </section>
 
-      {/* Myths */}
       <section className="py-14 md:py-20 border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
@@ -139,7 +99,7 @@ export default function PropertyLineStaking() {
               to="/contact"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg shadow-brand-green/15"
             >
-              Contact Us Today for a Preliminary Consultation
+              Contact Us Today to Start with Confidence
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
             </Link>
           </div>
@@ -153,7 +113,7 @@ export default function PropertyLineStaking() {
             Our land survey process
           </h2>
           <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-            Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. Following an initial consultation, where we discuss your project&apos;s needs, we follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
+            Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. We follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
@@ -269,67 +229,6 @@ export default function PropertyLineStaking() {
         </div>
       </section>
 
-      {/* Myths */}
-      <section className="py-14 md:py-20 border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-8">
-            Common Misconceptions
-          </h2>
-          <p className="text-white/65 font-light mb-10 max-w-3xl">
-            Don&apos;t let these common misconceptions lead to adverse outcomes.
-          </p>
-          <div className="space-y-6">
-            {myths.map((item) => (
-              <div
-                key={item.myth}
-                className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
-              >
-                <p className="text-brand-green font-medium mb-2">
-                  Myth: &quot;{item.myth}&quot;
-                </p>
-                <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
-                  <span className="text-white font-medium">Fact: </span>
-                  {item.fact}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tantalus */}
-      <section className="py-14 md:py-20 border-b border-white/10 bg-brand-dark/25">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
-            How Tantalus Geomatics Protects You
-          </h2>
-          <p className="text-white/80 font-light leading-relaxed mb-8">
-            We don&apos;t just &quot;put stakes in the ground.&quot; We act as your
-            quasi-judicial professional gatekeepers. When we re-establish a boundary,
-            we use a legally mandated Hierarchy of Evidence:
-          </p>
-          <ol className="space-y-4 list-decimal list-inside text-white/80 font-light marker:text-brand-green">
-            <li>
-              <span className="font-medium text-white">Natural Boundaries</span> (High-water
-              marks, river banks).
-            </li>
-            <li>
-              <span className="font-medium text-white">Original Monuments</span> (Iron pins
-              and lead plugs placed during the original subdivision).
-            </li>
-            <li>
-              <span className="font-medium text-white">Evidence of Occupation</span>{' '}
-              (Ancient stone walls or mature hedges).
-            </li>
-            <li>
-              <span className="font-medium text-white">Registered Plan Dimensions</span>{' '}
-              (The measurements on paper—ironically, the least weighted evidence if they
-              conflict with physical markers).
-            </li>
-          </ol>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-brand-green/15 via-brand-black to-brand-black border-t border-brand-green/40">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -340,9 +239,7 @@ export default function PropertyLineStaking() {
             Ready to start your project with confidence?
           </h2>
           <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
-            Our team at Tantalus Geomatics specializes in the complex terrain of the
-            Sea-to-Sky corridor. Let&apos;s ensure your improvements stay on your side
-            of the line.
+          antalus Geomatics provides the local expertise and BCLS certification required for projects in the Sea-to-Sky corridor. Tell us about your property so we can help you move forward with confidence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
@@ -356,7 +253,7 @@ export default function PropertyLineStaking() {
               to="/services"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/90 text-white font-semibold hover:bg-white/10 transition-colors"
             >
-              View Our Recent Projects in Squamish &amp; Whistler
+              View A Full List of Our Services
             </Link>
           </div>
         </div>
