@@ -134,16 +134,15 @@ export default function PropertyLineStaking() {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg shadow-brand-green/15"
-          >
-            Contact Us Today for a Preliminary Consultation
-            <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
-          </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg shadow-brand-green/15"
+            >
+              Contact Us Today for a Preliminary Consultation
+              <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
+            </Link>
+          </div>
         </div>
       </section>
 
