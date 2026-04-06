@@ -46,15 +46,15 @@ const myths = [
 
 const problems = [
   {
-    problem: 'Costly Deconstruction',
+    problem: 'Encroaching Structures and Costly Deconstruction',
     description: 'Homeowners may be forced to tear down and relocate new fences or structures if they are accidentally built on the wrong side of the property line.',
   },
   {
-    problem: "Fines:",
-    description: 'There may be significant legal repercussions and fines for clearing trees on land you don&apos;t own and without securing the necessary permits.',
+    problem: "Fines for Unpermitted Activities",
+    description: 'There may be significant legal repercussions and fines for clearing trees on land you do not own and without securing the necessary permits.',
   },
   {
-    problem: 'Neighbor Disputes:',
+    problem: 'Neighbor Disputes',
     description: 'There may be protracted disputes with neighbors that can permanently affect your home environment and resale value.',
   },
 ];
@@ -117,7 +117,7 @@ export default function PropertyLineStaking() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
           <p className="text-white/65 font-light mb-10 max-w-3xl">
-            Property improvements should provide value, not legal headaches. Whether you are preparing to invest in a new perimeter fence, clearing trees to reclaim your view, or watching a neighbor&apos;s new construction creep closer to your boundary, guessing where your property ends is a significant financial risk. Without a certified BCLS survey, a few inches of error can lead to:
+            Property improvements should provide value, not headaches. Without a certified BCLS survey, a few inches of error can lead to:
           </p>
           <div className="space-y-6">
             {problems.map((item) => (
@@ -126,7 +126,7 @@ export default function PropertyLineStaking() {
                 className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
               >
                 <p className="text-brand-green font-medium mb-2">
-                  Problem: {item.problem};
+                  {item.problem}
                 </p>
                 <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
                   {item.description}
