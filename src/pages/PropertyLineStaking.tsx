@@ -44,7 +44,7 @@ export default function PropertyLineStaking() {
       <section className="relative min-h-[72vh] flex flex-col justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/tantalus-hero-banner.webp"
+            src="images/hedge-line.webp"
             alt=""
             className="w-full h-full object-cover opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
