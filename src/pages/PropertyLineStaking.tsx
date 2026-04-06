@@ -46,7 +46,7 @@ export default function PropertyLineStaking() {
           <img
             src="images/hedge-line.webp"
             alt=""
-            className="w-full h-full object-cover opacity-40 mix-blend-overlay"
+            className="w-full h-full object-cover opacity-60 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-black/60 via-brand-black/75 to-brand-black" />
