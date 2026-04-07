@@ -201,7 +201,7 @@ export default function Services() {
           </p>
           <div className="flex justify-center mt-10">
             <Link
-              to="/#/contact"
+              to="/contact"
               className="px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
             >
               Contact Us Today <ArrowRight size={20} />

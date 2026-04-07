@@ -203,13 +203,13 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/#/contact"
+              to="/contact"
               className="px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
             >
               Contact Us Today <ArrowRight size={20} />
             </Link>
             <Link
-              to="/#/services"
+              to="/services"
               className="px-8 py-4 bg-transparent hover:bg-white/5 text-white font-medium transition-all border border-brand-green flex items-center justify-center backdrop-blur-sm"
             >
               Explore Services
@@ -224,7 +224,7 @@ export default function Home() {
           <div className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Land Surveyor?</h2>
             <p className="text-lg sm:text-xl text-white/60 font-light max-w-2xl mx-auto">
-              Explore common scenarios where a land survey is required. <Link to="/#/faq" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
+              Explore common scenarios where a land survey is required. <Link to="/faq" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
             </p>
           </div>
 
@@ -360,7 +360,7 @@ export default function Home() {
                 <p className="text-white/60 mb-8 font-light">
                   {service.description}
                 </p>
-                <Link to="/#/services" className="text-brand-green font-medium flex items-center gap-1 hover:gap-2 transition-all mt-auto">
+                <Link to="/services" className="text-brand-green font-medium flex items-center gap-1 hover:gap-2 transition-all mt-auto">
                   Learn more <ArrowRight size={16} />
                 </Link>
               </div>
@@ -599,7 +599,7 @@ export default function Home() {
                 </li>
               </ul>
               <Link
-                to="/#/about"
+                to="/about"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/20 text-white font-medium hover:bg-white/10 transition-colors"
               >
                 About Our Team
