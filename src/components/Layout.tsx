@@ -7,11 +7,11 @@ export default function Layout() {
   const location = useLocation();
 
   const navLinks = [
-    { name: 'Home', path: '/#/' },
-    { name: 'About', path: '/#/about' },
-    { name: 'Services', path: '/#/services' },
-    { name: 'FAQ', path: '/#/faq' },
-    { name: 'Contact', path: '/#/contact' },
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'FAQ', path: '/faq' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
