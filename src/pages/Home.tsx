@@ -556,7 +556,7 @@ export default function Home() {
             {/* Column 3: Surveyor Image */}
             <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
               <img 
-                src="images/DS-TS-1.jpg" 
+                src="images/DS-TS-1.webp" 
                 alt="Land Surveyor out in the field" 
                 className="absolute inset-0 w-full h-full object-cover"
               />
