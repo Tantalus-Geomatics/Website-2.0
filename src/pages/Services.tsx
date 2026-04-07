@@ -197,7 +197,7 @@ export default function Services() {
             Professional <span className="text-brand-green font-medium">Land Surveying</span> Services
           </h1>
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
-            Comprehensive Land Surveying, topographic mapping, and construction support for your most demanding projects.
+            Comprehensive Land Surveying, topographic mapping, and construction support.
           </p>
           <div className="flex justify-center mt-10">
             <Link

@@ -43,7 +43,7 @@ export default function About() {
             About Our <span className="text-brand-green font-medium">Land Surveying</span> Practice
           </h1>
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
-            Local knowledge and personalized service to support your projects in the Sea-to-Sky corridor.
+            Local knowledge and personalized service.
           </p>
         </div>
       </section>
