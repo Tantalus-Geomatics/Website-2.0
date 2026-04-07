@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Map, Compass, HardHat, Mountain, Home as HomeIcon, Trees, Waves, Scale, FileText, Building } from 'lucide-react';
+import { ArrowRight, Map, Compass, HardHat, Mountain, Home as HomeIcon, Trees, Waves, Scale, FileText, Building, Fence } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function Home() {
@@ -8,22 +8,22 @@ export default function Home() {
 
   const useCases = [
     {
-      title: "Fence Installation and Boundary Staking",
-      icon: <Map className="w-6 h-6" />,
-      content: "Homeowners frequently discover that their existing fence is actually several feet off-course from their property line. A BCLS is the only professional qualified to mark out the property line, and replace your property corners, allowing you to install a new fence with confidence.",
+      title: "Property Line Surveys",
+      icon: <Fence className="w-6 h-6" />,
+      content: "Many homeowners discover their existing fences are misaligned with their legal property lines once a formal survey is conducted. A BCLS-certified survey is the only way to definitively establish your boundaries and replace property corners before you invest in new fencing.",
       image: "images/fence-boundary-staking.webp"
+    },
+    {
+      title: "Building Design and Construction Permitting",
+      icon: <HomeIcon className="w-6 h-6" />,
+      content: "Municipalities require BCLS-certified topographic surveys to verify that proposed designs comply with site coverage and setback zoning bylaws. These surveys provide the foundational data architects and designers need to align their plans with the physical and legal constraints of the site.",
+      image: "images/adu.webp"
     },
     {
       title: "Retaining Wall Construction",
       icon: <HardHat className="w-6 h-6" />,
-      content: "In the steep terrain of Squamish, retaining walls are essential for slope stability. Municipalities require a BCLS survey to ensure retaining walls don't encroach onto neighbouring properties and to ensure they conform to local bylaws.",
+      content: "Municipalities require a BCLS survey to ensure retaining walls don't encroach onto neighbouring properties and to ensure they conform to local bylaws.",
       image: "images/retaining-wall.webp"
-    },
-    {
-      title: "ADUs and Coach Homes",
-      icon: <HomeIcon className="w-6 h-6" />,
-      content: "Provincial Bill 25 encourages the development of Small Scale Multi-Unit Houses (SSMUH) to address the housing supply shortage. Architects and designers require topographic survey data prepared by a BC Land Surveyor to ensure their designs meet the site's physical conditions and the \"site coverage\" and \"setback\" requirements of the zoning bylaw.",
-      image: "images/adu.webp"
     },
     {
       title: "Deck and Pool Permits",
@@ -34,25 +34,19 @@ export default function Home() {
     {
       title: "Purchasing an Older Home",
       icon: <Building className="w-6 h-6" />,
-      content: "A Building Location Certificate helps prospective purchasers identify any structures built over the property line, or do not conform with municipal bylaws, preventing costly litigations, legal remedies and fines.",
+      content: "A Building Location Certificate confirms that all existing structures are situated within the legal property boundaries and comply with municipal regulations. For those purchasing older homes, this survey is an essential safeguard against the risks of undocumented encroachments and zoning non-compliance.",
       image: "images/old-home.webp"
     },
     {
       title: "Strata Developments",
       icon: <Building className="w-6 h-6" />,
-      content: "With the Provincial Bill 25 enouraging the development of \"missing middle\" and \"densified\" housing, many owners are looking to construct Small Scale Multi-Unit Houses (SSMUH), such as duplexes, on single family home lots. This requires a BC Land Surveyor to define the strata lots boundaries and common property.",
+      content: "Developing multi-unit housing or duplexes requires a BCLS-certified strata plan to define individual strata lot boundaries and common property. Tantalus Geomatics provides the precise measurements and documentation needed to successfully register your project at the Land Title Office.",
       image: "images/strata.webp"
-    },
-    {
-      title: "Septic System Design",
-      icon: <Map className="w-6 h-6" />,
-      content: "In rural areas, a BCLS provides the topographic data and \"Restricted Covenant Survey\" needed for engineers to design and site septic fields in compliance with health regulations.",
-      image: "images/septic.webp"
     },
     {
       title: "Tree Removal",
       icon: <Trees className="w-6 h-6" />,
-      content: "In the Sea-to-Sky region, municipal tree bylaws and \"Restricted Covenant Areas\" often limit or restrict tree removal. A BCLS identifies these zones on the ground so owners don't face large fines for unlawful tree removal.",
+      content: "Municipal tree bylaws and \"Restricted Covenant Areas\" often limit or restrict tree removal. A BCLS identifies these zones on the ground so owners don't face large fines for unlawful tree removal.",
       image: "images/tree.webp"
     },
     {
@@ -64,7 +58,7 @@ export default function Home() {
     {
       title: "Natural Boundary Identification",
       icon: <Waves className="w-6 h-6" />,
-      content: "Owners of properties adjacent to the Squamish River or Howe Sound need a BCLS to determine the location of the \"Present Natural Boundary\" for dock applications or to verify the impact of erosion on their extent of ownership.",
+      content: "Owners of properties adjacent to a body of water need a BCLS to determine the location of the \"Present Natural Boundary\" for dock applications or to verify the impact of erosion on their extent of ownership.",
       image: "images/natural-boundary.webp"
     },
     {
