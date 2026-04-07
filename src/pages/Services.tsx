@@ -93,12 +93,12 @@ export default function Services() {
       title: 'Residential Property Surveys',
       icon: <Home className="w-10 h-10 text-brand-green" />,
       image: "images/old-home.webp",
-      description: 'We provide property line, fence, and tree surveys, for boundary confirmation, in addition to site plans and Building Location Certificates required for design accuracy and municipal compliance.',
+      description: 'We provide Property Line, Fence, and Tree Surveys, for Boundary Confirmation, in addition to Site Plans and Building Location Certificates required for Design and Municipal Permitting.',
       items: [
-        { name: 'Site Plans', desc: 'Detailed plans required to support municipal building permits, showing existing conditions and proposed improvements.' },
+        { name: 'Site Plans', desc: 'Detailed certified plans required to support municipal building permits, showing existing conditions and proposed improvements.' },
         { name: 'Property Line Surveys', desc: 'Locating and marking legal boundaries to ensure fences, walls, and structures are built on your own land.' },
         { name: 'Tree Surveys', desc: 'Accurately locating trees to ensure compliance with municipal tree bylaws and restrictive covenants.' },
-        { name: 'Building Location Certificates', desc: 'Official surveys confirming that structures conform to legal boundaries and municipal setback requirements.' }
+        { name: 'Building Location Certificates', desc: 'Certified surveys confirming that structures conform to legal boundaries and municipal setback requirements.' }
       ]
     },
     {
@@ -106,19 +106,19 @@ export default function Services() {
       title: 'Land Development',
       icon: <Map className="w-10 h-10 text-brand-green" />,
       image: "images/land-development.webp",
-      description: 'A successful subdivision or land development project starts with accurate data. Our local expertise and professional services provide the essentials required for architectural and engineering design, helping you efficiently navigate the municipal approval process.',
+      description: 'We provide the certified surveying and engineering essentials required to support architectural and civil engineering design and streamline the municipal approval process.',
       items: [
-        { name: 'Topographic Surveys and Site Plans', desc: 'Detailed drawings showing building footprints, setbacks, utility locations and the physical terrain to support design and demonstrate compliance with local bylaws.' },
+        { name: 'Topographic Surveys and Site Plans', desc: 'Detailed certified drawings showing building footprints, setbacks, utility locations and the physical terrain to support design and demonstrate compliance with local bylaws.' },
         { name: 'As-Built Surveys', desc: 'Documenting the final location of newly constructed improvements for municipal permitting and record drawings.' },
-        { name: 'BC Land Surveyor’s Certificates', desc: 'Professional documents showing the location of buildings relative to property lines, often required by building inspectors and mortgage lenders.' }
-      ]
+        { name: 'BC Land Surveyor’s Certificates', desc: 'Certified plans showing the location of buildings relative to property lines, often required by building inspectors and mortgage lenders.' }
+        ]
     },
     {
       id: 'construction',
       title: 'Construction & Infrastructure',
       icon: <HardHat className="w-10 h-10 text-brand-green" />,
       image: "images/construction.webp",
-      description: 'What is built must match your designs. Our layout and monitoring services reduce the risk of costly rework and project delays.',
+      description: 'We provide the precise layout and monitoring services required to ensure construction matches design specifications. Our professional oversight reduces the risk of costly rework and keeps your project on schedule.',
       items: [
         { name: 'Building Layouts', desc: 'Precise marking of foundations and structural elements to ensure accurate construction and compliance with municipal setbacks.' },
         { name: 'Quantity Estimate Surveys', desc: 'Estimating stockpile volumes and material changes to ground surfaces during site construction and development activites.' },
@@ -130,11 +130,12 @@ export default function Services() {
       title: 'Legal Surveys',
       icon: <Compass className="w-10 h-10 text-brand-green" />,
       image: "images/survey-marker-post.webp",
-      description: 'BC Land Surveyors are the only professionals qualified to determine the locations of property boundaries. We physically define these boundaries on the ground and prepare statutory plans for registration at the Land Title Office.',
+      description: 'We provide the professional boundary surveys and statutory plans required for Land Title Office registration, ensuring your property interests are legally protected.',
       items: [
         { name: 'Boundary Surveys', desc: 'Locating property corners and marking existing boundaries to support the construction of fences, resolve disputes or facilitate renovations and landscaping.' },
         { name: 'Strata Plans', desc: 'Surveys and plans for multi-unit housing and air-space parcels.' },
-        { name: 'Subdivision Plans', desc: 'Supporting developers through the subdivision process, from initial design consultations to final filing at the Land Title Office.' }
+        { name: 'Subdivision and Consolidation Plans', desc: 'Supporting developers through the lot subdivision and consolidation process, from initial design consultations to final filing at the Land Title Office.' }
+        { name: 'Easement, Covenant and Right of Way Plans', desc:'We provide the BCLS-certified plans required to register easements, covenants, and rights-of-way. These documents ensure all legal land-use restrictions are accurately documented and protected on the property title.'}
       ]
     },
     {
@@ -144,7 +145,7 @@ export default function Services() {
       image: "images/reality-capture.webp",
       description: 'Using the latest in LiDAR and photogrammetry, we create accurate 3D replicas of physical sites and buildings.',
       items: [
-        { name: 'UAV Mapping', desc: 'Aerial mapping ideal for large or inaccessible Sea-to-Sky sites.' },
+        { name: 'UAV Mapping', desc: 'Aerial mapping ideal for large or inaccessible sites.' },
         { name: 'Terrestrial 3D Laser Scanning', desc: 'Millimeter-accurate documentation of building facades, complex building interiors, and inaccessible utility infrastructure.' },
         { name: 'Digital Twins', desc: 'Converting point cloud data into high accuracy 3D models for architects, engineers and facility managers.' }
       ]
