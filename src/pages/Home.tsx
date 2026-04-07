@@ -369,21 +369,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action / Contact Form */}
+{/* Call to Action / Contact Form - 3 Column Layout */}
       <section className="py-24 bg-brand-dark border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             
-            {/* Contact Info & Images */}
-            <div>
+            {/* Column 1: Contact Info */}
+            <div className="flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Request a Land Survey Quote</h2>
               <p className="text-base sm:text-lg text-white/70 font-light mb-12 leading-relaxed">
                 Provide us with your contact information, your property's address, PID (Parcel Identifier) and a brief description of your project requirements. Our team of professionals will contact you to determine how we can best support your project.
               </p>
 
-              <div className="space-y-8 mb-12">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 border border-white/10 text-brand-green">
+              <div className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 border border-white/10 text-brand-green rounded-lg">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
@@ -392,8 +392,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="p-3 border border-white/10 text-brand-green">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 border border-white/10 text-brand-green rounded-lg">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
@@ -404,8 +404,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="p-3 border border-white/10 text-brand-green">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 border border-white/10 text-brand-green rounded-lg">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
@@ -414,28 +414,12 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              {/* Uploaded Images Display */}
-              <div className="grid grid-cols-1 gap-6 relative">
-                <img 
-                  src="images/DS-TS-1.jpg" 
-                  alt="Land Surveyor out in the field" 
-                  className="w-full h-64 md:h-80 object-cover rounded-xl border border-white/10"
-                />
-                <div className="bg-white p-4 rounded-xl inline-flex shadow-lg w-full max-w-[280px]">
-                  <img 
-                    src="images/abcls-logo-horizontal.svg" 
-                    alt="Association of British Columbia Land Surveyors Logo" 
-                    className="h-14 w-auto object-contain"
-                  />
-                </div>
-              </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-brand-black p-8 md:p-10 border border-white/10 shadow-xl rounded-xl">
-              <h3 className="text-2xl font-light text-white mb-6">Send us a message</h3>
-              <form id="contact-form" onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
+            {/* Column 2: Contact Form */}
+            <div className="bg-brand-black p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
+              <h3 className="text-2xl font-light text-white mb-8">Send us a message</h3>
+              <form id="contact-form" onSubmit={handleSubmit} className="space-y-5" aria-label="Contact form">
                 
                 {/* Honeypot Field */}
                 <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
@@ -451,7 +435,7 @@ export default function Home() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="from_name" className="block text-sm font-medium text-white/80 mb-2">Full Name</label>
                     <input
@@ -461,7 +445,7 @@ export default function Home() {
                       required
                       value={formData.from_name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light"
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
                       placeholder="Jane Doe"
                       aria-required="true"
                     />
@@ -475,14 +459,14 @@ export default function Home() {
                       required
                       value={formData.reply_to}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light"
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
                       placeholder="jane@example.com"
                       aria-required="true"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-white/80 mb-2">Phone Number</label>
                     <input
@@ -491,7 +475,7 @@ export default function Home() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light"
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
                       placeholder="(604) 555-0123"
                     />
                   </div>
@@ -503,7 +487,7 @@ export default function Home() {
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light"
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
                       placeholder="1234 Main St, Squamish"
                     />
                   </div>
@@ -515,17 +499,17 @@ export default function Home() {
                     id="message"
                     name="message"
                     required
-                    rows={5}
+                    rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light resize-none"
+                    className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light resize-none rounded-md"
                     placeholder="Please provide details about your project location and requirements..."
                     aria-required="true"
                   ></textarea>
                 </div>
 
                 {/* Cloudflare Turnstile */}
-                <div className="flex justify-center my-4">
+                <div className="flex justify-center my-2">
                   <Turnstile
                     siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAACkcoQ4pjVYMr-l8'}
                     onSuccess={(token) => setTurnstileToken(token)}
@@ -551,13 +535,31 @@ export default function Home() {
                 <button
                   type="submit"
                   disabled={status.type === 'loading'}
-                  className="w-full py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 rounded-md disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {status.type === 'loading' ? 'Sending...' : (
                     <>Send Request <Send size={20} /></>
                   )}
                 </button>
               </form>
+            </div>
+
+            {/* Column 3: Images */}
+            <div className="flex flex-col gap-6 h-full">
+              <div className="bg-white p-6 rounded-2xl flex items-center justify-center shadow-xl w-full shrink-0 min-h-[140px]">
+                <img 
+                  src="images/abcls-logo-horizontal.svg" 
+                  alt="Association of British Columbia Land Surveyors Logo" 
+                  className="h-16 w-auto object-contain"
+                />
+              </div>
+              <div className="relative flex-grow rounded-2xl overflow-hidden border border-white/10 shadow-xl min-h-[300px]">
+                <img 
+                  src="images/DS-TS-1.jpg" 
+                  alt="Land Surveyor out in the field" 
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
             </div>
 
           </div>
