@@ -1,11 +1,106 @@
-import React, { useState } from 'react';
-import { Map, HardHat, Compass, Building, Mountain, CheckCircle2, ArrowRight, Home, Trees, Waves, Scale, FileText } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Map, HardHat, Compass, Building, Mountain, CheckCircle2, ArrowRight, Home, Trees, Waves, Scale, FileText, MapPin, Mail, Phone, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { Turnstile } from '@marsidev/react-turnstile';
 import SEO from '../components/SEO';
 
 export default function Services() {
   const [activeUseCase, setActiveUseCase] = useState(0);
 
+  // Form State
+  const [formData, setFormData] = useState({
+    from_name: '',
+    reply_to: '',
+    phone: '',
+    address: '',
+    pid: '',
+    project_type: 'Site Plan',
+    message: '',
+    website_url: ''
+  });
+  const [status, setStatus] = useState<{ type: 'idle' | 'loading' | 'success' | 'error', message: React.ReactNode }>({ type: 'idle', message: '' });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    emailjs.init({
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'r37yPY3ALEbiW4YxU',
+      blockHeadless: true,
+      limitRate: {
+        id: 'app',
+        throttle: 10000,
+      },
+    });
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Honeypot check
+    if (formData.website_url) {
+      // Silently reject bot submissions
+      return;
+    }
+
+    if (!turnstileToken) {
+      setStatus({ type: 'error', message: 'Please complete the CAPTCHA verification.' });
+      return;
+    }
+
+    setStatus({ type: 'loading', message: 'Sending your request...' });
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_3rqnrju',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_uvo8zyr',
+        e.currentTarget
+      );
+      
+      setStatus({ type: 'success', message: 'Thank you! Your request has been sent successfully. We will be in touch soon.' });
+      setFormData({
+        from_name: '',
+        reply_to: '',
+        phone: '',
+        address: '',
+        pid: '',
+        project_type: 'Site Plan',
+        message: '',
+        website_url: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setStatus({ 
+        type: 'error', 
+        message: (
+          <>
+            There was an error sending your request. Please email us directly at{' '}
+            <a href="mailto:contact@tantalusgeomatics.com" className="underline hover:text-brand-green transition-colors">
+              contact@tantalusgeomatics.com
+            </a>.
+          </>
+        ) 
+      });
+    }
+  };
+
   const services = [
+    {
+      id: 'residential',
+      title: 'Residential Property Surveys',
+      icon: <Home className="w-10 h-10 text-brand-green" />,
+      image: "images/old-home.webp",
+      description: 'We provide property line, fence, and tree surveys, for boundary confirmation, in addition to site plans and Building Location Certificates required for design accuracy and municipal compliance.',
+      items: [
+        { name: 'Site Plans', desc: 'Detailed plans required to support municipal building permits, showing existing conditions and proposed improvements.' },
+        { name: 'Property Line Surveys', desc: 'Locating and marking legal boundaries to ensure fences, walls, and structures are built on your own land.' },
+        { name: 'Tree Surveys', desc: 'Accurately locating trees to ensure compliance with municipal tree bylaws and restrictive covenants.' },
+        { name: 'Building Location Certificates', desc: 'Official surveys confirming that structures conform to legal boundaries and municipal setback requirements.' }
+      ]
+    },
     {
       id: 'land-development',
       title: 'Land Development',
@@ -103,6 +198,14 @@ export default function Services() {
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             Comprehensive Land Surveying, topographic mapping, and construction support for your most demanding projects.
           </p>
+          <div className="flex justify-center mt-10">
+            <Link
+              to="/#/contact"
+              className="px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+            >
+              Contact Us Today <ArrowRight size={20} />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -150,6 +253,203 @@ export default function Services() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action / Contact Form - 3 Column Layout */}
+      <section className="py-24 bg-brand-dark border-b border-white/10">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            
+            {/* Column 1: Contact Info & Logo */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Request a Land Survey Quote</h2>
+              <p className="text-base sm:text-lg text-white/70 font-light mb-12 leading-relaxed">
+                Provide us with your contact information, your property's address, PID (Parcel Identifier) and a brief description of your project requirements. Our team of professionals will contact you to determine how we can best support your project.
+              </p>
+
+              <div className="space-y-8 mb-10">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 border border-white/10 text-brand-green rounded-lg">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-white mb-1">Office</h3>
+                    <p className="text-white/60 font-light">Squamish, BC</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="p-3 border border-white/10 text-brand-green rounded-lg">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-white mb-1">Email</h3>
+                    <a href="mailto:contact@tantalusgeomatics.com" className="text-brand-green hover:text-brand-green-light font-light transition-colors">
+                      contact@tantalusgeomatics.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="p-3 border border-white/10 text-brand-green rounded-lg">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-white mb-1">Phone</h3>
+                    <p className="text-white/60 font-light">(604) 213 9934</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* ABCLS Logo */}
+              <div className="bg-white p-5 rounded-2xl inline-flex items-center justify-center shadow-xl w-fit">
+                <img 
+                  src="images/abcls-logo-horizontal.svg" 
+                  alt="Association of British Columbia Land Surveyors Logo" 
+                  className="h-12 sm:h-14 w-auto object-contain"
+                />
+              </div>
+            </div>
+
+            {/* Column 2: Contact Form */}
+            <div className="bg-brand-black p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
+              <h3 className="text-2xl font-light text-white mb-8">Send us a message</h3>
+              <form id="contact-form" onSubmit={handleSubmit} className="space-y-5" aria-label="Contact form">
+                
+                {/* Honeypot Field */}
+                <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                  <label htmlFor="website_url">Website URL</label>
+                  <input
+                    type="text"
+                    id="website_url"
+                    name="website_url"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website_url}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="from_name" className="block text-sm font-medium text-white/80 mb-2">Full Name</label>
+                    <input
+                      type="text"
+                      id="from_name"
+                      name="from_name"
+                      required
+                      value={formData.from_name}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
+                      placeholder="Jane Doe"
+                      aria-required="true"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="reply_to" className="block text-sm font-medium text-white/80 mb-2">Email Address</label>
+                    <input
+                      type="email"
+                      id="reply_to"
+                      name="reply_to"
+                      required
+                      value={formData.reply_to}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
+                      placeholder="jane@example.com"
+                      aria-required="true"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-white/80 mb-2">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
+                      placeholder="(604) 555-0123"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="address" className="block text-sm font-medium text-white/80 mb-2">Property Address</label>
+                    <input
+                      type="text"
+                      id="address"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
+                      placeholder="1234 Main St, Squamish"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-2">Project Details</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light resize-none rounded-md"
+                    placeholder="Please provide details about your project location and requirements..."
+                    aria-required="true"
+                  ></textarea>
+                </div>
+
+                {/* Cloudflare Turnstile */}
+                <div className="flex justify-center my-2">
+                  <Turnstile
+                    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAACkcoQ4pjVYMr-l8'}
+                    onSuccess={(token) => setTurnstileToken(token)}
+                    onError={() => setTurnstileToken(null)}
+                    onExpire={() => setTurnstileToken(null)}
+                    options={{ theme: 'dark' }}
+                  />
+                </div>
+
+                {/* Status Message Container */}
+                <div aria-live="polite" className="min-h-[24px]">
+                  {status.message && (
+                    <p className={`text-sm ${
+                      status.type === 'error' ? 'text-red-400' : 
+                      status.type === 'success' ? 'text-brand-green' : 
+                      'text-white/70'
+                    }`}>
+                      {status.message}
+                    </p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={status.type === 'loading'}
+                  className="w-full py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 rounded-md disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {status.type === 'loading' ? 'Sending...' : (
+                    <>Send Request <Send size={20} /></>
+                  )}
+                </button>
+              </form>
+            </div>
+
+            {/* Column 3: Surveyor Image */}
+            <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+              <img 
+                src="images/DS-TS-1.jpg" 
+                alt="Land Surveyor out in the field" 
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+
           </div>
         </div>
       </section>

@@ -55,19 +55,19 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-light text-white mb-6">Your projects. Our solutions.</h2>
               <p className="text-base sm:text-lg text-white/70 mb-6 font-light leading-relaxed">
-                Tantalus Geomatics is a team of BC Land Surveyors and Professional Engineers, who play a critical role supporting responsible development throughout the Sea-to-Sky corridor. We support a wide range of activities including residential development, large-scale infrastructure projects, and environmental protection efforts. We are more than measurement specialists; we are strategic partners who provide actionable data to support design and informed decision-making. Learn more about our <a href="/services" className="text-brand-green hover:underline">professional services</a>.
+                Tantalus Geomatics provides the specialized expertise of a BC Land Surveyor and Professional Engineer to support the complexities of modern development. We serve as a strategic partner for residential, infrastructure, and environmental projects, providing the actionable data required for accurate design and regulatory compliance. Learn more about our <a href="/#/services" className="text-brand-green hover:underline">professional services</a>.
               </p>
                             
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="bg-brand-dark p-6 border border-white/10">
                   <MapPin className="text-brand-green mb-3 w-8 h-8" />
                   <h3 className="font-medium text-white mb-2">Local Expertise</h3>
-                  <p className="text-sm text-white/60 font-light">Deep knowledge of municipal regulations and the local landscape from Bowen Island to Lillooet.</p>
+                  <p className="text-sm text-white/60 font-light">Deep knowledge of municipal and provincial regulations.</p>
                 </div>
                 <div className="bg-brand-dark p-6 border border-white/10">
                   <Award className="text-brand-green mb-3 w-8 h-8" />
                   <h3 className="font-medium text-white mb-2">Professional Quality</h3>
-                  <p className="text-sm text-white/60 font-light">Licensed BC Land Surveyors and Professional Engineers ensuring accuracy.</p>
+                  <p className="text-sm text-white/60 font-light">Licensed BC Land Surveyor and Professional Engineering Oversight.</p>
                 </div>
               </div>
             </div>
@@ -106,10 +106,10 @@ export default function About() {
                 <p className="text-xl text-brand-green font-medium mb-8">British Columbia Land Surveyor and Professional Engineer</p>
                 
                 <p className="text-base sm:text-lg text-white/70 mb-6 font-light leading-relaxed">
-                  Dennis is a dual-registered professional, holding commissions as both a British Columbia Land Surveyor (BCLS) and a Professional Engineer (PEng). Dennis has a diverse background supporting residential, professional and construction clients achieve their project goals. His extensive experience surveying in the Sea-to-Sky has established him as an industry leader in the region.
+                Dennis Sherman, BCLS, P.Eng, is a dual-registered professional specializing in the integration of land surveying and geomatics engineering. Driven by a lifelong interest in maps and mathematics, and a love for the outdoors, Dennis has dedicated his career to the precision of geomatics. His background is uniquely distinguished by experience in software development for geomatics applications, allowing him to bring a deeper level of technical insight to complex spatial challenges.
                 </p>
                 <p className="text-base sm:text-lg text-white/70 font-light leading-relaxed">
-                  Dennis received his Bachelors of Engineering in Geomatics Engineering from the Lassonde School of Engineering at York University in 2015. His career in Land Surveying has taken him throughout Canada, from the shores of Haida Gwaii to the busy 400 series highways of the Greater Toronto Area. His comittment to professional accountability, customer service and high quality products is at the center of our pursuit of excellence. <a href="/contact" className="text-brand-green hover:underline">Contact Dennis and the team</a> to discuss your next project.
+                A graduate of the Lassonde School of Engineering at York University, Dennis has managed diverse surveying operations across Canada—from the shores of Haida Gwaii, to the plains of Wood Buffalo National Park, to the infrastructure of the Greater Toronto Area. Focused on the Sea-to-Sky corridor since 2018, his commitment to professional accountability and high-quality deliverables ensures that every client receives the clarity and legal certainty their project demands. <a href="/#/contact" className="text-brand-green hover:underline">Contact Dennis and the team</a> to discuss your next project.
                 </p>
               </div>
             </div>

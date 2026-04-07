@@ -196,20 +196,20 @@ export default function Home() {
             Professional <span className="text-brand-green font-medium">Land Surveying</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
-            Professional Land Surveying throughout the Sea-to-Sky Corridor.
+            throughout the Sea-to-Sky Corridor.
           </p>
           <p className="text-base sm:text-lg md:text-xl text-white/70 mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
-            Your project depends on data you can trust and a team you can rely on. We combine Professional Land Surveying with advanced 3D technologies to support your projects.
+            Professional land surveying is the essential first step for any successful project. We provide the BCLS-certified data and expert oversight required to ensure your boundaries are accurate, your permits are compliant, and your investment is protected.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/contact"
+              to="/#/contact"
               className="px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
             >
-              Request a Quote <ArrowRight size={20} />
+              Contact Us Today <ArrowRight size={20} />
             </Link>
             <Link
-              to="/services"
+              to="/#/services"
               className="px-8 py-4 bg-transparent hover:bg-white/5 text-white font-medium transition-all border border-brand-green flex items-center justify-center backdrop-blur-sm"
             >
               Explore Services
@@ -224,7 +224,7 @@ export default function Home() {
           <div className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Land Surveyor?</h2>
             <p className="text-lg sm:text-xl text-white/60 font-light max-w-2xl mx-auto">
-              Explore common scenarios where a land survey is required. <Link to="/faq" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
+              Explore common scenarios where a land survey is required. <Link to="/#/faq" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
             </p>
           </div>
 
@@ -360,7 +360,7 @@ export default function Home() {
                 <p className="text-white/60 mb-8 font-light">
                   {service.description}
                 </p>
-                <Link to="/services" className="text-brand-green font-medium flex items-center gap-1 hover:gap-2 transition-all mt-auto">
+                <Link to="/#/services" className="text-brand-green font-medium flex items-center gap-1 hover:gap-2 transition-all mt-auto">
                   Learn more <ArrowRight size={16} />
                 </Link>
               </div>
@@ -376,9 +376,9 @@ export default function Home() {
             
             {/* Column 1: Contact Info & Logo */}
             <div className="flex flex-col justify-center">
-              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Request a Land Survey Quote</h2>
+              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Contact Us Today</h2>
               <p className="text-base sm:text-lg text-white/70 font-light mb-12 leading-relaxed">
-                Provide us with your contact information, your property's address, PID (Parcel Identifier) and a brief description of your project requirements. Our team of professionals will contact you to determine how we can best support your project.
+                Connect with Tantalus Geomatics by phone or through the form below. We provide the timely responses and technical expertise required to ensure your project proceeds without delay.
               </p>
 
               <div className="space-y-8 mb-10">
@@ -599,7 +599,7 @@ export default function Home() {
                 </li>
               </ul>
               <Link
-                to="/about"
+                to="/#/about"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/20 text-white font-medium hover:bg-white/10 transition-colors"
               >
                 About Our Team
