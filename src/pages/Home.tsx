@@ -196,10 +196,7 @@ export default function Home() {
             Professional <span className="text-brand-green font-medium">Land Surveying</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
-            throughout the Sea-to-Sky Corridor.
-          </p>
-          <p className="text-base sm:text-lg md:text-xl text-white/70 mb-12 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
-            Professional land surveying is the essential first step for any successful project. We provide the BCLS-certified data and expert oversight required to ensure your boundaries are accurate, your permits are compliant, and your investment is protected.
+            Servicing British Columbia.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
