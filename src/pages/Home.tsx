@@ -369,19 +369,19 @@ export default function Home() {
         </div>
       </section>
 
-{/* Call to Action / Contact Form - 3 Column Layout */}
+    {/* Call to Action / Contact Form - 3 Column Layout */}
       <section className="py-24 bg-brand-dark border-b border-white/10">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             
-            {/* Column 1: Contact Info */}
+            {/* Column 1: Contact Info & Logo */}
             <div className="flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Request a Land Survey Quote</h2>
               <p className="text-base sm:text-lg text-white/70 font-light mb-12 leading-relaxed">
                 Provide us with your contact information, your property's address, PID (Parcel Identifier) and a brief description of your project requirements. Our team of professionals will contact you to determine how we can best support your project.
               </p>
 
-              <div className="space-y-8">
+              <div className="space-y-8 mb-10">
                 <div className="flex items-center gap-4">
                   <div className="p-3 border border-white/10 text-brand-green rounded-lg">
                     <MapPin className="w-6 h-6" />
@@ -413,6 +413,15 @@ export default function Home() {
                     <p className="text-white/60 font-light">(604) 213 9934</p>
                   </div>
                 </div>
+              </div>
+
+              {/* ABCLS Logo */}
+              <div className="bg-white p-5 rounded-2xl inline-flex items-center justify-center shadow-xl w-fit">
+                <img 
+                  src="images/abcls-logo-horizontal.svg" 
+                  alt="Association of British Columbia Land Surveyors Logo" 
+                  className="h-12 sm:h-14 w-auto object-contain"
+                />
               </div>
             </div>
 
@@ -544,22 +553,13 @@ export default function Home() {
               </form>
             </div>
 
-            {/* Column 3: Images */}
-            <div className="flex flex-col gap-6 h-full">
-              <div className="bg-white p-6 rounded-2xl flex items-center justify-center shadow-xl w-full shrink-0 min-h-[140px]">
-                <img 
-                  src="images/abcls-logo-horizontal.svg" 
-                  alt="Association of British Columbia Land Surveyors Logo" 
-                  className="h-16 w-auto object-contain"
-                />
-              </div>
-              <div className="relative flex-grow rounded-2xl overflow-hidden border border-white/10 shadow-xl min-h-[300px]">
-                <img 
-                  src="images/DS-TS-1.jpg" 
-                  alt="Land Surveyor out in the field" 
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
+            {/* Column 3: Surveyor Image */}
+            <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+              <img 
+                src="images/DS-TS-1.jpg" 
+                alt="Land Surveyor out in the field" 
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
 
           </div>
