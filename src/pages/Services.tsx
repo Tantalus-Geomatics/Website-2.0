@@ -264,9 +264,9 @@ export default function Services() {
             
             {/* Column 1: Contact Info & Logo */}
             <div className="flex flex-col justify-center">
-              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Request a Land Survey Quote</h2>
+              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Contact Us Today</h2>
               <p className="text-base sm:text-lg text-white/70 font-light mb-12 leading-relaxed">
-                Provide us with your contact information, your property's address, PID (Parcel Identifier) and a brief description of your project requirements. Our team of professionals will contact you to determine how we can best support your project.
+                Provide us with your contact information and a brief description of your project's requirements. We will contact you right away to determine how we can best support your project.
               </p>
 
               <div className="space-y-8 mb-10">
@@ -444,7 +444,7 @@ export default function Services() {
             {/* Column 3: Surveyor Image */}
             <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
               <img 
-                src="images/DS-TS-1.jpg" 
+                src="images/DS-TS-1.webp" 
                 alt="Land Surveyor out in the field" 
                 className="absolute inset-0 w-full h-full object-cover"
               />
