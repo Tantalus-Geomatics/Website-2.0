@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Map, Compass, HardHat, Mountain, Home as HomeIcon, Trees, Waves, Scale, FileText, Building, Fence } from 'lucide-react';
+import { WavesLadder, Hammer, ArrowRight, Map, Compass, HardHat, Mountain, Home as HomeIcon, Trees, Waves, Scale, FileText, Building, Fence, BrickWall } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function Home() {
@@ -11,29 +11,29 @@ export default function Home() {
       title: "Property Line Surveys",
       icon: <Fence className="w-6 h-6" />,
       content: "Many homeowners discover their existing fences are misaligned with their legal property lines once a formal survey is conducted. A BCLS-certified survey is the only way to definitively establish your boundaries and replace property corners before you invest in new fencing.",
-      image: "images/fence-boundary-staking.webp"
+      image: "images/hedge-line.webp"
     },
     {
       title: "Building Design and Construction Permitting",
-      icon: <HomeIcon className="w-6 h-6" />,
+      icon: <Hammer className="w-6 h-6" />,
       content: "Municipalities require BCLS-certified topographic surveys to verify that proposed designs comply with site coverage and setback zoning bylaws. These surveys provide the foundational data architects and designers need to align their plans with the physical and legal constraints of the site.",
       image: "images/adu.webp"
     },
     {
       title: "Retaining Wall Construction",
-      icon: <HardHat className="w-6 h-6" />,
+      icon: <BrickWall className="w-6 h-6" />,
       content: "Municipalities require a BCLS survey to ensure retaining walls don't encroach onto neighbouring properties and to ensure they conform to local bylaws.",
       image: "images/retaining-wall.webp"
     },
     {
       title: "Deck and Pool Permits",
-      icon: <HomeIcon className="w-6 h-6" />,
+      icon: <WavesLadder className="w-6 h-6" />,
       content: "Municipalities require a site plan prepared by a BC Land Surveyor to confirm that new decks, pools, or accessory buildings meet the \"site coverage\" and \"setback\" requirements of the zoning bylaw.",
       image: "images/deck-pool.webp"
     },
     {
       title: "Purchasing an Older Home",
-      icon: <Building className="w-6 h-6" />,
+      icon: <HomeIcon className="w-6 h-6" />,
       content: "A Building Location Certificate confirms that all existing structures are situated within the legal property boundaries and comply with municipal regulations. For those purchasing older homes, this survey is an essential safeguard against the risks of undocumented encroachments and zoning non-compliance.",
       image: "images/old-home.webp"
     },
@@ -248,24 +248,24 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
+                title: 'Residential Property Surveys',
+                icon: <HomeIcon className="w-8 h-8 text-brand-green" />,
+                description: 'We provide property line, fence, and tree surveys, for boundary confirmation, in addition to site plans and Building Location Certificates required for design accuracy and municipal compliance.',
+              },
+              {
                 title: 'Land Development',
                 icon: <Map className="w-8 h-8 text-brand-green" />,
-                description: 'Site plans and topographic mapping to support residential and commercial growth.',
+                description: 'We provide subdivision, consolidation and strata plans, topographic mapping and site plans for design and permitting, and construction layouts to ensure your development can progress efficiently.',
               },
               {
                 title: 'Construction & Infrastructure',
                 icon: <HardHat className="w-8 h-8 text-brand-green" />,
-                description: 'High-accuracy layout and monitoring for buildings, roads, utilities and large infrastructure.',
+                description: 'High-accuracy layout, earthwork estimates and monitoring for buildings, land development, roads, utilities and large infrastructure.',
               },
               {
                 title: 'Legal Surveys',
                 icon: <Compass className="w-8 h-8 text-brand-green" />,
                 description: 'Professional expertise for property boundaries, subdivisions, and strata plans.',
-              },
-              {
-                title: '3D Reality Capture',
-                icon: <Mountain className="w-8 h-8 text-brand-green" />,
-                description: 'UAV mapping and terrestrial laser scanning for design, digital twins and BIM coordination.',
               },
             ].map((service, idx) => (
               <div key={idx} className="bg-brand-black p-8 border border-white/10 hover:border-brand-green/50 transition-all group flex flex-col">
@@ -291,29 +291,29 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 leading-tight">
-                Why Local Expertise Matters in the <br className="hidden sm:block" />
-                <span className="text-brand-green font-medium">Sea-to-Sky</span>
+               Why Professional Certification Matters in<br className="hidden sm:block" />
+                <span className="text-brand-green font-medium">British Columbia</span>
               </h2>
               <p className="text-base sm:text-lg text-white/70 mb-8 font-light leading-relaxed">
-                Development in the Sea-to-Sky involves navigating the challenges of hazardous terrain, riparian setbacks, and evolving municipal bylaws.
+                Protect your property rights by engaging a commissioned British Columbia Land Surveyor. This ensures your project meets rigorous technical standards and carries the legal authority necessary for municipal and provincial compliance.
               </p>
               <ul className="space-y-6 mb-8">
                 <li className="flex items-start gap-3 text-white/80 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-white font-medium">Steep Slope Compliance:</strong> Our high-density contour mapping helps you meet the District of Squamish's Steep Slope Development Permit Area (DPA) requirements.
+                    <strong className="text-white font-medium">Legal Boundary Authority:</strong> Only a licensed Land Surveyor has the legal authority to define property lines and set permanent boundary markers. Non-licensed individuals are not legally permitted to verify property limits, and their work lacks standing in the event of a boundary dispute or encroachment claim.
                   </div>
                 </li>
                 <li className="flex items-start gap-3 text-white/80 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-white font-medium">Riparian Boundaries:</strong> Our team works with environmental professionals to accurately identify Streamside Protection and Enhancement Areas (SPEA), ensuring your project conforms to provincial regulations.
+                    <strong className="text-white font-medium">Professional Indemnity & Accountability:</strong> Licensed surveyors are governed by a strict code of professional ethics and carry mandatory professional liability insurance. This oversight provides a layer of protection for your investment that non-licensed service providers cannot offer.
                   </div>
                 </li>
                 <li className="flex items-start gap-3 text-white/80 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-white font-medium">Municipal Experience:</strong> Whether it’s a certificate for the location of a new foundation, or supporting subdivision applications, we provide the essential documentation needed for rapid approval.
+                    <strong className="text-white font-medium">Regulatory Acceptance:</strong> Municipalities, financial institutions, and the Land Title Office only accept survey plans that carry the official seal of a BCLS. Using an unlicensed provider often results in rejected permit applications and significant delays when legal documentation is required.
                   </div>
                 </li>
               </ul>
