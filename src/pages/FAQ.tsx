@@ -104,7 +104,7 @@ const faqCategories = [
       },
       { 
         question: "What factors influence the cost of a survey?",
-        answer: "A land survey requires high-precision equipment and extensive research within the LTSA archives. Additionally, a BC Land Surveyor accepts liability for the accuracy of the boundaries they determine, therefor requiring a high level of professional oversight and due diligence when conducting every survey.",
+        answer: "A land survey requires high-precision equipment and extensive research within the LTSA archives. Additionally, factors such as the type of survey, the lot size, terrain challenges, line of sight limitations due to vegetation and buildings, site activites and seasonal weather all influence the level of effort required to complete a survey.",
       },
       {
         question: "Can a survey be performed in the winter?",
@@ -185,7 +185,7 @@ export default function FAQ() {
           <img
             src="images/tantalus-hero-banner.webp"
             alt="Tantalus Lookout"
-            className="w-full h-full object-cover opacity-50 mix-blend-overlay"
+            className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
@@ -196,7 +196,7 @@ export default function FAQ() {
             <span className="text-brand-green font-medium">Land Surveying</span> FAQ
           </h1>
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
-            Expert insights on boundaries, reality capture, and municipal regulations.
+            Expert Answers to Common Questions.
           </p>
           <div className="flex justify-center mt-10">
             <Link
