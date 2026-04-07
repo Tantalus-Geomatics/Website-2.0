@@ -134,7 +134,7 @@ export default function Services() {
       items: [
         { name: 'Boundary Surveys', desc: 'Locating property corners and marking existing boundaries to support the construction of fences, resolve disputes or facilitate renovations and landscaping.' },
         { name: 'Strata Plans', desc: 'Surveys and plans for multi-unit housing and air-space parcels.' },
-        { name: 'Subdivision and Consolidation Plans', desc: 'Supporting developers through the lot subdivision and consolidation process, from initial design consultations to final filing at the Land Title Office.' }
+        { name: 'Subdivision and Consolidation Plans', desc: 'Supporting developers through the lot subdivision and consolidation process, from initial design consultations to final filing at the Land Title Office.' },
         { name: 'Easement, Covenant and Right of Way Plans', desc:'We provide the BCLS-certified plans required to register easements, covenants, and rights-of-way. These documents ensure all legal land-use restrictions are accurately documented and protected on the property title.'}
       ]
     },
