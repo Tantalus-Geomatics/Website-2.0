@@ -185,7 +185,7 @@ export default function Home() {
           <img
             src="images/tantalus-hero-banner.webp"
             alt="Tantalus Lookout"
-            className="w-full h-full object-cover opacity-60 mix-blend-overlay"
+            className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />

@@ -41,7 +41,7 @@ export default function PropertyLineStaking() {
       />
 
       {/* Hero */}
-      <section className="relative min-h-[72vh] flex flex-col justify-center overflow-hidden border-b border-white/10">
+      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="images/hedge-line.webp"

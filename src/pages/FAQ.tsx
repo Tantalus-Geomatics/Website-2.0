@@ -180,7 +180,7 @@ export default function FAQ() {
       />
       
       {/* Hero */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
+      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="images/tantalus-hero-banner.webp"
