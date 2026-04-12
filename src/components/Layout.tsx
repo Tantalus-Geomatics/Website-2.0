@@ -26,8 +26,9 @@ export default function Layout() {
       <header className="bg-brand-black border-b border-white/10 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 sm:h-24 items-center">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 sm:gap-3">
+            
+            {/* Left: Logo */}
+            <Link to="/" className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <img 
                 src="tantalus-logo.webp" 
                 alt="Tantalus Geomatics Logo" 
@@ -45,32 +46,48 @@ export default function Layout() {
               </div>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-brand-green ${
-                    location.pathname === link.path ? 'text-brand-green' : 'text-white/80'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </nav>
+            {/* Center: CTA Button */}
+            <div className="flex-1 flex justify-end md:justify-center px-4">
+              <a 
+                href="tel:6042139934" 
+                className="bg-brand-green text-black px-4 py-2 rounded-md font-semibold text-sm md:text-base flex items-center gap-2 hover:opacity-90 transition-opacity whitespace-nowrap"
+              >
+                <Phone size={16} className="md:w-5 md:h-5 shrink-0" />
+                <span className="hidden lg:inline">Call Now</span>
+                <span className="inline lg:hidden">Call</span>
+              </a>
+            </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 text-white/80 hover:text-white rounded-md"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Right: Desktop Nav & Mobile Menu */}
+            <div className="flex items-center flex-shrink-0">
+              {/* Desktop Nav */}
+              <nav className="hidden md:flex gap-8">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`text-sm font-medium transition-colors hover:text-brand-green ${
+                      location.pathname === link.path ? 'text-brand-green' : 'text-white/80'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </nav>
+
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden p-2 text-white/80 hover:text-white rounded-md ml-1"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+            
           </div>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile Nav Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden bg-brand-dark border-t border-white/10">
             <div className="px-4 pt-2 pb-4 space-y-1">
