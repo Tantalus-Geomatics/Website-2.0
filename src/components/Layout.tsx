@@ -24,42 +24,42 @@ export default function Layout() {
 
       {/* Navigation */}
       <header className="bg-brand-black border-b border-white/10 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20 sm:h-24 items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative">
+          <div className="flex justify-between h-20 sm:h-24 items-center gap-2">
             
             {/* Left: Logo */}
-            <Link to="/" className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3 z-10 min-w-0">
               <img 
                 src="tantalus-logo.webp" 
                 alt="Tantalus Geomatics Logo" 
-                className="h-10 sm:h-12 w-auto object-contain"
+                className="h-7 sm:h-12 w-auto object-contain shrink-0"
                 onError={(e) => {
-                  // Fallback to the Mountain icon if the image isn't found
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling?.classList.remove('hidden');
                 }}
               />
-              <Mountain size={32} className="text-white hidden sm:w-10 sm:h-10" />
-              <div className="flex flex-col">
-                <span className="font-normal text-xl sm:text-2xl leading-tight text-white tracking-wide">Tantalus Geomatics</span>
-                <span className="text-xs sm:text-sm font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
+              <Mountain size={32} className="text-white hidden sm:w-10 sm:h-10 shrink-0" />
+              <div className="flex flex-col min-w-0">
+                <span className="font-normal text-[15px] sm:text-2xl leading-tight text-white tracking-wide truncate">Tantalus Geomatics</span>
+                <span className="text-[10px] sm:text-sm font-normal text-brand-green tracking-wide truncate">Land Surveying Ltd.</span>
               </div>
             </Link>
 
-            {/* Center: CTA Button */}
-            <div className="flex-1 flex justify-end md:justify-center px-4">
-              <a 
-                href="tel:6042139934" 
-                className="bg-brand-green text-black px-4 py-2 rounded-md font-semibold text-sm md:text-base flex items-center gap-2 hover:opacity-90 transition-opacity whitespace-nowrap"
-              >
-                <Phone size={16} className="md:w-5 md:h-5 shrink-0" />
-                <span className="hidden lg:inline">Call Now</span>
-                <span className="inline lg:hidden">Call</span>
-              </a>
-            </div>
+            {/* Right: Actions & Mobile Menu */}
+            <div className="flex items-center gap-2.5 sm:gap-6 z-10 shrink-0">
+              
+              {/* CTA Button (Inline right on mobile, absolute center on desktop) */}
+              <div className="md:absolute md:left-1/2 md:-translate-x-1/2 md:flex">
+                <a 
+                  href="tel:6042139934" 
+                  className="bg-brand-green text-black px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-md font-semibold text-sm md:text-base flex items-center gap-1.5 hover:opacity-90 transition-opacity whitespace-nowrap shrink-0"
+                >
+                  <Phone size={14} className="md:w-5 md:h-5 shrink-0" />
+                  <span className="hidden lg:inline">Call Now</span>
+                  <span className="inline lg:hidden">Call</span>
+                </a>
+              </div>
 
-            {/* Right: Desktop Nav & Mobile Menu */}
-            <div className="flex items-center flex-shrink-0">
               {/* Desktop Nav */}
               <nav className="hidden md:flex gap-8">
                 {navLinks.map((link) => (
@@ -77,7 +77,7 @@ export default function Layout() {
 
               {/* Mobile Menu Button */}
               <button
-                className="md:hidden p-2 text-white/80 hover:text-white rounded-md ml-1"
+                className="md:hidden p-1 text-white/80 hover:text-white rounded-md shrink-0"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
