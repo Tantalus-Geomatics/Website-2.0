@@ -1,74 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* * Tantalus Geomatics - Revamped Branding Palette
- * A brighter, open theme with new orange accent, 
- * maintaining the signature light green from the logo.
- */
-
 @theme {
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-
-  /* --- BRAND COLORS (LIGHT THEME) --- */
-  
-  /* Primary Green (from the original logo text) */
-  --color-brand-green: #A3D9A1; 
-
-  /* New Action Color (Professional Safety/Surveyor's Orange) */
-  --color-brand-orange: #ff914d; 
-
-  /* Primary Text & Core Dark (off-black) */
-  --color-brand-black: #141414; 
-  --color-brand-dark: #202020; 
-  --color-brand-gray: #4a4a4a;
-
-  /* Secondary Accents / Borders */
-  --color-brand-gray-light: #e0e0e0;
-  --color-brand-gray-lighter: #f0f0f0;
-
-  /* --- BASE COLORS --- */
-  --color-white: #ffffff;
-  --color-brand-white: #f9f9f9; /* Off-white for page background */
+  --color-brand-green: #6b9e54;
+  --color-brand-green-light: #84b86c;
+  --color-brand-green-dark: #538040;
+  --color-brand-black: #000000;
+  --color-brand-dark: #0a0a0a;
+  --color-brand-gray: #141414;
 }
 
 body {
-  background-color: var(--color-brand-white);
-  color: var(--color-brand-black);
-}
-
-/* --- LOGO CONCEPT IN LIGHT MODE --- */
-/*
-On a light site, you would use a 'light mode' version of your brand concept.
-
-Palette application for the branding stacked structure:
-  - Mountain Icon: (Rendered in --color-brand-dark or --color-brand-green)
-  - Tantalus Geomatics: (Rendered in --color-brand-black)
-  - Land Surveying Ltd.: (Rendered in --color-brand-green - preserving the signature color)
-*/
-
-/* --- KEY COMPONENT STYLES --- */
-
-/* Text Link with Green Accent */
-a {
-  color: var(--color-brand-black);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-a:hover {
-  color: var(--color-brand-green);
-}
-
-/* High-Contrast Button with Orange Accent */
-.btn-primary {
-  background-color: var(--color-brand-orange);
+  background-color: var(--color-brand-black);
   color: #ffffff;
-  font-weight: 600;
-  border-radius: 4px;
-  padding: 0.75rem 1.5rem;
-  transition: background-color 0.2s;
-}
-
-.btn-primary:hover {
-  background-color: #e67e22; /* A slightly darker orange for hover */
 }
