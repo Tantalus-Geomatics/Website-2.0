@@ -55,7 +55,7 @@ export default function Layout() {
                   className="bg-brand-green text-black px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-md font-semibold text-sm md:text-base flex items-center gap-1.5 hover:opacity-90 transition-opacity whitespace-nowrap shrink-0"
                 >
                   <Phone size={14} className="md:w-5 md:h-5 shrink-0" />
-                  <span className="hidden lg:inline">Call Now</span>
+                  <span className="hidden lg:inline">Call</span>
                   <span className="inline lg:hidden">Call</span>
                 </a>
               </div>
