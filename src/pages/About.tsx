@@ -1,4 +1,5 @@
-import { Mountain, Award, Users, MapPin, Phone } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Mountain, Award, Users, MapPin, Phone, Send } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function About() {
@@ -16,7 +17,7 @@ export default function About() {
       }
     }
   };
-  
+
   // Form State
   const [formData, setFormData] = useState({
     from_name: '',
