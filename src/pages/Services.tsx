@@ -259,65 +259,14 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Call to Action / Contact Form - 3 Column Layout */}
-      <section className="py-24 bg-brand-dark border-b border-white/10">
+    {/* Call to Action / Contact Form - 2 Column Layout */}
+    <section className="py-24 bg-brand-dark border-b border-white/10">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             
-            {/* Column 1: Contact Info & Logo */}
-            <div className="flex flex-col justify-center">
-              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Contact Us Today</h2>
-              <p className="text-base sm:text-lg text-white/70 font-light mb-12 leading-relaxed">
-                Provide us with your contact information and a brief description of your project's requirements. We will contact you right away to determine how we can best support your project.
-              </p>
-
-              <div className="space-y-8 mb-10">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 border border-white/10 text-brand-green rounded-lg">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-white mb-1">Office</h3>
-                    <p className="text-white/60 font-light">Squamish, BC</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="p-3 border border-white/10 text-brand-green rounded-lg">
-                    <Mail className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-white mb-1">Email</h3>
-                    <a href="mailto:contact@tantalusgeomatics.com" className="text-brand-green hover:text-brand-green-light font-light transition-colors">
-                      contact@tantalusgeomatics.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="p-3 border border-white/10 text-brand-green rounded-lg">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-white mb-1">Phone</h3>
-                    <p className="text-white/60 font-light">(604) 213 9934</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* ABCLS Logo */}
-              <div className="bg-white p-5 rounded-2xl inline-flex items-center justify-center shadow-xl w-fit">
-                <img 
-                  src="images/abcls-logo-horizontal.svg" 
-                  alt="Association of British Columbia Land Surveyors Logo" 
-                  className="h-12 sm:h-14 w-auto object-contain"
-                />
-              </div>
-            </div>
-
-            {/* Column 2: Contact Form */}
+            {/* Column 1 (Formerly Column 2): Contact Form */}
             <div className="bg-brand-black p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
-              <h3 className="text-2xl font-light text-white mb-8">Send us a message</h3>
+              <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
               <form id="contact-form" onSubmit={handleSubmit} className="space-y-5" aria-label="Contact form">
                 
                 {/* Honeypot Field */}
@@ -443,7 +392,7 @@ export default function Services() {
               </form>
             </div>
 
-            {/* Column 3: Surveyor Image */}
+            {/* Column 2 (Formerly Column 3): Surveyor Image */}
             <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
               <img 
                 src="images/DS-TS-1.webp" 

@@ -368,7 +368,7 @@ export default function Home() {
             
             {/* Column 1 (Formerly Column 2): Contact Form */}
             <div className="bg-brand-black p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
-              <h3 className="text-2xl font-light text-white mb-8">Send us a message</h3>
+              <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
               <form id="contact-form" onSubmit={handleSubmit} className="space-y-5" aria-label="Contact form">
                 
                 {/* Honeypot Field */}
