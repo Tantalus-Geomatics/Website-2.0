@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ChevronUp, AlertCircle, Lightbulb, ArrowRight, Phone } from 'lucide-react';
+import { ChevronDown, ChevronUp, AlertCircle, Lightbulb, ArrowRight, Phone, Send  } from 'lucide-react';
 import SEO from '../components/SEO';
 import { Turnstile } from '@marsidev/react-turnstile';
+import emailjs from '@emailjs/browser';
 
 const faqCategories = [
   {

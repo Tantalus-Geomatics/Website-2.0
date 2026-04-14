@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Mountain, Award, Users, MapPin, Phone, Send } from 'lucide-react';
 import SEO from '../components/SEO';
+import { Turnstile } from '@marsidev/react-turnstile';
+import emailjs from '@emailjs/browser';
 
 export default function About() {
   const aboutSchema = {
