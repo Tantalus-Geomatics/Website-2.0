@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ChevronUp, AlertCircle, Lightbulb, ArrowRight } from 'lucide-react';
+import { ChevronDown, ChevronUp, AlertCircle, Lightbulb, ArrowRight, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const faqCategories = [

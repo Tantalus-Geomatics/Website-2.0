@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck } from 'lucide-react';
+import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const CANONICAL = 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking';

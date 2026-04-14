@@ -1,4 +1,4 @@
-import { Mountain, Award, Users, MapPin } from 'lucide-react';
+import { Mountain, Award, Users, MapPin, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function About() {
