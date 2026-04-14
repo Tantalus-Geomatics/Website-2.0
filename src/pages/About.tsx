@@ -45,6 +45,15 @@ export default function About() {
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             Local knowledge and personalized service.
           </p>
+          <div className="flex justify-center px-4 sm:px-0">
+            <a
+              href="tel:6042139934"
+              className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+            >
+              <Phone size={20} />
+              Call for a free quote
+            </a>
+          </div>
         </div>
       </section>
 

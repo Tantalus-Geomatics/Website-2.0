@@ -198,13 +198,14 @@ export default function FAQ() {
           <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             Expert Answers to Common Questions.
           </p>
-          <div className="flex justify-center mt-10">
-            <Link
-              to="/contact"
-              className="px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+          <div className="flex justify-center px-4 sm:px-0">
+            <a
+              href="tel:6042139934"
+              className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
             >
-              Request a Consultation <ArrowRight size={20} />
-            </Link>
+              <Phone size={20} />
+              Call for a free quote
+            </a>
           </div>
         </div>
       </section>

@@ -61,15 +61,15 @@ export default function PropertyLineStaking() {
           <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
             Building a fence? Planning to remove a tree? Installing a retaining wall? A certified boundary survey provides the peace of mind you need to avoid costly fines and legal disputes.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg shadow-brand-green/15"
-            >
-              Request a Professional Consultation
-              <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
-            </Link>
-          </div>
+            <div className="flex justify-center px-4 sm:px-0">
+              <a
+                href="tel:6042139934"
+                className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+              >
+                <Phone size={20} />
+                Call for a free quote
+              </a>
+            </div>
         </div>
       </section>
 
