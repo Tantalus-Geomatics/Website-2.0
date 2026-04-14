@@ -16,7 +16,85 @@ export default function About() {
       }
     }
   };
+  
+  // Form State
+  const [formData, setFormData] = useState({
+    from_name: '',
+    reply_to: '',
+    phone: '',
+    address: '',
+    pid: '',
+    project_type: 'Site Plan',
+    message: '',
+    website_url: ''
+  });
+  const [status, setStatus] = useState<{ type: 'idle' | 'loading' | 'success' | 'error', message: React.ReactNode }>({ type: 'idle', message: '' });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
+  useEffect(() => {
+    emailjs.init({
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'r37yPY3ALEbiW4YxU',
+      blockHeadless: true,
+      limitRate: {
+        id: 'app',
+        throttle: 10000,
+      },
+    });
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Honeypot check
+    if (formData.website_url) {
+      // Silently reject bot submissions
+      return;
+    }
+
+    if (!turnstileToken) {
+      setStatus({ type: 'error', message: 'Please complete the CAPTCHA verification.' });
+      return;
+    }
+
+    setStatus({ type: 'loading', message: 'Sending your request...' });
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_3rqnrju',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_uvo8zyr',
+        e.currentTarget
+      );
+      
+      setStatus({ type: 'success', message: 'Thank you! Your request has been sent successfully. We will be in touch soon.' });
+      setFormData({
+        from_name: '',
+        reply_to: '',
+        phone: '',
+        address: '',
+        pid: '',
+        project_type: 'Site Plan',
+        message: '',
+        website_url: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setStatus({ 
+        type: 'error', 
+        message: (
+          <>
+            There was an error sending your request. Please email us directly at{' '}
+            <a href="mailto:contact@tantalusgeomatics.com" className="underline hover:text-brand-green transition-colors">
+              contact@tantalusgeomatics.com
+            </a>.
+          </>
+        ) 
+      });
+    }
+  };
   return (
     <div className="bg-brand-black min-h-screen">
       <SEO 
@@ -271,7 +349,7 @@ export default function About() {
           </div>
         </div>
       </section>
-      
+
     </div>
   );
 }
