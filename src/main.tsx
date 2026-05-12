@@ -1,13 +1,7 @@
-import { ViteSSG } from 'vite-ssg/react';
+import { ViteReactSSG } from 'vite-react-ssg';
 import App from './App.tsx';
 import './index.css';
 
-/**
- * Vite-SSG handles the creation of the Router and the Root for us.
- * We provide the App component and the routes we want to pre-render.
- */
-
-// Define the routes for the SSG crawler
 const routes = [
   { path: '/' },
   { path: '/about' },
@@ -20,16 +14,13 @@ const routes = [
   { path: '/sea-to-sky-property-line-and-boundary-staking' },
 ];
 
-export const createApp = ViteSSG(
-  // The root component
+// Note: We export 'createApp' which vite-react-ssg uses as the entry point
+export const createApp = ViteReactSSG(
   <App />,
-  // Router options
   { routes },
-  // Setup function (runs on both client and server)
-  ({ app, router, routes, isClient }) => {
-    // You can inject state, analytics, or other plugins here
+  ({ isClient }) => {
     if (isClient) {
-      console.log('Tantalus Geomatics Site Loaded');
+      console.log('Tantalus Geomatics Loaded');
     }
   }
 );
