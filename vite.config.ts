@@ -6,7 +6,6 @@ import generateSitemap from 'vite-plugin-sitemap';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
-  
   const routes = [
     '/', '/about', '/services', '/faq', '/contact', 
     '/residential', '/survey-pricing', '/topographic-surveys', 
@@ -25,20 +24,11 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     base: '/',
-    
-    // VITE 6 COMPATIBILITY
-    ssr: {
-      // We only need to force the router and the SSG library
-      noExternal: [/react-router/, 'vite-react-ssg', 'lucide-react'],
-    },
-
     resolve: {
       alias: {
-        // Use import.meta.dirname for modern ESM compatibility
         '@': path.resolve(import.meta.dirname, '.'),
       },
     },
-
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },

@@ -3,14 +3,12 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite-react-ssg build",
-    "postbuild": "node -e \"import('fs').then(fs => fs.copyFileSync('dist/index.html', 'dist/404.html'))\"",
-    "preview": "vite preview",
-    "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
-  },
+"scripts": {
+  "dev": "vite --port=3000",
+  "build": "vite build && node prerender.js",
+  "postbuild": "node -e \"import('fs').then(fs => fs.copyFileSync('dist/index.html', 'dist/404.html'))\"",
+  "preview": "vite preview"
+},
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@google/genai": "^1.29.0",
@@ -24,8 +22,7 @@
     "react-dom": "^19.0.0",
     "react-router": "^7.15.0",
     "react-router-dom": "^7.13.1",
-    "vite": "^6.2.0",
-    "vite-react-ssg": "^0.9.1-beta.1"
+    "vite": "^6.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

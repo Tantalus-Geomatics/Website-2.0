@@ -1,22 +1,27 @@
-import { ViteReactSSG } from 'vite-react-ssg';
+import { StrictMode } from 'react';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx';
 import './index.css';
 
-// vite-react-ssg prefers objects for the routes array
-const routes = [
-  { path: '/' },
-  { path: '/about' },
-  { path: '/services' },
-  { path: '/faq' },
-  { path: '/contact' },
-  { path: '/residential' },
-  { path: '/survey-pricing' },
-  { path: '/topographic-surveys' },
-  { path: '/sea-to-sky-property-line-and-boundary-staking' },
-];
+const container = document.getElementById('root')!;
 
-export const createRoot = ViteReactSSG(
-  App,
-  { routes }
-  // We are omitting the 3rd argument entirely to avoid the 'fn' error
-);
+// This logic detects if the page was already pre-rendered
+if (container.hasChildNodes()) {
+  hydrateRoot(
+    container,
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>
+  );
+} else {
+  createRoot(container).render(
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>
+  );
+}
