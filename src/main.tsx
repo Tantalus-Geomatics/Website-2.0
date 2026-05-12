@@ -15,7 +15,7 @@ const routes = [
 ];
 
 // Note: We export 'createApp' which vite-react-ssg uses as the entry point
-export const createApp = ViteReactSSG(
+export const createRoot = ViteReactSSG(
   <App />,
   { routes },
   ({ isClient }) => {
