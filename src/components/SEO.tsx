@@ -1,43 +1,20 @@
-import { Helmet } from 'react-helmet-async';
-
+/**
+ * SEO Component for React 19
+ * No library required! React 19 hoists these tags to the <head> automatically.
+ */
 interface SEOProps {
-  title: string;
-  description: string;
-  keywords?: string;
-  canonicalUrl?: string;
-  schema?: object | object[];
+  title?: string;
+  description?: string;
 }
 
-export default function SEO({ title, description, keywords, canonicalUrl, schema }: SEOProps) {
-  const siteName = "Tantalus Geomatics";
-  const fullTitle = `${title} | ${siteName}`;
-
+export default function SEO({ 
+  title = "Tantalus Geomatics | Squamish Land Surveying", 
+  description = "Professional geomatics and land surveying services in Squamish and the Sea to Sky corridor." 
+}: SEOProps) {
   return (
-    <Helmet>
-      <title>{fullTitle}</title>
+    <>
+      <title>{title}</title>
       <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
-      
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:site_name" content={siteName} />
-      {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
-      
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      
-      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-      
-      {/* JSON-LD Schema */}
-      {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
-      )}
-    </Helmet>
+    </>
   );
 }
