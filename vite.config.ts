@@ -7,7 +7,6 @@ import generateSitemap from 'vite-plugin-sitemap';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   
-  // List of your routes for the sitemap and SSG crawler
   const routes = [
     '/',
     '/about',
@@ -24,29 +23,28 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(), 
       tailwindcss(),
-      // Automatically generates sitemap.xml in the dist folder
       generateSitemap({
-        hostname: 'https://tantalus-geomatics.github.io/Website-2.0', // Change this to your custom domain if you have one
+        hostname: 'https://tantalus-geomatics.github.io/Website-2.0',
         routes: routes,
         readable: true,
-        generateRobotsTxt: false,
+        generateRobotsTxt: false, // As discussed, we'll use the public/robots.txt
       }),
     ],
-    // If NOT using a custom domain, change this to '/Website-2.0/'
     base: '/', 
     
-    // SSG specific configuration
+    // ADD THIS SECTION TO FIX THE "MISSING SPECIFIER" ERROR
+    ssr: {
+      noExternal: ['vite-ssg', 'react-router-dom'],
+    },
+
     ssgOptions: {
       script: 'async',
       formatting: 'minify',
-      // This ensures all your routes are built as physical HTML files
       includedRoutes() {
         return routes;
       },
-      // Prevents issues with hydration during the build process
       mock: true,
     },
-
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
