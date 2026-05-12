@@ -29,6 +29,7 @@ export default defineConfig(({ mode }) => {
         hostname: 'https://tantalus-geomatics.github.io/Website-2.0', // Change this to your custom domain if you have one
         routes: routes,
         readable: true,
+        generateRobotsTxt: false,
       }),
     ],
     // If NOT using a custom domain, change this to '/Website-2.0/'
