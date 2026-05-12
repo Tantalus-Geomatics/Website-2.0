@@ -179,8 +179,9 @@ export default function Home() {
         canonicalUrl="https://tantalusgeomatics.com/"
         schema={homeSchema}
       />
+      
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden border-b border-white/10">
+      <section className="relative min-h-screen pt-24 pb-16 lg:pt-32 lg:pb-24 flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="images/tantalus-hero-banner.webp"
@@ -191,21 +192,157 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
         </div>
         
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
-            Professional <span className="text-brand-green font-medium">Land Surveying</span>
-          </h1>
-          <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md">
-            Servicing British Columbia.
-          </p>
-          <div className="flex justify-center px-4 sm:px-0">
-            <a
-              href="tel:6042139934"
-              className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
-            >
-              <Phone size={20} />
-              Call for a free quote
-            </a>
+        <div className="relative z-10 max-w-[90rem] w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            
+            {/* Left Column: Heading & CTA */}
+            <div className="text-left">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+                Professional <br className="hidden lg:block"/>
+                <span className="text-brand-green font-medium">Land Surveying</span>
+              </h1>
+              <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-10 font-light leading-relaxed drop-shadow-md">
+                Servicing British Columbia
+              </p>
+              <div className="flex justify-start">
+                <a
+                  href="tel:6042139934"
+                  className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 rounded-md"
+                >
+                  <Phone size={20} />
+                  Call for quote
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Contact Form */}
+            <div className="bg-brand-black/95 backdrop-blur-sm p-6 sm:p-8 md:p-10 border border-white/10 shadow-2xl rounded-2xl w-full max-w-xl mx-auto lg:ml-auto lg:mr-0">
+              <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
+              <form id="contact-form" onSubmit={handleSubmit} className="space-y-5" aria-label="Contact form">
+                
+                {/* Honeypot Field */}
+                <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                  <label htmlFor="website_url">Website URL</label>
+                  <input
+                    type="text"
+                    id="website_url"
+                    name="website_url"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website_url}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="from_name" className="block text-sm font-medium text-white/80 mb-2">Full Name</label>
+                    <input
+                      type="text"
+                      id="from_name"
+                      name="from_name"
+                      required
+                      value={formData.from_name}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
+                      placeholder="Jane Doe"
+                      aria-required="true"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="reply_to" className="block text-sm font-medium text-white/80 mb-2">Email Address</label>
+                    <input
+                      type="email"
+                      id="reply_to"
+                      name="reply_to"
+                      required
+                      value={formData.reply_to}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
+                      placeholder="jane@example.com"
+                      aria-required="true"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-white/80 mb-2">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
+                      placeholder="(604) 555-0123"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="address" className="block text-sm font-medium text-white/80 mb-2">Property Address</label>
+                    <input
+                      type="text"
+                      id="address"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
+                      placeholder="1234 Main St, Squamish"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-2">Project Details</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light resize-none rounded-md"
+                    placeholder="Please provide details about your project location and requirements..."
+                    aria-required="true"
+                  ></textarea>
+                </div>
+
+                {/* Cloudflare Turnstile */}
+                <div className="flex justify-center my-2">
+                  <Turnstile
+                    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAACkcoQ4pjVYMr-l8'}
+                    onSuccess={(token) => setTurnstileToken(token)}
+                    onError={() => setTurnstileToken(null)}
+                    onExpire={() => setTurnstileToken(null)}
+                    options={{ theme: 'dark' }}
+                  />
+                </div>
+
+                {/* Status Message Container */}
+                <div aria-live="polite" className="min-h-[24px]">
+                  {status.message && (
+                    <p className={`text-sm ${
+                      status.type === 'error' ? 'text-red-400' : 
+                      status.type === 'success' ? 'text-brand-green' : 
+                      'text-white/70'
+                    }`}>
+                      {status.message}
+                    </p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={status.type === 'loading'}
+                  className="w-full py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 rounded-md disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {status.type === 'loading' ? 'Sending...' : (
+                    <>Send Request <Send size={20} /></>
+                  )}
+                </button>
+              </form>
+            </div>
+            
           </div>
         </div>
       </section>
@@ -357,152 +494,6 @@ export default function Home() {
                 </Link>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-    {/* Call to Action / Contact Form - 2 Column Layout */}
-    <section className="py-24 bg-brand-dark border-b border-white/10">
-        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            
-            {/* Column 1 (Formerly Column 2): Contact Form */}
-            <div className="bg-brand-black p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
-              <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
-              <form id="contact-form" onSubmit={handleSubmit} className="space-y-5" aria-label="Contact form">
-                
-                {/* Honeypot Field */}
-                <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
-                  <label htmlFor="website_url">Website URL</label>
-                  <input
-                    type="text"
-                    id="website_url"
-                    name="website_url"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={formData.website_url}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label htmlFor="from_name" className="block text-sm font-medium text-white/80 mb-2">Full Name</label>
-                    <input
-                      type="text"
-                      id="from_name"
-                      name="from_name"
-                      required
-                      value={formData.from_name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
-                      placeholder="Jane Doe"
-                      aria-required="true"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="reply_to" className="block text-sm font-medium text-white/80 mb-2">Email Address</label>
-                    <input
-                      type="email"
-                      id="reply_to"
-                      name="reply_to"
-                      required
-                      value={formData.reply_to}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
-                      placeholder="jane@example.com"
-                      aria-required="true"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-white/80 mb-2">Phone Number</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
-                      placeholder="(604) 555-0123"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="address" className="block text-sm font-medium text-white/80 mb-2">Property Address</label>
-                    <input
-                      type="text"
-                      id="address"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
-                      placeholder="1234 Main St, Squamish"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-2">Project Details</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light resize-none rounded-md"
-                    placeholder="Please provide details about your project location and requirements..."
-                    aria-required="true"
-                  ></textarea>
-                </div>
-
-                {/* Cloudflare Turnstile */}
-                <div className="flex justify-center my-2">
-                  <Turnstile
-                    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAACkcoQ4pjVYMr-l8'}
-                    onSuccess={(token) => setTurnstileToken(token)}
-                    onError={() => setTurnstileToken(null)}
-                    onExpire={() => setTurnstileToken(null)}
-                    options={{ theme: 'dark' }}
-                  />
-                </div>
-
-                {/* Status Message Container */}
-                <div aria-live="polite" className="min-h-[24px]">
-                  {status.message && (
-                    <p className={`text-sm ${
-                      status.type === 'error' ? 'text-red-400' : 
-                      status.type === 'success' ? 'text-brand-green' : 
-                      'text-white/70'
-                    }`}>
-                      {status.message}
-                    </p>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status.type === 'loading'}
-                  className="w-full py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 rounded-md disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  {status.type === 'loading' ? 'Sending...' : (
-                    <>Send Request <Send size={20} /></>
-                  )}
-                </button>
-              </form>
-            </div>
-
-            {/* Column 2 (Formerly Column 3): Surveyor Image */}
-            <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
-              <img 
-                src="images/DS-TS-1.webp" 
-                alt="Land Surveyor out in the field" 
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-
           </div>
         </div>
       </section>

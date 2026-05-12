@@ -159,7 +159,7 @@ export default function Layout() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-brand-green" />
-                (604) 213 9934
+                <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-brand-green" />
