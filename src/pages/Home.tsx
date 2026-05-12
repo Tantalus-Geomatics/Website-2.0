@@ -96,7 +96,7 @@ export default function Home() {
       title: "Property Line Surveys",
       icon: <Fence className="w-6 h-6" />,
       content: "Many homeowners discover their existing fences are misaligned with their legal property lines once a formal survey is conducted. A BCLS-certified survey is the only way to definitively establish your boundaries and replace property corners before you invest in new fencing.",
-      image: "images/hedge-line.webp"
+      image: "images/squamish-property-line.webp"
     },
     {
       title: "Building Design and Construction Permitting",
@@ -108,7 +108,7 @@ export default function Home() {
       title: "Retaining Wall Construction",
       icon: <BrickWall className="w-6 h-6" />,
       content: "Municipalities require a BCLS survey to ensure retaining walls don't encroach onto neighbouring properties and to ensure they conform to local bylaws.",
-      image: "images/retaining-wall.webp"
+      image: "images/squamish-retaining-wall-survey.webp"
     },
     {
       title: "Deck and Pool Permits",
@@ -132,13 +132,13 @@ export default function Home() {
       title: "Tree Removal",
       icon: <Trees className="w-6 h-6" />,
       content: "Municipal tree bylaws and \"Restricted Covenant Areas\" often limit or restrict tree removal. A BCLS identifies these zones on the ground so owners don't face large fines for unlawful tree removal.",
-      image: "images/tree.webp"
+      image: "images/squamish-tree-survey.webp"
     },
     {
       title: "Mortgage Refinancing",
       icon: <FileText className="w-6 h-6" />,
       content: "Lenders often require a recent Building Location Certificate to confirm all structures on the property conform to municipal bylaws and to determine the total lot area prior to approving a new loan or line of credit.",
-      image: "images/mortgage.webp"
+      image: "images/Squamish-Garibaldi-Estates-Property-Survey.webp"
     },
     {
       title: "Natural Boundary Identification",
@@ -481,18 +481,23 @@ export default function Home() {
                 description: 'Professional expertise for property boundaries, subdivisions, and strata plans.',
               },
             ].map((service, idx) => (
-              <div key={idx} className="bg-brand-black p-8 border border-white/10 hover:border-brand-green/50 transition-all group flex flex-col">
+              <Link 
+                key={idx}
+                to="/services" 
+                key={idx} 
+                className="bg-brand-black p-8 border border-white/10 hover:border-brand-green/50 transition-all group flex flex-col block cursor-pointer"
+              >
                 <div className="w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-medium text-white mb-4">{service.title}</h3>
+                <h3 className="text-xl font-medium text-white mb-4 group-hover:text-brand-green transition-colors">{service.title}</h3>
                 <p className="text-white/60 mb-8 font-light">
                   {service.description}
                 </p>
-                <Link to="/services" className="text-brand-green font-medium flex items-center gap-1 hover:gap-2 transition-all mt-auto">
+                <div className="text-brand-green font-medium flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
                   Learn more <ArrowRight size={16} />
-                </Link>
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -539,8 +544,8 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="images/steep-slope.webp"
-                alt="Steep Slope"
+                src="images/Garibaldi-Highland-Road-Survey.webp"
+                alt="Garibaldi Highland Road Survey"
                 className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                 referrerPolicy="no-referrer"
               />
@@ -552,8 +557,8 @@ export default function Home() {
                   referrerPolicy="no-referrer"
                 />
                 <img
-                  src="images/muni-ex.webp"
-                  alt="Municipal Expertise"
+                  src="images/Squamish-Garibaldi-Estates-Property-Survey.webp"
+                  alt="Garibaldi Estates Property Survey"
                   className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />

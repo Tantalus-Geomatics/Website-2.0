@@ -165,7 +165,7 @@ export default function About() {
             <div className="relative mt-8 lg:mt-0">
               <div className="absolute inset-0 border border-brand-green transform translate-x-4 translate-y-4 -z-10 hidden sm:block"></div>
               <img
-                src="images/tantalus-square.webp"
+                src="images/Garibaldi-Estates-gnss-topographic-survey.webp"
                 alt="Squamish Chief Mountain"
                 className="object-cover w-full h-[400px] sm:h-[600px] grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
