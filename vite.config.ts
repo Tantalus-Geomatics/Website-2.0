@@ -30,6 +30,16 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, '.'),
       },
     },
+    ssr: {
+      // Add these specific packages to ensure the SSR bundle includes them
+      noExternal: [
+        'react-router-dom', 
+        'lucide-react', 
+        'motion', 
+        '@marsidev/react-turnstile',
+        '@google/genai'
+      ],
+    },
     // SSG configuration for the new library
     ssgOptions: {
       script: 'async',
