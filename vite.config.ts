@@ -31,16 +31,18 @@ export default defineConfig(({ mode }) => {
       },
     },
     ssr: {
-      // Add these specific packages to ensure the SSR bundle includes them
       noExternal: [
-        'react-router-dom', 
-        'lucide-react', 
-        'motion', 
+        'vite-react-ssg',
+        'react-router-dom',
+        'lucide-react',
+        'motion',
         '@marsidev/react-turnstile',
         '@google/genai'
       ],
     },
-    // SSG configuration for the new library
+    build: {
+      target: 'esnext',
+    },
     ssgOptions: {
       script: 'async',
       formatting: 'minify',
