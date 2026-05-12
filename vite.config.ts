@@ -25,28 +25,20 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     base: '/',
+    
+    // VITE 6 COMPATIBILITY
+    ssr: {
+      // We only need to force the router and the SSG library
+      noExternal: [/react-router/, 'vite-react-ssg', 'lucide-react'],
+    },
+
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        // Use import.meta.dirname for modern ESM compatibility
+        '@': path.resolve(import.meta.dirname, '.'),
       },
     },
-    ssr: {
-      noExternal: [
-        /react-router/,
-        'vite-react-ssg',
-        'lucide-react',
-        'motion',
-        '@marsidev/react-turnstile',
-        '@google/genai'
-      ],
-    },
-    build: {
-      target: 'esnext',
-    },
-    ssgOptions: {
-      script: 'async',
-      formatting: 'minify',
-    },
+
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
