@@ -24,22 +24,26 @@ export default defineConfig(({ mode }) => {
       react(), 
       tailwindcss(),
       generateSitemap({
-        hostname: 'https://www.tantalusgeomatics.com', // Use your real domain here
+        hostname: 'https://www.tantalusgeomatics.com',
         routes: routes,
         readable: true,
-        generateRobotsTxt: false,// As discussed, we'll use the public/robots.txt
+        generateRobotsTxt: false,
       }),
     ],
     base: '/', 
     
-    // ADD THIS SECTION TO FIX THE "MISSING SPECIFIER" ERROR
-    ssr: {
-      noExternal: ['vite-ssg', 'react-router-dom', 'lucide-react', 'motion'],
+    // THE FIX FOR VITE 6
+    resolve: {
+      alias: {
+        '@': path.resolve(import.meta.dirname, '.'),
+        // Force Vite to find the SSG code regardless of "exports" maps
+        'vite-ssg/react': path.resolve(import.meta.dirname, 'node_modules/vite-ssg/dist/react/index.mjs'),
+      },
     },
 
-    // Ensure we are targeting ESM
-    build: {
-      target: 'esnext',
+    // Ensure Vite treats the SSG library as ESM
+    ssr: {
+      noExternal: ['vite-ssg', 'react-router-dom'],
     },
 
     ssgOptions: {
@@ -52,14 +56,6 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-    },
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
-      },
-    },
-    server: {
-      hmr: process.env.DISABLE_HMR !== 'true',
     },
   };
 });

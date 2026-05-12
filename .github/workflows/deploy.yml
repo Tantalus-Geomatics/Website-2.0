@@ -31,7 +31,9 @@ jobs:
 
       - name: Install dependencies
         # Keeping your legacy flag to handle the React 19 peer deps
-        run: npm install --legacy-peer-deps
+        run: |
+          rm -rf node_modules
+          npm install --legacy-peer-deps
 
       - name: Build
         # We pass the secret here so Vite-SSG can bake it into the HTML

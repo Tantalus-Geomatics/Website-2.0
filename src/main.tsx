@@ -1,4 +1,4 @@
-import { ViteSSG } from 'vite-ssg/dist/react/index.mjs';
+import { ViteSSG } from 'vite-ssg/react';
 import App from './App.tsx';
 import './index.css';
 
