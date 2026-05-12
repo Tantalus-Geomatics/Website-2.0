@@ -483,8 +483,7 @@ export default function Home() {
             ].map((service, idx) => (
               <Link 
                 key={idx}
-                to="/services" 
-                key={idx} 
+                to="/services"
                 className="bg-brand-black p-8 border border-white/10 hover:border-brand-green/50 transition-all group flex flex-col block cursor-pointer"
               >
                 <div className="w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
