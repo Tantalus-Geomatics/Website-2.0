@@ -24,17 +24,22 @@ export default defineConfig(({ mode }) => {
       react(), 
       tailwindcss(),
       generateSitemap({
-        hostname: 'https://tantalus-geomatics.github.io/Website-2.0',
+        hostname: 'https://www.tantalusgeomatics.com', // Use your real domain here
         routes: routes,
         readable: true,
-        generateRobotsTxt: false, // As discussed, we'll use the public/robots.txt
+        generateRobotsTxt: false,// As discussed, we'll use the public/robots.txt
       }),
     ],
     base: '/', 
     
     // ADD THIS SECTION TO FIX THE "MISSING SPECIFIER" ERROR
     ssr: {
-      noExternal: ['vite-ssg', 'react-router-dom'],
+      noExternal: ['vite-ssg', 'react-router-dom', 'lucide-react', 'motion'],
+    },
+
+    // Ensure we are targeting ESM
+    build: {
+      target: 'esnext',
     },
 
     ssgOptions: {
