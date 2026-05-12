@@ -45,7 +45,7 @@ export default function PropertyLineStaking() {
         <div className="absolute inset-0 z-0">
           <img
             src="images/Squamish-Garibaldi-Estates-Property-Survey.webp"
-            alt="Hedge Line"
+            alt="Property Line Survey"
             className="w-full h-full object-cover opacity-60 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
