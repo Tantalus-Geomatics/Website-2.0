@@ -44,7 +44,7 @@ export default function PropertyLineStaking() {
       <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/hedge-line.webp"
+            src="images/Squamish-Garibaldi-Estates-Property-Survey.webp"
             alt="Hedge Line"
             className="w-full h-full object-cover opacity-60 mix-blend-overlay"
             referrerPolicy="no-referrer"
@@ -161,7 +161,7 @@ export default function PropertyLineStaking() {
       <section className="py-10 border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark aspect-video flex items-center justify-center">
-            <img alt="Tree Line" class="object-cover h-full w-full border border-white/10 duration-500" referrerpolicy="no-referrer" src="images/old-home.webp"/>
+            <img alt="Property Line Post" class="object-cover h-full w-full border border-white/10 duration-500" referrerpolicy="no-referrer" src="images/squamish-property-line-survey.webp"/>
           </div>
         </div>
       </section>
