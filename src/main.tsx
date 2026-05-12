@@ -3,27 +3,15 @@ import App from './App.tsx';
 import './index.css';
 
 const routes = [
-  { path: '/' },
-  { path: '/about' },
-  { path: '/services' },
-  { path: '/faq' },
-  { path: '/contact' },
-  { path: '/residential' },
-  { path: '/survey-pricing' },
-  { path: '/topographic-surveys' },
-  { path: '/sea-to-sky-property-line-and-boundary-staking' },
+  '/', '/about', '/services', '/faq', '/contact', 
+  '/residential', '/survey-pricing', '/topographic-surveys', 
+  '/sea-to-sky-property-line-and-boundary-staking'
 ];
 
-// Note: We export 'createApp' which vite-react-ssg uses as the entry point
 export const createRoot = ViteReactSSG(
-  App, 
-  { 
-    routes,
-    rootContainerId: 'root',
-  },
-  ({ isClient }) => {
-    if (isClient) {
-      console.log('Tantalus Geomatics - Static Site Hydrated');
-    }
-  }
+  App,
+  { routes },
+  // Adding the setup function helps satisfy the "fn is not a function" 
+  // check we saw earlier
+  () => { } 
 );

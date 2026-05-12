@@ -32,8 +32,8 @@ export default defineConfig(({ mode }) => {
     },
     ssr: {
       noExternal: [
+        /react-router/,
         'vite-react-ssg',
-        'react-router-dom',
         'lucide-react',
         'motion',
         '@marsidev/react-turnstile',
