@@ -77,7 +77,7 @@ export default function TopographicSurveys() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Draft a blueprint for success with a BC Land Surveyor certified topographic survey.</blockquote>
           <p className="text-white/65 font-light mb-10 max-w-3xl">
-            Land use planning, design and development requires up-to-date and accurate data. A BC Land Surveyor's Topographic survey and site plan is critical when:
+            Land use planning, design and development requires up-to-date and accurate data. A BC Land Surveyor's Topographic survey and site plan is critical for:
           </p>
           <div className="space-y-6">
             {problems.map((item) => (
@@ -106,8 +106,8 @@ export default function TopographicSurveys() {
         </div>
       </section>
 
-      {/* 3-step process */}
-      <section className="py-16 md:py-24 border-b border-white/10">
+{/* 3-step process */}
+<section className="py-16 md:py-24 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
             Our land survey process
@@ -154,17 +154,19 @@ export default function TopographicSurveys() {
               </div>
             ))}
           </div>
+
+          {/* FIX: Moved inside the max-w-7xl container and added mt-12 */}
+          <div className="mt-12 md:mt-16 max-w-5xl mx-auto">
+            <div className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]">
+              <p className="text-brand-green font-medium mb-2">
+                We Provide a Range of Datasets to Support Your Design Needs
+              </p>
+              <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
+                In addition to a certified topographic survey or site plan in PDF format, we also offer a range of data product deliverables including CAD files, point clouds, digital terrain models and more.
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="space-y-6">
-              <div className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]">
-                <p className="text-brand-green font-medium mb-2">
-                  We Provide a Range of Datasets to Support Your Design Needs
-                </p>
-                <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
-                  In addition to a certified topographic survey or site plan in PDF format, we also offer a range of data product deliverables including CAD files, point clouds, digital terrain models and more.
-                </p>
-              </div>
-              </div>
       </section>
 
       {/* Image placeholder */}
