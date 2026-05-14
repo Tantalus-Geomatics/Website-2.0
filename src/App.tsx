@@ -14,6 +14,7 @@ import Residential from './pages/Residential';
 import SurveyPricing from './pages/SurveyPricing';
 import TopographicSurveys from './pages/TopographicSurveys';
 import PropertyLineStaking from './pages/PropertyLineStaking';
+import SurveyTitleInsurance from './pages/SurveyTitleInsurance';
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="survey-pricing" element={<SurveyPricing />} />
         <Route path="topographic-surveys" element={<TopographicSurveys />} />
         <Route path="sea-to-sky-property-line-and-boundary-staking" element={<PropertyLineStaking />} />
+        <Route path="surveys-and-title-insurance" element={<SurveyTitleInsurance />} />
       </Route>
     </Routes>
   );

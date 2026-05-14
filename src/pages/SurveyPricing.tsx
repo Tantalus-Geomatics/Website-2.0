@@ -57,7 +57,6 @@ export default function SurveyPricing() {
       <SEO
         title="Survey Pricing & Cost Factors"
         description="Learn what drives residential survey pricing in BC, compare survey cost vs legal risk, and request a quote from a Licensed BC Land Surveyor."
-        keywords="survey pricing BC, residential boundary survey cost, BC Land Surveyor quote, encroachment legal costs, DIY survey risk"
         canonicalUrl="https://tantalusgeomatics.com/survey-pricing"
         schema={pageSchema}
       />

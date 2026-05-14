@@ -24,9 +24,8 @@ export default function About() {
   return (
     <PageShell>
       <SEO 
-        title="About Our BC Land Surveying Practice"
-        description="Learn about Tantalus Geomatics, a professional land surveying company led by Dennis Sherman BCLS PEng, delivering professional land surveying in the Sea to Sky."
-        keywords="Dennis Sherman BCLS PEng, Licensed Land Surveyor Sea to Sky, Professional Geomatics Firm, Squamish Surveyor, Whistler Surveyor"
+        title="About Tantalus Geomatics Land Surveying"
+        description="Learn about Tantalus Geomatics Land Surveying, a professional land surveying company delivering surveying services throughout the Sea to Sky. Tantalus is led by Land Surveyor and Professional Engineer Dennis Sherman."
         canonicalUrl="https://tantalusgeomatics.com/about"
         schema={aboutSchema}
       />

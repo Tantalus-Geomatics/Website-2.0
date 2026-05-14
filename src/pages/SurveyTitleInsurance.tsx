@@ -1,40 +1,40 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone } from 'lucide-react';
+import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone, ShieldAlert, Scale, Search, ShieldCheck } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 
-const CANONICAL = 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking';
+const CANONICAL = 'https://tantalusgeomatics.com/surveys-and-title-insurance';
 
 const problems = [
   {
-    problem: 'Encroaching Structures and Costly Deconstruction',
-    description: 'Homeowners may be forced to tear down and relocate new fences or structures if they are accidentally built on the wrong side of the property line.',
+    problem: 'Hidden Encroachments and Boundary Issues',
+    description: 'Title insurance does not provide any information about the location of buildings, improvements, easements, rights of way, covenants and other interests in relation to the property boundaries to an owner or lender.',
   },
   {
-    problem: "Fines for Unpermitted Activities",
-    description: 'There may be significant legal repercussions and fines for clearing trees on land you do not own and without securing the necessary permits.',
+    problem: 'Incomplete Coverage and Hidden Costs',
+    description: 'It requires separate policies to protect the owner and the lender. It may not, except at added cost, protect anything but the amount of the mortgage, leaving the remaining cost of resolving problems to the owner.',
   },
   {
-    problem: 'Neighbor Disputes',
-    description: 'There may be protracted disputes with neighbors that can permanently affect your home environment and resale value.',
+    problem: 'Temporary Lender Protection',
+    description: 'Where the policy is a lender policy, it is only in effect as long as that lender has an interest in the property.',
   },
 ];
 
-export default function PropertyLineStaking() {
+export default function SurveyTitleInsurance() {
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Sea to Sky Property Line Staking',
+    name: 'Building Location Surveys vs. Title Insurance in BC',
     description:
-      'Why property line staking matters for fences, retaining walls, and trees in Squamish, Whistler, and West Vancouver.',
+      'Understand the benefits of a land survey in addition to mortgage insurance when buying or selling a property in British Columbia.',
     url: CANONICAL,
   };
 
   return (
     <PageShell>
       <SEO
-        title="Sea to Sky Property Line Staking | Fences, Walls & Trees"
-        description="Confirm your property line before you build a fence or cut down a tree. A licenced Land Surveyor is the only professional in British Columbia qualified to stake property boundaries."
+        title="Building Location Surveys vs. Title Insurance | Tantalus Geomatics"
+        description="Learn why a Building Location Certificate is crucial when buying real estate in BC, and how it complements title insurance for full protection."
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />
@@ -44,7 +44,7 @@ export default function PropertyLineStaking() {
         <div className="absolute inset-0 z-0">
           <img
             src="images/Squamish-Garibaldi-Estates-Property-Survey.webp"
-            alt="Property Line Survey"
+            alt="Surveying equipment on a residential property"
             className="w-full h-full object-cover opacity-60 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
@@ -52,13 +52,13 @@ export default function PropertyLineStaking() {
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
-            Sea to Sky homeowners
+            BC Real Estate Investments
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
-            Eliminate the Guesswork. Protect Your Land with a Certified Boundary Survey.
+            Title Insurance is Not a Replacement for a Legal Land Survey.
           </h1>
           <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
-            Building a fence? Planning to remove a tree? Installing a retaining wall? A certified boundary survey provides the peace of mind you need to avoid costly fines and legal disputes.
+            Significant financial commitments should not be made without full knowledge of all relevant facts, potential liabilities and inherent risks in the venture.
           </p>
             <div className="flex justify-center px-4 sm:px-0">
               <a
@@ -74,9 +74,9 @@ export default function PropertyLineStaking() {
 
       <section className="py-14 md:py-20 border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
+          <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">A current survey effectively discloses problems, should they exist, to all interested parties who can then take appropriate action for resolution.</blockquote>
           <p className="text-white/65 font-light mb-10 max-w-3xl">
-            Property improvements should provide value, not headaches. Without a certified BCLS survey, a few inches of error can lead to:
+            Purchasers are being advised that the cost of a survey can be avoided by the purchase, at a lower cost, of title insurance. The inference is that title insurance offers greater value at a lower cost, but this is unfortunate:
           </p>
           <div className="space-y-6">
             {problems.map((item) => (
@@ -105,35 +105,35 @@ export default function PropertyLineStaking() {
         </div>
       </section>
 
-      {/* 3-step process */}
+      {/* 3-step process / Benefits */}
       <section className="py-16 md:py-24 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
-            Our land survey process
+            The Benefits of a Building Location Survey
           </h2>
           <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-            Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. We follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
+            Building Location Surveys have been widely and commonly used for over forty years in BC. The document is certified correct by a BC Land Surveyor and forms an integral part of a real estate transaction.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {[
               {
                 step: '1',
-                title: 'Research',
-                body: "Every survey begins with a review of the existing records. We pull the original land titles and survey plans from the Land Title and Survey Authority of BC (LTSA). This allows us to understand the legal history of your lot and the surrounding properties before we arrive on-site.",
-                icon: ClipboardList,
-              },
-              {
-                step: '2',
-                title: 'Field visit',
-                body: 'Once we have the data, our crew visits your property to perform a field survey. We search for original iron pins and use professional-grade equipment to take precise measurements. If markers are missing, we use the surrounding evidence to determine their correct legal position and set new ones as needed.',
+                title: 'Visual Clarity & Accuracy',
+                body: "Based on an actual site inspection and measurements by qualified personnel. It is simple to read and understand, providing a plan view of your property according to the legal description.",
                 icon: MapPinned,
               },
               {
+                step: '2',
+                title: 'Immediate Disclosure',
+                body: 'Provides a clear depiction of any problems relating to encroachments or building locations that may need to be resolved before completing a purchase.',
+                icon: Search,
+              },
+              {
                 step: '3',
-                title: 'Certified survey plan',
-                body: 'After the field work, we process the data and draft a formal survey plan. This document is signed and sealed by a British Columbia Land Surveyor (BCLS). This is the official document you will need for your building permit, your fence contractor, or to resolve any questions with a neighbor.',
-                icon: FileCheck,
+                title: 'Long-term Planning Value',
+                body: 'They retain a lasting usefulness to the property owner as both a record of the state of the property and as a planning tool for building additions or determining subdivision possibilities.',
+                icon: ClipboardList,
               },
             ].map(({ step, title, body, icon: Icon }) => (
               <div
@@ -144,7 +144,7 @@ export default function PropertyLineStaking() {
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
-                  Step {step}
+                  Benefit {step}
                 </span>
                 <h3 className="text-xl font-medium text-white mb-3">{title}</h3>
                 <p className="text-white/65 font-light leading-relaxed text-sm sm:text-base">
@@ -160,116 +160,80 @@ export default function PropertyLineStaking() {
       <section className="py-10 border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark aspect-video flex items-center justify-center">
-            <img alt="Property Line Post" class="object-cover h-full w-full border border-white/10 duration-500" referrerpolicy="no-referrer" src="images/squamish-property-line.webp"/>
+            <img alt="BCLS Building Location Certificate Document" className="object-cover h-full w-full border border-white/10 duration-500" referrerPolicy="no-referrer" src="images/building-location-certificate-sample.webp"/>
           </div>
         </div>
       </section>
       
-      {/* Case Study Section */}
+      {/* Case Study / Complementary Approach Section */}
       <section className="py-16 md:py-24 border-b border-white/10 bg-brand-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mx-auto text-center mb-12">
             <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-3">
-              Real World Example
+              A Complementary Approach
             </p>
             <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
-              Case Study: Removing a tree in the District of Squamish
+              British Columbia's Land Title System
             </h2>
             <p className="text-white/65 font-light leading-relaxed">
-              Tree removal often involves more than an agreement with a neighbour. Restrictive covenants on title and municipal bylaws can introduce further restrictions and permitting requirements prior to proceeding with your project.
+              The Land Title system in BC guarantees title against fraud through a legislated publicly funded insurance program, known as the Assurance Fund. While lender and/or purchaser insurance may well have a place in complex transactions, it should be viewed as complementary to the traditional process, rather than as an alternative.
             </p>
           </div>
 
           {/* Three Things to Consider Box */}
           <div className="max-w-4xl mx-auto rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
-            <h3 className="text-brand-green font-medium mb-4 text-lg">Three things to consider:</h3>
+            <h3 className="text-brand-green font-medium mb-4 text-lg">Understanding Title Insurance:</h3>
             <ol className="list-decimal list-inside text-white/80 font-light leading-relaxed space-y-3">
-              <li>Is the tree located on my lot?</li>
-              <li>Do I need a permit to remove the tree?</li>
-              <li>Have I checked my property title for any restrictive covenants that prohibit removing the tree?</li>
+              <li>It is a complex legal insurance policy.</li>
+              <li>It is a product developed in the United States to protect mortgagees from hidden interests in property.</li>
+              <li>It was developed as a result of inadequate deed registry systems and the somewhat unorganized manner in which lands were occupied for settlement.</li>
             </ol>
           </div>
 
           <p className="text-center text-white/80 font-light max-w-2xl mx-auto mb-12 md:mb-16 text-lg">
-            Tantalus Geomatics Land Surveying can help guide you navigate this process with our three step process:
+            A Building Location Certificate provides valuable full-disclosure to all parties involved in a transaction:
           </p>
 
-          {/* Case Study 3-Step Process */}
+          {/* 3-Column Roles Process */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             
             {/* Step 1 */}
             <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
-                <ClipboardList className="h-8 w-8" strokeWidth={1.5} />
+                <FileCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
-                Step 1
-              </span>
-              <h3 className="text-xl font-medium text-white mb-6">Research</h3>
+              <h3 className="text-xl font-medium text-white mb-6">For Vendors (Sellers)</h3>
               <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
-                <li>Complete an initial consultation to confirm exactly what you are seeking to accomplish.</li>
-                <li>Obtain property title, legal charge documents and relevant survey plans from the land title office.</li>
-                <li>Confirm whether there are any restrictive covenants that would prohibit tree clearing.</li>
-                <li>
-                  Confirm whether a municipal tree permit is required for your specific situation:
-                  <div className="mt-3 flex flex-col gap-2">
-                    <a 
-                      href="https://squamish.ca/building-and-land-development/home-land-and-property-development/trees-and-soils-management/" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-brand-green hover:text-brand-green-light transition-colors break-words underline underline-offset-2"
-                    >
-                      Trees and Soils Management Guidelines
-                    </a>
-                    <a 
-                      href="https://squamish.ca/assets/Planning-forms/Tree-Management-Application-Form-v2.pdf" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-brand-green hover:text-brand-green-light transition-colors break-words underline underline-offset-2"
-                    >
-                      Tree Management Application Form (PDF)
-                    </a>
-                  </div>
-                </li>
-                <li>Preparation of field reference data to ensure we capture everything necessary to move your project forward.</li>
+                <li>A British Columbia land surveyor's Building Location Certificate is a wise marketing tool for a vendor.</li>
+                <li>It demonstrates transparency and provides a graphical sketch showing the locations of buildings.</li>
+                <li>Reduces the likelihood of last-minute transaction delays due to boundary disputes.</li>
               </ul>
             </div>
 
             {/* Step 2 */}
             <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
-                <MapPinned className="h-8 w-8" strokeWidth={1.5} />
+                <Search className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
-                Step 2
-              </span>
-              <h3 className="text-xl font-medium text-white mb-6">Field Visit</h3>
+              <h3 className="text-xl font-medium text-white mb-6">For Purchasers</h3>
               <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
-                <li>We first search for each of the relevant property corner posts.</li>
-                <li>If any of the posts are missing, we expand our search until we have found enough adjacent evidence to accurately re-establish the corner's location.</li>
-                <li>We then measure all the features you request along the property line (e.g. trees, fences, retaining walls, etc...).</li>
-                <li>If a municipal permit is required, we collect the site and topographic data required to prepare a tree removal plan to accompany your permit submission.</li>
-                <li>If staking is required, we set new iron posts at any of the missing corners and set stakes at intermediate positions along the line.</li>
+                <li>Provides valuable information for a purchaser before committing to an investment in real estate.</li>
+                <li>Supplies information to determine if buildings meet local zoning with respect to setbacks.</li>
+                <li>Discloses encroachments so they can be resolved before completing a purchase.</li>
               </ul>
             </div>
 
             {/* Step 3 */}
             <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
-                <FileCheck className="h-8 w-8" strokeWidth={1.5} />
+                <ShieldCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
-                Step 3
-              </span>
-              <h3 className="text-xl font-medium text-white mb-6">Certified Survey Plan</h3>
-              <p className="text-left text-white/80 font-light text-sm sm:text-base mb-4 w-full">
-                A tree removal property line survey may result in the preparation of one or more plans, depending on your needs:
-              </p>
+              <h3 className="text-xl font-medium text-white mb-6">For Lenders</h3>
               <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
-                <li><strong className="text-white/90 font-medium">Certified sketch of site features:</strong> A certified plan that depicts the locations of site features relative to your property line.</li>
-                <li><strong className="text-white/90 font-medium">Tree Removal Plan:</strong> A tree removal plan consistent with the District of Squamish's Tree management permit requirements.</li>
-                <li><strong className="text-white/90 font-medium">Posting Plan:</strong> If one or more property corner posts are re-established during the survey, a posting plan is prepared for filing at the land title office.</li>
+                <li>Provides valuable information for a mortgagor.</li>
+                <li>Offers empirical evidence of the property's state rather than simply insuring against the financial loss of an issue.</li>
+                <li>They are an integral part of a real estate transaction when provided to your lawyer or notary.</li>
               </ul>
             </div>
 
@@ -284,10 +248,10 @@ export default function PropertyLineStaking() {
             <MapPin className="w-7 h-7 text-brand-green" aria-hidden />
           </div>
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
-            Ready to start your project with confidence?
+            Invest in Full Disclosure
           </h2>
           <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
-          Tantalus Geomatics provides the local expertise and BCLS certification required for projects in the Sea-to-Sky corridor. Tell us about your property so we can help you move forward with confidence.
+            The Association of British Columbia Land Surveyors encourages you to use a traditional system of "full disclosure", through the use of proper title review and a surveyed building location before committing to an investment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link

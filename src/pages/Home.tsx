@@ -99,11 +99,11 @@ export default function Home() {
     "url": "https://tantalusgeomatics.com",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": ["Squamish", "Whistler", "Pemberton", "West Vancouver", "Lillooet", "Bowen Island"],
+      "addressLocality": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island","Brittania Beach","Furry Creek","North Vancouver"],
       "addressRegion": "BC",
       "addressCountry": "CA"
     },
-    "areaServed": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island"],
+    "areaServed": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island","Brittania Beach","Furry Creek","North Vancouver"],
     "description": "Professional Land Surveying and 3D Reality Capture for homeowners, AEC industry professionals, and real estate experts in the Sea to Sky corridor."
   };
 
@@ -111,8 +111,7 @@ export default function Home() {
     <div className="flex flex-col bg-brand-black">
       <SEO 
         title="BC Land Surveyor in Squamish, Whistler & Sea to Sky"
-        description="Hire a professional BC Land Surveyor (BCLS) for topographic surveys, legal boundaries, and 3D reality capture in Squamish, Whistler, and Pemberton."
-        keywords="BC Land Surveyor, Land Surveying Squamish, Land Surveying Sea to Sky, Land Surveying Whistler, Topographic Survey Squamish, Topographic Survey Sea to Sky, Topographic Survey Whistler, Property Boundary Survey, 3D Reality Capture, Land Surveying Sea to Sky, BCLS"
+        description="Hire a professional BC Land Surveyor (BCLS) for topographic surveys, legal boundaries, construction surveys and drone surveys in Squamish, Whistler, and Pemberton."
         canonicalUrl="https://tantalusgeomatics.com/"
         schema={homeSchema}
       />

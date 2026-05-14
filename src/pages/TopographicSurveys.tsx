@@ -34,8 +34,7 @@ export default function TopographicSurveys() {
     <PageShell>
       <SEO
         title="The First Step to Building: Topographic Surveys Explained"
-        description="Why a topographic survey is the digital foundation for your architect, engineer, and municipal permit—geodetic elevations, utility inverts, and BC Land Surveyor liability."
-        keywords="topographic survey BC, building permit survey, BCLS topographic, geodetic elevation, residential survey Squamish"
+        description="Why a topographic survey is the digital blueprint for your design. We work with other professionals and municipal officials to guide you through the construction proccess with ease."
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />

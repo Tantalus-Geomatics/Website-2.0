@@ -20,7 +20,7 @@ export default function Contact() {
         "addressCountry": "CA"
       },
       "email": "contact@tantalusgeomatics.com",
-      "areaServed": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island"]
+      "areaServed": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island","Brittania Beach","Furry Creek","North Vancouver"]
     }
   };
 
@@ -28,8 +28,7 @@ export default function Contact() {
     <PageShell>
       <SEO 
         title="Contact a BC Land Surveyor | Request a Quote"
-        description="Get in touch with Tantalus Geomatics for your land surveying needs in Squamish, Whistler, Pemberton, Lillooet, West Vancouver, and Bowen Island."
-        keywords="Hire a land surveyor Squamish, Request a survey quote Whistler, BCLS Contact, Sea to Sky Land Surveyor"
+        description="Get in touch with Tantalus Geomatics for your land surveying needs in Squamish, Whistler, Pemberton, Lillooet, North Vancouver, West Vancouver, and Bowen Island."
         canonicalUrl="https://tantalusgeomatics.com/contact"
         schema={contactSchema}
       />

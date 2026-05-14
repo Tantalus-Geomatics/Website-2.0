@@ -112,9 +112,8 @@ export default function Services() {
   return (
     <PageShell>
       <SEO 
-        title="Land Surveying Services in Squamish & Whistler"
-        description="Comprehensive geomatics solutions including Land Development Surveys, Construction Surveys, Legal Boundary Surveys, Strata Surveys, and 3D Reality Capture."
-        keywords="Land Development Surveying BC, Construction Surveying Whistler, 3D Reality Capture Squamish, UAV LiDAR, Legal Boundary Survey, Strata Plans, Topographic Surveys"
+        title="Land Surveying Services in Sea to Sky"
+        description="Comprehensive land surveying and geomatics engineering solutions including topographic Surveys, Construction Surveys, Legal Boundary Surveys, Strata Surveys, drone surveys and 3D laser scanning."
         canonicalUrl="https://tantalusgeomatics.com/services"
         schema={servicesSchema}
       />

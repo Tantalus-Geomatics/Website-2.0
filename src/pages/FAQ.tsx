@@ -176,9 +176,8 @@ export default function FAQ() {
   return (
     <PageShell>
       <SEO 
-        title="Land Surveying FAQ | Squamish & Whistler"
-        description="Answers to common questions about land surveying, property boundaries, topographic surveys, and hiring a BCLS in the Sea to Sky corridor."
-        keywords="Land Survey Cost BC, Property Line Dispute Surveyor, Riparian Area Survey Squamish, BCLS FAQ, Topographic Survey Cost"
+        title="Land Surveying FAQ | Common Questions in the Sea-to-Sky"
+        description="Questions about survey costs, topographic surveys or boundary staking? Answers to common questions about land surveying, property boundaries, topographic surveys, and hiring a BCLS in the Sea to Sky corridor."
         canonicalUrl="https://tantalusgeomatics.com/faq"
         schema={faqSchema}
       />
