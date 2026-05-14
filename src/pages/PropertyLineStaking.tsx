@@ -1,6 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone } from 'lucide-react';
+import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 
 const CANONICAL = 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking';
@@ -31,7 +31,7 @@ export default function PropertyLineStaking() {
   };
 
   return (
-    <div className="bg-brand-black min-h-screen">
+    <PageShell>
       <SEO
         title="Sea to Sky Property Line Staking | Fences, Walls & Trees"
         description="Protect your lot before you dig: boundary staking, regional bylaws, and why guessing your property line in BC is a liability—not a shortcut."
@@ -307,6 +307,6 @@ export default function PropertyLineStaking() {
           </div>
         </div>
       </section>
-    </div>
+    </PageShell>
   );
 }

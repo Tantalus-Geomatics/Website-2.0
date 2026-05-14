@@ -1,6 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone } from 'lucide-react';
+import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 
 const CANONICAL = 'https://www.tantalusgeomatics.com/topographic-surveys';
@@ -31,7 +31,7 @@ export default function TopographicSurveys() {
   };
 
   return (
-    <div className="bg-brand-black min-h-screen">
+    <PageShell>
       <SEO
         title="The First Step to Building: Topographic Surveys Explained"
         description="Why a topographic survey is the digital foundation for your architect, engineer, and municipal permit—geodetic elevations, utility inverts, and BC Land Surveyor liability."
@@ -318,6 +318,6 @@ export default function TopographicSurveys() {
           </div>
         </div>
       </section>
-    </div>
+    </PageShell>
   );
 }

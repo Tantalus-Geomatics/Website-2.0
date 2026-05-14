@@ -1,104 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { ClipboardList, MapPinned, FileCheck, Phone, Send } from 'lucide-react';
+import { useState } from 'react';
+import { ClipboardList, MapPinned, FileCheck, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import emailjs from '@emailjs/browser';
-import { Turnstile } from '@marsidev/react-turnstile';
+import LeadQuoteForm from '../components/LeadQuoteForm';
+import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { useLeadForm } from '../hooks/useLeadForm';
 
 const HERO_PLACEHOLDER = '/assets/img/residential-bg.jpg';
 const HERO_FALLBACK = 'images/tantalus-hero-banner.webp';
 const PHONE_TEL = 'tel:+16042139934';
 
 export default function Residential() {
-  // Default to shipped hero to avoid 404 until public/assets/img/residential-bg.jpg exists.
   const [heroSrc, setHeroSrc] = useState(HERO_FALLBACK);
-  const [formData, setFormData] = useState({
-    from_name: '',
-    reply_to: '',
-    phone: '',
-    address: '',
-    message: '',
-    website_url: '',
-  });
-  const [status, setStatus] = useState<{
-    type: 'idle' | 'loading' | 'success' | 'error';
-    message: React.ReactNode;
-  }>({ type: 'idle', message: '' });
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-
-  useEffect(() => {
-    emailjs.init({
-      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'r37yPY3ALEbiW4YxU',
-      blockHeadless: true,
-      limitRate: {
-        id: 'app',
-        throttle: 10000,
-      },
-    });
-  }, []);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (formData.website_url) {
-      return;
-    }
-
-    if (!turnstileToken) {
-      setStatus({
-        type: 'error',
-        message: 'Please complete the CAPTCHA verification.',
-      });
-      return;
-    }
-
-    setStatus({ type: 'loading', message: 'Sending your request...' });
-
-    try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_3rqnrju',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_uvo8zyr',
-        e.currentTarget
-      );
-
-      setStatus({
-        type: 'success',
-        message:
-          'Thank you! Your request has been sent successfully. We will be in touch soon.',
-      });
-      setFormData({
-        from_name: '',
-        reply_to: '',
-        phone: '',
-        address: '',
-        message: '',
-        website_url: '',
-      });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      setStatus({
-        type: 'error',
-        message: (
-          <>
-            There was an error sending your request. Please email us directly at{' '}
-            <a
-              href="mailto:contact@tantalusgeomatics.com"
-              className="underline hover:text-brand-green transition-colors"
-            >
-              contact@tantalusgeomatics.com
-            </a>
-            .
-          </>
-        ),
-      });
-    }
-  };
+  const lead = useLeadForm();
 
   const residentialSchema = {
     '@context': 'https://schema.org',
@@ -144,7 +58,7 @@ export default function Residential() {
   ];
 
   return (
-    <div className="bg-brand-black min-h-screen">
+    <PageShell>
       <SEO
         title="Residential Property Surveys | Homeowners"
         description="Professional land surveys for homeowners in Squamish, Whistler, Pemberton, and the Sea to Sky: request a quote, field visit, and certified survey plan."
@@ -266,172 +180,12 @@ export default function Residential() {
           </p>
 
           <div className="bg-brand-dark p-8 md:p-10 border border-white/10">
-            <form
-              id="residential-quote-form"
-              onSubmit={handleSubmit}
-              className="space-y-6"
-              aria-label="Residential quote request form"
-            >
-              <div
-                style={{ position: 'absolute', left: '-9999px' }}
-                aria-hidden="true"
-              >
-                <label htmlFor="residential_website_url">Website URL</label>
-                <input
-                  type="text"
-                  id="residential_website_url"
-                  name="website_url"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={formData.website_url}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="residential_from_name"
-                  className="block text-sm font-medium text-white/80 mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="residential_from_name"
-                  name="from_name"
-                  required
-                  value={formData.from_name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-brand-black border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light"
-                  placeholder="Jane Doe"
-                  aria-required="true"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="residential_address"
-                  className="block text-sm font-medium text-white/80 mb-2"
-                >
-                  Address
-                </label>
-                <input
-                  type="text"
-                  id="residential_address"
-                  name="address"
-                  required
-                  value={formData.address}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-brand-black border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light"
-                  placeholder="Property address"
-                  aria-required="true"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="residential_reply_to"
-                    className="block text-sm font-medium text-white/80 mb-2"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="residential_reply_to"
-                    name="reply_to"
-                    required
-                    value={formData.reply_to}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-black border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light"
-                    placeholder="jane@example.com"
-                    aria-required="true"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="residential_phone"
-                    className="block text-sm font-medium text-white/80 mb-2"
-                  >
-                    Phone number
-                  </label>
-                  <input
-                    type="tel"
-                    id="residential_phone"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-black border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light"
-                    placeholder="(604) 555-0123"
-                    aria-required="true"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="residential_message"
-                  className="block text-sm font-medium text-white/80 mb-2"
-                >
-                  Project description
-                </label>
-                <textarea
-                  id="residential_message"
-                  name="message"
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-brand-black border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light resize-none"
-                  placeholder="Describe your project, timeline, and any questions you have."
-                  aria-required="true"
-                />
-              </div>
-
-              <div className="flex justify-center my-4">
-                <Turnstile
-                  siteKey={
-                    import.meta.env.VITE_TURNSTILE_SITE_KEY ||
-                    '0x4AAAAAACkcoQ4pjVYMr-l8'
-                  }
-                  onSuccess={(token) => setTurnstileToken(token)}
-                  onError={() => setTurnstileToken(null)}
-                  onExpire={() => setTurnstileToken(null)}
-                  options={{ theme: 'dark' }}
-                />
-              </div>
-
-              <div aria-live="polite" className="min-h-[24px]">
-                {status.message && (
-                  <p
-                    className={`text-sm ${
-                      status.type === 'error'
-                        ? 'text-red-400'
-                        : status.type === 'success'
-                          ? 'text-brand-green'
-                          : 'text-white/70'
-                    }`}
-                  >
-                    {status.message}
-                  </p>
-                )}
-              </div>
-
-              <button
-                type="submit"
-                disabled={status.type === 'loading'}
-                className="w-full py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {status.type === 'loading' ? (
-                  'Sending...'
-                ) : (
-                  <>
-                    Send request <Send size={20} />
-                  </>
-                )}
-              </button>
-            </form>
+            <LeadQuoteForm
+              variant="stacked-residential"
+              formId="residential-quote-form"
+              ariaLabel="Residential quote request form"
+              {...lead}
+            />
           </div>
         </div>
       </section>
@@ -504,6 +258,6 @@ export default function Residential() {
           </p>
         </div>
       </section>
-    </div>
+    </PageShell>
   );
 }

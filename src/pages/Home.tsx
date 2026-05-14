@@ -1,95 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  WavesLadder, Hammer, ArrowRight, Map, Compass, HardHat, Mountain, 
-  Home as HomeIcon, Trees, Waves, Scale, FileText, Building, Fence, 
-  BrickWall, Mail, MapPin, Phone, Send 
+import {
+  WavesLadder,
+  Hammer,
+  ArrowRight,
+  Map,
+  Compass,
+  HardHat,
+  Mountain,
+  Home as HomeIcon,
+  Trees,
+  Waves,
+  Scale,
+  FileText,
+  Building,
+  Fence,
+  BrickWall,
+  Mail,
+  MapPin,
+  Phone,
 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import { Turnstile } from '@marsidev/react-turnstile';
+import LeadQuoteForm from '../components/LeadQuoteForm';
 import SEO from '../components/SEO';
+import { useLeadForm } from '../hooks/useLeadForm';
 
 export default function Home() {
   const [activeUseCase, setActiveUseCase] = useState(0);
-
-  // Form State
-  const [formData, setFormData] = useState({
-    from_name: '',
-    reply_to: '',
-    phone: '',
-    address: '',
-    pid: '',
-    project_type: 'Site Plan',
-    message: '',
-    website_url: ''
-  });
-  const [status, setStatus] = useState<{ type: 'idle' | 'loading' | 'success' | 'error', message: React.ReactNode }>({ type: 'idle', message: '' });
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-
-  useEffect(() => {
-    emailjs.init({
-      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'r37yPY3ALEbiW4YxU',
-      blockHeadless: true,
-      limitRate: {
-        id: 'app',
-        throttle: 10000,
-      },
-    });
-  }, []);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    // Honeypot check
-    if (formData.website_url) {
-      // Silently reject bot submissions
-      return;
-    }
-
-    if (!turnstileToken) {
-      setStatus({ type: 'error', message: 'Please complete the CAPTCHA verification.' });
-      return;
-    }
-
-    setStatus({ type: 'loading', message: 'Sending your request...' });
-
-    try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_3rqnrju',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_uvo8zyr',
-        e.currentTarget
-      );
-      
-      setStatus({ type: 'success', message: 'Thank you! Your request has been sent successfully. We will be in touch soon.' });
-      setFormData({
-        from_name: '',
-        reply_to: '',
-        phone: '',
-        address: '',
-        pid: '',
-        project_type: 'Site Plan',
-        message: '',
-        website_url: ''
-      });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      setStatus({ 
-        type: 'error', 
-        message: (
-          <>
-            There was an error sending your request. Please email us directly at{' '}
-            <a href="mailto:contact@tantalusgeomatics.com" className="underline hover:text-brand-green transition-colors">
-              contact@tantalusgeomatics.com
-            </a>.
-          </>
-        ) 
-      });
-    }
-  };
+  const lead = useLeadForm();
 
   const useCases = [
     {
@@ -218,129 +155,12 @@ export default function Home() {
             {/* Right Column: Contact Form */}
             <div className="bg-brand-black/95 backdrop-blur-sm p-6 sm:p-8 md:p-10 border border-white/10 shadow-2xl rounded-2xl w-full max-w-xl mx-auto lg:ml-auto lg:mr-0">
               <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
-              <form id="contact-form" onSubmit={handleSubmit} className="space-y-5" aria-label="Contact form">
-                
-                {/* Honeypot Field */}
-                <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
-                  <label htmlFor="website_url">Website URL</label>
-                  <input
-                    type="text"
-                    id="website_url"
-                    name="website_url"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={formData.website_url}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label htmlFor="from_name" className="block text-sm font-medium text-white/80 mb-2">Full Name</label>
-                    <input
-                      type="text"
-                      id="from_name"
-                      name="from_name"
-                      required
-                      value={formData.from_name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
-                      placeholder="Jane Doe"
-                      aria-required="true"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="reply_to" className="block text-sm font-medium text-white/80 mb-2">Email Address</label>
-                    <input
-                      type="email"
-                      id="reply_to"
-                      name="reply_to"
-                      required
-                      value={formData.reply_to}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
-                      placeholder="jane@example.com"
-                      aria-required="true"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-white/80 mb-2">Phone Number</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
-                      placeholder="(604) 555-0123"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="address" className="block text-sm font-medium text-white/80 mb-2">Property Address</label>
-                    <input
-                      type="text"
-                      id="address"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md"
-                      placeholder="1234 Main St, Squamish"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-2">Project Details</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light resize-none rounded-md"
-                    placeholder="Please provide details about your project location and requirements..."
-                    aria-required="true"
-                  ></textarea>
-                </div>
-
-                {/* Cloudflare Turnstile */}
-                <div className="flex justify-center my-2">
-                  <Turnstile
-                    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAACkcoQ4pjVYMr-l8'}
-                    onSuccess={(token) => setTurnstileToken(token)}
-                    onError={() => setTurnstileToken(null)}
-                    onExpire={() => setTurnstileToken(null)}
-                    options={{ theme: 'dark' }}
-                  />
-                </div>
-
-                {/* Status Message Container */}
-                <div aria-live="polite" className="min-h-[24px]">
-                  {status.message && (
-                    <p className={`text-sm ${
-                      status.type === 'error' ? 'text-red-400' : 
-                      status.type === 'success' ? 'text-brand-green' : 
-                      'text-white/70'
-                    }`}>
-                      {status.message}
-                    </p>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status.type === 'loading'}
-                  className="w-full py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 rounded-md disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  {status.type === 'loading' ? 'Sending...' : (
-                    <>Send Request <Send size={20} /></>
-                  )}
-                </button>
-              </form>
+              <LeadQuoteForm
+                variant="embedded"
+                formId="contact-form"
+                ariaLabel="Contact form"
+                {...lead}
+              />
             </div>
             
           </div>
