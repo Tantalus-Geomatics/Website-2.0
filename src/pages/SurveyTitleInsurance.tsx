@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone, ShieldAlert, Scale, Search, ShieldCheck } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
 const CANONICAL = 'https://tantalusgeomatics.com/surveys-and-title-insurance';
 
@@ -108,10 +109,15 @@ export default function SurveyTitleInsurance() {
 
       <section className="py-14 md:py-20 border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">A current survey effectively discloses problems, should they exist, to all interested parties who can then take appropriate action for resolution.</blockquote>
-          <p className="text-white/65 font-light mb-10 max-w-3xl">
-            Purchasers are being advised that the cost of a survey can be avoided by the purchase, at a lower cost, of title insurance. The inference is that title insurance offers greater value at a lower cost, but this is unfortunate:
-          </p>
+          <GeoDirectAnswer
+            question="Why is title insurance not a replacement for a current legal land survey in BC?"
+            questionClassName="max-w-3xl"
+          >
+            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">A current survey effectively discloses problems, should they exist, to all interested parties who can then take appropriate action for resolution.</blockquote>
+            <p className="text-white/65 font-light mb-10 max-w-3xl">
+              Purchasers are being advised that the cost of a survey can be avoided by the purchase, at a lower cost, of title insurance. The inference is that title insurance offers greater value at a lower cost, but this is unfortunate:
+            </p>
+          </GeoDirectAnswer>
           <div className="space-y-6">
             {problems.map((item) => (
               <div
@@ -145,9 +151,14 @@ export default function SurveyTitleInsurance() {
           <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
             The Benefits of a Building Location Survey
           </h2>
-          <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-            Building Location Surveys have been widely and commonly used for over forty years in BC. The document is certified correct by a BC Land Surveyor and forms an integral part of a real estate transaction.
-          </p>
+          <GeoDirectAnswer
+            align="center"
+            question="What are the benefits of a Building Location Survey in British Columbia?"
+          >
+            <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+              Building Location Surveys have been widely and commonly used for over forty years in BC. The document is certified correct by a BC Land Surveyor and forms an integral part of a real estate transaction.
+            </p>
+          </GeoDirectAnswer>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {[
@@ -210,14 +221,21 @@ export default function SurveyTitleInsurance() {
             <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
               British Columbia's Land Title System
             </h2>
-            <p className="text-white/65 font-light leading-relaxed">
-              The Land Title system in BC guarantees title against fraud through a legislated publicly funded insurance program, known as the Assurance Fund. While lender and/or purchaser insurance may well have a place in complex transactions, it should be viewed as complementary to the traditional process, rather than as an alternative.
-            </p>
+            <GeoDirectAnswer
+              align="center"
+              question="How should lender and purchaser insurance relate to British Columbia's land title system?"
+            >
+              <p className="text-white/65 font-light leading-relaxed">
+                The Land Title system in BC guarantees title against fraud through a legislated publicly funded insurance program, known as the Assurance Fund. While lender and/or purchaser insurance may well have a place in complex transactions, it should be viewed as complementary to the traditional process, rather than as an alternative.
+              </p>
+            </GeoDirectAnswer>
           </div>
 
           {/* Three Things to Consider Box */}
           <div className="max-w-4xl mx-auto rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
-            <h3 className="text-brand-green font-medium mb-4 text-lg">Understanding Title Insurance:</h3>
+            <h3 className="text-brand-green font-medium mb-4 text-lg">
+              What should you understand about title insurance before relying on it alone?
+            </h3>
             <ol className="list-decimal list-inside text-white/80 font-light leading-relaxed space-y-3">
               <li>It is a complex legal insurance policy.</li>
               <li>It is a product developed in the United States to protect mortgagees from hidden interests in property.</li>
@@ -237,7 +255,9 @@ export default function SurveyTitleInsurance() {
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
                 <FileCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-medium text-white mb-6">For Vendors (Sellers)</h3>
+              <h3 className="text-xl font-medium text-white mb-6">
+                What does a Building Location Certificate offer to vendors (sellers)?
+              </h3>
               <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>A British Columbia land surveyor's Building Location Certificate is a wise marketing tool for a vendor.</li>
                 <li>It demonstrates transparency and provides a graphical sketch showing the locations of buildings.</li>
@@ -250,7 +270,9 @@ export default function SurveyTitleInsurance() {
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
                 <Search className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-medium text-white mb-6">For Purchasers</h3>
+              <h3 className="text-xl font-medium text-white mb-6">
+                What does a Building Location Certificate provide to purchasers?
+              </h3>
               <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>Provides valuable information for a purchaser before committing to an investment in real estate.</li>
                 <li>Supplies information to determine if buildings meet local zoning with respect to setbacks.</li>
@@ -263,7 +285,9 @@ export default function SurveyTitleInsurance() {
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
                 <ShieldCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-medium text-white mb-6">For Lenders</h3>
+              <h3 className="text-xl font-medium text-white mb-6">
+                What does a Building Location Certificate offer to lenders?
+              </h3>
               <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>Provides valuable information for a mortgagor.</li>
                 <li>Offers empirical evidence of the property's state rather than simply insuring against the financial loss of an issue.</li>
@@ -284,9 +308,14 @@ export default function SurveyTitleInsurance() {
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
             Invest in Full Disclosure
           </h2>
-          <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
-            The Association of British Columbia Land Surveyors encourages you to use a traditional system of "full disclosure", through the use of proper title review and a surveyed building location before committing to an investment.
-          </p>
+          <GeoDirectAnswer
+            align="center"
+            question="What does the Association of British Columbia Land Surveyors encourage before you commit to a real estate investment?"
+          >
+            <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
+              The Association of British Columbia Land Surveyors encourages you to use a traditional system of "full disclosure", through the use of proper title review and a surveyed building location before committing to an investment.
+            </p>
+          </GeoDirectAnswer>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
               to="/contact"

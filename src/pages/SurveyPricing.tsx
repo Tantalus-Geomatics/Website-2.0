@@ -11,6 +11,7 @@ import {
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
 
 const PHONE_TEL = 'tel:+16042139934';
@@ -113,15 +114,17 @@ export default function SurveyPricing() {
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
             Introduction
           </h2>
-          <p className="text-white/75 font-light leading-relaxed text-base sm:text-lg">
-            For most homeowners, a survey is a grudge purchase, often triggered by a
-            bank requirement for a mortgage or a municipal demand for a building
-            permit. When a client receives a quote for a residential boundary survey
-            that exceeds $2,500, the reaction is rarely one of understanding; it is
-            almost universally one of disbelief. However, a homeowner is not just
-            paying for a map; they are paying for the transfer of risk from
-            themselves to a regulated professional.
-          </p>
+          <GeoDirectAnswer question="What are you paying for when you purchase a residential boundary survey in BC?">
+            <p className="text-white/75 font-light leading-relaxed text-base sm:text-lg">
+              For most homeowners, a survey is a grudge purchase, often triggered by a
+              bank requirement for a mortgage or a municipal demand for a building
+              permit. When a client receives a quote for a residential boundary survey
+              that exceeds $2,500, the reaction is rarely one of understanding; it is
+              almost universally one of disbelief. However, a homeowner is not just
+              paying for a map; they are paying for the transfer of risk from
+              themselves to a regulated professional.
+            </p>
+          </GeoDirectAnswer>
         </div>
       </section>
 
@@ -130,14 +133,18 @@ export default function SurveyPricing() {
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-3">
             Section 1: What Actually Influences Your Quote?
           </h2>
-          <p className="text-white/70 font-light mb-12 max-w-4xl">
-            Every property in BC is unique. Your quote is a bespoke calculation based
-            on the specific history, terrain, and legal standing of your lot.
-          </p>
+          <GeoDirectAnswer question="How is your residential survey quote calculated for a unique BC property?">
+            <p className="text-white/70 font-light mb-12 max-w-4xl">
+              Every property in BC is unique. Your quote is a bespoke calculation based
+              on the specific history, terrain, and legal standing of your lot.
+            </p>
+          </GeoDirectAnswer>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             <article className="bg-brand-dark border border-white/10 p-6">
               <MapPinned className="w-8 h-8 text-brand-green mb-4" />
-              <h3 className="text-lg font-medium text-white mb-2">Missing Iron Pins</h3>
+              <h3 className="text-lg font-medium text-white mb-2">
+                Why does searching for missing iron pins increase residential survey cost?
+              </h3>
               <p className="text-white/65 text-sm font-light leading-relaxed">
                 Homeowners are often unaware that they are paying for the surveyor to
                 search for iron pins that may have been buried or destroyed decades
@@ -149,7 +156,7 @@ export default function SurveyPricing() {
             <article className="bg-brand-dark border border-white/10 p-6">
               <Home className="w-8 h-8 text-brand-green mb-4" />
               <h3 className="text-lg font-medium text-white mb-2">
-                The &quot;Small Lot&quot; Fallacy
+                Why can a small urban lot still be complex and costly to survey?
               </h3>
               <p className="text-white/65 text-sm font-light leading-relaxed">
                 Homeowners believe that a standard 33x122 foot Vancouver lot should be
@@ -162,7 +169,7 @@ export default function SurveyPricing() {
             <article className="bg-brand-dark border border-white/10 p-6">
               <Trees className="w-8 h-8 text-brand-green mb-4" />
               <h3 className="text-lg font-medium text-white mb-2">
-                Vegetation and Terrain
+                How do vegetation and terrain affect survey effort and pricing?
               </h3>
               <p className="text-white/65 text-sm font-light leading-relaxed">
                 In the lush environment of Western Canada, surveyors frequently
@@ -175,7 +182,7 @@ export default function SurveyPricing() {
             <article className="bg-brand-dark border border-white/10 p-6">
               <FileText className="w-8 h-8 text-brand-green mb-4" />
               <h3 className="text-lg font-medium text-white mb-2">
-                Government Disbursements
+                How do LTSA disbursements appear on your survey invoice?
               </h3>
               <p className="text-white/65 text-sm font-light leading-relaxed">
                 The statutory fees charged by the Land Title and Survey Authority
@@ -198,18 +205,20 @@ export default function SurveyPricing() {
                 <h2 className="text-2xl sm:text-3xl font-light text-white mb-3">
                   Section 2: The Danger of DIY Tools
                 </h2>
-                <p className="text-white/80 font-light leading-relaxed">
-                  Homeowners increasingly question professional fees by citing
-                  &quot;free&quot; or low-cost alternatives such as Google Earth or
-                  the LiDAR sensors found in modern iPhone Pro models. Google Earth is
-                  a digital approximation and can be off by several meters. It does
-                  not account for legal easements or historical deed discrepancies.
-                  Comparisons have shown that while a professional total station or
-                  RTK-GNSS system provides centimeter-level accuracy, an iPhone scan
-                  over even a short 1.5-meter distance can result in errors of 0.15 to
-                  0.21 meters-an unacceptable margin in the context of legal boundaries
-                  where inches define thousands of dollars in property value.
-                </p>
+                <GeoDirectAnswer question="Why are consumer mapping and phone LiDAR tools risky substitutes for a professional boundary survey?">
+                  <p className="text-white/80 font-light leading-relaxed">
+                    Homeowners increasingly question professional fees by citing
+                    &quot;free&quot; or low-cost alternatives such as Google Earth or
+                    the LiDAR sensors found in modern iPhone Pro models. Google Earth is
+                    a digital approximation and can be off by several meters. It does
+                    not account for legal easements or historical deed discrepancies.
+                    Comparisons have shown that while a professional total station or
+                    RTK-GNSS system provides centimeter-level accuracy, an iPhone scan
+                    over even a short 1.5-meter distance can result in errors of 0.15 to
+                    0.21 meters-an unacceptable margin in the context of legal boundaries
+                    where inches define thousands of dollars in property value.
+                  </p>
+                </GeoDirectAnswer>
               </div>
             </div>
           </div>
@@ -221,13 +230,15 @@ export default function SurveyPricing() {
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
             Section 3: The True Cost of Skipping a Survey
           </h2>
-          <p className="text-white/75 font-light leading-relaxed mb-10 max-w-5xl">
-            The most effective way to justify a $2,500 survey is to illustrate the
-            $50,000+ cost of proceeding without one. If a surveyor makes an error that
-            results in a building encroachment, their insurance provides the financial
-            backing to rectify the situation. Without a BCLS professional assuming
-            that liability, you are financially responsible for the fallout:
-          </p>
+          <GeoDirectAnswer question="What financial risk do you retain if you skip a professional BCLS survey?">
+            <p className="text-white/75 font-light leading-relaxed mb-10 max-w-5xl">
+              The most effective way to justify a $2,500 survey is to illustrate the
+              $50,000+ cost of proceeding without one. If a surveyor makes an error that
+              results in a building encroachment, their insurance provides the financial
+              backing to rectify the situation. Without a BCLS professional assuming
+              that liability, you are financially responsible for the fallout:
+            </p>
+          </GeoDirectAnswer>
 
           <div className="overflow-hidden border border-white/10">
             <div className="grid grid-cols-1 md:grid-cols-2 bg-brand-dark">
@@ -273,7 +284,8 @@ export default function SurveyPricing() {
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-8">
             Section 4: Frequently Asked Questions
           </h2>
-          <div className="space-y-4">
+          <GeoDirectAnswer question="What common questions do homeowners ask about survey pricing, timelines, and accuracy?">
+            <div className="space-y-4">
             {faqItems.map((item, index) => {
               const isOpen = faqOpenIndex === index;
               return (
@@ -302,6 +314,7 @@ export default function SurveyPricing() {
               );
             })}
           </div>
+          </GeoDirectAnswer>
         </div>
       </section>
 
@@ -311,10 +324,12 @@ export default function SurveyPricing() {
             <h2 className="text-2xl sm:text-3xl font-light text-white mb-3">
               Request a Quote Today.
             </h2>
-            <p className="text-white/75 font-light mb-8">
-              Every quote is reviewed by a Licensed BC Land Surveyor. 24-hour
-              turnaround on standard residential requests.
-            </p>
+            <GeoDirectAnswer question="Who reviews your survey quote request and how quickly can you expect a response?">
+              <p className="text-white/75 font-light mb-8">
+                Every quote is reviewed by a Licensed BC Land Surveyor. 24-hour
+                turnaround on standard residential requests.
+              </p>
+            </GeoDirectAnswer>
             <a
               href={PHONE_TEL}
               className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg sm:text-xl font-semibold bg-brand-green hover:bg-brand-green-light text-black transition-all min-w-[240px]"

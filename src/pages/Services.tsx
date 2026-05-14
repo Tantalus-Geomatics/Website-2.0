@@ -20,6 +20,7 @@ import {
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
 
 export default function Services() {
@@ -30,6 +31,8 @@ export default function Services() {
     {
       id: 'residential',
       title: 'Residential Property Surveys',
+      directAnswerQuestion:
+        'What residential property surveys and certificates does Tantalus Geomatics provide?',
       icon: <Home className="w-10 h-10 text-brand-green" />,
       image: "images/old-home.webp",
       description: 'We provide Property Line, Fence, and Tree Surveys, for Boundary Confirmation, in addition to Site Plans and Building Location Certificates required for Design and Municipal Permitting.',
@@ -43,6 +46,8 @@ export default function Services() {
     {
       id: 'land-development',
       title: 'Land Development',
+      directAnswerQuestion:
+        'What certified surveying does Tantalus Geomatics provide to support land development and approvals?',
       icon: <Map className="w-10 h-10 text-brand-green" />,
       image: "images/land-development.webp",
       description: 'We provide the certified surveying and engineering essentials required to support architectural and civil engineering design and streamline the municipal approval process.',
@@ -55,6 +60,8 @@ export default function Services() {
     {
       id: 'construction',
       title: 'Construction & Infrastructure',
+      directAnswerQuestion:
+        'What construction layout and monitoring services does Tantalus Geomatics offer for infrastructure projects?',
       icon: <HardHat className="w-10 h-10 text-brand-green" />,
       image: "images/construction.webp",
       description: 'We provide the precise layout and monitoring services required to ensure construction matches design specifications. Our professional oversight reduces the risk of costly rework and keeps your project on schedule.',
@@ -67,6 +74,8 @@ export default function Services() {
     {
       id: 'legal',
       title: 'Legal Surveys',
+      directAnswerQuestion:
+        'What legal boundary surveys and statutory plans does Tantalus Geomatics prepare for Land Title Office registration?',
       icon: <Compass className="w-10 h-10 text-brand-green" />,
       image: "images/survey-marker-post.webp",
       description: 'We provide the professional boundary surveys and statutory plans required for Land Title Office registration, ensuring your property interests are legally protected.',
@@ -80,6 +89,8 @@ export default function Services() {
     {
       id: 'reality-capture',
       title: '3D Reality Capture',
+      directAnswerQuestion:
+        'What 3D reality capture and mapping technologies does Tantalus Geomatics use for site documentation?',
       icon: <Mountain className="w-10 h-10 text-brand-green" />,
       image: "images/reality-capture.webp",
       description: 'Using the latest in LiDAR and photogrammetry, we create accurate 3D replicas of physical sites and buildings.',
@@ -182,9 +193,11 @@ export default function Services() {
                     {service.icon}
                   </div>
                   <h2 className="text-3xl sm:text-4xl font-light text-white mb-4 sm:mb-6 tracking-tight">{service.title}</h2>
-                  <p className="text-lg sm:text-xl text-white/60 font-light mb-8 sm:mb-10 leading-relaxed">
-                    {service.description}
-                  </p>
+                  <GeoDirectAnswer question={service.directAnswerQuestion}>
+                    <p className="text-lg sm:text-xl text-white/60 font-light mb-8 sm:mb-10 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </GeoDirectAnswer>
                   <div className="space-y-4 sm:space-y-6">
                     {service.items.map((item, i) => (
                       <div key={i} className="flex items-start gap-4 p-4 sm:p-6 rounded-2xl bg-brand-dark/50 border border-white/5 hover:border-brand-green/30 transition-colors">

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
 
 const HERO_FALLBACK = 'images/tantalus-hero-banner.webp';
@@ -122,9 +123,14 @@ const residentialSchema = {
           <h2 className="text-3xl sm:text-4xl font-light text-white text-center mb-4">
             Our Residential Survey Process
           </h2>
-          <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-            We simplify the complexities of BC land laws to provide a straightforward path for your project.
-          </p>
+          <GeoDirectAnswer
+            align="center"
+            question="How does Tantalus Geomatics simplify residential survey projects under BC land laws?"
+          >
+            <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+              We simplify the complexities of BC land laws to provide a straightforward path for your project.
+            </p>
+          </GeoDirectAnswer>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {[
@@ -173,9 +179,11 @@ const residentialSchema = {
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
             Speak with a Squamish Land Surveyor
           </h2>
-          <p className="text-white/65 font-light mb-10 max-w-xl mx-auto">
-            Discuss your property lines, fencing, or building permit requirements directly with our team.
-          </p>
+          <GeoDirectAnswer question="When should you call Tantalus Geomatics to discuss residential survey requirements?">
+            <p className="text-white/65 font-light mb-10 max-w-xl mx-auto">
+              Discuss your property lines, fencing, or building permit requirements directly with our team.
+            </p>
+          </GeoDirectAnswer>
           <a
             href={PHONE_TEL}
             className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg sm:text-xl font-semibold bg-brand-green hover:bg-brand-green-light text-black transition-all shadow-lg shadow-brand-green/20 min-w-[240px]"
@@ -192,9 +200,11 @@ const residentialSchema = {
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 text-center">
             Request a Residential Quote
           </h2>
-          <p className="text-center text-white/60 font-light mb-10">
-            Provide your property address and project details for a professional estimate.
-          </p>
+          <GeoDirectAnswer align="center" question="What information should you provide to request a residential survey estimate?">
+            <p className="text-center text-white/60 font-light mb-10">
+              Provide your property address and project details for a professional estimate.
+            </p>
+          </GeoDirectAnswer>
 
           <div className="bg-brand-dark p-8 md:p-10 border border-white/10">
             <LeadQuoteForm
@@ -213,8 +223,12 @@ const residentialSchema = {
           <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-12">
             Land Surveying Resources for Homeowners
           </h2>
-
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <GeoDirectAnswer
+            align="center"
+            question="Where can homeowners find more guidance on pricing, title insurance, boundaries, and permit surveys?"
+            questionClassName="mb-10"
+          >
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {resourceTopics.map((topic) => (
               // Option A: Only render the <li> if 'to' is present
               topic.to && (
@@ -237,6 +251,7 @@ const residentialSchema = {
               )
             ))}
           </ul>
+          </GeoDirectAnswer>
 
           <div className="text-center mt-12 text-sm text-white/45">
             <p className="mb-2">Need immediate assistance with a survey project?</p>

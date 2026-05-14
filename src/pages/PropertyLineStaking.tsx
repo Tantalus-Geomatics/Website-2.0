@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
 const CANONICAL = 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking';
 
@@ -118,10 +119,15 @@ export default function PropertyLineStaking() {
 
       <section className="py-14 md:py-20 border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
-          <p className="text-white/65 font-light mb-10 max-w-3xl">
-            Property improvements should provide value, not headaches. Without a certified BCLS survey, a few inches of error can lead to:
-          </p>
+          <GeoDirectAnswer
+            question="What can go wrong with property improvements without a certified BCLS boundary survey?"
+            questionClassName="max-w-3xl"
+          >
+            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
+            <p className="text-white/65 font-light mb-10 max-w-3xl">
+              Property improvements should provide value, not headaches. Without a certified BCLS survey, a few inches of error can lead to:
+            </p>
+          </GeoDirectAnswer>
           <div className="space-y-6">
             {problems.map((item) => (
               <div
@@ -155,9 +161,14 @@ export default function PropertyLineStaking() {
           <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
             Our land survey process
           </h2>
-          <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-            Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. We follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
-          </p>
+          <GeoDirectAnswer
+            align="center"
+            question="How does Tantalus Geomatics determine and document your property boundary?"
+          >
+            <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+              Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. We follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
+            </p>
+          </GeoDirectAnswer>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {[
@@ -204,7 +215,7 @@ export default function PropertyLineStaking() {
       <section className="py-10 border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark aspect-video flex items-center justify-center">
-            <img alt="Property Line Post" class="object-cover h-full w-full border border-white/10 duration-500" referrerpolicy="no-referrer" src="images/squamish-property-line.webp"/>
+            <img alt="Property Line Post" className="object-cover h-full w-full border border-white/10 duration-500" referrerPolicy="no-referrer" src="images/squamish-property-line.webp"/>
           </div>
         </div>
       </section>
@@ -220,14 +231,21 @@ export default function PropertyLineStaking() {
             <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
               Case Study: Removing a tree in the District of Squamish
             </h2>
-            <p className="text-white/65 font-light leading-relaxed">
-              Tree removal often involves more than an agreement with a neighbour. Restrictive covenants on title and municipal bylaws can introduce further restrictions and permitting requirements prior to proceeding with your project.
-            </p>
+            <GeoDirectAnswer
+              align="center"
+              question="What should you know about tree removal in the District of Squamish beyond an agreement with a neighbour?"
+            >
+              <p className="text-white/65 font-light leading-relaxed">
+                Tree removal often involves more than an agreement with a neighbour. Restrictive covenants on title and municipal bylaws can introduce further restrictions and permitting requirements prior to proceeding with your project.
+              </p>
+            </GeoDirectAnswer>
           </div>
 
           {/* Three Things to Consider Box */}
           <div className="max-w-4xl mx-auto rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
-            <h3 className="text-brand-green font-medium mb-4 text-lg">Three things to consider:</h3>
+            <h3 className="text-brand-green font-medium mb-4 text-lg">
+              What three questions should you ask before removing a tree in the District of Squamish?
+            </h3>
             <ol className="list-decimal list-inside text-white/80 font-light leading-relaxed space-y-3">
               <li>Is the tree located on my lot?</li>
               <li>Do I need a permit to remove the tree?</li>

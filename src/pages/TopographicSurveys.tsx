@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
 const CANONICAL = 'https://www.tantalusgeomatics.com/topographic-surveys';
 
@@ -119,10 +120,15 @@ export default function TopographicSurveys() {
 
       <section className="py-14 md:py-20 border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Draft a blueprint for success with a BC Land Surveyor certified topographic survey.</blockquote>
-          <p className="text-white/65 font-light mb-10 max-w-3xl">
-            Land use planning, design and development requires up-to-date and accurate data. A BC Land Surveyor's Topographic survey and site plan is critical for:
-          </p>
+          <GeoDirectAnswer
+            question="What is included in a Tantalus Geomatics Topographic Survey?"
+            questionClassName="max-w-3xl"
+          >
+            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Draft a blueprint for success with a BC Land Surveyor certified topographic survey.</blockquote>
+            <p className="text-white/65 font-light mb-10 max-w-3xl">
+              Land use planning, design and development requires up-to-date and accurate data. A BC Land Surveyor's Topographic survey and site plan is critical for:
+            </p>
+          </GeoDirectAnswer>
           <div className="space-y-6">
             {problems.map((item) => (
               <div
@@ -156,9 +162,14 @@ export default function TopographicSurveys() {
           <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
             Our land survey process
           </h2>
-          <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-            Conducting a Topographic Survey is a technical process that combines various legal, environmental, and engineering requirements. We follow a standard professional sequence to ensure all the necessary details are efficiently captured to support your project as it moves forward.
-          </p>
+          <GeoDirectAnswer
+            align="center"
+            question="How does Tantalus Geomatics conduct a topographic survey for your project?"
+          >
+            <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+              Conducting a Topographic Survey is a technical process that combines various legal, environmental, and engineering requirements. We follow a standard professional sequence to ensure all the necessary details are efficiently captured to support your project as it moves forward.
+            </p>
+          </GeoDirectAnswer>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {[
@@ -201,14 +212,20 @@ export default function TopographicSurveys() {
 
           {/* FIX: Moved inside the max-w-7xl container and added mt-12 */}
           <div className="mt-12 md:mt-16 max-w-5xl mx-auto">
-            <div className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]">
-              <p className="text-brand-green font-medium mb-2">
-                We Provide a Range of Datasets to Support Your Design Needs
-              </p>
-              <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
-                In addition to a certified topographic survey or site plan in PDF format, we also offer a range of data product deliverables including CAD files, point clouds, digital terrain models and more.
-              </p>
-            </div>
+            <GeoDirectAnswer
+              question="What survey and data deliverables can Tantalus Geomatics provide beyond a certified PDF plan?"
+              questionClassName="max-w-3xl mx-auto text-center"
+              align="center"
+            >
+              <div className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]">
+                <p className="text-brand-green font-medium mb-2">
+                  We Provide a Range of Datasets to Support Your Design Needs
+                </p>
+                <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
+                  In addition to a certified topographic survey or site plan in PDF format, we also offer a range of data product deliverables including CAD files, point clouds, digital terrain models and more.
+                </p>
+              </div>
+            </GeoDirectAnswer>
           </div>
         </div>
       </section>
@@ -217,7 +234,7 @@ export default function TopographicSurveys() {
       <section className="py-10 border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark aspect-video flex items-center justify-center">
-            <img alt="Site Plan Overview" class="object-cover h-full w-full border border-white/10 duration-500" referrerpolicy="no-referrer" src="images/reality-capture.webp"/>
+            <img alt="Site Plan Overview" className="object-cover h-full w-full border border-white/10 duration-500" referrerPolicy="no-referrer" src="images/reality-capture.webp"/>
           </div>
         </div>
       </section>
@@ -233,14 +250,21 @@ export default function TopographicSurveys() {
             <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
               Case Study: Building a Home in the District of Squamish
             </h2>
-            <p className="text-white/65 font-light leading-relaxed">
-              Constructing a new home in the District of Squamish involves more than concrete and framing. Site design and servicing requirements, municipal bylaws and restrictive covenants on title all create a complex set of data and permitting requirements.
-            </p>
+            <GeoDirectAnswer
+              align="center"
+              question="What does constructing a new home in the District of Squamish involve beyond concrete and framing?"
+            >
+              <p className="text-white/65 font-light leading-relaxed">
+                Constructing a new home in the District of Squamish involves more than concrete and framing. Site design and servicing requirements, municipal bylaws and restrictive covenants on title all create a complex set of data and permitting requirements.
+              </p>
+            </GeoDirectAnswer>
           </div>
 
           {/* Three Things to Consider Box */}
           <div className="max-w-4xl mx-auto rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
-            <h3 className="text-brand-green font-medium mb-4 text-lg">Three things to consider:</h3>
+            <h3 className="text-brand-green font-medium mb-4 text-lg">
+              What three questions should you ask before building in the District of Squamish?
+            </h3>
             <ol className="list-decimal list-inside text-white/80 font-light leading-relaxed space-y-3">
               <li>What are the data needs of my engineers and architect?</li>
               <li>Am I located in a development permit area?</li>

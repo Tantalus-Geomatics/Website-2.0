@@ -1,0 +1,30 @@
+# Tantalus Geomatics
+
+> Professional land surveying and geomatics engineering for homeowners, developers, and builders in British Columbia’s Sea to Sky corridor.
+
+Tantalus Geomatics is a BC land surveying practice. The public site explains residential and development survey types (property lines, topographic surveys, building location certificates, permitting support), answers common questions, and offers ways to request a quote or get in touch. Pages are a single-page application; URLs below are the canonical HTML routes.
+
+## Primary pages
+
+- [Home](https://www.tantalusgeomatics.com/): Overview, typical use cases (fences, permits, decks/pools, strata, trees, refinancing), and lead form for quotes.
+- [About](https://www.tantalusgeomatics.com/about): Company background and how the firm works with clients.
+- [Services](https://www.tantalusgeomatics.com/services): Residential surveys, land development, construction and infrastructure, and related deliverables.
+- [FAQ](https://www.tantalusgeomatics.com/faq): Common questions about surveys, timelines, costs, and process in BC.
+- [Contact](https://www.tantalusgeomatics.com/contact): How to reach the office and request information.
+
+## Service and topic detail
+
+- [Residential property surveys](https://www.tantalusgeomatics.com/residential): Site plans, property lines, tree surveys, and building location certificates for homeowners.
+- [Survey pricing](https://www.tantalusgeomatics.com/survey-pricing): Factors that affect survey cost and what to expect when budgeting.
+- [Topographic surveys](https://www.tantalusgeomatics.com/topographic-surveys): Terrain and site feature surveys for design, permitting, and compliance.
+- [Sea to Sky property line and boundary staking](https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking): Boundary staking and property line work in the Sea to Sky region.
+- [Surveys and title insurance](https://www.tantalusgeomatics.com/surveys-and-title-insurance): How surveys relate to real estate and title insurance considerations.
+
+## Machine-readable index
+
+- [Sitemap](https://www.tantalusgeomatics.com/sitemap.xml): Full list of public URLs and relative priorities for crawlers.
+
+## Optional
+
+- [Association of British Columbia Land Surveyors (ABCLS)](https://www.bcls.ca/): Provincial professional body for BC land surveyors; useful context for certification and standards.
+- This site does not publish `.md` mirrors of HTML pages; use the HTML URLs above or the sitemap for retrieval.
