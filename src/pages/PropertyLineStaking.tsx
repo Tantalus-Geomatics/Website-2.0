@@ -19,59 +19,60 @@ const problems = [
     description: 'There may be protracted disputes with neighbors that can permanently affect your home environment and resale value.',
   },
 ];
+export default function PropertyLineStaking() {
 
-const pageSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  '@id': `${CANONICAL}/#webpage`,
-  'url': CANONICAL,
-  'name': 'Sea to Sky Property Line Staking | Tantalus Geomatics',
-  'description': 'Why property line staking matters for fences, retaining walls, and trees in Squamish, Whistler, and West Vancouver. Protect your land with a certified BCLS boundary survey.',
-  'isPartOf': {
-    '@id': 'https://tantalusgeomatics.com/#website'
-  },
-  'breadcrumb': {
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://tantalusgeomatics.com/'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Residential Surveys',
-        'item': 'https://tantalusgeomatics.com/residential'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 3,
-        'name': 'Property Line Staking'
-      }
-    ]
-  },
-  'mainEntity': {
-    '@type': 'Service',
-    'name': 'Property Line Staking & Boundary Surveys',
-    'serviceType': 'Land Surveying',
-    'provider': {
-      '@id': 'https://tantalusgeomatics.com/#organization'
+  const pageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${CANONICAL}/#webpage`,
+    'url': CANONICAL,
+    'name': 'Sea to Sky Property Line Staking | Tantalus Geomatics',
+    'description': 'Why property line staking matters for fences, retaining walls, and trees in Squamish, Whistler, and West Vancouver. Protect your land with a certified BCLS boundary survey.',
+    'isPartOf': {
+      '@id': 'https://tantalusgeomatics.com/#website'
     },
-    'areaServed': [
-      { '@type': 'City', 'name': 'Squamish' },
-      { '@type': 'City', 'name': 'Whistler' },
-      { '@type': 'City', 'name': 'Pemberton' },
-      { '@type': 'City', 'name': 'Lillooet' },
-      { '@type': 'City', 'name': 'West Vancouver' },
-      { '@type': 'City', 'name': 'Bowen Island' },
-      { '@type': 'City', 'name': 'Britannia Beach' },
-      { '@type': 'City', 'name': 'Furry Creek' },
-      { '@type': 'City', 'name': 'North Vancouver' }
-    ]
-  }
-};
+    'breadcrumb': {
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://tantalusgeomatics.com/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Residential Surveys',
+          'item': 'https://tantalusgeomatics.com/residential'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 3,
+          'name': 'Property Line Staking'
+        }
+      ]
+    },
+    'mainEntity': {
+      '@type': 'Service',
+      'name': 'Property Line Staking & Boundary Surveys',
+      'serviceType': 'Land Surveying',
+      'provider': {
+        '@id': 'https://tantalusgeomatics.com/#organization'
+      },
+      'areaServed': [
+        { '@type': 'City', 'name': 'Squamish' },
+        { '@type': 'City', 'name': 'Whistler' },
+        { '@type': 'City', 'name': 'Pemberton' },
+        { '@type': 'City', 'name': 'Lillooet' },
+        { '@type': 'City', 'name': 'West Vancouver' },
+        { '@type': 'City', 'name': 'Bowen Island' },
+        { '@type': 'City', 'name': 'Britannia Beach' },
+        { '@type': 'City', 'name': 'Furry Creek' },
+        { '@type': 'City', 'name': 'North Vancouver' }
+      ]
+    }
+  };
 
   return (
     <PageShell>
@@ -351,4 +352,4 @@ const pageSchema = {
       </section>
     </PageShell>
   );
-};
+}
