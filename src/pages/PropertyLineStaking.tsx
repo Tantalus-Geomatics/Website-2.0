@@ -351,4 +351,3 @@ const pageSchema = {
       </section>
     </PageShell>
   );
-}
