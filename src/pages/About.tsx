@@ -32,11 +32,49 @@ export default function About() {
         "name": area
       }))
     },
-    "about": {
+      "about": {
       "@type": "Person",
       "@id": "https://tantalusgeomatics.com/about/#dennis-sherman",
       "name": "Dennis Sherman",
       "jobTitle": "Principal, BCLS, P.Eng",
+      // 1. The specific commission number
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "name": "British Columbia Land Surveyor Commission",
+          "propertyID": "BCLS Commission Number",
+          "value": "1104" // Replace with Dennis's BCLS number
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Professional Engineer License",
+          "propertyID": "EGBC License Number",
+          "value": "57741" // Replace with Dennis's P.Eng number
+        }
+      ],
+      // 2. The official credential relationship
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Professional License",
+          "name": "British Columbia Land Surveyor (BCLS)",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Association of British Columbia Land Surveyors",
+            "url": "https://www.abcls.ca/"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Professional License",
+          "name": "Professional Engineer (P.Eng)",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Engineers and Geoscientists British Columbia",
+            "url": "https://www.egbc.ca/"
+          }
+        }
+      ],
       "worksFor": {
         "@id": "https://tantalusgeomatics.com/#organization"
       },
@@ -44,26 +82,11 @@ export default function About() {
         "@type": "CollegeOrUniversity",
         "name": "Lassonde School of Engineering at York University"
       },
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "name": "Association of British Columbia Land Surveyors",
-          "alternateName": "ABCLS",
-          "url": "https://www.abcls.ca/"
-        },
-        {
-          "@type": "Organization",
-          "name": "Engineers and Geoscientists British Columbia",
-          "alternateName": "EGBC",
-          "url": "https://www.egbc.ca/"
-        }
-      ],
       "sameAs": [
         "https://www.linkedin.com/in/dennis-sherman/"
       ],
       "description": "Dennis Sherman is a dual-registered professional. He is a commissioned British Columbia Land Surveyor (BCLS) and a Professional Engineer (P.Eng) specializing in the integration of land surveying and geomatics engineering."
     }
-  };
 
   return (
     <PageShell>

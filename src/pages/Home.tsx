@@ -96,6 +96,14 @@ export default function Home() {
     "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": "https://tantalusgeomatics.com/#organization",
     "name": "Tantalus Geomatics Land Surveying Ltd.",
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "name": "Association of BC Land Surveyors Corporate Permit Number",
+        "propertyID": "ABCLS Corporate Permit #",
+        "value": "1046" 
+      }
+    ],
     "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
     "url": "https://tantalusgeomatics.com",
     "telephone": "+1-604-213-9934",
@@ -118,8 +126,7 @@ export default function Home() {
     ],
     "description": "Professional BCLS Land Surveying and Geomatics Engineering supporting residential and commercial projects throughout the Sea to Sky corridor.",
     "sameAs": [
-      "https://www.linkedin.com/company/tantalus-geomatics", // Add your social links here
-      "https://www.instagram.com/tantalusgeomatics"
+      "https://www.linkedin.com/company/tantalus-geomatics"
     ]
   };
 
