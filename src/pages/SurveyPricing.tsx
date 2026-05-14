@@ -46,10 +46,34 @@ export default function SurveyPricing() {
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Survey Pricing & Cost Factors',
-    description:
-      'Residential survey pricing education for BC homeowners: what drives cost, why DIY tools are risky, and how to request a quote.',
-    url: 'https://tantalusgeomatics.com/survey-pricing',
+    '@id': 'https://tantalusgeomatics.com/survey-pricing/#webpage', // Unique ID
+    'url': 'https://tantalusgeomatics.com/survey-pricing',
+    'name': 'Survey Pricing & Cost Factors | Tantalus Geomatics',
+    'description': 'Professional guide on residential survey costs in BC. Learn about pricing factors for BCLS certified plans, site visits, and municipal requirements.',
+    'isPartOf': {
+      '@id': 'https://tantalusgeomatics.com/#website' // Links it to your homepage/brand
+    },
+    'breadcrumb': {
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://tantalusgeomatics.com/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Survey Pricing'
+        }
+      ]
+    },
+    'mainEntity': {
+      '@type': 'ProfessionalService',
+      'name': 'Tantalus Geomatics Land Surveying Ltd.',
+      'areaServed': ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island","Britannia Beach","Furry Creek","North Vancouver"]
+    }
   };
 
   return (

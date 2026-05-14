@@ -91,6 +91,18 @@ export default function Services() {
     }
   ];
 
+  const serviceAreas = [
+    "Squamish", 
+    "Whistler", 
+    "Pemberton", 
+    "Lillooet", 
+    "West Vancouver", 
+    "Bowen Island", 
+    "Britannia Beach", 
+    "Furry Creek", 
+    "North Vancouver"
+  ];
+
   const servicesSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -101,9 +113,14 @@ export default function Services() {
         "@type": "Service",
         "name": service.title,
         "description": service.description,
+        "areaServed": serviceAreas.map(area => ({
+          "@type": "City",
+          "name": area
+        })),
         "provider": {
           "@type": "ProfessionalService",
-          "name": "Tantalus Geomatics Land Surveying Ltd."
+          "name": "Tantalus Geomatics Land Surveying Ltd.",
+          "areaServed": serviceAreas
         }
       }
     }))

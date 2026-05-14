@@ -7,20 +7,54 @@ import { useLeadForm } from '../hooks/useLeadForm';
 export default function Contact() {
   const lead = useLeadForm();
 
+  const serviceAreas = [
+    "Squamish", "Whistler", "Pemberton", "Lillooet", 
+    "West Vancouver", "Bowen Island", "Britannia Beach", 
+    "Furry Creek", "North Vancouver"
+  ];
+
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
+    "@id": "https://tantalusgeomatics.com/contact/#webpage",
+    "url": "https://tantalusgeomatics.com/contact",
+    "name": "Contact Tantalus Geomatics | BC Land Surveyor",
+    "description": "Request a quote for land surveying services in Squamish, Whistler, and the Sea to Sky corridor.",
+    "isPartOf": {
+      "@id": "https://tantalusgeomatics.com/#website"
+    },
     "mainEntity": {
       "@type": "LocalBusiness",
+      "@id": "https://tantalusgeomatics.com/#organization",
       "name": "Tantalus Geomatics Land Surveying Ltd.",
+      "email": "contact@tantalusgeomatics.com",
+      "telephone": "+1-604-213-9934",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Squamish",
         "addressRegion": "BC",
         "addressCountry": "CA"
       },
-      "email": "contact@tantalusgeomatics.com",
-      "areaServed": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island","Brittania Beach","Furry Creek","North Vancouver"]
+      "areaServed": serviceAreas.map(area => ({
+        "@type": "City",
+        "name": area
+      }))
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tantalusgeomatics.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact Us"
+        }
+      ]
     }
   };
 

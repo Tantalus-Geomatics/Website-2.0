@@ -93,18 +93,34 @@ export default function Home() {
 
   const homeSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": "https://tantalusgeomatics.com/#organization",
     "name": "Tantalus Geomatics Land Surveying Ltd.",
     "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
     "url": "https://tantalusgeomatics.com",
+    "telephone": "+1-604-213-9934",
+    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island","Brittania Beach","Furry Creek","North Vancouver"],
+      "addressLocality": "Squamish", // Primary office location
       "addressRegion": "BC",
       "addressCountry": "CA"
     },
-    "areaServed": ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island","Brittania Beach","Furry Creek","North Vancouver"],
-    "description": "Professional Land Surveying and 3D Reality Capture for homeowners, AEC industry professionals, and real estate experts in the Sea to Sky corridor."
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "49.7016", 
+      "longitude": "-123.1558"
+    },
+    "areaServed": [
+      "Squamish", "Whistler", "Pemberton", "Lillooet", 
+      "West Vancouver", "Bowen Island", "Britannia Beach", 
+      "Furry Creek", "North Vancouver"
+    ],
+    "description": "Professional BCLS Land Surveying and Geomatics Engineering supporting residential and commercial projects throughout the Sea to Sky corridor.",
+    "sameAs": [
+      "https://www.linkedin.com/company/tantalus-geomatics", // Add your social links here
+      "https://www.instagram.com/tantalusgeomatics"
+    ]
   };
 
   return (

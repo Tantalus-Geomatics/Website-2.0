@@ -21,14 +21,48 @@ const problems = [
 ];
 
 export default function SurveyTitleInsurance() {
-  const pageSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: 'Building Location Surveys vs. Title Insurance in BC',
-    description:
-      'Understand the benefits of a land survey in addition to mortgage insurance when buying or selling a property in British Columbia.',
-    url: CANONICAL,
-  };
+    // Enhanced Schema connecting the educational guide to your LocalBusiness entity
+    const pageSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${CANONICAL}/#webpage`,
+      'url': CANONICAL,
+      'name': 'Building Location Surveys vs. Title Insurance in BC | Tantalus Geomatics',
+      'description': 'Understand the benefits of a land survey in addition to mortgage insurance when buying or selling a property in British Columbia.',
+      'isPartOf': {
+        '@id': 'https://tantalusgeomatics.com/#website'
+      },
+      'about': [
+        { '@type': 'Thing', 'name': 'Title Insurance' },
+        { '@type': 'Thing', 'name': 'Land Surveying' },
+        { '@type': 'Thing', 'name': 'Real Estate' }
+      ],
+      'breadcrumb': {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': 'https://tantalusgeomatics.com/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Residential Surveys',
+            'item': 'https://tantalusgeomatics.com/residential'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': 'Surveys vs. Title Insurance'
+          }
+        ]
+      },
+      'provider': {
+        '@id': 'https://tantalusgeomatics.com/#organization'
+      }
+    };
 
   return (
     <PageShell>

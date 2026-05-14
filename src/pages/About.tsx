@@ -6,18 +6,62 @@ import { useLeadForm } from '../hooks/useLeadForm';
 
 export default function About() {
   const lead = useLeadForm();
+  const serviceAreas = [
+    "Squamish", "Whistler", "Pemberton", "Lillooet", 
+    "West Vancouver", "Bowen Island", "Britannia Beach", 
+    "Furry Creek", "North Vancouver"
+  ];
+
+  // Enhanced AboutPage schema with Local Service Areas
   const aboutSchema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
+    "@id": "https://tantalusgeomatics.com/about/#webpage",
+    "url": "https://tantalusgeomatics.com/about",
+    "name": "About Tantalus Geomatics Land Surveying",
+    "description": "Learn about Tantalus Geomatics Land Surveying, a professional land surveying company delivering surveying services throughout the Sea to Sky.",
+    "isPartOf": {
+      "@id": "https://tantalusgeomatics.com/#website"
+    },
     "mainEntity": {
-      "@type": "Organization",
+      "@type": "LocalBusiness",
+      "@id": "https://tantalusgeomatics.com/#organization",
       "name": "Tantalus Geomatics Land Surveying Ltd.",
-      "founder": {
-        "@type": "Person",
-        "name": "Dennis Sherman",
-        "jobTitle": "Principal, BCLS, PEng",
-        "url": "https://www.linkedin.com/in/dennis-sherman/"
-      }
+      "areaServed": serviceAreas.map(area => ({
+        "@type": "City",
+        "name": area
+      }))
+    },
+    "about": {
+      "@type": "Person",
+      "@id": "https://tantalusgeomatics.com/about/#dennis-sherman",
+      "name": "Dennis Sherman",
+      "jobTitle": "Principal, BCLS, P.Eng",
+      "worksFor": {
+        "@id": "https://tantalusgeomatics.com/#organization"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Lassonde School of Engineering at York University"
+      },
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "Association of British Columbia Land Surveyors",
+          "alternateName": "ABCLS",
+          "url": "https://www.abcls.ca/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Engineers and Geoscientists British Columbia",
+          "alternateName": "EGBC",
+          "url": "https://www.egbc.ca/"
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/dennis-sherman/"
+      ],
+      "description": "Dennis Sherman is a dual-registered professional. He is a commissioned British Columbia Land Surveyor (BCLS) and a Professional Engineer (P.Eng) specializing in the integration of land surveying and geomatics engineering."
     }
   };
 

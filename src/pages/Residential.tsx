@@ -13,19 +13,45 @@ export default function Residential() {
   const [heroSrc, setHeroSrc] = useState(HERO_FALLBACK);
   const lead = useLeadForm();
 
-  // Enhanced Schema for Local SEO E-E-A-T
-  const residentialSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    'name': 'Residential Land Surveying',
-    'provider': {
-      '@type': 'LocalBusiness',
-      'name': 'Tantalus Geomatics Land Surveying Ltd.',
-      'areaServed': ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island","Brittania Beach","Furry Creek","North Vancouver"]
-    },
-    'description': 'Professional BCLS certified land surveys for homeowners in the Sea to Sky corridor. Specialized in property lines, topographic surveys, and building permits.',
-    'url': 'https://tantalusgeomatics.com/residential',
-  };
+// Array of locations based on your input
+const serviceAreas = [
+  "Squamish", "Whistler", "Pemberton", "Lillooet", 
+  "West Vancouver", "Bowen Island", "Brittania Beach", 
+  "Furry Creek", "North Vancouver"
+];
+
+// Enhanced Schema for Local SEO E-E-A-T
+const residentialSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://tantalusgeomatics.com/residential/#service',
+  'name': 'Residential Land Surveying',
+  'serviceType': 'Land Surveying',
+  'provider': {
+    '@type': 'LocalBusiness',
+    '@id': 'https://tantalusgeomatics.com/#organization',
+    'name': 'Tantalus Geomatics Land Surveying Ltd.',
+    'areaServed': serviceAreas.map(area => ({
+      '@type': 'City',
+      'name': area
+    }))
+  },
+  'areaServed': serviceAreas.map(area => ({
+    '@type': 'City',
+    'name': area
+  })),
+  'description': 'Professional BCLS certified land surveys for homeowners in the Sea to Sky corridor. Specialized in property lines, topographic surveys, and building permits.',
+  'url': 'https://tantalusgeomatics.com/residential',
+  'hasOfferCatalog': {
+    '@type': 'OfferCatalog',
+    'name': 'Residential Surveying Services',
+    'itemListElement': [
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Property Line Staking' } },
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Topographic Site Plans' } },
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Building Location Certificates' } }
+    ]
+  }
+};
 
   const resourceTopics = [
     {

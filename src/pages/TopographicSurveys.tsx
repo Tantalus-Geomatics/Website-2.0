@@ -21,15 +21,60 @@ const problems = [
 ];
 
 export default function TopographicSurveys() {
+  // Advanced Service Schema mapped to your local area
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'The First Step to Building: Topographic Surveys Explained',
-    description:
-      'How topographic surveys support BC building permits, design, and geodetic elevations for residential homeowners.',
-    url: CANONICAL,
+    '@id': `${CANONICAL}/#webpage`,
+    'url': CANONICAL,
+    'name': 'The First Step to Building: Topographic Surveys Explained | Tantalus Geomatics',
+    'description': 'How topographic surveys support BC building permits, design, and geodetic elevations for residential homeowners in the Sea to Sky corridor.',
+    'isPartOf': {
+      '@id': 'https://tantalusgeomatics.com/#website'
+    },
+    'breadcrumb': {
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://tantalusgeomatics.com/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Residential Surveys',
+          'item': 'https://tantalusgeomatics.com/residential'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 3,
+          'name': 'Topographic Surveys'
+        }
+      ]
+    },
+    'mainEntity': {
+      '@type': 'Service',
+      'name': 'Topographic Surveys & Site Plans',
+      'serviceType': 'Land Surveying',
+      'provider': {
+        '@id': 'https://tantalusgeomatics.com/#organization'
+      },
+      'areaServed': [
+        { '@type': 'City', 'name': 'Squamish' },
+        { '@type': 'City', 'name': 'Whistler' },
+        { '@type': 'City', 'name': 'Pemberton' },
+        { '@type': 'City', 'name': 'Lillooet' },
+        { '@type': 'City', 'name': 'West Vancouver' },
+        { '@type': 'City', 'name': 'Bowen Island' },
+        { '@type': 'City', 'name': 'Britannia Beach' },
+        { '@type': 'City', 'name': 'Furry Creek' },
+        { '@type': 'City', 'name': 'North Vancouver' }
+      ]
+    }
   };
-
+  
   return (
     <PageShell>
       <SEO

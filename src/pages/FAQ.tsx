@@ -158,20 +158,34 @@ export default function FAQ() {
     }
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqCategories.flatMap(category => 
-      category.faqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
-        }
-      }))
-    )
-  };
+// Helper to remove HTML tags for valid Schema.org text
+const stripHtml = (html) => {
+  return html.replace(/<[^>]*>?/gm, '');
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://tantalusgeomatics.com/faq/#webpage",
+  "url": "https://tantalusgeomatics.com/faq",
+  "name": "Land Surveying FAQ | Common Questions in the Sea-to-Sky",
+  "isPartOf": {
+    "@id": "https://tantalusgeomatics.com/#website"
+  },
+  "publisher": {
+    "@id": "https://tantalusgeomatics.com/#organization"
+  },
+  "mainEntity": faqCategories.flatMap(category => 
+    category.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": stripHtml(faq.answer) // Prevents HTML validation errors in search console
+      }
+    }))
+  )
+};
 
   return (
     <PageShell>
