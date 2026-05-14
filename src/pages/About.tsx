@@ -87,6 +87,7 @@ export default function About() {
       ],
       "description": "Dennis Sherman is a dual-registered professional. He is a commissioned British Columbia Land Surveyor (BCLS) and a Professional Engineer (P.Eng) specializing in the integration of land surveying and geomatics engineering."
     }
+  }
 
   return (
     <PageShell>
