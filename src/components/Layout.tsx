@@ -131,12 +131,12 @@ export default function Layout() {
               />
               <Mountain size={24} className="text-white hidden" />
               <div className="flex flex-col">
-                <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics</span>
+                <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics </span>
                 <span className="text-xs font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
               </div>
             </div>
             <p className="text-sm text-white/60 mb-4">
-              Professional Land Surveying services for homeowners, developers, and industry professionals in the Sea to Sky corridor.
+              Professional Land Surveying throughout the Sea to Sky corridor.
             </p>
             <div className="mt-6 flex flex-col items-start gap-3">
               <p className="text-xs text-white/50 leading-relaxed">
