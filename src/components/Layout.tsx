@@ -1,6 +1,57 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { MapPin, Menu, X, Mountain, Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import type { FeatureCollection } from 'geojson';
+
+// GeoJSON definition of the Sea to Sky & Lower Mainland service area
+const serviceAreaGeoJSON: FeatureCollection = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      properties: {
+        name: "Tantalus Geomatics Service Area",
+      },
+      geometry": {
+        type: "Polygon",
+        coordinates: [
+          [
+            [-123.38, 49.30], // West of Bowen Island
+            [-123.40, 49.45], // Coastal approach
+            [-123.20, 49.80], // West of Squamish
+            [-123.10, 50.20], // West of Whistler
+            [-122.85, 50.40], // West of Pemberton
+            [-121.80, 50.80], // North/West of Lillooet
+            [-121.70, 50.60], // East of Lillooet
+            [-122.60, 50.10], // East of Whistler
+            [-122.80, 49.60], // East of Squamish/Furry Creek
+            [-123.00, 49.30], // North Vancouver
+            [-123.38, 49.30]  // Close polygon
+          ]
+        ]
+      }
+    }
+  ]
+};
+
+// JSON-LD Schema for SEO/GEO crawlers
+// Maps to the exact polygon vertices to ensure spatial indexing matches the visual applet
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Professional Land Surveying",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Tantalus Geomatics Land Surveying Ltd.",
+    "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
+    "telephone": "+16042139934"
+  },
+  "areaServed": {
+    "@type": "GeoShape",
+    "polygon": "49.30,-123.38 49.45,-123.40 49.80,-123.20 50.20,-123.10 50.40,-122.85 50.80,-121.80 50.60,-121.70 50.10,-122.60 49.60,-122.80 49.30,-123.00 49.30,-123.38"
+  }
+};
 
 export default function Layout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,10 +67,18 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-white bg-brand-black">
+      {/* SEO Structured Data Injection */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+
       {/* Top Banner */}
       <div className="bg-brand-green text-black py-2 px-4 text-xs sm:text-sm font-semibold text-center flex items-center justify-center gap-2">
         <MapPin size={16} className="shrink-0" />
-        <span className="truncate sm:whitespace-normal">Squamish • Whistler • Pemberton • Lillooet • West Vancouver • Bowen Island</span>
+        <span className="truncate sm:whitespace-normal">
+          Proudly Surveying the Sea to Sky Corridor: West Vancouver to Lillooet
+        </span>
       </div>
 
       {/* Navigation */}
@@ -48,7 +107,7 @@ export default function Layout() {
             {/* Right: Actions & Mobile Menu */}
             <div className="flex items-center gap-2.5 sm:gap-6 z-10 shrink-0">
               
-              {/* CTA Button (Inline right on mobile, absolute center on desktop) */}
+              {/* CTA Button */}
               <div className="md:absolute md:left-1/2 md:-translate-x-1/2 md:flex">
                 <a 
                   href="tel:6042139934" 
@@ -117,8 +176,9 @@ export default function Layout() {
 
       {/* Footer */}
       <footer className="bg-brand-dark border-t border-white/10 text-white/70 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <img 
                 src="tantalus-logo.webp" 
@@ -142,11 +202,11 @@ export default function Layout() {
               <p className="text-xs text-white/50 leading-relaxed">
                 Tantalus Geomatics Land Surveying Ltd is a proud member of the Association of BC Land Surveyors.
               </p>
-              <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="w-full transition-transform hover:scale-105">
+              <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-2/3 lg:w-full transition-transform hover:scale-105">
                 <div className="bg-white p-2 rounded-sm w-full">
                   <img 
                     src="images/abcls-logo-horizontal.svg" 
-                    alt="Association of BC Land Surveyors Logo Placeholder" 
+                    alt="Association of BC Land Surveyors Logo" 
                     className="w-full object-contain opacity-100"
                     referrerPolicy="no-referrer"
                   />
@@ -154,7 +214,8 @@ export default function Layout() {
               </a>
             </div>
           </div>
-          <div>
+
+          <div className="lg:col-span-1">
             <h3 className="text-white font-medium mb-4">Contact</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3">
@@ -167,17 +228,35 @@ export default function Layout() {
               </li>
             </ul>
           </div>
-          <div>
-            <h3 className="text-white font-medium mb-4">Service Areas</h3>
-            <ul className="grid grid-cols-2 gap-2 text-sm text-white/60">
-              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Squamish</Link></li>
-              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Whistler</Link></li>
-              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Pemberton</Link></li>
-              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Lillooet</Link></li>
-              <li><Link to="/contact" className="hover:text-brand-green transition-colors">West Vancouver</Link></li>
-              <li><Link to="/contact" className="hover:text-brand-green transition-colors">Bowen Island</Link></li>
-            </ul>
+
+          {/* Interactive Map Applet replacing standard text list */}
+          <div className="lg:col-span-1 flex flex-col h-64 lg:h-auto">
+            <h3 className="text-white font-medium mb-4 flex items-center gap-2">
+              <MapPin size={18} className="text-brand-green"/> 
+              Service Area Map
+            </h3>
+            <div className="flex-grow rounded-md overflow-hidden border border-white/20 relative z-0">
+              <MapContainer 
+                center={[49.95, -122.90]} 
+                zoom={7} 
+                scrollWheelZoom={false}
+                className="h-full w-full"
+              >
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <GeoJSON 
+                  data={serviceAreaGeoJSON} 
+                  pathOptions={{ color: '#6B9E54', fillColor: '#6B9E54', fillOpacity: 0.3, weight: 2 }} 
+                />
+              </MapContainer>
+            </div>
+            <p className="text-xs text-white/50 mt-2">
+              Serving Squamish, Whistler, Pemberton, Lillooet, West Vancouver, Bowen Island, Britannia Beach, Furry Creek, and North Vancouver.
+            </p>
           </div>
+
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-white/10 text-sm text-white/40 text-center">
           &copy; {new Date().getFullYear()} Tantalus Geomatics Land Surveying Ltd. All rights reserved.
