@@ -13,7 +13,7 @@ const serviceAreaGeoJSON: FeatureCollection = {
       properties: {
         name: "Tantalus Geomatics Service Area",
       },
-      geometry": {
+      geometry: {
         type: "Polygon",
         coordinates: [
           [
