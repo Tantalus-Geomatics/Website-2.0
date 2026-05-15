@@ -281,7 +281,7 @@ export default function SurveyPricing() {
                   <div>
                     <h4 className="text-white/90 font-medium mb-2">Legal Boundary Survey Effort</h4>
                     <p className="text-white/65 font-light text-sm leading-relaxed">
-                      Surveying a large 68.6ha primary parcel (District Lots 1519 & 1250) represents a significant undertaking. This site presents a number of boundary complexities, requiring the definition of different types of intersecting boundaries including the Cheakamus River's natural boundary, spiral curves along a CN Rail right of way, and two distinct BC Hydro statutory right of ways. Physically, crews must navigate steep terrain and dense forests, investing heavily in labor to clear vegetation. Additionally, the volume of historical and legal research required, often tracing back to 19th-century Crown Grants, further impacts both the cost of the survey and the level of effort required to simply produce a quote.
+                      Surveying a large 68.6ha parcel represents a significant undertaking. This site presents a number of boundary complexities, requiring the definition of different types of intersecting boundaries including the Cheakamus River's natural boundary, spiral curves along a CN Rail right of way, and two distinct BC Hydro statutory right of ways. Physically, crews must navigate steep terrain and dense forests, investing heavily in labor to clear vegetation. Additionally, the volume of historical and legal research required, often tracing back to 19th-century Crown Grants, further impacts both the cost of the survey and the level of effort required to simply produce a quote.
                     </p>
                   </div>
                   <div>
