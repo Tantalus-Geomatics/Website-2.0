@@ -183,7 +183,7 @@ export default function SurveyPricing() {
               {
                 step: '1',
                 title: 'Statutory Research & Title Review',
-                body: 'We begin by searching the LTSA\'s records for your property\'s title, relevant plans and charge documents. Depending on the type of survey, additional research may be required such as municipal permitting requirements, zoning bylaws, provincial application requirements, and utility records to confirm the scope of work required to meet your project'/'s needs.',
+                body: 'We begin by searching the LTSA\'s records for your property\'s title, relevant plans and charge documents. Depending on the type of survey, additional research may be required such as municipal permitting requirements, zoning bylaws, provincial application requirements, and utility records to confirm the scope of work required to meet your project\'s needs.',
                 icon: Search,
               },
               {
