@@ -1,58 +1,47 @@
-import { useState } from 'react';
-import {
-  AlertTriangle,
-  ChevronDown,
-  FileText,
-  Home,
-  MapPinned,
-  Phone,
-  Trees,
+import { Link } from 'react-router-dom';
+import { 
+  ArrowRight, 
+  MapPin, 
+  ClipboardList, 
+  MapPinned, 
+  FileCheck, 
+  Phone, 
+  Scale, 
+  Search, 
+  ShieldAlert, 
+  Trees 
 } from 'lucide-react';
-import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
-import { useLeadForm } from '../hooks/useLeadForm';
 
-const PHONE_TEL = 'tel:+16042139934';
+const CANONICAL = 'https://www.tantalusgeomatics.com/survey-pricing';
+
+const priceFactors = [
+  {
+    factor: 'Rigorous Regulatory Framework',
+    description: 'The high cost of surveying in BC is inextricably linked to the province\'s rigorous regulatory environment[cite: 37]. The Association of BC Land Surveyors (ABCLS) enforces strict Survey and Plan Rules[cite: 45]. A British Columbia Land Surveyor (BCLS) cannot "cut corners" to lower a price; they are legally bound to follow a prescribed process of evidence recovery and verification[cite: 46, 47].',
+  },
+  {
+    factor: 'Professional Liability & Risk Assumption',
+    description: 'Consumers often view the surveyor as a technician whose primary output is a wooden stake, rather than a legal professional whose primary output is a defensible opinion on the extent of property ownership[cite: 24]. In British Columbia, the surveyor\'s liability is a quantifiable financial risk scaled by high property values[cite: 67, 68]. You are paying for the transfer of legal liability and the protection of your equity.',
+  },
+  {
+    factor: 'Historical Evidence Recovery',
+    description: 'Modern surveyors are often required to perform "evidence recovery," which involves searching for original 19th-century monuments[cite: 88]. If a primary monument is missing, the surveyor must "re-trace" the work of the original surveyor, often extending their research blocks or miles away from the subject property to find a reliable starting point[cite: 89, 138].',
+  },
+];
 
 export default function SurveyPricing() {
-  const [faqOpenIndex, setFaqOpenIndex] = useState<number>(0);
-  const lead = useLeadForm();
-
-  const faqItems = [
-    {
-      question:
-        'Why did I get a quote for $2,500 when my neighbor said they paid $600?',
-      answer:
-        `There are two types of surveys. Your neighbor likely had a "house location" survey for a mortgage, ` +
-        `which doesn't include marking lines on the ground. A legal boundary survey for a fence or ` +
-        'construction requires significantly more field work and legal liability.',
-    },
-    {
-      question: 'Why does it take three weeks to finish a survey?',
-      answer:
-        'The field work is only one part. We spend significant time researching historical records ' +
-        'at the Land Title Office and performing complex calculations to ensure your boundary is accurate ' +
-        'to within centimeters.',
-    },
-    {
-      question: 'Why can’t you just use my existing 20-year-old survey?',
-      answer:
-        'A survey is a snapshot in time. If you or your neighbor have added a fence, shed, or deck in the ' +
-        'last 20 years, the old survey is legally invalid for new construction or sales.',
-    },
-  ];
-
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': 'https://tantalusgeomatics.com/survey-pricing/#webpage', // Unique ID
-    'url': 'https://tantalusgeomatics.com/survey-pricing',
-    'name': 'Survey Pricing & Cost Factors | Tantalus Geomatics',
-    'description': 'Professional guide on residential survey costs in BC. Learn about pricing factors for BCLS certified plans, site visits, and municipal requirements.',
+    '@id': `${CANONICAL}/#webpage`,
+    'url': CANONICAL,
+    'name': 'Land Survey Pricing & Cost Factors | Tantalus Geomatics',
+    'description': 'Understand the professional, legal, and environmental factors that determine the cost of residential and rural land surveys in British Columbia.',
     'isPartOf': {
-      '@id': 'https://tantalusgeomatics.com/#website' // Links it to your homepage/brand
+      '@id': 'https://tantalusgeomatics.com/#website'
     },
     'breadcrumb': {
       '@type': 'BreadcrumbList',
@@ -71,282 +60,256 @@ export default function SurveyPricing() {
       ]
     },
     'mainEntity': {
-      '@type': 'ProfessionalService',
-      'name': 'Tantalus Geomatics Land Surveying Ltd.',
-      'areaServed': ["Squamish", "Whistler", "Pemberton", "Lillooet", "West Vancouver", "Bowen Island","Britannia Beach","Furry Creek","North Vancouver"]
+      '@type': 'Service',
+      'name': 'Land Survey Pricing Estimates',
+      'serviceType': 'Land Surveying',
+      'provider': {
+        '@id': 'https://tantalusgeomatics.com/#organization'
+      },
+      'areaServed': [
+        { '@type': 'City', 'name': 'Squamish' },
+        { '@type': 'City', 'name': 'Whistler' },
+        { '@type': 'City', 'name': 'Pemberton' },
+        { '@type': 'City', 'name': 'Lillooet' },
+        { '@type': 'City', 'name': 'West Vancouver' },
+        { '@type': 'City', 'name': 'Bowen Island' },
+        { '@type': 'City', 'name': 'Britannia Beach' },
+        { '@type': 'City', 'name': 'Furry Creek' },
+        { '@type': 'City', 'name': 'North Vancouver' }
+      ]
     }
   };
-
+  
   return (
     <PageShell>
       <SEO
-        title="Survey Pricing & Cost Factors"
-        description="Learn what drives residential survey pricing in BC, compare survey cost vs legal risk, and request a quote from a Licensed BC Land Surveyor."
-        canonicalUrl="https://tantalusgeomatics.com/survey-pricing"
+        title="Land Survey Pricing & Cost Factors in BC"
+        description="Learn the legal, historical, and topographical factors that influence land survey costs in BC. Transparent pricing insights from a Licensed BC Land Surveyor."
+        canonicalUrl={CANONICAL}
         schema={pageSchema}
       />
 
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden border-b border-white/10">
+      {/* Hero Section */}
+      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="images/tantalus-hero-banner.webp"
-            alt=""
+            alt="Professional Surveying in BC"
             className="w-full h-full object-cover opacity-50 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/45 via-brand-black/65 to-brand-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/70 to-brand-black" />
         </div>
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8 tracking-tight">
-            Secure Your Boundaries. Protect Your Equity.
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-4xl mx-auto">
-            In the high-stakes world of British Columbia real estate, a $2,000 survey
-            is the only thing standing between your investment and a $50,000 legal
-            dispute. Don&apos;t shop for the lowest price; invest in the highest
-            certainty.
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
+          <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
+            The Economics of Boundary Definition
           </p>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20 border-b border-white/10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
-            Introduction
-          </h2>
-          <GeoDirectAnswer question="What are you paying for when you purchase a residential boundary survey in BC?">
-            <p className="text-white/75 font-light leading-relaxed text-base sm:text-lg">
-              For most homeowners, a survey is a grudge purchase, often triggered by a
-              bank requirement for a mortgage or a municipal demand for a building
-              permit. When a client receives a quote for a residential boundary survey
-              that exceeds $2,500, the reaction is rarely one of understanding; it is
-              almost universally one of disbelief. However, a homeowner is not just
-              paying for a map; they are paying for the transfer of risk from
-              themselves to a regulated professional.
-            </p>
-          </GeoDirectAnswer>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-3">
-            Section 1: What Actually Influences Your Quote?
-          </h2>
-          <GeoDirectAnswer question="How is your residential survey quote calculated for a unique BC property?">
-            <p className="text-white/70 font-light mb-12 max-w-4xl">
-              Every property in BC is unique. Your quote is a bespoke calculation based
-              on the specific history, terrain, and legal standing of your lot.
-            </p>
-          </GeoDirectAnswer>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-            <article className="bg-brand-dark border border-white/10 p-6">
-              <MapPinned className="w-8 h-8 text-brand-green mb-4" />
-              <h3 className="text-lg font-medium text-white mb-2">
-                Why does searching for missing iron pins increase residential survey cost?
-              </h3>
-              <p className="text-white/65 text-sm font-light leading-relaxed">
-                Homeowners are often unaware that they are paying for the surveyor to
-                search for iron pins that may have been buried or destroyed decades
-                ago. If pins are missing, we must survey the entire block to
-                &quot;re-establish&quot; the boundary, a process that significantly
-                inflates labor costs.
-              </p>
-            </article>
-            <article className="bg-brand-dark border border-white/10 p-6">
-              <Home className="w-8 h-8 text-brand-green mb-4" />
-              <h3 className="text-lg font-medium text-white mb-2">
-                Why can a small urban lot still be complex and costly to survey?
-              </h3>
-              <p className="text-white/65 text-sm font-light leading-relaxed">
-                Homeowners believe that a standard 33x122 foot Vancouver lot should be
-                &quot;easy&quot; and cheap because of its size. In reality, urban
-                density often increases complexity due to &quot;pin-crowding,&quot;
-                utility interference, and the need to search further for reliable
-                monuments.
-              </p>
-            </article>
-            <article className="bg-brand-dark border border-white/10 p-6">
-              <Trees className="w-8 h-8 text-brand-green mb-4" />
-              <h3 className="text-lg font-medium text-white mb-2">
-                How do vegetation and terrain affect survey effort and pricing?
-              </h3>
-              <p className="text-white/65 text-sm font-light leading-relaxed">
-                In the lush environment of Western Canada, surveyors frequently
-                encounter dense brush or blackberry thickets that obstruct lines of
-                sight. A heavily wooded lot will always cost more to survey than a
-                cleared one. Steep slopes require more &quot;shots&quot; and more
-                complex modeling, increasing the drafting time.
-              </p>
-            </article>
-            <article className="bg-brand-dark border border-white/10 p-6">
-              <FileText className="w-8 h-8 text-brand-green mb-4" />
-              <h3 className="text-lg font-medium text-white mb-2">
-                How do LTSA disbursements appear on your survey invoice?
-              </h3>
-              <p className="text-white/65 text-sm font-light leading-relaxed">
-                The statutory fees charged by the Land Title and Survey Authority
-                (LTSA) for title searches and plan registrations are often passed
-                through to the client. Most LTSA fees are set to increase on April 1,
-                2026, driven by CPI adjustments. We pass these costs through with no
-                markup.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-14 md:py-18 border-b border-white/10 bg-red-950/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border border-red-400/40 bg-black/50 p-8 md:p-10">
-            <div className="flex items-start gap-4 mb-4">
-              <AlertTriangle className="w-8 h-8 text-red-300 shrink-0 mt-1" />
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-light text-white mb-3">
-                  Section 2: The Danger of DIY Tools
-                </h2>
-                <GeoDirectAnswer question="Why are consumer mapping and phone LiDAR tools risky substitutes for a professional boundary survey?">
-                  <p className="text-white/80 font-light leading-relaxed">
-                    Homeowners increasingly question professional fees by citing
-                    &quot;free&quot; or low-cost alternatives such as Google Earth or
-                    the LiDAR sensors found in modern iPhone Pro models. Google Earth is
-                    a digital approximation and can be off by several meters. It does
-                    not account for legal easements or historical deed discrepancies.
-                    Comparisons have shown that while a professional total station or
-                    RTK-GNSS system provides centimeter-level accuracy, an iPhone scan
-                    over even a short 1.5-meter distance can result in errors of 0.15 to
-                    0.21 meters-an unacceptable margin in the context of legal boundaries
-                    where inches define thousands of dollars in property value.
-                  </p>
-                </GeoDirectAnswer>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
-            Section 3: The True Cost of Skipping a Survey
-          </h2>
-          <GeoDirectAnswer question="What financial risk do you retain if you skip a professional BCLS survey?">
-            <p className="text-white/75 font-light leading-relaxed mb-10 max-w-5xl">
-              The most effective way to justify a $2,500 survey is to illustrate the
-              $50,000+ cost of proceeding without one. If a surveyor makes an error that
-              results in a building encroachment, their insurance provides the financial
-              backing to rectify the situation. Without a BCLS professional assuming
-              that liability, you are financially responsible for the fallout:
-            </p>
-          </GeoDirectAnswer>
-
-          <div className="overflow-hidden border border-white/10">
-            <div className="grid grid-cols-1 md:grid-cols-2 bg-brand-dark">
-              <div className="p-6 border-b md:border-b-0 md:border-r border-white/10">
-                <p className="text-sm uppercase tracking-wide text-brand-green mb-2">
-                  Professional survey investment
-                </p>
-                <p className="text-3xl font-semibold text-white mb-2">$2,500</p>
-                <p className="text-white/65 text-sm font-light">
-                  Typical benchmark for a residential boundary survey scope.
-                </p>
-              </div>
-              <div className="p-6">
-                <p className="text-sm uppercase tracking-wide text-red-300 mb-4">
-                  Cost of failure without a survey
-                </p>
-                <ul className="space-y-4">
-                  <li className="flex items-start justify-between gap-6 border-b border-white/10 pb-3">
-                    <span className="text-white/85 font-light">
-                      Encroaching Fences
-                    </span>
-                    <span className="text-red-200 font-semibold">$5,000 - $15,000</span>
-                  </li>
-                  <li className="flex items-start justify-between gap-6 border-b border-white/10 pb-3">
-                    <span className="text-white/85 font-light">
-                      Structural Encroachments
-                    </span>
-                    <span className="text-red-200 font-semibold">$25,000 - $100,000+</span>
-                  </li>
-                  <li className="flex items-start justify-between gap-6">
-                    <span className="text-white/85 font-light">Permit Rejections</span>
-                    <span className="text-red-200 font-semibold">$10,000 - $20,000</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 border-b border-white/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-8">
-            Section 4: Frequently Asked Questions
-          </h2>
-          <GeoDirectAnswer question="What common questions do homeowners ask about survey pricing, timelines, and accuracy?">
-            <div className="space-y-4">
-            {faqItems.map((item, index) => {
-              const isOpen = faqOpenIndex === index;
-              return (
-                <div key={item.question} className="border border-white/10 bg-brand-dark">
-                  <button
-                    type="button"
-                    onClick={() => setFaqOpenIndex(isOpen ? -1 : index)}
-                    className="w-full px-5 py-4 text-left flex items-center justify-between gap-4"
-                    aria-expanded={isOpen}
-                  >
-                    <span className="text-white font-medium">{item.question}</span>
-                    <ChevronDown
-                      className={`w-5 h-5 text-brand-green transition-transform ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  {isOpen && (
-                    <div className="px-5 pb-5">
-                      <p className="text-white/70 font-light leading-relaxed">
-                        {item.answer}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          </GeoDirectAnswer>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 bg-brand-dark border-t border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand-black border border-brand-green/40 p-8 md:p-10 mb-10">
-            <h2 className="text-2xl sm:text-3xl font-light text-white mb-3">
-              Request a Quote Today.
-            </h2>
-            <GeoDirectAnswer question="Who reviews your survey quote request and how quickly can you expect a response?">
-              <p className="text-white/75 font-light mb-8">
-                Every quote is reviewed by a Licensed BC Land Surveyor. 24-hour
-                turnaround on standard residential requests.
-              </p>
-            </GeoDirectAnswer>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
+            An Investment in Legal Certainty.
+          </h1>
+          <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+            A land survey in British Columbia should be viewed not as a commodity purchase, but as a critical legal safeguard[cite: 174]. Understand the professional liability, historical research, and rigorous terrain evaluation that forms the true foundation of your project quote.
+          </p>
+          <div className="flex justify-center px-4 sm:px-0">
             <a
-              href={PHONE_TEL}
-              className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg sm:text-xl font-semibold bg-brand-green hover:bg-brand-green-light text-black transition-all min-w-[240px]"
+              href="tel:6042139934"
+              className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
             >
-              <Phone className="h-6 w-6 shrink-0" aria-hidden />
-              Call now
+              <Phone size={20} />
+              Request a Bespoke Quote
             </a>
           </div>
+        </div>
+      </section>
 
-          <div className="max-w-3xl mx-auto bg-brand-dark p-8 md:p-10 border border-white/10">
-            <h3 className="text-2xl font-light text-white mb-6">Request a Quote</h3>
-            <LeadQuoteForm
-              variant="stacked-pricing"
-              formId="survey-pricing-quote-form"
-              ariaLabel="Survey pricing quote form"
-              {...lead}
-            />
+      {/* The Core Cost Drivers */}
+      <section className="py-14 md:py-20 border-b border-white/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <GeoDirectAnswer
+            question="What factors legally and economically drive the cost of a residential land survey in British Columbia?"
+            questionClassName="max-w-3xl"
+          >
+            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">
+              "The professional opinion of a BCLS remains the only reliable safeguard against the spiraling costs and delays of boundary litigation." [cite: 175]
+            </blockquote>
+            <p className="text-white/65 font-light mb-10 max-w-3xl">
+              Unlike many other home services where a flat fee can be easily calculated, land surveying is subject to an extraordinary number of variables that make preliminary quoting difficult[cite: 13]. Your quote reflects our ethical obligation to protect the public interest and the survey fabric[cite: 278].
+            </p>
+          </GeoDirectAnswer>
+          <div className="space-y-6">
+            {priceFactors.map((item) => (
+              <div
+                key={item.factor}
+                className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
+              >
+                <p className="text-brand-green font-medium mb-2 flex items-center gap-2">
+                  <ShieldAlert size={18} />
+                  {item.factor}
+                </p>
+                <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3-Step Quoting Process */}
+      <section className="py-16 md:py-24 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
+            How We Calculate Your Quote
+          </h2>
+          <GeoDirectAnswer
+            align="center"
+            question="What is the professional process for determining an accurate land surveying quote in BC?"
+          >
+            <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+              Because no two properties share the exact same legal history or terrain, we cannot provide an exact price without first performing significant preliminary research[cite: 14]. Our three-step quoting process ensures transparency and ethical compliance.
+            </p>
+          </GeoDirectAnswer>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+            {[
+              {
+                step: '1',
+                title: 'Statutory Research & Title Review',
+                body: 'We begin by searching the LTSA\'s records for your property\'s original Crown Grants, field notes, and adjacent plans[cite: 135]. In BC, a boundary is defined not just by your deed, but by the relationship to all neighboring surveys[cite: 136]. Providing your "Chain of Title" upfront can significantly streamline this phase[cite: 156, 157].',
+                icon: Search,
+              },
+              {
+                step: '2',
+                title: 'Terrain & Evidence Assessment',
+                body: 'The physical difficulty of a site directly impacts the man-hours required[cite: 79]. We assess topography, urban obstructions, and whether a site requires extensive physical labor, such as "brushing" a line to clear vegetation for line-of-sight measurements[cite: 83].',
+                icon: Trees,
+              },
+              {
+                step: '3',
+                title: 'Regulatory Deliverable Definition',
+                body: 'We determine the required statutory documents based on your goals. For instance, the Land Title Act mandates that whenever a BCLS sets or restores a legal boundary marker, they must file a Posting Plan in the Land Title Office[cite: 32]. We quote strictly for what is legally required to safely advance your project.',
+                icon: Scale,
+              },
+            ].map(({ step, title, body, icon: Icon }) => (
+              <div
+                key={step}
+                className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center"
+              >
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+                  <Icon className="h-8 w-8" strokeWidth={1.5} />
+                </div>
+                <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
+                  Step {step}
+                </span>
+                <h3 className="text-xl font-medium text-white mb-3">{title}</h3>
+                <p className="text-white/65 font-light leading-relaxed text-sm sm:text-base">
+                  {body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Case Study Section: Suburban vs Rural */}
+      <section className="py-16 md:py-24 border-b border-white/10 bg-brand-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-3">
+              Comparative Analysis
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
+              Case Study: Suburban Squamish Lot vs. Paradise Valley Acreage
+            </h2>
+            <GeoDirectAnswer
+              align="center"
+              question="How do terrain, property size, and legal constraints affect the level of effort between a small suburban lot and a large rural parcel?"
+            >
+              <p className="text-white/65 font-light leading-relaxed">
+                A survey is not a "commodity" but a response to specific terrain, history, and legal fabric[cite: 77]. To illustrate the vast spectrum of surveying efforts, we compare the requirements for a compact parcel on Newport Road to a complex 68.6-hectare parcel in Paradise Valley.
+              </p>
+            </GeoDirectAnswer>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            
+            {/* Suburban Case Study */}
+            <div className="bg-brand-dark border border-white/10 overflow-hidden flex flex-col">
+              <div className="h-48 overflow-hidden relative">
+                <img src="images/image_33b865.png" alt="Suburban Lot on Newport Rd" className="object-cover w-full h-full opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent" />
+                <h3 className="absolute bottom-4 left-6 text-xl font-medium text-white">Small Suburban Lot (Squamish)</h3>
+              </div>
+              <div className="p-6 md:p-8 flex-grow">
+                <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Newport Road Residential</p>
+                <div className="space-y-6 text-left">
+                  <div>
+                    <h4 className="text-white/90 font-medium mb-2">Legal Boundary Survey Effort</h4>
+                    <p className="text-white/65 font-light text-sm leading-relaxed">
+                      While small in acreage, suburban surveys are rarely simple. The dense development means property pins are frequently destroyed by past fence or landscaping work. To legally re-establish a single corner, our crews often must traverse multiple adjacent blocks to locate undisturbed monuments[cite: 138]. Furthermore, the proximity to neighboring structures dramatically increases the liability risk, demanding centimeter-level precision to prevent costly encroachment disputes[cite: 69, 70].
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-white/90 font-medium mb-2">Topographic Survey Effort</h4>
+                    <p className="text-white/65 font-light text-sm leading-relaxed">
+                      In an urban environment, topographic mapping must account for complex utility networks, tight municipal setbacks, and significant tree protection bylaws. While the physical area mapped is smaller, the density of required data points per square meter is exceptionally high.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Rural Case Study */}
+            <div className="bg-brand-dark border border-white/10 overflow-hidden flex flex-col">
+              <div className="h-48 overflow-hidden relative">
+                <img src="images/image_33b86c.png" alt="Paradise Valley Rural Lot" className="object-cover w-full h-full opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent" />
+                <h3 className="absolute bottom-4 left-6 text-xl font-medium text-white">68.6 Hectare Rural Lot (Paradise Valley)</h3>
+              </div>
+              <div className="p-6 md:p-8 flex-grow">
+                <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Reference Plan BCP39687</p>
+                <div className="space-y-6 text-left">
+                  <div>
+                    <h4 className="text-white/90 font-medium mb-2">Legal Boundary Survey Effort</h4>
+                    <p className="text-white/65 font-light text-sm leading-relaxed">
+                      Surveying a macro-scale 68.6ha parcel (District Lots 1519 & 1250) represents a massive undertaking[cite: 81, 309]. Legally, this site is heavily encumbered, requiring the definition of intersecting boundaries including the Cheakamus River's natural boundary [cite: 313], a CN Rail right of way [cite: 309], and a BC Hydro statutory right of way[cite: 352]. Physically, crews must navigate steep terrain and dense forests, investing heavily in labor to clear vegetation[cite: 82, 83]. Historical research is also paramount, often tracing back to 19th-century Crown Grants[cite: 86].
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-white/90 font-medium mb-2">Topographic Survey Effort</h4>
+                    <p className="text-white/65 font-light text-sm leading-relaxed">
+                      A topographic survey of this magnitude mandates the integration of advanced Remote Sensing. We utilize drone-based LiDAR to penetrate the dense forest canopy and map the ground surface[cite: 106, 107]. This mitigates weeks of manual field labor, although the sheer scale of data processing and the high capital cost of equipment heavily factor into the project's economics[cite: 113]. Throughout this, utmost care is taken to protect the environment during field activities[cite: 292].
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-brand-green/15 via-brand-black to-brand-black border-t border-brand-green/40">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-brand-green/50 bg-brand-dark mb-6">
+            <ClipboardList className="w-7 h-7 text-brand-green" aria-hidden />
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
+            Protect Your Investment with Professional Certainty
+          </h2>
+          <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
+            At Tantalus Geomatics, we do not compete on generating the lowest quote; we compete on delivering unimpeachable accuracy, ethical compliance, and long-term risk mitigation for our clients.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg"
+            >
+              Submit Property Details for a Quote
+              <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
+            </Link>
           </div>
         </div>
       </section>
