@@ -235,7 +235,7 @@ export default function SurveyPricing() {
               question="How do terrain, property size, and legal constraints affect the level of effort between a small suburban lot and a large rural parcel?"
             >
               <p className="text-white/65 font-light leading-relaxed">
-                A survey is not a "commodity" but a response to specific terrain, history, and legal fabric[cite: 77]. To illustrate the vast spectrum of surveying efforts, we compare the requirements for a compact parcel on Newport Road to a complex 68.6-hectare parcel in Paradise Valley.
+                The cost of a survey is a reflection of the specific terrain, history, and legal survey fabric. To illustrate the impacts these factors have on the cost of a survey, we compare the requirements for a single family home suburban lot in the Garibaldi Estates to a large undeveloped parcel in Paradise Valley.
               </p>
             </GeoDirectAnswer>
           </div>
@@ -245,23 +245,23 @@ export default function SurveyPricing() {
             {/* Suburban Case Study */}
             <div className="bg-brand-dark border border-white/10 overflow-hidden flex flex-col">
               <div className="h-48 overflow-hidden relative">
-                <img src="images/image_33b865.png" alt="Suburban Lot on Newport Rd" className="object-cover w-full h-full opacity-80" />
+                <img src="images/LMP16626.webp" alt="Suburban Lot on Newport Rd" className="object-cover w-full h-full opacity-80" />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent" />
                 <h3 className="absolute bottom-4 left-6 text-xl font-medium text-white">Small Suburban Lot (Squamish)</h3>
               </div>
               <div className="p-6 md:p-8 flex-grow">
-                <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Newport Road Residential</p>
+                <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Windsor Place Residential</p>
                 <div className="space-y-6 text-left">
                   <div>
                     <h4 className="text-white/90 font-medium mb-2">Legal Boundary Survey Effort</h4>
                     <p className="text-white/65 font-light text-sm leading-relaxed">
-                      While small in acreage, suburban surveys are rarely simple. The dense development means property pins are frequently destroyed by past fence or landscaping work. To legally re-establish a single corner, our crews often must traverse multiple adjacent blocks to locate undisturbed monuments[cite: 138]. Furthermore, the proximity to neighboring structures dramatically increases the liability risk, demanding centimeter-level precision to prevent costly encroachment disputes[cite: 69, 70].
+                      While small in land area, suburban surveys are rarely simple. The nature and density of development means property corner posts are frequently destroyed by prior construction, utility installation, and landscaping. To accurately re-establish a single corner, our crews often must extend their survey across multiple adjacent blocks to locate the nearest undisturbed monuments. Additionally, the proximity to neighboring structures dramatically increases the liability risk and reduces line-of-sight, demanding professional grade field and office practices to achieve the legally obligated centimeter-level accuracy required to certify the survey.
                     </p>
                   </div>
                   <div>
                     <h4 className="text-white/90 font-medium mb-2">Topographic Survey Effort</h4>
                     <p className="text-white/65 font-light text-sm leading-relaxed">
-                      In an urban environment, topographic mapping must account for complex utility networks, tight municipal setbacks, and significant tree protection bylaws. While the physical area mapped is smaller, the density of required data points per square meter is exceptionally high.
+                      In a built environment, topographic mapping must account for complex utility networks, tight municipal setbacks, and significant tree protection bylaws. While the physical area mapped is smaller, the density of required data points per square meter is significantly higher.
                     </p>
                   </div>
                 </div>
@@ -271,7 +271,7 @@ export default function SurveyPricing() {
             {/* Rural Case Study */}
             <div className="bg-brand-dark border border-white/10 overflow-hidden flex flex-col">
               <div className="h-48 overflow-hidden relative">
-                <img src="images/image_33b86c.png" alt="Paradise Valley Rural Lot" className="object-cover w-full h-full opacity-80" />
+                <img src="images/BCP39687.webp" alt="Paradise Valley Rural Lot" className="object-cover w-full h-full opacity-80" />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent" />
                 <h3 className="absolute bottom-4 left-6 text-xl font-medium text-white">68.6 Hectare Rural Lot (Paradise Valley)</h3>
               </div>
@@ -281,13 +281,13 @@ export default function SurveyPricing() {
                   <div>
                     <h4 className="text-white/90 font-medium mb-2">Legal Boundary Survey Effort</h4>
                     <p className="text-white/65 font-light text-sm leading-relaxed">
-                      Surveying a macro-scale 68.6ha parcel (District Lots 1519 & 1250) represents a massive undertaking[cite: 81, 309]. Legally, this site is heavily encumbered, requiring the definition of intersecting boundaries including the Cheakamus River's natural boundary [cite: 313], a CN Rail right of way [cite: 309], and a BC Hydro statutory right of way[cite: 352]. Physically, crews must navigate steep terrain and dense forests, investing heavily in labor to clear vegetation[cite: 82, 83]. Historical research is also paramount, often tracing back to 19th-century Crown Grants[cite: 86].
+                      Surveying a large 68.6ha primary parcel (District Lots 1519 & 1250) represents a significant undertaking. This site presents a number of boundary complexities, requiring the definition of different types of intersecting boundaries including the Cheakamus River's natural boundary, spiral curves along a CN Rail right of way, and two distinct BC Hydro statutory right of ways. Physically, crews must navigate steep terrain and dense forests, investing heavily in labor to clear vegetation. Additionally, the volume of historical and legal research required, often tracing back to 19th-century Crown Grants, further impacts both the cost of the survey and the level of effort required to simply produce a quote.
                     </p>
                   </div>
                   <div>
                     <h4 className="text-white/90 font-medium mb-2">Topographic Survey Effort</h4>
                     <p className="text-white/65 font-light text-sm leading-relaxed">
-                      A topographic survey of this magnitude mandates the integration of advanced Remote Sensing. We utilize drone-based LiDAR to penetrate the dense forest canopy and map the ground surface[cite: 106, 107]. This mitigates weeks of manual field labor, although the sheer scale of data processing and the high capital cost of equipment heavily factor into the project's economics[cite: 113]. Throughout this, utmost care is taken to protect the environment during field activities[cite: 292].
+                      A topographic survey of this magnitude required the integration of modern advanced survey methods. We utilize drone-based LiDAR to penetrate the dense forest canopy and map the ground surface. While this mitigates weeks of manual field labor, the increasesd volume of data processing, QA/QC, storage and hosting, in addition to the high capital cost of equipment, heavily factor into the project's economics.
                     </p>
                   </div>
                 </div>
@@ -305,10 +305,10 @@ export default function SurveyPricing() {
             <ClipboardList className="w-7 h-7 text-brand-green" aria-hidden />
           </div>
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
-            Protect Your Investment with Professional Certainty
+            Protect Your Property Investment with A Certified Land Survey
           </h2>
           <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
-            At Tantalus Geomatics, we do not compete on generating the lowest quote; we compete on delivering unimpeachable accuracy, ethical compliance, and long-term risk mitigation for our clients.
+            At Tantalus Geomatics, we focus on delivering high accuracy professional grade products and services, ethical compliance, and long-term risk mitigation and peace of mind for our clients.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
