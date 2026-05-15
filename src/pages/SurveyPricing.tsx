@@ -20,15 +20,23 @@ const CANONICAL = 'https://www.tantalusgeomatics.com/survey-pricing';
 const priceFactors = [
   {
     factor: 'Rigorous Regulatory Framework',
-    description: 'The high cost of surveying in BC is inextricably linked to the province\'s rigorous regulatory environment[cite: 37]. The Association of BC Land Surveyors (ABCLS) enforces strict Survey and Plan Rules[cite: 45]. A British Columbia Land Surveyor (BCLS) cannot "cut corners" to lower a price; they are legally bound to follow a prescribed process of evidence recovery and verification[cite: 46, 47].',
+    description: 'The cost of land surveying in BC is linked to the province\'s rigorous regulatory framework focused on protection of the public interest. The Association of BC Land Surveyors (ABCLS) enforces strict rules and standards on all activities carried out by a BC Land Surveyor. A British Columbia Land Surveyor (BCLS) cannot "cut corners" to lower a price; they are legally bound to follow a prescribed process of due dilligence, field investigation, and documentation.',
   },
   {
-    factor: 'Professional Liability & Risk Assumption',
-    description: 'Consumers often view the surveyor as a technician whose primary output is a wooden stake, rather than a legal professional whose primary output is a defensible opinion on the extent of property ownership[cite: 24]. In British Columbia, the surveyor\'s liability is a quantifiable financial risk scaled by high property values[cite: 67, 68]. You are paying for the transfer of legal liability and the protection of your equity.',
+    factor: 'Professional Judgement and Liability',
+    description: 'Consumers often view the land Surveyor as a technician whose primary output is a wooden stake, rather than a legal professional whose primary output is a defensible opinion on the extent of property ownership. In British Columbia, the surveyor\'s liability is a financial risk that is increased due to high property values. You are paying for the transfer of legal liability and the peace of mind that the survey is accurate.',
   },
   {
     factor: 'Historical Evidence Recovery',
-    description: 'Modern surveyors are often required to perform "evidence recovery," which involves searching for original 19th-century monuments[cite: 88]. If a primary monument is missing, the surveyor must "re-trace" the work of the original surveyor, often extending their research blocks or miles away from the subject property to find a reliable starting point[cite: 89, 138].',
+    description: 'Modern surveyors are required to accurately locate boundaries that were surveyed prior to modern standards. This often involves searching for original 19th-century monuments that defined the parcel\'s boundaries. When an original monument is missing, the surveyor must "re-trace" the work of the original surveyor, potentially extending their research kilometers away from the subject property to find the best available evidence of the corner\'s original location.',
+  },
+  {
+    factor: 'Site Conditions, Terrain Challenges & Parcel Size',
+    description: 'The level of effort of a land survey often reflects the unique physical and historical characteristics of a property. While the "per-acre" cost for large tracts—such as a 100-acre rural parcel—may be lower, the total project cost scales with travel time, site conditions, and the extent of the boundary lines requiring verification. Across British Columbia, crews must frequently navigate steep slopes, dense forests, and marshy terrain that directly impact the level of effort. Often, the labor required for "clearing line", involving physically clearing a path through vegetation to establish a line-of-sight, can exceed the time spent on the actual surveying measurements. In contrast, small urban lots in high-density areas like the Lower Mainland present their own complexities, including physical obstructions, traffic control requirements, and the high precision needed to navigate a dense network of underground utilities.'
+  },
+  {
+    factor: 'Technological Overhead & Innovation',
+    description: 'Modern land surveying in British Columbia is characterized by advanced geospatial technologies designed to ensure precision in the province\'s challenging terrain. Modern technologies, such as drone-based laser scanning for penetrating dense forest canopies, robotic total stations for high-efficiency field work, and multi-constellation GNSS receivers for mountain valleys yields increased accuracy and faster project timelines. This technology introduces significant capital costs that firms must recover, in addition to high insurance premiums and the need for specialized data processing software.'
   },
 ];
 
@@ -102,13 +110,13 @@ export default function SurveyPricing() {
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
-            The Economics of Boundary Definition
+            Understanding The Cost of a Land Survey
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
-            An Investment in Legal Certainty.
+            Investing in Legal Certainty.
           </h1>
           <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
-            A land survey in British Columbia should be viewed not as a commodity purchase, but as a critical legal safeguard[cite: 174]. Understand the professional liability, historical research, and rigorous terrain evaluation that forms the true foundation of your project quote.
+            A land survey in British Columbia should be viewed as a critical legal safeguard. Understand the site conditions, professional liability, historical research, expensive measurement instruments and terrain challenges that impact your project's quote.
           </p>
           <div className="flex justify-center px-4 sm:px-0">
             <a
@@ -116,7 +124,7 @@ export default function SurveyPricing() {
               className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
             >
               <Phone size={20} />
-              Request a Bespoke Quote
+              Call for a Free Quote
             </a>
           </div>
         </div>
@@ -126,14 +134,14 @@ export default function SurveyPricing() {
       <section className="py-14 md:py-20 border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <GeoDirectAnswer
-            question="What factors legally and economically drive the cost of a residential land survey in British Columbia?"
+            question="What factors impact the cost of a land survey in British Columbia?"
             questionClassName="max-w-3xl"
           >
             <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">
-              "The professional opinion of a BCLS remains the only reliable safeguard against the spiraling costs and delays of boundary litigation." [cite: 175]
+              "A land survey in British Columbia is the best insurance policy for your most valuable asset."
             </blockquote>
             <p className="text-white/65 font-light mb-10 max-w-3xl">
-              Unlike many other home services where a flat fee can be easily calculated, land surveying is subject to an extraordinary number of variables that make preliminary quoting difficult[cite: 13]. Your quote reflects our ethical obligation to protect the public interest and the survey fabric[cite: 278].
+              Unlike many other home services where a flat fee can be easily calculated, land surveying is subject to an extraordinary number of variables. Your quote reflects the level of effort, judgement and liability involved in satisfying our ethical obligation to protect the public interest and the survey fabric.
             </p>
           </GeoDirectAnswer>
           <div className="space-y-6">
@@ -166,7 +174,7 @@ export default function SurveyPricing() {
             question="What is the professional process for determining an accurate land surveying quote in BC?"
           >
             <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-              Because no two properties share the exact same legal history or terrain, we cannot provide an exact price without first performing significant preliminary research[cite: 14]. Our three-step quoting process ensures transparency and ethical compliance.
+              Because no two properties share the same legal history or terrain, we cannot provide a price without first performing significant preliminary research. Our three-step quoting process ensures transparency and ethical compliance.
             </p>
           </GeoDirectAnswer>
 
@@ -175,19 +183,19 @@ export default function SurveyPricing() {
               {
                 step: '1',
                 title: 'Statutory Research & Title Review',
-                body: 'We begin by searching the LTSA\'s records for your property\'s original Crown Grants, field notes, and adjacent plans[cite: 135]. In BC, a boundary is defined not just by your deed, but by the relationship to all neighboring surveys[cite: 136]. Providing your "Chain of Title" upfront can significantly streamline this phase[cite: 156, 157].',
+                body: 'We begin by searching the LTSA\'s records for your property\'s title, relevant plans and charge documents. Depending on the type of survey, additional research may be required such as municipal permitting requirements, zoning bylaws, provincial application requirements, and utility records to confirm the scope of work required to meet your project'/'s needs.',
                 icon: Search,
               },
               {
                 step: '2',
                 title: 'Terrain & Evidence Assessment',
-                body: 'The physical difficulty of a site directly impacts the man-hours required[cite: 79]. We assess topography, urban obstructions, and whether a site requires extensive physical labor, such as "brushing" a line to clear vegetation for line-of-sight measurements[cite: 83].',
+                body: 'The physical difficulty of a site directly impacts the amount of on-site time required to complete the survey. We assess topography, the size of the site, line-of-sight and the full scope of the site features we to survey.',
                 icon: Trees,
               },
               {
                 step: '3',
                 title: 'Regulatory Deliverable Definition',
-                body: 'We determine the required statutory documents based on your goals. For instance, the Land Title Act mandates that whenever a BCLS sets or restores a legal boundary marker, they must file a Posting Plan in the Land Title Office[cite: 32]. We quote strictly for what is legally required to safely advance your project.',
+                body: 'We determine the plans and datasets you need to move your project forward. For example, the Land Title Act mandates that whenever a BCLS sets or restores a legal boundary marker, they must file a Posting Plan in the Land Title Office.',
                 icon: Scale,
               },
             ].map(({ step, title, body, icon: Icon }) => (
