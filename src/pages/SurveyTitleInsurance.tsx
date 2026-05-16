@@ -9,11 +9,11 @@ const CANONICAL = 'https://tantalusgeomatics.com/surveys-and-title-insurance';
 const problems = [
   {
     problem: 'Disclosure of Encroachments Prior to Transaction',
-    description: 'Title insurance does not provide any information about the location of buildings and other improvements relative to property lines. A survey provides a clear depiction of problems relating to buildings or improvements extending over property lines or not conforming to municipal zoning setback requirements, which can create significant liabilties for purchasers and lenders if not identified prior to the transaction.',
+    description: 'A survey provides a clear depiction of problems relating to buildings or improvements extending over property lines or not conforming to municipal zoning setback requirements, which can create significant liabilties for purchasers and lenders if not identified prior to the transaction.',
   },
   {
     problem: 'Incomplete Coverage and Hidden Costs',
-    description: 'It requires separate policies to protect the owner and the lender. Often, it doesn\'t protect anything other than the amount of the mortgage, leaving the remaining cost of resolving problems to the new owner.',
+    description: 'Title insurance requires separate policies to protect the owner and the lender. Often, it doesn\'t protect anything other than the amount of the mortgage, leaving the remaining cost of resolving problems to the new owner.',
   },
   {
     problem: 'Temporary Lender Protection',
@@ -115,7 +115,7 @@ export default function SurveyTitleInsurance() {
           >
             <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">A current survey identifies problems, should they exist, to all interested parties who can then take appropriate action for resolution.</blockquote>
             <p className="text-white/65 font-light mb-10 max-w-3xl">
-              Purchasers are often advised that the cost of a survey can be avoided by the purchase, at a lower cost, of title insurance. There is a common misunderstanding that title insurance offers the same protection at a lower cost:
+              Purchasers are often advised that the cost of a survey can be avoided by the purchase, at a lower cost, of title insurance. There is a common misunderstanding that fails to convey how a survey uniquely protects purchasers and lenders:
             </p>
           </GeoDirectAnswer>
           <div className="space-y-6">
