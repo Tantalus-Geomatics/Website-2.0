@@ -1,38 +1,45 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { MapPin, Menu, X, Mountain, Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
-import type { FeatureCollection } from 'geojson';
+import { GoogleMap, LoadScript, Polygon } from '@react-google-maps/api';
 
-// GeoJSON definition of the Sea to Sky & Lower Mainland service area
-const serviceAreaGeoJSON: FeatureCollection = {
-  type: "FeatureCollection",
-  features: [
-    {
-      type: "Feature",
-      properties: {
-        name: "Tantalus Geomatics Service Area",
-      },
-      geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [-123.38, 49.30], // West of Bowen Island
-            [-123.40, 49.45], // Coastal approach
-            [-123.20, 49.80], // West of Squamish
-            [-123.10, 50.20], // West of Whistler
-            [-122.85, 50.40], // West of Pemberton
-            [-121.80, 50.80], // North/West of Lillooet
-            [-121.70, 50.60], // East of Lillooet
-            [-122.60, 50.10], // East of Whistler
-            [-122.80, 49.60], // East of Squamish/Furry Creek
-            [-123.00, 49.30], // North Vancouver
-            [-123.38, 49.30]  // Close polygon
-          ]
-        ]
-      }
-    }
-  ]
+// Converted service area coordinates to Google Maps { lat, lng } format
+const serviceAreaPaths = [
+  { lat: 49.30, lng: -123.38 }, // West of Bowen Island
+  { lat: 49.45, lng: -123.40 }, // Coastal approach
+  { lat: 49.80, lng: -123.20 }, // West of Squamish
+  { lat: 50.20, lng: -123.10 }, // West of Whistler
+  { lat: 50.40, lng: -122.85 }, // West of Pemberton
+  { lat: 50.80, lng: -121.80 }, // North/West of Lillooet
+  { lat: 50.60, lng: -121.70 }, // East of Lillooet
+  { lat: 50.10, lng: -122.60 }, // East of Whistler
+  { lat: 49.60, lng: -122.80 }, // East of Squamish/Furry Creek
+  { lat: 49.30, lng: -123.00 }, // North Vancouver
+  { lat: 49.30, lng: -123.38 }  // Close polygon
+];
+
+// Google Maps Configuration
+const mapContainerStyle = {
+  width: '100%',
+  height: '100%'
+};
+
+const mapCenter = {
+  lat: 49.95, // Centered roughly around Whistler/Squamish
+  lng: -122.90
+};
+
+const polygonOptions = {
+  fillColor: "#6B9E54",
+  fillOpacity: 0.3,
+  strokeColor: "#6B9E54",
+  strokeOpacity: 1,
+  strokeWeight: 2,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  geodesic: false,
+  zIndex: 1
 };
 
 // JSON-LD Schema for SEO/GEO crawlers
@@ -229,29 +236,37 @@ export default function Layout() {
             </ul>
           </div>
 
-          {/* Interactive Map Applet replacing standard text list */}
+          {/* Interactive Google Map Applet replacing standard text list */}
           <div className="lg:col-span-1 flex flex-col h-64 lg:h-auto">
             <h3 className="text-white font-medium mb-4 flex items-center gap-2">
               <MapPin size={18} className="text-brand-green"/> 
               Service Area Map
             </h3>
+            
             <div className="flex-grow rounded-md overflow-hidden border border-white/20 relative z-0">
-              <MapContainer 
-                center={[49.95, -122.90]} 
-                zoom={7} 
-                scrollWheelZoom={false}
-                className="h-full w-full"
-              >
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <GeoJSON 
-                  data={serviceAreaGeoJSON} 
-                  pathOptions={{ color: '#6B9E54', fillColor: '#6B9E54', fillOpacity: 0.3, weight: 2 }} 
-                />
-              </MapContainer>
+              <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY || ''}>
+                <GoogleMap
+                  mapContainerStyle={mapContainerStyle}
+                  center={mapCenter}
+                  zoom={7}
+                  options={{
+                    disableDefaultUI: true,
+                    zoomControl: true,
+                    styles: [
+                      { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+                      { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+                      { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] }
+                    ]
+                  }}
+                >
+                  <Polygon 
+                    paths={serviceAreaPaths} 
+                    options={polygonOptions} 
+                  />
+                </GoogleMap>
+              </LoadScript>
             </div>
+            
             <p className="text-xs text-white/50 mt-2">
               Serving Squamish, Whistler, Pemberton, Lillooet, West Vancouver, Bowen Island, Britannia Beach, Furry Creek, and North Vancouver.
             </p>
