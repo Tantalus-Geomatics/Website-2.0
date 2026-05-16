@@ -164,7 +164,7 @@ export default function Layout() {
       <div className="bg-brand-green text-black py-2 px-4 text-xs sm:text-sm font-semibold text-center flex items-center justify-center gap-2">
         <MapPin size={16} className="shrink-0" />
         <span className="truncate sm:whitespace-normal">
-          Surveying the Sea to Sky, Vancouver's North Shore and the Sunshine Coast: North Vancouver to Lillooet
+          Sea to Sky | Vancouver's North Shore | Sunshine Coast
         </span>
       </div>
 
