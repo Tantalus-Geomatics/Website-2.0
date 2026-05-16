@@ -44,7 +44,7 @@ export function useLeadForm() {
 
   useEffect(() => {
     emailjs.init({
-      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'r37yPY3ALEbiW4YxU',
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       blockHeadless: true,
       limitRate: {
         id: 'app',

@@ -5,17 +5,20 @@ import { GoogleMap, LoadScript, Polygon } from '@react-google-maps/api';
 
 // Converted service area coordinates to Google Maps { lat, lng } format
 const serviceAreaPaths = [
-  { lat: 49.30, lng: -123.38 }, // West of Bowen Island
-  { lat: 49.45, lng: -123.40 }, // Coastal approach
-  { lat: 49.80, lng: -123.20 }, // West of Squamish
-  { lat: 50.20, lng: -123.10 }, // West of Whistler
-  { lat: 50.40, lng: -122.85 }, // West of Pemberton
+  { lat: 49.30, lng: -123.00 }, // North Vancouver
+  { lat: 49.32, lng: -123.40 }, // West Vancouver / Bowen Island
+  { lat: 49.40, lng: -123.55 }, // Lower Sunshine Coast (Gibsons)
+  { lat: 49.48, lng: -123.80 }, // Middle Sunshine Coast (Sechelt)
+  { lat: 49.62, lng: -124.05 }, // Upper Sunshine Coast (Earls Cove / Egmont)
+  { lat: 49.85, lng: -124.55 }, // Powell River
+  { lat: 50.00, lng: -124.80 }, // Lund / Desolation Sound Boundary
+  { lat: 50.25, lng: -123.65 }, // Upper Squamish Valley / Elaho River
+  { lat: 50.45, lng: -122.95 }, // Pemberton / Pemberton Meadows
   { lat: 50.80, lng: -121.80 }, // North/West of Lillooet
   { lat: 50.60, lng: -121.70 }, // East of Lillooet
-  { lat: 50.10, lng: -122.60 }, // East of Whistler
-  { lat: 49.60, lng: -122.80 }, // East of Squamish/Furry Creek
-  { lat: 49.30, lng: -123.00 }, // North Vancouver
-  { lat: 49.30, lng: -123.38 }  // Close polygon
+  { lat: 50.10, lng: -122.60 }, // East of Whistler / Garibaldi Park
+  { lat: 49.60, lng: -122.80 }, // East of Squamish Range
+  { lat: 49.30, lng: -123.00 }  // Close polygon back at North Vancouver
 ];
 
 // Google Maps Configuration
@@ -56,7 +59,7 @@ const schemaData = {
   },
   "areaServed": {
     "@type": "GeoShape",
-    "polygon": "49.30,-123.38 49.45,-123.40 49.80,-123.20 50.20,-123.10 50.40,-122.85 50.80,-121.80 50.60,-121.70 50.10,-122.60 49.60,-122.80 49.30,-123.00 49.30,-123.38"
+    "polygon": "49.30,-123.00 49.32,-123.40 49.40,-123.55 49.48,-123.80 49.62,-124.05 49.85,-124.55 50.00,-124.80 50.25,-123.65 50.45,-122.95 50.80,-121.80 50.60,-121.70 50.10,-122.60 49.60,-122.80 49.30,-123.00"
   }
 };
 
@@ -244,7 +247,7 @@ export default function Layout() {
             </h3>
             
             <div className="flex-grow rounded-md overflow-hidden border border-white/20 relative z-0">
-              <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY || ''}>
+              <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string}>
                 <GoogleMap
                   mapContainerStyle={mapContainerStyle}
                   center={mapCenter}

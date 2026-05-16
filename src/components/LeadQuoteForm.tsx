@@ -8,7 +8,7 @@ import { Send } from 'lucide-react';
 import type { LeadFormFields, LeadFormStatus } from '../hooks/useLeadForm';
 
 const TURNSTILE_SITE_KEY =
-  import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAACkcoQ4pjVYMr-l8';
+  import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
 export type LeadQuoteVariant =
   | 'embedded'
