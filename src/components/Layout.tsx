@@ -1,7 +1,7 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { MapPin, Menu, X, Mountain, Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
-import { GoogleMap, LoadScript, Polygon } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Polygon, MarkerF } from '@react-google-maps/api';
 
 // Converted service area coordinates to Google Maps { lat, lng } format
 const serviceAreaPaths = [
@@ -21,15 +21,31 @@ const serviceAreaPaths = [
   { lat: 49.30, lng: -123.00 }  // Close polygon back at North Vancouver
 ];
 
+// Specific coordinates for the location pins
+const serviceLocations = [
+  { name: "North Vancouver", lat: 49.3199, lng: -123.0724 },
+  { name: "West Vancouver", lat: 49.3286, lng: -123.1602 },
+  { name: "Bowen Island", lat: 49.3783, lng: -123.3286 },
+  { name: "Gibsons", lat: 49.4011, lng: -123.5113 },
+  { name: "Sechelt", lat: 49.4716, lng: -123.7544 },
+  { name: "Furry Creek", lat: 49.5841, lng: -123.2255 },
+  { name: "Britannia Beach", lat: 49.6256, lng: -123.2037 },
+  { name: "Squamish", lat: 49.7016, lng: -123.1558 },
+  { name: "Powell River", lat: 49.8352, lng: -124.5247 },
+  { name: "Whistler", lat: 50.1163, lng: -122.9574 },
+  { name: "Pemberton", lat: 50.3162, lng: -122.8027 },
+  { name: "Lillooet", lat: 50.6861, lng: -121.9365 }
+];
+
 // Google Maps Configuration
 const mapContainerStyle = {
   width: '100%',
-  height: '100%'
+  height: '450px' // Increased height for better legibility
 };
 
 const mapCenter = {
-  lat: 49.95, // Centered roughly around Whistler/Squamish
-  lng: -122.90
+  lat: 49.95, 
+  lng: -123.15 // Shifted center slightly west to balance Powell River and Lillooet
 };
 
 const polygonOptions = {
@@ -45,21 +61,222 @@ const polygonOptions = {
   zIndex: 1
 };
 
-// JSON-LD Schema for SEO/GEO crawlers
-// Maps to the exact polygon vertices to ensure spatial indexing matches the visual applet
+// JSON-LD Schema optimized for Local SEO and GEO Spatial Crawlers
 const schemaData = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Professional Land Surveying",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "Tantalus Geomatics Land Surveying Ltd.",
-    "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
-    "telephone": "+16042139934"
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying Ltd.",
+  "description": "Professional land surveying, topographic mapping, and legal boundary definition across the Sea to Sky Corridor, North Shore, and Sunshine Coast.",
+  "url": "https://tantalusgeomatics.com",
+  "logo": "https://tantalusgeomatics.com/tantalus-logo.webp",
+  "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
+  "telephone": "+16042139934",
+  "email": "contact@tantalusgeomatics.com",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Squamish",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
   },
-  "areaServed": {
-    "@type": "GeoShape",
-    "polygon": "49.30,-123.00 49.32,-123.40 49.40,-123.55 49.48,-123.80 49.62,-124.05 49.85,-124.55 50.00,-124.80 50.25,-123.65 50.45,-122.95 50.80,-121.80 50.60,-121.70 50.10,-122.60 49.60,-122.80 49.30,-123.00"
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.7016,
+    "longitude": -123.1558
+  },
+  "areaServed": [
+    // 1. Explicit GeoShape Polygon for strict bounding box spatial indexers
+    {
+      "@type": "GeoShape",
+      "polygon": "49.30,-123.00 49.32,-123.40 49.40,-123.55 49.48,-123.80 49.62,-124.05 49.85,-124.55 50.00,-124.80 50.25,-123.65 50.45,-122.95 50.80,-121.80 50.60,-121.70 50.10,-122.60 49.60,-122.80 49.30,-123.00"
+    },
+    // 2. Explicit Knowledge Graph Entities for Google Local SEO triggers
+    { "@type": "City", "name": "Squamish" },
+    { "@type": "City", "name": "Whistler" },
+    { "@type": "City", "name": "Pemberton" },
+    { "@type": "City", "name": "Lillooet" },
+    { "@type": "City", "name": "North Vancouver" },
+    { "@type": "City", "name": "West Vancouver" },
+    { "@type": "City", "name": "Bowen Island" },
+    { "@type": "City", "name": "Gibsons" },
+    { "@type": "City", "name": "Sechelt" },
+    { "@type": "City", "name": "Powell River" },
+    { "@type": "City", "name": "Britannia Beach" },
+    { "@type": "City", "name": "Furry Creek" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Professional Land Surveying Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Legal Boundary Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Topographic Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Building Location Certificates"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Site Plan Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Property Line Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Tree Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Ab-Built Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "BC Land Surveyors Survey Certificates"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Construction Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Foundation Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Form Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Construction Staking Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Quantity Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Monitoring Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Strata Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Subdivision Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Easement Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Right of Way Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Covenant Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Consolidation Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Airspace Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Drone Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "LiDAR Surveys"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "3D Laser Scanning Surveys"
+        }
+      }
+    ]
   }
 };
 
@@ -87,7 +304,7 @@ export default function Layout() {
       <div className="bg-brand-green text-black py-2 px-4 text-xs sm:text-sm font-semibold text-center flex items-center justify-center gap-2">
         <MapPin size={16} className="shrink-0" />
         <span className="truncate sm:whitespace-normal">
-          Proudly Surveying the Sea to Sky Corridor: West Vancouver to Lillooet
+          Proudly Surveying the Sea to Sky Corridor, Vancouver's North Shore and the Sunshine Coast: North Vancouver to Lillooet
         </span>
       </div>
 
@@ -186,7 +403,8 @@ export default function Layout() {
 
       {/* Footer */}
       <footer className="bg-brand-dark border-t border-white/10 text-white/70 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Adjusted grid to 4 columns to give the map more width */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
           
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
@@ -239,8 +457,8 @@ export default function Layout() {
             </ul>
           </div>
 
-          {/* Interactive Google Map Applet replacing standard text list */}
-          <div className="lg:col-span-1 flex flex-col h-64 lg:h-auto">
+          {/* Interactive Google Map Applet - Now spans 2 columns */}
+          <div className="lg:col-span-2 flex flex-col">
             <h3 className="text-white font-medium mb-4 flex items-center gap-2">
               <MapPin size={18} className="text-brand-green"/> 
               Service Area Map
@@ -251,7 +469,7 @@ export default function Layout() {
                 <GoogleMap
                   mapContainerStyle={mapContainerStyle}
                   center={mapCenter}
-                  zoom={7}
+                  zoom={8} // Increased zoom slightly for better pin spread
                   options={{
                     disableDefaultUI: true,
                     zoomControl: true,
@@ -261,13 +479,24 @@ export default function Layout() {
                     paths={serviceAreaPaths} 
                     options={polygonOptions} 
                   />
+                  
+                  {/* Render pins for each service location */}
+                  {serviceLocations.map((loc, index) => (
+                    <MarkerF
+                      key={index}
+                      position={{ lat: loc.lat, lng: loc.lng }}
+                      label={{
+                        text: loc.name,
+                        color: '#FFFFFF',
+                        fontSize: '12px',
+                        fontWeight: '600',
+                        className: 'mt-8 drop-shadow-md bg-black/40 px-1.5 py-0.5 rounded' // Drops the text down to avoid covering the pin
+                      }}
+                    />
+                  ))}
                 </GoogleMap>
               </LoadScript>
             </div>
-            
-            <p className="text-xs text-white/50 mt-2">
-              Serving Squamish, Whistler, Pemberton, Lillooet, West Vancouver, Bowen Island, Britannia Beach, Furry Creek, and North Vancouver.
-            </p>
           </div>
 
         </div>
