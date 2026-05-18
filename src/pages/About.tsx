@@ -95,7 +95,7 @@ export default function About() {
       <SEO 
         title="About Tantalus Geomatics Land Surveying"
         description="Learn about Tantalus Geomatics Land Surveying, a professional land surveying company delivering surveying services throughout the Sea to Sky. Tantalus is led by Land Surveyor and Professional Engineer Dennis Sherman."
-        canonicalUrl="https://tantalusgeomatics.com/about"
+        canonicalUrl="https://tantalusgeomatics.com/about/"
         schema={aboutSchema}
       />
       {/* Hero */}

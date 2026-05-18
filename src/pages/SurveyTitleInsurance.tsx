@@ -4,7 +4,7 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
-const CANONICAL = 'https://tantalusgeomatics.com/surveys-and-title-insurance';
+const CANONICAL = 'https://tantalusgeomatics.com/surveys-and-title-insurance/';
 
 const problems = [
   {

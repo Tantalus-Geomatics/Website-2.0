@@ -15,7 +15,7 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
-const CANONICAL = 'https://www.tantalusgeomatics.com/survey-pricing';
+const CANONICAL = 'https://www.tantalusgeomatics.com/survey-pricing/';
 
 const priceFactors = [
   {

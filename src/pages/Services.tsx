@@ -142,7 +142,7 @@ export default function Services() {
       <SEO 
         title="Land Surveying Services in Sea to Sky"
         description="Comprehensive land surveying and geomatics engineering solutions including topographic Surveys, Construction Surveys, Legal Boundary Surveys, Strata Surveys, drone surveys and 3D laser scanning."
-        canonicalUrl="https://tantalusgeomatics.com/services"
+        canonicalUrl="https://tantalusgeomatics.com/services/"
         schema={servicesSchema}
       />
       

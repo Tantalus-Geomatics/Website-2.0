@@ -192,7 +192,7 @@ const faqSchema = {
       <SEO 
         title="Land Surveying FAQ | Common Questions in the Sea-to-Sky"
         description="Questions about survey costs, topographic surveys or boundary staking? Answers to common questions about land surveying, property boundaries, topographic surveys, and hiring a BCLS in the Sea to Sky corridor."
-        canonicalUrl="https://tantalusgeomatics.com/faq"
+        canonicalUrl="https://tantalusgeomatics.com/faq/"
         schema={faqSchema}
       />
       

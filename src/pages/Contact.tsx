@@ -64,7 +64,7 @@ export default function Contact() {
       <SEO 
         title="Contact a BC Land Surveyor | Request a Quote"
         description="Get in touch with Tantalus Geomatics for your land surveying needs in Squamish, Whistler, Pemberton, Lillooet, North Vancouver, West Vancouver, and Bowen Island."
-        canonicalUrl="https://tantalusgeomatics.com/contact"
+        canonicalUrl="https://tantalusgeomatics.com/contact/"
         schema={contactSchema}
       />
       {/* Hero */}

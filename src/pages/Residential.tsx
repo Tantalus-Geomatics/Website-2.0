@@ -86,7 +86,7 @@ const residentialSchema = {
       <SEO
         title="Residential Land Surveyor Squamish & Whistler | Tantalus Geomatics"
         description="BCLS certified residential property surveys in Squamish, Whistler, and Pemberton. Get professional site plans, property line staking, and building permit surveys."
-        canonicalUrl="https://tantalusgeomatics.com/residential"
+        canonicalUrl="https://tantalusgeomatics.com/residential/"
         schema={residentialSchema}
       />
 
