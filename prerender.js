@@ -9,14 +9,15 @@ const hostname = 'https://www.tantalusgeomatics.com';
 
 const routesToPrerender = [
   '/',
-  '/about',
-  '/services',
-  '/faq',
-  '/contact',
-  '/residential',
-  '/survey-pricing',
-  '/topographic-surveys',
-  '/sea-to-sky-property-line-and-boundary-staking'
+  '/about/',
+  '/services/',
+  '/faq/',
+  '/contact/',
+  '/residential/',
+  '/survey-pricing/',
+  '/topographic-surveys/',
+  '/sea-to-sky-property-line-and-boundary-staking/',
+  "surveys-and-title-insurance/"
 ];
 
 async function generate() {
