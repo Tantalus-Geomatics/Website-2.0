@@ -7,7 +7,7 @@ import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
 
-const HERO_FALLBACK = 'images/tantalus-hero-banner.webp';
+const HERO_FALLBACK = 'images/Squamish-Garibaldi-Estates-Property-Survey.webp';
 const PHONE_TEL = 'tel:+16042139934';
 
 export default function Residential() {
@@ -42,7 +42,7 @@ const residentialSchema = {
     'name': area
   })),
   'description': 'Professional BCLS certified land surveys for homeowners in the Sea to Sky corridor. Specialized in property lines, topographic surveys, and building permits.',
-  'url': 'https://tantalusgeomatics.com/residential',
+  'url': 'https://tantalusgeomatics.com/residential/',
   'hasOfferCatalog': {
     '@type': 'OfferCatalog',
     'name': 'Residential Surveying Services',
@@ -57,13 +57,13 @@ const residentialSchema = {
   const resourceTopics = [
     {
       title: 'Survey Costs & Pricing',
-      description: 'Understand the factors that affect the cost of a residential survey in BC and how to request an accurate quote.',
+      description: 'Understand the factors that affect the cost of a survey in British Columbia and how to request an accurate quote.',
       to: '/survey-pricing/',
       linkLabel: 'View Pricing Factors →',
     },
     {
       title: 'Surveys vs. Title Insurance',
-      description: 'Learn why a current BCLS survey plan is essential for construction and renovations compared to title insurance.',
+      description: 'Learn why title insurance isn\'t a replacement for a current building location survey prior to a real estate transaction.',
       to: '/surveys-and-title-insurance/',
       linkLabel: 'Compare Coverage →',
     },
@@ -111,7 +111,7 @@ const residentialSchema = {
             Residential Land Surveying in <span className="text-brand-green font-medium">British Columbia</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/85 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
-            From boundary markers to site plans, a certified land survey offers homeowners and builders the services and documents they need for municipal compliance and peace of mind.
+            From boundary markers to site plans, a certified land survey offers homeowners and builders the services and documents they need for municipal permits and peace of mind.
           </p>
         </div>
       </section>
@@ -124,10 +124,10 @@ const residentialSchema = {
           </h2>
           <GeoDirectAnswer
             align="center"
-            question="How does Tantalus Geomatics simplify residential survey projects under BC land laws?"
+            question="How does Tantalus Geomatics Land Surveying conduct residential survey projects to support owners in British Columbia?"
           >
             <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-              We simplify the complexities of BC land laws to provide a straightforward path for your project.
+              We offer a clear and simple 3-step approach to completing residential land surveys in a timely and professional manner.
             </p>
           </GeoDirectAnswer>
 
@@ -135,20 +135,20 @@ const residentialSchema = {
             {[
               {
                 step: '1',
-                title: 'Project Consultation',
-                body: "Contact us with your property details. We research Land Title records and provide a transparent project quote.",
+                title: 'Consultation and Research',
+                body: "Contact us with your property details. We research existing survey and land title records, in addition to the regulatory requirements that affect your project. We pull the original land titles and survey plans from the Land Title and Survey Authority of BC (LTSA), in addition to studying up to date satellite imagery and municipal Geospatial Information Systems. This allows us to confirm the context of your lot and the surrounding properties before we arrive on-site.",
                 icon: ClipboardList,
               },
               {
                 step: '2',
-                title: 'On-Site Fieldwork',
-                body: 'Our field crews visit your property using high-precision GPS and total station equipment to gather site data.',
+                title: 'Field Visit',
+                body: 'Our crew visits your property to perform a field survey. We search for original property corner posts and use professional-grade equipment to take precise measurements and accurately place markers as required by your project. Our use of modern technologies, such as robotic total stations, GPS, drones and laser scanners allows us to efficiently survey large tracts of land.',
                 icon: MapPinned,
               },
               {
                 step: '3',
-                title: 'Certified BCLS Plan',
-                body: 'You receive a legal survey plan signed by a BC Land Surveyor, recognized by municipalities and financial institutions.',
+                title: 'Certified survey plan',
+                body: 'After the field work, we process the data and draft a certified survey plan that matches the needs of your project. This plan is certified by a British Columbia Land Surveyor (BCLS). This is a legally recognized survey document that can support a number of uses, such as building permit applications, tree removal and fence construction.',
                 icon: FileCheck,
               },
             ].map(({ step, title, body, icon: Icon }) => (
@@ -176,11 +176,11 @@ const residentialSchema = {
       <section className="py-16 md:py-20 bg-brand-dark border-b border-white/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
-            Speak with a Squamish Land Surveyor
+            Speak with a Land Surveyor Today
           </h2>
-          <GeoDirectAnswer question="When should you call Tantalus Geomatics to discuss residential survey requirements?">
+          <GeoDirectAnswer question="When should you call Tantalus Geomatics Land Surveying to discuss your residential survey requirements?">
             <p className="text-white/65 font-light mb-10 max-w-xl mx-auto">
-              Discuss your property lines, fencing, or building permit requirements directly with our team.
+              Getting a land survey can be a confusing and overwhelming process for property owners. Questions about <Link to="/survey-pricing/" className="underline hover:text-white">Survey Costs</Link>, <Link to="/sea-to-sky-property-line-and-boundary-staking/" className="underline hover:text-white">Property Lines</Link>, and <Link to="/topographic-surveys/" className="underline hover:text-white">Permit Application Processes</Link> are very common. We are here to help. Call us today to speak directly with our team.
             </p>
           </GeoDirectAnswer>
           <a
@@ -197,11 +197,11 @@ const residentialSchema = {
       <section className="py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 text-center">
-            Request a Residential Quote
+            Request a Free Quote Today
           </h2>
-          <GeoDirectAnswer align="center" question="What information should you provide to request a residential survey estimate?">
+          <GeoDirectAnswer align="center" question="What information do we need to start your survey quote today?">
             <p className="text-center text-white/60 font-light mb-10">
-              Provide your property address and project details for a professional estimate.
+              Providing us with your name, property address, contact information and project details allows us to start your quote right away.
             </p>
           </GeoDirectAnswer>
 
@@ -224,7 +224,7 @@ const residentialSchema = {
           </h2>
           <GeoDirectAnswer
             align="center"
-            question="Where can homeowners find more guidance on pricing, title insurance, boundaries, and permit surveys?"
+            question="Where can homeowners find more guidance on survey pricing, title insurance vs a building location survey, property boundaries, and permit surveys?"
             questionClassName="mb-10"
           >
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -255,9 +255,9 @@ const residentialSchema = {
           <div className="text-center mt-12 text-sm text-white/45">
             <p className="mb-2">Need immediate assistance with a survey project?</p>
             <div className="flex justify-center gap-4">
-              <Link to="/faq" className="text-brand-green hover:underline font-light">View All FAQs</Link>
+              <Link to="/faq/" className="text-brand-green hover:underline font-light">View All FAQs</Link>
               <span>|</span>
-              <Link to="/contact" className="text-brand-green hover:underline font-light">Contact Our Office</Link>
+              <Link to="/contact/" className="text-brand-green hover:underline font-light">Contact Our Office</Link>
             </div>
           </div>
         </div>

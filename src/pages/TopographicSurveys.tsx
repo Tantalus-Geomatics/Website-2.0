@@ -175,14 +175,14 @@ export default function TopographicSurveys() {
             {[
               {
                 step: '1',
-                title: 'Research',
-                body: "Every survey begins with a review of the existing records and the regulatory requirements that affect your project. We pull the original land titles and survey plans from the Land Title and Survey Authority of BC (LTSA), in addition to studying up to date satellite imagery and municipal Geospatial Information Systems. This allows us to confirm the context of your lot and the surrounding properties before we arrive on-site.",
+                title: 'Consultation and Research',
+                body: "Contact us with your property details. We research existing survey and land title records, in addition to the regulatory requirements that affect your project. We pull the original land titles and survey plans from the Land Title and Survey Authority of BC (LTSA), in addition to studying up to date satellite imagery and municipal Geospatial Information Systems. This allows us to confirm the context of your lot and the surrounding properties before we arrive on-site.",
                 icon: ClipboardList,
               },
               {
                 step: '2',
                 title: 'Field visit',
-                body: 'Once we have the data, our crew visits your property to perform a field survey. We search for original iron pins and use professional-grade equipment to take precise measurements to accurately capture all the necessary site features. Our use of modern technologies, such as robotic total stations, drones and laser scanners allows us to efficiently survey large tracts of land.',
+                body: 'Our crew visits your property to perform a field survey. We search for original property corner posts and use professional-grade equipment to take precise measurements that accurately capture all the necessary site features. Our use of modern technologies, such as robotic total stations, GPS, drones and laser scanners allows us to efficiently survey large tracts of land.',
                 icon: MapPinned,
               },
               {
