@@ -260,7 +260,7 @@ export default function SurveyPricing() {
                 onClick={() => setLightboxImage("images/LMP16626.webp")}
               >
                 <img 
-                  src="images/LMP16626.webp" 
+                  src="images/Squamish-Garibaldi-Estates-Property-Survey.webp" 
                   alt="Suburban Lot on Newport Rd" 
                   className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
                 />
