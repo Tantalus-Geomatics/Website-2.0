@@ -196,7 +196,7 @@ export default function Home() {
           <div className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Land Surveyor?</h2>
             <p className="text-lg sm:text-xl text-white/60 font-light max-w-2xl mx-auto">
-              Explore common scenarios where a land survey is required. <Link to="/faq" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
+              Explore common scenarios where a land survey is required. <Link to="/faq/" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
             </p>
           </div>
 
@@ -331,7 +331,7 @@ export default function Home() {
             ].map((service, idx) => (
               <Link 
                 key={idx}
-                to="/services"
+                to="/services/"
                 className="bg-brand-black p-8 border border-white/10 hover:border-brand-green/50 transition-all group flex flex-col block cursor-pointer"
               >
                 <div className="w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
@@ -385,7 +385,7 @@ export default function Home() {
                 </li>
               </ul>
               <Link
-                to="/about"
+                to="/about/"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/20 text-white font-medium hover:bg-white/10 transition-colors"
               >
                 About Our Team
