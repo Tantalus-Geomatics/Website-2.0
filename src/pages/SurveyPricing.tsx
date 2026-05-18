@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { 
   ArrowRight, 
   MapPin, 
@@ -19,24 +20,24 @@ const CANONICAL = 'https://www.tantalusgeomatics.com/survey-pricing/';
 
 const priceFactors = [
   {
-    factor: 'Rigorous Regulatory Framework',
-    description: 'The cost of land surveying in BC is linked to the province\'s rigorous regulatory framework focused on protection of the public interest. The Association of BC Land Surveyors (ABCLS) enforces strict rules and standards on all activities carried out by a BC Land Surveyor. A British Columbia Land Surveyor (BCLS) cannot "cut corners" to lower a price; they are legally bound to follow a prescribed process of due dilligence, field investigation, and documentation.',
-  },
-  {
-    factor: 'Professional Judgement and Liability',
-    description: 'Consumers often view the land Surveyor as a technician whose primary output is a wooden stake, rather than a legal professional whose primary output is a defensible opinion on the extent of property ownership. In British Columbia, the surveyor\'s liability is a financial risk that is increased due to high property values. You are paying for the transfer of legal liability and the peace of mind that the survey is accurate.',
+    factor: 'Site Conditions, Terrain Challenges & Parcel Size',
+    description: 'The level of effort of a land survey often reflects the unique physical and historical characteristics of a property. While the "per-acre" cost for large tracts—such as a 100-acre rural parcel—may be lower, the total project cost scales with travel time, site conditions, and the extent of the boundary lines requiring verification. Across British Columbia, crews must frequently navigate steep slopes, dense forests, and marshy terrain that directly impact the level of effort. Often, the labor required for "clearing line", involving physically clearing a path through vegetation to establish a line-of-sight, can exceed the time spent on the actual surveying measurements. In contrast, small urban lots in high-density areas like the Lower Mainland present their own complexities, including physical obstructions, traffic control requirements, and the high precision needed to navigate a dense network of underground utilities.'
   },
   {
     factor: 'Historical Evidence Recovery',
     description: 'Modern surveyors are required to accurately locate boundaries that were surveyed prior to modern standards. This often involves searching for original 19th-century monuments that defined the parcel\'s boundaries. When an original monument is missing, the surveyor must "re-trace" the work of the original surveyor, potentially extending their research kilometers away from the subject property to find the best available evidence of the corner\'s original location.',
   },
   {
-    factor: 'Site Conditions, Terrain Challenges & Parcel Size',
-    description: 'The level of effort of a land survey often reflects the unique physical and historical characteristics of a property. While the "per-acre" cost for large tracts—such as a 100-acre rural parcel—may be lower, the total project cost scales with travel time, site conditions, and the extent of the boundary lines requiring verification. Across British Columbia, crews must frequently navigate steep slopes, dense forests, and marshy terrain that directly impact the level of effort. Often, the labor required for "clearing line", involving physically clearing a path through vegetation to establish a line-of-sight, can exceed the time spent on the actual surveying measurements. In contrast, small urban lots in high-density areas like the Lower Mainland present their own complexities, including physical obstructions, traffic control requirements, and the high precision needed to navigate a dense network of underground utilities.'
-  },
-  {
     factor: 'Technological Overhead & Innovation',
     description: 'Modern land surveying in British Columbia is characterized by advanced geospatial technologies designed to ensure precision in the province\'s challenging terrain. Modern technologies, such as drone-based laser scanning for penetrating dense forest canopies, robotic total stations for high-efficiency field work, and multi-constellation GNSS receivers for mountain valleys yields increased accuracy and faster project timelines. This technology introduces significant capital costs that firms must recover, in addition to high insurance premiums and the need for specialized data processing software.'
+  },
+  {
+    factor: 'Rigorous Regulatory Framework',
+    description: 'The cost of land surveying in BC is linked to the province\'s rigorous regulatory framework focused on protection of the public interest. The Association of BC Land Surveyors (ABCLS) enforces strict rules and standards on all activities carried out by a BC Land Surveyor. A British Columbia Land Surveyor (BCLS) cannot "cut corners" to lower a price; they are legally bound to follow a prescribed process of due dilligence, field investigation, and documentation.',
+  },
+  {
+    factor: 'Professional Judgement and Liability',
+    description: 'Consumers often view the land Surveyor as a technician whose primary output is a wooden stake, rather than a legal professional whose primary output is a defensible opinion on the extent of property ownership. In British Columbia, the surveyor\'s liability is a financial risk that is increased due to high property values. You are paying for the transfer of legal liability and the peace of mind that the survey is accurate.',
   },
 ];
 
@@ -47,7 +48,7 @@ export default function SurveyPricing() {
     '@id': `${CANONICAL}/#webpage`,
     'url': CANONICAL,
     'name': 'Land Survey Pricing & Cost Factors | Tantalus Geomatics',
-    'description': 'Understand the professional, legal, and environmental factors that determine the cost of residential and rural land surveys in British Columbia.',
+    'description': 'Understand the professional, legal, and environmental factors that determine the cost of land surveys in British Columbia.',
     'isPartOf': {
       '@id': 'https://tantalusgeomatics.com/#website'
     },
@@ -63,7 +64,14 @@ export default function SurveyPricing() {
         {
           '@type': 'ListItem',
           'position': 2,
-          'name': 'Survey Pricing'
+          'name': 'Residential Surveys',
+          'item': 'https://tantalusgeomatics.com/residential/'
+        },
+        {
+          '@type': 'ListItem',
+          'position': 3,
+          'name': 'Survey Pricing',
+          'item': 'https://tantalusgeomatics.com/survey-pricing/'
         }
       ]
     },
@@ -88,10 +96,12 @@ export default function SurveyPricing() {
     }
   };
   
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+
   return (
     <PageShell>
       <SEO
-        title="Land Survey Pricing & Cost Factors in BC"
+        title="Land Survey Pricing & Cost Factors in British Columbia"
         description="Learn the legal, historical, and topographical factors that influence land survey costs in BC. Transparent pricing insights from a Licensed BC Land Surveyor."
         canonicalUrl={CANONICAL}
         schema={pageSchema}
@@ -113,10 +123,10 @@ export default function SurveyPricing() {
             Understanding The Cost of a Land Survey
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
-            Investing in Legal Certainty.
+            Land Surveys: An Investment in Legal Certainty.
           </h1>
           <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
-            A land survey in British Columbia should be viewed as a critical legal safeguard. Understand the site conditions, professional liability, historical research, expensive measurement instruments and terrain challenges that impact your project's quote.
+            A land survey in British Columbia should be viewed as a critical legal safeguard. Understand how factors such as site conditions and terrain, historical research, modern measurement instruments and terrain challenges impact the cost of a land survey.
           </p>
           <div className="flex justify-center px-4 sm:px-0">
             <a
@@ -138,10 +148,10 @@ export default function SurveyPricing() {
             questionClassName="max-w-3xl"
           >
             <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">
-              "A land survey in British Columbia is the best insurance policy for your most valuable asset."
+              A land survey in British Columbia is a small investment in protecting your most valuable asset.
             </blockquote>
             <p className="text-white/65 font-light mb-10 max-w-3xl">
-              Unlike many other home services where a flat fee can be easily calculated, land surveying is subject to an extraordinary number of variables. Your quote reflects the level of effort, judgement and liability involved in satisfying our ethical obligation to protect the public interest and the survey fabric.
+              Unlike many other home services where a flat fee can be easily calculated, land surveying is subject to several variables. Your quote reflects the level of effort, judgement and liability involved in producing accurate survey records and satisfying our ethical obligation to protect the public interest.
             </p>
           </GeoDirectAnswer>
           <div className="space-y-6">
@@ -171,10 +181,10 @@ export default function SurveyPricing() {
           </h2>
           <GeoDirectAnswer
             align="center"
-            question="What is the professional process for determining an accurate land surveying quote in BC?"
+            question="What is the process for estimating the cost of a land survey in BC?"
           >
             <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-              Because no two properties share the same legal history or terrain, we cannot provide a price without first performing significant preliminary research. Our three-step quoting process ensures transparency and ethical compliance.
+              Since no two properties share the same legal history or terrain, an estimate requires significant preliminary research. Our three-step quoting process ensures transparency and ethical compliance.
             </p>
           </GeoDirectAnswer>
 
@@ -228,11 +238,11 @@ export default function SurveyPricing() {
               Comparative Analysis
             </p>
             <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
-              Case Study: Suburban Squamish Lot vs. Paradise Valley Acreage
+              Case Study: Suburban Residential Lot in Squamish vs. an Undeveloped 68.8 hectare parcel in Paradise Valley
             </h2>
             <GeoDirectAnswer
               align="center"
-              question="How do terrain, property size, and legal constraints affect the level of effort between a small suburban lot and a large rural parcel?"
+              question="How do terrain, property size, and legal constraints affect the level of effort required to survey a residential suburban lot compared to a large rural parcel?"
             >
               <p className="text-white/65 font-light leading-relaxed">
                 The cost of a survey is a reflection of the specific terrain, history, and legal survey fabric. To illustrate the impacts these factors have on the cost of a survey, we compare the requirements for a single family home suburban lot in the Garibaldi Estates to a large undeveloped parcel in Paradise Valley.
@@ -241,16 +251,24 @@ export default function SurveyPricing() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            
+        
             {/* Suburban Case Study */}
             <div className="bg-brand-dark border border-white/10 overflow-hidden flex flex-col">
-              <div className="h-48 overflow-hidden relative">
-                <img src="images/LMP16626.webp" alt="Suburban Lot on Newport Rd" className="object-cover w-full h-full opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent" />
-                <h3 className="absolute bottom-4 left-6 text-xl font-medium text-white">Small Suburban Lot (Squamish)</h3>
+              {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
+              <div 
+                className="h-72 overflow-hidden relative cursor-pointer group"
+                onClick={() => setLightboxImage("images/LMP16626.webp")}
+              >
+                <img 
+                  src="images/LMP16626.webp" 
+                  alt="Suburban Lot on Newport Rd" 
+                  className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent" />
+                <h3 className="absolute bottom-4 left-6 text-xl font-medium text-white">Residential Suburban Lot (Squamish)</h3>
               </div>
               <div className="p-6 md:p-8 flex-grow">
-                <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Windsor Place Residential</p>
+                <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Windsor Place</p>
                 <div className="space-y-6 text-left">
                   <div>
                     <h4 className="text-white/90 font-medium mb-2">Legal Boundary Survey Effort</h4>
@@ -270,9 +288,17 @@ export default function SurveyPricing() {
 
             {/* Rural Case Study */}
             <div className="bg-brand-dark border border-white/10 overflow-hidden flex flex-col">
-              <div className="h-48 overflow-hidden relative">
-                <img src="images/BCP39687.webp" alt="Paradise Valley Rural Lot" className="object-cover w-full h-full opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent" />
+              {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
+              <div 
+                className="h-72 overflow-hidden relative cursor-pointer group"
+                onClick={() => setLightboxImage("images/BCP39687.webp")}
+              >
+                <img 
+                  src="images/BCP39687.webp" 
+                  alt="Paradise Valley Rural Lot" 
+                  className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent" />
                 <h3 className="absolute bottom-4 left-6 text-xl font-medium text-white">68.6 Hectare Rural Lot (Paradise Valley)</h3>
               </div>
               <div className="p-6 md:p-8 flex-grow">
@@ -295,6 +321,24 @@ export default function SurveyPricing() {
             </div>
 
           </div>
+          
+          {lightboxImage && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8 cursor-zoom-out backdrop-blur-sm"
+            onClick={() => setLightboxImage(null)} // Clicking the dark background closes it
+            >
+            <img 
+              src={lightboxImage} 
+              alt="Enlarged view" 
+              className="max-w-full max-h-full object-contain shadow-2xl rounded-sm cursor-default"
+              onClick={(e) => e.stopPropagation()} // Prevents clicking the actual image from closing the modal
+            />
+            {/* Optional visual instruction for users */}
+            <div className="absolute top-6 right-8 text-white/50 text-sm tracking-widest uppercase font-light pointer-events-none">
+              Click outside to close
+            </div>
+          </div>
+          )}
         </div>
       </section>
 
@@ -312,10 +356,10 @@ export default function SurveyPricing() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
-              to="/contact"
+              to="/contact/"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg"
             >
-              Submit Property Details for a Quote
+              Contact us Today for a Free Estimate
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
             </Link>
           </div>
