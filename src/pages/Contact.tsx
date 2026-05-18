@@ -18,7 +18,7 @@ export default function Contact() {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "@id": "https://tantalusgeomatics.com/contact/#webpage",
-    "url": "https://tantalusgeomatics.com/contact",
+    "url": "https://tantalusgeomatics.com/contact/",
     "name": "Contact Tantalus Geomatics | BC Land Surveyor",
     "description": "Request a quote for land surveying services in Squamish, Whistler, and the Sea to Sky corridor.",
     "isPartOf": {

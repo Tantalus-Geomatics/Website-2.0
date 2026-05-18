@@ -167,7 +167,7 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": "https://tantalusgeomatics.com/faq/#webpage",
-  "url": "https://tantalusgeomatics.com/faq",
+  "url": "https://tantalusgeomatics.com/faq/",
   "name": "Land Surveying FAQ | Common Questions in the Sea-to-Sky",
   "isPartOf": {
     "@id": "https://tantalusgeomatics.com/#website"
