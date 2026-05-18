@@ -146,10 +146,10 @@ export default function Layout() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'FAQ', path: '/faq' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'About', path: '/about/' },
+    { name: 'Services', path: '/services/' },
+    { name: 'FAQ', path: '/faq/' },
+    { name: 'Contact', path: '/contact/' },
   ];
 
   return (
