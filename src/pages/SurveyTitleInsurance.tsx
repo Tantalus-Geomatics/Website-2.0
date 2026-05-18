@@ -85,7 +85,7 @@ export default function SurveyTitleInsurance() {
         '@id': 'https://tantalusgeomatics.com/#organization'
       }
     };
-    
+
   return (
     <PageShell>
       <SEO
@@ -337,17 +337,17 @@ export default function SurveyTitleInsurance() {
           </GeoDirectAnswer>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
-              to="/contact"
+              to="/contact/"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg"
             >
               Request a Building Location Certificate today.
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
             </Link>
             <Link
-              to="/services/"
+              to="/residential/"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/90 text-white font-semibold hover:bg-white/10 transition-colors"
             >
-              Click for a List of Our Residential Services
+              Click for a List of Our Property Survey Services
             </Link>
           </div>
         </div>

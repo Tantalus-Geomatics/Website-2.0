@@ -9,15 +9,15 @@ const CANONICAL = 'https://www.tantalusgeomatics.com/topographic-surveys/';
 const problems = [
   {
     problem: 'Permit Applications and Approvals',
-    description: 'Site Plans and Topographic Surveys are standard requirements for municipalbuilding permits, subdivision applications, development permits and variance applications.',
+    description: 'Site Plans and Topographic Surveys are standard requirements for municipal building permits, subdivision applications, development permit applications and variance permit applications.',
   },
   {
     problem: 'Architecture and Engineering Design',
-    description: 'Architects and Engineers rely on accurate topographic data for building design, site servicing plans, geotechnical design, and more.',
+    description: 'Architects and Engineers rely on accurate topographic data for building design, site servicing plans, flood hazard mitigation, environmental assessments and geotechnical designs.',
   },
   {
     problem: 'Protection of Natural Assets',
-    description: 'A topographic survey depicts the locations of significant trees, watercourses and areas of steep slopes that may require protection throughout the land development process.',
+    description: 'A topographic survey depicts the locations of significant trees, watercourses, steep slopes and areas under strict environmental regulation that may require protection throughout the land development process.',
   },
 ];
 
@@ -29,7 +29,7 @@ export default function TopographicSurveys() {
     '@id': `${CANONICAL}/#webpage`,
     'url': CANONICAL,
     'name': 'The First Step to Building: Topographic Surveys Explained | Tantalus Geomatics',
-    'description': 'How topographic surveys support BC building permits, design, and geodetic elevations for residential homeowners in the Sea to Sky corridor.',
+    'description': 'How topographic surveys support permit applications, site designs, and regulatory compliance throughout British Columbia.',
     'isPartOf': {
       '@id': 'https://tantalusgeomatics.com/#website'
     },
@@ -46,12 +46,13 @@ export default function TopographicSurveys() {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Residential Surveys',
-          'item': 'https://tantalusgeomatics.com/residential'
+          'item': 'https://tantalusgeomatics.com/residential/'
         },
         {
           '@type': 'ListItem',
           'position': 3,
-          'name': 'Topographic Surveys'
+          'name': 'Topographic Surveys',
+          'item': 'https://tantalusgeomatics.com/topographic-surveys/'
         }
       ]
     },
@@ -79,7 +80,7 @@ export default function TopographicSurveys() {
   return (
     <PageShell>
       <SEO
-        title="The First Step to Building: Topographic Surveys Explained"
+        title="The First Step to Building: Topographic Surveys Explained | Tantalus Geomatics"
         description="Why a topographic survey is the digital blueprint for your design. We work with other professionals and municipal officials to guide you through the construction proccess with ease."
         canonicalUrl={CANONICAL}
         schema={pageSchema}
@@ -98,13 +99,13 @@ export default function TopographicSurveys() {
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
-            Land Development in the Sea to Sky Corridor
+            Land Development in British Columbia
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
             Develop Your Property with Confidence.
           </h1>
           <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
-            Building or renovating a home in British Columbia involves a complex intersections of legal, permitting, environmental, and engineering requirements. A topographic survey translates the physical reality of your land into the data required by your architect, engineer, and the city..
+            Building a home in British Columbia involves a complex intersections of legal, permitting, environmental, and engineering requirements. A topographic survey translates the physical reality of your land into the data required by your architect, engineer, and the city.
           </p>
             <div className="flex justify-center px-4 sm:px-0">
               <a
@@ -124,9 +125,9 @@ export default function TopographicSurveys() {
             question="What is included in a Tantalus Geomatics Topographic Survey?"
             questionClassName="max-w-3xl"
           >
-            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Draft a blueprint for success with a BC Land Surveyor certified topographic survey.</blockquote>
+            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">A BC Land Surveyor certified topographic survey satisfies the permitting and design requirements to move your project forward.</blockquote>
             <p className="text-white/65 font-light mb-10 max-w-3xl">
-              Land use planning, design and development requires up-to-date and accurate data. A BC Land Surveyor's Topographic survey and site plan is critical for:
+              Land use planning, design and development requires up-to-date and accurate data. A BC Land Surveyor's topographic survey and site plan is critical for:
             </p>
           </GeoDirectAnswer>
           <div className="space-y-6">
@@ -146,7 +147,7 @@ export default function TopographicSurveys() {
           </div>
             <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
             <Link
-              to="/contact"
+              to="/contact/"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg shadow-brand-green/15"
             >
               Contact Us Today to Design with Confidence
@@ -164,10 +165,10 @@ export default function TopographicSurveys() {
           </h2>
           <GeoDirectAnswer
             align="center"
-            question="How does Tantalus Geomatics conduct a topographic survey for your project?"
+            question="How does Tantalus Geomatics Land Surveying conduct a topographic survey?"
           >
             <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-              Conducting a Topographic Survey is a technical process that combines various legal, environmental, and engineering requirements. We follow a standard professional sequence to ensure all the necessary details are efficiently captured to support your project as it moves forward.
+              Conducting a Topographic Survey is a technical process that combines legal, environmental, and engineering requirements. We follow a standard professional process to ensure all the necessary details are efficiently captured to move your project forward.
             </p>
           </GeoDirectAnswer>
 
@@ -213,7 +214,7 @@ export default function TopographicSurveys() {
           {/* FIX: Moved inside the max-w-7xl container and added mt-12 */}
           <div className="mt-12 md:mt-16 max-w-5xl mx-auto">
             <GeoDirectAnswer
-              question="What survey and data deliverables can Tantalus Geomatics provide beyond a certified PDF plan?"
+              question="What types of datasets are offered for a topographic survey or a site plan?"
               questionClassName="max-w-3xl mx-auto text-center"
               align="center"
             >
@@ -222,7 +223,7 @@ export default function TopographicSurveys() {
                   We Provide a Range of Datasets to Support Your Design Needs
                 </p>
                 <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
-                  In addition to a certified topographic survey or site plan in PDF format, we also offer a range of data product deliverables including CAD files, point clouds, digital terrain models and more.
+                  In addition to a certified topographic survey or site plan in PDF format, we also offer a range of data product deliverables including CAD DWG files, point clouds, digital terrain models and more.
                 </p>
               </div>
             </GeoDirectAnswer>
@@ -252,10 +253,10 @@ export default function TopographicSurveys() {
             </h2>
             <GeoDirectAnswer
               align="center"
-              question="What does constructing a new home in the District of Squamish involve beyond concrete and framing?"
+              question="What steps are required to construct a new home in the District of Squamish?"
             >
               <p className="text-white/65 font-light leading-relaxed">
-                Constructing a new home in the District of Squamish involves more than concrete and framing. Site design and servicing requirements, municipal bylaws and restrictive covenants on title all create a complex set of data and permitting requirements.
+                Constructing a new home in the District of Squamish involves navigating permit applications, strict site design and servicing requirements, municipal bylaws and restrictive covenants. Prior to any construction, a topographic survey or site plan forms a necessary foundation for permit applications, identifying land use restrictions, and developing compliant designs.
               </p>
             </GeoDirectAnswer>
           </div>
@@ -371,17 +372,17 @@ export default function TopographicSurveys() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
-              to="/contact"
+              to="/contact/"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg"
             >
-              Request a Professional Consultation
+              Request a Free Quote Today
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
             </Link>
             <Link
-              to="/services"
+              to="/residential/"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/90 text-white font-semibold hover:bg-white/10 transition-colors"
             >
-              View A Full List of Our Services
+              View A Full List of Our Property Survey Services
             </Link>
           </div>
         </div>
