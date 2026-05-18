@@ -6,9 +6,9 @@ import { defineConfig, loadEnv } from 'vite';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   const routes = [
-    '/', '/about', '/services', '/faq', '/contact', 
-    '/residential', '/survey-pricing', '/topographic-surveys', 
-    '/sea-to-sky-property-line-and-boundary-staking'
+    '/', '/about/', '/services/', '/faq/', '/contact/', 
+    '/residential/', '/survey-pricing/', '/topographic-surveys/', 
+    '/sea-to-sky-property-line-and-boundary-staking/',"/surveys-and-title-insurance/"
   ];
 
   return {
