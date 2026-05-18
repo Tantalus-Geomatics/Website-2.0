@@ -23,6 +23,12 @@ const problems = [
 
 export default function SurveyTitleInsurance() {
     // Enhanced Schema connecting the educational guide to your LocalBusiness entity
+    const serviceAreas = [
+      "Squamish", "Whistler", "Pemberton", "Lillooet", 
+      "West Vancouver", "Bowen Island", "Britannia Beach", 
+      "Furry Creek", "North Vancouver"
+    ];
+    
     const pageSchema = {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
@@ -38,6 +44,20 @@ export default function SurveyTitleInsurance() {
         { '@type': 'Thing', 'name': 'Land Surveying' },
         { '@type': 'Thing', 'name': 'Real Estate' }
       ],
+      // OPTIMIZATION: We declare a Service as the main topic of the page so we can legally attach the service areas.
+      'mainEntity': {
+        '@type': 'Service',
+        'name': 'Building Location Surveys',
+        'serviceType': 'Land Surveying',
+        'provider': {
+          '@id': 'https://tantalusgeomatics.com/#organization'
+        },
+        // We map your array into the exact Schema.org format for cities
+        'areaServed': serviceAreas.map(city => ({
+          '@type': 'City',
+          'name': city
+        }))
+      },
       'breadcrumb': {
         '@type': 'BreadcrumbList',
         'itemListElement': [
@@ -51,12 +71,13 @@ export default function SurveyTitleInsurance() {
             '@type': 'ListItem',
             'position': 2,
             'name': 'Residential Surveys',
-            'item': 'https://tantalusgeomatics.com/residential'
+            'item': 'https://tantalusgeomatics.com/residential/'
           },
           {
             '@type': 'ListItem',
             'position': 3,
-            'name': 'Surveys vs. Title Insurance'
+            'name': 'Surveys vs. Title Insurance',
+            'item': 'https://tantalusgeomatics.com/surveys-and-title-insurance/'
           }
         ]
       },
@@ -64,7 +85,7 @@ export default function SurveyTitleInsurance() {
         '@id': 'https://tantalusgeomatics.com/#organization'
       }
     };
-
+    
   return (
     <PageShell>
       <SEO

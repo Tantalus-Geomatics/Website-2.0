@@ -17,7 +17,7 @@ export default function Residential() {
 // Array of locations based on your input
 const serviceAreas = [
   "Squamish", "Whistler", "Pemberton", "Lillooet", 
-  "West Vancouver", "Bowen Island", "Brittania Beach", 
+  "West Vancouver", "Bowen Island", "Britannia Beach", 
   "Furry Creek", "North Vancouver"
 ];
 
@@ -58,25 +58,25 @@ const residentialSchema = {
     {
       title: 'Survey Costs & Pricing',
       description: 'Understand the factors that affect the cost of a residential survey in BC and how to request an accurate quote.',
-      to: '/survey-pricing',
+      to: '/survey-pricing/',
       linkLabel: 'View Pricing Factors →',
     },
     {
       title: 'Surveys vs. Title Insurance',
       description: 'Learn why a current BCLS survey plan is essential for construction and renovations compared to title insurance.',
-      to: '/surveys-and-title-insurance',
+      to: '/surveys-and-title-insurance/',
       linkLabel: 'Compare Coverage →',
     },
     {
       title: 'Property Lines & Fencing',
       description: 'Expert guidance on boundary disputes, fence locations, and legal property line staking by a BC Land Surveyor.',
-      to: '/sea-to-sky-property-line-staking',
+      to: '/sea-to-sky-property-line-staking/',
       linkLabel: 'Learn About Boundaries →',
     },
     {
       title: 'Topographic Surveys for Permits',
       description: 'Detailed site plans and topographic data required for municipal building permits and architectural design.',
-      to: '/topographic-surveys',
+      to: '/topographic-surveys/',
       linkLabel: 'Building Permit Surveys →',
     },
   ];
@@ -105,14 +105,13 @@ const residentialSchema = {
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-16 sm:pt-28 sm:pb-20">
           <p className="text-sm sm:text-base text-brand-green font-medium tracking-wide uppercase mb-4">
-            BCLS Certified Residential Services
+            Certified Land Surveys for Property Owners
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
-            Residential Land Surveying in <span className="text-brand-green font-medium">Squamish & Whistler</span>
+            Residential Land Surveying in <span className="text-brand-green font-medium">British Columbia</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/85 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
-            From boundary markers to certified site plans, we provide the precision homeowners 
-            and builders need for municipal compliance and peace of mind.
+            From boundary markers to site plans, a certified land survey offers homeowners and builders the services and documents they need for municipal compliance and peace of mind.
           </p>
         </div>
       </section>
