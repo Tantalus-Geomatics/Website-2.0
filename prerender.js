@@ -27,7 +27,7 @@ async function generate() {
   app.use(express.static(toAbs('dist')));
   
   // Catch-all route to serve the SPA shell so React Router can process sub-routes
-  app.get('*', (req, res) => {
+  app.use((req, res) => {
     res.sendFile(toAbs('dist/index.html'));
   });
 
