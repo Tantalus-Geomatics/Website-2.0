@@ -136,25 +136,29 @@ export default function Subdivisions() {
 
       {/* Panel 2: Glossary (Hybrid Mobile/Desktop) */}
       <AccordionItem title="Glossary of Terms">
-        {/* Instruction text hidden on mobile, visible on desktop */}
         <p className="hidden md:block text-xs text-brand-green/80 italic mb-4">Hover over key term for definition</p>
         
         <ul className="space-y-5 md:space-y-4 mt-2">
           {glossaryTerms.map((item, idx) => (
-            <li key={idx} className="flex flex-col md:block md:relative md:group md:cursor-help md:w-max">
+            {/* Added 'relative' and 'group' unconditionally so the hover state always fires */}
+            <li key={idx} className="relative group w-full md:w-max md:cursor-help">
               
               {/* The Term */}
-              <span className="text-brand-green font-medium text-sm md:text-white/90 md:font-light md:border-b md:border-dashed md:border-white/40 md:group-hover:text-brand-green md:group-hover:border-brand-green transition-colors">
+              <div className="text-brand-green font-medium text-sm md:text-white/90 md:font-light md:inline-block md:border-b md:border-dashed md:border-white/40 group-hover:text-brand-green group-hover:border-brand-green transition-colors">
                 {item.term}
-                {/* Colon only shows on mobile for readability */}
                 <span className="md:hidden">:</span> 
-              </span>
+              </div>
               
-              {/* The Definition (Inline on mobile, Tooltip on desktop) */}
-              <div className="mt-1 text-white/70 text-sm font-light leading-relaxed md:mt-0 md:absolute md:z-[100] md:bottom-full md:left-0 md:mb-2 md:w-72 md:p-3 md:bg-brand-black md:border md:border-brand-green/40 md:text-white/90 md:text-xs md:rounded-md md:shadow-2xl md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-all md:duration-200 md:pointer-events-none">
+              {/* MOBILE DEFINITION: Static block, hidden on desktop */}
+              <div className="md:hidden mt-1 text-white/70 text-sm font-light leading-relaxed">
                 {item.def}
-                {/* Tooltip Triangle (Hidden on mobile) */}
-                <div className="hidden md:block absolute top-full left-4 border-4 border-transparent border-t-brand-green/40"></div>
+              </div>
+
+              {/* DESKTOP TOOLTIP: Floating bubble, hidden on mobile */}
+              <div className="hidden md:block absolute z-[100] bottom-full left-0 mb-2 w-72 p-3 bg-brand-black border border-brand-green/40 text-white/90 text-xs leading-relaxed rounded-md shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
+                {item.def}
+                {/* Tooltip Triangle */}
+                <div className="absolute top-full left-4 border-4 border-transparent border-t-brand-green/40"></div>
               </div>
               
             </li>
