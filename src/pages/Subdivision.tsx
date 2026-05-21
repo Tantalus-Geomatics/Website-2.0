@@ -140,7 +140,6 @@ export default function Subdivisions() {
         
         <ul className="space-y-5 md:space-y-4 mt-2">
           {glossaryTerms.map((item, idx) => (
-            {/* Added 'relative' and 'group' unconditionally so the hover state always fires */}
             <li key={idx} className="relative group w-full md:w-max md:cursor-help">
               
               {/* The Term */}
