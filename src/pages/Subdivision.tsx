@@ -134,22 +134,29 @@ export default function Subdivisions() {
         </ul>
       </AccordionItem>
 
-      {/* Panel 2: Glossary (Now with Tooltips) */}
+      {/* Panel 2: Glossary (Hybrid Mobile/Desktop) */}
       <AccordionItem title="Glossary of Terms">
-        <p className="text-xs text-brand-green/80 italic mb-4">Hover over key term for definition</p>
-        <ul className="space-y-4 mt-2">
+        {/* Instruction text hidden on mobile, visible on desktop */}
+        <p className="hidden md:block text-xs text-brand-green/80 italic mb-4">Hover over key term for definition</p>
+        
+        <ul className="space-y-5 md:space-y-4 mt-2">
           {glossaryTerms.map((item, idx) => (
-            <li key={idx} className="relative group cursor-help w-max">
-              <span className="text-white/90 text-sm font-light border-b border-dashed border-white/40 group-hover:text-brand-green group-hover:border-brand-green transition-colors">
+            <li key={idx} className="flex flex-col md:block md:relative md:group md:cursor-help md:w-max">
+              
+              {/* The Term */}
+              <span className="text-brand-green font-medium text-sm md:text-white/90 md:font-light md:border-b md:border-dashed md:border-white/40 md:group-hover:text-brand-green md:group-hover:border-brand-green transition-colors">
                 {item.term}
+                {/* Colon only shows on mobile for readability */}
+                <span className="md:hidden">:</span> 
               </span>
               
-              {/* Tooltip Bubble */}
-              <div className="absolute z-[100] bottom-full left-0 mb-2 w-64 p-3 bg-brand-black border border-brand-green/40 text-white/90 text-xs leading-relaxed rounded-md shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
+              {/* The Definition (Inline on mobile, Tooltip on desktop) */}
+              <div className="mt-1 text-white/70 text-sm font-light leading-relaxed md:mt-0 md:absolute md:z-[100] md:bottom-full md:left-0 md:mb-2 md:w-72 md:p-3 md:bg-brand-black md:border md:border-brand-green/40 md:text-white/90 md:text-xs md:rounded-md md:shadow-2xl md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-all md:duration-200 md:pointer-events-none">
                 {item.def}
-                {/* Small triangle pointer at the bottom of the tooltip */}
-                <div className="absolute top-full left-4 border-4 border-transparent border-t-brand-green/40"></div>
+                {/* Tooltip Triangle (Hidden on mobile) */}
+                <div className="hidden md:block absolute top-full left-4 border-4 border-transparent border-t-brand-green/40"></div>
               </div>
+              
             </li>
           ))}
         </ul>
@@ -429,91 +436,100 @@ export default function Subdivisions() {
                         <th scope="col" className="px-6 py-4 font-medium">Type of Plan</th>
                         <th scope="col" className="px-6 py-4 font-medium">LTA Section</th>
                         <th scope="col" className="px-6 py-4 font-medium">Approving Officer Certification?</th>
-                        <th scope="col" className="px-6 py-4 font-medium">Combined with Sub. Plan?</th>
+                        <th scope="col" className="px-6 py-4 font-medium">Combined with Subdivision Plan?</th>
                         <th scope="col" className="px-6 py-4 font-medium">Field Survey Required?</th>
-                        <th scope="col" className="px-6 py-4 font-medium">Example</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-white/5">
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Subdivision Plan</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/subdivision.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Subdivision Plan</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">67</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
                         <td className="whitespace-nowrap px-6 py-4">Not Applicable</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/subdivision.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Consolidation Plan</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/consolidation.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Consolidation Plan</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">100 (1) (b)</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/consolidation.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Road Dedication Plan</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/road_dedication.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Road Dedication Plan</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">107</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/road_dedication.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Park Dedication Plan</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/park_dedication.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Park Dedication Plan</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">107</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/park_dedication.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Reference Plan for Easement</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/reference_plan.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Reference Plan for Easement</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">99 (1) (e)</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/reference_plan.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Reference Plan for Covenant</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/reference_plan.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Reference Plan for Covenant</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">99 (1) (e)</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/reference_plan.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Statutory Right of Way Plan</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/srw_plan.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Statutory Right of Way Plan</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">113</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">Yes</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/srw_plan.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Explanatory Plan for Easement</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/explanatory_plan.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Explanatory Plan for Easement</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">99 (1) (e)</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/explanatory_plan.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Explanatory Plan for Covenant</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/explanatory_plan.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Explanatory Plan for Covenant</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">99 (1) (e)</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/explanatory_plan.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                       <tr className="hover:bg-white/5 transition-colors">
-                        <td className="whitespace-nowrap px-6 py-4">Explanatory Plan of SRW</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <a href="/docs/explanatory_plan.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-green hover:text-white transition-colors underline">Explanatory Plan of SRW</a>
+                        </td>
                         <td className="whitespace-nowrap px-6 py-4">99 (1) (e)</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
                         <td className="whitespace-nowrap px-6 py-4">No</td>
-                        <td className="whitespace-nowrap px-6 py-4"><a href="/docs/explanatory_plan.pdf" className="text-brand-green hover:underline">Link</a></td>
                       </tr>
                     </tbody>
                   </table>
