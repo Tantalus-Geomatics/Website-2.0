@@ -1,10 +1,36 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, Phone, ShieldCheck, MapPinned, Search, ClipboardList } from 'lucide-react';
+import { ArrowRight, MapPin, Phone, ShieldCheck, MapPinned, Search, ClipboardList, ChevronDown } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
 const CANONICAL = 'https://tantalusgeomatics.com/subdivisions/';
+
+// Reusable Accordion Component for the Dropdown Menus
+const AccordionItem = ({ title, defaultOpen = false, children }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <div className="rounded-xl border border-brand-green/35 bg-brand-dark/60 shadow-[0_4px_24px_rgba(107,158,84,0.08)] transition-all">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-white/5 transition-colors rounded-xl"
+        aria-expanded={isOpen}
+      >
+        <h3 className="text-brand-green font-medium text-lg">{title}</h3>
+        <ChevronDown 
+          className={`w-5 h-5 text-brand-green transition-transform duration-300 shrink-0 ml-4 ${isOpen ? 'rotate-180' : ''}`} 
+        />
+      </button>
+      {isOpen && (
+        <div className="px-6 pb-6 pt-2 border-t border-white/10 mx-6">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function Subdivisions() {
   const serviceAreas = [
@@ -68,13 +94,12 @@ export default function Subdivisions() {
     }
   };
 
-  // Reusable component for the side panel / bottom content
+  // The dropdown content
   const ReferenceContent = () => (
-    <div className="space-y-8">
+    <div className="space-y-4">
       {/* Panel 1: Municipalities */}
-      <div className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 shadow-[0_4px_24px_rgba(107,158,84,0.08)]">
-        <h3 className="text-brand-green font-medium mb-4 text-lg border-b border-white/10 pb-2">Example Municipal Requirements</h3>
-        <ul className="space-y-3 text-sm text-white/80 font-light">
+      <AccordionItem title="Example Municipal Requirements" defaultOpen={true}>
+        <ul className="space-y-3 text-sm text-white/80 font-light mt-2">
           <li>
             <a href="https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/subdivision/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green underline transition-colors">District of Squamish</a>
           </li>
@@ -94,12 +119,11 @@ export default function Subdivisions() {
             <a href="https://www.pemberton.ca/building-development/planning-development/subdivision" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green underline transition-colors">Village of Pemberton</a>
           </li>
         </ul>
-      </div>
+      </AccordionItem>
 
       {/* Panel 2: Glossary */}
-      <div className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 shadow-[0_4px_24px_rgba(107,158,84,0.08)]">
-        <h3 className="text-brand-green font-medium mb-4 text-lg border-b border-white/10 pb-2">Glossary of Terms</h3>
-        <ul className="space-y-4 text-sm text-white/80 font-light">
+      <AccordionItem title="Glossary of Terms">
+        <ul className="space-y-4 text-sm text-white/80 font-light mt-2">
           <li><strong className="text-white">Approving Officer:</strong> Statutory decision makers at the municipal and provincial level who ensure that proposed subdivision applications comply with relevant legislation and local bylaws.</li>
           <li><strong className="text-white">Registrar of Land Titles:</strong> Provincial officer responsible for overseeing the approval and registration of applications for various forms of land use under the jurisdiction of the Land Title and Survey Authority of British Columbia.</li>
           <li><strong className="text-white">Subdivision:</strong> The process of creating one or more new titled lots from one or more existing titled lots.</li>
@@ -110,12 +134,11 @@ export default function Subdivisions() {
           <li><strong className="text-white">Statutory Right of Way Plan:</strong> A plan prepared by a BC Land Surveyor that is based on a ground survey that defines the area over which there is a statutory right of way in relation to the boundaries of an existing subdivided parcel.</li>
           <li><strong className="text-white">Explanatory Plan:</strong> A plan prepared by a BC Land Surveyor that is not based on a ground survey, but on existing descriptions, plans or records of the land title office.</li>
         </ul>
-      </div>
+      </AccordionItem>
 
       {/* Panel 3: Relevant Links */}
-      <div className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 shadow-[0_4px_24px_rgba(107,158,84,0.08)]">
-        <h3 className="text-brand-green font-medium mb-4 text-lg border-b border-white/10 pb-2">Relevant Links</h3>
-        <ul className="space-y-3 text-sm text-white/80 font-light">
+      <AccordionItem title="Relevant Links">
+        <ul className="space-y-3 text-sm text-white/80 font-light mt-2">
           <li><a href="https://www2.gov.bc.ca/gov/content/governments/local-governments/planning-land-use/land-use-regulation/subdividing-land" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green underline transition-colors">Government of BC: Subdividing Land</a></li>
           <li><a href="https://ltpm.ltsa.ca/appendix-2-types-plans" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green underline transition-colors">Land Title Practice Manual: Types of Plans</a></li>
           <li><a href="https://ltpm.ltsa.ca/overview-part-7" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green underline transition-colors">Land title Practice Manual Part 7: Descriptions and Plans</a></li>
@@ -125,7 +148,7 @@ export default function Subdivisions() {
           <li><a href="https://ltsa.ca/professionals/surveyor-general/directions-to-land-surveyors/establishment-of-highway-over-untitled-crown-land/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green underline transition-colors">Establishing Road Access over Crown Land</a></li>
           <li><a href="https://ltsa.ca/professionals/surveyor-general/directions-to-land-surveyors/electronic-submission-of-statutory-applications-to-the-surveyor-general/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green underline transition-colors">Natural Boundary Adjustments</a></li>
         </ul>
-      </div>
+      </AccordionItem>
     </div>
   );
 
