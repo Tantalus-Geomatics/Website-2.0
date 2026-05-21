@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
       Sitemap({
         hostname: 'https://www.tantalusgeomatics.com',
         dynamicRoutes: routes,
-        generateRobotsTxt: true, // Bonus: This auto-generates a robots.txt file to tell Googlebot exactly where this sitemap is!
+        //generateRobotsTxt: true, // Bonus: This auto-generates a robots.txt file to tell Googlebot exactly where this sitemap is!
       }),
     ],
     base: '/',
