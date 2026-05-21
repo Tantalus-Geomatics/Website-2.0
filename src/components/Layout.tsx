@@ -2,6 +2,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 import { MapPin, Menu, X, Mountain, Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { GoogleMap, LoadScript, Polygon, MarkerF } from '@react-google-maps/api';
+import ClientOnly from '../components/ClientOnly'; // <-- Add this import
 
 // Converted service area coordinates to Google Maps { lat, lng } format
 const serviceAreaPaths = [
@@ -332,38 +333,47 @@ export default function Layout() {
             </h3>
             
             <div className="flex-grow rounded-md overflow-hidden border border-white/20 relative z-0">
-              <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string}>
-                <GoogleMap
-                  mapContainerStyle={mapContainerStyle}
-                  center={mapCenter}
-                  zoom={8}
-                  options={{
-                    disableDefaultUI: true,
-                    zoomControl: true,
-                  }}
-                >
-                  <Polygon 
-                    paths={serviceAreaPaths} 
-                    options={polygonOptions} 
-                  />
-                  
-                  {/* Render scaled-down pins for each service location */}
-                  {serviceLocations.map((loc, index) => (
-                    <MarkerF
-                      key={index}
-                      position={{ lat: loc.lat, lng: loc.lng }}
-                      icon={smallPinIcon}
-                      label={{
-                        text: loc.name,
-                        color: '#FFFFFF',
-                        fontSize: '11px',
-                        fontWeight: '600',
-                        className: 'mt-6 drop-shadow-md bg-black/50 px-1.5 py-0.5 rounded'
-                      }}
+              <ClientOnly 
+                fallback={
+                  <div className="w-full h-full min-h-[450px] bg-brand-dark/50 animate-pulse flex flex-col items-center justify-center gap-4">
+                    <MapPin size={32} className="text-brand-green/50 animate-bounce" />
+                    <span className="text-white/50 font-light tracking-wide">Loading Interactive Map...</span>
+                  </div>
+                }
+              >
+                <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string}>
+                  <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    center={mapCenter}
+                    zoom={8}
+                    options={{
+                      disableDefaultUI: true,
+                      zoomControl: true,
+                    }}
+                  >
+                    <Polygon 
+                      paths={serviceAreaPaths} 
+                      options={polygonOptions} 
                     />
-                  ))}
-                </GoogleMap>
-              </LoadScript>
+                    
+                    {/* Render scaled-down pins for each service location */}
+                    {serviceLocations.map((loc, index) => (
+                      <MarkerF
+                        key={index}
+                        position={{ lat: loc.lat, lng: loc.lng }}
+                        icon={smallPinIcon}
+                        label={{
+                          text: loc.name,
+                          color: '#FFFFFF',
+                          fontSize: '11px',
+                          fontWeight: '600',
+                          className: 'mt-6 drop-shadow-md bg-black/50 px-1.5 py-0.5 rounded'
+                        }}
+                      />
+                    ))}
+                  </GoogleMap>
+                </LoadScript>
+              </ClientOnly>
             </div>
           </div>
 
