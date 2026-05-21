@@ -31,7 +31,7 @@ export default function App() {
         <Route path="topographic-surveys" element={<TopographicSurveys />} />
         <Route path="sea-to-sky-property-line-and-boundary-staking" element={<PropertyLineStaking />} />
         <Route path="surveys-and-title-insurance" element={<SurveyTitleInsurance />} />
-        <Route path="subdivisions" element={<Subdivision />} />
+        <Route path="subdivision" element={<Subdivision />} />
       </Route>
     </Routes>
   );
