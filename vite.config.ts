@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
   const routes = [
     '/', '/about/', '/services/', '/faq/', '/contact/', 
     '/residential/', '/survey-pricing/', '/topographic-surveys/', 
-    '/sea-to-sky-property-line-and-boundary-staking/', '/surveys-and-title-insurance/'
+    '/sea-to-sky-property-line-and-boundary-staking/', '/surveys-and-title-insurance/', '/subdivisions/'
   ];
 
   return {
