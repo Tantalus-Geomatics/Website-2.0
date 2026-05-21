@@ -94,6 +94,19 @@ export default function Subdivisions() {
     }
   };
 
+  // Glossary Data
+  const glossaryTerms = [
+    { term: "Approving Officer", def: "Statutory decision makers at the municipal and provincial level who ensure that proposed subdivision applications comply with relevant legislation and local bylaws." },
+    { term: "Registrar of Land Titles", def: "Provincial officer responsible for overseeing the approval and registration of applications for various forms of land use under the jurisdiction of the Land Title and Survey Authority of British Columbia." },
+    { term: "Subdivision", def: "The process of creating one or more new titled lots from one or more existing titled lots." },
+    { term: "Consolidation", def: "The process of creating one new titled lot by combining multiple existing titled lots." },
+    { term: "Dedication", def: "The process of transferring ownership of a portion of a titled lot to a municipality or provincial government body (e.g. Ministry of Transportation and Transit) for purposes such as roads and parks." },
+    { term: "Subdivision Plan", def: "A plan prepared by a BC Land Surveyor that is based on a ground survey that creates new parcels for which the registrar registers title. This plan shows the streets, lanes, parks, numbered lots, and other information about the land, with all the necessary measurements. The plan must also show the position of required monumentation found and placed during the ground survey." },
+    { term: "Reference Plan", def: "A plan prepared by a BC Land Surveyor that is based on a ground survey that generally refers to a single parcel or charge." },
+    { term: "Statutory Right of Way Plan", def: "A plan prepared by a BC Land Surveyor that is based on a ground survey that defines the area over which there is a statutory right of way in relation to the boundaries of an existing subdivided parcel." },
+    { term: "Explanatory Plan", def: "A plan prepared by a BC Land Surveyor that is not based on a ground survey, but on existing descriptions, plans or records of the land title office." }
+  ];
+
   // The dropdown content
   const ReferenceContent = () => (
     <div className="space-y-4">
@@ -121,18 +134,24 @@ export default function Subdivisions() {
         </ul>
       </AccordionItem>
 
-      {/* Panel 2: Glossary */}
+      {/* Panel 2: Glossary (Now with Tooltips) */}
       <AccordionItem title="Glossary of Terms">
-        <ul className="space-y-4 text-sm text-white/80 font-light mt-2">
-          <li><strong className="text-white">Approving Officer:</strong> Statutory decision makers at the municipal and provincial level who ensure that proposed subdivision applications comply with relevant legislation and local bylaws.</li>
-          <li><strong className="text-white">Registrar of Land Titles:</strong> Provincial officer responsible for overseeing the approval and registration of applications for various forms of land use under the jurisdiction of the Land Title and Survey Authority of British Columbia.</li>
-          <li><strong className="text-white">Subdivision:</strong> The process of creating one or more new titled lots from one or more existing titled lots.</li>
-          <li><strong className="text-white">Consolidation:</strong> The process of creating one new titled lot by combining multiple existing titled lots.</li>
-          <li><strong className="text-white">Dedication:</strong> The process of transferring ownership of a portion of a titled lot to a municipality or provincial government body (e.g. Ministry of Transportation and Transit) for purposes such as roads and parks.</li>
-          <li><strong className="text-white">Subdivision Plan:</strong> A plan prepared by a BC Land Surveyor that is based on a ground survey that creates new parcels for which the registrar registers title. This plan shows the streets, lanes, parks, numbered lots, and other information about the land, with all the necessary measurements. The plan must also show the position of required monumentation found and placed during the ground survey.</li>
-          <li><strong className="text-white">Reference Plan:</strong> A plan prepared by a BC Land Surveyor that is based on a ground survey that generally refers to a single parcel or charge.</li>
-          <li><strong className="text-white">Statutory Right of Way Plan:</strong> A plan prepared by a BC Land Surveyor that is based on a ground survey that defines the area over which there is a statutory right of way in relation to the boundaries of an existing subdivided parcel.</li>
-          <li><strong className="text-white">Explanatory Plan:</strong> A plan prepared by a BC Land Surveyor that is not based on a ground survey, but on existing descriptions, plans or records of the land title office.</li>
+        <p className="text-xs text-brand-green/80 italic mb-4">Hover over key term for definition</p>
+        <ul className="space-y-4 mt-2">
+          {glossaryTerms.map((item, idx) => (
+            <li key={idx} className="relative group cursor-help w-max">
+              <span className="text-white/90 text-sm font-light border-b border-dashed border-white/40 group-hover:text-brand-green group-hover:border-brand-green transition-colors">
+                {item.term}
+              </span>
+              
+              {/* Tooltip Bubble */}
+              <div className="absolute z-[100] bottom-full left-0 mb-2 w-64 p-3 bg-brand-black border border-brand-green/40 text-white/90 text-xs leading-relaxed rounded-md shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
+                {item.def}
+                {/* Small triangle pointer at the bottom of the tooltip */}
+                <div className="absolute top-full left-4 border-4 border-transparent border-t-brand-green/40"></div>
+              </div>
+            </li>
+          ))}
         </ul>
       </AccordionItem>
 
