@@ -16,7 +16,7 @@ const routesToPrerender = [
   '/', '/about/', '/services/', '/faq/', '/contact/', 
   '/residential/', '/survey-pricing/', '/topographic-surveys/', 
   '/sea-to-sky-property-line-and-boundary-staking/', 
-  '/surveys-and-title-insurance/', '/subdivisions/'
+  '/surveys-and-title-insurance/', '/subdivision/'
 ];
 
 async function generate() {
