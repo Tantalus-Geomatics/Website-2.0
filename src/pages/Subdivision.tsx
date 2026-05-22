@@ -5,7 +5,7 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
-const CANONICAL = 'https://tantalusgeomatics.com/subdivisions/';
+const CANONICAL = 'https://tantalusgeomatics.com/subdivision/';
 
 // Reusable Accordion Component for the Dropdown Menus
 const AccordionItem = ({ title, defaultOpen = false, children }) => {
