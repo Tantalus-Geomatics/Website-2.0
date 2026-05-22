@@ -159,10 +159,10 @@ export default function Home() {
             <div className="text-left">
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
                 Professional <br className="hidden lg:block"/>
-                <span className="text-brand-green font-medium">Land Surveying</span>
+                <span className="text-brand-green font-medium"> BC Land Surveyors</span>
               </h1>
               <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-10 font-light leading-relaxed drop-shadow-md">
-                Servicing British Columbia
+                Servicing British Columbia across the Sea to Sky Corridor, Vancouver's North Shore, and the Sunshine Coast.
               </p>
               <div className="flex justify-start">
                 <a

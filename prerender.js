@@ -22,13 +22,14 @@ const routesToPrerender = [
 async function generate() {
   console.log('🚀 Starting true static site generation pipeline...');
 
-  // 1. Boot up a temporary local server to serve your compiled SPA
+  fs.copyFileSync(toAbs('dist/index.html'), toAbs('dist/shell.html'));
+
   const app = express();
   app.use(express.static(toAbs('dist')));
   
-  // Catch-all route to serve the SPA shell so React Router can process sub-routes
+  // ---> UPDATE THIS: Serve the safe shell instead of index.html
   app.use((req, res) => {
-    res.sendFile(toAbs('dist/index.html'));
+    res.sendFile(toAbs('dist/shell.html'));
   });
 
   const server = app.listen(3000, async () => {
@@ -88,6 +89,12 @@ async function generate() {
       // 4. Clean up and close everything
       await browser.close();
       server.close();
+      
+      // ---> ADD THIS: Delete the temporary shell
+      if (fs.existsSync(toAbs('dist/shell.html'))) {
+        fs.unlinkSync(toAbs('dist/shell.html'));
+      }
+      
       console.log('🛑 Headless Chrome closed. Prerendering complete.');
     }
 
