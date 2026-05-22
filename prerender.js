@@ -55,6 +55,11 @@ async function generate() {
       for (const url of routesToPrerender) {
         const page = await browser.newPage();
         
+        // ---> INJECT THE SECRET SIGNAL HERE <---
+        await page.evaluateOnNewDocument(() => {
+          window.__IS_PRERENDERING = true;
+        });
+        
         // waitUntil: 'networkidle0' ensures React has completely finished injecting the <SEO> tags and content
         await page.goto(`http://localhost:3000${url}`, { waitUntil: 'networkidle0' });
 

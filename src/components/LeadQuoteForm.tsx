@@ -6,6 +6,7 @@ import {
 import { Turnstile } from '@marsidev/react-turnstile';
 import { Send } from 'lucide-react';
 import type { LeadFormFields, LeadFormStatus } from '../hooks/useLeadForm';
+import ClientOnly from './ClientOnly';
 
 const TURNSTILE_SITE_KEY =
   import.meta.env.VITE_TURNSTILE_SITE_KEY;
@@ -62,13 +63,15 @@ function TurnstileBlock({
 }) {
   return (
     <div className={className}>
-      <Turnstile
-        siteKey={TURNSTILE_SITE_KEY}
-        onSuccess={(token) => setTurnstileToken(token)}
-        onError={() => setTurnstileToken(null)}
-        onExpire={() => setTurnstileToken(null)}
-        options={{ theme: 'dark' }}
-      />
+      <ClientOnly fallback={<div className="h-[65px] w-[300px] bg-brand-dark/50 animate-pulse rounded-md border border-white/10" />}>
+        <Turnstile
+          siteKey={TURNSTILE_SITE_KEY}
+          onSuccess={(token) => setTurnstileToken(token)}
+          onError={() => setTurnstileToken(null)}
+          onExpire={() => setTurnstileToken(null)}
+          options={{ theme: 'dark' }}
+        />
+      </ClientOnly>
     </div>
   );
 }
