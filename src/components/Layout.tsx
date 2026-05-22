@@ -177,7 +177,7 @@ export default function Layout() {
             {/* Left: Logo */}
             <Link to="/" className="flex items-center gap-2 sm:gap-3 z-10 min-w-0">
               <img 
-                src="tantalus-logo.webp" 
+                src="/tantalus-logo.webp" 
                 alt="Tantalus Geomatics Logo" 
                 className="h-7 sm:h-12 w-auto object-contain shrink-0"
                 onError={(e) => {
@@ -289,7 +289,7 @@ export default function Layout() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <img 
-                  src="tantalus-logo.webp" 
+                  src="/tantalus-logo.webp" 
                   alt="Tantalus Geomatics Logo" 
                   className="h-8 w-auto object-contain"
                   onError={(e) => {
@@ -313,7 +313,7 @@ export default function Layout() {
                 <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-2/3 lg:w-full transition-transform hover:scale-105">
                   <div className="bg-white p-2 rounded-sm w-full">
                     <img 
-                      src="images/abcls-logo-horizontal.svg" 
+                      src="/images/abcls-logo-horizontal.svg" 
                       alt="Association of BC Land Surveyors Logo" 
                       className="w-full object-contain opacity-100"
                       referrerPolicy="no-referrer"
