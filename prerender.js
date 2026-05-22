@@ -22,12 +22,13 @@ const routesToPrerender = [
 async function generate() {
   console.log('🚀 Starting true static site generation pipeline...');
 
+  // 1. Create a safe shell so we don't cause duplicate tags
   fs.copyFileSync(toAbs('dist/index.html'), toAbs('dist/shell.html'));
 
   const app = express();
   app.use(express.static(toAbs('dist')));
   
-  // ---> UPDATE THIS: Serve the safe shell instead of index.html
+  // Catch-all route to serve the SPA shell
   app.use((req, res) => {
     res.sendFile(toAbs('dist/shell.html'));
   });
@@ -37,14 +38,13 @@ async function generate() {
     
     let browser;
     try {
-      // 2. Launch the Headless Browser
       browser = await puppeteer.launch({ 
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'] // Required for GitHub Actions
+        args: ['--no-sandbox', '--disable-setuid-sandbox'] 
       });
       console.log('✅ Headless Chrome launched.');
     } catch (err) {
-      console.error('❌ Puppeteer failed to launch. (If running locally, this is because we skipped the download. It will work in GitHub Actions.)');
+      console.error('❌ Puppeteer failed to launch. (If local, download was skipped).');
       server.close();
       return;
     }
@@ -52,63 +52,73 @@ async function generate() {
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
     try {
-      // 3. Visit each route, wait for React to load, and scrape the HTML
       for (const url of routesToPrerender) {
         const page = await browser.newPage();
         
-        // ---> INJECT THE SECRET SIGNAL HERE <---
+        // Listen for any React crashes inside the headless browser
+        page.on('console', msg => {
+          if (msg.type() === 'error') console.log(`[Browser Error]: ${msg.text()}`);
+        });
+        page.on('pageerror', err => console.error(`[React Crash]:`, err.toString()));
+
+        // Inject the secret signal to hide Google Maps & Turnstile
         await page.evaluateOnNewDocument(() => {
           window.__IS_PRERENDERING = true;
         });
         
-        // waitUntil: 'networkidle0' ensures React has completely finished injecting the <SEO> tags and content
         await page.goto(`http://localhost:3000${url}`, { waitUntil: 'networkidle0' });
+
+        // ---> THE MAGIC FIX: Wait for React to physically paint the DOM <---
+        try {
+          await page.waitForSelector('#root > div', { timeout: 10000 });
+        } catch (e) {
+          console.error(`⚠️ React took too long or failed to render on ${url}.`);
+        }
+
+        // Force cleanup of duplicate SEO tags
+        await page.evaluate(() => {
+          const removeDuplicates = (selector) => {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length > 1) {
+              for (let i = 1; i < elements.length; i++) elements[i].remove();
+            }
+          };
+          removeDuplicates('title');
+          removeDuplicates('meta[name="description"]');
+          removeDuplicates('link[rel="canonical"]');
+        });
 
         // Grab the FULLY RENDERED HTML
         const html = await page.content();
 
-        // Save the HTML to the correct directory (e.g., dist/about/index.html)
+        // Save the HTML
         const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
         const filePath = toAbs(`dist/${fileName}`);
         
-        if (url !== '/') {
-          fs.mkdirSync(path.dirname(filePath), { recursive: true });
-        }
-        
+        if (url !== '/') fs.mkdirSync(path.dirname(filePath), { recursive: true });
         fs.writeFileSync(filePath, html);
         console.log(`📸 Prerendered: ${url}`);
         
         await page.close();
 
-        // Add to Sitemap string
+        // Add to Sitemap
         sitemap += `  <url>\n    <loc>${hostname}${url}</loc>\n    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n  </url>\n`;
       }
     } catch (error) {
       console.error('❌ Error during prerendering:', error);
     } finally {
-      // 4. Clean up and close everything
       await browser.close();
       server.close();
-      
-      // ---> ADD THIS: Delete the temporary shell
-      if (fs.existsSync(toAbs('dist/shell.html'))) {
-        fs.unlinkSync(toAbs('dist/shell.html'));
-      }
-      
+      if (fs.existsSync(toAbs('dist/shell.html'))) fs.unlinkSync(toAbs('dist/shell.html'));
       console.log('🛑 Headless Chrome closed. Prerendering complete.');
     }
 
-    // 5. Finalize Sitemap & IndexNow
     sitemap += `</urlset>`;
     fs.writeFileSync(toAbs('dist/sitemap.xml'), sitemap);
     console.log(`🗺️ Sitemap generated successfully.`);
 
-    // AUTOMATIC VERIFICATION FILE
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
-      console.log(`✅ Verification file ${INDEXNOW_KEY}.txt created.`);
-      
-      // PING THE API
       await notifyIndexNow(routesToPrerender);
     }
   });
