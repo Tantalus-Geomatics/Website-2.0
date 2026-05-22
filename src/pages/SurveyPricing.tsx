@@ -111,7 +111,7 @@ export default function SurveyPricing() {
       <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/tantalus-hero-banner.webp"
+            src="/images/tantalus-hero-banner.webp"
             alt="Professional Surveying in BC"
             className="w-full h-full object-cover opacity-50 mix-blend-overlay"
             referrerPolicy="no-referrer"
@@ -257,10 +257,10 @@ export default function SurveyPricing() {
               {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
               <div 
                 className="h-72 overflow-hidden relative cursor-pointer group"
-                onClick={() => setLightboxImage("images/LMP16626.webp")}
+                onClick={() => setLightboxImage("/images/LMP16626.webp")}
               >
                 <img 
-                  src="images/Squamish-Garibaldi-Estates-Property-Survey.webp" 
+                  src="/images/Squamish-Garibaldi-Estates-Property-Survey.webp" 
                   alt="Suburban Lot on Newport Rd" 
                   className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
                 />
@@ -291,10 +291,10 @@ export default function SurveyPricing() {
               {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
               <div 
                 className="h-72 overflow-hidden relative cursor-pointer group"
-                onClick={() => setLightboxImage("images/BCP39687.webp")}
+                onClick={() => setLightboxImage("/images/BCP39687.webp")}
               >
                 <img 
-                  src="images/BCP39687.webp" 
+                  src="/images/BCP39687.webp" 
                   alt="Paradise Valley Rural Lot" 
                   className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
                 />

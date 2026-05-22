@@ -194,7 +194,7 @@ export default function Subdivisions() {
       <section className="relative min-h-[60vh] flex flex-col justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/subdivision.webp"
+            src="/images/subdivision.webp"
             alt="Surveying equipment on a residential property subdivision"
             className="w-full h-full object-cover opacity-50 mix-blend-overlay"
             referrerPolicy="no-referrer"
@@ -242,7 +242,7 @@ export default function Subdivisions() {
                 
                 <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark my-8">
                   <img 
-                    src="images/subdivision_workflow.webp" 
+                    src="/images/subdivision_workflow.webp" 
                     alt="Subdivision Process Infographic" 
                     className="object-cover w-full h-auto" 
                     referrerPolicy="no-referrer"
@@ -302,7 +302,7 @@ export default function Subdivisions() {
 
                 <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark my-8">
                   <img 
-                    src="images/topo_plan.webp" 
+                    src="/images/topo_plan.webp" 
                     alt="Topographic Survey Plan Example" 
                     className="object-cover w-full h-auto" 
                     referrerPolicy="no-referrer"
@@ -316,7 +316,7 @@ export default function Subdivisions() {
 
                 <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark my-8">
                   <img 
-                    src="images/boundary_plan.webp" 
+                    src="/images/boundary_plan.webp" 
                     alt="Boundary Retracement Survey Plan Example" 
                     className="object-cover w-full h-auto" 
                     referrerPolicy="no-referrer"
@@ -406,7 +406,7 @@ export default function Subdivisions() {
 
                 <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark my-8">
                   <img 
-                    src="images/squamish-property-line.webp" 
+                    src="/images/squamish-property-line.webp" 
                     alt="Subdivision Field Survey with physical property line marked" 
                     className="object-cover w-full h-auto" 
                     referrerPolicy="no-referrer"

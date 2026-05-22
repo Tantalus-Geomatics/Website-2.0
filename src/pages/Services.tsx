@@ -34,7 +34,7 @@ export default function Services() {
       directAnswerQuestion:
         'What residential property surveys and certificates does Tantalus Geomatics provide?',
       icon: <Home className="w-10 h-10 text-brand-green" />,
-      image: "images/old-home.webp",
+      image: "/images/old-home.webp",
       description: 'We provide Property Line, Fence, and Tree Surveys, for Boundary Confirmation, in addition to Site Plans and Building Location Certificates required for Design and Municipal Permitting.',
       items: [
         { name: 'Site Plans', desc: 'Detailed certified plans required to support municipal building permits, showing existing conditions and proposed improvements.' },
@@ -49,7 +49,7 @@ export default function Services() {
       directAnswerQuestion:
         'What certified surveying does Tantalus Geomatics provide to support land development and approvals?',
       icon: <Map className="w-10 h-10 text-brand-green" />,
-      image: "images/land-development.webp",
+      image: "/images/land-development.webp",
       description: 'We provide the certified surveying and engineering essentials required to support architectural and civil engineering design and streamline the municipal approval process.',
       items: [
         { name: 'Topographic Surveys and Site Plans', desc: 'Detailed certified drawings showing building footprints, setbacks, utility locations and the physical terrain to support design and demonstrate compliance with local bylaws.' },
@@ -63,7 +63,7 @@ export default function Services() {
       directAnswerQuestion:
         'What construction layout and monitoring services does Tantalus Geomatics offer for infrastructure projects?',
       icon: <HardHat className="w-10 h-10 text-brand-green" />,
-      image: "images/construction.webp",
+      image: "/images/construction.webp",
       description: 'We provide the precise layout and monitoring services required to ensure construction matches design specifications. Our professional oversight reduces the risk of costly rework and keeps your project on schedule.',
       items: [
         { name: 'Building Layouts', desc: 'Precise marking of foundations and structural elements to ensure accurate construction and compliance with municipal setbacks.' },
@@ -77,7 +77,7 @@ export default function Services() {
       directAnswerQuestion:
         'What legal boundary surveys and statutory plans does Tantalus Geomatics prepare for Land Title Office registration?',
       icon: <Compass className="w-10 h-10 text-brand-green" />,
-      image: "images/survey-marker-post.webp",
+      image: "/images/survey-marker-post.webp",
       description: 'We provide the professional boundary surveys and statutory plans required for Land Title Office registration, ensuring your property interests are legally protected.',
       items: [
         { name: 'Boundary Surveys', desc: 'Locating property corners and marking existing boundaries to support the construction of fences, resolve disputes or facilitate renovations and landscaping.' },
@@ -92,7 +92,7 @@ export default function Services() {
       directAnswerQuestion:
         'What 3D reality capture and mapping technologies does Tantalus Geomatics use for site documentation?',
       icon: <Mountain className="w-10 h-10 text-brand-green" />,
-      image: "images/reality-capture.webp",
+      image: "/images/reality-capture.webp",
       description: 'Using the latest in LiDAR and photogrammetry, we create accurate 3D replicas of physical sites and buildings.',
       items: [
         { name: 'UAV Mapping', desc: 'Aerial mapping ideal for large or inaccessible sites.' },
@@ -150,7 +150,7 @@ export default function Services() {
       <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/tantalus-hero-banner.webp"
+            src="/images/tantalus-hero-banner.webp"
             alt="Tantalus Lookout"
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
@@ -246,7 +246,7 @@ export default function Services() {
             {/* Column 2 (Formerly Column 3): Surveyor Image */}
             <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
               <img 
-                src="images/DS-TS-1.webp" 
+                src="/images/DS-TS-1.webp" 
                 alt="Land Surveyor out in the field" 
                 className="absolute inset-0 w-full h-full object-cover"
               />

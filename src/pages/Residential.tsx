@@ -7,7 +7,7 @@ import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
 
-const HERO_FALLBACK = 'images/Squamish-Garibaldi-Estates-Property-Survey.webp';
+const HERO_FALLBACK = '/images/Squamish-Garibaldi-Estates-Property-Survey.webp';
 const PHONE_TEL = 'tel:+16042139934';
 
 export default function Residential() {

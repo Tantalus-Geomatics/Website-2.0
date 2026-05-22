@@ -71,7 +71,7 @@ export default function Contact() {
       <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/tantalus-hero-banner.webp"
+            src="/images/tantalus-hero-banner.webp"
             alt="Tantalus Lookout"
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
@@ -115,7 +115,7 @@ export default function Contact() {
               <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 sm:mb-6">Professional Consultations</h2>
               <GeoDirectAnswer question="When does it make sense to book a professional consultation before you build?">
                 <p className="text-base sm:text-lg text-white/70 font-light mb-8 sm:mb-12 leading-relaxed">
-                  Do you have a plan to build on your property, but you are not sure where to start? We offer consultations to help you navigate the municipal permitting process. Let us help you identify the specific regulatory and <a href="/#/services" className="text-brand-green hover:underline">survey requirements</a> for your site.
+                  Do you have a plan to build on your property, but you are not sure where to start? We offer consultations to help you navigate the municipal permitting process. Let us help you identify the specific regulatory and <a href="/services" className="text-brand-green hover:underline">survey requirements</a> for your site.
                 </p>
               </GeoDirectAnswer>
 

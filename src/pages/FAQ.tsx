@@ -200,7 +200,7 @@ const faqSchema = {
       <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/tantalus-hero-banner.webp"
+            src="/images/tantalus-hero-banner.webp"
             alt="Tantalus Lookout"
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
@@ -369,7 +369,7 @@ const faqSchema = {
             {/* Column 2 (Formerly Column 3): Surveyor Image */}
             <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
               <img 
-                src="images/DS-TS-1.webp" 
+                src="/images/DS-TS-1.webp" 
                 alt="Land Surveyor out in the field" 
                 className="absolute inset-0 w-full h-full object-cover"
               />

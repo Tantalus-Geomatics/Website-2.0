@@ -34,61 +34,61 @@ export default function Home() {
       title: "Property Line Surveys",
       icon: <Fence className="w-6 h-6" />,
       content: "Many homeowners discover their existing fences are misaligned with their legal property lines once a formal survey is conducted. A BCLS-certified survey is the only way to definitively establish your boundaries and replace property corners before you invest in new fencing.",
-      image: "images/squamish-property-line.webp"
+      image: "/images/squamish-property-line.webp"
     },
     {
       title: "Building Design and Construction Permitting",
       icon: <Hammer className="w-6 h-6" />,
       content: "Municipalities require BCLS-certified topographic surveys to verify that proposed designs comply with site coverage and setback zoning bylaws. These surveys provide the foundational data architects and designers need to align their plans with the physical and legal constraints of the site.",
-      image: "images/adu.webp"
+      image: "/images/adu.webp"
     },
     {
       title: "Retaining Wall Construction",
       icon: <BrickWall className="w-6 h-6" />,
       content: "Municipalities require a BCLS survey to ensure retaining walls don't encroach onto neighbouring properties and to ensure they conform to local bylaws.",
-      image: "images/squamish-retaining-wall-survey.webp"
+      image: "/images/squamish-retaining-wall-survey.webp"
     },
     {
       title: "Deck and Pool Permits",
       icon: <WavesLadder className="w-6 h-6" />,
       content: "Municipalities require a site plan prepared by a BC Land Surveyor to confirm that new decks, pools, or accessory buildings meet the \"site coverage\" and \"setback\" requirements of the zoning bylaw.",
-      image: "images/deck-pool.webp"
+      image: "/images/deck-pool.webp"
     },
     {
       title: "Purchasing an Older Home",
       icon: <HomeIcon className="w-6 h-6" />,
       content: "A Building Location Certificate confirms that all existing structures are situated within the legal property boundaries and comply with municipal regulations. For those purchasing older homes, this survey is an essential safeguard against the risks of undocumented encroachments and zoning non-compliance.",
-      image: "images/old-home.webp"
+      image: "/images/old-home.webp"
     },
     {
       title: "Strata Developments",
       icon: <Building className="w-6 h-6" />,
       content: "Developing multi-unit housing or duplexes requires a BCLS-certified strata plan to define individual strata lot boundaries and common property. Tantalus Geomatics provides the precise measurements and documentation needed to successfully register your project at the Land Title Office.",
-      image: "images/strata.webp"
+      image: "/images/strata.webp"
     },
     {
       title: "Tree Removal",
       icon: <Trees className="w-6 h-6" />,
       content: "Municipal tree bylaws and \"Restricted Covenant Areas\" often limit or restrict tree removal. A BCLS identifies these zones on the ground so owners don't face large fines for unlawful tree removal.",
-      image: "images/squamish-tree-survey.webp"
+      image: "/images/squamish-tree-survey.webp"
     },
     {
       title: "Mortgage Refinancing",
       icon: <FileText className="w-6 h-6" />,
       content: "Lenders often require a recent Building Location Certificate to confirm all structures on the property conform to municipal bylaws and to determine the total lot area prior to approving a new loan or line of credit.",
-      image: "images/Squamish-Garibaldi-Estates-Property-Survey.webp"
+      image: "/images/Squamish-Garibaldi-Estates-Property-Survey.webp"
     },
     {
       title: "Natural Boundary Identification",
       icon: <Waves className="w-6 h-6" />,
       content: "Owners of properties adjacent to a body of water need a BCLS to determine the location of the \"Present Natural Boundary\" for dock applications or to verify the impact of erosion on their extent of ownership.",
-      image: "images/natural-boundary.webp"
+      image: "/images/natural-boundary.webp"
     },
     {
       title: "BC Land Surveyor: Your Expert Witness",
       icon: <Scale className="w-6 h-6" />,
       content: "If a neighbor dispute escalate to court, a BCLS is often called as an expert witness. Their plans and testimony are used as evidence the courts to settle boundary and encroachment cases.",
-      image: "images/expert-witness.webp"
+      image: "/images/expert-witness.webp"
     }
   ];
 
@@ -144,7 +144,7 @@ export default function Home() {
       <section className="relative min-h-screen pt-24 pb-16 lg:pt-32 lg:pb-24 flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/tantalus-hero-banner.webp"
+            src="/images/tantalus-hero-banner.webp"
             alt="Tantalus Lookout"
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
@@ -393,20 +393,20 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="images/Garibaldi-Highland-Road-Survey.webp"
+                src="/images/Garibaldi-Highland-Road-Survey.webp"
                 alt="Garibaldi Highland Road Survey"
                 className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                 referrerPolicy="no-referrer"
               />
               <div className="grid grid-rows-2 gap-4">
                 <img
-                  src="images/spea-rar.webp"
+                  src="/images/spea-rar.webp"
                   alt="SPEA and RAR"
                   className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
                 <img
-                  src="images/Squamish-Garibaldi-Estates-Property-Survey.webp"
+                  src="/images/Squamish-Garibaldi-Estates-Property-Survey.webp"
                   alt="Garibaldi Estates Property Survey"
                   className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
