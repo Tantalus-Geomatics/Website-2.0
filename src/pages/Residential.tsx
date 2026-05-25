@@ -70,7 +70,7 @@ const residentialSchema = {
     {
       title: 'Property Lines & Fencing',
       description: 'Expert guidance on boundary disputes, fence locations, and legal property line staking by a BC Land Surveyor.',
-      to: '/sea-to-sky-property-line-staking/',
+      to: '/sea-to-sky-property-line-and-boundary-staking/',
       linkLabel: 'Learn About Boundaries →',
     },
     {
