@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { MapPin, Menu, X, Mountain, Mail, Phone } from 'lucide-react';
+import { MapPin, Menu, X, Mountain, Mail, Phone, Linkedin, Github } from 'lucide-react';
 import { useState } from 'react';
 import { GoogleMap, LoadScript, Polygon, MarkerF } from '@react-google-maps/api';
 import ClientOnly from '../components/ClientOnly'; // <-- Add this import
@@ -320,6 +320,14 @@ export default function Layout() {
                     />
                   </div>
                 </a>
+                <div className="flex items-center gap-4 mt-4">
+                  <a href="https://www.linkedin.com/company/tantalus-geomatics" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                    <Linkedin className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                  </a>
+                  <a href="https://github.com/Tantalus-Geomatics" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <Github className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                  </a>
+                </div>
               </div>
             </div>
 
