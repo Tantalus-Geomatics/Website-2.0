@@ -108,7 +108,7 @@ export default function SurveyPricing() {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b border-white/10">
+      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -213,7 +213,7 @@ export default function SurveyPricing() {
                 key={step}
                 className="bg-slate-50 border border-slate-200 p-8 flex flex-col items-center text-center"
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-white text-brand-green">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-slate-100 text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">

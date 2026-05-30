@@ -147,7 +147,7 @@ export default function Services() {
       />
       
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
+      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -189,7 +189,7 @@ export default function Services() {
                 }`}
               >
                 <div className="flex-1 w-full">
-                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-brand-dark border border-white/10 mb-6 sm:mb-8 shadow-2xl">
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-slate-100 border border-slate-200 mb-6 sm:mb-8 shadow-md">
                     {service.icon}
                   </div>
                   <h2 className="text-3xl sm:text-4xl font-light text-slate-900 mb-4 sm:mb-6 tracking-tight">{service.title}</h2>

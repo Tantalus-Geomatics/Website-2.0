@@ -71,72 +71,72 @@ body {
    ========================================== */
 
 /* On a light canvas, text-white and its opacities must map to slate-900 and slate-700 for complete accessibility */
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white"],
-[class*="bg-brand-black"] [class*="text-white"],
-[class*="bg-white"] [class*="text-white"],
-[class*="bg-slate-50"] [class*="text-white"] {
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white"]:not([class*="bg-brand-dark"] *) {
   color: #0f172a !important; /* slate-900 */
 }
 
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/90"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/85"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/80"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/75"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/70"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/65"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/60"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/55"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/50"],
-[class*="bg-brand-black"] [class*="text-white/90"],
-[class*="bg-brand-black"] [class*="text-white/85"],
-[class*="bg-brand-black"] [class*="text-white/80"],
-[class*="bg-brand-black"] [class*="text-white/75"],
-[class*="bg-brand-black"] [class*="text-white/70"],
-[class*="bg-brand-black"] [class*="text-white/65"],
-[class*="bg-brand-black"] [class*="text-white/60"],
-[class*="bg-brand-black"] [class*="text-white/55"],
-[class*="bg-brand-black"] [class*="text-white/50"],
-[class*="bg-white"] [class*="text-white/90"],
-[class*="bg-white"] [class*="text-white/85"],
-[class*="bg-white"] [class*="text-white/80"],
-[class*="bg-white"] [class*="text-white/75"],
-[class*="bg-white"] [class*="text-white/70"],
-[class*="bg-white"] [class*="text-white/65"],
-[class*="bg-white"] [class*="text-white/60"],
-[class*="bg-white"] [class*="text-white/55"],
-[class*="bg-white"] [class*="text-white/50"],
-[class*="bg-slate-50"] [class*="text-white/90"],
-[class*="bg-slate-50"] [class*="text-white/85"],
-[class*="bg-slate-50"] [class*="text-white/80"],
-[class*="bg-slate-50"] [class*="text-white/75"],
-[class*="bg-slate-50"] [class*="text-white/70"],
-[class*="bg-slate-50"] [class*="text-white/65"],
-[class*="bg-slate-50"] [class*="text-white/60"],
-[class*="bg-slate-50"] [class*="text-white/55"],
-[class*="bg-slate-50"] [class*="text-white/50"] {
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/90"]:not([class*="bg-brand-dark"] *),
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/85"]:not([class*="bg-brand-dark"] *),
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/80"]:not([class*="bg-brand-dark"] *),
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/75"]:not([class*="bg-brand-dark"] *),
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/70"]:not([class*="bg-brand-dark"] *),
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/65"]:not([class*="bg-brand-dark"] *),
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/60"]:not([class*="bg-brand-dark"] *),
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/55"]:not([class*="bg-brand-dark"] *),
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/50"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white/90"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white/85"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white/80"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white/75"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white/70"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white/65"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white/60"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white/55"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="text-white/50"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white/90"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white/85"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white/80"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white/75"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white/70"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white/65"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white/60"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white/55"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="text-white/50"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white/90"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white/85"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white/80"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white/75"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white/70"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white/65"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white/60"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white/55"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="text-white/50"]:not([class*="bg-brand-dark"] *) {
   color: #334155 !important; /* slate-700 */
 }
 
 /* Subtle dark borders on light canvas */
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="border-white"],
-[class*="bg-brand-black"] [class*="border-white"],
-[class*="bg-white"] [class*="border-white"],
-[class*="bg-slate-50"] [class*="border-white"] {
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="border-white"]:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="border-white"]:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="border-white"]:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="border-white"]:not([class*="bg-brand-dark"] *) {
   border-color: #e2e8f0 !important; /* slate-200 */
 }
 
 /* Subtle dark hover backgrounds on light canvas */
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="hover:bg-white"]:hover,
-[class*="bg-brand-black"] [class*="hover:bg-white"]:hover,
-[class*="bg-white"] [class*="hover:bg-white"]:hover,
-[class*="bg-slate-50"] [class*="hover:bg-white"]:hover {
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="hover:bg-white"]:hover:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) [class*="hover:bg-white"]:hover:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) [class*="hover:bg-white"]:hover:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) [class*="hover:bg-white"]:hover:not([class*="bg-brand-dark"] *) {
   background-color: #f1f5f9 !important; /* slate-100 */
 }
 
 /* Subtle light background for cards/containers on light canvas */
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) .bg-brand-black\/50,
-[class*="bg-brand-black"] .bg-brand-black\/50,
-[class*="bg-white"] .bg-brand-black\/50,
-[class*="bg-slate-50"] .bg-brand-black\/50 {
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) .bg-brand-black\/50:not([class*="bg-brand-dark"] *),
+[class*="bg-brand-black"]:not([class*="bg-brand-dark"] *) .bg-brand-black\/50:not([class*="bg-brand-dark"] *),
+[class*="bg-white"]:not([class*="bg-brand-dark"] *) .bg-brand-black\/50:not([class*="bg-brand-dark"] *),
+[class*="bg-slate-50"]:not([class*="bg-brand-dark"] *) .bg-brand-black\/50:not([class*="bg-brand-dark"] *) {
   background-color: #f8fafc !important; /* slate-50 */
 }

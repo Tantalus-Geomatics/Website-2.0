@@ -91,7 +91,7 @@ const residentialSchema = {
       />
 
       {/* Hero - Keyword Optimized H1 */}
-      <section className="relative min-h-[70vh] sm:min-h-[75vh] flex items-center justify-center overflow-hidden border-b border-white/10">
+      <section className="relative min-h-[70vh] sm:min-h-[75vh] flex items-center justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src={heroSrc}
@@ -156,7 +156,7 @@ const residentialSchema = {
                 key={step}
                 className="bg-slate-50 border border-slate-200 p-8 flex flex-col items-center text-center"
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-white text-brand-green">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-slate-100 text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2 uppercase">

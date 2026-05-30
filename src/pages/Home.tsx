@@ -141,7 +141,7 @@ export default function Home() {
       />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen pt-24 pb-16 lg:pt-32 lg:pb-24 flex items-center justify-center overflow-hidden border-b border-white/10">
+      <section className="relative min-h-screen pt-24 pb-16 lg:pt-32 lg:pb-24 flex items-center justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -332,7 +332,7 @@ export default function Home() {
               <Link 
                 key={idx}
                 to="/services/"
-                className="bg-brand-black p-8 border border-white/10 hover:border-brand-green/50 transition-all group flex flex-col block cursor-pointer"
+                className="bg-slate-50 p-8 border border-slate-200 hover:border-brand-green/50 transition-all group flex flex-col block cursor-pointer"
               >
                 <div className="w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   {service.icon}
