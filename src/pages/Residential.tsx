@@ -91,7 +91,7 @@ const residentialSchema = {
       />
 
       {/* Hero - Keyword Optimized H1 */}
-      <section className="relative min-h-[70vh] sm:min-h-[75vh] flex items-center justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
+      <section className="relative min-h-[70vh] sm:min-h-[75vh] flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src={heroSrc}
@@ -117,7 +117,7 @@ const residentialSchema = {
       </section>
 
       {/* 3-step process - Informational Value */}
-      <section className="py-16 md:py-24 border-b border-slate-200">
+      <section className="py-16 md:py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-light text-slate-900 text-center mb-4">
             Our Residential Survey Process
@@ -154,9 +154,9 @@ const residentialSchema = {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-slate-50 border border-slate-200 p-8 flex flex-col items-center text-center"
+                className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl"
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-slate-100 text-brand-green">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2 uppercase">
@@ -173,14 +173,14 @@ const residentialSchema = {
       </section>
 
       {/* Call now - Direct Conversion Point */}
-      <section className="py-16 md:py-20 bg-brand-dark border-b border-white/10">
+      <section className="py-16 md:py-20 bg-white border-b-2 border-brand-green">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
             Speak with a Land Surveyor Today
           </h2>
           <GeoDirectAnswer question="When should you call Tantalus Geomatics Land Surveying to discuss your residential survey requirements?">
-            <p className="text-white/65 font-light mb-10 max-w-xl mx-auto">
-              Getting a land survey can be a confusing and overwhelming process for property owners. Questions about <Link to="/survey-pricing/" className="underline hover:text-white">Survey Costs</Link>, <Link to="/sea-to-sky-property-line-and-boundary-staking/" className="underline hover:text-white">Property Lines</Link>, and <Link to="/topographic-surveys/" className="underline hover:text-white">Permit Application Processes</Link> are very common. We are here to help. Call us today to speak directly with our team.
+            <p className="text-slate-700 font-light mb-10 max-w-xl mx-auto">
+              Getting a land survey can be a confusing and overwhelming process for property owners. Questions about <Link to="/survey-pricing/" className="underline hover:text-brand-green-dark">Survey Costs</Link>, <Link to="/sea-to-sky-property-line-and-boundary-staking/" className="underline hover:text-brand-green-dark">Property Lines</Link>, and <Link to="/topographic-surveys/" className="underline hover:text-brand-green-dark">Permit Application Processes</Link> are very common. We are here to help. Call us today to speak directly with our team.
             </p>
           </GeoDirectAnswer>
           <a
@@ -194,7 +194,7 @@ const residentialSchema = {
       </section>
 
       {/* Quote form */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4 text-center">
             Request a Free Quote Today
@@ -205,7 +205,7 @@ const residentialSchema = {
             </p>
           </GeoDirectAnswer>
 
-          <div className="bg-brand-dark p-8 md:p-10 border border-white/10">
+          <div className="bg-stone-100 p-8 md:p-10 border-2 border-slate-200 rounded-2xl shadow-xl">
             <LeadQuoteForm
               variant="stacked-residential"
               formId="residential-quote-form"
@@ -217,7 +217,7 @@ const residentialSchema = {
       </section>
 
       {/* Resources - Option A: Filtered to only show active links */}
-      <section className="py-16 md:py-24 border-t border-slate-200 bg-slate-50">
+      <section className="py-16 md:py-24 border-t-2 border-brand-green bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-light text-slate-900 text-center mb-12">
             Land Surveying Resources for Homeowners
@@ -234,7 +234,7 @@ const residentialSchema = {
                 <li key={topic.title}>
                   <Link
                     to={topic.to}
-                    className="block h-full w-full text-left p-6 bg-brand-black border border-slate-200 hover:border-brand-green/40 transition-colors group"
+                    className="block h-full w-full text-left p-6 bg-stone-100 border-2 border-slate-200 hover:border-brand-green transition-colors group rounded-2xl"
                   >
                     <h3 className="text-lg font-medium text-slate-900 group-hover:text-brand-green transition-colors mb-2">
                       {topic.title}

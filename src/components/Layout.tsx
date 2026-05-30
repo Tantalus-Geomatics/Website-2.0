@@ -170,7 +170,7 @@ export default function Layout() {
       </div>
 
       {/* Navigation */}
-      <header className="bg-brand-dark border-b border-white/10 sticky top-0 z-50">
+      <header className="bg-brand-dark border-b-2 border-brand-green sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative">
           <div className="flex justify-between h-20 sm:h-24 items-center gap-2">
             
@@ -236,7 +236,7 @@ export default function Layout() {
 
         {/* Mobile Nav Dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden bg-brand-dark border-t border-white/10">
+          <div className="md:hidden bg-brand-dark border-t-2 border-brand-green">
             <div className="px-4 pt-2 pb-4 space-y-1">
               {navLinks.map((link) => (
                 <Link
@@ -263,7 +263,7 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-brand-dark border-t border-white/10 text-white/70 pt-12 pb-8">
+      <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8">
         {/* Adjusted to a 3-column grid layout */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 mb-12">
           
@@ -388,7 +388,7 @@ export default function Layout() {
         </div>
 
         {/* Full-width Copyright Line */}
-        <div className="w-full border-t border-white/10 pt-6">
+        <div className="w-full border-t-2 border-brand-green pt-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-white/40 text-center">
             &copy; {new Date().getFullYear()} Tantalus Geomatics Land Surveying Ltd. All rights reserved.
           </div>

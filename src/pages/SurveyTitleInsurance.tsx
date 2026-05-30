@@ -96,7 +96,7 @@ export default function SurveyTitleInsurance() {
       />
 
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
+      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/Squamish-Garibaldi-Estates-Property-Survey.webp"
@@ -128,14 +128,14 @@ export default function SurveyTitleInsurance() {
         </div>
       </section>
 
-      <section className="py-14 md:py-20 border-b border-white/10">
+      <section className="py-14 md:py-20 bg-white border-b-2 border-brand-green">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <GeoDirectAnswer
             question="What are the risks of relying solely on title insurance rather than obtaining a certified land survey during a real estate transaction in BC?"
             questionClassName="max-w-3xl"
           >
-            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">A current certified survey can identify expensive problems to all interested parties who can then take appropriate action for their resolution.</blockquote>
-            <p className="text-white/65 font-light mb-10 max-w-3xl">
+            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-slate-900 font-light text-lg italic">A current certified survey can identify expensive problems to all interested parties who can then take appropriate action for their resolution.</blockquote>
+            <p className="text-slate-700 font-light mb-10 max-w-3xl">
               Purchasers are often advised that the cost of a survey can be avoided by the purchase, at a lower cost, of title insurance. This is a common misunderstanding that fails to convey how a current survey uniquely protects purchasers and lenders, and can benefit sellers:
             </p>
           </GeoDirectAnswer>
@@ -143,12 +143,12 @@ export default function SurveyTitleInsurance() {
             {problems.map((item) => (
               <div
                 key={item.problem}
-                className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
+                className="rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
               >
-                <p className="text-brand-green font-medium mb-2">
+                <p className="text-brand-green-dark font-semibold mb-2">
                   {item.problem}
                 </p>
-                <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
+                <p className="text-slate-700 font-light leading-relaxed border-t-2 border-slate-200 pt-4 mt-4">
                   {item.description}
                 </p>
               </div>
@@ -167,16 +167,16 @@ export default function SurveyTitleInsurance() {
       </section>
 
       {/* 3-step process / Benefits */}
-      <section className="py-16 md:py-24 border-b border-white/10">
+      <section className="py-16 md:py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 text-center mb-4">
             The Benefits of a Building Location Survey
           </h2>
           <GeoDirectAnswer
             align="center"
             question="How does a Building Location Survey offer protection and value to purchasers, sellers and lenders in British Columbia?"
           >
-            <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+            <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16">
               Building Location Surveys result in legally recognized certificates, certified by a BCLS, that have been widely and commonly used to support real-estate transactions for over forty years in BC.
             </p>
           </GeoDirectAnswer>
@@ -204,16 +204,16 @@ export default function SurveyTitleInsurance() {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center"
+                className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl"
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                   Benefit {step}
                 </span>
-                <h3 className="text-xl font-medium text-white mb-3">{title}</h3>
-                <p className="text-white/65 font-light leading-relaxed text-sm sm:text-base">
+                <h3 className="text-xl font-medium text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
                   {body}
                 </p>
               </div>
@@ -223,38 +223,38 @@ export default function SurveyTitleInsurance() {
       </section>
 
       {/* Image placeholder */}
-      <section className="py-10 border-b border-white/10">
+      <section className="py-10 bg-white border-b-2 border-brand-green">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark aspect-video flex items-center justify-center">
-            <img alt="BCLS Building Location Certificate Document" className="object-cover h-full w-full border border-white/10 duration-500" referrerPolicy="no-referrer" src="/images/old-home.webp"/>
+          <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.15)] border-2 border-slate-200 bg-stone-100 aspect-video flex items-center justify-center">
+            <img alt="BCLS Building Location Certificate Document" className="object-cover h-full w-full border-2 border-slate-200 duration-500" referrerPolicy="no-referrer" src="/images/old-home.webp"/>
           </div>
         </div>
       </section>
       
       {/* Case Study / Complementary Approach Section */}
-      <section className="py-16 md:py-24 border-b border-white/10 bg-brand-black">
+      <section className="py-16 md:py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-6">
               British Columbia's Land Title System
             </h2>
             <GeoDirectAnswer
               align="center"
               question="How does British Columbia's Land Title System protect the public against Title and Mortgage fraud?"
             >
-              <p className="text-white/65 font-light leading-relaxed">
-                The Land Title system in BC guarantees title against fraud through a legislated publicly funded insurance program, known as the <a href="https://ltsa.ca/property-owners/about-land-records/history-of-bcs-land-title-system/learn-about-title-security-in-bc/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Assurance Fund</a>.
+              <p className="text-slate-700 font-light leading-relaxed">
+                The Land Title system in BC guarantees title against fraud through a legislated publicly funded insurance program, known as the <a href="https://ltsa.ca/property-owners/about-land-records/history-of-bcs-land-title-system/learn-about-title-security-in-bc/" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-green-dark">Assurance Fund</a>.
               </p>
             </GeoDirectAnswer>
           </div>
 
           {/* Three Things to Consider Box */}
-          <div className="max-w-4xl mx-auto rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
-            <h3 className="text-brand-green font-medium mb-4 text-lg">
+          <div className="max-w-4xl mx-auto rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
+            <h3 className="text-slate-900 font-semibold mb-4 text-lg">
               What should you understand about title insurance before relying on it alone?
             </h3>
-            <ol className="list-decimal list-inside text-white/80 font-light leading-relaxed space-y-3">
+            <ol className="list-decimal list-inside text-slate-700 font-light leading-relaxed space-y-3">
               <li>Title fraud is exceedingly rare in British Columbia. In 2009, the BC Court of Appeal held that unless a mortgage is granted by the registered owner of a property, the mortgage is invalid and the owner's title will be returned to its original state.</li>
               <li>In BC, our land title system is based on a Torrens registry system that offers assured ownership through Indefeasible Title.</li>
               <li>Title insurance is a complex and non-standardized legal insurance policy that varies depending on the type and extent of coverage.</li>
@@ -262,7 +262,7 @@ export default function SurveyTitleInsurance() {
             </ol>
           </div>
 
-          <p className="text-center text-white/80 font-light max-w-2xl mx-auto mb-12 md:mb-16 text-lg">
+          <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16 text-lg">
             A Building Location Certificate provides valuable full-disclosure to all parties involved in a transaction:
           </p>
 
@@ -270,14 +270,14 @@ export default function SurveyTitleInsurance() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             
             {/* Step 1 */}
-            <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <FileCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-medium text-white mb-6">
+              <h3 className="text-xl font-medium text-slate-900 mb-6">
                 What does a Building Location Certificate offer to sellers?
               </h3>
-              <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>It provides a certified drawing showing the locations of buildings, improvements, easements, covenants, right of ways and other land interests in relation to property lines.</li>
                 <li>It reduces the likelihood of last-minute transaction delays due to boundary disputes.</li>
                 <li>It an effective marketing tool for a vendor that demonstrates the absence of unidentified issues such as encroachments.</li>
@@ -285,14 +285,14 @@ export default function SurveyTitleInsurance() {
             </div>
 
             {/* Step 2 */}
-            <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <Search className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-medium text-white mb-6">
+              <h3 className="text-xl font-medium text-slate-900 mb-6">
                 What does a Building Location Certificate provide to purchasers?
               </h3>
-              <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>It provides valuable information including any potential liabilities or encumberances that may diminish the real estate value prior to comitting to the transaction.</li>
                 <li>It confirms if buildings and constructed improvements meet local zoning with respect to setbacks and that they don't encroach onto neighbouring lands.</li>
                 <li>It provides a planning tool for future land use.</li>
@@ -300,14 +300,14 @@ export default function SurveyTitleInsurance() {
             </div>
 
             {/* Step 3 */}
-            <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <ShieldCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-medium text-white mb-6">
+              <h3 className="text-xl font-medium text-slate-900 mb-6">
                 What does a Building Location Certificate offer to lenders?
               </h3>
-              <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>It provides valuable information for a mortgagor about any potential liabilities associated with the real estate.</li>
                 <li>It offers a certified document that confirms the property's state rather than simply insuring against the financial loss of an unidentified issue.</li>
                 <li>It forms an integral part of a real estate transaction when provided to your lawyer or notary.</li>
@@ -319,22 +319,17 @@ export default function SurveyTitleInsurance() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-brand-green/15 via-brand-black to-brand-black border-t border-brand-green/40">
+      <section className="py-16 md:py-24 bg-white border-t-2 border-brand-green">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-brand-green/50 bg-brand-dark mb-6">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border-2 border-slate-200 bg-stone-100 mb-6">
             <MapPin className="w-7 h-7 text-brand-green" aria-hidden />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
-            Invest in Full Disclosure
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
+            Ready to start your project with confidence?
           </h2>
-          <GeoDirectAnswer
-            align="center"
-            question="What is process of Full Disclosure recommended by the Association of British Columbia Land Surveyors?"
-          >
-            <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
-              The Association of British Columbia Land Surveyors encourages thorough due diligence by completing a proper title review and a building location survey prior to a real estate transaction. More information can be found <a href="/docs/Title_Insurance_Brochure.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">here</a>.
-            </p>
-          </GeoDirectAnswer>
+          <p className="text-slate-700 font-light leading-relaxed mb-10 max-w-xl mx-auto">
+          Tantalus Geomatics provides the local expertise and BCLS certification required for projects in the Sea-to-Sky corridor. Tell us about your property so we can help you move forward with confidence.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
               to="/contact/"
@@ -345,7 +340,7 @@ export default function SurveyTitleInsurance() {
             </Link>
             <Link
               to="/residential/"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/90 text-white font-semibold hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-100 transition-colors"
             >
               Click for a List of Our Property Survey Services
             </Link>

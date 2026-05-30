@@ -99,7 +99,7 @@ export default function About() {
         schema={aboutSchema}
       />
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
+      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -130,7 +130,7 @@ export default function About() {
       </section>
 
       {/* Main Content */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -142,14 +142,14 @@ export default function About() {
               </GeoDirectAnswer>
                             
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                <div className="bg-slate-50 p-6 border border-slate-200">
+                <div className="bg-stone-100 p-6 border-2 border-slate-200">
                   <MapPin className="text-brand-green mb-3 w-8 h-8" />
                   <h3 className="font-medium text-slate-900 mb-2">
                     How does Tantalus Geomatics Land Surveying support local projects?
                   </h3>
                   <p className="text-sm text-slate-700 font-light">We leverage a deep knowledge of municipal and provincial regulations to move local projects forward efficiently.</p>
                 </div>
-                <div className="bg-slate-50 p-6 border border-slate-200">
+                <div className="bg-stone-100 p-6 border-2 border-slate-200">
                   <Award className="text-brand-green mb-3 w-8 h-8" />
                   <h3 className="font-medium text-slate-900 mb-2">
                     What professional credentials and quality standards does Tantalus Geomatics maintain?
@@ -160,7 +160,7 @@ export default function About() {
             </div>
             
             <div className="relative mt-8 lg:mt-0">
-              <div className="absolute inset-0 border border-brand-green transform translate-x-4 translate-y-4 -z-10 hidden sm:block"></div>
+              <div className="absolute inset-0 border-2 border-brand-green transform translate-x-4 translate-y-4 -z-10 hidden sm:block"></div>
               <img
                 src="/images/Garibaldi-Estates-gnss-topographic-survey.webp"
                 alt="Squamish Chief Mountain"
@@ -173,9 +173,9 @@ export default function About() {
       </section>
 
       {/* Principal Section */}
-      <section className="bg-brand-dark py-16 md:py-24 border-t border-white/10">
+      <section className="bg-white py-16 md:py-24 border-t-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand-black border border-white/10 overflow-hidden">
+          <div className="bg-stone-100 border-2 border-slate-200 overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-5">
               <div className="lg:col-span-2">
                 <img
@@ -186,7 +186,7 @@ export default function About() {
                 />
               </div>
               <div className="lg:col-span-3 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 px-3 py-1 border border-brand-green text-brand-green text-sm font-medium mb-6 w-fit">
+                <div className="inline-flex items-center gap-2 px-3 py-1 border-2 border-brand-green text-brand-green text-sm font-medium mb-6 w-fit">
                   <Users size={16} /> Owner
                 </div>
                 <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-2">Dennis Sherman</h2>
@@ -206,13 +206,13 @@ export default function About() {
       </section>
 
           {/* Call to Action / Contact Form - 2 Column Layout */}
-    <section className="py-24 bg-brand-dark border-b border-white/10">
+    <section className="py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             
             {/* Column 1 (Formerly Column 2): Contact Form */}
-            <div className="bg-brand-dark p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
-              <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
+            <div className="bg-stone-100 p-8 md:p-10 border-2 border-slate-200 shadow-xl rounded-2xl flex flex-col justify-center">
+              <h3 className="text-2xl font-light text-slate-900 mb-8">Request a Free Quote Today</h3>
               <LeadQuoteForm
                 variant="embedded"
                 formId="contact-form"
@@ -222,7 +222,7 @@ export default function About() {
             </div>
 
             {/* Column 2 (Formerly Column 3): Surveyor Image */}
-            <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+            <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border-2 border-slate-200 shadow-xl">
               <img 
                 src="/images/DS-TS-1.webp" 
                 alt="Land Surveyor out in the field" 

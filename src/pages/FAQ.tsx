@@ -197,7 +197,7 @@ const faqSchema = {
       />
       
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
+      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -228,7 +228,7 @@ const faqSchema = {
       </section>
 
       {/* Main Content - Split Layout */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             
@@ -244,7 +244,7 @@ const faqSchema = {
                       className={`w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-4 ${
                         activeCategory === index 
                           ? 'bg-brand-green/10 text-brand-green font-semibold' 
-                          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                          : 'text-slate-600 hover:text-slate-900 hover:bg-stone-100'
                       }`}
                     >
                       <span className={`font-mono text-sm ${activeCategory === index ? 'opacity-100' : 'opacity-40'}`}>
@@ -261,7 +261,7 @@ const faqSchema = {
             <div className="lg:col-span-8 space-y-16 md:space-y-24">
               {faqCategories.map((category, catIndex) => (
                 <div key={catIndex} id={`category-${catIndex}`} className="scroll-mt-32">
-                  <div className="flex items-baseline gap-4 mb-6 sm:mb-8 border-b border-slate-200 pb-4">
+                  <div className="flex items-baseline gap-4 mb-6 sm:mb-8 border-b-2 border-brand-green pb-4">
                     <span className="text-2xl sm:text-3xl font-mono text-brand-green font-light">0{catIndex + 1}</span>
                     <h2 className="text-2xl sm:text-3xl font-light text-slate-900">{category.title}</h2>
                   </div>
@@ -301,10 +301,10 @@ const faqSchema = {
                             
                             {/* Callouts */}
                             {faq.callout && (
-                              <div className={`mt-4 sm:mt-6 p-4 sm:p-5 rounded-r-lg border-l-2 flex gap-3 sm:gap-4 items-start ${
+                              <div className={`mt-4 sm:mt-6 p-4 sm:p-5 rounded-lg border-2 flex gap-3 sm:gap-4 items-start ${
                                 faq.callout.type === 'pro-tip' 
                                   ? 'bg-brand-green/10 border-brand-green' 
-                                  : 'bg-slate-50 border-slate-300'
+                                  : 'bg-stone-100 border-slate-200'
                               }`}>
                                 {faq.callout.type === 'pro-tip' ? (
                                   <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-brand-green shrink-0 mt-0.5" />
@@ -336,7 +336,7 @@ const faqSchema = {
                   <div className="mt-8 flex justify-start">
                     <a
                       href="tel:6042139934"
-                      className="inline-flex items-center gap-2 px-6 py-3 border border-brand-green/50 text-brand-green hover:bg-brand-green hover:text-brand-black transition-colors rounded-lg font-medium text-sm sm:text-base"
+                      className="inline-flex items-center gap-2 px-6 py-3 border-2 border-brand-green text-brand-green hover:bg-brand-green hover:text-black transition-colors rounded-lg font-medium text-sm sm:text-base"
                     >
                       <Phone className="w-4 h-4" />
                       {category.ctaText}
@@ -351,13 +351,13 @@ const faqSchema = {
       </section>
 
           {/* Call to Action / Contact Form - 2 Column Layout */}
-    <section className="py-24 bg-brand-dark border-b border-white/10">
+    <section className="py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             
             {/* Column 1 (Formerly Column 2): Contact Form */}
-            <div className="bg-brand-dark p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
-              <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
+            <div className="bg-stone-100 p-8 md:p-10 border-2 border-slate-200 shadow-xl rounded-2xl flex flex-col justify-center">
+              <h3 className="text-2xl font-light text-slate-900 mb-8">Request a Free Quote Today</h3>
               <LeadQuoteForm
                 variant="embedded"
                 formId="contact-form"
@@ -367,7 +367,7 @@ const faqSchema = {
             </div>
 
             {/* Column 2 (Formerly Column 3): Surveyor Image */}
-            <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+            <div className="relative w-full h-[400px] lg:h-full rounded-2xl overflow-hidden border-2 border-slate-200 shadow-xl">
               <img 
                 src="/images/DS-TS-1.webp" 
                 alt="Land Surveyor out in the field" 

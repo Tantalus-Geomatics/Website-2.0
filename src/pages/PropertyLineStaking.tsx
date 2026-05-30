@@ -86,7 +86,7 @@ export default function PropertyLineStaking() {
       />
 
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
+      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/Squamish-Garibaldi-Estates-Property-Survey.webp"
@@ -118,14 +118,14 @@ export default function PropertyLineStaking() {
         </div>
       </section>
 
-      <section className="py-14 md:py-20 border-b border-white/10">
+      <section className="py-14 md:py-20 bg-white border-b-2 border-brand-green">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <GeoDirectAnswer
             question="What can go wrong with property improvements without a certified BCLS boundary survey?"
             questionClassName="max-w-3xl"
           >
-            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
-            <p className="text-white/65 font-light mb-10 max-w-3xl">
+            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-slate-900 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
+            <p className="text-slate-700 font-light mb-10 max-w-3xl">
               Property improvements should provide value, not headaches. Without a certified BCLS survey, a few inches of error can lead to:
             </p>
           </GeoDirectAnswer>
@@ -133,12 +133,12 @@ export default function PropertyLineStaking() {
             {problems.map((item) => (
               <div
                 key={item.problem}
-                className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
+                className="rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
               >
-                <p className="text-brand-green font-medium mb-2">
+                <p className="text-brand-green-dark font-semibold mb-2">
                   {item.problem}
                 </p>
-                <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
+                <p className="text-slate-700 font-light leading-relaxed border-t-2 border-slate-200 pt-4 mt-4">
                   {item.description}
                 </p>
               </div>
@@ -157,16 +157,16 @@ export default function PropertyLineStaking() {
       </section>
 
       {/* 3-step process */}
-      <section className="py-16 md:py-24 border-b border-white/10">
+      <section className="py-16 md:py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 text-center mb-4">
             Our land survey process
           </h2>
           <GeoDirectAnswer
             align="center"
             question="How does Tantalus Geomatics determine and document your property boundary?"
           >
-            <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+            <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16">
               Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. We follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
             </p>
           </GeoDirectAnswer>
@@ -194,16 +194,16 @@ export default function PropertyLineStaking() {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center"
+                className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl"
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                   Step {step}
                 </span>
-                <h3 className="text-xl font-medium text-white mb-3">{title}</h3>
-                <p className="text-white/65 font-light leading-relaxed text-sm sm:text-base">
+                <h3 className="text-xl font-medium text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
                   {body}
                 </p>
               </div>
@@ -213,48 +213,48 @@ export default function PropertyLineStaking() {
       </section>
 
       {/* Image placeholder */}
-      <section className="py-10 border-b border-white/10">
+      <section className="py-10 bg-white border-b-2 border-brand-green">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-white/10 bg-brand-dark aspect-video flex items-center justify-center">
-            <img alt="Property Line Post" className="object-cover h-full w-full border border-white/10 duration-500" referrerPolicy="no-referrer" src="/images/squamish-property-line.webp"/>
+          <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.15)] border-2 border-slate-200 bg-stone-100 aspect-video flex items-center justify-center">
+            <img alt="Property Line Post" className="object-cover h-full w-full border-2 border-slate-200 duration-500" referrerPolicy="no-referrer" src="/images/squamish-property-line.webp"/>
           </div>
         </div>
       </section>
       
       {/* Case Study Section */}
-      <section className="py-16 md:py-24 border-b border-white/10 bg-brand-black">
+      <section className="py-16 md:py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mx-auto text-center mb-12">
             <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-3">
               Real World Example
             </p>
-            <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-6">
               Case Study: Removing a tree in the District of Squamish
             </h2>
             <GeoDirectAnswer
               align="center"
               question="What should you know about tree removal in the District of Squamish beyond an agreement with a neighbour?"
             >
-              <p className="text-white/65 font-light leading-relaxed">
+              <p className="text-slate-700 font-light leading-relaxed">
                 Tree removal often involves more than an agreement with a neighbour. Restrictive covenants on title and municipal bylaws can introduce further restrictions and permitting requirements prior to proceeding with your project.
               </p>
             </GeoDirectAnswer>
           </div>
 
           {/* Three Things to Consider Box */}
-          <div className="max-w-4xl mx-auto rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
-            <h3 className="text-brand-green font-medium mb-4 text-lg">
+          <div className="max-w-4xl mx-auto rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
+            <h3 className="text-slate-900 font-semibold mb-4 text-lg">
               What three questions should you ask before removing a tree in the District of Squamish?
             </h3>
-            <ol className="list-decimal list-inside text-white/80 font-light leading-relaxed space-y-3">
+            <ol className="list-decimal list-inside text-slate-700 font-light leading-relaxed space-y-3">
               <li>Is the tree located on my lot?</li>
               <li>Do I need a permit to remove the tree?</li>
               <li>Have I checked my property title for any restrictive covenants that prohibit removing the tree?</li>
             </ol>
           </div>
 
-          <p className="text-center text-white/80 font-light max-w-2xl mx-auto mb-12 md:mb-16 text-lg">
+          <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16 text-lg">
             Tantalus Geomatics Land Surveying can help guide you navigate this process with our three step process:
           </p>
 
@@ -262,15 +262,15 @@ export default function PropertyLineStaking() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             
             {/* Step 1 */}
-            <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <ClipboardList className="h-8 w-8" strokeWidth={1.5} />
               </div>
               <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                 Step 1
               </span>
-              <h3 className="text-xl font-medium text-white mb-6">Research</h3>
-              <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <h3 className="text-xl font-medium text-slate-900 mb-6">Research</h3>
+              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>Complete an initial consultation to confirm exactly what you are seeking to accomplish.</li>
                 <li>Obtain property title, legal charge documents and relevant survey plans from the land title office.</li>
                 <li>Confirm whether there are any restrictive covenants that would prohibit tree clearing.</li>
@@ -300,15 +300,15 @@ export default function PropertyLineStaking() {
             </div>
 
             {/* Step 2 */}
-            <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <MapPinned className="h-8 w-8" strokeWidth={1.5} />
               </div>
               <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                 Step 2
               </span>
-              <h3 className="text-xl font-medium text-white mb-6">Field Visit</h3>
-              <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <h3 className="text-xl font-medium text-slate-900 mb-6">Field Visit</h3>
+              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>We first search for each of the relevant property corner posts.</li>
                 <li>If any of the posts are missing, we expand our search until we have found enough adjacent evidence to accurately re-establish the corner's location.</li>
                 <li>We then measure all the features you request along the property line (e.g. trees, fences, retaining walls, etc...).</li>
@@ -318,21 +318,21 @@ export default function PropertyLineStaking() {
             </div>
 
             {/* Step 3 */}
-            <div className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <FileCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
               <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                 Step 3
               </span>
-              <h3 className="text-xl font-medium text-white mb-6">Certified Survey Plan</h3>
-              <p className="text-left text-white/80 font-light text-sm sm:text-base mb-4 w-full">
+              <h3 className="text-xl font-medium text-slate-900 mb-6">Certified Survey Plan</h3>
+              <p className="text-left text-slate-700 font-light text-sm sm:text-base mb-4 w-full">
                 A tree removal property line survey may result in the preparation of one or more plans, depending on your needs:
               </p>
-              <ul className="text-left text-white/65 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
-                <li><strong className="text-white/90 font-medium">Certified sketch of site features:</strong> A certified plan that depicts the locations of site features relative to your property line.</li>
-                <li><strong className="text-white/90 font-medium">Tree Removal Plan:</strong> A tree removal plan consistent with the District of Squamish's Tree management permit requirements.</li>
-                <li><strong className="text-white/90 font-medium">Posting Plan:</strong> If one or more property corner posts are re-established during the survey, a posting plan is prepared for filing at the land title office.</li>
+              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+                <li><strong className="text-slate-900 font-medium">Certified sketch of site features:</strong> A certified plan that depicts the locations of site features relative to your property line.</li>
+                <li><strong className="text-slate-900 font-medium">Tree Removal Plan:</strong> A tree removal plan consistent with the District of Squamish's Tree management permit requirements.</li>
+                <li><strong className="text-slate-900 font-medium">Posting Plan:</strong> If one or more property corner posts are re-established during the survey, a posting plan is prepared for filing at the land title office.</li>
               </ul>
             </div>
 
@@ -341,15 +341,15 @@ export default function PropertyLineStaking() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-brand-green/15 via-brand-black to-brand-black border-t border-brand-green/40">
+      <section className="py-16 md:py-24 bg-white border-t-2 border-brand-green">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-brand-green/50 bg-brand-dark mb-6">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border-2 border-slate-200 bg-stone-100 mb-6">
             <MapPin className="w-7 h-7 text-brand-green" aria-hidden />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
             Ready to start your project with confidence?
           </h2>
-          <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
+          <p className="text-slate-700 font-light leading-relaxed mb-10 max-w-xl mx-auto">
           Tantalus Geomatics provides the local expertise and BCLS certification required for projects in the Sea-to-Sky corridor. Tell us about your property so we can help you move forward with confidence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
@@ -362,7 +362,7 @@ export default function PropertyLineStaking() {
             </Link>
             <Link
               to="/services/"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/90 text-white font-semibold hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-100 transition-colors"
             >
               View A Full List of Our Services
             </Link>

@@ -108,7 +108,7 @@ export default function SurveyPricing() {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
+      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -141,7 +141,7 @@ export default function SurveyPricing() {
       </section>
 
       {/* The Core Cost Drivers */}
-      <section className="py-14 md:py-20 border-b border-slate-200">
+      <section className="py-14 md:py-20 bg-white border-b-2 border-brand-green">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <GeoDirectAnswer
             question="What factors impact the cost of a land survey in British Columbia?"
@@ -158,13 +158,13 @@ export default function SurveyPricing() {
             {priceFactors.map((item) => (
               <div
                 key={item.factor}
-                className="rounded-xl border border-brand-green/20 bg-slate-50 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
+                className="rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
               >
-                <p className="text-brand-green font-medium mb-2 flex items-center gap-2">
+                <p className="text-brand-green-dark font-semibold mb-2 flex items-center gap-2">
                   <ShieldAlert size={18} />
                   {item.factor}
                 </p>
-                <p className="text-slate-700 font-light leading-relaxed border-t border-slate-200 pt-4 mt-4">
+                <p className="text-slate-700 font-light leading-relaxed border-t-2 border-slate-200 pt-4 mt-4">
                   {item.description}
                 </p>
               </div>
@@ -174,7 +174,7 @@ export default function SurveyPricing() {
       </section>
 
       {/* 3-Step Quoting Process */}
-      <section className="py-16 md:py-24 border-b border-slate-200">
+      <section className="py-16 md:py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-light text-slate-900 text-center mb-4">
             How We Calculate Your Quote
@@ -211,9 +211,9 @@ export default function SurveyPricing() {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-slate-50 border border-slate-200 p-8 flex flex-col items-center text-center"
+                className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl"
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-slate-100 text-brand-green">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
@@ -230,7 +230,7 @@ export default function SurveyPricing() {
       </section>
       
       {/* Case Study Section: Suburban vs Rural */}
-      <section className="py-16 md:py-24 border-b border-slate-200 bg-brand-black">
+      <section className="py-16 md:py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mx-auto text-center mb-12">
@@ -253,7 +253,7 @@ export default function SurveyPricing() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         
             {/* Suburban Case Study */}
-            <div className="bg-slate-50 border border-slate-200 overflow-hidden flex flex-col">
+            <div className="bg-stone-100 border-2 border-slate-200 overflow-hidden flex flex-col rounded-2xl">
               {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
               <div 
                 className="h-72 overflow-hidden relative cursor-pointer group"
@@ -287,7 +287,7 @@ export default function SurveyPricing() {
             </div>
 
             {/* Rural Case Study */}
-            <div className="bg-slate-50 border border-slate-200 overflow-hidden flex flex-col">
+            <div className="bg-stone-100 border-2 border-slate-200 overflow-hidden flex flex-col rounded-2xl">
               {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
               <div 
                 className="h-72 overflow-hidden relative cursor-pointer group"
@@ -343,9 +343,9 @@ export default function SurveyPricing() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-brand-green/15 via-brand-black to-brand-black border-t border-brand-green/40">
+      <section className="py-16 md:py-24 bg-white border-t-2 border-brand-green">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-brand-green/50 bg-brand-dark mb-6">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border-2 border-slate-200 bg-stone-100 mb-6">
             <ClipboardList className="w-7 h-7 text-brand-green" aria-hidden />
           </div>
           <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">

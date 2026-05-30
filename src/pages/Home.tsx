@@ -141,7 +141,7 @@ export default function Home() {
       />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen pt-24 pb-16 lg:pt-32 lg:pb-24 flex items-center justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
+      <section className="relative min-h-screen pt-24 pb-16 lg:pt-32 lg:pb-24 flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -191,11 +191,11 @@ export default function Home() {
       </section>
 
       {/* Interactive Use Cases Section */}
-      <section className="py-20 md:py-32 bg-brand-dark border-b border-white/10 relative overflow-hidden">
+      <section className="py-20 md:py-32 bg-white border-b-2 border-brand-green relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6">When Do I Need a Land Surveyor?</h2>
-            <p className="text-lg sm:text-xl text-white/60 font-light max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-slate-900 mb-6">When Do I Need a Land Surveyor?</h2>
+            <p className="text-lg sm:text-xl text-slate-700 font-light max-w-2xl mx-auto">
               Explore common scenarios where a land survey is required. <Link to="/faq/" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
             </p>
           </div>
@@ -204,29 +204,29 @@ export default function Home() {
             {/* Mobile Accordion */}
             <div className="lg:hidden space-y-4">
               {useCases.map((useCase, index) => (
-                <div key={index} className="bg-black/20 border border-white/10 rounded-2xl overflow-hidden">
+                <div key={index} className="bg-stone-100 border-2 border-slate-200 rounded-2xl overflow-hidden">
                   <button
                     onClick={() => setActiveUseCase(activeUseCase === index ? -1 : index)}
-                    className={`w-full text-left px-5 py-4 flex items-center justify-between ${activeUseCase === index ? 'bg-brand-green text-brand-black' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
+                    className={`w-full text-left px-5 py-4 flex items-center justify-between ${activeUseCase === index ? 'bg-brand-green text-black' : 'text-slate-700 hover:bg-slate-200 hover:text-slate-900'}`}
                   >
                     <div className="flex items-center gap-4">
-                      <div className={`${activeUseCase === index ? 'text-brand-black' : 'text-brand-green'}`}>
+                      <div className={`${activeUseCase === index ? 'text-black' : 'text-brand-green'}`}>
                         {useCase.icon}
                       </div>
                       <span className="font-medium text-base sm:text-lg pr-4">
                         {useCase.title}
                       </span>
                     </div>
-                    <ArrowRight className={`w-5 h-5 shrink-0 transition-transform ${activeUseCase === index ? 'rotate-90 text-brand-black' : ''}`} />
+                    <ArrowRight className={`w-5 h-5 shrink-0 transition-transform ${activeUseCase === index ? 'rotate-90 text-black' : 'text-slate-500'}`} />
                   </button>
                   {activeUseCase === index && (
-                    <div className="p-5 sm:p-6 bg-brand-dark border-t border-white/10">
+                    <div className="p-5 sm:p-6 bg-stone-100 border-t-2 border-slate-200">
                       <img 
                         src={useCase.image} 
                         alt={useCase.title}
                         className="w-full h-40 sm:h-48 object-cover rounded-xl mb-5 grayscale-35"
                       />
-                      <p className="text-white/70 font-light leading-relaxed text-sm sm:text-base">
+                      <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
                         {useCase.content}
                       </p>
                     </div>
@@ -243,19 +243,19 @@ export default function Home() {
                   onClick={() => setActiveUseCase(index)}
                   className={`w-full text-left px-6 py-5 rounded-2xl transition-all flex items-center justify-between group ${
                     activeUseCase === index 
-                      ? 'bg-brand-green text-brand-black shadow-lg shadow-brand-green/20' 
-                      : 'bg-black/20 text-white/70 hover:bg-white/5 hover:text-white border border-white/5'
+                      ? 'bg-brand-green text-black shadow-lg shadow-brand-green/20 border-2 border-brand-green' 
+                      : 'bg-stone-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 border-2 border-slate-200'
                   }`}
                 >
                   <div className="flex items-center gap-4">
-                    <div className={`transition-colors ${activeUseCase === index ? 'text-brand-black' : 'text-brand-green group-hover:text-brand-green-light'}`}>
+                    <div className={`transition-colors ${activeUseCase === index ? 'text-black' : 'text-brand-green group-hover:text-brand-green-dark'}`}>
                       {useCase.icon}
                     </div>
-                    <span className={`font-medium text-lg ${activeUseCase === index ? 'text-brand-black' : ''}`}>
+                    <span className={`font-medium text-lg ${activeUseCase === index ? 'text-black' : ''}`}>
                       {useCase.title}
                     </span>
                   </div>
-                  <ArrowRight className={`w-5 h-5 transition-transform ${activeUseCase === index ? 'translate-x-1' : 'opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0'}`} />
+                  <ArrowRight className={`w-5 h-5 transition-transform ${activeUseCase === index ? 'translate-x-1 text-black' : 'text-slate-500 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0'}`} />
                 </button>
               ))}
             </div>
@@ -263,7 +263,7 @@ export default function Home() {
             {/* Desktop Dynamic Display */}
             <div className="hidden lg:block lg:col-span-7">
               <div className="sticky top-32">
-                <div className="bg-brand-dark rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+                <div className="bg-stone-100 rounded-3xl border-2 border-slate-200 overflow-hidden shadow-2xl">
                   <div className="aspect-[16/9] relative overflow-hidden">
                     <img 
                       src={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} 
@@ -271,16 +271,16 @@ export default function Home() {
                       className="w-full h-full object-cover opacity-100 transition-opacity grayscale-35 duration-500"
                       key={useCases[activeUseCase === -1 ? 0 : activeUseCase].image}
                       />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-100 via-stone-100/50 to-transparent"></div>
                   </div>
                   <div className="p-8 md:p-12 relative -mt-20 z-10">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-green text-brand-black mb-6 shadow-xl">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-green text-black mb-6 shadow-xl">
                       {useCases[activeUseCase === -1 ? 0 : activeUseCase].icon}
                     </div>
-                    <h3 className="text-3xl font-light text-white mb-6">
+                    <h3 className="text-3xl font-light text-slate-900 mb-6">
                       {useCases[activeUseCase === -1 ? 0 : activeUseCase].title}
                     </h3>
-                    <p className="text-xl text-white/70 font-light leading-relaxed">
+                    <p className="text-xl text-slate-700 font-light leading-relaxed">
                       {useCases[activeUseCase === -1 ? 0 : activeUseCase].content}
                     </p>
                   </div>
@@ -292,7 +292,7 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-24 bg-brand-black border-b border-white/10">
+      <section className="py-24 bg-white border-b-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-4">Our Core Services</h2>
@@ -332,7 +332,7 @@ export default function Home() {
               <Link 
                 key={idx}
                 to="/services/"
-                className="bg-slate-50 p-8 border border-slate-200 hover:border-brand-green/50 transition-all group flex flex-col block cursor-pointer"
+                className="bg-stone-100 p-8 border-2 border-slate-200 hover:border-brand-green transition-all group flex flex-col block cursor-pointer"
               >
                 <div className="w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   {service.icon}
@@ -351,7 +351,7 @@ export default function Home() {
       </section>
 
       {/* Target Market Section */}
-      <section className="py-16 md:py-24 bg-brand-black relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -395,20 +395,20 @@ export default function Home() {
               <img
                 src="/images/Garibaldi-Highland-Road-Survey.webp"
                 alt="Garibaldi Highland Road Survey"
-                className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
+                className="object-cover h-full w-full border-2 border-slate-200 grayscale hover:grayscale-0 transition-all duration-500"
                 referrerPolicy="no-referrer"
               />
               <div className="grid grid-rows-2 gap-4">
                 <img
                   src="/images/spea-rar.webp"
                   alt="SPEA and RAR"
-                  className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
+                  className="object-cover h-full w-full border-2 border-slate-200 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
                 <img
                   src="/images/Squamish-Garibaldi-Estates-Property-Survey.webp"
                   alt="Garibaldi Estates Property Survey"
-                  className="object-cover h-full w-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
+                  className="object-cover h-full w-full border-2 border-slate-200 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
               </div>

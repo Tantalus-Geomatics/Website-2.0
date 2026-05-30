@@ -68,7 +68,7 @@ export default function Contact() {
         schema={contactSchema}
       />
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10 bg-brand-dark">
+      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -99,7 +99,7 @@ export default function Contact() {
       </section>
 
       {/* Main Content */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             
@@ -121,7 +121,7 @@ export default function Contact() {
 
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 border border-slate-200 bg-slate-50 text-brand-green">
+                  <div className="p-3 border-2 border-slate-200 bg-stone-100 text-brand-green">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
@@ -133,7 +133,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 border border-slate-200 bg-slate-50 text-brand-green">
+                  <div className="p-3 border-2 border-slate-200 bg-stone-100 text-brand-green">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
@@ -147,7 +147,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 border border-slate-200 bg-slate-50 text-brand-green">
+                  <div className="p-3 border-2 border-slate-200 bg-stone-100 text-brand-green">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
@@ -161,8 +161,8 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-brand-dark p-8 md:p-10 border border-white/10">
-              <h3 className="text-2xl font-light text-white mb-6">Request a Quote</h3>
+            <div className="bg-stone-100 p-8 md:p-10 border-2 border-slate-200 shadow-xl rounded-2xl flex flex-col justify-center">
+              <h3 className="text-2xl font-light text-slate-900 mb-6">Request a Quote</h3>
               <LeadQuoteForm
                 variant="contact"
                 formId="contact-form"
