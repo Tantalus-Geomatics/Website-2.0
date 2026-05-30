@@ -96,7 +96,7 @@ export default function SurveyTitleInsurance() {
       />
 
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <section className="relative py-16 md:py-24 flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/Squamish-Garibaldi-Estates-Property-Survey.webp"
@@ -106,20 +106,20 @@ export default function SurveyTitleInsurance() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/60 to-brand-dark" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
           <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
             BC Real Estate Investments
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
             Title Insurance is Not a Replacement for a Certified Land Survey.
           </h1>
-          <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+          <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-3xl mx-auto mb-10">
             Purchasing property requires full knowledge of all relevant facts, potential liabilities and the inherent risks.
           </p>
             <div className="flex justify-center px-4 sm:px-0">
               <a
                 href="tel:6042139934"
-                className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-all flex items-center justify-center gap-2 rounded-full"
               >
                 <Phone size={20} />
                 Call for more information
@@ -143,12 +143,12 @@ export default function SurveyTitleInsurance() {
             {problems.map((item) => (
               <div
                 key={item.problem}
-                className="rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
+                className="rounded-2xl border border-slate-200 bg-stone-100 p-6 md:p-8 shadow-sm"
               >
-                <p className="text-brand-green-dark font-semibold mb-2">
+                <p className="text-brand-green-dark font-semibold mb-2 text-lg sm:text-xl">
                   {item.problem}
                 </p>
-                <p className="text-slate-700 font-light leading-relaxed border-t-2 border-slate-200 pt-4 mt-4">
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed border-t border-slate-200 pt-4 mt-4">
                   {item.description}
                 </p>
               </div>
@@ -157,7 +157,7 @@ export default function SurveyTitleInsurance() {
             <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg shadow-brand-green/15"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg rounded-full"
             >
               Contact Us Today to Purchase with Confidence
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
@@ -204,7 +204,7 @@ export default function SurveyTitleInsurance() {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl"
+                className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm"
               >
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
@@ -212,8 +212,8 @@ export default function SurveyTitleInsurance() {
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                   Benefit {step}
                 </span>
-                <h3 className="text-xl font-medium text-slate-900 mb-3">{title}</h3>
-                <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                   {body}
                 </p>
               </div>
@@ -250,11 +250,11 @@ export default function SurveyTitleInsurance() {
           </div>
 
           {/* Three Things to Consider Box */}
-          <div className="max-w-4xl mx-auto rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
-            <h3 className="text-slate-900 font-semibold mb-4 text-lg">
+          <div className="max-w-4xl mx-auto rounded-2xl border border-slate-200 bg-stone-100 p-6 md:p-8 shadow-sm mb-12 md:mb-16">
+            <h3 className="text-slate-900 font-semibold mb-4 text-lg sm:text-xl">
               What should you understand about title insurance before relying on it alone?
             </h3>
-            <ol className="list-decimal list-inside text-slate-700 font-light leading-relaxed space-y-3">
+            <ol className="list-decimal list-inside text-slate-600 text-sm sm:text-base leading-relaxed space-y-3">
               <li>Title fraud is exceedingly rare in British Columbia. In 2009, the BC Court of Appeal held that unless a mortgage is granted by the registered owner of a property, the mortgage is invalid and the owner's title will be returned to its original state.</li>
               <li>In BC, our land title system is based on a Torrens registry system that offers assured ownership through Indefeasible Title.</li>
               <li>Title insurance is a complex and non-standardized legal insurance policy that varies depending on the type and extent of coverage.</li>
@@ -262,7 +262,7 @@ export default function SurveyTitleInsurance() {
             </ol>
           </div>
 
-          <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16 text-lg">
+          <p className="text-center text-slate-600 max-w-2xl mx-auto mb-12 md:mb-16 text-base sm:text-lg">
             A Building Location Certificate provides valuable full-disclosure to all parties involved in a transaction:
           </p>
 
@@ -270,14 +270,14 @@ export default function SurveyTitleInsurance() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             
             {/* Step 1 */}
-            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+            <div className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <FileCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-medium text-slate-900 mb-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-6">
                 What does a Building Location Certificate offer to sellers?
               </h3>
-              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <ul className="text-left text-slate-600 leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>It provides a certified drawing showing the locations of buildings, improvements, easements, covenants, right of ways and other land interests in relation to property lines.</li>
                 <li>It reduces the likelihood of last-minute transaction delays due to boundary disputes.</li>
                 <li>It an effective marketing tool for a vendor that demonstrates the absence of unidentified issues such as encroachments.</li>
@@ -285,14 +285,14 @@ export default function SurveyTitleInsurance() {
             </div>
 
             {/* Step 2 */}
-            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+            <div className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <Search className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-medium text-slate-900 mb-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-6">
                 What does a Building Location Certificate provide to purchasers?
               </h3>
-              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <ul className="text-left text-slate-600 leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>It provides valuable information including any potential liabilities or encumberances that may diminish the real estate value prior to comitting to the transaction.</li>
                 <li>It confirms if buildings and constructed improvements meet local zoning with respect to setbacks and that they don't encroach onto neighbouring lands.</li>
                 <li>It provides a planning tool for future land use.</li>
@@ -300,14 +300,14 @@ export default function SurveyTitleInsurance() {
             </div>
 
             {/* Step 3 */}
-            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+            <div className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <ShieldCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-medium text-slate-900 mb-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-6">
                 What does a Building Location Certificate offer to lenders?
               </h3>
-              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <ul className="text-left text-slate-600 leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>It provides valuable information for a mortgagor about any potential liabilities associated with the real estate.</li>
                 <li>It offers a certified document that confirms the property's state rather than simply insuring against the financial loss of an unidentified issue.</li>
                 <li>It forms an integral part of a real estate transaction when provided to your lawyer or notary.</li>
@@ -333,14 +333,14 @@ export default function SurveyTitleInsurance() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
               to="/contact/"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg rounded-full"
             >
               Request a Building Location Certificate today.
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
             </Link>
             <Link
               to="/residential/"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-100 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-3 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-100 transition-colors rounded-full"
             >
               Click for a List of Our Property Survey Services
             </Link>

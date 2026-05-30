@@ -191,7 +191,7 @@ export default function Subdivisions() {
       />
 
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <section className="relative py-16 md:py-24 flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/subdivision.webp"
@@ -201,20 +201,20 @@ export default function Subdivisions() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/70 to-brand-dark" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
           <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
             Technical Guide
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
             The Process of Subdividing a Parcel in British Columbia
           </h1>
-          <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+          <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-3xl mx-auto mb-10">
             Professional insight into municipal regulations, survey requirements, and title registration.
           </p>
           <div className="flex justify-center px-4 sm:px-0">
             <a
               href="tel:6042139934"
-              className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-all flex items-center justify-center gap-2 rounded-full"
             >
               <Phone size={20} />
               Consult an Expert BCLS
@@ -614,7 +614,7 @@ export default function Subdivisions() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
               to="/contact/"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg rounded-full"
             >
               Contact Us Today
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />

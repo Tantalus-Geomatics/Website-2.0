@@ -108,7 +108,7 @@ export default function SurveyPricing() {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <section className="relative py-16 md:py-24 flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -118,20 +118,20 @@ export default function SurveyPricing() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/70 to-brand-dark" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
           <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
             Understanding The Cost of a Land Survey
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
             Land Surveys: An Investment in Legal Certainty.
           </h1>
-          <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+          <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-3xl mx-auto mb-10">
             A land survey in British Columbia should be viewed as a critical legal safeguard. Understand how factors such as site conditions and terrain, historical research, modern measurement instruments and terrain challenges impact the cost of a land survey.
           </p>
           <div className="flex justify-center px-4 sm:px-0">
             <a
               href="tel:6042139934"
-              className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-all flex items-center justify-center gap-2 rounded-full"
             >
               <Phone size={20} />
               Call for a Free Quote
@@ -158,13 +158,13 @@ export default function SurveyPricing() {
             {priceFactors.map((item) => (
               <div
                 key={item.factor}
-                className="rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
+                className="rounded-2xl border border-slate-200 bg-stone-100 p-6 md:p-8 shadow-sm"
               >
-                <p className="text-brand-green-dark font-semibold mb-2 flex items-center gap-2">
+                <p className="text-brand-green-dark font-semibold mb-2 flex items-center gap-2 text-lg sm:text-xl">
                   <ShieldAlert size={18} />
                   {item.factor}
                 </p>
-                <p className="text-slate-700 font-light leading-relaxed border-t-2 border-slate-200 pt-4 mt-4">
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed border-t border-slate-200 pt-4 mt-4">
                   {item.description}
                 </p>
               </div>
@@ -211,7 +211,7 @@ export default function SurveyPricing() {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl"
+                className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm"
               >
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
@@ -219,8 +219,8 @@ export default function SurveyPricing() {
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                   Step {step}
                 </span>
-                <h3 className="text-xl font-medium text-slate-900 mb-3">{title}</h3>
-                <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                   {body}
                 </p>
               </div>
@@ -253,7 +253,7 @@ export default function SurveyPricing() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         
             {/* Suburban Case Study */}
-            <div className="bg-stone-100 border-2 border-slate-200 overflow-hidden flex flex-col rounded-2xl">
+            <div className="bg-stone-100 border border-slate-200 overflow-hidden flex flex-col rounded-2xl shadow-sm">
               {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
               <div 
                 className="h-72 overflow-hidden relative cursor-pointer group"
@@ -265,20 +265,20 @@ export default function SurveyPricing() {
                   className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent" />
-                <h3 className="absolute bottom-4 left-6 text-xl font-medium text-white">Residential Suburban Lot (Squamish)</h3>
+                <h3 className="absolute bottom-4 left-6 text-lg sm:text-xl font-semibold text-white">Residential Suburban Lot (Squamish)</h3>
               </div>
               <div className="p-6 md:p-8 flex-grow">
                 <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Windsor Place</p>
                 <div className="space-y-6 text-left">
                   <div>
-                    <h4 className="text-slate-900 font-medium mb-2">Legal Boundary Survey Effort</h4>
-                    <p className="text-slate-700 font-light text-sm leading-relaxed">
+                    <h4 className="text-slate-900 font-semibold mb-2 text-base sm:text-lg">Legal Boundary Survey Effort</h4>
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                       While small in land area, suburban surveys are rarely simple. The nature and density of development means property corner posts are frequently destroyed by prior construction, utility installation, and landscaping. To accurately re-establish a single corner, our crews often must extend their survey across multiple adjacent blocks to locate the nearest undisturbed monuments. Additionally, the proximity to neighboring structures dramatically increases the liability risk and reduces line-of-sight, demanding professional grade field and office practices to achieve the legally obligated centimeter-level accuracy required to certify the survey.
                     </p>
                   </div>
                   <div>
-                    <h4 className="text-slate-900 font-medium mb-2">Topographic Survey Effort</h4>
-                    <p className="text-slate-700 font-light text-sm leading-relaxed">
+                    <h4 className="text-slate-900 font-semibold mb-2 text-base sm:text-lg">Topographic Survey Effort</h4>
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                       In a built environment, topographic mapping must account for complex utility networks, tight municipal setbacks, and significant tree protection bylaws. While the physical area mapped is smaller, the density of required data points per square meter is significantly higher.
                     </p>
                   </div>
@@ -287,7 +287,7 @@ export default function SurveyPricing() {
             </div>
 
             {/* Rural Case Study */}
-            <div className="bg-stone-100 border-2 border-slate-200 overflow-hidden flex flex-col rounded-2xl">
+            <div className="bg-stone-100 border border-slate-200 overflow-hidden flex flex-col rounded-2xl shadow-sm">
               {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
               <div 
                 className="h-72 overflow-hidden relative cursor-pointer group"
@@ -299,20 +299,20 @@ export default function SurveyPricing() {
                   className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent" />
-                <h3 className="absolute bottom-4 left-6 text-xl font-medium text-white">68.6 Hectare Rural Lot (Paradise Valley)</h3>
+                <h3 className="absolute bottom-4 left-6 text-lg sm:text-xl font-semibold text-white">68.6 Hectare Rural Lot (Paradise Valley)</h3>
               </div>
               <div className="p-6 md:p-8 flex-grow">
                 <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Reference Plan BCP39687</p>
                 <div className="space-y-6 text-left">
                   <div>
-                    <h4 className="text-slate-900 font-medium mb-2">Legal Boundary Survey Effort</h4>
-                    <p className="text-slate-700 font-light text-sm leading-relaxed">
+                    <h4 className="text-slate-900 font-semibold mb-2 text-base sm:text-lg">Legal Boundary Survey Effort</h4>
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                       Surveying a large 68.6ha parcel represents a significant undertaking. This site presents a number of boundary complexities, requiring the definition of different types of intersecting boundaries including the Cheakamus River's natural boundary, spiral curves along a CN Rail right of way, and two distinct BC Hydro statutory right of ways. Physically, crews must navigate steep terrain and dense forests, investing heavily in labor to clear vegetation. Additionally, the volume of historical and legal research required, often tracing back to 19th-century Crown Grants, further impacts both the cost of the survey and the level of effort required to simply produce a quote.
                     </p>
                   </div>
                   <div>
-                    <h4 className="text-slate-900 font-medium mb-2">Topographic Survey Effort</h4>
-                    <p className="text-slate-700 font-light text-sm leading-relaxed">
+                    <h4 className="text-slate-900 font-semibold mb-2 text-base sm:text-lg">Topographic Survey Effort</h4>
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                       A topographic survey of this magnitude required the integration of modern advanced survey methods. We utilize drone-based LiDAR to penetrate the dense forest canopy and map the ground surface. While this mitigates weeks of manual field labor, the increasesd volume of data processing, QA/QC, storage and hosting, in addition to the high capital cost of equipment, heavily factor into the project's economics.
                     </p>
                   </div>
@@ -357,7 +357,7 @@ export default function SurveyPricing() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
               to="/contact/"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg rounded-full"
             >
               Contact us Today for a Free Estimate
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />

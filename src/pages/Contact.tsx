@@ -68,7 +68,7 @@ export default function Contact() {
         schema={contactSchema}
       />
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <section className="relative py-16 md:py-24 flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -80,16 +80,16 @@ export default function Contact() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             Contact Us <span className="text-brand-green font-medium">Today</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-white/90 mb-8 leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             Get professional support for your next project.
           </p>
           <div className="flex justify-center px-4 sm:px-0">
             <a
               href="tel:6042139934"
-              className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-all flex items-center justify-center gap-2 rounded-full"
             >
               <Phone size={20} />
               Call for a free quote
@@ -121,40 +121,40 @@ export default function Contact() {
 
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 border-2 border-slate-200 bg-stone-100 text-brand-green">
+                  <div className="p-3 border border-slate-200 bg-stone-100 text-brand-green rounded-xl shadow-sm">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-slate-900 mb-1">
+                    <h3 className="font-semibold text-slate-900 mb-1 text-lg">
                       Where is the Tantalus Geomatics office located?
                     </h3>
-                    <p className="text-slate-700 font-light">Squamish, BC</p>
+                    <p className="text-slate-600 text-sm sm:text-base">Squamish, BC</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 border-2 border-slate-200 bg-stone-100 text-brand-green">
+                  <div className="p-3 border border-slate-200 bg-stone-100 text-brand-green rounded-xl shadow-sm">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-slate-900 mb-1">
+                    <h3 className="font-semibold text-slate-900 mb-1 text-lg">
                       What email address can you use to reach Tantalus Geomatics?
                     </h3>
-                    <a href="mailto:contact@tantalusgeomatics.com" className="text-brand-green hover:text-brand-green-light font-light transition-colors">
+                    <a href="mailto:contact@tantalusgeomatics.com" className="text-brand-green hover:text-brand-green-light font-semibold transition-colors text-sm sm:text-base">
                       contact@tantalusgeomatics.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 border-2 border-slate-200 bg-stone-100 text-brand-green">
+                  <div className="p-3 border border-slate-200 bg-stone-100 text-brand-green rounded-xl shadow-sm">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-slate-900 mb-1">
+                    <h3 className="font-semibold text-slate-900 mb-1 text-lg">
                       What phone number can you call to reach Tantalus Geomatics?
                     </h3>
-                    <p className="text-slate-700 font-light">(604) 213 9934</p>
+                    <p className="text-slate-600 text-sm sm:text-base">(604) 213 9934</p>
                   </div>
                 </div>
               </div>

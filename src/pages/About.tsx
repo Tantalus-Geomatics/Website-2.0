@@ -99,7 +99,7 @@ export default function About() {
         schema={aboutSchema}
       />
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <section className="relative py-16 md:py-24 flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -111,16 +111,16 @@ export default function About() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             About Our <span className="text-brand-green font-medium">Land Surveying</span> Practice
           </h1>
-          <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-white/90 mb-8 leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             Local knowledge and personalized service.
           </p>
           <div className="flex justify-center px-4 sm:px-0">
             <a
               href="tel:6042139934"
-              className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-all flex items-center justify-center gap-2 rounded-full"
             >
               <Phone size={20} />
               Call for a free quote
@@ -141,20 +141,20 @@ export default function About() {
                 </p>
               </GeoDirectAnswer>
                             
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                <div className="bg-stone-100 p-6 border-2 border-slate-200">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="bg-stone-100 p-6 border border-slate-200 rounded-2xl shadow-sm">
                   <MapPin className="text-brand-green mb-3 w-8 h-8" />
-                  <h3 className="font-medium text-slate-900 mb-2">
+                  <h3 className="font-semibold text-slate-900 mb-2 text-lg sm:text-xl">
                     How does Tantalus Geomatics Land Surveying support local projects?
                   </h3>
-                  <p className="text-sm text-slate-700 font-light">We leverage a deep knowledge of municipal and provincial regulations to move local projects forward efficiently.</p>
+                  <p className="text-slate-600 text-sm sm:text-base">We leverage a deep knowledge of municipal and provincial regulations to move local projects forward efficiently.</p>
                 </div>
-                <div className="bg-stone-100 p-6 border-2 border-slate-200">
+                <div className="bg-stone-100 p-6 border border-slate-200 rounded-2xl shadow-sm">
                   <Award className="text-brand-green mb-3 w-8 h-8" />
-                  <h3 className="font-medium text-slate-900 mb-2">
+                  <h3 className="font-semibold text-slate-900 mb-2 text-lg sm:text-xl">
                     What professional credentials and quality standards does Tantalus Geomatics maintain?
                   </h3>
-                  <p className="text-sm text-slate-700 font-light">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineering, and is regulated by statues, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
+                  <p className="text-slate-600 text-sm sm:text-base">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineering, and is regulated by statues, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
                 </div>
               </div>
             </div>
@@ -175,7 +175,7 @@ export default function About() {
       {/* Principal Section */}
       <section className="bg-white py-16 md:py-24 border-t-2 border-brand-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-stone-100 border-2 border-slate-200 overflow-hidden">
+          <div className="bg-stone-100 border border-slate-200 rounded-3xl shadow-sm overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-5">
               <div className="lg:col-span-2">
                 <img

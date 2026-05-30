@@ -87,7 +87,7 @@ export default function TopographicSurveys() {
       />
 
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <section className="relative py-16 md:py-24 flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/Squamish-Garibaldi-Estates-Property-Survey.webp"
@@ -97,20 +97,20 @@ export default function TopographicSurveys() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/60 to-brand-dark" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
           <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
             Land Development in British Columbia
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
             Develop Your Property with Confidence.
           </h1>
-          <p className="text-lg sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+          <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-3xl mx-auto mb-10">
             Building a home in British Columbia involves a complex intersections of legal, permitting, environmental, and engineering requirements. A topographic survey translates the physical reality of your land into the data required by your architect, engineer, and the city.
           </p>
             <div className="flex justify-center px-4 sm:px-0">
               <a
                 href="tel:6042139934"
-                className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-all flex items-center justify-center gap-2 rounded-full"
               >
                 <Phone size={20} />
                 Call for a free quote
@@ -134,12 +134,12 @@ export default function TopographicSurveys() {
             {problems.map((item) => (
               <div
                 key={item.problem}
-                className="rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
+                className="rounded-2xl border border-slate-200 bg-stone-100 p-6 md:p-8 shadow-sm"
               >
-                <p className="text-brand-green-dark font-semibold mb-2">
+                <p className="text-brand-green-dark font-semibold mb-2 text-lg sm:text-xl">
                   {item.problem}
                 </p>
-                <p className="text-slate-700 font-light leading-relaxed border-t-2 border-slate-200 pt-4 mt-4">
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed border-t border-slate-200 pt-4 mt-4">
                   {item.description}
                 </p>
               </div>
@@ -148,7 +148,7 @@ export default function TopographicSurveys() {
             <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
             <Link
               to="/contact/"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg shadow-brand-green/15"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg rounded-full"
             >
               Contact Us Today to Design with Confidence
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
@@ -195,7 +195,7 @@ export default function TopographicSurveys() {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl"
+                className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm"
               >
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
@@ -203,8 +203,8 @@ export default function TopographicSurveys() {
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                   Step {step}
                 </span>
-                <h3 className="text-xl font-medium text-slate-900 mb-3">{title}</h3>
-                <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                   {body}
                 </p>
               </div>
@@ -218,11 +218,11 @@ export default function TopographicSurveys() {
               questionClassName="max-w-3xl mx-auto text-center"
               align="center"
             >
-              <div className="rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]">
-                <p className="text-brand-green-dark font-semibold mb-2">
+              <div className="rounded-2xl border border-slate-200 bg-stone-100 p-6 md:p-8 shadow-sm">
+                <p className="text-brand-green-dark font-semibold mb-2 text-lg sm:text-xl">
                   We Provide a Range of Datasets to Support Your Design Needs
                 </p>
-                <p className="text-slate-700 font-light leading-relaxed border-t-2 border-slate-200 pt-4 mt-4">
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed border-t border-slate-200 pt-4 mt-4">
                   In addition to a certified topographic survey or site plan in PDF format, we also offer a range of data product deliverables including CAD DWG files, point clouds, digital terrain models and more.
                 </p>
               </div>
@@ -262,18 +262,18 @@ export default function TopographicSurveys() {
           </div>
 
           {/* Three Things to Consider Box */}
-          <div className="max-w-4xl mx-auto rounded-xl border-2 border-slate-200 bg-stone-100 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)] mb-12 md:mb-16">
-            <h3 className="text-slate-900 font-semibold mb-4 text-lg">
+          <div className="max-w-4xl mx-auto rounded-2xl border border-slate-200 bg-stone-100 p-6 md:p-8 shadow-sm mb-12 md:mb-16">
+            <h3 className="text-slate-900 font-semibold mb-4 text-lg sm:text-xl">
               What three questions should you ask before building in the District of Squamish?
             </h3>
-            <ol className="list-decimal list-inside text-slate-700 font-light leading-relaxed space-y-3">
+            <ol className="list-decimal list-inside text-slate-600 text-sm sm:text-base leading-relaxed space-y-3">
               <li>What are the data needs of my engineers and architect?</li>
               <li>Am I located in a development permit area?</li>
               <li>Have I checked my property title for any restrictive covenants that prohibit constructing my proposed design?</li>
             </ol>
           </div>
 
-          <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16 text-lg">
+          <p className="text-center text-slate-600 max-w-2xl mx-auto mb-12 md:mb-16 text-base sm:text-lg">
             Tantalus Geomatics Land Surveying can help guide you navigate this process with our three step process:
           </p>
 
@@ -281,15 +281,15 @@ export default function TopographicSurveys() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             
             {/* Step 1 */}
-            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+            <div className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <ClipboardList className="h-8 w-8" strokeWidth={1.5} />
               </div>
               <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                 Step 1
               </span>
-              <h3 className="text-xl font-medium text-slate-900 mb-6">Research</h3>
-              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-6">Research</h3>
+              <ul className="text-left text-slate-600 leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>Complete an initial consultation to confirm exactly what you are seeking to accomplish.</li>
                 <li>Obtain property title, legal charge documents and relevant survey plans from the land title office.</li>
                 <li>Confirm whether there are any restrictive covenants that would prohibit constructing the proposed design.</li>
@@ -321,15 +321,15 @@ export default function TopographicSurveys() {
             </div>
 
             {/* Step 2 */}
-            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+            <div className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <MapPinned className="h-8 w-8" strokeWidth={1.5} />
               </div>
               <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                 Step 2
               </span>
-              <h3 className="text-xl font-medium text-slate-900 mb-6">Field Visit</h3>
-              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-6">Field Visit</h3>
+              <ul className="text-left text-slate-600 leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>We first search for sufficient property corner posts to accurately locate your parcel's boundaries.</li>
                 <li>Next, we use high precision instruments, such as robotic total stations, rtk gps receivers, drones and laser scanners to accurately survey all the necessary topographic and site features.</li>
                 <li>Finally, we use high accuracy GPS receivers and existing monuments to ensure your project's elevations are related to the official geodetic datum specified by the District of Squamish.</li>
@@ -337,18 +337,18 @@ export default function TopographicSurveys() {
             </div>
 
             {/* Step 3 */}
-            <div className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl">
+            <div className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                 <FileCheck className="h-8 w-8" strokeWidth={1.5} />
               </div>
               <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                 Step 3
               </span>
-              <h3 className="text-xl font-medium text-slate-900 mb-6">Certified Survey Plan</h3>
-              <p className="text-left text-slate-700 font-light text-sm sm:text-base mb-4 w-full">
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-6">Certified Survey Plan</h3>
+              <p className="text-left text-slate-600 text-sm sm:text-base mb-4 w-full">
                 A site survey or topographic survey may result in the preparation of one or more deliverables, depending on your needs:
               </p>
-              <ul className="text-left text-slate-700 font-light leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
+              <ul className="text-left text-slate-600 leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li><strong className="text-slate-900 font-medium">Certified site plan or topographic plan:</strong> A certified plan that depicts the locations of the site's current topography and constructed features relative to your property lines.</li>
                 <li><strong className="text-slate-900 font-medium">CAD File:</strong> A digital drawing format common among architecture, engineering and construction professionals.</li>
                 <li><strong className="text-slate-900 font-medium">Point Cloud:</strong> A file containing the XYZ locations of points. These can be a spare or dense representation of the site, depending on the field survey methods.</li>
@@ -373,14 +373,14 @@ export default function TopographicSurveys() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
               to="/contact/"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg rounded-full"
             >
               Request a Free Quote Today
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
             </Link>
             <Link
               to="/residential/"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-100 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-3 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-100 transition-colors rounded-full"
             >
               View A Full List of Our Property Survey Services
             </Link>

@@ -141,7 +141,7 @@ export default function Home() {
       />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen pt-24 pb-16 lg:pt-32 lg:pb-24 flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <section className="relative pt-20 pb-12 lg:pt-24 lg:pb-12 flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -157,17 +157,17 @@ export default function Home() {
             
             {/* Left Column: Heading & CTA */}
             <div className="text-left">
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
                 Professional <br className="hidden lg:block"/>
                 <span className="text-brand-green font-medium"> BC Land Surveyors</span>
               </h1>
-              <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-10 font-light leading-relaxed drop-shadow-md">
+              <p className="text-lg md:text-xl text-white/90 mb-10 font-light leading-relaxed drop-shadow-md">
                 Servicing British Columbia across the Sea to Sky Corridor, Vancouver's North Shore, and the Sunshine Coast.
               </p>
               <div className="flex justify-start">
                 <a
                   href="tel:6042139934"
-                  className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 rounded-md"
+                  className="w-full sm:w-auto px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-all flex items-center justify-center gap-2 rounded-full"
                 >
                   <Phone size={20} />
                   Call for quote
@@ -386,7 +386,7 @@ export default function Home() {
               </ul>
               <Link
                 to="/about/"
-                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-brand-green text-slate-900 font-medium hover:bg-brand-green/10 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-brand-green text-slate-900 font-semibold hover:bg-brand-green/10 transition-colors rounded-full"
               >
                 About Our Team
               </Link>

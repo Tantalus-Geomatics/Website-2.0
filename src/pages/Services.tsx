@@ -147,7 +147,7 @@ export default function Services() {
       />
       
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <section className="relative py-16 md:py-24 flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/tantalus-hero-banner.webp"
@@ -159,16 +159,16 @@ export default function Services() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             Professional <span className="text-brand-green font-medium">Land Surveying</span> Services
           </h1>
-          <p className="text-lg sm:text-xl md:text-3xl text-white/90 mb-8 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-white/90 mb-8 leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             Comprehensive Land Surveying, topographic mapping, and construction support.
           </p>
           <div className="flex justify-center px-4 sm:px-0">
             <a
               href="tel:6042139934"
-              className="w-full sm:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-all flex items-center justify-center gap-2 rounded-full"
             >
               <Phone size={20} />
               Call for a free quote
@@ -189,10 +189,10 @@ export default function Services() {
                 }`}
               >
                 <div className="flex-1 w-full">
-                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-stone-100 border-2 border-slate-200 mb-6 sm:mb-8 shadow-md">
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-stone-100 border border-slate-200 mb-6 sm:mb-8 shadow-sm">
                     {service.icon}
                   </div>
-                  <h2 className="text-3xl sm:text-4xl font-light text-slate-900 mb-4 sm:mb-6 tracking-tight">{service.title}</h2>
+                  <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 sm:mb-6 tracking-tight">{service.title}</h2>
                   <GeoDirectAnswer question={service.directAnswerQuestion}>
                     <p className="text-lg sm:text-xl text-slate-700 font-light mb-8 sm:mb-10 leading-relaxed">
                       {service.description}
@@ -200,18 +200,18 @@ export default function Services() {
                   </GeoDirectAnswer>
                   <div className="space-y-4 sm:space-y-6">
                     {service.items.map((item, i) => (
-                      <div key={i} className="flex items-start gap-4 p-4 sm:p-6 rounded-2xl bg-stone-100 border-2 border-slate-200 hover:border-brand-green transition-colors">
+                      <div key={i} className="flex items-start gap-4 p-4 sm:p-6 rounded-2xl bg-stone-100 border border-slate-200 hover:border-brand-green transition-colors shadow-sm">
                         <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-brand-green shrink-0 mt-0.5" />
                         <div>
-                          <strong className="text-slate-900 font-medium block mb-1 sm:mb-2 text-base sm:text-lg">{item.name}</strong>
-                          <span className="text-slate-700 font-light leading-relaxed block text-sm sm:text-base">{item.desc}</span>
+                          <strong className="text-slate-900 font-semibold block mb-1 sm:mb-2 text-base sm:text-lg">{item.name}</strong>
+                          <span className="text-slate-600 leading-relaxed block text-sm sm:text-base">{item.desc}</span>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="flex-1 w-full relative">
-                  <div className="aspect-square sm:aspect-[4/5] relative rounded-3xl overflow-hidden border-2 border-slate-200">
+                  <div className="aspect-square sm:aspect-[4/5] relative rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
                     <div className="absolute inset-0 bg-brand-green/20 mix-blend-overlay z-10"></div>
                     <img
                       src={service.image}

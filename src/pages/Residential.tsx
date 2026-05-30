@@ -91,26 +91,26 @@ const residentialSchema = {
       />
 
       {/* Hero - Keyword Optimized H1 */}
-      <section className="relative min-h-[70vh] sm:min-h-[75vh] flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <section className="relative py-16 md:py-24 flex items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
             src={heroSrc}
             alt="Professional land surveying in the Sea to Sky corridor"
-            className="w-full h-full object-cover opacity-55 mix-blend-overlay min-h-[420px]"
+            className="w-full h-full object-cover opacity-55 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/50 via-brand-dark/65 to-brand-dark" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-16 sm:pt-28 sm:pb-20">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
           <p className="text-sm sm:text-base text-brand-green font-medium tracking-wide uppercase mb-4">
             Certified Land Surveys for Property Owners
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             Residential Land Surveying in <span className="text-brand-green font-medium">British Columbia</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/85 font-light leading-relaxed drop-shadow-md max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-white/90 leading-relaxed drop-shadow-md max-w-3xl mx-auto">
             From boundary markers to site plans, a certified land survey offers homeowners and builders the services and documents they need for municipal permits and peace of mind.
           </p>
         </div>
@@ -154,7 +154,7 @@ const residentialSchema = {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-stone-100 border-2 border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl"
+                className="bg-stone-100 border border-slate-200 p-8 flex flex-col items-center text-center rounded-2xl shadow-sm"
               >
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
@@ -162,8 +162,8 @@ const residentialSchema = {
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2 uppercase">
                   Step {step}
                 </span>
-                <h3 className="text-xl font-medium text-slate-900 mb-3">{title}</h3>
-                <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                   {body}
                 </p>
               </div>
@@ -185,7 +185,7 @@ const residentialSchema = {
           </GeoDirectAnswer>
           <a
             href={PHONE_TEL}
-            className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg sm:text-xl font-semibold bg-brand-green hover:bg-brand-green-light text-black transition-all shadow-lg shadow-brand-green/20 min-w-[240px]"
+            className="inline-flex items-center justify-center gap-3 px-8 py-3 text-base sm:text-lg font-semibold bg-brand-green hover:bg-brand-green-light text-black transition-all shadow-lg shadow-brand-green/20 min-w-[240px] rounded-full"
           >
             <Phone className="h-6 w-6 shrink-0" aria-hidden />
             Call (604) 213 9934
@@ -234,12 +234,12 @@ const residentialSchema = {
                 <li key={topic.title}>
                   <Link
                     to={topic.to}
-                    className="block h-full w-full text-left p-6 bg-stone-100 border-2 border-slate-200 hover:border-brand-green transition-colors group rounded-2xl"
+                    className="block h-full w-full text-left p-6 bg-stone-100 border border-slate-200 hover:border-brand-green transition-colors group rounded-2xl shadow-sm"
                   >
-                    <h3 className="text-lg font-medium text-slate-900 group-hover:text-brand-green transition-colors mb-2">
+                    <h3 className="text-lg sm:text-xl font-semibold text-slate-900 group-hover:text-brand-green transition-colors mb-2">
                       {topic.title}
                     </h3>
-                    <p className="text-sm text-slate-700 font-light leading-relaxed">
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                       {topic.description}
                     </p>
                     <span className="inline-block mt-4 text-xs text-brand-green uppercase tracking-wide">

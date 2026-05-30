@@ -198,7 +198,7 @@ export default function Layout() {
               <div className="md:absolute md:left-1/2 md:-translate-x-1/2 md:flex">
                 <a 
                   href="tel:6042139934" 
-                  className="bg-brand-green text-black px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-md font-semibold text-sm md:text-base flex items-center gap-1.5 hover:opacity-90 transition-opacity whitespace-nowrap shrink-0"
+                  className="bg-brand-green text-black px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-semibold text-sm md:text-base flex items-center gap-1.5 hover:opacity-90 transition-opacity whitespace-nowrap shrink-0"
                 >
                   <Phone size={14} className="md:w-5 md:h-5 shrink-0" />
                   <span className="hidden lg:inline">Call</span>
