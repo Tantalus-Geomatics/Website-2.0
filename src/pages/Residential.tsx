@@ -100,7 +100,7 @@ const residentialSchema = {
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/50 via-brand-black/65 to-brand-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/50 via-brand-dark/65 to-brand-dark" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-16 sm:pt-28 sm:pb-20">
@@ -117,16 +117,16 @@ const residentialSchema = {
       </section>
 
       {/* 3-step process - Informational Value */}
-      <section className="py-16 md:py-24 border-b border-white/10">
+      <section className="py-16 md:py-24 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-light text-white text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl font-light text-slate-900 text-center mb-4">
             Our Residential Survey Process
           </h2>
           <GeoDirectAnswer
             align="center"
             question="How does Tantalus Geomatics Land Surveying conduct residential survey projects to support owners in British Columbia?"
           >
-            <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+            <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16">
               We offer a clear and simple 3-step approach to completing residential land surveys in a timely and professional manner.
             </p>
           </GeoDirectAnswer>
@@ -154,16 +154,16 @@ const residentialSchema = {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center"
+                className="bg-slate-50 border border-slate-200 p-8 flex flex-col items-center text-center"
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2 uppercase">
                   Step {step}
                 </span>
-                <h3 className="text-xl font-medium text-white mb-3">{title}</h3>
-                <p className="text-white/65 font-light leading-relaxed text-sm sm:text-base">
+                <h3 className="text-xl font-medium text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
                   {body}
                 </p>
               </div>
@@ -196,11 +196,11 @@ const residentialSchema = {
       {/* Quote form */}
       <section className="py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4 text-center">
             Request a Free Quote Today
           </h2>
           <GeoDirectAnswer align="center" question="What information do we need to start your survey quote today?">
-            <p className="text-center text-white/60 font-light mb-10">
+            <p className="text-center text-slate-700 font-light mb-10">
               Providing us with your name, property address, contact information and project details allows us to start your quote right away.
             </p>
           </GeoDirectAnswer>
@@ -217,9 +217,9 @@ const residentialSchema = {
       </section>
 
       {/* Resources - Option A: Filtered to only show active links */}
-      <section className="py-16 md:py-24 border-t border-white/10 bg-brand-dark/50">
+      <section className="py-16 md:py-24 border-t border-slate-200 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 text-center mb-12">
             Land Surveying Resources for Homeowners
           </h2>
           <GeoDirectAnswer
@@ -234,12 +234,12 @@ const residentialSchema = {
                 <li key={topic.title}>
                   <Link
                     to={topic.to}
-                    className="block h-full w-full text-left p-6 bg-brand-black border border-white/10 hover:border-brand-green/40 transition-colors group"
+                    className="block h-full w-full text-left p-6 bg-brand-black border border-slate-200 hover:border-brand-green/40 transition-colors group"
                   >
-                    <h3 className="text-lg font-medium text-white group-hover:text-brand-green transition-colors mb-2">
+                    <h3 className="text-lg font-medium text-slate-900 group-hover:text-brand-green transition-colors mb-2">
                       {topic.title}
                     </h3>
-                    <p className="text-sm text-white/55 font-light leading-relaxed">
+                    <p className="text-sm text-slate-700 font-light leading-relaxed">
                       {topic.description}
                     </p>
                     <span className="inline-block mt-4 text-xs text-brand-green uppercase tracking-wide">
@@ -252,7 +252,7 @@ const residentialSchema = {
           </ul>
           </GeoDirectAnswer>
 
-          <div className="text-center mt-12 text-sm text-white/45">
+          <div className="text-center mt-12 text-sm text-slate-500">
             <p className="mb-2">Need immediate assistance with a survey project?</p>
             <div className="flex justify-center gap-4">
               <Link to="/faq/" className="text-brand-green hover:underline font-light">View All FAQs</Link>

@@ -107,7 +107,7 @@ export default function About() {
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/60 to-brand-dark" />
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
@@ -134,27 +134,27 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-light text-white mb-6">Your projects. Our solutions.</h2>
+              <h2 className="text-3xl font-light text-slate-900 mb-6">Your projects. Our solutions.</h2>
               <GeoDirectAnswer question="How does Tantalus Geomatics support residential, infrastructure, and environmental projects in BC?">
-                <p className="text-base sm:text-lg text-white/70 mb-6 font-light leading-relaxed">
+                <p className="text-base sm:text-lg text-slate-700 mb-6 font-light leading-relaxed">
                   Tantalus Geomatics provides the specialized expertise of a BC Land Surveyor and Professional Engineer to support the complexities of modern development. We serve as a strategic partner for residential, infrastructure, and environmental projects, providing the actionable data required for accurate design and regulatory compliance. Learn more about our <a href="/services/" className="text-brand-green hover:underline">professional services</a>.
                 </p>
               </GeoDirectAnswer>
                             
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                <div className="bg-brand-dark p-6 border border-white/10">
+                <div className="bg-slate-50 p-6 border border-slate-200">
                   <MapPin className="text-brand-green mb-3 w-8 h-8" />
-                  <h3 className="font-medium text-white mb-2">
+                  <h3 className="font-medium text-slate-900 mb-2">
                     How does Tantalus Geomatics Land Surveying support local projects?
                   </h3>
-                  <p className="text-sm text-white/60 font-light">We leverage a deep knowledge of municipal and provincial regulations to move local projects forward efficiently.</p>
+                  <p className="text-sm text-slate-700 font-light">We leverage a deep knowledge of municipal and provincial regulations to move local projects forward efficiently.</p>
                 </div>
-                <div className="bg-brand-dark p-6 border border-white/10">
+                <div className="bg-slate-50 p-6 border border-slate-200">
                   <Award className="text-brand-green mb-3 w-8 h-8" />
-                  <h3 className="font-medium text-white mb-2">
+                  <h3 className="font-medium text-slate-900 mb-2">
                     What professional credentials and quality standards does Tantalus Geomatics maintain?
                   </h3>
-                  <p className="text-sm text-white/60 font-light">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineering, and is regulated by statues, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
+                  <p className="text-sm text-slate-700 font-light">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineering, and is regulated by statues, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
                 </div>
               </div>
             </div>
@@ -189,13 +189,13 @@ export default function About() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 border border-brand-green text-brand-green text-sm font-medium mb-6 w-fit">
                   <Users size={16} /> Owner
                 </div>
-                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">Dennis Sherman</h2>
+                <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-2">Dennis Sherman</h2>
                 <p className="text-xl text-brand-green font-medium mb-8">British Columbia Land Surveyor and Professional Engineer</p>
                 <GeoDirectAnswer question="Who is Dennis Sherman, BCLS, P.Eng., and what experience does he bring to Sea to Sky projects?">
-                  <p className="text-base sm:text-lg text-white/70 mb-6 font-light leading-relaxed">
+                  <p className="text-base sm:text-lg text-slate-700 mb-6 font-light leading-relaxed">
                   Dennis Sherman, BCLS, P.Eng, is a dual-registered professional specializing in the integration of land surveying and geomatics engineering. Driven by a lifelong interest in maps and mathematics, and a love for the outdoors, Dennis has dedicated his career to the precision of geomatics. His background is uniquely distinguished by experience in software development for geomatics applications, allowing him to bring a deeper level of technical insight to complex spatial challenges.
                   </p>
-                  <p className="text-base sm:text-lg text-white/70 font-light leading-relaxed">
+                  <p className="text-base sm:text-lg text-slate-700 font-light leading-relaxed">
                   A graduate of the Lassonde School of Engineering at York University, Dennis has managed diverse surveying operations across Canada—from the shores of Haida Gwaii, to the plains of Wood Buffalo National Park, to the infrastructure of the Greater Toronto Area. Focused on the Sea-to-Sky corridor since 2018, his commitment to professional accountability and high-quality deliverables ensures that every client receives the clarity and legal certainty their project demands. <a href="/contact/" className="text-brand-green hover:underline">Contact Dennis and the team</a> to discuss your next project.
                   </p>
                 </GeoDirectAnswer>
@@ -211,7 +211,7 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             
             {/* Column 1 (Formerly Column 2): Contact Form */}
-            <div className="bg-brand-black p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
+            <div className="bg-brand-dark p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
               <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
               <LeadQuoteForm
                 variant="embedded"

@@ -155,7 +155,7 @@ export default function Services() {
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/60 to-brand-dark" />
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
@@ -192,19 +192,19 @@ export default function Services() {
                   <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-brand-dark border border-white/10 mb-6 sm:mb-8 shadow-2xl">
                     {service.icon}
                   </div>
-                  <h2 className="text-3xl sm:text-4xl font-light text-white mb-4 sm:mb-6 tracking-tight">{service.title}</h2>
+                  <h2 className="text-3xl sm:text-4xl font-light text-slate-900 mb-4 sm:mb-6 tracking-tight">{service.title}</h2>
                   <GeoDirectAnswer question={service.directAnswerQuestion}>
-                    <p className="text-lg sm:text-xl text-white/60 font-light mb-8 sm:mb-10 leading-relaxed">
+                    <p className="text-lg sm:text-xl text-slate-700 font-light mb-8 sm:mb-10 leading-relaxed">
                       {service.description}
                     </p>
                   </GeoDirectAnswer>
                   <div className="space-y-4 sm:space-y-6">
                     {service.items.map((item, i) => (
-                      <div key={i} className="flex items-start gap-4 p-4 sm:p-6 rounded-2xl bg-brand-dark/50 border border-white/5 hover:border-brand-green/30 transition-colors">
+                      <div key={i} className="flex items-start gap-4 p-4 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-green/30 transition-colors">
                         <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-brand-green shrink-0 mt-0.5" />
                         <div>
-                          <strong className="text-white font-medium block mb-1 sm:mb-2 text-base sm:text-lg">{item.name}</strong>
-                          <span className="text-white/60 font-light leading-relaxed block text-sm sm:text-base">{item.desc}</span>
+                          <strong className="text-slate-900 font-medium block mb-1 sm:mb-2 text-base sm:text-lg">{item.name}</strong>
+                          <span className="text-slate-700 font-light leading-relaxed block text-sm sm:text-base">{item.desc}</span>
                         </div>
                       </div>
                     ))}
@@ -233,7 +233,7 @@ export default function Services() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             
             {/* Column 1 (Formerly Column 2): Contact Form */}
-            <div className="bg-brand-black p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
+            <div className="bg-brand-dark p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
               <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
               <LeadQuoteForm
                 variant="embedded"

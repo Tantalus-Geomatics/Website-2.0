@@ -116,7 +116,7 @@ export default function SurveyPricing() {
             className="w-full h-full object-cover opacity-50 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/70 to-brand-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/70 to-brand-dark" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-4">
@@ -141,16 +141,16 @@ export default function SurveyPricing() {
       </section>
 
       {/* The Core Cost Drivers */}
-      <section className="py-14 md:py-20 border-b border-white/10">
+      <section className="py-14 md:py-20 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <GeoDirectAnswer
             question="What factors impact the cost of a land survey in British Columbia?"
             questionClassName="max-w-3xl"
           >
-            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-white/90 font-light text-lg italic">
+            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-slate-900 font-light text-lg italic">
               A land survey in British Columbia is a small investment in protecting your most valuable asset.
             </blockquote>
-            <p className="text-white/65 font-light mb-10 max-w-3xl">
+            <p className="text-slate-700 font-light mb-10 max-w-3xl">
               Unlike many other home services where a flat fee can be easily calculated, land surveying is subject to several variables. Your quote reflects the level of effort, judgement and liability involved in producing accurate survey records and satisfying our ethical obligation to protect the public interest.
             </p>
           </GeoDirectAnswer>
@@ -158,13 +158,13 @@ export default function SurveyPricing() {
             {priceFactors.map((item) => (
               <div
                 key={item.factor}
-                className="rounded-xl border border-brand-green/35 bg-brand-dark/60 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
+                className="rounded-xl border border-brand-green/20 bg-slate-50 p-6 md:p-8 shadow-[0_4px_24px_rgba(107,158,84,0.08)]"
               >
                 <p className="text-brand-green font-medium mb-2 flex items-center gap-2">
                   <ShieldAlert size={18} />
                   {item.factor}
                 </p>
-                <p className="text-white/80 font-light leading-relaxed border-t border-white/10 pt-4 mt-4">
+                <p className="text-slate-700 font-light leading-relaxed border-t border-slate-200 pt-4 mt-4">
                   {item.description}
                 </p>
               </div>
@@ -174,16 +174,16 @@ export default function SurveyPricing() {
       </section>
 
       {/* 3-Step Quoting Process */}
-      <section className="py-16 md:py-24 border-b border-white/10">
+      <section className="py-16 md:py-24 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white text-center mb-4">
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 text-center mb-4">
             How We Calculate Your Quote
           </h2>
           <GeoDirectAnswer
             align="center"
             question="What is the process for estimating the cost of a land survey in BC?"
           >
-            <p className="text-center text-white/60 font-light max-w-2xl mx-auto mb-12 md:mb-16">
+            <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16">
               Since no two properties share the same legal history or terrain, an estimate requires significant preliminary research. Our three-step quoting process ensures transparency and ethical compliance.
             </p>
           </GeoDirectAnswer>
@@ -211,16 +211,16 @@ export default function SurveyPricing() {
             ].map(({ step, title, body, icon: Icon }) => (
               <div
                 key={step}
-                className="bg-brand-dark border border-white/10 p-8 flex flex-col items-center text-center"
+                className="bg-slate-50 border border-slate-200 p-8 flex flex-col items-center text-center"
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-brand-black text-brand-green">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-brand-green/40 bg-white text-brand-green">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <span className="text-brand-green text-sm font-semibold tracking-wide mb-2">
                   Step {step}
                 </span>
-                <h3 className="text-xl font-medium text-white mb-3">{title}</h3>
-                <p className="text-white/65 font-light leading-relaxed text-sm sm:text-base">
+                <h3 className="text-xl font-medium text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
                   {body}
                 </p>
               </div>
@@ -230,21 +230,21 @@ export default function SurveyPricing() {
       </section>
       
       {/* Case Study Section: Suburban vs Rural */}
-      <section className="py-16 md:py-24 border-b border-white/10 bg-brand-black">
+      <section className="py-16 md:py-24 border-b border-slate-200 bg-brand-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mx-auto text-center mb-12">
             <p className="text-brand-green text-sm font-medium tracking-wide uppercase mb-3">
               Comparative Analysis
             </p>
-            <h2 className="text-2xl sm:text-3xl font-light text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-6">
               Case Study: Suburban Residential Lot in Squamish vs. an Undeveloped 68.8 hectare parcel in Paradise Valley
             </h2>
             <GeoDirectAnswer
               align="center"
               question="How do terrain, property size, and legal constraints affect the level of effort required to survey a residential suburban lot compared to a large rural parcel?"
             >
-              <p className="text-white/65 font-light leading-relaxed">
+              <p className="text-slate-700 font-light leading-relaxed">
                 The cost of a survey is a reflection of the specific terrain, history, and legal survey fabric. To illustrate the impacts these factors have on the cost of a survey, we compare the requirements for a single family home suburban lot in the Garibaldi Estates to a large undeveloped parcel in Paradise Valley.
               </p>
             </GeoDirectAnswer>
@@ -253,7 +253,7 @@ export default function SurveyPricing() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         
             {/* Suburban Case Study */}
-            <div className="bg-brand-dark border border-white/10 overflow-hidden flex flex-col">
+            <div className="bg-slate-50 border border-slate-200 overflow-hidden flex flex-col">
               {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
               <div 
                 className="h-72 overflow-hidden relative cursor-pointer group"
@@ -271,14 +271,14 @@ export default function SurveyPricing() {
                 <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Windsor Place</p>
                 <div className="space-y-6 text-left">
                   <div>
-                    <h4 className="text-white/90 font-medium mb-2">Legal Boundary Survey Effort</h4>
-                    <p className="text-white/65 font-light text-sm leading-relaxed">
+                    <h4 className="text-slate-900 font-medium mb-2">Legal Boundary Survey Effort</h4>
+                    <p className="text-slate-700 font-light text-sm leading-relaxed">
                       While small in land area, suburban surveys are rarely simple. The nature and density of development means property corner posts are frequently destroyed by prior construction, utility installation, and landscaping. To accurately re-establish a single corner, our crews often must extend their survey across multiple adjacent blocks to locate the nearest undisturbed monuments. Additionally, the proximity to neighboring structures dramatically increases the liability risk and reduces line-of-sight, demanding professional grade field and office practices to achieve the legally obligated centimeter-level accuracy required to certify the survey.
                     </p>
                   </div>
                   <div>
-                    <h4 className="text-white/90 font-medium mb-2">Topographic Survey Effort</h4>
-                    <p className="text-white/65 font-light text-sm leading-relaxed">
+                    <h4 className="text-slate-900 font-medium mb-2">Topographic Survey Effort</h4>
+                    <p className="text-slate-700 font-light text-sm leading-relaxed">
                       In a built environment, topographic mapping must account for complex utility networks, tight municipal setbacks, and significant tree protection bylaws. While the physical area mapped is smaller, the density of required data points per square meter is significantly higher.
                     </p>
                   </div>
@@ -287,7 +287,7 @@ export default function SurveyPricing() {
             </div>
 
             {/* Rural Case Study */}
-            <div className="bg-brand-dark border border-white/10 overflow-hidden flex flex-col">
+            <div className="bg-slate-50 border border-slate-200 overflow-hidden flex flex-col">
               {/* Changed h-48 to h-72 and added cursor-pointer & onClick */}
               <div 
                 className="h-72 overflow-hidden relative cursor-pointer group"
@@ -305,14 +305,14 @@ export default function SurveyPricing() {
                 <p className="text-brand-green text-sm font-semibold tracking-wide mb-4">Reference Plan BCP39687</p>
                 <div className="space-y-6 text-left">
                   <div>
-                    <h4 className="text-white/90 font-medium mb-2">Legal Boundary Survey Effort</h4>
-                    <p className="text-white/65 font-light text-sm leading-relaxed">
+                    <h4 className="text-slate-900 font-medium mb-2">Legal Boundary Survey Effort</h4>
+                    <p className="text-slate-700 font-light text-sm leading-relaxed">
                       Surveying a large 68.6ha parcel represents a significant undertaking. This site presents a number of boundary complexities, requiring the definition of different types of intersecting boundaries including the Cheakamus River's natural boundary, spiral curves along a CN Rail right of way, and two distinct BC Hydro statutory right of ways. Physically, crews must navigate steep terrain and dense forests, investing heavily in labor to clear vegetation. Additionally, the volume of historical and legal research required, often tracing back to 19th-century Crown Grants, further impacts both the cost of the survey and the level of effort required to simply produce a quote.
                     </p>
                   </div>
                   <div>
-                    <h4 className="text-white/90 font-medium mb-2">Topographic Survey Effort</h4>
-                    <p className="text-white/65 font-light text-sm leading-relaxed">
+                    <h4 className="text-slate-900 font-medium mb-2">Topographic Survey Effort</h4>
+                    <p className="text-slate-700 font-light text-sm leading-relaxed">
                       A topographic survey of this magnitude required the integration of modern advanced survey methods. We utilize drone-based LiDAR to penetrate the dense forest canopy and map the ground surface. While this mitigates weeks of manual field labor, the increasesd volume of data processing, QA/QC, storage and hosting, in addition to the high capital cost of equipment, heavily factor into the project's economics.
                     </p>
                   </div>
@@ -348,10 +348,10 @@ export default function SurveyPricing() {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-brand-green/50 bg-brand-dark mb-6">
             <ClipboardList className="w-7 h-7 text-brand-green" aria-hidden />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
             Protect Your Property Investment with A Certified Land Survey
           </h2>
-          <p className="text-white/75 font-light leading-relaxed mb-10 max-w-xl mx-auto">
+          <p className="text-slate-700 font-light leading-relaxed mb-10 max-w-xl mx-auto">
             At Tantalus Geomatics, we focus on delivering high accuracy professional grade products and services, ethical compliance, and long-term risk mitigation and peace of mind for our clients.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">

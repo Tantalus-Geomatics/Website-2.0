@@ -154,7 +154,7 @@ export default function Layout() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-white bg-brand-black">
+    <div className="min-h-screen flex flex-col font-sans text-slate-900 bg-brand-black">
       {/* SEO Structured Data Injection */}
       <script
         type="application/ld+json"
@@ -170,7 +170,7 @@ export default function Layout() {
       </div>
 
       {/* Navigation */}
-      <header className="bg-brand-black border-b border-white/10 sticky top-0 z-50">
+      <header className="bg-brand-dark border-b border-white/10 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative">
           <div className="flex justify-between h-20 sm:h-24 items-center gap-2">
             

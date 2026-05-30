@@ -205,7 +205,7 @@ const faqSchema = {
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/60 to-brand-dark" />
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
@@ -235,7 +235,7 @@ const faqSchema = {
             {/* Sticky Sidebar */}
             <div className="hidden lg:block lg:col-span-4">
               <div className="sticky top-32">
-                <h3 className="text-xs font-bold tracking-widest text-white/40 uppercase mb-8">Categories</h3>
+                <h3 className="text-xs font-bold tracking-widest text-slate-500 uppercase mb-8">Categories</h3>
                 <nav className="space-y-2">
                   {faqCategories.map((category, index) => (
                     <button
@@ -243,8 +243,8 @@ const faqSchema = {
                       onClick={() => scrollToCategory(index)}
                       className={`w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-4 ${
                         activeCategory === index 
-                          ? 'bg-white/5 text-brand-green' 
-                          : 'text-white/60 hover:text-white hover:bg-white/5'
+                          ? 'bg-brand-green/10 text-brand-green font-semibold' 
+                          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                       }`}
                     >
                       <span className={`font-mono text-sm ${activeCategory === index ? 'opacity-100' : 'opacity-40'}`}>
@@ -261,9 +261,9 @@ const faqSchema = {
             <div className="lg:col-span-8 space-y-16 md:space-y-24">
               {faqCategories.map((category, catIndex) => (
                 <div key={catIndex} id={`category-${catIndex}`} className="scroll-mt-32">
-                  <div className="flex items-baseline gap-4 mb-6 sm:mb-8 border-b border-white/10 pb-4">
+                  <div className="flex items-baseline gap-4 mb-6 sm:mb-8 border-b border-slate-200 pb-4">
                     <span className="text-2xl sm:text-3xl font-mono text-brand-green font-light">0{catIndex + 1}</span>
-                    <h2 className="text-2xl sm:text-3xl font-light text-white">{category.title}</h2>
+                    <h2 className="text-2xl sm:text-3xl font-light text-slate-900">{category.title}</h2>
                   </div>
                   
                   <div className="space-y-2 mb-8">
@@ -274,16 +274,16 @@ const faqSchema = {
                       return (
                         <div 
                           key={faqIndex} 
-                          className="border-b border-white/10 group"
+                          className="border-b border-slate-200 group"
                         >
                           <button
                             className="w-full py-4 sm:py-6 text-left flex justify-between items-center focus:outline-none"
                             onClick={() => setOpenId(isOpen ? null : id)}
                           >
-                            <span className={`text-lg sm:text-xl font-light transition-colors pr-4 sm:pr-8 ${isOpen ? 'text-brand-green' : 'text-white group-hover:text-brand-green'}`}>
+                            <span className={`text-lg sm:text-xl font-light transition-colors pr-4 sm:pr-8 ${isOpen ? 'text-brand-green' : 'text-slate-900 group-hover:text-brand-green'}`}>
                               {faq.question}
                             </span>
-                            <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-colors ${isOpen ? 'border-brand-green bg-brand-green/10 text-brand-green' : 'border-white/20 text-white/40 group-hover:border-brand-green group-hover:text-brand-green'}`}>
+                            <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-colors ${isOpen ? 'border-brand-green bg-brand-green/10 text-brand-green' : 'border-slate-300 text-slate-500 group-hover:border-brand-green group-hover:text-brand-green'}`}>
                               {isOpen ? (
                                 <ChevronUp className="w-4 h-4" />
                               ) : (
@@ -297,29 +297,29 @@ const faqSchema = {
                               isOpen ? 'max-h-[1000px] opacity-100 pb-6 sm:pb-8' : 'max-h-0 opacity-0'
                             }`}
                           >
-                            <p className="text-white/60 font-light leading-relaxed text-base sm:text-lg" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                            <p className="text-slate-700 font-light leading-relaxed text-base sm:text-lg" dangerouslySetInnerHTML={{ __html: faq.answer }} />
                             
                             {/* Callouts */}
                             {faq.callout && (
                               <div className={`mt-4 sm:mt-6 p-4 sm:p-5 rounded-r-lg border-l-2 flex gap-3 sm:gap-4 items-start ${
                                 faq.callout.type === 'pro-tip' 
                                   ? 'bg-brand-green/10 border-brand-green' 
-                                  : 'bg-white/5 border-white/30'
+                                  : 'bg-slate-50 border-slate-300'
                               }`}>
                                 {faq.callout.type === 'pro-tip' ? (
                                   <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-brand-green shrink-0 mt-0.5" />
                                 ) : (
-                                  <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white/60 shrink-0 mt-0.5" />
+                                  <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-slate-500 shrink-0 mt-0.5" />
                                 )}
                                 <div>
                                   <strong className={`block font-medium mb-1 text-sm sm:text-base ${
-                                    faq.callout.type === 'pro-tip' ? 'text-brand-green' : 'text-white/80'
+                                    faq.callout.type === 'pro-tip' ? 'text-brand-green' : 'text-slate-900'
                                   }`}>
                                     {faq.callout.type === 'pro-tip' ? 'Pro-Tip: ' : 'Liability Note: '}
                                     {faq.callout.title}
                                   </strong>
                                   <p className={`font-light text-sm sm:text-base leading-relaxed ${
-                                    faq.callout.type === 'pro-tip' ? 'text-brand-green/80' : 'text-white/60'
+                                    faq.callout.type === 'pro-tip' ? 'text-brand-green-dark' : 'text-slate-700'
                                   }`}>
                                     {faq.callout.content}
                                   </p>
@@ -356,7 +356,7 @@ const faqSchema = {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             
             {/* Column 1 (Formerly Column 2): Contact Form */}
-            <div className="bg-brand-black p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
+            <div className="bg-brand-dark p-8 md:p-10 border border-white/10 shadow-xl rounded-2xl flex flex-col justify-center">
               <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
               <LeadQuoteForm
                 variant="embedded"

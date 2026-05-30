@@ -149,7 +149,7 @@ export default function Home() {
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/60 to-brand-dark" />
         </div>
         
         <div className="relative z-10 max-w-[90rem] w-full mx-auto px-4 sm:px-6 lg:px-8">
@@ -176,7 +176,7 @@ export default function Home() {
             </div>
 
             {/* Right Column: Contact Form */}
-            <div className="bg-brand-black/95 backdrop-blur-sm p-6 sm:p-8 md:p-10 border border-white/10 shadow-2xl rounded-2xl w-full max-w-xl mx-auto lg:ml-auto lg:mr-0">
+            <div className="bg-brand-dark p-6 sm:p-8 md:p-10 border border-white/10 shadow-2xl rounded-2xl w-full max-w-xl mx-auto lg:ml-auto lg:mr-0">
               <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
               <LeadQuoteForm
                 variant="embedded"
@@ -204,7 +204,7 @@ export default function Home() {
             {/* Mobile Accordion */}
             <div className="lg:hidden space-y-4">
               {useCases.map((useCase, index) => (
-                <div key={index} className="bg-brand-black/50 border border-white/10 rounded-2xl overflow-hidden">
+                <div key={index} className="bg-black/20 border border-white/10 rounded-2xl overflow-hidden">
                   <button
                     onClick={() => setActiveUseCase(activeUseCase === index ? -1 : index)}
                     className={`w-full text-left px-5 py-4 flex items-center justify-between ${activeUseCase === index ? 'bg-brand-green text-brand-black' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
@@ -220,7 +220,7 @@ export default function Home() {
                     <ArrowRight className={`w-5 h-5 shrink-0 transition-transform ${activeUseCase === index ? 'rotate-90 text-brand-black' : ''}`} />
                   </button>
                   {activeUseCase === index && (
-                    <div className="p-5 sm:p-6 bg-brand-black border-t border-white/10">
+                    <div className="p-5 sm:p-6 bg-brand-dark border-t border-white/10">
                       <img 
                         src={useCase.image} 
                         alt={useCase.title}
@@ -244,7 +244,7 @@ export default function Home() {
                   className={`w-full text-left px-6 py-5 rounded-2xl transition-all flex items-center justify-between group ${
                     activeUseCase === index 
                       ? 'bg-brand-green text-brand-black shadow-lg shadow-brand-green/20' 
-                      : 'bg-brand-black/50 text-white/70 hover:bg-white/5 hover:text-white border border-white/5'
+                      : 'bg-black/20 text-white/70 hover:bg-white/5 hover:text-white border border-white/5'
                   }`}
                 >
                   <div className="flex items-center gap-4">
@@ -263,15 +263,15 @@ export default function Home() {
             {/* Desktop Dynamic Display */}
             <div className="hidden lg:block lg:col-span-7">
               <div className="sticky top-32">
-                <div className="bg-brand-black rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+                <div className="bg-brand-dark rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
                   <div className="aspect-[16/9] relative overflow-hidden">
                     <img 
                       src={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} 
                       alt={useCases[activeUseCase === -1 ? 0 : activeUseCase].title}
                       className="w-full h-full object-cover opacity-100 transition-opacity grayscale-35 duration-500"
                       key={useCases[activeUseCase === -1 ? 0 : activeUseCase].image}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-transparent"></div>
+                      />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent"></div>
                   </div>
                   <div className="p-8 md:p-12 relative -mt-20 z-10">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-green text-brand-black mb-6 shadow-xl">
@@ -295,12 +295,12 @@ export default function Home() {
       <section className="py-24 bg-brand-black border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-white mb-4">Our Core Services</h2>
+            <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-4">Our Core Services</h2>
             <GeoDirectAnswer
               align="center"
               question="What core land surveying services does Tantalus Geomatics offer from project conception through completion?"
             >
-              <p className="text-lg text-white/60 max-w-2xl mx-auto font-light">
+              <p className="text-lg text-slate-700 max-w-2xl mx-auto font-light">
                 Supporting your projects from conception to completion.
               </p>
             </GeoDirectAnswer>
@@ -337,8 +337,8 @@ export default function Home() {
                 <div className="w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-medium text-white mb-4 group-hover:text-brand-green transition-colors">{service.title}</h3>
-                <p className="text-white/60 mb-8 font-light">
+                <h3 className="text-xl font-medium text-slate-900 mb-4 group-hover:text-brand-green transition-colors">{service.title}</h3>
+                <p className="text-slate-700 mb-8 font-light">
                   {service.description}
                 </p>
                 <div className="text-brand-green font-medium flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
@@ -360,33 +360,33 @@ export default function Home() {
                 <span className="text-brand-green font-medium">British Columbia</span>
               </h2>
               <GeoDirectAnswer question="Why should you engage a commissioned British Columbia Land Surveyor to protect your property rights?">
-                <p className="text-base sm:text-lg text-white/70 mb-8 font-light leading-relaxed">
+                <p className="text-base sm:text-lg text-slate-700 mb-8 font-light leading-relaxed">
                   Protect your property rights by engaging a commissioned British Columbia Land Surveyor. This ensures your project meets rigorous technical standards and carries the legal authority necessary for municipal and provincial compliance.
                 </p>
               </GeoDirectAnswer>
               <ul className="space-y-6 mb-8">
-                <li className="flex items-start gap-3 text-white/80 font-light">
+                <li className="flex items-start gap-3 text-slate-700 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-white font-medium">Legal Boundary Authority:</strong> Only a licensed Land Surveyor has the legal authority to define property lines and set permanent boundary markers. Non-licensed individuals are not legally permitted to verify property limits, and their work lacks standing in the event of a boundary dispute or encroachment claim.
+                    <strong className="text-slate-900 font-medium">Legal Boundary Authority:</strong> Only a licensed Land Surveyor has the legal authority to define property lines and set permanent boundary markers. Non-licensed individuals are not legally permitted to verify property limits, and their work lacks standing in the event of a boundary dispute or encroachment claim.
                   </div>
                 </li>
-                <li className="flex items-start gap-3 text-white/80 font-light">
+                <li className="flex items-start gap-3 text-slate-700 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-white font-medium">Professional Indemnity & Accountability:</strong> Licensed surveyors are governed by a strict code of professional ethics and carry mandatory professional liability insurance. This oversight provides a layer of protection for your investment that non-licensed service providers cannot offer.
+                    <strong className="text-slate-900 font-medium">Professional Indemnity & Accountability:</strong> Licensed surveyors are governed by a strict code of professional ethics and carry mandatory professional liability insurance. This oversight provides a layer of protection for your investment that non-licensed service providers cannot offer.
                   </div>
                 </li>
-                <li className="flex items-start gap-3 text-white/80 font-light">
+                <li className="flex items-start gap-3 text-slate-700 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-white font-medium">Regulatory Acceptance:</strong> Municipalities, financial institutions, and the Land Title Office only accept survey plans that carry the official seal of a BCLS. Using an unlicensed provider often results in rejected permit applications and significant delays when legal documentation is required.
+                    <strong className="text-slate-900 font-medium">Regulatory Acceptance:</strong> Municipalities, financial institutions, and the Land Title Office only accept survey plans that carry the official seal of a BCLS. Using an unlicensed provider often results in rejected permit applications and significant delays when legal documentation is required.
                   </div>
                 </li>
               </ul>
               <Link
                 to="/about/"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/20 text-white font-medium hover:bg-white/10 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-brand-green text-slate-900 font-medium hover:bg-brand-green/10 transition-colors"
               >
                 About Our Team
               </Link>
