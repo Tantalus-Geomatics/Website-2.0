@@ -261,62 +261,34 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      {/* Footer */}
-      <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8">
-        {/* Textual Header Row */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+     {/* Footer */}
+     <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-white font-medium mb-4">Contact</h3>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-3">
-                <Phone size={16} className="text-brand-green" />
-                <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={16} className="text-brand-green" />
-                <a href="mailto:contact@tantalusgeomatics.com" className="hover:text-white transition-colors">contact@tantalusgeomatics.com</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Brand/ABCLS Info */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img 
-                src="/tantalus-logo.webp" 
-                alt="Tantalus Geomatics Logo" 
-                className="h-8 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                }}
-              />
-              <Mountain size={24} className="text-white hidden" />
-              <div className="flex flex-col">
-                <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics </span>
-                <span className="text-xs font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
+          {/* Main 2-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-12">
+            
+            {/* Left Column: Map Heading, Contact Info, and Socials */}
+            <div className="flex flex-col justify-between h-full space-y-6">
+              <div>
+                <h3 className="text-white font-medium flex items-center gap-2 text-lg sm:text-xl mb-4">
+                  <MapPin size={18} className="text-brand-green" /> 
+                  Service Area Map
+                </h3>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-center gap-3">
+                    <Phone size={16} className="text-brand-green" />
+                    <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Mail size={16} className="text-brand-green" />
+                    <a href="mailto:contact@tantalusgeomatics.com" className="hover:text-white transition-colors">contact@tantalusgeomatics.com</a>
+                  </li>
+                </ul>
               </div>
-            </div>
-            <p className="text-sm text-white/60 mb-4">
-              Professional Land Surveying throughout the Sea to Sky corridor.
-            </p>
-            <div className="mt-6 flex flex-col items-start gap-3">
-              <p className="text-xs text-white/50 leading-relaxed">
-                Tantalus Geomatics Land Surveying Ltd is a proud member of the Association of BC Land Surveyors.
-              </p>
-              <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-2/3 lg:w-full transition-transform hover:scale-105">
-                <div className="bg-white p-2 rounded-sm w-full">
-                  <img 
-                    src="/images/abcls-logo-horizontal.svg" 
-                    alt="Association of BC Land Surveyors Logo" 
-                    className="w-full object-contain opacity-100"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </a>
-              <div className="flex items-center gap-4 mt-4">
+              
+              {/* Social Links placed directly underneath contact details */}
+              <div className="flex items-center gap-4 pt-2">
                 <a href="https://www.linkedin.com/company/tantalus-geomatics" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
                   <Linkedin className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
                 </a>
@@ -325,16 +297,47 @@ export default function Layout() {
                 </a>
               </div>
             </div>
+
+            {/* Right Column: Branding / ABCLS Info */}
+            <div className="flex flex-col justify-between h-full space-y-4">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <img 
+                    src="/tantalus-logo.webp" 
+                    alt="Tantalus Geomatics Logo" 
+                    className="h-8 w-auto object-contain"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
+                  <Mountain size={24} className="text-white hidden" />
+                  <div className="flex flex-col">
+                    <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics</span>
+                    <span className="text-xs font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
+                  </div>
+                </div>
+                <p className="text-sm text-white/60 mb-2">
+                  Professional Land Surveying throughout the Sea to Sky corridor.
+                </p>
+                <p className="text-xs text-white/50 leading-relaxed max-w-sm">
+                  Tantalus Geomatics Land Surveying Ltd is a proud member of the Association of BC Land Surveyors.
+                </p>
+              </div>
+              
+              <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-2/3 lg:w-3/4 transition-transform hover:scale-[1.02] block pt-2">
+                <div className="bg-white p-2 rounded-sm w-full">
+                  <img 
+                    src="/images/abcls-logo-horizontal.svg" 
+                    alt="Association of BC Land Surveyors Logo" 
+                    className="w-full h-auto object-contain opacity-100"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </a>
+            </div>
+
           </div>
-
-        </div>
-
-        {/* Map Section Title */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-          <h3 className="text-white font-medium flex items-center gap-2 text-lg sm:text-xl">
-            <MapPin size={18} className="text-brand-green"/> 
-            Service Area Map
-          </h3>
         </div>
 
         {/* Full-width Map Container */}
@@ -363,7 +366,6 @@ export default function Layout() {
                     options={polygonOptions} 
                   />
                   
-                  {/* Render scaled-down pins for each service location */}
                   {serviceLocations.map((loc, index) => (
                     <MarkerF
                       key={index}
