@@ -261,46 +261,17 @@ export default function Layout() {
         <Outlet />
       </main>
 
-     {/* Footer */}
-     <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8">
+      {/* Footer */}
+      <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Main 2-Column Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-12">
+          {/* Main Balanced 2-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch mb-12">
             
-            {/* Left Column: Map Heading, Contact Info, and Socials */}
-            <div className="flex flex-col justify-between h-full space-y-6">
+            {/* Left Column: Branding, Contact Details, and Social Links */}
+            <div className="flex flex-col justify-between space-y-6">
               <div>
-                <h3 className="text-white font-medium flex items-center gap-2 text-lg sm:text-xl mb-4">
-                  <MapPin size={18} className="text-brand-green" /> 
-                  Service Area Map
-                </h3>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-center gap-3">
-                    <Phone size={16} className="text-brand-green" />
-                    <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Mail size={16} className="text-brand-green" />
-                    <a href="mailto:contact@tantalusgeomatics.com" className="hover:text-white transition-colors">contact@tantalusgeomatics.com</a>
-                  </li>
-                </ul>
-              </div>
-              
-              {/* Social Links placed directly underneath contact details */}
-              <div className="flex items-center gap-4 pt-2">
-                <a href="https://www.linkedin.com/company/tantalus-geomatics" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                  <Linkedin className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                </a>
-                <a href="https://github.com/Tantalus-Geomatics" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                  <Github className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Branding / ABCLS Info */}
-            <div className="flex flex-col justify-between h-full space-y-4">
-              <div>
+                {/* Branding elements (Logo, Title, Subtitle) header block */}
                 <div className="flex items-center gap-2 mb-4">
                   <img 
                     src="/tantalus-logo.webp" 
@@ -317,14 +288,46 @@ export default function Layout() {
                     <span className="text-xs font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
                   </div>
                 </div>
-                <p className="text-sm text-white/60 mb-2">
+                
+                {/* Company Tagline */}
+                <p className="text-sm text-white/60 mb-6">
                   Professional Land Surveying throughout the Sea to Sky corridor.
                 </p>
-                <p className="text-xs text-white/50 leading-relaxed max-w-sm">
+
+                {/* Contact Information */}
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-center gap-3">
+                    <Phone size={16} className="text-brand-green" />
+                    <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Mail size={16} className="text-brand-green" />
+                    <a href="mailto:contact@tantalusgeomatics.com" className="hover:text-white transition-colors">contact@tantalusgeomatics.com</a>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Social Links matching the exact bottom alignment of the right column */}
+              <div className="flex items-center gap-4 pt-2">
+                <a href="https://www.linkedin.com/company/tantalus-geomatics" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                  <Linkedin className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                </a>
+                <a href="https://github.com/Tantalus-Geomatics" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                  <Github className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: ABCLS Affiliation Information */}
+            <div className="flex flex-col justify-between space-y-6 lg:pl-6">
+              <div>
+                <h3 className="text-white font-medium text-lg mb-4">Professional Affiliation</h3>
+                <p className="text-sm text-white/60 leading-relaxed">
                   Tantalus Geomatics Land Surveying Ltd is a proud member of the Association of BC Land Surveyors.
                 </p>
               </div>
               
+              {/* ABCLS Logo block calibrated to level-align vertically with the left column social row */}
               <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-2/3 lg:w-3/4 transition-transform hover:scale-[1.02] block pt-2">
                 <div className="bg-white p-2 rounded-sm w-full">
                   <img 
