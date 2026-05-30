@@ -46,8 +46,7 @@ const smallPinIcon = {
 // Google Maps Configuration
 const mapContainerStyle = {
   width: '100%',
-  height: '100%', // Fills the grid container naturally
-  minHeight: '450px' // Fallback for mobile stacking
+  height: '550px' // Slightly increased from 450px to emphasize the widescreen applet view
 };
 
 const mapCenter = {
@@ -264,127 +263,125 @@ export default function Layout() {
 
       {/* Footer */}
       <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8">
-        {/* Adjusted to a 3-column grid layout */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 mb-12">
+        {/* Textual Header Row */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
           
-          {/* Column 1: Contact Info and Brand Identity */}
-          <div className="lg:col-span-1 flex flex-col gap-10">
-            
-            {/* Contact Info (Moved Up) */}
-            <div>
-              <h3 className="text-white font-medium mb-4">Contact</h3>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-center gap-3">
-                  <Phone size={16} className="text-brand-green" />
-                  <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Mail size={16} className="text-brand-green" />
-                  <a href="mailto:contact@tantalusgeomatics.com" className="hover:text-white transition-colors">contact@tantalusgeomatics.com</a>
-                </li>
-              </ul>
-            </div>
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-white font-medium mb-4">Contact</h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-3">
+                <Phone size={16} className="text-brand-green" />
+                <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={16} className="text-brand-green" />
+                <a href="mailto:contact@tantalusgeomatics.com" className="hover:text-white transition-colors">contact@tantalusgeomatics.com</a>
+              </li>
+            </ul>
+          </div>
 
-            {/* Brand/ABCLS Info (Moved Down) */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <img 
-                  src="/tantalus-logo.webp" 
-                  alt="Tantalus Geomatics Logo" 
-                  className="h-8 w-auto object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                  }}
-                />
-                <Mountain size={24} className="text-white hidden" />
-                <div className="flex flex-col">
-                  <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics </span>
-                  <span className="text-xs font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
-                </div>
+          {/* Brand/ABCLS Info */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <img 
+                src="/tantalus-logo.webp" 
+                alt="Tantalus Geomatics Logo" 
+                className="h-8 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <Mountain size={24} className="text-white hidden" />
+              <div className="flex flex-col">
+                <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics </span>
+                <span className="text-xs font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
               </div>
-              <p className="text-sm text-white/60 mb-4">
-                Professional Land Surveying throughout the Sea to Sky corridor.
+            </div>
+            <p className="text-sm text-white/60 mb-4">
+              Professional Land Surveying throughout the Sea to Sky corridor.
+            </p>
+            <div className="mt-6 flex flex-col items-start gap-3">
+              <p className="text-xs text-white/50 leading-relaxed">
+                Tantalus Geomatics Land Surveying Ltd is a proud member of the Association of BC Land Surveyors.
               </p>
-              <div className="mt-6 flex flex-col items-start gap-3">
-                <p className="text-xs text-white/50 leading-relaxed">
-                  Tantalus Geomatics Land Surveying Ltd is a proud member of the Association of BC Land Surveyors.
-                </p>
-                <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-2/3 lg:w-full transition-transform hover:scale-105">
-                  <div className="bg-white p-2 rounded-sm w-full">
-                    <img 
-                      src="/images/abcls-logo-horizontal.svg" 
-                      alt="Association of BC Land Surveyors Logo" 
-                      className="w-full object-contain opacity-100"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                </a>
-                <div className="flex items-center gap-4 mt-4">
-                  <a href="https://www.linkedin.com/company/tantalus-geomatics" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                    <Linkedin className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                  </a>
-                  <a href="https://github.com/Tantalus-Geomatics" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                    <Github className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                  </a>
+              <a href="https://www.abcls.ca/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-2/3 lg:w-full transition-transform hover:scale-105">
+                <div className="bg-white p-2 rounded-sm w-full">
+                  <img 
+                    src="/images/abcls-logo-horizontal.svg" 
+                    alt="Association of BC Land Surveyors Logo" 
+                    className="w-full object-contain opacity-100"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
+              </a>
+              <div className="flex items-center gap-4 mt-4">
+                <a href="https://www.linkedin.com/company/tantalus-geomatics" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                  <Linkedin className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                </a>
+                <a href="https://github.com/Tantalus-Geomatics" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                  <Github className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                </a>
               </div>
             </div>
-
           </div>
 
-          {/* Column 2 & 3: Interactive Google Map Applet (Expanded horizontally and stretched vertically) */}
-          <div className="lg:col-span-2 flex flex-col h-full">
-            <h3 className="text-white font-medium mb-4 flex items-center gap-2">
-              <MapPin size={18} className="text-brand-green"/> 
-              Service Area Map
-            </h3>
-            
-            <div className="flex-grow rounded-md overflow-hidden border border-white/20 relative z-0">
-              <ClientOnly 
-                fallback={
-                  <div className="w-full h-full min-h-[450px] bg-brand-dark/50 animate-pulse flex flex-col items-center justify-center gap-4">
-                    <MapPin size={32} className="text-brand-green/50 animate-bounce" />
-                    <span className="text-white/50 font-light tracking-wide">Loading Interactive Map...</span>
-                  </div>
-                }
-              >
-                <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string}>
-                  <GoogleMap
-                    mapContainerStyle={mapContainerStyle}
-                    center={mapCenter}
-                    zoom={8}
-                    options={{
-                      disableDefaultUI: true,
-                      zoomControl: true,
-                    }}
-                  >
-                    <Polygon 
-                      paths={serviceAreaPaths} 
-                      options={polygonOptions} 
+        </div>
+
+        {/* Map Section Title */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+          <h3 className="text-white font-medium flex items-center gap-2 text-lg sm:text-xl">
+            <MapPin size={18} className="text-brand-green"/> 
+            Service Area Map
+          </h3>
+        </div>
+
+        {/* Full-width Map Container */}
+        <div className="w-full relative left-0 right-0 z-0 mb-12">
+          <div className="w-full overflow-hidden relative z-0">
+            <ClientOnly 
+              fallback={
+                <div className="w-full h-full min-h-[550px] bg-brand-dark/50 animate-pulse flex flex-col items-center justify-center gap-4">
+                  <MapPin size={32} className="text-brand-green/50 animate-bounce" />
+                  <span className="text-white/50 font-light tracking-wide">Loading Interactive Map...</span>
+                </div>
+              }
+            >
+              <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string}>
+                <GoogleMap
+                  mapContainerStyle={mapContainerStyle}
+                  center={mapCenter}
+                  zoom={8}
+                  options={{
+                    disableDefaultUI: true,
+                    zoomControl: true,
+                  }}
+                >
+                  <Polygon 
+                    paths={serviceAreaPaths} 
+                    options={polygonOptions} 
+                  />
+                  
+                  {/* Render scaled-down pins for each service location */}
+                  {serviceLocations.map((loc, index) => (
+                    <MarkerF
+                      key={index}
+                      position={{ lat: loc.lat, lng: loc.lng }}
+                      icon={smallPinIcon}
+                      label={{
+                        text: loc.name,
+                        color: '#FFFFFF',
+                        fontSize: '11px',
+                        fontWeight: '600',
+                        className: 'mt-6 drop-shadow-md bg-black/50 px-1.5 py-0.5 rounded'
+                      }}
                     />
-                    
-                    {/* Render scaled-down pins for each service location */}
-                    {serviceLocations.map((loc, index) => (
-                      <MarkerF
-                        key={index}
-                        position={{ lat: loc.lat, lng: loc.lng }}
-                        icon={smallPinIcon}
-                        label={{
-                          text: loc.name,
-                          color: '#FFFFFF',
-                          fontSize: '11px',
-                          fontWeight: '600',
-                          className: 'mt-6 drop-shadow-md bg-black/50 px-1.5 py-0.5 rounded'
-                        }}
-                      />
-                    ))}
-                  </GoogleMap>
-                </LoadScript>
-              </ClientOnly>
-            </div>
+                  ))}
+                </GoogleMap>
+              </LoadScript>
+            </ClientOnly>
           </div>
-
         </div>
 
         {/* Full-width Copyright Line */}
