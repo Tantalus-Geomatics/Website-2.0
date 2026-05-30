@@ -16,46 +16,127 @@ body {
   color: #0f172a; /* slate-900 */
 }
 
-/* High-contrast light layout overrides for light canvas elements */
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white"] {
+/* Override text-brand-black to be deep charcoal-black (#141414) instead of white,
+   since bg-brand-black is white but text-brand-black must be dark for contrast (e.g. on green buttons) */
+.text-brand-black {
+  color: #141414 !important;
+}
+
+/* ==========================================
+   1. STRUCTURAL CONTAINERS (bg-brand-dark)
+   ========================================== */
+
+/* When bg-brand-dark is used, the background must be deep charcoal-black (#141414) */
+[class*="bg-brand-dark"] {
+  background-color: #141414 !important;
+  color: #f8fafc; /* slate-50 */
+}
+
+/* Map text-white and its opacities to slate-50 and its opacities inside bg-brand-dark */
+[class*="bg-brand-dark"] [class*="text-white"] {
+  color: #f8fafc !important; /* slate-50 */
+}
+[class*="bg-brand-dark"] [class*="text-white/90"] {
+  color: rgba(248, 250, 252, 0.9) !important;
+}
+[class*="bg-brand-dark"] [class*="text-white/85"] {
+  color: rgba(248, 250, 252, 0.85) !important;
+}
+[class*="bg-brand-dark"] [class*="text-white/80"] {
+  color: rgba(248, 250, 252, 0.8) !important;
+}
+[class*="bg-brand-dark"] [class*="text-white/75"] {
+  color: rgba(248, 250, 252, 0.75) !important;
+}
+[class*="bg-brand-dark"] [class*="text-white/70"] {
+  color: rgba(248, 250, 252, 0.7) !important;
+}
+[class*="bg-brand-dark"] [class*="text-white/65"] {
+  color: rgba(248, 250, 252, 0.65) !important;
+}
+[class*="bg-brand-dark"] [class*="text-white/60"] {
+  color: rgba(248, 250, 252, 0.6) !important;
+}
+[class*="bg-brand-dark"] [class*="text-white/55"] {
+  color: rgba(248, 250, 252, 0.55) !important;
+}
+[class*="bg-brand-dark"] [class*="text-white/50"] {
+  color: rgba(248, 250, 252, 0.5) !important;
+}
+
+
+/* ==========================================
+   2. LIGHT CANVAS ELEMENTS
+   (either not in bg-brand-dark, or inside a nested bg-brand-black/bg-white/bg-slate-50)
+   ========================================== */
+
+/* On a light canvas, text-white and its opacities must map to slate-900 and slate-700 for complete accessibility */
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white"],
+[class*="bg-brand-black"] [class*="text-white"],
+[class*="bg-white"] [class*="text-white"],
+[class*="bg-slate-50"] [class*="text-white"] {
   color: #0f172a !important; /* slate-900 */
 }
 
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white/90"],
 :not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/90"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white/85"],
 :not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/85"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white/80"],
 :not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/80"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white/75"],
 :not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/75"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white/70"],
 :not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/70"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white/65"],
 :not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/65"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white/60"],
 :not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/60"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white/55"],
 :not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/55"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="text-white/50"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/50"] {
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="text-white/50"],
+[class*="bg-brand-black"] [class*="text-white/90"],
+[class*="bg-brand-black"] [class*="text-white/85"],
+[class*="bg-brand-black"] [class*="text-white/80"],
+[class*="bg-brand-black"] [class*="text-white/75"],
+[class*="bg-brand-black"] [class*="text-white/70"],
+[class*="bg-brand-black"] [class*="text-white/65"],
+[class*="bg-brand-black"] [class*="text-white/60"],
+[class*="bg-brand-black"] [class*="text-white/55"],
+[class*="bg-brand-black"] [class*="text-white/50"],
+[class*="bg-white"] [class*="text-white/90"],
+[class*="bg-white"] [class*="text-white/85"],
+[class*="bg-white"] [class*="text-white/80"],
+[class*="bg-white"] [class*="text-white/75"],
+[class*="bg-white"] [class*="text-white/70"],
+[class*="bg-white"] [class*="text-white/65"],
+[class*="bg-white"] [class*="text-white/60"],
+[class*="bg-white"] [class*="text-white/55"],
+[class*="bg-white"] [class*="text-white/50"],
+[class*="bg-slate-50"] [class*="text-white/90"],
+[class*="bg-slate-50"] [class*="text-white/85"],
+[class*="bg-slate-50"] [class*="text-white/80"],
+[class*="bg-slate-50"] [class*="text-white/75"],
+[class*="bg-slate-50"] [class*="text-white/70"],
+[class*="bg-slate-50"] [class*="text-white/65"],
+[class*="bg-slate-50"] [class*="text-white/60"],
+[class*="bg-slate-50"] [class*="text-white/55"],
+[class*="bg-slate-50"] [class*="text-white/50"] {
   color: #334155 !important; /* slate-700 */
 }
 
 /* Subtle dark borders on light canvas */
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="border-white"],
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="border-white"] {
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="border-white"],
+[class*="bg-brand-black"] [class*="border-white"],
+[class*="bg-white"] [class*="border-white"],
+[class*="bg-slate-50"] [class*="border-white"] {
   border-color: #e2e8f0 !important; /* slate-200 */
 }
 
 /* Subtle dark hover backgrounds on light canvas */
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) > [class*="hover:bg-white"]:hover,
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="hover:bg-white"]:hover {
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) [class*="hover:bg-white"]:hover,
+[class*="bg-brand-black"] [class*="hover:bg-white"]:hover,
+[class*="bg-white"] [class*="hover:bg-white"]:hover,
+[class*="bg-slate-50"] [class*="hover:bg-white"]:hover {
   background-color: #f1f5f9 !important; /* slate-100 */
 }
 
 /* Subtle light background for cards/containers on light canvas */
-:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) .bg-brand-black\/50 {
+:not([class*="bg-brand-dark"]):not([class*="bg-brand-dark"] *) .bg-brand-black\/50,
+[class*="bg-brand-black"] .bg-brand-black\/50,
+[class*="bg-white"] .bg-brand-black\/50,
+[class*="bg-slate-50"] .bg-brand-black\/50 {
   background-color: #f8fafc !important; /* slate-50 */
 }
