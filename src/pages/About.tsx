@@ -211,8 +211,8 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             
             {/* Column 1 (Formerly Column 2): Contact Form */}
-            <div className="bg-stone-100 p-8 md:p-10 border-2 border-slate-200 shadow-xl rounded-2xl flex flex-col justify-center">
-              <h3 className="text-2xl font-light text-slate-900 mb-8">Request a Free Quote Today</h3>
+            <div className="bg-brand-dark p-8 md:p-10 border border-white/10 shadow-2xl rounded-2xl flex flex-col justify-center">
+              <h3 className="text-2xl font-light text-white mb-8">Request a Free Quote Today</h3>
               <LeadQuoteForm
                 variant="embedded"
                 formId="contact-form"

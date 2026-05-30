@@ -161,8 +161,8 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-stone-100 p-8 md:p-10 border-2 border-slate-200 shadow-xl rounded-2xl flex flex-col justify-center">
-              <h3 className="text-2xl font-light text-slate-900 mb-6">Request a Quote</h3>
+            <div className="bg-brand-dark p-8 md:p-10 border border-white/10 shadow-2xl rounded-2xl flex flex-col justify-center">
+              <h3 className="text-2xl font-light text-white mb-6">Request a Quote</h3>
               <LeadQuoteForm
                 variant="contact"
                 formId="contact-form"

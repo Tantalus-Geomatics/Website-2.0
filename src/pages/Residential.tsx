@@ -205,7 +205,7 @@ const residentialSchema = {
             </p>
           </GeoDirectAnswer>
 
-          <div className="bg-stone-100 p-8 md:p-10 border-2 border-slate-200 rounded-2xl shadow-xl">
+          <div className="bg-brand-dark p-8 md:p-10 border border-white/10 shadow-2xl rounded-2xl">
             <LeadQuoteForm
               variant="stacked-residential"
               formId="residential-quote-form"

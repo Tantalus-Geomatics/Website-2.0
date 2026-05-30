@@ -29,10 +29,10 @@ export interface LeadQuoteFormProps {
 }
 
 const embeddedInput =
-  'w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light rounded-md';
+  'w-full px-4 py-3 bg-brand-dark border border-white/20 text-white placeholder-white/40 focus:border-brand-green outline-none transition-all font-light rounded-md';
 
 const flatBlackInput =
-  'w-full px-4 py-3 bg-brand-black border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light';
+  'w-full px-4 py-3 bg-brand-dark border border-white/20 text-white placeholder-white/40 focus:border-brand-green outline-none transition-all font-light';
 
 function StatusBlock({ status }: { status: LeadQuoteFormProps['status'] }) {
   return (
@@ -89,7 +89,7 @@ function SubmitButton({
     <button
       type="submit"
       disabled={status.type === 'loading'}
-      className={`w-full py-4 bg-brand-green hover:bg-brand-green-light text-black font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed${rounded ? ' rounded-md' : ''}`}
+      className={`w-full py-4 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed${rounded ? ' rounded-md' : ''}`}
     >
       {status.type === 'loading' ? 'Sending...' : children}
     </button>
@@ -229,7 +229,7 @@ export default function LeadQuoteForm({
             className={
               isContact
                 ? `${flatBlackInput} resize-none`
-                : 'w-full px-4 py-3 bg-brand-dark border border-white/20 text-white focus:border-brand-green outline-none transition-all font-light resize-none rounded-md'
+                : 'w-full px-4 py-3 bg-brand-dark border border-white/20 text-white placeholder-white/40 focus:border-brand-green outline-none transition-all font-light resize-none rounded-md'
             }
             placeholder="Please provide details about your project location and requirements..."
             aria-required="true"
