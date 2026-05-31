@@ -103,56 +103,71 @@ try {
   process.exit(1);
 }
 
-// 3. Read the base MDX template file
-const templatePath = path.join(__dirname, '../src/content/base/services/topographic-surveys.mdx');
-console.log(`Reading base template from: ${templatePath}`);
+// 3. Read all base MDX template files
+const baseServicesDir = path.join(__dirname, '../src/content/base/services');
+console.log(`Scanning base services directory: ${baseServicesDir}`);
 
-let templateContent = '';
+let baseTemplates = [];
 try {
-  templateContent = fs.readFileSync(templatePath, 'utf8');
+  baseTemplates = fs.readdirSync(baseServicesDir)
+    .filter(file => file.endsWith('.mdx') || file.endsWith('.md'));
+  console.log(`Found ${baseTemplates.length} base service templates:`, baseTemplates);
 } catch (error) {
-  console.error('Error reading base template:', error.message);
+  console.error('Error scanning base services directory:', error.message);
   process.exit(1);
 }
 
-// 4. Loop through each location and generate the localized MDX file
-locations.forEach(locationSlug => {
-  console.log(`\nProcessing location: ${locationSlug}`);
-  
-  // Get mapping data for this location, or use a fallback
-  const data = LOCATION_MAPPING[locationSlug] || {
-    LOCATION_NAME: locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
-    LOCAL_AUTHORITY: `Municipality of ${locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`,
-    MUNICIPAL_LINK: 'https://example.com',
-    HERO_IMAGE: `/images/${locationSlug}-Property-Survey.webp`,
-    GEOGRAPHY_PARAGRAPH: `The geography of ${locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} presents unique environmental and geotechnical challenges. Tantalus Geomatics specializes in mapping these critical features, ensuring your project satisfies all local environmental and geotechnical review processes.`,
-    PARTNERSHIP_PARAGRAPH: `By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of ${locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}. We work closely with local builders, engineers, and planning staff to deliver high-precision digital terrain models and detailed CAD files.`
-  };
+// 4. Loop through each base template and each location to generate the localized MDX files
+baseTemplates.forEach(templateFile => {
+  const templatePath = path.join(baseServicesDir, templateFile);
+  console.log(`\nProcessing template: ${templateFile}`);
 
-  // Replace placeholders
-  let localizedContent = templateContent;
-  Object.entries(data).forEach(([key, value]) => {
-    const placeholder = new RegExp(`{{${key}}}`, 'g');
-    localizedContent = localizedContent.replace(placeholder, value);
-  });
-
-  // Define output directory and file path
-  const outputDir = path.join(__dirname, `../src/content/services/${locationSlug}`);
-  const outputFilePath = path.join(outputDir, 'topographic-surveys.mdx');
-
-  // Ensure output directory exists
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-    console.log(`Created directory: ${outputDir}`);
-  }
-
-  // Write the localized MDX file
+  let templateContent = '';
   try {
-    fs.writeFileSync(outputFilePath, localizedContent, 'utf8');
-    console.log(`Successfully generated: ${outputFilePath}`);
+    templateContent = fs.readFileSync(templatePath, 'utf8');
   } catch (error) {
-    console.error(`Error writing file for ${locationSlug}:`, error.message);
+    console.error(`Error reading base template ${templateFile}:`, error.message);
+    return;
   }
+
+  locations.forEach(locationSlug => {
+    console.log(`- Generating for location: ${locationSlug}`);
+    
+    // Get mapping data for this location, or use a fallback
+    const data = LOCATION_MAPPING[locationSlug] || {
+      LOCATION_NAME: locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+      LOCAL_AUTHORITY: `Municipality of ${locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`,
+      MUNICIPAL_LINK: 'https://example.com',
+      HERO_IMAGE: `/images/${locationSlug}-Property-Survey.webp`,
+      GEOGRAPHY_PARAGRAPH: `The geography of ${locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} presents unique environmental and geotechnical challenges. Tantalus Geomatics specializes in mapping these critical features, ensuring your project satisfies all local environmental and geotechnical review processes.`,
+      PARTNERSHIP_PARAGRAPH: `By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of ${locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}. We work closely with local builders, engineers, and planning staff to deliver high-precision digital terrain models and detailed CAD files.`
+    };
+
+    // Replace placeholders
+    let localizedContent = templateContent;
+    Object.entries(data).forEach(([key, value]) => {
+      const placeholder = new RegExp(`{{${key}}}`, 'g');
+      localizedContent = localizedContent.replace(placeholder, value);
+    });
+
+    // Define output directory and file path
+    const outputDir = path.join(__dirname, `../src/content/services/${locationSlug}`);
+    const outputFilePath = path.join(outputDir, templateFile);
+
+    // Ensure output directory exists
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+      console.log(`  Created directory: ${outputDir}`);
+    }
+
+    // Write the localized MDX file
+    try {
+      fs.writeFileSync(outputFilePath, localizedContent, 'utf8');
+      console.log(`  Successfully generated: ${outputFilePath}`);
+    } catch (error) {
+      console.error(`  Error writing file for ${locationSlug}:`, error.message);
+    }
+  });
 });
 
 console.log('\nContent generation complete!');
