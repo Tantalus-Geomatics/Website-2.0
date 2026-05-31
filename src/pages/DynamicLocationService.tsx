@@ -3,17 +3,14 @@ import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import HubTemplate from '../templates/HubTemplate';
 
-// Dynamically import all MDX files in the locations and services content directories
-const locationModules = import.meta.glob('../content/locations/*.mdx');
-const serviceModules = import.meta.glob('../content/services/*.mdx');
+// Dynamically import all unified localized MDX files nested under content/services/[location]/[service].mdx
+const localizedModules = import.meta.glob('../content/services/*/*.mdx');
 
 export default function DynamicLocationService() {
   const { locationSlug, serviceSlug } = useParams<{ locationSlug: string; serviceSlug: string }>();
   const [data, setData] = useState<{
-    LocationComponent: React.ComponentType<any> | null;
-    ServiceComponent: React.ComponentType<any> | null;
-    locationMeta: any;
-    serviceMeta: any;
+    Component: React.ComponentType<any>;
+    meta: any;
   } | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,26 +21,21 @@ export default function DynamicLocationService() {
       return;
     }
 
-    const locationKey = `../content/locations/${locationSlug}.mdx`;
-    const serviceKey = `../content/services/${serviceSlug}.mdx`;
+    // Target the specific nested location/service path pattern
+    const moduleKey = `../content/services/${locationSlug}/${serviceSlug}.mdx`;
 
-    if (locationKey in locationModules && serviceKey in serviceModules) {
+    if (moduleKey in localizedModules) {
       setLoading(true);
-      Promise.all([
-        (locationModules[locationKey] as () => Promise<any>)(),
-        (serviceModules[serviceKey] as () => Promise<any>)(),
-      ])
-        .then(([locationMod, serviceMod]) => {
+      (localizedModules[moduleKey] as () => Promise<any>)()
+        .then((mod) => {
           setData({
-            LocationComponent: locationMod.default,
-            ServiceComponent: serviceMod.default,
-            locationMeta: locationMod.frontmatter || locationMod.metadata || {},
-            serviceMeta: serviceMod.frontmatter || serviceMod.metadata || {},
+            Component: mod.default,
+            meta: mod.frontmatter || mod.metadata || {},
           });
           setLoading(false);
         })
         .catch((err) => {
-          console.error('Failed to load location or service MDX module:', err);
+          console.error('Failed to load localized MDX module:', err);
           setData(null);
           setLoading(false);
         });
@@ -63,7 +55,7 @@ export default function DynamicLocationService() {
     );
   }
 
-  if (!data || !data.LocationComponent || !data.ServiceComponent) {
+  if (!data || !data.Component) {
     return (
       <PageShell>
         <div className="min-h-screen flex flex-col items-center justify-center text-white bg-brand-black px-4">
@@ -77,17 +69,18 @@ export default function DynamicLocationService() {
     );
   }
 
-  const { LocationComponent, ServiceComponent, locationMeta, serviceMeta } = data;
+  const { Component, meta } = data;
 
-  const locationTitle = locationMeta.title || locationSlug?.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || '';
-  const serviceTitle = serviceMeta.title || serviceSlug?.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || '';
+  // Fallbacks for missing frontmatter titles
+  const locationTitle = meta.locationName || locationSlug?.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || '';
+  const serviceTitle = meta.title || serviceSlug?.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || '';
 
-  const title = `${serviceTitle} in ${locationTitle}`;
-  const description = serviceMeta.description || `Professional ${serviceTitle} services in ${locationTitle}, BC. Contact Tantalus Geomatics for a free quote.`;
+  const title = meta.title || `${serviceTitle} in ${locationTitle}`;
+  const description = meta.description || `Professional ${serviceTitle} services in ${locationTitle}, BC. Contact Tantalus Geomatics for a free quote.`;
 
-  const relatedServices = serviceMeta.relatedServices || locationMeta.relatedServices || [];
-  const relatedProjects = serviceMeta.relatedProjects || locationMeta.relatedProjects || [];
-  const relatedPosts = serviceMeta.relatedPosts || locationMeta.relatedPosts || [];
+  const relatedServices = meta.relatedServices || [];
+  const relatedProjects = meta.relatedProjects || [];
+  const relatedPosts = meta.relatedPosts || [];
 
   return (
     <Suspense fallback={
@@ -104,14 +97,9 @@ export default function DynamicLocationService() {
         relatedProjects={relatedProjects}
         relatedPosts={relatedPosts}
       >
-        <div className="space-y-12">
-          <div className="prose prose-slate max-w-none">
-            <LocationComponent />
-          </div>
-          <hr className="border-slate-200" />
-          <div className="prose prose-slate max-w-none">
-            <ServiceComponent />
-          </div>
+        <div className="prose prose-slate max-w-none">
+          {/* Render the single unified localized file contents */}
+          <Component />
         </div>
       </HubTemplate>
     </Suspense>
