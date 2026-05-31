@@ -12,74 +12,59 @@ const hostname = 'https://www.tantalusgeomatics.com';
 // 1. Read the key from the environment (GitHub Secret)
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY;
 
-function getSlugs(dirPath) {
-  const fullPath = toAbs(dirPath);
-  if (!fs.existsSync(fullPath)) {
-    return [];
-  }
-  return fs.readdirSync(fullPath)
-    .filter(file => file.endsWith('.mdx'))
-    .map(file => file.replace(/\.mdx$/, ''));
-}
-
+// 2. Dynamically discover routes based on your localized MDX content structure
 function getDynamicRoutes() {
-  const serviceSlugs = getSlugs('src/content/services');
-  const blogSlugs = getSlugs('src/content/blog');
-  const projectSlugs = getSlugs('src/content/projects');
-  const locationSlugs = getSlugs('src/content/locations');
+  // Start with your core static hubs and pages
+  const routes = [
+    '/', '/about/', '/services/', '/faq/', '/contact/'
+  ];
 
-  const routes = [];
+  const contentDir = toAbs('src/content');
+  
+  if (!fs.existsSync(contentDir)) {
+    console.warn(`⚠️ Content directory not found at ${contentDir}. Only static routes will be prerendered.`);
+    return routes;
+  }
 
-  // Services: /services/{slug}/
-  serviceSlugs.forEach(slug => {
-    routes.push(`/services/${slug}/`);
-  });
+  // Helper to scan a specific content category (e.g., 'services', 'blog', 'projects')
+  function scanCategory(categoryFolder, routePrefix) {
+    const categoryPath = path.join(contentDir, categoryFolder);
+    if (!fs.existsSync(categoryPath)) return;
 
-  // Blog: /insights/{slug}/
-  blogSlugs.forEach(slug => {
-    routes.push(`/insights/${slug}/`);
-  });
+    // Read location folders (squamish, whistler, pemberton, etc.)
+    const locations = fs.readdirSync(categoryPath, { withFileTypes: true })
+      .filter(dirent => dirent.isDirectory())
+      .map(dirent => dirent.name);
 
-  // Projects: /projects/{slug}/
-  projectSlugs.forEach(slug => {
-    routes.push(`/projects/${slug}/`);
-  });
+    for (const location of locations) {
+      const locationPath = path.join(categoryPath, location);
+      
+      // Read the actual MDX files inside the location folder
+      const files = fs.readdirSync(locationPath)
+        .filter(file => file.endsWith('.mdx') || file.endsWith('.md'));
 
-  // Localized Services: /{locationSlug}/services/{serviceSlug}/
-  locationSlugs.forEach(locationSlug => {
-    serviceSlugs.forEach(serviceSlug => {
-      routes.push(`/${locationSlug}/services/${serviceSlug}/`);
-    });
-  });
+      for (const file of files) {
+        const slug = file.replace(/\.(mdx|md)$/, '');
+        // Generates the localized route (e.g., /squamish/services/topographic-surveys/)
+        routes.push(`/${location}/${routePrefix}/${slug}/`);
+      }
+    }
+  }
 
-  // Localized Insights: /{locationSlug}/insights/{postSlug}/
-  locationSlugs.forEach(locationSlug => {
-    blogSlugs.forEach(postSlug => {
-      routes.push(`/${locationSlug}/insights/${postSlug}/`);
-    });
-  });
+  // Scan your content directories and map them to their URL prefixes
+  scanCategory('services', 'services');
+  scanCategory('blog', 'insights');     // Maps src/content/blog -> /location/insights/slug
+  scanCategory('projects', 'projects');
 
-  // Localized Projects: /{locationSlug}/projects/{projectSlug}/
-  locationSlugs.forEach(locationSlug => {
-    projectSlugs.forEach(projectSlug => {
-      routes.push(`/${locationSlug}/projects/${projectSlug}/`);
-    });
-  });
-
-  return routes;
+  // Filter out any potential duplicates just in case
+  return [...new Set(routes)];
 }
 
-const staticRoutes = [
-  '/', '/about/', '/services/', '/faq/', '/contact/', 
-  '/residential/', '/survey-pricing/', '/topographic-surveys/', 
-  '/sea-to-sky-property-line-and-boundary-staking/', 
-  '/surveys-and-title-insurance/', '/subdivision/'
-];
-
-const routesToPrerender = [...staticRoutes, ...getDynamicRoutes()];
+const routesToPrerender = getDynamicRoutes();
 
 async function generate() {
   console.log('🚀 Starting true static site generation pipeline...');
+  console.log(`📍 Found ${routesToPrerender.length} routes to prerender.`);
 
   // 1. Create a safe shell so we don't cause duplicate tags
   fs.copyFileSync(toAbs('dist/index.html'), toAbs('dist/shell.html'));
@@ -127,7 +112,7 @@ async function generate() {
         
         await page.goto(`http://localhost:3000${url}`, { waitUntil: 'networkidle0' });
 
-        // ---> THE MAGIC FIX: Wait for React to physically paint the DOM <---
+        // Wait for React to physically paint the DOM
         try {
           await page.waitForSelector('#root > div', { timeout: 10000 });
         } catch (e) {
@@ -150,7 +135,7 @@ async function generate() {
         // Grab the FULLY RENDERED HTML
         const html = await page.content();
 
-        // Save the HTML
+        // Save the HTML (Ensure directories are created for localized routes)
         const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
         const filePath = toAbs(`dist/${fileName}`);
         
@@ -174,7 +159,7 @@ async function generate() {
 
     sitemap += `</urlset>`;
     fs.writeFileSync(toAbs('dist/sitemap.xml'), sitemap);
-    console.log(`🗺️ Sitemap generated successfully.`);
+    console.log(`🗺️ Sitemap generated successfully with ${routesToPrerender.length} URLs.`);
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
