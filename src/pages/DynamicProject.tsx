@@ -3,11 +3,12 @@ import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import ProjectTemplate from '../templates/ProjectTemplate';
 
-// Dynamically import all MDX files in the projects content directory
-const modules = import.meta.glob('../content/projects/*.mdx');
+// Dynamically import all MDX files in the projects content directory recursively
+const modules = import.meta.glob('../content/projects/**/*.mdx');
 
 export default function DynamicProject() {
-  const { projectSlug } = useParams<{ projectSlug: string }>();
+  const params = useParams<{ locationSlug?: string; projectSlug: string }>();
+  const { locationSlug, projectSlug } = params;
   const [moduleData, setModuleData] = useState<{
     Component: React.ComponentType<any> | null;
     frontmatter?: any;
@@ -16,13 +17,16 @@ export default function DynamicProject() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const { locationSlug, projectSlug } = params;
     if (!projectSlug) {
       setModuleData(null);
       setLoading(false);
       return;
     }
 
-    const key = `../content/projects/${projectSlug}.mdx`;
+    const key = locationSlug
+      ? `../content/projects/${locationSlug}/${projectSlug}.mdx`
+      : `../content/projects/${projectSlug}.mdx`;
     if (key in modules) {
       setLoading(true);
       // Call the glob function to import the MDX module dynamically
@@ -44,7 +48,7 @@ export default function DynamicProject() {
       setModuleData(null);
       setLoading(false);
     }
-  }, [projectSlug]);
+  }, [locationSlug, projectSlug]);
 
   if (loading) {
     return (

@@ -3,11 +3,12 @@ import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import PostTemplate from '../templates/PostTemplate';
 
-// Dynamically import all MDX files in the blog content directory
-const modules = import.meta.glob('../content/blog/*.mdx');
+// Dynamically import all MDX files in the blog content directory recursively
+const modules = import.meta.glob('../content/blog/**/*.mdx');
 
 export default function DynamicInsight() {
-  const { postSlug } = useParams<{ postSlug: string }>();
+  const params = useParams<{ locationSlug?: string; postSlug: string }>();
+  const { locationSlug, postSlug } = params;
   const [moduleData, setModuleData] = useState<{
     Component: React.ComponentType<any> | null;
     frontmatter?: any;
@@ -16,13 +17,16 @@ export default function DynamicInsight() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const { locationSlug, postSlug } = params;
     if (!postSlug) {
       setModuleData(null);
       setLoading(false);
       return;
     }
 
-    const key = `../content/blog/${postSlug}.mdx`;
+    const key = locationSlug
+      ? `../content/blog/${locationSlug}/${postSlug}.mdx`
+      : `../content/blog/${postSlug}.mdx`;
     if (key in modules) {
       setLoading(true);
       // Call the glob function to import the MDX module dynamically
@@ -44,7 +48,7 @@ export default function DynamicInsight() {
       setModuleData(null);
       setLoading(false);
     }
-  }, [postSlug]);
+  }, [locationSlug, postSlug]);
 
   if (loading) {
     return (
