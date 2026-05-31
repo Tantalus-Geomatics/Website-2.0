@@ -1,0 +1,31 @@
+---
+title: 'Topographic Surveys in {{LOCATION_NAME}}'
+description: 'BC Land Surveyor certified topographic surveys for building permits in the {{LOCAL_AUTHORITY}}.'
+locationName: '{{LOCATION_NAME}}'
+heroImage: '{{HERO_IMAGE}}'
+localAuthorityName: '{{LOCAL_AUTHORITY}}'
+municipalLink: '{{MUNICIPAL_LINK}}'
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  title: 'Topographic Surveys in {{LOCATION_NAME}}',
+  description: 'BC Land Surveyor certified topographic surveys for building permits in the {{LOCAL_AUTHORITY}}.',
+  locationName: '{{LOCATION_NAME}}',
+  heroImage: '{{HERO_IMAGE}}',
+  localAuthorityName: '{{LOCAL_AUTHORITY}}',
+  municipalLink: '{{MUNICIPAL_LINK}}'
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+Navigating the unique terrain and regulatory landscape of the {{LOCAL_AUTHORITY}} requires precise, reliable spatial data. Whether you are planning a residential build in {{LOCATION_NAME}}, a commercial development, or a renovation, a certified topographic survey is the essential first step. The {{LOCAL_AUTHORITY}} enforces strict zoning bylaws and development guidelines, particularly regarding building heights, site coverage, and setbacks. Our BC Land Surveyor (BCLS) certified topographic surveys provide the exact elevation data, boundary lines, and existing site features needed to secure building permits and ensure your design complies fully with local municipal requirements.
+
+{{GEOGRAPHY_PARAGRAPH}}
+
+{{PARTNERSHIP_PARAGRAPH}}

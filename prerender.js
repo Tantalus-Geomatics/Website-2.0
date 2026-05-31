@@ -12,12 +12,71 @@ const hostname = 'https://www.tantalusgeomatics.com';
 // 1. Read the key from the environment (GitHub Secret)
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY;
 
-const routesToPrerender = [
+function getSlugs(dirPath) {
+  const fullPath = toAbs(dirPath);
+  if (!fs.existsSync(fullPath)) {
+    return [];
+  }
+  return fs.readdirSync(fullPath)
+    .filter(file => file.endsWith('.mdx'))
+    .map(file => file.replace(/\.mdx$/, ''));
+}
+
+function getDynamicRoutes() {
+  const serviceSlugs = getSlugs('src/content/services');
+  const blogSlugs = getSlugs('src/content/blog');
+  const projectSlugs = getSlugs('src/content/projects');
+  const locationSlugs = getSlugs('src/content/locations');
+
+  const routes = [];
+
+  // Services: /services/{slug}/
+  serviceSlugs.forEach(slug => {
+    routes.push(`/services/${slug}/`);
+  });
+
+  // Blog: /insights/{slug}/
+  blogSlugs.forEach(slug => {
+    routes.push(`/insights/${slug}/`);
+  });
+
+  // Projects: /projects/{slug}/
+  projectSlugs.forEach(slug => {
+    routes.push(`/projects/${slug}/`);
+  });
+
+  // Localized Services: /{locationSlug}/services/{serviceSlug}/
+  locationSlugs.forEach(locationSlug => {
+    serviceSlugs.forEach(serviceSlug => {
+      routes.push(`/${locationSlug}/services/${serviceSlug}/`);
+    });
+  });
+
+  // Localized Insights: /{locationSlug}/insights/{postSlug}/
+  locationSlugs.forEach(locationSlug => {
+    blogSlugs.forEach(postSlug => {
+      routes.push(`/${locationSlug}/insights/${postSlug}/`);
+    });
+  });
+
+  // Localized Projects: /{locationSlug}/projects/{projectSlug}/
+  locationSlugs.forEach(locationSlug => {
+    projectSlugs.forEach(projectSlug => {
+      routes.push(`/${locationSlug}/projects/${projectSlug}/`);
+    });
+  });
+
+  return routes;
+}
+
+const staticRoutes = [
   '/', '/about/', '/services/', '/faq/', '/contact/', 
   '/residential/', '/survey-pricing/', '/topographic-surveys/', 
   '/sea-to-sky-property-line-and-boundary-staking/', 
   '/surveys-and-title-insurance/', '/subdivision/'
 ];
+
+const routesToPrerender = [...staticRoutes, ...getDynamicRoutes()];
 
 async function generate() {
   console.log('🚀 Starting true static site generation pipeline...');

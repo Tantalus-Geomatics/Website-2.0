@@ -1,0 +1,50 @@
+# ====================================================================
+# Roo Code Workspace Protection Ignore File
+# Tailored for Phase 3-6: Templates, Ingestion, GEO SEO, and Sitemaps
+# ====================================================================
+
+# 1. Block massive text/JSON dependency graphs (The biggest token consumers)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# 2. Block compiled/build outputs and environments
+node_modules/
+dist/
+build/
+out/
+coverage/
+.env*
+!.env.example
+
+# 3. Block media and large static assets (Prevents image/PDF parsing token leaks)
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.svg
+*.ico
+*.pdf
+public/images/
+public/docs/
+
+# 4. Block OS metadata and caches
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.git/
+.github/
+.vscode/
+.cursor/
+
+# ====================================================================
+# Whitelist / Context Rules (Explicitly allowed paths for your tasks)
+# ====================================================================
+# Allowed by default if not caught above:
+# - src/templates/ (Phase 3)
+# - src/content/ (Phase 4 & 5)
+# - src/components/SEO.tsx (Phase 5)
+# - public/robots.txt & root level scripts (Phase 6)
