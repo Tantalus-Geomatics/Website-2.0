@@ -191,7 +191,7 @@ export default ({{ children }}) => (
 
 if __name__ == "__main__":
     # Configure directories relative to repository root layout
-    SOURCE_FOLDER = os.path.dirname(os.path.abspath(__file__)) # Update this to where your text files are located
+    SOURCE_FOLDER = "./src/content/base/services/text_files"# Update this to where your text files are located
     OUTPUT_FOLDER = "./src/content/base/services"
     
     # Ensure source folder exists for immediate use
