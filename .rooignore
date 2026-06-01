@@ -27,8 +27,11 @@ coverage/
 *.svg
 *.ico
 *.pdf
+*.txt
+
 public/images/
 public/docs/
+src/content/base/services
 
 # 4. Block OS metadata and caches
 .DS_Store
