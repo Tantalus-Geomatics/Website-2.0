@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --port=3000",
     "generate-mdx": "python scripts/convert_to_mdx.py",
-    "localize-content": "node scripts/localize-content.js",
+    "localize-content": "node scripts/generate-localized-content.js",
     "build": "npm run generate-mdx && npm run localize-content && vite build && node prerender.js",
     "postbuild": "node -e \"import('fs').then(fs => fs.copyFileSync('dist/index.html', 'dist/404.html'))\"",
     "preview": "vite preview"
