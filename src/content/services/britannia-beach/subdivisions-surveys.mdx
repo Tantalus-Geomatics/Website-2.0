@@ -11,6 +11,25 @@ serviceName: "Subdivision Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Britannia Beach",
+  "description": "Professional Subdivision Surveys and geomatics services in Britannia Beach, BC.",
+  "url": "https://www.tantalusgeomatics.com/britannia-beach/services/subdivisions-surveys/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Britannia Beach",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.6264,
+    "longitude": -123.2044
+  }
+},
   title: "Subdivision Surveys in Britannia Beach",
   description: "Expert Subdivision Surveys in services in Britannia Beach, ensuring accurate legal layout and strict municipal zoning compliance.",
   locationName: 'Britannia Beach',

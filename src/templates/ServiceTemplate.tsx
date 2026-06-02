@@ -37,7 +37,7 @@ export interface LocalLink {
   href: string;
 }
 
-export interface GalleryImage {
+export interface LocalImage {
   src: string;
   alt: string;
   caption?: string;
@@ -46,7 +46,7 @@ export interface GalleryImage {
 export interface ServiceTemplateProps {
   title: string;
   description: string;
-  serviceName?: string;
+  serviceName: string;
   heroImage?: string;
   heroImageAlt?: string;
   steps?: ProcessStep[];
@@ -54,8 +54,8 @@ export interface ServiceTemplateProps {
   faqs?: FAQItem[];
   serviceLinks?: LocalLink[];
   locationLinks?: LocalLink[];
-  serviceImages?: GalleryImage[];
-  locationImages?: GalleryImage[];
+  serviceImages?: LocalImage[];
+  locationImages?: LocalImage[];
   formVariant?: 'embedded' | 'stacked-residential';
   locationName?: string;
   localAuthorityName?: string;
@@ -109,6 +109,53 @@ const defaultServiceLinks: LocalLink[] = [
   { label: 'Topographic Surveys', href: '/topographic-surveys/' }
 ];
 
+const MASTER_IMAGE_POOL: LocalImage[] = [
+  { src: '/images/subdivision-surveys.webp', alt: 'Subdivision Surveys' },
+  { src: '/images/topographic-surveys.webp', alt: 'Topographic Surveys' },
+  { src: '/images/3d-settlement-monitoring.webp', alt: '3D Settlement Monitoring' },
+  { src: '/images/air-space-subdivision-surveys.webp', alt: 'Air Space Subdivision Surveys' },
+  { src: '/images/bare-land-strata-surveys.webp', alt: 'Bare Land Strata Surveys' },
+  { src: '/images/bc-land-surveyors-building-location-surveys.webp', alt: 'BC Land Surveyors Building Location Surveys' },
+  { src: '/images/block-outline-surveys.webp', alt: 'Block Outline Surveys' },
+  { src: '/images/boundary-surveys.webp', alt: 'Boundary Surveys' },
+  { src: '/images/building-strata-surveys.webp', alt: 'Building Strata Surveys' },
+  { src: '/images/consolidation-surveys.webp', alt: 'Consolidation Surveys' },
+  { src: '/images/covenant-surveys.webp', alt: 'Covenant Surveys' },
+  { src: '/images/easement-surveys.webp', alt: 'Easement Surveys' },
+  { src: '/images/environmental-and-riparian-surveys.webp', alt: 'Environmental and Riparian Surveys' }
+];
+
+function getSeedFromKey(key: string): number {
+  let hash = 0;
+  for (let i = 0; i < key.length; i++) {
+    hash = key.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return Math.abs(hash);
+}
+
+function seededRandom(seed: number) {
+  let currentSeed = seed;
+  return function() {
+    currentSeed = (currentSeed * 9301 + 49297) % 233280;
+    return currentSeed / 233280;
+  };
+}
+
+function getDeterministicImages(serviceName: string, pool: LocalImage[]): LocalImage[] {
+  const seed = getSeedFromKey(serviceName);
+  const random = seededRandom(seed);
+  const clone = [...pool];
+  
+  for (let i = clone.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    const temp = clone[i];
+    clone[i] = clone[j];
+    clone[j] = temp;
+  }
+  
+  return clone.slice(0, 6);
+}
+
 export default function ServiceTemplate({
   title,
   description,
@@ -157,10 +204,7 @@ export default function ServiceTemplate({
     ? description.split('.')[0].trim() + '.'
     : description;
 
-  const galleryImages = [
-    ...serviceImages,
-    ...locationImages
-  ];
+  const galleryImages = getDeterministicImages(derivedServiceName, MASTER_IMAGE_POOL);
 
   return (
     <PageShell>
@@ -183,7 +227,7 @@ export default function ServiceTemplate({
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
-          <span className="inline-block bg-brand-green/10 text-brand-green border border-brand-green/20 uppercase text-xs rounded-full px-3 py-1 mb-6">
+          <span className="inline-block bg-brand-green/10 text-brand-green border border-brand-green/20 uppercase font-semibold text-xs rounded-full px-3 py-1 mb-6">
             Professional Land Surveying Services
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
@@ -325,11 +369,11 @@ export default function ServiceTemplate({
                     <Check size={16} strokeWidth={3} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-2">
+                    <h3 className="text-lg font-semibold text-white mb-2">
                       {titlePart}
                     </h3>
                     {descPart && (
-                      <p className="text-sm text-white/60 font-light leading-relaxed">
+                      <p className="text-sm text-white/60 font-light">
                         {descPart}
                       </p>
                     )}
@@ -453,7 +497,7 @@ export default function ServiceTemplate({
                   href={municipalLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full sm:w-auto items-center justify-center gap-3 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-slate-900 font-semibold rounded-full shadow-md"
+                  className="bg-brand-green hover:bg-brand-green-light text-slate-900 font-semibold py-4 px-8 rounded-full shadow-md flex items-center justify-center gap-3"
                 >
                   <Building2 size={20} className="text-slate-900 shrink-0" />
                   <span>View {localAuthorityName} Guidelines</span>
@@ -464,7 +508,7 @@ export default function ServiceTemplate({
 
             {/* Location Links Grid */}
             {locationLinks && locationLinks.length > 0 && (
-              <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+              <div className="mt-6 max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
                 {locationLinks.map((link, index) => (
                   <Link
                     key={index}

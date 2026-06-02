@@ -11,6 +11,25 @@ serviceName: "Gridline and Construction Layout Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - West Vancouver",
+  "description": "Professional Gridline and Construction Layout Surveys and geomatics services in West Vancouver, BC.",
+  "url": "https://www.tantalusgeomatics.com/west-vancouver/services/gridline-and-construction-layout-surveys/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "West Vancouver",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.3692,
+    "longitude": -123.1702
+  }
+},
   title: "Service Title",
   description: "Expert Service Title services in West Vancouver, ensuring accurate legal layout and strict municipal zoning compliance.",
   locationName: 'West Vancouver',
@@ -86,7 +105,7 @@ export default ({ children }) => (
 
 Translating highly complex architectural and engineering designs into physical reality in West Vancouver requires uncompromising precision and absolute spatial certainty. Gridline layout surveys provide the fundamental geometric framework for your entire construction project, dictating the placement of foundations, columns, and structural shear walls. Because gridlines are inherently tied to your property's legal limits to ensure compliance with municipal setbacks, establishing this framework is an intensely regulated legal process. Under the *Land Surveyors Act*, determining the location of any artificial feature relative to a property boundary for the purpose of certifying it in writing is exclusively defined as the "practice of land surveying". Relying on unlicensed contractors to map your structural gridlines exposes your development to significant risks, including boundary encroachments and halted construction. Only a commissioned British Columbia Land Surveyor (BCLS) holds the statutory authority and professional liability insurance to legally position these critical features relative to property boundaries.
 
-<img src="/images/gridline-and-construction-layout-surveys.webp" alt="BC Land Surveyor conducting Gridline and Construction Layout Surveys in West Vancouver, BC" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />
+<img src="/images/gridline-and-construction-layout-surveys.webp" alt="BC Land Surveyor performing Gridline and Construction Layout Surveys in West Vancouver, BC" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />
 
 As a dual-registered firm of British Columbia Land Surveyors and Professional Engineers, our team delivers the authoritative foresight required to perfectly execute your gridline layout. During the layout process, we mandate that all critical reference points the markers your contractor will use to re-establish building corners and structural lines are double-checked to guarantee accuracy. We also establish redundant horizontal and vertical control points, including the extension of existing lines and backsights on stable walls, ensuring your project has a reliable framework even when active construction destroys temporary survey markers.
 

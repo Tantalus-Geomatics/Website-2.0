@@ -11,6 +11,25 @@ serviceName: "Building Strata Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Bowen Island",
+  "description": "Professional Building Strata Surveys and geomatics services in Bowen Island, BC.",
+  "url": "https://www.tantalusgeomatics.com/bowen-island/services/building-strata-surveys/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bowen Island",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.3822,
+    "longitude": -123.3711
+  }
+},
   title: "Building Strata Surveys in Bowen Island",
   description: "Expert Building Strata Surveys in services in Bowen Island, ensuring accurate legal layout and strict municipal zoning compliance.",
   locationName: 'Bowen Island',
@@ -86,7 +105,7 @@ export default ({ children }) => (
 
 Creating a building strata allows developers and property owners in Bowen Island to maximize the value and utility of their real estate by dividing a structure into individually owned strata lots while maintaining communal governance over shared spaces. Unlike a bare land strata, where boundaries are defined by posts driven into the ground, a building strata typically defines the boundaries of its strata lots by reference to the physical floors, walls, and ceilings of the structure. As dual-registered British Columbia Land Surveyors (BCLS) and Professional Engineers, our firm delivers the professional services, absolute statutory authority, and strategic guidance required to perfectly define your multi-family, commercial, or mixed-use development.
 
-<img src="/images/building-strata-surveys.webp" alt="BC Land Surveyor conducting Building Strata Surveys in Bowen Island, BC" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />
+<img src="/images/building-strata-surveys.webp" alt="BC Land Surveyor performing Building Strata Surveys in Bowen Island, BC" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />
 
 The creation of a building strata is a highly regulated process governed by the *Strata Property Act*, the *Strata Property Regulation*, the *Land Title Act*, and the strict *Survey and Plan Rules* enforced by the Association of British Columbia Land Surveyors (ABCLS). Because creating new legal titles constitutes the "practice of land surveying" under the *Land Surveyors Act*, only a commissioned BCLS holds the exclusive statutory authority to determine, define, and certify the legal boundaries of a strata lot.
 

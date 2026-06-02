@@ -5,7 +5,8 @@ import {
   SERVICE_LINKS_MAP,
   LOCATION_LINKS_MAP,
   SERVICE_IMAGES_MAP,
-  LOCATION_IMAGES_MAP
+  LOCATION_IMAGES_MAP,
+  LOCATION_GEO_DATA
 } from '../src/config/resourceMapping.ts';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -83,7 +84,7 @@ function injectServiceImage(content, serviceSlug, locationName) {
   }
   const { src } = firstImage;
   const cleanServiceName = getCleanServiceName(serviceSlug);
-  const dynamicAlt = `BC Land Surveyor conducting ${cleanServiceName} in ${locationName}, BC`;
+  const dynamicAlt = `BC Land Surveyor performing ${cleanServiceName} in ${locationName}, BC`;
 
   const imgTag = `<img src="${src}" alt="${dynamicAlt}" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />`;
 
@@ -123,6 +124,17 @@ function injectServiceImage(content, serviceSlug, locationName) {
   // Reconstruct the body and full content
   const newBody = paragraphs.join("\n\n");
   return header + newBody;
+}
+
+function injectSchemaIntoMetadata(content, schema) {
+  if (!schema) return content;
+  const metadataIndex = content.indexOf('export const metadata = {');
+  if (metadataIndex === -1) return content;
+  
+  const insertIndex = metadataIndex + 'export const metadata = {'.length;
+  const schemaString = `\n  schema: ${JSON.stringify(schema, null, 2)},`;
+  
+  return content.substring(0, insertIndex) + schemaString + content.substring(insertIndex);
 }
 
 // 1. Define the mapping object for all 9 locations
@@ -309,6 +321,31 @@ baseTemplates.forEach(templateFile => {
 
     // Inject inline service image if available
     localizedContent = injectServiceImage(localizedContent, serviceSlug, locationData.LOCATION_NAME);
+
+    // Construct localized schema
+    const geoData = LOCATION_GEO_DATA[locationSlug];
+    const localizedSchema = geoData ? {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": `Tantalus Geomatics Land Surveying - ${geoData.locality}`,
+      "description": `Professional ${cleanServiceName} and geomatics services in ${geoData.locality}, BC.`,
+      "url": `https://www.tantalusgeomatics.com/${locationSlug}/services/${serviceSlug}/`,
+      "telephone": "+16042139934",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": geoData.locality,
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": geoData.lat,
+        "longitude": geoData.lng
+      }
+    } : null;
+
+    // Inject schema into metadata
+    localizedContent = injectSchemaIntoMetadata(localizedContent, localizedSchema);
 
     // Define output directory and file path
     const outputDir = path.join(__dirname, `../src/content/services/${locationSlug}`);

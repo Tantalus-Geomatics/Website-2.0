@@ -130,7 +130,10 @@ def convert_directory(source_dir, output_dir):
         
         # Parse clean serviceName (e.g., "Subdivisions Surveys.txt" -> "Subdivision Surveys")
         base_name = os.path.splitext(file_name)[0]
-        clean_service_name = base_name.replace("Subdivisions", "Subdivision").strip()
+        # Replace hyphens/underscores with spaces, and replace "Subdivisions" with "Subdivision"
+        clean_service_name = base_name.replace("-", " ").replace("_", " ").replace("Subdivisions", "Subdivision").strip()
+        # Title case each word cleanly
+        clean_service_name = " ".join([word[0].upper() + word[1:] if len(word) > 0 else "" for word in clean_service_name.split()])
         
         try:
             raw_sections = parse_txt_file(source_path)

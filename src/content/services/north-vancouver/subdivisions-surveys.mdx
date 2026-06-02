@@ -11,6 +11,25 @@ serviceName: "Subdivision Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - North Vancouver",
+  "description": "Professional Subdivision Surveys and geomatics services in North Vancouver, BC.",
+  "url": "https://www.tantalusgeomatics.com/north-vancouver/services/subdivisions-surveys/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "North Vancouver",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.3198,
+    "longitude": -123.0724
+  }
+},
   title: "Subdivision Surveys in North Vancouver",
   description: "Expert Subdivision Surveys in services in North Vancouver, ensuring accurate legal layout and strict municipal zoning compliance.",
   locationName: 'North Vancouver',

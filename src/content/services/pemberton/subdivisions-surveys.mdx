@@ -11,6 +11,25 @@ serviceName: "Subdivision Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Pemberton",
+  "description": "Professional Subdivision Surveys and geomatics services in Pemberton, BC.",
+  "url": "https://www.tantalusgeomatics.com/pemberton/services/subdivisions-surveys/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Pemberton",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.321,
+    "longitude": -122.805
+  }
+},
   title: "Subdivision Surveys in Pemberton",
   description: "Expert Subdivision Surveys in services in Pemberton, ensuring accurate legal layout and strict municipal zoning compliance.",
   locationName: 'Pemberton',

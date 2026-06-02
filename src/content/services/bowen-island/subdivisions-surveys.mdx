@@ -11,6 +11,25 @@ serviceName: "Subdivision Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Bowen Island",
+  "description": "Professional Subdivision Surveys and geomatics services in Bowen Island, BC.",
+  "url": "https://www.tantalusgeomatics.com/bowen-island/services/subdivisions-surveys/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bowen Island",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.3822,
+    "longitude": -123.3711
+  }
+},
   title: "Subdivision Surveys in Bowen Island",
   description: "Expert Subdivision Surveys in services in Bowen Island, ensuring accurate legal layout and strict municipal zoning compliance.",
   locationName: 'Bowen Island',

@@ -11,6 +11,25 @@ serviceName: "Environmental and Riparian Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Bowen Island",
+  "description": "Professional Environmental and Riparian Surveys and geomatics services in Bowen Island, BC.",
+  "url": "https://www.tantalusgeomatics.com/bowen-island/services/environmental-and-riparian-surveys/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bowen Island",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.3822,
+    "longitude": -123.3711
+  }
+},
   title: "Environmental and Riparian Surveys in Bowen Island",
   description: "Expert Environmental and Riparian Surveys in services in Bowen Island, ensuring accurate legal layout and strict municipal zoning compliance.",
   locationName: 'Bowen Island',
@@ -85,7 +104,7 @@ export default ({ children }) => (
 
 In Bowen Island, developing land near sensitive ecosystems, managing natural watercourses, or remediating historically contaminated sites requires precise spatial data and strict adherence to overlapping provincial environmental legislation. Whether you are working alongside Qualified Environmental Professionals (QEPs) to map critical fish habitat, or delineating the exact spatial limits of a contaminated site for a Site Disclosure Statement, absolute spatial certainty is paramount. Under the *Land Surveyors Act*, determining the location of any natural or artificial feature—such as the top of a ravine bank, the limits of a Streamside Protection and Enhancement Area (SPEA), or the boundaries of a remediation zone—relative to a legal property boundary for the purpose of certifying it in writing is exclusively defined as the "practice of land surveying". Relying on unlicensed technicians to map these environmental constraints exposes your project to catastrophic risks, including environmental damage, massive financial penalties, and halted development approvals.
 
-<img src="/images/environmental-and-riparian-surveys.webp" alt="BC Land Surveyor conducting Environmental and Riparian Surveys in Bowen Island, BC" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />
+<img src="/images/environmental-and-riparian-surveys.webp" alt="BC Land Surveyor performing Environmental and Riparian Surveys in Bowen Island, BC" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />
 
 As a dual-registered firm of British Columbia Land Surveyors (BCLS) and Professional Engineers, our elite geomatics team delivers the uncompromising statutory authority required to seamlessly integrate your environmental obligations with your legal property boundaries. We navigate the requirements of the *Riparian Areas Protection Act* and the *Riparian Areas Protection Regulation*, ensuring that riparian assessment areas and SPEA setbacks are accurately marked to protect the natural features, functions, and conditions that support protected fish populations. Furthermore, for industrial or commercial sites, we support your compliance with the *Environmental Management Act* by precisely locating boundaries for preliminary site investigations, detailed site investigations, and remediation plans, which are subsequently recorded in the provincial Site Registry. When your project involves changes in and about a stream, our surveys provide the surveys required for authorizations under the *Water Sustainability Act*.
 
