@@ -6,7 +6,7 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { useLeadForm } from '../hooks/useLeadForm';
 
-const baseServiceModules = import.meta.glob('../content/base/services/*.mdx', { eager: true });
+const baseServiceModules = import.meta.glob('../content/services/squamish/*.mdx', { eager: true });
 
 const faqCategories = Object.entries(baseServiceModules)
   .map(([filePath, module]: [string, any]) => {

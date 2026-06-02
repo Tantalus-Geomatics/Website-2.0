@@ -37,13 +37,13 @@ export default function Home() {
       image: "/images/squamish-property-line.webp"
     },
     {
-      title: "Building Design and Construction Permitting",
+      title: "Design and Construction",
       icon: <Hammer className="w-6 h-6" />,
       content: "Municipalities require BCLS-certified topographic surveys to verify that proposed designs comply with site coverage and setback zoning bylaws. These surveys provide the foundational data architects and designers need to align their plans with the physical and legal constraints of the site.",
       image: "/images/adu.webp"
     },
     {
-      title: "Retaining Wall Construction",
+      title: "Retaining Walls",
       icon: <BrickWall className="w-6 h-6" />,
       content: "Municipalities require a BCLS survey to ensure retaining walls don't encroach onto neighbouring properties and to ensure they conform to local bylaws.",
       image: "/images/squamish-retaining-wall-survey.webp"
@@ -55,7 +55,7 @@ export default function Home() {
       image: "/images/deck-pool.webp"
     },
     {
-      title: "Purchasing an Older Home",
+      title: "Real Estate Transactions",
       icon: <HomeIcon className="w-6 h-6" />,
       content: "A Building Location Certificate confirms that all existing structures are situated within the legal property boundaries and comply with municipal regulations. For those purchasing older homes, this survey is an essential safeguard against the risks of undocumented encroachments and zoning non-compliance.",
       image: "/images/old-home.webp"
@@ -85,7 +85,7 @@ export default function Home() {
       image: "/images/natural-boundary.webp"
     },
     {
-      title: "BC Land Surveyor: Your Expert Witness",
+      title: "Expert Witness",
       icon: <Scale className="w-6 h-6" />,
       content: "If a neighbor dispute escalate to court, a BCLS is often called as an expert witness. Their plans and testimony are used as evidence the courts to settle boundary and encroachment cases.",
       image: "/images/expert-witness.webp"
