@@ -6,121 +6,29 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { useLeadForm } from '../hooks/useLeadForm';
 
-const faqCategories = [
-  {
-    title: "The Basics",
-    faqs: [
-      {
-        question: "Why do I need a British Columbia Land Surveyor (BCLS)?",
-        answer: "A British Columbia Land Surveyor (BCLS) is the only professional authorized to perform surveys that involve property boundaries. They possess a professional obligation to remain impartial and to determine the location of existing property boundaries based on the best available evidence of the boundary's original location. Their practice is regulated by the Association of BC Land Surveyors (ABCLS) under the Land Surveyors Act. For property owners and developers, this ensures that the boundaries they rely on are accurate, legally defensible and consistent with provincial regulations."
-      },
-      {
-        question: "What is a \"legal\" survey and how is it different from a topographic site plan?",
-        answer: "In British Columbia, a \"legal\" or \"statutory\" plan, such as those prepared under the Land Title Act or the Strata Property Act, is filed in a public registry (i.e. Land Title Office or Crown Land Registry). These plans legally define ownership extents, create new parcels, establish right-of-ways, and define strata lots. \"Non-statutory\" plans, such as topographic site plans, are used for design or permitting, and are not filed in a public register. Only a British Columbia Land Surveyor (BCLS) can certify that a measurement accurately reflects a property's registered boundaries based on historical and physical evidence."
-      },
-      {
-        question: "Why does a surveyor need to look for iron posts that were placed 100 years ago?",
-        answer: "In BC, boundaries are defined by physical evidence in the ground, such as iron posts placed 100 years ago. For older properties, a BC Land Surveyor (BCLS) is obligated to locate these original markers to re-establish the boundary in its original location. Modern technologies like GPS and total stations help find this historical evidence."
-      },
-      {
-        question: "What is the relationship between the Association of BC Land Surveyors (ABCLS) and the Land Title and Survey Authority (LTSA)?",
-        answer: "The Land Title and Survey Authority (LTSA) is the provincial body that manages the land title and survey systems, while the Association of British Columbia Land Surveyors (ABCLS) is the professional regulatory body that governs individual surveyors' competency and conduct. The LTSA promotes the standards for legal surveys and protects the integrity of the provincial survey fabric, while the ABCLS establishes the rules and registration requirements a British Columbia Land Surveyor (BCLS) must follow. Their close collaboration guarantees that the practice of land surveying is aligned with the public interest.",
-        callout: {
-          type: "pro-tip",
-          title: "Professional Verification and Liability",
-          content: "Before hiring a surveyor, verify the individual or firm is an ABCLS member in good standing. A practising BCLS must carry professional liability insurance and must follow the Code of Ethics, which ensures impartial, expert advice. This impartiality is your greatest protection in a boundary dispute."
-        }
-      }
-    ],
-    ctaText: "Need a BCLS for your project? Contact Us"
-  },
-  {
-    title: "Property Line & Fence Disputes",
-    faqs: [
-      {
-        question: "My neighbor's fence appears to be on my property. What is the first step in resolving this?",
-        answer: "The essential first step is a \"Boundary Survey\" by a BCLS. This involves the surveyor researching records, taking field measurements, and preparing a plan that shows the fence's location relative to the legal boundary. If one or more corner monuments are missing, the land surveyor will place new iron posts at those corners and prepare a \"Posting Plan\", a legal record of the new property corner monuments, for filing at the Land Title Office."
-      },
-      {
-        question: "Can a surveyor tell me who owns a shared fence or who is responsible for its repair?",
-        answer: "A land surveyor can determine the fence's location relative to the property boundary, but they cannot determine legal ownership or financial responsibility. After the surveyor establishes the facts, a legal professional is typically needed to advise on matters of ownership and financial responsibility."
-      },
-      {
-        question: "What is an \"Encroachment,\" and how can it be legally corrected?",
-        answer: "An encroachment occurs when a structure (like a fence, shed, or garage) is built on one property but extends (encroaches) onto an adjacent property. This can create significant issues for property owners during land transactions, strata development and construction permitting. A BC Land Surveyor can determine the location and extent of the encroachments, and support common remedies such as the creation of an easement over the encroaching structure.",
-        callout: {
-          type: "liability",
-          title: "The Impartiality of the BC Land Surveyor",
-          content: "A BCLS must follow the evidence, not favor the person paying the bill, and determine the true, original and unalterable locations of existing boundaries. This impartiality ensures that their plans can be relied upon by all members of the public, and that they are accepted by the LTSA and the courts as a form of legal evidence."
-        }
-      }
-    ],
-    ctaText: "Resolve Your Boundary Uncertainty Today"
-  },
-  {
-    title: "Construction & Development",
-    faqs: [
-      {
-        question: "Why does my architect require a \"Topographic Survey\" before designing my home?",
-        answer: "Architects need a Topographic Survey (\"Topo\") to capture an accurate 3D representation of the site's physical characteristics. A Topo captures site features such as elevations (contours), trees, utilities, structures and their relationships to property lines. This data is critical for accurate architectural and engineering considerations, such as drainage design and the locations of protected trees."
-      },
-      {
-        question: "What is a \"Building Location Certificate\", and when do I need one?",
-        answer: "A BC Land Surveyor's Certificate of Location is a non-statutory plan that depicts the location of a building's foundation or a finished structure relative to property lines. These are typically required by Municipal Building Inspectors and Mortgage Lenders to ensure compliance with municipal zoning setbacks and confirm the absence of encroaching structures.",
-        callout: {
-          type: "pro-tip",
-          title: "Managing Encroachments During Construction",
-          content: "Request a \"foundation survey\" immediately after your foundation is poured, but before framing. These surveys are required by municipalities prior to issuing occupancy permits, and an early check by a BC Land Surveyor can catch setback errors, allowing for corrections costing thousands, instead of hundreds of thousands after completion of additional construction."
-        }
-      },
-      {
-        question: "How do the Provincial \"Riparian Areas Protection Regulations\" (RAPR) affect my development?",
-        answer: "If your property is near a watercourse (stream, lake, wetland, or ditch), the RAPR mandates a \"Streamside Protection and Enhancement Area\" (SPEA). All development activites, including clearing, grading and building, is prohibited within the SPEA. A Qualified Environmental Professional (QEP) establishes the \"top of bank\" or \"high water mark,\" which a BCLS then surveys to define the SPEA boundary on the ground. A BC Land Surveyor will then prepare a legal plan to create a restrictive covenant over the SPEA area to protect these sensitive fish habitats."
-      }
-    ],
-    ctaText: "Start Your Build with Accurate Site Data"
-  },
-  {
-    title: "Strata & Commercial",
-    faqs: [
-      {
-        question: "How are the boundaries of a strata lot defined?",
-        answer: "Unless the registered strata plan specifies otherwise, the Strata Property Act defines a strata lot's boundaries as midway between the surfaces of the strutural portion of the walls, floors, and ceilings. This definition determines what are part of the strata lot (e.g. interior plumbing walls), and what are part of the common property (e.g. exterior facade)."
-      },
-      {
-        question: "What is a \"Bare Land Strata,\" and how does it differ from a traditional strata?",
-        answer: "A bare land strata is a form of strata subdivision in which each strata lot is a distrinct parcel of land, and each strata lot owner also maintains share ownership of common property assets like roads and amenity buildings."
-      },
-      {
-        question: "What are BOMA standards, and why should a commercial landlord use them?",
-        answer: "BOMA (Building Owners and Managers Association) standards are the recognized methodology for calculating commercial building floor areas. These standards ensure that area calculations are based on a consistent and unambiguous methodology, and accurate measurement data."
-      }
-    ],
-    ctaText: "Get Professional Support for Your Strata Project"
-  },
-  {
-    title: "Logistics & Costs",
-    faqs: [
-      { 
-        question: "How long does a typical property survey take?",
-        answer: "A typical survey is completed in three stages: <ul class='list-disc ml-5 mt-2'><li><strong>Research & Preparation (1–5 days):</strong> Searching BC MASCOT, GATOR, LTSA and other sources of survey and land ownership records. The Land Surveyor works to structure a survey that matches the unique needs of the property and the requirements of the project.</li><li><strong>Field Work (1–3 days):</strong> The survey crew visits the property and completes the required survey measurements.</li><li><strong>Plan Drafting & Certification (7–10 days):</strong> The drafting team prepares the survey plan and other deliverables. The supervising land surveyor conductgs a thorough review of all field work, office work and the final plan by the supervising Land Surveyor. The completed plan is certified by the supervising Land Surveyor.</li></ul>"
-      },
-      { 
-        question: "What factors influence the cost of a survey?",
-        answer: "A land survey requires high-precision equipment and extensive research within the LTSA archives. Additionally, factors such as the type of survey, the lot size, terrain challenges, line of sight limitations due to vegetation and buildings, site activites and seasonal weather all influence the level of effort required to complete a survey.",
-      },
-      {
-        question: "Can a survey be performed in the winter?",
-        answer: "Yes, but it is more challenging and typically more expensive. Surveyors must chip through ice to find monuments, and in heavy snow, they may need to shovel large snow covered areas to find reference points. In situations where there is deep snow covering the ground, \"topographic\" surveys are more time consuming because the surveyor must remove the snow to confirm they are hitting the true ground surface and capturing the desired site features."
-      },
-      {
-        question: "How are boundary disputes resolved in court?",
-        answer: "When neighbor disputes escalate to court, a BCLS is called as an expert witness. Their plans and testimony are objective evidence that may be used to settle boundary disputes.",
-      }
-    ],
-    ctaText: "Request a Custom Quote for Your Property"
-  }
-];
+const baseServiceModules = import.meta.glob('../content/base/services/*.mdx', { eager: true });
+
+const faqCategories = Object.entries(baseServiceModules)
+  .map(([filePath, module]: [string, any]) => {
+    const slug = filePath.split('/').pop()?.replace('.mdx', '');
+    const meta = module.metadata || module.frontmatter || {};
+    const serviceName = meta.serviceName || meta.title || 'General Services';
+    const faqs = meta.faqs || [];
+
+    if (!faqs || faqs.length === 0) return null;
+
+    return {
+      title: serviceName,
+      faqs: faqs.map((faq: any) => ({
+        question: faq.question,
+        answer: faq.answer,
+        callout: faq.callout,
+        serviceLink: { label: serviceName, href: `/services/${slug}/` }
+      })),
+      ctaText: `Get a quote for ${serviceName}`
+    };
+  })
+  .filter((item): item is NonNullable<typeof item> => item !== null);
 
 export default function FAQ() {
   const [openId, setOpenId] = useState<string | null>('0-0');
@@ -299,6 +207,18 @@ const faqSchema = {
                           >
                             <p className="text-slate-700 font-light leading-relaxed text-base sm:text-lg" dangerouslySetInnerHTML={{ __html: faq.answer }} />
                             
+                            {faq.serviceLink && (
+                              <div className="mt-4 pt-4 border-t border-slate-100">
+                                <Link 
+                                  to={faq.serviceLink.href} 
+                                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green-dark hover:text-brand-green transition-colors"
+                                >
+                                  Learn more about {faq.serviceLink.label}
+                                  <ArrowRight size={16} />
+                                </Link>
+                              </div>
+                            )}
+
                             {/* Callouts */}
                             {faq.callout && (
                               <div className={`mt-4 sm:mt-6 p-4 sm:p-5 rounded-2xl border flex gap-3 sm:gap-4 items-start shadow-sm ${

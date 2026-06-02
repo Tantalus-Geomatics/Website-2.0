@@ -19,6 +19,7 @@ import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { useLeadForm } from '../hooks/useLeadForm';
+import { SERVICE_IMAGES_MAP } from '../config/resourceMapping';
 
 const ALL_SERVICES = [
   {
@@ -207,7 +208,58 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ALL_SERVICES.map((service, index) => {
               const Icon = service.icon;
-              const isFeatured = !!service.image;
+              const isBuildingLocationCertificates = service.href === '/services/building-location-certificates/';
+              const isFeatured = !!service.image && !isBuildingLocationCertificates;
+
+              if (isBuildingLocationCertificates) {
+                const serviceImageObj = SERVICE_IMAGES_MAP['building-location-certificates']?.[0];
+                const imageSrc = serviceImageObj?.src || service.image || '/images/old-home.webp';
+                const imageAlt = serviceImageObj?.alt || service.title;
+
+                return (
+                  <Link
+                    key={index}
+                    to={service.href}
+                    className="group relative overflow-hidden rounded-2xl bg-brand-dark border border-white/10 shadow-md hover:shadow-xl transition-all duration-500 md:col-span-2 lg:col-span-2 flex flex-col justify-between min-h-[380px]"
+                  >
+                    <div>
+                      {/* Image at Top */}
+                      <img
+                        src={imageSrc}
+                        alt={imageAlt}
+                        className="w-full aspect-video object-cover rounded-t-2xl transition-transform duration-700 group-hover:scale-102"
+                        referrerPolicy="no-referrer"
+                      />
+
+                      {/* Content below image */}
+                      <div className="p-6 flex flex-col items-start text-white">
+                        <div className="flex items-start gap-4">
+                          {/* Icon Box */}
+                          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shrink-0">
+                            <Icon className="w-6 h-6 text-brand-green" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold mb-2 tracking-tight flex items-center gap-2 text-white">
+                              {service.title}
+                              <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-brand-green" />
+                            </h3>
+                            <p className="text-slate-300 text-sm leading-relaxed max-w-xl">
+                              {service.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Link Indicator */}
+                    <div className="flex items-center justify-end p-6 pt-0">
+                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 group-hover:bg-brand-green group-hover:text-black text-white transition-colors duration-300">
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
+                      </span>
+                    </div>
+                  </Link>
+                );
+              }
 
               if (isFeatured) {
                 return (

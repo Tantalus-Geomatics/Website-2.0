@@ -168,6 +168,13 @@ export const SERVICE_IMAGES_MAP: Record<string, ResourceImage[]> = {
       caption: 'bc land surveyors building location surveys at Tantalus Geomatics Land Surveying Ltd.'
     }
   ],
+  'building-location-certificates': [
+    {
+      src: '/images/old-home.webp',
+      alt: 'Example Building Location Certificate showing a house foundation relative to property lines',
+      caption: 'Example plan depicting a building foundation relative to property lines.'
+    }
+  ],
   'block-outline-surveys': [
     {
       src: '/images/block-outline-surveys.webp',
