@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Terrestrial LiDAR Scanning"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Terrestrial LiDAR Scanning",
   steps: [
     {
       "title": "Research",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "How is the point cloud data delivered to my engineering team?",
       "answer": "Alongside certified 2D or 3D CAD plans, we can deliver the full raw or processed point cloud data, typically in an industry-standard LAS or E57 format that includes both laser intensity and RGB colour values. We meticulously clean the data to remove noise and overhanging artifacts so it can be efficiently imported directly into your team's design software, such as Civil 3D or Revit."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

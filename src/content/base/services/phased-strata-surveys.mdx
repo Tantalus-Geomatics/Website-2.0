@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Phased Strata Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Phased Strata Surveys",
   steps: [
     {
       "title": "Research",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "Can I create a phased strata plan on an air space remainder parcel?",
       "answer": "Generally, no. A phased strata plan of a remainder parcel that excludes an air space parcel is not permitted. This is because if a subsequent phase does not proceed, the *Strata Property Act* requires a reference plan to be filed for the remainder, and the Land Title Office will not permit a reference plan on a remainder that has had an air space parcel excepted from it."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

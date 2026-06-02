@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Environmental and Riparian Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Environmental and Riparian Surveys",
   steps: [
     {
       "title": "Research",
@@ -56,7 +58,11 @@ export const metadata = {
       "question": "How are environmental surveys conducted without damaging sensitive habitats?",
       "answer": "We prioritize non-invasive data collection techniques to protect sensitive ecosystems. While traditional surveying requires cutting lines through vegetation, we heavily leverage Unmanned Aerial Systems (UAS) equipped with Aerial Drone LiDAR, as well as Terrestrial 3D Laser Scanning. These advanced technologies allow us to capture millions of highly precise data points through the forest canopy and across wetlands without physically disturbing the soil, flora, or fauna."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Covenant Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Covenant Surveys",
   steps: [
     {
       "title": "Research",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "Can a municipality use a covenant to restrict farming on my property?",
       "answer": "If your property is located within the Agricultural Land Reserve, Section 22 of the *Agricultural Land Commission Act* explicitly states that any covenant that restricts or prohibits the use of agricultural land for farm purposes has no effect until it is formally approved by the Agricultural Land Commission."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

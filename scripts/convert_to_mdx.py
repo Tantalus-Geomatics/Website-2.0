@@ -128,6 +128,10 @@ def convert_directory(source_dir, output_dir):
         output_file_name = f"{slug_name}.mdx"
         output_path = os.path.join(output_dir, output_file_name)
         
+        # Parse clean serviceName (e.g., "Subdivisions Surveys.txt" -> "Subdivision Surveys")
+        base_name = os.path.splitext(file_name)[0]
+        clean_service_name = base_name.replace("Subdivisions", "Subdivision").strip()
+        
         try:
             raw_sections = parse_txt_file(source_path)
             
@@ -149,6 +153,7 @@ def convert_directory(source_dir, output_dir):
             # Escape quotes safely for YAML/Frontmatter and JSON scopes
             safe_title = title.replace('"', '\\"')
             safe_desc = description.replace('"', '\\"')
+            safe_service_name = clean_service_name.replace('"', '\\"')
 
             mdx_template = f"""---
 title: "{safe_title}"
@@ -157,6 +162,7 @@ locationName: '{{{{LOCATION_NAME}}}}'
 heroImage: '{{{{HERO_IMAGE}}}}'
 localAuthorityName: '{{{{LOCAL_AUTHORITY}}}}'
 municipalLink: '{{{{MUNICIPAL_LINK}}}}'
+serviceName: "{safe_service_name}"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -168,9 +174,14 @@ export const metadata = {{
   heroImage: '{{{{HERO_IMAGE}}}}',
   localAuthorityName: '{{{{LOCAL_AUTHORITY}}}}',
   municipalLink: '{{{{MUNICIPAL_LINK}}}}',
+  serviceName: "{safe_service_name}",
   steps: {format_js_array(steps)},
   deliverables: {format_js_array(deliverables)},
-  faqs: {format_js_array(faqs)}
+  faqs: {format_js_array(faqs)},
+  serviceLinks: {{{{SERVICE_LINKS}}}},
+  locationLinks: {{{{LOCATION_LINKS}}}},
+  serviceImages: {{{{SERVICE_IMAGES}}}},
+  locationImages: {{{{LOCATION_IMAGES}}}}
 }}
 
 export default ({{ children }}) => (
@@ -184,15 +195,16 @@ export default ({{ children }}) => (
             with open(output_path, 'w', encoding='utf-8') as out_f:
                 out_f.write(mdx_template)
                 
-            print(f"✅ Compiled: {file_name} -> {output_file_name}")
+            print(f"SUCCESS Compiled: {file_name} -> {output_file_name}")
             
         except Exception as e:
-            print(f"❌ Failed compiling {file_name}: {str(e)}", file=sys.stderr)
+            print(f"ERROR Failed compiling {file_name}: {str(e)}", file=sys.stderr)
 
 if __name__ == "__main__":
     # Configure directories relative to repository root layout
-    SOURCE_FOLDER = "./src/content/base/services/text_files"# Update this to where your text files are located
-    OUTPUT_FOLDER = "./src/content/base/services"
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    SOURCE_FOLDER = os.path.join(base_dir, "src", "content", "base", "services", "text_files")
+    OUTPUT_FOLDER = os.path.join(base_dir, "src", "content", "base", "services")
     
     # Ensure source folder exists for immediate use
     if not os.path.exists(SOURCE_FOLDER):

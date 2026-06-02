@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Easement Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Easement Surveys",
   steps: [
     {
       "title": "Research",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "Can an existing easement be removed or changed if it is no longer needed?",
       "answer": "Yes, but it requires a formal legal process. Under Section 35 of the *Property Law Act*, a person may apply to the Supreme Court to modify or cancel an easement if changes in the character of the land or neighbourhood make the charge obsolete, or if the reasonable use of the land will be impeded without practical benefit to others."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

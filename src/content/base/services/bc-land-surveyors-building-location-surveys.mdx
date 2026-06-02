@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "BC Land Surveyors Building Location Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "BC Land Surveyors Building Location Surveys",
   steps: [
     {
       "title": "Research",
@@ -56,7 +58,11 @@ export const metadata = {
       "question": "Does a Certificate of Location establish or change my property lines?",
       "answer": "No. While the plan accurately maps buildings relative to your boundaries, it does not establish new boundaries or redefine lost corners in the public record. In fact, professional guidelines dictate that the plan must contain a statement explicitly warning that the document shall not be used to define property lines or property corners. If your boundaries need to be formally re-established, a statutory Posting Plan or Reference Plan is required instead."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

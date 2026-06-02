@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Bare Land Strata Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Bare Land Strata Surveys",
   steps: [
     {
       "title": "Research",
@@ -58,7 +60,11 @@ export const metadata = {
       "question": "Why do I need a British Columbia Land Surveyor (BCLS) for my bare land strata project?",
       "answer": "Under the *Land Surveyors Act*, determining, locating, and certifying legal boundaries to create new titles is exclusively defined as the \"practice of land surveying\". Because a bare land strata legally subdivides property and creates permanent boundaries, only a commissioned BCLS holds the statutory authority to place the survey markers and certify the plan for deposit in the Land Title Office."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

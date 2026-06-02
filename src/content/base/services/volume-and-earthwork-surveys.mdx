@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Volume and Earthwork Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Volume and Earthwork Surveys",
   steps: [
     {
       "title": "Research",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "How do you survey gravel stockpiles if the base is buried or inaccessible?",
       "answer": "Ideally, we survey the pit base before any gravel piles are crushed and placed to establish a perfect baseline. However, if the base of the pile is totally inaccessible due to prior material placement, our professionals will survey the surrounding ground and provide a logical, mathematical interpolation of the hidden base to accurately compute the pile's volume."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

@@ -1,9 +1,94 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import {
+  SERVICE_LINKS_MAP,
+  LOCATION_LINKS_MAP,
+  SERVICE_IMAGES_MAP,
+  LOCATION_IMAGES_MAP
+} from '../src/config/resourceMapping.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+function getImagesForLocation(locationSlug) {
+  if (LOCATION_IMAGES_MAP[locationSlug]) {
+    return LOCATION_IMAGES_MAP[locationSlug];
+  }
+  const normalizedSlug = locationSlug.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  for (const key of Object.keys(LOCATION_IMAGES_MAP)) {
+    const normalizedKey = key.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    if (normalizedKey === normalizedSlug) {
+      return LOCATION_IMAGES_MAP[key];
+    }
+  }
+  return [];
+}
+
+function getLinksForLocation(locationSlug) {
+  if (LOCATION_LINKS_MAP[locationSlug]) {
+    return LOCATION_LINKS_MAP[locationSlug];
+  }
+  const normalizedSlug = locationSlug.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  for (const key of Object.keys(LOCATION_LINKS_MAP)) {
+    const normalizedKey = key.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    if (normalizedKey === normalizedSlug) {
+      return LOCATION_LINKS_MAP[key];
+    }
+  }
+  return [];
+}
+
+function injectServiceImage(content, serviceSlug) {
+  const serviceImages = SERVICE_IMAGES_MAP[serviceSlug];
+  if (!serviceImages || serviceImages.length === 0) {
+    return content;
+  }
+  const firstImage = serviceImages[0];
+  if (!firstImage || !firstImage.src) {
+    return content;
+  }
+  const { src, alt } = firstImage;
+
+  const imgTag = `<img src="${src}" alt="${alt || ''}" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />`;
+
+  // Find the end of the export default block
+  const templateEndIndex = content.indexOf('</ServiceTemplate>');
+  if (templateEndIndex === -1) {
+    return content;
+  }
+  
+  const closingParenIndex = content.indexOf(')', templateEndIndex);
+  if (closingParenIndex === -1) {
+    return content;
+  }
+
+  const header = content.substring(0, closingParenIndex + 1);
+  const body = content.substring(closingParenIndex + 1);
+
+  // Split the body into paragraphs by double newlines (with optional whitespace/carriage returns)
+  const paragraphs = body.split(/\r?\n\s*\r?\n/);
+  
+  // Find the first non-empty paragraph
+  let firstParaIdx = -1;
+  for (let i = 0; i < paragraphs.length; i++) {
+    if (paragraphs[i].trim().length > 0) {
+      firstParaIdx = i;
+      break;
+    }
+  }
+
+  if (firstParaIdx === -1) {
+    return content;
+  }
+
+  // Inject the image tag after the first paragraph
+  paragraphs[firstParaIdx] = paragraphs[firstParaIdx] + "\n\n" + imgTag;
+
+  // Reconstruct the body and full content
+  const newBody = paragraphs.join("\n\n");
+  return header + newBody;
+}
 
 // 1. Define the mapping object for all 9 locations
 const LOCATION_MAPPING = {
@@ -130,11 +215,19 @@ baseTemplates.forEach(templateFile => {
     return;
   }
 
+  const serviceSlug = templateFile.replace(/\.mdx?$/, '');
+
+  const serviceLinks = SERVICE_LINKS_MAP[serviceSlug] || [];
+  const serviceImages = SERVICE_IMAGES_MAP[serviceSlug] || [];
+
   locations.forEach(locationSlug => {
     console.log(`- Generating for location: ${locationSlug}`);
     
+    const locationLinks = getLinksForLocation(locationSlug);
+    const locationImages = getImagesForLocation(locationSlug);
+
     // Get mapping data for this location, or use a fallback
-    const data = LOCATION_MAPPING[locationSlug] || {
+    const locationData = LOCATION_MAPPING[locationSlug] || {
       LOCATION_NAME: locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
       LOCAL_AUTHORITY: `Municipality of ${locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`,
       MUNICIPAL_LINK: 'https://example.com',
@@ -143,12 +236,30 @@ baseTemplates.forEach(templateFile => {
       PARTNERSHIP_PARAGRAPH: `By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of ${locationSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}. We work closely with local builders, engineers, and planning staff to deliver high-precision digital terrain models and detailed CAD files.`
     };
 
+    // Look up LOCATION_IMAGES_MAP[locationSlug]
+    const directLocationImages = LOCATION_IMAGES_MAP[locationSlug] || getImagesForLocation(locationSlug);
+    const computedHeroImage = (directLocationImages && directLocationImages.length > 0 && directLocationImages[0].src)
+      ? directLocationImages[0].src
+      : "/images/Squamish-Garibaldi-Estates-Property-Survey.webp";
+
+    const data = {
+      ...locationData,
+      HERO_IMAGE: computedHeroImage,
+      SERVICE_LINKS: JSON.stringify(serviceLinks, null, 2),
+      LOCATION_LINKS: JSON.stringify(locationLinks, null, 2),
+      SERVICE_IMAGES: JSON.stringify(serviceImages, null, 2),
+      LOCATION_IMAGES: JSON.stringify(locationImages, null, 2)
+    };
+
     // Replace placeholders
     let localizedContent = templateContent;
     Object.entries(data).forEach(([key, value]) => {
       const placeholder = new RegExp(`{{${key}}}`, 'g');
       localizedContent = localizedContent.replace(placeholder, value);
     });
+
+    // Inject inline service image if available
+    localizedContent = injectServiceImage(localizedContent, serviceSlug);
 
     // Define output directory and file path
     const outputDir = path.join(__dirname, `../src/content/services/${locationSlug}`);

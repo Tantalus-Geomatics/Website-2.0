@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Gridline and Construction Layout Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Gridline and Construction Layout Surveys",
   steps: [
     {
       "title": "Research and Pre-Calculation",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "How do you ensure the gridline stakes are not placed incorrectly?",
       "answer": "We employ a rigorous quality control framework. We double-check all reference points from two independent locations or measure them in two different units to compare results. Additionally, we establish redundant horizontal and vertical control points throughout the site so we can verify positions continuously."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

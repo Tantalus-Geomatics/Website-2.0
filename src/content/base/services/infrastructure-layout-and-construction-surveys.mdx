@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Infrastructure Layout and Construction Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Infrastructure Layout and Construction Surveys",
   steps: [
     {
       "title": "Research",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "Am I responsible for locating underground utilities before the layout survey?",
       "answer": "Yes. Prior to any ground disturbance or excavation, the contractor or owner must contact BC 1 Call. Furthermore, if you are working near energy infrastructure, the *BC Pipeline Crossing Regulation* dictates that no ground activity can occur within 30 metres of a pipeline without notifying BC 1 Call and receiving approval from the facility owner. Our surveyors will use this utility data to ensure safe layout operations."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

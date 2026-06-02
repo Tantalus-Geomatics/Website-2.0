@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Natural Boundary Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Natural Boundary Surveys",
   steps: [
     {
       "title": "Comprehensive Cadastral Research",
@@ -42,7 +44,11 @@ export const metadata = {
     "*4\\. Does my property line change if the river suddenly floods and cuts a new channel? No. A sudden and perceptible change in the location of a body of water due to cataclysmic events is called an avulsion. When an avulsive event occurs, the extent of ownership remains unchanged, and the legal boundary remains where it was located prior to the sudden event.",
     "*5\\. Why do I need a British Columbia Land Surveyor (BCLS) to update my waterfront boundary? Defining, locating, and certifying a natural boundary constitutes the \"practice of land surveying\" under the *Land Surveyors Act*. Only a commissioned BCLS holds the exclusive statutory authority to determine the legal boundary, differentiate between lawful accretion and illegal fill, and prepare the statutory plan required by the Surveyor General and the Land Title Office to officially update your property rights."
   ],
-  faqs: []
+  faqs: [],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Boundary Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Boundary Surveys",
   steps: [
     {
       "title": "Research:",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "Can you just stake my property line without filing a survey plan?",
       "answer": "While marking a boundary without filing a plan is sometimes requested to save costs, it carries significant liability and contravenes professional statutes. Section 68 of the *Land Title Act* legally mandates that if a parcel corner is redefined by a post or monument, a posting plan *must* be certified and filed within two months. Filing the plan protects your investment by formally documenting the boundary in the public registry."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

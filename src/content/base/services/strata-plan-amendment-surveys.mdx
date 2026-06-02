@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "Strata Plan Amendment Surveys"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "Strata Plan Amendment Surveys",
   steps: [
     {
       "title": "Research:",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "What is the difference between a Section 74 LCP amendment and a Section 257 strata plan amendment?",
       "answer": "Section 257 formally amends the registered strata plan itself and legally requires a unanimous vote of the strata corporation. Section 74 allows common property to be designated as LCP by a 3/4 vote accompanied by a sketch plan; this does not amend the strata plan, but is instead noted by the Registrar on the strata corporation's common property record."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

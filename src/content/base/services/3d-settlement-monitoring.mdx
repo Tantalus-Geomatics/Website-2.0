@@ -5,6 +5,7 @@ locationName: '{{LOCATION_NAME}}'
 heroImage: '{{HERO_IMAGE}}'
 localAuthorityName: '{{LOCAL_AUTHORITY}}'
 municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "3D Settlement Monitoring"
 ---
 
 import ServiceTemplate from '../../../templates/ServiceTemplate'
@@ -16,6 +17,7 @@ export const metadata = {
   heroImage: '{{HERO_IMAGE}}',
   localAuthorityName: '{{LOCAL_AUTHORITY}}',
   municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "3D Settlement Monitoring",
   steps: [
     {
       "title": "Research:",
@@ -57,7 +59,11 @@ export const metadata = {
       "question": "How do you guarantee the accuracy of the settlement data?",
       "answer": "A thorough understanding of survey methodology is required to ensure reliable results. We place careful attention on the accuracy and stability of our control points, instrument calibration, the timing of measurements, and ensuring redundancy in our measurements to identify and isolate any potential sources of error."
     }
-  ]
+  ],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
 }
 
 export default ({ children }) => (

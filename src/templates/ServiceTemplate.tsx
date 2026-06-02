@@ -11,7 +11,10 @@ import {
   HelpCircle,
   Phone,
   Building2,
-  ExternalLink
+  ExternalLink,
+  Image as ImageIcon,
+  Maximize2,
+  X
 } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
@@ -34,6 +37,12 @@ export interface LocalLink {
   href: string;
 }
 
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface ServiceTemplateProps {
   title: string;
   description: string;
@@ -44,6 +53,8 @@ export interface ServiceTemplateProps {
   faqs?: FAQItem[];
   serviceLinks?: LocalLink[];
   locationLinks?: LocalLink[];
+  serviceImages?: GalleryImage[];
+  locationImages?: GalleryImage[];
   formVariant?: 'embedded' | 'stacked-residential';
   locationName?: string;
   localAuthorityName?: string;
@@ -107,6 +118,8 @@ export default function ServiceTemplate({
   faqs = defaultFaqs,
   serviceLinks = defaultServiceLinks,
   locationLinks,
+  serviceImages = [],
+  locationImages = [],
   formVariant = 'embedded',
   locationName,
   localAuthorityName,
@@ -115,6 +128,7 @@ export default function ServiceTemplate({
 }: ServiceTemplateProps) {
   const [heroSrc, setHeroSrc] = useState(heroImage);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
   const lead = useLeadForm();
 
   useEffect(() => {
@@ -141,6 +155,11 @@ export default function ServiceTemplate({
     ? description.split('.')[0].trim() + '.'
     : description;
 
+  const galleryImages = [
+    ...serviceImages,
+    ...locationImages
+  ];
+
   return (
     <PageShell>
       <SEO
@@ -149,7 +168,7 @@ export default function ServiceTemplate({
       />
 
       {/* 1. Hero Banner */}
-      <header className="relative py-24 md:py-36 flex flex-col items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
+      <header className="relative py-24 md:py-36 flex flex-col items-center justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark w-full">
         <div className="absolute inset-0 z-0">
           <img
             src={heroSrc}
@@ -162,7 +181,7 @@ export default function ServiceTemplate({
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
-          <span className="inline-block bg-brand-green/10 text-brand-green border border-brand-green/20 font-semibold px-3 py-1 text-xs uppercase rounded-full mb-6">
+          <span className="inline-block bg-brand-green/10 text-brand-green border border-brand-green/20 uppercase text-xs rounded-full px-3 py-1 mb-6">
             Professional Land Surveying Services
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
@@ -192,7 +211,7 @@ export default function ServiceTemplate({
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Enhanced Typography for Readability */}
-          <div className="prose-custom text-slate-800 font-light leading-relaxed
+          <div className="prose-custom text-slate-800 font-light leading-relaxed flow-root
             [&>h2]:text-2xl [&>h2]:font-semibold [&>h2]:text-slate-900 [&>h2]:mt-12 [&>h2]:mb-6 [&>h2]:border-b [&>h2]:border-slate-100 [&>h2]:pb-3
             [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-slate-900 [&>h3]:mt-10 [&>h3]:mb-4
             [&>p]:mb-8 [&>p]:text-lg [&>p]:leading-relaxed
@@ -304,7 +323,7 @@ export default function ServiceTemplate({
                     <Check size={16} strokeWidth={3} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">
+                    <h3 className="text-lg font-bold text-white mb-2">
                       {titlePart}
                     </h3>
                     {descPart && (
@@ -411,11 +430,11 @@ export default function ServiceTemplate({
       )}
 
       {/* Local Resources Section */}
-      {municipalLink && localAuthorityName && (
+      {((municipalLink && localAuthorityName) || (locationLinks && locationLinks.length > 0)) && (
         <section className="py-16 md:py-24 bg-white border-b border-slate-200">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
-              Local Resources {locationName ? `for ${locationName}` : ''}
+              Local Resources for {locationName || 'Sea to Sky'}
             </h2>
             <GeoDirectAnswer
               align="center"
@@ -425,22 +444,25 @@ export default function ServiceTemplate({
                 Access official municipal planning guidelines, topographic requirements, and permit checklists directly from the local authority.
               </p>
             </GeoDirectAnswer>
-            <div className="inline-block w-full sm:w-auto">
-              <a
-                href={municipalLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-3 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-slate-900 font-semibold rounded-full shadow-md"
-              >
-                <Building2 size={20} className="text-slate-900 shrink-0" />
-                <span>View {localAuthorityName} Guidelines</span>
-                <ExternalLink size={18} className="text-slate-800 shrink-0" />
-              </a>
-            </div>
+            
+            {municipalLink && localAuthorityName && (
+              <div className="inline-block w-full sm:w-auto mb-8">
+                <a
+                  href={municipalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-3 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-slate-900 font-semibold rounded-full shadow-md"
+                >
+                  <Building2 size={20} className="text-slate-900 shrink-0" />
+                  <span>View {localAuthorityName} Guidelines</span>
+                  <ExternalLink size={18} className="text-slate-800 shrink-0" />
+                </a>
+              </div>
+            )}
 
             {/* Location Links Grid */}
             {locationLinks && locationLinks.length > 0 && (
-              <div className="mt-6 max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+              <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
                 {locationLinks.map((link, index) => (
                   <Link
                     key={index}
@@ -455,6 +477,79 @@ export default function ServiceTemplate({
             )}
           </div>
         </section>
+      )}
+
+      {/* Responsive Image Gallery Section */}
+      {galleryImages.length > 0 && (
+        <section className="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs font-semibold text-brand-green-dark uppercase tracking-wider flex items-center justify-center gap-1.5 mb-2">
+                <ImageIcon size={14} />
+                Visual Documentation
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-light text-slate-900">
+                Service Gallery
+              </h2>
+              <p className="text-slate-600 font-light text-sm max-w-xl mx-auto mt-2">
+                Field photos, survey plans, and technical captures from our projects.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {galleryImages.map((image, index) => (
+                <div 
+                  key={index}
+                  onClick={() => setActiveImage(image.src)}
+                  className="group relative aspect-4/3 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md hover:border-brand-green transition-all cursor-pointer"
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt || `${title} gallery image ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="p-3 rounded-full bg-white/20 backdrop-blur-sm text-white border border-white/30 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                      <Maximize2 size={20} />
+                    </div>
+                  </div>
+                  {image.caption && (
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white text-xs font-light opacity-0 group-hover:opacity-100 transition-opacity">
+                      {image.caption}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Lightbox Modal */}
+      {activeImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          onClick={() => setActiveImage(null)}
+        >
+          <button 
+            onClick={() => setActiveImage(null)}
+            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            aria-label="Close lightbox"
+          >
+            <X size={24} />
+          </button>
+          <div 
+            className="relative max-w-5xl max-h-[85vh] overflow-hidden rounded-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={activeImage}
+              alt="Enlarged gallery view"
+              className="max-w-full max-h-[85vh] object-contain"
+            />
+          </div>
+        </div>
       )}
 
       {/* 7. Lead Quote Form Section */}
