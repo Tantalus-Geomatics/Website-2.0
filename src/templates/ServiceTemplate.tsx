@@ -48,6 +48,7 @@ export interface ServiceTemplateProps {
   description: string;
   serviceName?: string;
   heroImage?: string;
+  heroImageAlt?: string;
   steps?: ProcessStep[];
   deliverables?: string[];
   faqs?: FAQItem[];
@@ -113,6 +114,7 @@ export default function ServiceTemplate({
   description,
   serviceName,
   heroImage = HERO_FALLBACK,
+  heroImageAlt,
   steps = defaultSteps,
   deliverables = defaultDeliverables,
   faqs = defaultFaqs,
@@ -172,7 +174,7 @@ export default function ServiceTemplate({
         <div className="absolute inset-0 z-0">
           <img
             src={heroSrc}
-            alt={title}
+            alt={heroImageAlt || title}
             className="w-full h-full object-cover opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
@@ -241,7 +243,7 @@ export default function ServiceTemplate({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-light text-slate-900 mb-4">
-              Our 3-Step Survey Process
+              How do we ensure accuracy and efficiency in our land surveying projects?
             </h2>
             <GeoDirectAnswer
               align="center"
@@ -284,7 +286,7 @@ export default function ServiceTemplate({
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-light text-white mb-4">
-              Deliverables We Offer
+              What professional documents and markers do you receive upon project completion?
             </h2>
             <GeoDirectAnswer
               align="center"

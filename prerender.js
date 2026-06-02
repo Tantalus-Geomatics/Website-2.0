@@ -36,6 +36,9 @@ function generateRouteMatrix() {
       .map(dirent => dirent.name);
 
     for (const location of locations) {
+      // Push the base location path into sitemapFeeds.pages
+      sitemapFeeds.pages.push(`/${location}/`);
+
       const locationPath = path.join(categoryPath, location);
       const files = fs.readdirSync(locationPath)
         .filter(file => file.endsWith('.mdx') || file.endsWith('.md'));

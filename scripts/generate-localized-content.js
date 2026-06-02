@@ -39,7 +39,40 @@ function getLinksForLocation(locationSlug) {
   return [];
 }
 
-function injectServiceImage(content, serviceSlug) {
+function getCleanServiceName(serviceSlug) {
+  const mapping = {
+    '3d-settlement-monitoring': '3D Settlement Monitoring',
+    'air-space-subdivision-surveys': 'Air Space Subdivision Surveys',
+    'bare-land-strata-surveys': 'Bare Land Strata Surveys',
+    'bc-land-surveyors-building-location-surveys': 'Building Location Surveys',
+    'block-outline-surveys': 'Block Outline Surveys',
+    'boundary-surveys': 'Boundary Surveys',
+    'building-strata-surveys': 'Building Strata Surveys',
+    'consolidation-surveys': 'Consolidation Surveys',
+    'covenant-surveys': 'Covenant Surveys',
+    'easement-surveys': 'Easement Surveys',
+    'environmental-and-riparian-surveys': 'Environmental and Riparian Surveys',
+    'excavation-layout-surveys': 'Excavation Layout Surveys',
+    'form-and-foundation-surveys': 'Form and Foundation Surveys',
+    'gridline-and-construction-layout-surveys': 'Gridline and Construction Layout Surveys',
+    'infrastructure-layout-and-construction-surveys': 'Infrastructure Layout and Construction Surveys',
+    'land-act-surveys': 'Land Act Surveys',
+    'natural-boundary-surveys': 'Natural Boundary Surveys',
+    'phased-strata-surveys': 'Phased Strata Surveys',
+    'proposed-strata-plans': 'Proposed Strata Plans',
+    'road-surveys': 'Road Surveys',
+    'statutory-rights-of-way-surveys': 'Statutory Rights of Way Surveys',
+    'strata-plan-amendment-surveys': 'Strata Plan Amendment Surveys',
+    'strata-surveys': 'Strata Surveys',
+    'subdivisions-surveys': 'Subdivision Surveys',
+    'terrestrial-lidar-scanning': 'Terrestrial LiDAR Scanning',
+    'topographic-surveys-and-site-plans': 'Topographic Surveys and Site Plans',
+    'volume-and-earthwork-surveys': 'Volume and Earthwork Surveys'
+  };
+  return mapping[serviceSlug] || serviceSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
+
+function injectServiceImage(content, serviceSlug, locationName) {
   const serviceImages = SERVICE_IMAGES_MAP[serviceSlug];
   if (!serviceImages || serviceImages.length === 0) {
     return content;
@@ -48,9 +81,11 @@ function injectServiceImage(content, serviceSlug) {
   if (!firstImage || !firstImage.src) {
     return content;
   }
-  const { src, alt } = firstImage;
+  const { src } = firstImage;
+  const cleanServiceName = getCleanServiceName(serviceSlug);
+  const dynamicAlt = `BC Land Surveyor conducting ${cleanServiceName} in ${locationName}, BC`;
 
-  const imgTag = `<img src="${src}" alt="${alt || ''}" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />`;
+  const imgTag = `<img src="${src}" alt="${dynamicAlt}" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />`;
 
   // Find the end of the export default block
   const templateEndIndex = content.indexOf('</ServiceTemplate>');
@@ -242,13 +277,27 @@ baseTemplates.forEach(templateFile => {
       ? directLocationImages[0].src
       : "/images/Squamish-Garibaldi-Estates-Property-Survey.webp";
 
+    const cleanServiceName = getCleanServiceName(serviceSlug);
+    const dynamicAlt = `BC Land Surveyor conducting ${cleanServiceName} in ${locationData.LOCATION_NAME}, BC`;
+
+    const dynamicServiceImages = serviceImages.map(img => ({
+      ...img,
+      alt: `BC Land Surveyor conducting ${cleanServiceName} in ${locationData.LOCATION_NAME}, BC`
+    }));
+
+    const dynamicLocationImages = locationImages.map(img => ({
+      ...img,
+      alt: `BC Land Surveyor conducting ${cleanServiceName} in ${locationData.LOCATION_NAME}, BC`
+    }));
+
     const data = {
       ...locationData,
       HERO_IMAGE: computedHeroImage,
+      HERO_IMAGE_ALT: dynamicAlt,
       SERVICE_LINKS: JSON.stringify(serviceLinks, null, 2),
       LOCATION_LINKS: JSON.stringify(locationLinks, null, 2),
-      SERVICE_IMAGES: JSON.stringify(serviceImages, null, 2),
-      LOCATION_IMAGES: JSON.stringify(locationImages, null, 2)
+      SERVICE_IMAGES: JSON.stringify(dynamicServiceImages, null, 2),
+      LOCATION_IMAGES: JSON.stringify(dynamicLocationImages, null, 2)
     };
 
     // Replace placeholders
@@ -259,7 +308,7 @@ baseTemplates.forEach(templateFile => {
     });
 
     // Inject inline service image if available
-    localizedContent = injectServiceImage(localizedContent, serviceSlug);
+    localizedContent = injectServiceImage(localizedContent, serviceSlug, locationData.LOCATION_NAME);
 
     // Define output directory and file path
     const outputDir = path.join(__dirname, `../src/content/services/${locationSlug}`);

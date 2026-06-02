@@ -1,6 +1,8 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
+import SEO from '../components/SEO';
+import { isValidLocation, LOCATION_GEO_DATA } from '../config/locations';
 
 // Dynamically import all unified localized MDX files nested under content/services/[location]/[service].mdx
 const localizedModules = import.meta.glob('../content/services/*/*.mdx');
@@ -70,6 +72,28 @@ export default function DynamicLocationService() {
 
   const { Component } = data;
 
+  const geoData = locationSlug && isValidLocation(locationSlug) ? LOCATION_GEO_DATA[locationSlug] : null;
+
+  const localizedSchema = geoData && data?.meta ? {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": `Tantalus Geomatics Land Surveying - ${geoData.locality}`,
+    "description": data.meta.description || `Professional land surveying and geomatics services in ${geoData.locality}, BC.`,
+    "url": `https://www.tantalusgeomatics.com/${locationSlug}/services/${serviceSlug}/`,
+    "telephone": "+16042139934",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": geoData.locality,
+      "addressRegion": "BC",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": geoData.lat,
+      "longitude": geoData.lng
+    }
+  } : null;
+
   return (
     <Suspense fallback={
       <PageShell>
@@ -81,6 +105,13 @@ export default function DynamicLocationService() {
       {/* FIX: Render the Component directly. 
         The MDX file handles wrapping itself in ServiceTemplate automatically.
       */}
+      {localizedSchema && (
+        <SEO
+          title={data.meta.title || ''}
+          description={data.meta.description || ''}
+          schema={localizedSchema}
+        />
+      )}
       <Component />
     </Suspense>
   );

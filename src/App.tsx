@@ -21,6 +21,7 @@ import DynamicService from './pages/DynamicService';
 import DynamicInsight from './pages/DynamicInsight';
 import DynamicProject from './pages/DynamicProject';
 import DynamicLocationService from './pages/DynamicLocationService';
+import DynamicLocationHome from './pages/DynamicLocationHome';
 import { isValidLocation } from './config/locations';
 
 interface LocationRouteGuardProps {
@@ -64,6 +65,14 @@ export default function App() {
         <Route path="projects/:projectSlug" element={<DynamicProject />} />
 
         {/* Localized routes */}
+        <Route
+          path=":locationSlug"
+          element={
+            <LocationRouteGuard>
+              <DynamicLocationHome />
+            </LocationRouteGuard>
+          }
+        />
         <Route
           path=":locationSlug/services/:serviceSlug"
           element={
