@@ -1,4 +1,4 @@
-import { Home, HardHat, Scale, Building, Mountain, Trees } from 'lucide-react';
+import { Home, HardHat, Scale, Building, Mountain, Layers } from 'lucide-react';
 
 export interface ServiceCategoryConfig {
   id: string;
@@ -18,7 +18,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Boundary marking, site plans for permits, and zoning layout inspections for homeowners.',
     icon: Home,
     image: '/images/old-home.webp',
-    serviceSlugs: ['property-line-surveys', 'building-location-certificates', 'boundary-surveys']
+    serviceSlugs: ['bc-land-surveyors-building-location-surveys','boundary-surveys','property-line-surveys','topographic-surveys-and-site-plans']
   },
   {
     id: 'construction',
@@ -27,7 +27,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Precise layout staking for foundations, gridlines, and structural site utilities.',
     icon: HardHat,
     image: '/images/construction.webp',
-    serviceSlugs: ['construction-staking']
+    serviceSlugs: ['3d-settlement-monitoring','environmental-and-riparian-surveys','excavation-layout-surveys','form-and-foundation-surveys','gridline-and-construction-layout-surveys','infrastructure-layout-and-construction-surveys','property-line-surveys','road-surveys','topographic-surveys-and-site-plans','volume-and-earthwork-surveys']
   },
   {
     id: 'legal',
@@ -36,7 +36,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Subdivision plans, airspace parcels, and easement plans registered at the Land Title Office.',
     icon: Scale,
     image: '/images/survey-marker-post.webp',
-    serviceSlugs: ['bare-land-strata-surveys', 'air-space-subdivision-surveys', 'statutory-rights-of-way-surveys']
+    serviceSlugs: [ 'air-space-subdivision-surveys','block-outline-surveys','boundary-surveys','consolidation-surveys','covenant-surveys','easement-surveys','land-act-surveys','natural-boundary-surveys','property-line-surveys','road-surveys','statutory-rights-of-way-surveys','subdivisions-surveys']
   },
   {
     id: 'commercial',
@@ -45,7 +45,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Comprehensive geomatics frameworks tailored for commercial real estate developments.',
     icon: Building,
     image: '/images/land-development.webp',
-    serviceSlugs: ['volume-and-earthwork-surveys']
+    serviceSlugs: [ 'air-space-subdivision-surveys','bc-land-surveyors-building-location-surveys','consolidation-surveys','environmental-and-riparian-surveys','subdivisions-surveys','topographic-surveys-and-site-plans']
   },
   {
     id: 'engineering',
@@ -54,15 +54,15 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'High-precision 3D structural settlement monitoring and deformation analysis.',
     icon: Mountain,
     image: '/images/3d-settlement-monitoring.webp',
-    serviceSlugs: ['3d-settlement-monitoring', 'terrestrial-lidar-scanning']
+    serviceSlugs: ['3d-settlement-monitoring','road-surveys','terrestrial-lidar-scanning','volume-and-earthwork-surveys']
   },
   {
-    id: 'uav-lidar',
-    title: 'UAV/LiDAR Surveys',
-    description: 'Advanced reality capture employing airborne sensors and terrestrial laser scanners to assemble high-fidelity spatial models of complex sites.',
-    homeDescription: 'High-density drone mapping, aerial photogrammetry, and 3D point cloud generation.',
-    icon: Trees,
-    image: '/images/reality-capture.webp',
-    serviceSlugs: ['uav-mapping', 'environmental-and-riparian-surveys']
+    id: 'strata',
+    title: 'Strata Surveys',
+    description: 'Comprehensive legal surveying and plan preparation for multi-unit residential, commercial, and industrial developments, ensuring clear definitions of individual titles and common property.',
+    homeDescription: 'Specialized building strata plans, bare land strata layouts, and phased multi-unit development surveys.',
+    icon: Layers,
+    image: '/images/bare-land-strata-surveys.webp',
+    serviceSlugs: ['bare-land-strata-surveys', 'air-space-subdivision-surveys', 'bare-land-strata-surveys','building-strata-surveys','phased-strata-surveys','proposed-strata-plans','strata-plan-amendment-surveys','strata-surveys'] // Note: You can migrate 'bare-land-strata-surveys' out of the 'legal' category slugs array into this array to keep it clean.
   }
 ];
