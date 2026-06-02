@@ -1,7 +1,6 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
-import HubTemplate from '../templates/HubTemplate';
 
 // Dynamically import all unified localized MDX files nested under content/services/[location]/[service].mdx
 const localizedModules = import.meta.glob('../content/services/*/*.mdx');
@@ -69,18 +68,7 @@ export default function DynamicLocationService() {
     );
   }
 
-  const { Component, meta } = data;
-
-  // Fallbacks for missing frontmatter titles
-  const locationTitle = meta.locationName || locationSlug?.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || '';
-  const serviceTitle = meta.title || serviceSlug?.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || '';
-
-  const title = meta.title || `${serviceTitle} in ${locationTitle}`;
-  const description = meta.description || `Professional ${serviceTitle} services in ${locationTitle}, BC. Contact Tantalus Geomatics for a free quote.`;
-
-  const relatedServices = meta.relatedServices || [];
-  const relatedProjects = meta.relatedProjects || [];
-  const relatedPosts = meta.relatedPosts || [];
+  const { Component } = data;
 
   return (
     <Suspense fallback={
@@ -90,18 +78,10 @@ export default function DynamicLocationService() {
         </div>
       </PageShell>
     }>
-      <HubTemplate
-        title={title}
-        description={description}
-        relatedServices={relatedServices}
-        relatedProjects={relatedProjects}
-        relatedPosts={relatedPosts}
-      >
-        <div className="prose prose-slate max-w-none">
-          {/* Render the single unified localized file contents */}
-          <Component />
-        </div>
-      </HubTemplate>
+      {/* FIX: Render the Component directly. 
+        The MDX file handles wrapping itself in ServiceTemplate automatically.
+      */}
+      <Component />
     </Suspense>
   );
 }
