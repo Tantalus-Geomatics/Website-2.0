@@ -3,6 +3,7 @@ import { MapPin, Menu, X, Mountain, Mail, Phone, Linkedin, Github } from 'lucide
 import { useState } from 'react';
 import { GoogleMap, LoadScript, Polygon, MarkerF } from '@react-google-maps/api';
 import ClientOnly from '../components/ClientOnly'; // <-- Add this import
+import AuthorBio from './AuthorBio';
 
 // Converted service area coordinates to Google Maps { lat, lng } format
 const serviceAreaPaths = [
@@ -89,6 +90,72 @@ const schemaData = {
     "@type": "GeoCoordinates",
     "latitude": 49.7016,
     "longitude": -123.1558
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Dennis Sherman",
+    "jobTitle": "Principal & Commissioned British Columbia Land Surveyor",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "York University"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "British Columbia Land Surveyor (BCLS)",
+        "credentialCategory": "Professional Commission",
+        "recognizedBy": {
+          "@type": "ProfessionalAssociation",
+          "name": "Association of British Columbia Land Surveyors",
+          "abbreviation": "ABCLS"
+        },
+        "identifier": "BCLS Commission #1104"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Professional Engineer (P.Eng.)",
+        "credentialCategory": "Professional License",
+        "recognizedBy": {
+          "@type": "ProfessionalAssociation",
+          "name": "Engineers & Geoscientists British Columbia",
+          "abbreviation": "EGBC"
+        },
+        "identifier": "EGBC License #57741"
+      }
+    ]
+  },
+  "employee": {
+    "@type": "Person",
+    "name": "Dennis Sherman",
+    "jobTitle": "Principal & Commissioned British Columbia Land Surveyor",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "York University"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "British Columbia Land Surveyor (BCLS)",
+        "credentialCategory": "Professional Commission",
+        "recognizedBy": {
+          "@type": "ProfessionalAssociation",
+          "name": "Association of British Columbia Land Surveyors",
+          "abbreviation": "ABCLS"
+        },
+        "identifier": "BCLS Commission #1104"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Professional Engineer (P.Eng.)",
+        "credentialCategory": "Professional License",
+        "recognizedBy": {
+          "@type": "ProfessionalAssociation",
+          "name": "Engineers & Geoscientists British Columbia",
+          "abbreviation": "EGBC"
+        },
+        "identifier": "EGBC License #57741"
+      }
+    ]
   },
   "areaServed": [
     {
@@ -260,6 +327,9 @@ export default function Layout() {
       <main className="flex-grow">
         <Outlet />
       </main>
+
+      {/* Global Author Biography Component */}
+      <AuthorBio />
 
       {/* Footer */}
       <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8">

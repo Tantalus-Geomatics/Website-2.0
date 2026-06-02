@@ -18,8 +18,25 @@ const sitemapFeeds = {
   projects: []
 };
 
+const CORE_LOCATIONS = [
+  'squamish',
+  'whistler',
+  'pemberton',
+  'lillooet',
+  'west-vancouver',
+  'bowen-island',
+  'britannia-beach',
+  'furry-creek',
+  'north-vancouver'
+];
+
 // 2. Dynamically discover all localized and base fallback routes
 function generateRouteMatrix() {
+  // Explicitly push parent location landing routes to prevent Local SEO authority leakage
+  CORE_LOCATIONS.forEach(location => {
+    sitemapFeeds.pages.push(`/${location}/`);
+  });
+
   const contentDir = toAbs('src/content');
   if (!fs.existsSync(contentDir)) {
     console.warn(`⚠️ Content directory not found at ${contentDir}.`);

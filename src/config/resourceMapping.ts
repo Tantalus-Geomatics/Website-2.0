@@ -9,16 +9,70 @@ export interface ResourceImage {
   caption?: string;
 }
 
-export const LOCATION_GEO_DATA: Record<string, { lat: number; lng: number; locality: string }> = {
-  'squamish': { lat: 49.7016, lng: -123.1558, locality: 'Squamish' },
-  'whistler': { lat: 50.1163, lng: -122.9574, locality: 'Whistler' },
-  'pemberton': { lat: 50.3210, lng: -122.8050, locality: 'Pemberton' },
-  'lillooet': { lat: 50.6853, lng: -121.9364, locality: 'Lillooet' },
-  'west-vancouver': { lat: 49.3692, lng: -123.1702, locality: 'West Vancouver' },
-  'bowen-island': { lat: 49.3822, lng: -123.3711, locality: 'Bowen Island' },
-  'britannia-beach': { lat: 49.6264, lng: -123.2044, locality: 'Britannia Beach' },
-  'furry-creek': { lat: 49.5833, lng: -123.2167, locality: 'Furry Creek' },
-  'north-vancouver': { lat: 49.3198, lng: -123.0724, locality: 'North Vancouver' }
+export const LOCATION_GEO_DATA: Record<string, { lat: number; lng: number; locality: string; localAuthorityName?: string; municipalLink?: string }> = {
+  'squamish': {
+    lat: 49.7016,
+    lng: -123.1558,
+    locality: 'Squamish',
+    localAuthorityName: 'District of Squamish',
+    municipalLink: 'https://squamish.ca/assets/BLDG/RESIDENTIAL-BP-Document-Checklist-Revised-FEB-FILLABLE_2022.pdf'
+  },
+  'whistler': {
+    lat: 50.1163,
+    lng: -122.9574,
+    locality: 'Whistler',
+    localAuthorityName: 'Resort Municipality of Whistler',
+    municipalLink: 'https://www.whistler.ca/business/building-development/building-permits/'
+  },
+  'pemberton': {
+    lat: 50.3210,
+    lng: -122.8050,
+    locality: 'Pemberton',
+    localAuthorityName: 'Village of Pemberton',
+    municipalLink: 'https://www.pemberton.ca/government/departments/development-services/building-department'
+  },
+  'lillooet': {
+    lat: 50.6853,
+    lng: -121.9364,
+    locality: 'Lillooet',
+    localAuthorityName: 'District of Lillooet',
+    municipalLink: 'https://www.lillooet.ca/business-development/building-permits'
+  },
+  'west-vancouver': {
+    lat: 49.3692,
+    lng: -123.1702,
+    locality: 'West Vancouver',
+    localAuthorityName: 'District of West Vancouver',
+    municipalLink: 'https://westvancouver.ca/home-building-property/permits-licences/building-permits'
+  },
+  'bowen-island': {
+    lat: 49.3822,
+    lng: -123.3711,
+    locality: 'Bowen Island',
+    localAuthorityName: 'Bowen Island Municipality',
+    municipalLink: 'https://www.bowenislandmunicipality.ca/building-permits/'
+  },
+  'britannia-beach': {
+    lat: 49.6264,
+    lng: -123.2044,
+    locality: 'Britannia Beach',
+    localAuthorityName: 'Squamish-Lillooet Regional District',
+    municipalLink: 'https://www.slrd.bc.ca/planning-development/building-services'
+  },
+  'furry-creek': {
+    lat: 49.5833,
+    lng: -123.2167,
+    locality: 'Furry Creek',
+    localAuthorityName: 'Squamish-Lillooet Regional District',
+    municipalLink: 'https://www.slrd.bc.ca/planning-development/building-services'
+  },
+  'north-vancouver': {
+    lat: 49.3198,
+    lng: -123.0724,
+    locality: 'North Vancouver',
+    localAuthorityName: 'City and District of North Vancouver',
+    municipalLink: 'https://www.dnv.org/property-and-development/building-and-permits'
+  }
 };
 
 export const SERVICE_LINKS_MAP: Record<string, ResourceLink[]> = {
@@ -278,63 +332,63 @@ export const LOCATION_IMAGES_MAP: Record<string, ResourceImage[]> = {
       caption: 'Professional Land Surveying in Lillooet, BC.'
     }
   ],
-  'Britannia Beach': [
+  'britannia-beach': [
     {
       src: '/images/britannia-beach.webp',
       alt: 'Britannia Beach Whytecliff Park Survey',
       caption: 'Professional Land Surveying in Britannia Beach, BC.'
     }
   ],
-  'Furry Creek': [
+  'furry-creek': [
     {
       src: '/images/furry-creek.webp',
       alt: 'Furry Creek Whytecliff Park Survey',
       caption: 'Professional Land Surveying in Furry Creek, BC.'
     }
   ],
-  'West Vancouver': [
+  'west-vancouver': [
     {
       src: '/images/west-vancouver.webp',
       alt: 'West Vancouver Whytecliff Park Survey',
       caption: 'Professional Land Surveying in West Vancouver, BC.'
     }
   ],
-  'Sea-to-Sky': [
+  'sea-to-sky': [
     {
       src: '/images/sea-to-sky.webp',
       alt: 'Sea-to-Sky Whytecliff Park Survey',
       caption: 'Professional Land Surveying in Sea-to-Sky, BC.'
     }
   ],
-  'Bowen Island': [
+  'bowen-island': [
     {
       src: '/images/bowen-island.webp',
       alt: 'Bowen Island Survey',
       caption: 'Professional Land Surveying in Bowen Island, BC.'
     }
   ],
-  'North Vancouver': [
+  'north-vancouver': [
     {
       src: '/images/north-vancouver.webp',
       alt: 'North Vancouver Survey',
       caption: 'Professional Land Surveying in North Vancouver, BC.'
     }
   ],
-  'Gibsons': [
+  'gibsons': [
     {
       src: '/images/gibsons.webp',
       alt: 'Gibsons Survey',
       caption: 'Professional Land Surveying in Gibsons, BC.'
     }
   ],
-  'Sechelt': [
+  'sechelt': [
     {
       src: '/images/sechelt.webp',
       alt: 'Sechelt Survey',
       caption: 'Professional Land Surveying in Sechelt, BC.'
     }
   ],
-  'Powell River': [
+  'powell-river': [
     {
       src: '/images/power-river.webp',
       alt: 'Powell River Survey',

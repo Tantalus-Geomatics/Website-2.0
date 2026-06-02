@@ -204,8 +204,9 @@ export default ({{ children }}) => (
             print(f"ERROR Failed compiling {file_name}: {str(e)}", file=sys.stderr)
 
 if __name__ == "__main__":
-    # Configure directories relative to repository root layout
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # Configure directories relative to repository root layout using os.path.dirname(os.path.abspath(__file__))
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(script_dir)
     SOURCE_FOLDER = os.path.join(base_dir, "src", "content", "base", "services", "text_files")
     OUTPUT_FOLDER = os.path.join(base_dir, "src", "content", "base", "services")
     

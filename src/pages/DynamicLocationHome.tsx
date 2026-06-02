@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import HubTemplate, { HubService } from '../templates/HubTemplate';
 import { isValidLocation, LOCATION_GEO_DATA } from '../config/locations';
+import { LOCATION_IMAGES_MAP } from '../config/resourceMapping';
 import PageShell from '../components/PageShell';
 
 const localizedModules = import.meta.glob('../content/services/*/*.mdx');
@@ -76,12 +77,19 @@ export default function DynamicLocationHome() {
 
   const geoData = LOCATION_GEO_DATA[locationSlug];
   const localityName = geoData.locality;
+  const localAuthorityName = geoData.localAuthorityName;
+  const municipalLink = geoData.municipalLink;
+  const locationImages = LOCATION_IMAGES_MAP[locationSlug] || [];
 
   return (
     <HubTemplate
       title={`${localityName} Land Surveying Hub`}
       description={`Professional land surveying, topographic mapping, and legal boundary definition services in ${localityName}, British Columbia. Explore our BCLS-certified services tailored to local municipal requirements.`}
       relatedServices={services}
+      locationName={localityName}
+      localAuthorityName={localAuthorityName}
+      municipalLink={municipalLink}
+      locationImages={locationImages}
     >
       <h2>Professional Land Surveying in {localityName}, BC</h2>
       <p>

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import React, { useState, useEffect, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
@@ -7,15 +7,115 @@ import {
   Phone, 
   Calendar, 
   Tag,
-  BookOpen
+  BookOpen,
+  Activity,
+  LayoutGrid,
+  Grid,
+  Mountain,
+  HardHat,
+  Building2,
+  ExternalLink,
+  FileText,
+  Compass
 } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+
+const SERVICE_ICON_MAP: Record<string, React.ComponentType<any>> = {
+  '3d-settlement-monitoring': Activity,
+  'air-space-subdivision-surveys': Layers,
+  'bare-land-strata-surveys': LayoutGrid,
+  'property-line-surveys': Grid,
+  'topographic-surveys': Mountain,
+  'construction-staking': HardHat,
+};
 
 export interface HubService {
   title: string;
   href: string;
   description?: string;
+}
+
+const getServiceIcon = (service: HubService) => {
+  const parts = service.href.split('/').filter(Boolean);
+  const slug = parts[parts.length - 1] || '';
+  
+  if (SERVICE_ICON_MAP[slug]) {
+    return SERVICE_ICON_MAP[slug];
+  }
+  
+  const normalizedTitle = service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  if (SERVICE_ICON_MAP[normalizedTitle]) {
+    return SERVICE_ICON_MAP[normalizedTitle];
+  }
+  
+  if (slug.includes('subdivision') || normalizedTitle.includes('subdivision')) {
+    return Layers;
+  }
+  if (slug.includes('strata') || normalizedTitle.includes('strata')) {
+    return LayoutGrid;
+  }
+  if (slug.includes('topographic') || normalizedTitle.includes('topographic') || slug.includes('site-plan') || normalizedTitle.includes('site-plan')) {
+    return Mountain;
+  }
+  if (slug.includes('construction') || normalizedTitle.includes('construction') || slug.includes('staking') || normalizedTitle.includes('staking') || slug.includes('layout') || normalizedTitle.includes('layout')) {
+    return HardHat;
+  }
+  if (slug.includes('boundary') || normalizedTitle.includes('boundary') || slug.includes('property-line') || normalizedTitle.includes('property-line')) {
+    return Grid;
+  }
+  if (slug.includes('monitoring') || normalizedTitle.includes('monitoring')) {
+    return Activity;
+  }
+
+  return Compass;
+};
+
+const MASTER_IMAGE_POOL = [
+  { src: '/images/subdivision-surveys.webp', alt: 'Subdivision Surveys' },
+  { src: '/images/topographic-surveys.webp', alt: 'Topographic Surveys' },
+  { src: '/images/3d-settlement-monitoring.webp', alt: '3D Settlement Monitoring' },
+  { src: '/images/air-space-subdivision-surveys.webp', alt: 'Air Space Subdivision Surveys' },
+  { src: '/images/bare-land-strata-surveys.webp', alt: 'Bare Land Strata Surveys' },
+  { src: '/images/bc-land-surveyors-building-location-surveys.webp', alt: 'BC Land Surveyors Building Location Surveys' },
+  { src: '/images/block-outline-surveys.webp', alt: 'Block Outline Surveys' },
+  { src: '/images/boundary-surveys.webp', alt: 'Boundary Surveys' },
+  { src: '/images/building-strata-surveys.webp', alt: 'Building Strata Surveys' },
+  { src: '/images/consolidation-surveys.webp', alt: 'Consolidation Surveys' },
+  { src: '/images/covenant-surveys.webp', alt: 'Covenant Surveys' },
+  { src: '/images/easement-surveys.webp', alt: 'Easement Surveys' },
+  { src: '/images/environmental-and-riparian-surveys.webp', alt: 'Environmental and Riparian Surveys' }
+];
+
+function getSeedFromKey(key: string): number {
+  let hash = 0;
+  for (let i = 0; i < key.length; i++) {
+    hash = key.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return Math.abs(hash);
+}
+
+function seededRandom(seed: number) {
+  let currentSeed = seed;
+  return function() {
+    currentSeed = (currentSeed * 9301 + 49297) % 233280;
+    return currentSeed / 233280;
+  };
+}
+
+function getDeterministicImages(locationName: string, pool: { src: string; alt: string; caption?: string }[]): { src: string; alt: string; caption?: string }[] {
+  const seed = getSeedFromKey(locationName);
+  const random = seededRandom(seed);
+  const clone = [...pool];
+  
+  for (let i = clone.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    const temp = clone[i];
+    clone[i] = clone[j];
+    clone[j] = temp;
+  }
+  
+  return clone.slice(0, 3);
 }
 
 export interface HubProject {
@@ -41,6 +141,10 @@ export interface HubTemplateProps {
   relatedServices?: HubService[];
   relatedProjects?: HubProject[];
   relatedPosts?: HubPost[];
+  locationName: string;
+  localAuthorityName?: string;
+  municipalLink?: string;
+  locationImages?: { src: string; alt: string; caption?: string }[];
   children?: ReactNode;
 }
 
@@ -50,8 +154,19 @@ export default function HubTemplate({
   relatedServices = [],
   relatedProjects = [],
   relatedPosts = [],
+  locationName,
+  localAuthorityName,
+  municipalLink,
+  locationImages = [],
   children
 }: HubTemplateProps) {
+  const fallbackImage = "/images/Squamish-Garibaldi-Estates-Property-Survey.webp";
+  const [heroSrc, setHeroSrc] = useState(locationImages[0]?.src || fallbackImage);
+
+  useEffect(() => {
+    setHeroSrc(locationImages[0]?.src || fallbackImage);
+  }, [locationImages]);
+
   return (
     <PageShell>
       <SEO
@@ -61,10 +176,19 @@ export default function HubTemplate({
 
       {/* Header / Hero Section */}
       <header className="bg-brand-dark border-b-2 border-brand-green py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/50 to-brand-dark" />
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroSrc}
+            alt={`${locationName} Land Surveying`}
+            className="w-full h-full object-cover opacity-40 mix-blend-overlay"
+            referrerPolicy="no-referrer"
+            onError={() => setHeroSrc(fallbackImage)}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/50 to-brand-dark" />
+        </div>
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-semibold uppercase tracking-wider border border-brand-green/20 mb-4">
-            Topic Hub
+            Local Service Provider
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             {title}
@@ -110,32 +234,40 @@ export default function HubTemplate({
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {relatedServices.map((service, index) => (
-                <Link
-                  key={index}
-                  to={service.href}
-                  className="flex flex-col justify-between p-6 bg-stone-100 border border-slate-200 rounded-2xl hover:border-brand-green hover:shadow-md transition-all group"
-                >
-                  <div>
-                    <div className="w-12 h-12 bg-brand-green/10 rounded-xl flex items-center justify-center text-brand-green-dark mb-6">
-                      <Layers size={24} />
+            {/* Deterministic 3-Image Sub-Gallery Row */}
+            {locationName && (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+                {getDeterministicImages(locationName, MASTER_IMAGE_POOL).map((image, idx) => (
+                  <div key={idx} className="relative aspect-video rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                    <img
+                      src={image.src}
+                      alt={image.alt || `${locationName} Land Surveying`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedServices.map((service, index) => {
+                const IconComponent = getServiceIcon(service);
+                return (
+                  <Link
+                    key={index}
+                    to={service.href}
+                    className="flex items-center gap-4 p-4 bg-stone-100 border border-slate-200 rounded-xl hover:border-brand-green hover:shadow-sm transition-all group"
+                  >
+                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center text-brand-green-dark shrink-0 group-hover:bg-brand-green/20 transition-colors">
+                      <IconComponent size={20} />
                     </div>
-                    <h3 className="text-xl font-semibold text-slate-900 mb-3 group-hover:text-brand-green-dark transition-colors">
+                    <span className="font-bold text-slate-900 group-hover:text-brand-green-dark transition-colors text-base leading-snug">
                       {service.title}
-                    </h3>
-                    {service.description && (
-                      <p className="text-slate-600 font-light leading-relaxed text-sm mb-6">
-                        {service.description}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-1 text-brand-green-dark font-semibold text-sm group-hover:text-brand-green transition-colors mt-auto">
-                    <span>Learn More</span>
-                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              ))}
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -271,6 +403,21 @@ export default function HubTemplate({
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Municipal Resources Section */}
+      {municipalLink && localAuthorityName && (
+        <section className="py-16 md:py-24 bg-white border-t border-slate-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">Local Resources for {locationName}</h2>
+            <p className="text-slate-600 font-light text-lg mb-8">Access official municipal planning guidelines and permit checklists directly from the local authority.</p>
+            <a href={municipalLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-slate-900 font-semibold rounded-full shadow-md">
+              <Building2 size={20} />
+              <span>View {localAuthorityName} Guidelines</span>
+              <ExternalLink size={18} />
+            </a>
           </div>
         </section>
       )}
