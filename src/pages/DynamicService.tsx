@@ -88,12 +88,14 @@ export default function DynamicService() {
     }>
       <ServiceTemplate
         title={meta.title || fallbackTitle}
+        serviceName={meta.serviceName || fallbackTitle}
         description={meta.description || `Professional ${meta.title || fallbackTitle} services by Tantalus Geomatics.`}
         heroImage={meta.heroImage}
         steps={meta.steps}
         deliverables={meta.deliverables}
         faqs={meta.faqs}
-        localLinks={meta.localLinks}
+        serviceLinks={meta.serviceLinks || meta.localLinks}
+        locationLinks={meta.locationLinks}
         formVariant={meta.formVariant}
         locationName={meta.locationName}
         localAuthorityName={meta.localAuthorityName}

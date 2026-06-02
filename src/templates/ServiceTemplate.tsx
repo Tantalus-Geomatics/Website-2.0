@@ -37,11 +37,13 @@ export interface LocalLink {
 export interface ServiceTemplateProps {
   title: string;
   description: string;
+  serviceName?: string;
   heroImage?: string;
   steps?: ProcessStep[];
   deliverables?: string[];
   faqs?: FAQItem[];
-  localLinks?: LocalLink[];
+  serviceLinks?: LocalLink[];
+  locationLinks?: LocalLink[];
   formVariant?: 'embedded' | 'stacked-residential';
   locationName?: string;
   localAuthorityName?: string;
@@ -89,7 +91,7 @@ const defaultFaqs: FAQItem[] = [
   }
 ];
 
-const defaultLocalLinks: LocalLink[] = [
+const defaultServiceLinks: LocalLink[] = [
   { label: 'Survey Pricing & Cost Factors', href: '/survey-pricing/' },
   { label: 'Property Line Staking', href: '/sea-to-sky-property-line-and-boundary-staking/' },
   { label: 'Topographic Surveys', href: '/topographic-surveys/' }
@@ -98,11 +100,13 @@ const defaultLocalLinks: LocalLink[] = [
 export default function ServiceTemplate({
   title,
   description,
+  serviceName,
   heroImage = HERO_FALLBACK,
   steps = defaultSteps,
   deliverables = defaultDeliverables,
   faqs = defaultFaqs,
-  localLinks = defaultLocalLinks,
+  serviceLinks = defaultServiceLinks,
+  locationLinks,
   formVariant = 'embedded',
   locationName,
   localAuthorityName,
@@ -123,9 +127,18 @@ export default function ServiceTemplate({
 
   const stepIcons = [ClipboardList, MapPinned, FileCheck];
   
-  // Create a 1-phrase summary from the full description for the hero banner
-  const shortDescription = description.includes('.') 
-    ? description.split('.')[0] + '.' 
+  // Derive serviceName if not provided
+  const derivedServiceName = serviceName || (
+    title.includes('Topographic') ? 'Topographic Surveys' :
+    title.includes('Property Line') ? 'Property Line Surveys' :
+    title.includes('Subdivision') ? 'Subdivision Surveys' :
+    title
+  );
+
+  // Extract a 1-phrase summary for the hero subtitle description dynamically.
+  // If description contains periods, grab the first sentence string token and append a trailing period.
+  const shortDescription = description.includes('.')
+    ? description.split('.')[0].trim() + '.'
     : description;
 
   return (
@@ -149,7 +162,7 @@ export default function ServiceTemplate({
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
-          <span className="inline-block px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-semibold uppercase tracking-wider border border-brand-green/20 mb-6">
+          <span className="inline-block bg-brand-green/10 text-brand-green border border-brand-green/20 font-semibold px-3 py-1 text-xs uppercase rounded-full mb-6">
             Professional Land Surveying Services
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
@@ -187,7 +200,7 @@ export default function ServiceTemplate({
             [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:mb-8 [&>ol]:space-y-3 [&>ol]:text-lg
             [&>li]:pl-2
             [&>a]:text-brand-green-dark [&>a]:underline hover:[&>a]:text-brand-green [&>a]:font-medium [&>a]:transition-colors
-            [&>blockquote]:border-l-4 [&>blockquote]:border-brand-green [&>blockquote]:pl-6 [&>blockquote]:italic [&>blockquote]:text-slate-600 [&>blockquote]:my-8 [&>blockquote]:text-lg [&>blockquote]:bg-stone-50 [&>blockquote]:py-4 [&>blockquote]:pr-4 [&>blockquote]:rounded-r-lg
+            [&>blockquote]:bg-stone-50 [&>blockquote]:py-4 [&>blockquote]:pr-4 [&>blockquote]:pl-6 [&>blockquote]:border-l-4 [&>blockquote]:border-brand-green [&>blockquote]:rounded-r-lg [&>blockquote]:italic [&>blockquote]:text-slate-600 [&>blockquote]:my-8 [&>blockquote]:text-lg
             [&>strong]:font-semibold [&>strong]:text-slate-900
             [&>hr]:my-12 [&>hr]:border-slate-200"
           >
@@ -198,7 +211,7 @@ export default function ServiceTemplate({
           <div className="mt-16 p-8 bg-stone-100 border-l-4 border-brand-green rounded-r-2xl shadow-sm">
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Why Choose Tantalus Geomatics?</h3>
             <p className="text-slate-700 text-lg font-light leading-relaxed">
-              Our team combines local <span className="font-semibold text-brand-green-dark">{locationName ? locationName : 'Sea to Sky'}</span> expertise with state-of-the-art surveying technology. We deliver highly accurate, BCLS-certified plans that streamline your municipal permit approvals and protect your property investments.
+              Our team combines local <span className="font-semibold text-brand-green-dark">{locationName || 'Sea to Sky'}</span> expertise with state-of-the-art surveying technology. We deliver highly accurate, BCLS-certified plans that streamline your municipal permit approvals and protect your property investments.
             </p>
           </div>
         </div>
@@ -272,12 +285,17 @@ export default function ServiceTemplate({
               let descPart = '';
               
               if (deliverable.includes(':')) {
-                const parts = deliverable.split(':');
-                titlePart = parts[0].trim();
-                descPart = parts.slice(1).join(':').trim();
+                const colonIndex = deliverable.indexOf(':');
+                titlePart = deliverable.substring(0, colonIndex).trim();
+                descPart = deliverable.substring(colonIndex + 1).trim();
               } else if (deliverable.includes('(')) {
-                titlePart = deliverable.split('(')[0].trim();
-                descPart = deliverable.substring(deliverable.indexOf('(') + 1, deliverable.indexOf(')'));
+                const parenIndex = deliverable.indexOf('(');
+                titlePart = deliverable.substring(0, parenIndex).trim();
+                let rawDesc = deliverable.substring(parenIndex + 1).trim();
+                if (rawDesc.endsWith(')')) {
+                  rawDesc = rawDesc.substring(0, rawDesc.length - 1).trim();
+                }
+                descPart = rawDesc;
               }
 
               return (
@@ -286,7 +304,7 @@ export default function ServiceTemplate({
                     <Check size={16} strokeWidth={3} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white text-lg leading-tight mb-2">
+                    <h3 className="text-lg font-semibold text-white mb-2">
                       {titlePart}
                     </h3>
                     {descPart && (
@@ -356,39 +374,41 @@ export default function ServiceTemplate({
         </div>
       </section>
 
-      {/* 6. Relevant Local Links Section */}
-      <section className="py-16 md:py-24 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
-              Helpful Resources & Guides
-            </h2>
-            <GeoDirectAnswer
-              align="center"
-              question="Explore more land surveying resources and related services."
-            >
-              <p className="text-slate-600 font-light text-lg">
-                Learn more about our pricing, boundary staking, and topographic site plans.
-              </p>
-            </GeoDirectAnswer>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {localLinks.map((link, index) => (
-              <Link
-                key={index}
-                to={link.href}
-                className="flex items-center justify-between p-5 bg-white border border-slate-200 rounded-xl hover:border-brand-green hover:shadow-sm transition-all group"
+      {/* Service Resources Section */}
+      {serviceLinks && serviceLinks.length > 0 && (
+        <section className="py-16 md:py-24 bg-slate-50 border-b border-slate-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
+                {derivedServiceName} Resources & Guides
+              </h2>
+              <GeoDirectAnswer
+                align="center"
+                question={`Explore more resources and guides for ${derivedServiceName}.`}
               >
-                <span className="font-medium text-slate-800 group-hover:text-brand-green-dark transition-colors text-base">
-                  {link.label}
-                </span>
-                <ArrowRight size={18} className="text-slate-400 group-hover:text-brand-green-dark transition-all group-hover:translate-x-1 shrink-0" />
-              </Link>
-            ))}
+                <p className="text-slate-600 font-light text-lg">
+                  Learn more about our pricing, boundary staking, and topographic site plans.
+                </p>
+              </GeoDirectAnswer>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {serviceLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  to={link.href}
+                  className="flex items-center justify-between p-5 bg-white border border-slate-200 rounded-xl hover:border-brand-green hover:shadow-sm transition-all group"
+                >
+                  <span className="font-medium text-slate-800 group-hover:text-brand-green-dark transition-colors text-base">
+                    {link.label}
+                  </span>
+                  <ArrowRight size={18} className="text-slate-400 group-hover:text-brand-green-dark transition-all group-hover:translate-x-1 shrink-0" />
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Local Resources Section */}
       {municipalLink && localAuthorityName && (
@@ -410,13 +430,29 @@ export default function ServiceTemplate({
                 href={municipalLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-3 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-slate-900 font-semibold rounded-full transition-all shadow-md hover:shadow-lg"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-3 px-8 py-4 bg-brand-green hover:bg-brand-green-light text-slate-900 font-semibold rounded-full shadow-md"
               >
                 <Building2 size={20} className="text-slate-900 shrink-0" />
                 <span>View {localAuthorityName} Guidelines</span>
                 <ExternalLink size={18} className="text-slate-800 shrink-0" />
               </a>
             </div>
+
+            {/* Location Links Grid */}
+            {locationLinks && locationLinks.length > 0 && (
+              <div className="mt-6 max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                {locationLinks.map((link, index) => (
+                  <Link
+                    key={index}
+                    to={link.href}
+                    className="bg-stone-50 border border-slate-200 p-4 font-medium text-slate-700 hover:text-brand-green-dark rounded-xl transition-all flex items-center justify-between group"
+                  >
+                    <span>{link.label}</span>
+                    <ArrowRight size={16} className="text-slate-400 group-hover:text-brand-green-dark transition-all group-hover:translate-x-1 shrink-0" />
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}
