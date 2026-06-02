@@ -209,121 +209,67 @@ export default function Services() {
             {ALL_SERVICES.map((service, index) => {
               const Icon = service.icon;
               const isBuildingLocationCertificates = service.href === '/services/building-location-certificates/';
-              const isFeatured = !!service.image && !isBuildingLocationCertificates;
-
+              
+              // Determine if there is an image and what its src/alt are
+              let imageSrc = undefined;
+              let imageAlt = undefined;
+              
               if (isBuildingLocationCertificates) {
                 const serviceImageObj = SERVICE_IMAGES_MAP['building-location-certificates']?.[0];
-                const imageSrc = serviceImageObj?.src || service.image || '/images/old-home.webp';
-                const imageAlt = serviceImageObj?.alt || service.title;
-
-                return (
-                  <Link
-                    key={index}
-                    to={service.href}
-                    className="group relative overflow-hidden rounded-2xl bg-brand-dark border border-white/10 shadow-md hover:shadow-xl transition-all duration-500 md:col-span-2 lg:col-span-2 flex flex-col justify-between min-h-[380px]"
-                  >
-                    <div>
-                      {/* Image at Top */}
-                      <img
-                        src={imageSrc}
-                        alt={imageAlt}
-                        className="w-full aspect-video object-cover rounded-t-2xl transition-transform duration-700 group-hover:scale-102"
-                        referrerPolicy="no-referrer"
-                      />
-
-                      {/* Content below image */}
-                      <div className="p-6 flex flex-col items-start text-white">
-                        <div className="flex items-start gap-4">
-                          {/* Icon Box */}
-                          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shrink-0">
-                            <Icon className="w-6 h-6 text-brand-green" />
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-bold mb-2 tracking-tight flex items-center gap-2 text-white">
-                              {service.title}
-                              <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-brand-green" />
-                            </h3>
-                            <p className="text-slate-300 text-sm leading-relaxed max-w-xl">
-                              {service.description}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Bottom Link Indicator */}
-                    <div className="flex items-center justify-end p-6 pt-0">
-                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 group-hover:bg-brand-green group-hover:text-black text-white transition-colors duration-300">
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
-                      </span>
-                    </div>
-                  </Link>
-                );
+                imageSrc = serviceImageObj?.src || service.image || '/images/old-home.webp';
+                imageAlt = serviceImageObj?.alt || service.title;
+              } else if (service.image) {
+                imageSrc = service.image;
+                imageAlt = service.title;
               }
 
-              if (isFeatured) {
-                return (
-                  <Link
-                    key={index}
-                    to={service.href}
-                    className="group relative overflow-hidden rounded-3xl shadow-md hover:shadow-xl transition-all duration-500 md:col-span-2 lg:col-span-2 h-[380px] flex flex-col justify-end p-8 border border-slate-200/10"
-                  >
-                    {/* Background Image */}
-                    <div className="absolute inset-0 z-0">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        referrerPolicy="no-referrer"
-                      />
-                      {/* Dark Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent" />
-                    </div>
+              return (
+                <Link
+                  key={index}
+                  to={service.href}
+                  className="group relative overflow-hidden bg-white border border-slate-200/60 shadow-sm hover:shadow-md rounded-3xl transition-all duration-300 flex flex-col justify-between h-full col-span-1"
+                >
+                  {/* Image at Top if exists */}
+                  {imageSrc && (
+                    <img
+                      src={imageSrc}
+                      alt={imageAlt}
+                      className="w-full aspect-video object-cover rounded-t-3xl transition-transform duration-500 group-hover:scale-[1.01]"
+                      referrerPolicy="no-referrer"
+                    />
+                  )}
 
-                    {/* Content */}
-                    <div className="relative z-10 flex flex-col items-start text-white">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 mb-4">
-                        <Icon className="w-6 h-6 text-brand-green" />
-                      </div>
-                      <h3 className="text-2xl font-bold mb-2 tracking-tight flex items-center gap-2">
-                        {service.title}
-                        <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-brand-green" />
-                      </h3>
-                      <p className="text-white/80 text-sm leading-relaxed max-w-xl">
-                        {service.description}
-                      </p>
-                    </div>
-                  </Link>
-                );
-              } else {
-                return (
-                  <Link
-                    key={index}
-                    to={service.href}
-                    className="group relative overflow-hidden rounded-3xl bg-stone-50 border border-slate-200 p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-[380px]"
-                  >
+                  {/* Content Container */}
+                  <div className="p-6 flex flex-col flex-grow justify-between">
                     <div>
                       {/* Icon Box */}
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-green/10 text-brand-green-dark mb-6">
-                        <Icon className="w-6 h-6" />
+                      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-brand-green/10 text-brand-green-dark mb-4">
+                        <Icon className="w-5 h-5" />
                       </div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">
+                      
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">
                         {service.title}
                       </h3>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                      
+                      {/* Description */}
+                      <p className="text-slate-600 font-light text-sm leading-relaxed">
                         {service.description}
                       </p>
                     </div>
 
-                    {/* Bottom Link Indicator */}
-                    <div className="flex items-center justify-end mt-4">
+                    {/* Bottom Action Tray */}
+                    <div className="flex items-center justify-between mt-6 pt-2">
+                      <span className="text-sm font-semibold text-slate-800 group-hover:text-brand-green-dark transition-colors flex items-center gap-1">
+                        Learn more <ArrowRight className="w-4 h-4 inline" />
+                      </span>
                       <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 group-hover:bg-brand-green group-hover:text-black text-slate-600 transition-colors duration-300">
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
+                        <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
-                  </Link>
-                );
-              }
+                  </div>
+                </Link>
+              );
             })}
           </div>
         </div>
