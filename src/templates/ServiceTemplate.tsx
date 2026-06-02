@@ -204,7 +204,16 @@ export default function ServiceTemplate({
     ? description.split('.')[0].trim() + '.'
     : description;
 
-  const galleryImages = getDeterministicImages(derivedServiceName, MASTER_IMAGE_POOL);
+  const uniqueCombinedPool: LocalImage[] = [];
+  const seenSrcs = new Set<string>();
+  [...serviceImages, ...locationImages, ...MASTER_IMAGE_POOL].forEach(img => {
+    if (img && img.src && !seenSrcs.has(img.src)) {
+      seenSrcs.add(img.src);
+      uniqueCombinedPool.push(img);
+    }
+  });
+
+  const galleryImages = getDeterministicImages(derivedServiceName, uniqueCombinedPool);
 
   return (
     <PageShell>

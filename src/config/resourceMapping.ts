@@ -94,6 +94,34 @@ export const LOCATION_LINKS_MAP: Record<string, ResourceLink[]> = {
   'whistler': [
     { label: 'Resort Municipality of Whistler Planning', href: 'https://whistler.ca/planning' },
     { label: 'Whistler GIS Map', href: 'https://whistler.ca/gis' }
+  ],
+  'pemberton': [
+    { label: 'Village of Pemberton Planning', href: 'https://www.pemberton.ca/government/departments/development-services/planning-and-development' },
+    { label: 'Pemberton Web Map', href: 'https://www.pemberton.ca/government/departments/development-services/gis-mapping' }
+  ],
+  'lillooet': [
+    { label: 'District of Lillooet Development', href: 'https://www.lillooet.ca/business-development/building-permits' },
+    { label: 'Lillooet Municipal Services', href: 'https://www.lillooet.ca/' }
+  ],
+  'west-vancouver': [
+    { label: 'District of West Vancouver Planning', href: 'https://westvancouver.ca/home-building-property/planning-development' },
+    { label: 'West Vancouver WestMap GIS', href: 'https://westvancouver.ca/home-building-property/maps-data/westmap' }
+  ],
+  'bowen-island': [
+    { label: 'Bowen Island Planning & Development', href: 'https://www.bowenislandmunicipality.ca/planning-development/' },
+    { label: 'Bowen Island Maps', href: 'https://www.bowenislandmunicipality.ca/maps/' }
+  ],
+  'britannia-beach': [
+    { label: 'SLRD Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
+    { label: 'SLRD Web Map', href: 'https://www.slrd.bc.ca/planning-development/maps-gis' }
+  ],
+  'furry-creek': [
+    { label: 'SLRD Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
+    { label: 'SLRD Web Map', href: 'https://www.slrd.bc.ca/planning-development/maps-gis' }
+  ],
+  'north-vancouver': [
+    { label: 'District of North Vancouver Planning', href: 'https://www.dnv.org/property-and-development' },
+    { label: 'DNV GeoWeb GIS Map', href: 'https://www.dnv.org/property-and-development/maps-and-gis' }
   ]
 };
 

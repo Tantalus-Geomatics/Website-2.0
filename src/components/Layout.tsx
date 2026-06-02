@@ -1,6 +1,6 @@
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { MapPin, Menu, X, Mountain, Mail, Phone, Linkedin, Github } from 'lucide-react';
-import { useState } from 'react';
 import { GoogleMap, LoadScript, Polygon, MarkerF } from '@react-google-maps/api';
 import ClientOnly from '../components/ClientOnly'; // <-- Add this import
 import AuthorBio from './AuthorBio';
@@ -25,29 +25,32 @@ const serviceAreaPaths = [
 
 // Specific coordinates for the location pins
 const serviceLocations = [
-  { name: "North Vancouver", lat: 49.3199, lng: -123.0724 },
-  { name: "West Vancouver", lat: 49.3286, lng: -123.1602 },
-  { name: "Bowen Island", lat: 49.3783, lng: -123.3286 },
-  { name: "Gibsons", lat: 49.4011, lng: -123.5113 },
-  { name: "Sechelt", lat: 49.4716, lng: -123.7544 },
-  { name: "Furry Creek", lat: 49.5841, lng: -123.2255 },
-  { name: "Britannia Beach", lat: 49.6256, lng: -123.2037 },
-  { name: "Squamish", lat: 49.7016, lng: -123.1558 },
-  { name: "Powell River", lat: 49.8352, lng: -124.5247 },
-  { name: "Whistler", lat: 50.1163, lng: -122.9574 },
-  { name: "Pemberton", lat: 50.3162, lng: -122.8027 },
-  { name: "Lillooet", lat: 50.6861, lng: -121.9365 }
+  { name: "North Vancouver", lat: 49.3199, lng: -123.0724, slug: "north-vancouver" },
+  { name: "West Vancouver", lat: 49.3286, lng: -123.1602, slug: "west-vancouver" },
+  { name: "Bowen Island", lat: 49.3783, lng: -123.3286, slug: "bowen-island" },
+  { name: "Gibsons", lat: 49.4011, lng: -123.5113, slug: "gibsons" },
+  { name: "Sechelt", lat: 49.4716, lng: -123.7544, slug: "sechelt" },
+  { name: "Furry Creek", lat: 49.5841, lng: -123.2255, slug: "furry-creek" },
+  { name: "Britannia Beach", lat: 49.6256, lng: -123.2037, slug: "britannia-beach" },
+  { name: "Squamish", lat: 49.7016, lng: -123.1558, slug: "squamish" },
+  { name: "Powell River", lat: 49.8352, lng: -124.5247, slug: "powell-river" },
+  { name: "Whistler", lat: 50.1163, lng: -122.9574, slug: "whistler" },
+  { name: "Pemberton", lat: 50.3162, lng: -122.8027, slug: "pemberton" },
+  { name: "Lillooet", lat: 50.6861, lng: -121.9365, slug: "lillooet" }
 ];
 
 // Custom smaller pin using inline SVG to reduce overlap
 const smallPinIcon = {
-  url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#EA4335" stroke="#FFFFFF" stroke-width="1"/></svg>')
+  url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#EA4335" stroke="#FFFFFF" stroke-width="1"/></svg>'),
+  scaledSize: { width: 24, height: 24 } as any,
+  anchor: { x: 12, y: 24 } as any,
+  labelOrigin: { x: 12, y: -10 } as any
 };
 
 // Google Maps Configuration
 const mapContainerStyle = {
   width: '100%',
-  height: '550px' // Slightly increased from 450px to emphasize the widescreen applet view
+  height: '600px'
 };
 
 const mapCenter = {
@@ -210,6 +213,7 @@ const schemaData = {
 export default function Layout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -413,12 +417,28 @@ export default function Layout() {
           </div>
         </div>
 
+        {/* Delimited Regional List */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+          <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-sm text-white/60">
+            {serviceLocations.map((loc, index) => (
+              <React.Fragment key={loc.slug}>
+                <Link to={`/${loc.slug}/`} className="hover:text-brand-green transition-colors font-medium">
+                  {loc.name}
+                </Link>
+                {index < serviceLocations.length - 1 && (
+                  <span className="text-white/20">|</span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+
         {/* Full-width Map Container */}
         <div className="w-full relative left-0 right-0 z-0 mb-12">
           <div className="w-full overflow-hidden relative z-0">
             <ClientOnly 
               fallback={
-                <div className="w-full h-full min-h-[550px] bg-brand-dark/50 animate-pulse flex flex-col items-center justify-center gap-4">
+                <div className="w-full h-full min-h-[600px] bg-brand-dark/50 animate-pulse flex flex-col items-center justify-center gap-4">
                   <MapPin size={32} className="text-brand-green/50 animate-bounce" />
                   <span className="text-white/50 font-light tracking-wide">Loading Interactive Map...</span>
                 </div>
@@ -430,8 +450,11 @@ export default function Layout() {
                   center={mapCenter}
                   zoom={8}
                   options={{
-                    disableDefaultUI: true,
+                    disableDefaultUI: false,
                     zoomControl: true,
+                    mapTypeControl: true,
+                    streetViewControl: true,
+                    fullscreenControl: true,
                   }}
                 >
                   <Polygon 
@@ -444,12 +467,13 @@ export default function Layout() {
                       key={index}
                       position={{ lat: loc.lat, lng: loc.lng }}
                       icon={smallPinIcon}
+                      onClick={() => navigate('/' + loc.slug + '/')}
                       label={{
                         text: loc.name,
                         color: '#FFFFFF',
                         fontSize: '11px',
                         fontWeight: '600',
-                        className: 'mt-6 drop-shadow-md bg-black/50 px-1.5 py-0.5 rounded'
+                        className: 'mt-6 drop-shadow-md bg-black/50 px-1.5 py-0.5 rounded cursor-pointer'
                       }}
                     />
                   ))}
