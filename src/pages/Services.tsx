@@ -20,9 +20,11 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { useLeadForm } from '../hooks/useLeadForm';
 import { SERVICE_IMAGES_MAP } from '../config/resourceMapping';
+import { SERVICE_CATEGORIES } from '../config/servicesStructure';
 
 const ALL_SERVICES = [
   {
+    slug: 'property-line-surveys',
     title: 'Property Line Surveys',
     description: 'Locating and marking legal boundaries to ensure fences, walls, and structures are built on your own land.',
     href: '/services/property-line-surveys/',
@@ -30,6 +32,7 @@ const ALL_SERVICES = [
     image: '/images/survey-marker-post.webp',
   },
   {
+    slug: 'topographic-surveys',
     title: 'Topographic Surveys',
     description: 'Detailed certified drawings showing building footprints, setbacks, utility locations, and physical terrain to support design and permitting.',
     href: '/services/topographic-surveys/',
@@ -37,24 +40,28 @@ const ALL_SERVICES = [
     image: '/images/land-development.webp',
   },
   {
+    slug: 'subdivision',
     title: 'Subdivision & Consolidation',
     description: 'Supporting developers through the lot subdivision and consolidation process, from initial design to final Land Title Office filing.',
     href: '/subdivision/',
     icon: Scale,
   },
   {
+    slug: '3d-settlement-monitoring',
     title: '3D Settlement Monitoring',
     description: 'High-precision tracking of motion and settlement of earth and structures during construction to ensure site safety and stability.',
     href: '/services/3d-settlement-monitoring/',
     icon: Mountain,
   },
   {
+    slug: 'bare-land-strata-surveys',
     title: 'Strata Plans',
     description: 'Surveys and plans for multi-unit housing, bare land strata layouts, and air-space parcels.',
     href: '/services/bare-land-strata-surveys/',
     icon: Building,
   },
   {
+    slug: 'building-location-certificates',
     title: 'Building Location Certificates',
     description: 'Certified surveys confirming that structures conform to legal boundaries and municipal setback requirements.',
     href: '/services/building-location-certificates/',
@@ -62,6 +69,7 @@ const ALL_SERVICES = [
     image: '/images/old-home.webp',
   },
   {
+    slug: 'construction-staking',
     title: 'Construction Staking & Layout',
     description: 'Precise marking of foundations, gridlines, and structural elements to ensure accurate construction matches design specifications.',
     href: '/services/construction-staking/',
@@ -69,12 +77,14 @@ const ALL_SERVICES = [
     image: '/images/construction.webp',
   },
   {
+    slug: 'terrestrial-lidar-scanning',
     title: 'Terrestrial 3D Laser Scanning',
     description: 'Millimeter-accurate documentation of building facades, complex building interiors, and inaccessible utility infrastructure.',
     href: '/services/terrestrial-lidar-scanning/',
     icon: CheckCircle2,
   },
   {
+    slug: 'uav-mapping',
     title: 'UAV Drone Mapping',
     description: 'Aerial mapping and high-resolution photogrammetry ideal for large, complex, or inaccessible sites.',
     href: '/services/uav-mapping/',
@@ -82,30 +92,35 @@ const ALL_SERVICES = [
     image: '/images/reality-capture.webp',
   },
   {
+    slug: 'boundary-surveys',
     title: 'Boundary Surveys',
     description: 'Locating property corners and marking existing boundaries to resolve disputes or facilitate renovations and landscaping.',
     href: '/services/boundary-surveys/',
     icon: Compass,
   },
   {
+    slug: 'volume-and-earthwork-surveys',
     title: 'Volume & Earthwork Surveys',
     description: 'Estimating stockpile volumes and material changes to ground surfaces during site construction and development activities.',
     href: '/services/volume-and-earthwork-surveys/',
     icon: Waves,
   },
   {
+    slug: 'environmental-and-riparian-surveys',
     title: 'Environmental & Riparian Surveys',
     description: 'Accurately locating trees, watercourses, and environmental features to ensure compliance with municipal bylaws and covenants.',
     href: '/services/environmental-and-riparian-surveys/',
     icon: Trees,
   },
   {
+    slug: 'statutory-rights-of-way-surveys',
     title: 'Easement & Covenant Plans',
     description: 'BCLS-certified plans required to register easements, covenants, and statutory rights-of-way on property titles.',
     href: '/services/statutory-rights-of-way-surveys/',
     icon: FileText,
   },
   {
+    slug: 'air-space-subdivision-surveys',
     title: 'Air Space Subdivision',
     description: 'Specialized legal surveys creating independent three-dimensional volumetric parcels for complex multi-use developments.',
     href: '/services/air-space-subdivision-surveys/',
@@ -204,71 +219,66 @@ export default function Services() {
             </p>
           </div>
 
-          {/* Bento Box Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {ALL_SERVICES.map((service, index) => {
-              const Icon = service.icon;
-              const isBuildingLocationCertificates = service.href === '/services/building-location-certificates/';
-              
-              // Determine if there is an image and what its src/alt are
-              let imageSrc = undefined;
-              let imageAlt = undefined;
-              
-              if (isBuildingLocationCertificates) {
-                const serviceImageObj = SERVICE_IMAGES_MAP['building-location-certificates']?.[0];
-                imageSrc = serviceImageObj?.src || service.image || '/images/old-home.webp';
-                imageAlt = serviceImageObj?.alt || service.title;
-              } else if (service.image) {
-                imageSrc = service.image;
-                imageAlt = service.title;
-              }
-
+          <div className="space-y-8">
+            {SERVICE_CATEGORIES.map((category) => {
+              const IconComponent = category.icon;
               return (
-                <Link
-                  key={index}
-                  to={service.href}
-                  className="group relative overflow-hidden bg-white border border-slate-200/60 shadow-sm hover:shadow-md rounded-3xl transition-all duration-300 flex flex-col justify-between h-full col-span-1"
+                <div
+                  key={category.id}
+                  id={category.id}
+                  className="flex flex-col lg:flex-row items-stretch bg-white border border-slate-200 shadow-sm rounded-3xl overflow-hidden mb-8"
                 >
-                  {/* Image at Top if exists */}
-                  {imageSrc && (
-                    <img
-                      src={imageSrc}
-                      alt={imageAlt}
-                      className="w-full aspect-video object-cover rounded-t-3xl transition-transform duration-500 group-hover:scale-[1.01]"
-                      referrerPolicy="no-referrer"
-                    />
-                  )}
+                  {/* Left-Side Graphic Block */}
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="w-full lg:w-1/3 min-h-[240px] object-cover"
+                    referrerPolicy="no-referrer"
+                  />
 
-                  {/* Content Container */}
-                  <div className="p-6 flex flex-col flex-grow justify-between">
+                  {/* Right-Side Metadata Column */}
+                  <div className="w-full lg:w-2/3 p-8 flex flex-col justify-between">
                     <div>
                       {/* Icon Box */}
-                      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-brand-green/10 text-brand-green-dark mb-4">
-                        <Icon className="w-5 h-5" />
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-green/10 text-brand-green-dark mb-4">
+                        <IconComponent className="w-6 h-6" />
                       </div>
-                      
+
                       {/* Title */}
-                      <h3 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">
-                        {service.title}
+                      <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                        {category.title}
                       </h3>
-                      
+
                       {/* Description */}
-                      <p className="text-slate-600 font-light text-sm leading-relaxed">
-                        {service.description}
+                      <p className="text-slate-600 font-light text-base leading-relaxed mb-6">
+                        {category.description}
                       </p>
                     </div>
 
-                    {/* Bottom Action Tray */}
-                    <div className="flex items-center justify-between mt-6 pt-2">
-                      <span className="text-sm font-semibold text-slate-800 group-hover:text-brand-green-dark transition-colors flex items-center gap-1">
-                        Learn more <ArrowRight className="w-4 h-4 inline" />
-                      </span>
-                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 group-hover:bg-brand-green group-hover:text-black text-slate-600 transition-colors duration-300">
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
+                    {/* Child Deep-Links List Section */}
+                    <div className="border-t border-slate-100 pt-6">
+                      <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
+                        Available Services
+                      </h4>
+                      <div className="flex flex-wrap gap-x-6 gap-y-2">
+                        {category.serviceSlugs.map((slug) => {
+                          const service = ALL_SERVICES.find((s) => s.slug === slug);
+                          if (!service) return null;
+                          return (
+                            <Link
+                              key={slug}
+                              to={`/services/${service.slug}/`}
+                              className="text-brand-green-dark font-medium hover:underline flex items-center gap-2 mt-2"
+                            >
+                              <ArrowRight className="w-4 h-4" />
+                              {service.title}
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>

@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { SERVICE_CATEGORIES } from '../config/servicesStructure';
 
 const SERVICE_ICON_MAP: Record<string, React.ComponentType<any>> = {
   '3d-settlement-monitoring': Activity,
@@ -250,22 +251,59 @@ export default function HubTemplate({
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {relatedServices.map((service, index) => {
-                const IconComponent = getServiceIcon(service);
+            <div className="space-y-8">
+              {SERVICE_CATEGORIES.map((category) => {
+                const categoryServices = relatedServices.filter(service => {
+                  const parts = service.href.split('/').filter(Boolean);
+                  const slug = parts[parts.length - 1] || '';
+                  return category.serviceSlugs.includes(slug);
+                });
+
+                if (categoryServices.length === 0) return null;
+
+                const IconComponent = category.icon;
+
                 return (
-                  <Link
-                    key={index}
-                    to={service.href}
-                    className="flex items-center gap-4 p-4 bg-stone-100 border border-slate-200 rounded-xl hover:border-brand-green hover:shadow-sm transition-all group"
+                  <div
+                    key={category.id}
+                    className="bg-white border border-slate-200 shadow-sm rounded-3xl p-8 flex flex-col justify-between w-full"
                   >
-                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center text-brand-green-dark shrink-0 group-hover:bg-brand-green/20 transition-colors">
-                      <IconComponent size={20} />
+                    <div>
+                      {/* Icon & Title */}
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-green/10 text-brand-green-dark">
+                          <IconComponent className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-2xl font-bold text-slate-900">
+                          {category.title}
+                        </h3>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-slate-600 font-light text-base leading-relaxed mb-6">
+                        {category.description}
+                      </p>
                     </div>
-                    <span className="font-bold text-slate-900 group-hover:text-brand-green-dark transition-colors text-base leading-snug">
-                      {service.title}
-                    </span>
-                  </Link>
+
+                    {/* Child Deep-Links List Section */}
+                    <div className="border-t border-slate-100 pt-6">
+                      <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
+                        Available Services
+                      </h4>
+                      <div className="flex flex-wrap gap-x-6 gap-y-2">
+                        {categoryServices.map((service, idx) => (
+                          <Link
+                            key={idx}
+                            to={service.href}
+                            className="text-brand-green-dark font-medium hover:underline flex items-center gap-2 mt-2"
+                          >
+                            <ArrowRight className="w-4 h-4" />
+                            {service.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 );
               })}
             </div>

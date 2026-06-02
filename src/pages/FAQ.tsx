@@ -5,30 +5,39 @@ import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { useLeadForm } from '../hooks/useLeadForm';
+import { SERVICE_CATEGORIES } from '../config/servicesStructure';
 
 const baseServiceModules = import.meta.glob('../content/services/squamish/*.mdx', { eager: true });
 
-const faqCategories = Object.entries(baseServiceModules)
-  .map(([filePath, module]: [string, any]) => {
+const faqCategories = SERVICE_CATEGORIES.map((category) => {
+  const matchingFaqs: any[] = [];
+
+  Object.entries(baseServiceModules).forEach(([filePath, module]: [string, any]) => {
     const slug = filePath.split('/').pop()?.replace('.mdx', '');
-    const meta = module.metadata || module.frontmatter || {};
-    const serviceName = meta.serviceName || meta.title || 'General Services';
-    const faqs = meta.faqs || [];
+    if (slug && category.serviceSlugs.includes(slug)) {
+      const meta = module.metadata || module.frontmatter || {};
+      const serviceName = meta.serviceName || meta.title || 'General Services';
+      const faqs = meta.faqs || [];
 
-    if (!faqs || faqs.length === 0) return null;
+      faqs.forEach((faq: any) => {
+        matchingFaqs.push({
+          question: faq.question,
+          answer: faq.answer,
+          callout: faq.callout,
+          serviceLink: { label: serviceName, href: `/services/${slug}/` }
+        });
+      });
+    }
+  });
 
-    return {
-      title: serviceName,
-      faqs: faqs.map((faq: any) => ({
-        question: faq.question,
-        answer: faq.answer,
-        callout: faq.callout,
-        serviceLink: { label: serviceName, href: `/services/${slug}/` }
-      })),
-      ctaText: `Get a quote for ${serviceName}`
-    };
-  })
-  .filter((item): item is NonNullable<typeof item> => item !== null);
+  if (matchingFaqs.length === 0) return null;
+
+  return {
+    title: category.title,
+    faqs: matchingFaqs,
+    ctaText: `Call to learn more about ${category.title}`
+  };
+}).filter((item): item is NonNullable<typeof item> => item !== null);
 
 export default function FAQ() {
   const [openId, setOpenId] = useState<string | null>('0-0');

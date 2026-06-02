@@ -24,6 +24,7 @@ import LeadQuoteForm from '../components/LeadQuoteForm';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
+import { SERVICE_CATEGORIES } from '../config/servicesStructure';
 
 export default function Home() {
   const [activeUseCase, setActiveUseCase] = useState(0);
@@ -306,46 +307,29 @@ export default function Home() {
             </GeoDirectAnswer>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: 'Residential Property Surveys',
-                icon: <HomeIcon className="w-8 h-8 text-brand-green" />,
-                description: 'We provide property line, fence, and tree surveys, for boundary confirmation, in addition to site plans and Building Location Certificates required for design accuracy and municipal compliance.',
-              },
-              {
-                title: 'Land Development',
-                icon: <Map className="w-8 h-8 text-brand-green" />,
-                description: 'We provide subdivision, consolidation and strata plans, topographic mapping and site plans for design and permitting, and construction layouts to ensure your development can progress efficiently.',
-              },
-              {
-                title: 'Construction & Infrastructure',
-                icon: <HardHat className="w-8 h-8 text-brand-green" />,
-                description: 'High-accuracy layout, earthwork estimates and monitoring for buildings, land development, roads, utilities and large infrastructure.',
-              },
-              {
-                title: 'Legal Surveys',
-                icon: <Compass className="w-8 h-8 text-brand-green" />,
-                description: 'Professional expertise for property boundaries, subdivisions, and strata plans.',
-              },
-            ].map((service, idx) => (
-              <Link 
-                key={idx}
-                to="/services/"
-                className="bg-stone-100 p-8 border-2 border-slate-200 hover:border-brand-green transition-all group flex flex-col block cursor-pointer"
-              >
-                <div className="w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-medium text-slate-900 mb-4 group-hover:text-brand-green transition-colors">{service.title}</h3>
-                <p className="text-slate-700 mb-8 font-light">
-                  {service.description}
-                </p>
-                <div className="text-brand-green font-medium flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
-                  Learn more <ArrowRight size={16} />
-                </div>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SERVICE_CATEGORIES.map((category) => {
+              const IconComponent = category.icon;
+              return (
+                <Link
+                  key={category.id}
+                  to={`/services/#${category.id}`}
+                  className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col"
+                >
+                  <div className="mb-4">
+                    <div className="bg-brand-green/10 text-brand-green-dark p-3 rounded-xl inline-block">
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                  </div>
+                  <h3 className="text-slate-900 font-bold text-lg mb-2">
+                    {category.title}
+                  </h3>
+                  <p className="text-slate-700 font-light text-sm leading-relaxed">
+                    {category.homeDescription}
+                  </p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
