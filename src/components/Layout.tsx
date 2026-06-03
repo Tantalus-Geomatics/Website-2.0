@@ -417,22 +417,6 @@ export default function Layout() {
           </div>
         </div>
 
-        {/* Delimited Regional List */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-sm text-white/60">
-            {serviceLocations.map((loc, index) => (
-              <React.Fragment key={loc.slug}>
-                <Link to={`/${loc.slug}/`} className="hover:text-brand-green transition-colors font-medium">
-                  {loc.name}
-                </Link>
-                {index < serviceLocations.length - 1 && (
-                  <span className="text-white/20">|</span>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-
         {/* Full-width Map Container */}
         <div className="w-full relative left-0 right-0 z-0 mb-12">
           <div className="w-full overflow-hidden relative z-0">
@@ -480,6 +464,22 @@ export default function Layout() {
                 </GoogleMap>
               </LoadScript>
             </ClientOnly>
+          </div>
+        </div>
+
+        {/* Delimited Regional List */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+          <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-sm">
+            {serviceLocations.map((loc, index) => (
+              <React.Fragment key={loc.slug}>
+                <Link to={`/${loc.slug}/`} className="text-brand-green hover:text-brand-green-dark transition-colors font-medium">
+                  {loc.name}
+                </Link>
+                {index < serviceLocations.length - 1 && (
+                  <span className="text-slate-300">|</span>
+                )}
+              </React.Fragment>
+            ))}
           </div>
         </div>
 

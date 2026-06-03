@@ -1,5 +1,5 @@
 import { useState, useEffect, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { 
   ChevronDown, 
   ChevronUp, 
@@ -14,8 +14,10 @@ import {
   ExternalLink,
   Image as ImageIcon,
   Maximize2,
-  X
+  X,
+  FileText
 } from 'lucide-react';
+import { SERVICE_CATEGORIES } from '../config/servicesStructure';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import LeadQuoteForm from '../components/LeadQuoteForm';
@@ -47,6 +49,7 @@ export interface ServiceTemplateProps {
   title: string;
   description: string;
   serviceName: string;
+  category?: string;
   heroImage?: string;
   heroImageAlt?: string;
   steps?: ProcessStep[];
@@ -160,6 +163,7 @@ export default function ServiceTemplate({
   title,
   description,
   serviceName,
+  category,
   heroImage = HERO_FALLBACK,
   heroImageAlt,
   steps = defaultSteps,
@@ -198,6 +202,33 @@ export default function ServiceTemplate({
     title
   );
 
+  // Find category from prop or by searching SERVICE_CATEGORIES for serviceSlug
+  const { serviceSlug, locationSlug } = useParams<{ serviceSlug?: string; locationSlug?: string }>();
+  
+  const currentCategory = SERVICE_CATEGORIES.find(cat => 
+    (category && cat.id === category.toLowerCase()) || 
+    (serviceSlug && cat.serviceSlugs.includes(serviceSlug))
+  );
+
+  const otherServices = currentCategory
+    ? currentCategory.serviceSlugs.filter(slug => slug !== serviceSlug)
+    : [];
+
+  const getServiceLink = (slug: string) => {
+    return locationSlug ? `/${locationSlug}/services/${slug}/` : `/services/${slug}/`;
+  };
+
+  const formatSlugToTitle = (slug: string): string => {
+    return slug
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (c) => c.toUpperCase())
+      .replace('Bcls', 'BCLS')
+      .replace('3d', '3D')
+      .replace('Uav', 'UAV')
+      .replace('Lidar', 'LiDAR')
+      .replace('And', '&');
+  };
+
   // Extract a 1-phrase summary for the hero subtitle description dynamically.
   // If description contains periods, grab the first sentence string token and append a trailing period.
   const shortDescription = description.includes('.')
@@ -228,22 +259,21 @@ export default function ServiceTemplate({
           <img
             src={heroSrc}
             alt={heroImageAlt || title}
-            className="w-full h-full object-cover opacity-40 mix-blend-overlay"
+            className="w-full h-full object-cover object-top opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/50 via-brand-dark/70 to-brand-dark" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
           <span className="inline-block bg-brand-green/10 text-brand-green border border-brand-green/20 uppercase font-semibold text-xs rounded-full px-3 py-1 mb-6">
-            Professional Land Surveying Services
+            Professional {derivedServiceName} in {locationName || 'Sea to Sky'}
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             {title}
           </h1>
           <p className="text-lg md:text-xl text-white/80 leading-relaxed drop-shadow-md max-w-3xl mx-auto font-light mb-10">
-            {shortDescription}
+            Professional {derivedServiceName} in {locationName || 'the Sea to Sky Corridor'}. {shortDescription}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
@@ -291,13 +321,35 @@ export default function ServiceTemplate({
         </div>
       </section>
 
+      {/* Category Cross-Linking Section */}
+      {currentCategory && otherServices.length > 0 && (
+        <section className="py-16 bg-stone-50 border-t border-b border-slate-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-8 text-center">
+              Other {currentCategory.title}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {otherServices.map((slug) => (
+                <Link
+                  key={slug}
+                  to={getServiceLink(slug)}
+                  className="p-5 bg-white border border-slate-200 rounded-xl hover:border-brand-green hover:shadow-md transition-all flex items-center justify-between group"
+                >
+                  <span className="font-medium text-slate-800 group-hover:text-brand-green-dark transition-colors text-base">
+                    {formatSlugToTitle(slug)}
+                  </span>
+                  <ArrowRight size={18} className="text-slate-400 group-hover:text-brand-green-dark transition-all group-hover:translate-x-1 shrink-0" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* 3. 3-Step Process Section */}
       <section className="py-16 md:py-24 bg-slate-50 border-t border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-light text-slate-900 mb-4">
-              How do we ensure accuracy and efficiency in our land surveying projects?
-            </h2>
             <GeoDirectAnswer
               align="center"
               question="How do we ensure accuracy and efficiency in our land surveying projects?"
@@ -500,36 +552,36 @@ export default function ServiceTemplate({
               </p>
             </GeoDirectAnswer>
             
-            {municipalLink && localAuthorityName && (
-              <div className="inline-block w-full sm:w-auto mb-8">
+            {/* Location Links Grid */}
+            <div className="mt-6 max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+              {municipalLink && localAuthorityName && (
                 <a
                   href={municipalLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-brand-green hover:bg-brand-green-light text-slate-900 font-semibold py-4 px-8 rounded-full shadow-md flex items-center justify-center gap-3"
+                  className="bg-white border border-slate-200 text-slate-800 hover:shadow-md rounded-lg p-4 flex items-center justify-between transition-all group"
                 >
-                  <Building2 size={20} className="text-slate-900 shrink-0" />
-                  <span>View {localAuthorityName} Guidelines</span>
-                  <ExternalLink size={18} className="text-slate-800 shrink-0" />
+                  <div className="flex items-center">
+                    <FileText className="text-brand-green w-5 h-5 mr-3 shrink-0" />
+                    <span className="font-medium">View {localAuthorityName} Guidelines</span>
+                  </div>
+                  <ArrowRight className="text-slate-400 w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                 </a>
-              </div>
-            )}
-
-            {/* Location Links Grid */}
-            {locationLinks && locationLinks.length > 0 && (
-              <div className="mt-6 max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
-                {locationLinks.map((link, index) => (
-                  <Link
-                    key={index}
-                    to={link.href}
-                    className="bg-stone-50 border border-slate-200 p-4 font-medium text-slate-700 hover:text-brand-green-dark rounded-xl transition-all flex items-center justify-between group"
-                  >
-                    <span>{link.label}</span>
-                    <ArrowRight size={16} className="text-slate-400 group-hover:text-brand-green-dark transition-all group-hover:translate-x-1 shrink-0" />
-                  </Link>
-                ))}
-              </div>
-            )}
+              )}
+              {locationLinks && locationLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  to={link.href}
+                  className="bg-white border border-slate-200 text-slate-800 hover:shadow-md rounded-lg p-4 flex items-center justify-between transition-all group"
+                >
+                  <div className="flex items-center">
+                    <FileText className="text-brand-green w-5 h-5 mr-3 shrink-0" />
+                    <span className="font-medium">{link.label}</span>
+                  </div>
+                  <ArrowRight className="text-slate-400 w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}

@@ -13,7 +13,7 @@ export default function AuthorBio() {
     : 'Sea to Sky Corridor';
 
   return (
-    <section className="bg-stone-900 border-t border-b border-stone-800 py-12 px-4 sm:px-6 lg:px-8 my-12">
+    <section className="bg-stone-900 border-t border-b border-stone-800 py-0 px-4 sm:px-6 lg:px-8 my-0">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-stretch">
           {/* Left: High-Contrast Image Asset */}

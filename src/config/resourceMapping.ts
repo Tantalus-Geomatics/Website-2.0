@@ -88,47 +88,70 @@ export const SERVICE_LINKS_MAP: Record<string, ResourceLink[]> = {
 
 export const LOCATION_LINKS_MAP: Record<string, ResourceLink[]> = {
   'squamish': [
-    { label: 'District of Squamish Development', href: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/' },
+    { label: 'Squamish Building Permits', href: 'https://squamish.ca/building-and-land-development/building-permit/' },
+    { label: 'Squamish Development Permits', href: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/development-permits/' },
+    { label: 'Squamish Subdivision Requirements', href: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/subdivision/' },
+    { label: 'Squamish Subdivision & Development Control Bylaw', href: 'https://squamish.civicweb.net/filepro/document/200228/Subdivision%20and%20Development%20Control%20Bylaw%202649,%202018%20(Updated%20October%202022).pdf' },
     { label: 'District of Squamish GIS Map', href: 'https://squamish.ca/gis' }
   ],
   'whistler': [
-    { label: 'Resort Municipality of Whistler Development', href: 'https://www.whistler.ca/business-development/land-use-and-development/' },
+    { label: 'Whistler Building Permits', href: 'https://www.whistler.ca/business-development/building-and-development-permits/' },
+    { label: 'Whistler Development Permits', href: 'https://www.whistler.ca/business-development/land-use-and-development/development-permits/' },
+    { label: 'Whistler Subdivision & Strata Conversion', href: 'https://www.whistler.ca/business-development/land-use-and-development/subdivision-and-strata-conversion/' },
     { label: 'Resort Municipality of Whistler Maps and Data', href: 'https://www.whistler.ca/municipal-services/maps-and-data/' }
   ],
   'pemberton': [
-    { label: 'Village of Pemberton Planning & Development', href: 'https://www.pemberton.ca/building-development/planning-development' },
+    { label: 'Pemberton Building Permits', href: 'https://www.pemberton.ca/building-development/building-permits' },
+    { label: 'Pemberton Development Permits', href: 'https://www.pemberton.ca/building-development/planning-development/development-permits' },
+    { label: 'Pemberton Subdivision Requirements', href: 'https://www.pemberton.ca/building-development/planning-development/subdivision' },
     { label: 'Village of Pemberton Mapping and GIS', href: 'https://www.pemberton.ca/building-development/mapping-gis' }
   ],
   'lillooet': [
-    { label: 'District of Lillooet Development', href: 'https://www.lillooet.ca/building-planning-development' },
+    { label: 'Lillooet Building Permits', href: 'https://www.lillooet.ca/building-permits' },
+    { label: 'Lillooet Development Applications', href: 'https://lillooet.civicweb.net/filepro/document/67171/Development%20Application%20Form.pdf' },
+    { label: 'Lillooet Subdivision Procedures Bylaw', href: 'https://lillooet.civicweb.net/document/72750/4.%20Current%20Subdivision%20Procedures%20Bylaw.pdf?handle=8FE103DA5E974E07BAFE3D767DC41094' },
     { label: 'District of Lillooet Mapping', href: 'https://www.lillooet.ca/mapping-1' }
   ],
   'west-vancouver': [
-    { label: 'District of West Vancouver Land Development', href: 'https://westvancouver.ca/business-development/building-development/land-development' },
+    { label: 'West Vancouver Building Permits', href: 'https://westvancouver.ca/business-development/building-development/building-permits-inspections' },
+    { label: 'West Vancouver Development Permits', href: 'https://westvancouver.ca/business-development/building-development/building-permits-inspections/development-permits' },
+    { label: 'West Vancouver Subdivision Regulations', href: 'https://westvancouver.ca/business-development/building-development/development-regulations/other-developments/subdivision' },
     { label: 'District of West Vancouver Maps', href: 'https://westvancouver.ca/business-development/building-development/maps' }
   ],
   'bowen-island': [
-    { label: 'Bowen Island Municipality Planning & Development', href: 'https://www.bowenislandmunicipality.ca/planning-development/' },
+    { label: 'Bowen Island Building Permit Guide', href: 'https://bowenislandmunicipality.ca/property-development/building-renovating/building-permit-applications-guide/' },
+    { label: 'Bowen Island Planning & Development Permits', href: 'https://bowenislandmunicipality.ca/property-development/planning-development/planning-applications-guides-permits/' },
+    { label: 'Bowen Island Planning & Development Department', href: 'https://bowenislandmunicipality.ca/our-government/departments/planning-development/' },
     { label: 'Bowen Island Municipality Maps', href: 'https://bowenislandmunicipality.ca/bowmap/' }
   ],
   'britannia-beach': [
-    { label: 'Village of Britannia Beach Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
+    { label: 'SLRD Building Permits (Britannia Beach)', href: 'https://www.slrd.bc.ca/planning-building/building-department/building-permits' },
+    { label: 'SLRD Development Application Forms & Guides', href: 'https://www.slrd.bc.ca/planning-building/planning-development-services/development-application-forms-guides-fees/application-forms-guides' },
+    { label: 'SLRD Subdivision Approvals', href: 'https://www.slrd.bc.ca/planning-building/planning-development-services/development-applications-approvals/subdivisions-slrd' },
     { label: 'Village of Britannia Beach Maps', href: 'https://www.slrd.bc.ca/planning-building/mapping' }
   ],
   'furry-creek': [
-    { label: 'Village of Furry Creek Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
+    { label: 'SLRD Building Permits (Furry Creek)', href: 'https://www.slrd.bc.ca/planning-building/building-department/building-permits' },
+    { label: 'SLRD Development Application Forms & Guides', href: 'https://www.slrd.bc.ca/planning-building/planning-development-services/development-application-forms-guides-fees/application-forms-guides' },
+    { label: 'SLRD Subdivision Approvals', href: 'https://www.slrd.bc.ca/planning-building/planning-development-services/development-applications-approvals/subdivisions-slrd' },
     { label: 'Village of Furry Creek Maps', href: 'https://www.slrd.bc.ca/planning-building/mapping' }
   ],
   'sea-to-sky': [
-    { label: 'Sea to Sky Corridor Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
+    { label: 'SLRD Building Permits (Sea to Sky)', href: 'https://www.slrd.bc.ca/planning-building/building-department/building-permits' },
+    { label: 'SLRD Development Application Forms & Guides', href: 'https://www.slrd.bc.ca/planning-building/planning-development-services/development-application-forms-guides-fees/application-forms-guides' },
+    { label: 'SLRD Subdivision Approvals', href: 'https://www.slrd.bc.ca/planning-building/planning-development-services/development-applications-approvals/subdivisions-slrd' },
     { label: 'Sea to Sky Corridor Maps', href: 'https://www.slrd.bc.ca/planning-building/mapping' }
   ],
   'district-north-vancouver': [
-    { label: 'District of North Vancouver Properties and Development', href: 'https://www.dnv.org/property-and-development' },
+    { label: 'District of North Vancouver Building Permits', href: 'https://www.dnv.org/business-development/permits-and-inspections-building-and-renovating' },
+    { label: 'District of North Vancouver Development Permit Procedure', href: 'https://docs.dnv.org/documents/Development_Permit_Application_Procedure.pdf' },
+    { label: 'District of North Vancouver Subdivision Process', href: 'https://docs.dnv.org/documents/subdivision-application-process.pdf' },
     { label: 'District of North Vancouver Mapping', href: 'https://geoweb.dnv.org/' }
   ],
   'city-north-vancouver': [
-    { label: 'City of North Vancouver Building and Development', href: 'https://www.cnv.org/Business-Development/Building' },
+    { label: 'City of North Vancouver Building Permits', href: 'https://www.cnv.org/property-and-development/building-and-development/permits-and-inspections/building-permits' },
+    { label: 'City of North Vancouver Development Permits', href: 'https://www.cnv.org/property-and-development/building-and-development/development-applications/development-permits' },
+    { label: 'City of North Vancouver Subdivisions', href: 'https://www.cnv.org/Business-Development/Building/Subdivisions' },
     { label: 'City of North Vancouver Mapping', href: 'https://www.cnv.org/City-Hall/About/Maps' }
   ]
 };

@@ -18,7 +18,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Boundary marking, site plans for permits, and zoning layout inspections for homeowners.',
     icon: Home,
     image: '/images/old-home.webp',
-    serviceSlugs: ['bc-land-surveyors-building-location-surveys','boundary-surveys','property-line-surveys','topographic-surveys-and-site-plans']
+    serviceSlugs: ["bc-land-surveyors-building-location-surveys","topographic-surveys-and-site-plans"]
   },
   {
     id: 'construction',
@@ -27,7 +27,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Precise layout staking for foundations, gridlines, and structural site utilities.',
     icon: HardHat,
     image: '/images/construction.webp',
-    serviceSlugs: ['3d-settlement-monitoring','environmental-and-riparian-surveys','excavation-layout-surveys','form-and-foundation-surveys','gridline-and-construction-layout-surveys','infrastructure-layout-and-construction-surveys','property-line-surveys','road-surveys','topographic-surveys-and-site-plans','volume-and-earthwork-surveys']
+    serviceSlugs: ["environmental-and-riparian-surveys","excavation-layout-surveys","form-and-foundation-surveys","gridline-and-construction-layout-surveys","infrastructure-layout-and-construction-surveys","road-surveys"]
   },
   {
     id: 'legal',
@@ -36,7 +36,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Subdivision plans, airspace parcels, and easement plans registered at the Land Title Office.',
     icon: Scale,
     image: '/images/survey-marker-post.webp',
-    serviceSlugs: [ 'air-space-subdivision-surveys','block-outline-surveys','boundary-surveys','consolidation-surveys','covenant-surveys','easement-surveys','land-act-surveys','natural-boundary-surveys','property-line-surveys','road-surveys','statutory-rights-of-way-surveys','subdivisions-surveys']
+    serviceSlugs: ["block-outline-surveys","boundary-surveys","consolidation-surveys","covenant-surveys","easement-surveys","land-act-surveys","natural-boundary-surveys","statutory-rights-of-way-surveys","subdivisions-surveys"]
   },
   {
     id: 'commercial',
@@ -45,7 +45,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Comprehensive geomatics frameworks tailored for commercial real estate developments.',
     icon: Building,
     image: '/images/land-development.webp',
-    serviceSlugs: [ 'air-space-subdivision-surveys','bc-land-surveyors-building-location-surveys','consolidation-surveys','environmental-and-riparian-surveys','subdivisions-surveys','topographic-surveys-and-site-plans']
+    serviceSlugs: []
   },
   {
     id: 'engineering',
@@ -54,7 +54,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'High-precision 3D structural settlement monitoring and deformation analysis.',
     icon: Mountain,
     image: '/images/3d-settlement-monitoring.webp',
-    serviceSlugs: ['3d-settlement-monitoring','road-surveys','terrestrial-lidar-scanning','volume-and-earthwork-surveys']
+    serviceSlugs: ["3d-settlement-monitoring","terrestrial-lidar-scanning","uav-mapping","volume-and-earthwork-surveys"]
   },
   {
     id: 'strata',
@@ -63,6 +63,6 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Specialized building strata plans, bare land strata layouts, and phased multi-unit development surveys.',
     icon: Layers,
     image: '/images/bare-land-strata-surveys.webp',
-    serviceSlugs: ['bare-land-strata-surveys', 'air-space-subdivision-surveys', 'bare-land-strata-surveys','building-strata-surveys','phased-strata-surveys','proposed-strata-plans','strata-plan-amendment-surveys','strata-surveys'] // Note: You can migrate 'bare-land-strata-surveys' out of the 'legal' category slugs array into this array to keep it clean.
+    serviceSlugs: ["air-space-subdivision-surveys","bare-land-strata-surveys","building-strata-surveys","phased-strata-surveys","proposed-strata-plans","strata-plan-amendment-surveys","strata-surveys"]
   }
 ];
