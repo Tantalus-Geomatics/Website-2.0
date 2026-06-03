@@ -267,13 +267,13 @@ export default function ServiceTemplate({
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
           <span className="inline-block bg-brand-green/10 text-brand-green border border-brand-green/20 uppercase font-semibold text-xs rounded-full px-3 py-1 mb-6">
-            Professional {derivedServiceName} in {locationName || 'Sea to Sky'}
+            Professional Land Surveying Services
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             {title}
           </h1>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed drop-shadow-md max-w-3xl mx-auto font-light mb-10">
-            Professional {derivedServiceName} in {locationName || 'the Sea to Sky Corridor'}. {shortDescription}
+          <p className="text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-md max-w-2xl mx-auto font-light mb-10">
+            {description}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
