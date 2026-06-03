@@ -12,6 +12,36 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+function sanitizeFrontmatter(content) {
+  // Find the frontmatter block at the start of the file
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) return content;
+
+  const frontmatterBlock = match[1];
+  const lines = frontmatterBlock.split(/\r?\n/);
+  
+  const sanitizedLines = lines.map(line => {
+    // Match key: value
+    const parts = line.match(/^([a-zA-Z0-9_-]+)\s*:\s*(.*)$/);
+    if (parts) {
+      const key = parts[1];
+      const value = parts[2];
+      
+      if (['title', 'serviceName', 'description', 'metaDescription'].includes(key)) {
+        // Strip out all Markdown asterisks (* and **) and HTML/JSX tags
+        const sanitizedValue = value
+          .replace(/\*/g, '')
+          .replace(/<[^>]+>/g, '');
+        return `${key}: ${sanitizedValue}`;
+      }
+    }
+    return line;
+  });
+
+  const newFrontmatterBlock = sanitizedLines.join('\n');
+  return content.replace(frontmatterBlock, newFrontmatterBlock);
+}
+
 function getImagesForLocation(locationSlug) {
   if (LOCATION_IMAGES_MAP[locationSlug]) {
     return LOCATION_IMAGES_MAP[locationSlug];
@@ -346,6 +376,9 @@ baseTemplates.forEach(templateFile => {
 
     // Inject schema into metadata
     localizedContent = injectSchemaIntoMetadata(localizedContent, localizedSchema);
+
+    // Sanitize frontmatter variables
+    localizedContent = sanitizeFrontmatter(localizedContent);
 
     // Define output directory and file path
     const outputDir = path.join(__dirname, `../src/content/services/${locationSlug}`);

@@ -270,7 +270,13 @@ export default function ServiceTemplate({
             Professional Land Surveying Services
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
-            {title}
+            {locationName ? (
+              <>
+                {derivedServiceName} in <span className="text-brand-green">{locationName}</span>
+              </>
+            ) : (
+              title
+            )}
           </h1>
           <p className="text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-md max-w-2xl mx-auto font-light mb-10">
             {description}
