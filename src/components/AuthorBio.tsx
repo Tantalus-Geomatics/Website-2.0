@@ -13,15 +13,17 @@ export default function AuthorBio() {
     : 'Sea to Sky Corridor';
 
   return (
-    <section className="bg-stone-900 border-t border-b border-stone-800 py-0 px-4 sm:px-6 lg:px-8 my-0">
+    <section className="bg-stone-900 border-t border-b border-stone-800 py-12 px-4 sm:px-6 lg:px-8 my-0">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-stretch">
-          {/* Left: High-Contrast Image Asset */}
-          <img
-            src="/images/dennis-sherman-mugshot.webp"
-            alt="Dennis Sherman, BCLS, P.Eng. - Commissioned British Columbia Land Surveyor and Professional Engineer in Squamish, Whistler, and the Sea to Sky Corridor"
-            className="w-48 h-full object-cover shrink-0 rounded-xl border-2 border-brand-green shadow-xl"
-          />
+          {/* Left: High-Contrast Image Asset Wrapper */}
+          <div className="flex items-center justify-center py-2 bg-stone-900 shrink-0">
+            <img
+              src="/images/dennis-sherman-mugshot.webp"
+              alt="Dennis Sherman, BCLS, P.Eng. - Commissioned British Columbia Land Surveyor and Professional Engineer in Squamish, Whistler, and the Sea to Sky Corridor"
+              className="w-48 h-48 md:h-full object-cover rounded-xl border-2 border-brand-green shadow-xl"
+            />
+          </div>
 
           {/* Right: Professional Background & GEO Text Ingestion */}
           <div className="flex-1 text-center md:text-left">

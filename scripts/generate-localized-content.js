@@ -27,7 +27,7 @@ function sanitizeFrontmatter(content) {
       const key = parts[1];
       const value = parts[2];
       
-      if (['title', 'serviceName', 'description', 'metaDescription'].includes(key)) {
+      if (['title', 'serviceName', 'description', 'metaDescription', 'faqs', 'steps'].includes(key)) {
         // Strip out all Markdown asterisks (* and **) and HTML/JSX tags
         const sanitizedValue = value
           .replace(/\*/g, '')
@@ -40,6 +40,29 @@ function sanitizeFrontmatter(content) {
 
   const newFrontmatterBlock = sanitizedLines.join('\n');
   return content.replace(frontmatterBlock, newFrontmatterBlock);
+}
+
+function sanitizeMetadata(content) {
+  // Find the export const metadata block
+  const metadataMatch = content.match(/export const metadata = \{([\s\S]*?)\n\}/);
+  if (!metadataMatch) return content;
+
+  const metadataBlock = metadataMatch[1];
+  const sanitizedMetadataBlock = metadataBlock
+    .replace(/"([^"\\]*(?:\\.[^"\\]*)*)"/g, (match, p1) => {
+      const sanitized = p1
+        .replace(/\*/g, '')
+        .replace(/<[^>]+>/g, '');
+      return `"${sanitized}"`;
+    })
+    .replace(/'([^'\\]*(?:\\.[^'\\]*)*)'/g, (match, p1) => {
+      const sanitized = p1
+        .replace(/\*/g, '')
+        .replace(/<[^>]+>/g, '');
+      return `'${sanitized}'`;
+    });
+
+  return content.replace(metadataBlock, sanitizedMetadataBlock);
 }
 
 function getImagesForLocation(locationSlug) {
@@ -379,6 +402,7 @@ baseTemplates.forEach(templateFile => {
 
     // Sanitize frontmatter variables
     localizedContent = sanitizeFrontmatter(localizedContent);
+    localizedContent = sanitizeMetadata(localizedContent);
 
     // Define output directory and file path
     const outputDir = path.join(__dirname, `../src/content/services/${locationSlug}`);

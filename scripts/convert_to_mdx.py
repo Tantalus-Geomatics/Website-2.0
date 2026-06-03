@@ -3,6 +3,16 @@ import re
 import json
 import sys
 
+def clean_metadata_string(s):
+    if not s:
+        return ""
+    # Strip out all Markdown asterisks (* and **)
+    s = s.replace('*', '')
+    # Strip out JSX/HTML tags like <span...>, </span>, etc.
+    s = re.sub(r'<[^>]+>', '', s)
+    return s.strip()
+
+
 def parse_txt_file(file_path):
     """
     Parses the custom structured text file into isolated content sections.
@@ -50,13 +60,13 @@ def parse_steps(steps_text):
         # Match step title inside markdown bold characters: **Title** Rest of description
         match = re.search(r'^\*\*(.*?)\*\*(.*)', block, re.DOTALL)
         if match:
-            title = match.group(1).strip()
-            description = match.group(2).strip()
+            title = clean_metadata_string(match.group(1))
+            description = clean_metadata_string(match.group(2))
             # Flatten multi-line description into clean single-spaced layout
             description = re.sub(r'\s+', ' ', description)
             steps.append({"title": title, "description": description})
         else:
-            steps.append({"title": "Process Step", "description": re.sub(r'\s+', ' ', block)})
+            steps.append({"title": "Process Step", "description": clean_metadata_string(re.sub(r'\s+', ' ', block))})
             
     return steps
 
@@ -77,7 +87,7 @@ def parse_deliverables(deliverables_text):
         # Remove leading bullet symbols (*, -, +)
         line = re.sub(r'^[\*\-\+]\s*', '', line).strip()
         # Clean out bold asterisks for clean string inject
-        line = line.replace('**', '')
+        line = clean_metadata_string(line)
         if line:
             deliverables.append(line)
             
@@ -95,8 +105,8 @@ def parse_faqs(faqs_text):
     faq_pattern = re.compile(r'\*\*?\d+[\.\\\s]+(.*?)\*\*?\s*(.*?)(?=\*\*?\d+[\.\\\s]+|\Z)', re.DOTALL)
     
     for match in faq_pattern.finditer(faqs_text):
-        question = match.group(1).strip()
-        answer = match.group(2).strip()
+        question = clean_metadata_string(match.group(1))
+        answer = clean_metadata_string(match.group(2))
         # Standardize extra spaces inside paragraphs
         answer = re.sub(r'\s+', ' ', answer)
         faqs.append({"question": question, "answer": answer})
@@ -147,6 +157,7 @@ def convert_directory(source_dir, output_dir):
             # Generate SEO Description from title context
             clean_title_meta = title.replace('{{LOCATION_NAME}}', '').strip()
             description = f"Expert {clean_title_meta} services in {{{{LOCATION_NAME}}}}, ensuring accurate legal layout and strict municipal zoning compliance."
+            description = clean_metadata_string(description)
             
             # Helper to correctly indent multiline JSON inside the metadata code block
             def format_js_array(data_list):

@@ -159,6 +159,22 @@ function getDeterministicImages(serviceName: string, pool: LocalImage[]): LocalI
   return clone.slice(0, 6);
 }
 
+function highlightLocation(text: string, locationName?: string): ReactNode {
+  if (!locationName || !text) return text;
+  const parts = text.split(new RegExp(`(${locationName})`, 'gi'));
+  return (
+    <>
+      {parts.map((part, index) => 
+        part.toLowerCase() === locationName.toLowerCase() ? (
+          <span key={index} className="text-brand-green-dark font-semibold">{part}</span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
 export default function ServiceTemplate({
   title,
   description,
@@ -279,7 +295,7 @@ export default function ServiceTemplate({
             )}
           </h1>
           <p className="text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-md max-w-2xl mx-auto font-light mb-10">
-            {description}
+            {highlightLocation(description, locationName)}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
@@ -382,7 +398,7 @@ export default function ServiceTemplate({
                       {step.title}
                     </h3>
                     <p className="text-slate-600 font-light leading-relaxed text-base md:text-lg">
-                      {step.description}
+                      {highlightLocation(step.description, locationName)}
                     </p>
                   </div>
                 </div>
@@ -495,7 +511,7 @@ export default function ServiceTemplate({
                   {isOpen && (
                     <div className="p-6 bg-white border-t border-slate-200">
                       <p className="text-slate-700 font-light leading-relaxed text-base">
-                        {faq.answer}
+                        {highlightLocation(faq.answer, locationName)}
                       </p>
                     </div>
                   )}

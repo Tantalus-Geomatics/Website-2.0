@@ -75,6 +75,22 @@ export default function FAQ() {
     }
   };
 
+function highlightLocation(text: string, locationName?: string) {
+  if (!locationName || !text) return text;
+  const parts = text.split(new RegExp(`(${locationName})`, 'gi'));
+  return (
+    <>
+      {parts.map((part, index) => 
+        part.toLowerCase() === locationName.toLowerCase() ? (
+          <span key={index} className="text-brand-green-dark font-semibold">{part}</span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
 // Helper to remove HTML tags for valid Schema.org text
 const stripHtml = (html) => {
   return html.replace(/<[^>]*>?/gm, '');
@@ -214,7 +230,9 @@ const faqSchema = {
                               isOpen ? 'max-h-[1000px] opacity-100 pb-6 sm:pb-8' : 'max-h-0 opacity-0'
                             }`}
                           >
-                            <p className="text-slate-700 font-light leading-relaxed text-base sm:text-lg" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                            <p className="text-slate-700 font-light leading-relaxed text-base sm:text-lg">
+                              {highlightLocation(faq.answer, "Squamish")}
+                            </p>
                             
                             {faq.serviceLink && (
                               <div className="mt-4 pt-4 border-t border-slate-100">

@@ -1,0 +1,53 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in District North Vancouver, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'District North Vancouver'
+heroImage: '/images/Squamish-Garibaldi-Estates-Property-Survey.webp'
+localAuthorityName: 'Municipality of District North Vancouver'
+municipalLink: 'https://example.com'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  title: "Service Title",
+  description: "Expert Service Title services in District North Vancouver, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'District North Vancouver',
+  heroImage: '/images/Squamish-Garibaldi-Estates-Property-Survey.webp',
+  localAuthorityName: 'Municipality of District North Vancouver',
+  municipalLink: 'https://example.com',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: [],
+  locationLinks: [
+  {
+    "label": "District of North Vancouver Building Permits",
+    "href": "https://www.dnv.org/business-development/permits-and-inspections-building-and-renovating"
+  },
+  {
+    "label": "District of North Vancouver Development Permit Procedure",
+    "href": "https://docs.dnv.org/documents/Development_Permit_Application_Procedure.pdf"
+  },
+  {
+    "label": "District of North Vancouver Subdivision Process",
+    "href": "https://docs.dnv.org/documents/subdivision-application-process.pdf"
+  },
+  {
+    "label": "District of North Vancouver Mapping",
+    "href": "https://geoweb.dnv.org/"
+  }
+],
+  serviceImages: [],
+  locationImages: []
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+
