@@ -48,7 +48,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     lng: -122.8050,
     locality: 'Pemberton',
     localAuthorityName: 'Village of Pemberton',
-    municipalLink: 'https://www.pemberton.ca/building-development
+    municipalLink: 'https://www.pemberton.ca/building-development'
   },
   'lillooet': {
     lat: 50.6853,
