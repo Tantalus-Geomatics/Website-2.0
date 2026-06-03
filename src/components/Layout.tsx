@@ -108,9 +108,9 @@ const schemaData = {
         "name": "British Columbia Land Surveyor (BCLS)",
         "credentialCategory": "Professional Commission",
         "recognizedBy": {
-          "@type": "ProfessionalAssociation",
-          "name": "Association of British Columbia Land Surveyors",
-          "abbreviation": "ABCLS"
+          "@type": "Organization",
+          "alternateName": "ABCLS",
+          "name": "Association of British Columbia Land Surveyors"
         },
         "identifier": "BCLS Commission #1104"
       },
@@ -119,9 +119,9 @@ const schemaData = {
         "name": "Professional Engineer (P.Eng.)",
         "credentialCategory": "Professional License",
         "recognizedBy": {
-          "@type": "ProfessionalAssociation",
-          "name": "Engineers & Geoscientists British Columbia",
-          "abbreviation": "EGBC"
+          "@type": "Organization",
+          "alternateName": "EGBC",
+          "name": "Engineers & Geoscientists British Columbia"
         },
         "identifier": "EGBC License #57741"
       }

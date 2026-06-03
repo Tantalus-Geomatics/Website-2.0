@@ -24,9 +24,6 @@ const SERVICE_ICON_MAP: Record<string, React.ComponentType<any>> = {
   '3d-settlement-monitoring': Activity,
   'air-space-subdivision-surveys': Layers,
   'bare-land-strata-surveys': LayoutGrid,
-  'property-line-surveys': Grid,
-  'topographic-surveys': Mountain,
-  'construction-staking': HardHat,
 };
 
 export interface HubService {

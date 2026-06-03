@@ -36,7 +36,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Subdivision plans, airspace parcels, and easement plans registered at the Land Title Office.',
     icon: Scale,
     image: '/images/survey-marker-post.webp',
-    serviceSlugs: ["block-outline-surveys","boundary-surveys","consolidation-surveys","covenant-surveys","easement-surveys","land-act-surveys","natural-boundary-surveys","statutory-rights-of-way-surveys","subdivisions-surveys","property-line-surveys"]
+    serviceSlugs: ["block-outline-surveys","boundary-surveys","consolidation-surveys","covenant-surveys","easement-surveys","land-act-surveys","natural-boundary-surveys","statutory-rights-of-way-surveys","subdivisions-surveys"]
   },
   {
     id: 'commercial',
@@ -45,7 +45,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Comprehensive geomatics frameworks tailored for commercial real estate developments.',
     icon: Building,
     image: '/images/land-development.webp',
-    serviceSlugs: ["volume-and-earthwork-surveys", "topographic-surveys", "construction-staking", "air-space-subdivision-surveys"]
+    serviceSlugs: ["volume-and-earthwork-surveys", "topographic-surveys-and-site-plans", "air-space-subdivision-surveys"]
   },
   {
     id: 'engineering',
