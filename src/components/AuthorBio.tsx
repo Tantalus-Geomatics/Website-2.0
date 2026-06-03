@@ -43,7 +43,7 @@ export default function AuthorBio() {
             <h3 className="text-2xl font-bold text-white mb-4">About the Principal</h3>
 
             <p className="text-stone-300 text-base md:text-lg leading-relaxed">
-              Dennis Sherman, <strong>BCLS</strong>, <strong>P.Eng.</strong>, is a dual-registered professional specializing in the integration of land surveying and geomatics engineering. Commissioned as a <strong>British Columbia Land Surveyor (BCLS Commission #1104)</strong> and registered as a <strong>Professional Engineer (EGBC Registration #57741)</strong>, Dennis leads the operations at Tantalus Geomatics Land Surveying Ltd., which operates under (<strong>Association of BC Land Surveyors Corporate Permit #1046</strong>).
+              Dennis Sherman, <strong>BCLS</strong>, <strong>P.Eng.</strong>, is a dual-registered professional specializing in the integration of land surveying and geomatics engineering. Commissioned as a <strong>British Columbia Land Surveyor (BCLS Commission #1104)</strong> and registered as a <strong>Professional Engineer (EGBC Registration #57741)</strong>, Dennis leads the operations at Tantalus Geomatics Land Surveying Ltd., which operates under <strong>Association of BC Land Surveyors (Corporate Permit #1046)</strong>.
             </p>
           </div>
         </div>

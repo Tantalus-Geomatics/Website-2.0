@@ -1,0 +1,70 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in Lillooet, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'Lillooet'
+heroImage: '/images/seton-lake.webp'
+localAuthorityName: 'District of Lillooet'
+municipalLink: 'https://www.lillooet.ca/business-development/building-permits'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Lillooet",
+  "description": "Professional Uav Mapping and geomatics services in Lillooet, BC.",
+  "url": "https://www.tantalusgeomatics.com/lillooet/services/uav-mapping/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lillooet",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.6853,
+    "longitude": -121.9364
+  }
+},
+  title: "Service Title",
+  description: "Expert Service Title services in Lillooet, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'Lillooet',
+  heroImage: '/images/seton-lake.webp',
+  localAuthorityName: 'District of Lillooet',
+  municipalLink: 'https://www.lillooet.ca/business-development/building-permits',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: [],
+  locationLinks: [
+  {
+    "label": "District of Lillooet Development",
+    "href": "https://www.lillooet.ca/building-planning-development"
+  },
+  {
+    "label": "District of Lillooet Mapping",
+    "href": "https://www.lillooet.ca/mapping-1"
+  }
+],
+  serviceImages: [],
+  locationImages: [
+  {
+    "src": "/images/seton-lake.webp",
+    "alt": "BC Land Surveyor conducting Uav Mapping in Lillooet, BC",
+    "caption": "Professional Land Surveying in Lillooet, BC."
+  }
+]
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+

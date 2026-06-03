@@ -1,0 +1,93 @@
+---
+title: "Strata Surveys in Powell River."
+description: "Expert Strata Surveys in . services in Powell River, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'Powell River'
+heroImage: '/images/power-river.webp'
+localAuthorityName: 'Municipality of Powell River'
+municipalLink: 'https://example.com'
+serviceName: "Strata Surveys"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  title: "Strata Surveys in Powell River.",
+  description: "Expert Strata Surveys in . services in Powell River, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'Powell River',
+  heroImage: '/images/power-river.webp',
+  localAuthorityName: 'Municipality of Powell River',
+  municipalLink: 'https://example.com',
+  serviceName: "Strata Surveys",
+  steps: [
+    {
+      "title": "Research",
+      "description": "The foundation of a strata plan is exhaustive documentary research. The BC Land Surveyor gathers historical plans, Crown grants, field notes, and active title records from the Land Title and Survey Authority of British Columbia (LTSA). For strata surveys, we meticulously review the parent parcel to guarantee it complies with Section 240 of the *Strata Property Act*, ensuring all underlying boundary discrepancies or natural boundary changes have been resolved under the *Land Title Act*. We also analyze architectural design drawings, disclosure statements, and registered encumbrances to ensure your proposed strata layout flawlessly accommodates existing legal constraints and promises made to purchasers."
+    },
+    {
+      "title": "Field Work",
+      "description": "The scope of field work and the time required to complete the survey are heavily impacted by the scale of the development, the type of strata, and the stage of construction. For bare land stratas, our field crews must recover original survey monuments and physically pound new markers into the ground to define the lots. For building stratas, our crews utilize Robotic Total Stations, Distometers and Terrestrial LiDAR to capture the exact physical locations of all walls, floors, ceilings, limited common property extents, and the exterior building perimeter. This cutting-edge equipment provides millimeter-level data, allowing the BCLS to legally determine the true boundaries in three dimensions, balancing out minor construction discrepancies before the building is fully closed in and occupied."
+    },
+    {
+      "title": "Plan Preparation",
+      "description": "Our digital drafting experts translate the dense 3D field data into a highly regulated statutory Strata Plan in strict accordance with the ABCLS *Survey and Plan Rules*. Depending on the project, this will be a comprehensive Building Strata Plan, a Bare Land Strata Plan, a Phased Strata Plan, or a specific Amending Sheet. As your certifying professional, the BCLS electronically signs the Survey Plan Certification (SPC) using a secure digital certificate, taking full statutory responsibility for the plan's accuracy and confirming that the buildings are within the parcel boundaries. The complete package, including the plan and the Application to Deposit Plan (DSPL) containing all necessary owner, charge holder, and municipal signatures, is submitted to the LTSA, where the Registrar reviews and deposits the plan, and raises the new indefeasible titles."
+    }
+  ],
+  deliverables: [
+    "Certified Legal Strata Plans: Digitally certified statutory PDF plans (Building, Bare Land, Phased, or Amending Sheets) ready for deposit in the Land Title Register to create your new indefeasible strata titles.",
+    "Schedules of Unit Entitlement and Voting Rights: Certified Form V and Form W documents, legally required to establish the proportional ownership, expense liabilities, and voting power of each strata lot owner.",
+    "Topographic 3D CAD Files: High-precision digital drafting files (DWG/DXF) extracting the layout of walls and boundaries, used by architects, interior designers, and engineers for spatial planning.",
+    "Point Clouds and Orthoimages: Dense 3D Terrestrial LiDAR scan data and high-resolution aerial imagery providing a complete, verifiable digital twin of the building's as-built condition."
+  ],
+  faqs: [
+    {
+      "question": "Why do I need a British Columbia Land Surveyor (BCLS) for my strata project?",
+      "answer": "Under the *Land Surveyors Act*, only a commissioned BCLS holds the exclusive statutory authority to determine, establish, and certify the legal boundaries of a strata lot. Because a strata plan legally subdivides property and creates permanent titles, only a licensed professional acting in the public interest can certify the strata plan for deposit in the Land Title Office."
+    },
+    {
+      "question": "What is the difference between a building strata and a bare land strata?",
+      "answer": "A building strata defines strata lot boundaries by reference to the physical floors, walls, or ceilings of a structure. A bare land strata defines strata lot boundaries on a horizontal plane by reference to physical survey markers (posts) driven into the ground, functioning very much like a traditional subdivision, but with shared common property like private roads."
+    },
+    {
+      "question": "What is a Phased Strata Plan?",
+      "answer": "Governed by Part 13 of the *Strata Property Act*, a phased strata plan allows a developer to construct and register a single strata development in successive stages over time. It requires the approval of a Phased Strata Plan Declaration (Form P) by an Approving Officer, which outlines the schedule, unit entitlements, and common facilities for the entire multi-phase project."
+    },
+    {
+      "question": "Can an existing strata plan be amended after it is registered?",
+      "answer": "Yes, but it is an intensely complex legal process governed by Part 15 of the *Strata Property Act*. Depending on the goal—such as redefining limited common property, consolidating units, or adding land to the common property—the strata corporation must pass specific resolutions (often requiring a unanimous or 3/4 vote) and the BCLS must prepare highly regulated amending sheets to update the original registered plan."
+    },
+    {
+      "question": "Who owns the common property in a strata development?",
+      "answer": "Under Section 66 of the *Strata Property Act*, each owner of a strata lot owns the common property and common assets of the strata corporation as a tenant in common. The ownership share is directly proportional, calculated as the unit entitlement of the owner's strata lot divided by the total unit entitlement of all strata lots in the development."
+    }
+  ],
+  serviceLinks: [],
+  locationLinks: [],
+  serviceImages: [
+  {
+    "src": "/images/strata-surveys.webp",
+    "alt": "BC Land Surveyor conducting Strata Surveys in Powell River, BC",
+    "caption": "strata surveys at Tantalus Geomatics Land Surveying Ltd."
+  }
+],
+  locationImages: [
+  {
+    "src": "/images/power-river.webp",
+    "alt": "BC Land Surveyor conducting Strata Surveys in Powell River, BC",
+    "caption": "Professional Land Surveying in Powell River, BC."
+  }
+]
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+Over the lifespan of a development in Powell River, the *Strata Property Act* provides a powerful mechanism to create individual ownership of units while maintaining communal governance over common property. Creating or altering strata lots is an intensely complex process strictly regulated by the *Strata Property Act*, the *Strata Property Regulation*, the *Bare Land Strata Regulations*, and the Association of British Columbia Land Surveyors (ABCLS) *Survey and Plan Rules*. Because the "practice of land surveying" is legally defined to include determining, defining, and establishing boundaries in order to create new legal titles, only a commissioned BCLS holds the exclusive statutory authority under the *Land Surveyors Act* to prepare and certify your strata plan.
+
+<img src="/images/strata-surveys.webp" alt="BC Land Surveyor performing Strata Surveys in Powell River, BC" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />
+
+Our comprehensive strata surveying services cover all classifications of strata developments, offering solutions tailored to your specific project needs. For **Building Strata** plans, our field methodologies capture the exact physical geometry of the building to unambiguously define strata lots horizontally and vertically, typically utilizing the centerlines of structural walls, floors, and ceilings as mandated by Section 68 of the Act. For **Bare Land Strata** developments, which function similarly to conventional subdivisions but share common property like private access roads, boundaries are defined by physical survey markers driven into the earth rather than by buildings. We also masterfully handle **Phased Strata** plans governed by Part 13 of the *Strata Property Act*. This highly strategic approach allows developers to construct and register multi-stage communities over time using a Phased Strata Plan, spreading capital costs while ensuring future integration. Finally, as buildings age and evolve, we expertly navigate the intense complexities of **Strata Plan Amendments** under Part 15 of the Act. We expertly guide strata corporations through the rigorous voting and registration requirements needed to consolidate units, redefine limited common property (LCP), or convert common property by preparing precise amending sheets for the Land Title and Survey Authority (LTSA).
+
+To achieve the absolute and relative accuracy standards mandated by the Surveyor General and the ABCLS, we deploy an elite suite of state-of-the-art surveying equipment. We establish a highly robust primary geodetic control network by occupying points for extended durations with Static GNSS Receivers, integrating the site into the provincial active control system. From this framework, RTK GNSS measurements are utilized in open-sky environments for rapid centimeter precision. Inside complex buildings, underground parkades, or dense urban corridors where satellite signals are entirely obstructed, we deploy millimeter-accurate Robotic Total Stations to run redundant, closed-loop traverses. For intricate architectural features, complex volumetric stairwells, or expansive structural envelopes, we utilize Terrestrial LiDAR (3D laser scanning) and Aerial Drone LiDAR to generate flawless, high-density 3D point clouds. This elite instrumentation guarantees that every strata plan flawlessly reflects the physical reality of your development.

@@ -1,4 +1,4 @@
-import { Mountain, Award, Users, MapPin, Phone } from 'lucide-react';
+import { Award, Users, MapPin, Phone } from 'lucide-react';
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';

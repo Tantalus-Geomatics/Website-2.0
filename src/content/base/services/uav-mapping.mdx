@@ -1,0 +1,36 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in {{LOCATION_NAME}}, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: '{{LOCATION_NAME}}'
+heroImage: '{{HERO_IMAGE}}'
+localAuthorityName: '{{LOCAL_AUTHORITY}}'
+municipalLink: '{{MUNICIPAL_LINK}}'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  title: "Service Title",
+  description: "Expert Service Title services in {{LOCATION_NAME}}, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: '{{LOCATION_NAME}}',
+  heroImage: '{{HERO_IMAGE}}',
+  localAuthorityName: '{{LOCAL_AUTHORITY}}',
+  municipalLink: '{{MUNICIPAL_LINK}}',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: {{SERVICE_LINKS}},
+  locationLinks: {{LOCATION_LINKS}},
+  serviceImages: {{SERVICE_IMAGES}},
+  locationImages: {{LOCATION_IMAGES}}
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+

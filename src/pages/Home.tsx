@@ -4,10 +4,6 @@ import {
   WavesLadder,
   Hammer,
   ArrowRight,
-  Map,
-  Compass,
-  HardHat,
-  Mountain,
   Home as HomeIcon,
   Trees,
   Waves,
@@ -16,8 +12,6 @@ import {
   Building,
   Fence,
   BrickWall,
-  Mail,
-  MapPin,
   Phone,
 } from 'lucide-react';
 import LeadQuoteForm from '../components/LeadQuoteForm';

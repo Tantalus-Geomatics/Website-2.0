@@ -19,7 +19,6 @@ import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { useLeadForm } from '../hooks/useLeadForm';
-import { SERVICE_IMAGES_MAP } from '../config/resourceMapping';
 import { SERVICE_CATEGORIES } from '../config/servicesStructure';
 
 const ALL_SERVICES = [

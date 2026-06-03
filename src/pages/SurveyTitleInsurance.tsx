@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone, ShieldAlert, Scale, Search, ShieldCheck } from 'lucide-react';
+import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone, Search, ShieldCheck } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';

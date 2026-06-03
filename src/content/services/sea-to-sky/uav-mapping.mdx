@@ -1,0 +1,51 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in Sea To Sky, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'Sea To Sky'
+heroImage: '/images/sea-to-sky.webp'
+localAuthorityName: 'Municipality of Sea To Sky'
+municipalLink: 'https://example.com'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  title: "Service Title",
+  description: "Expert Service Title services in Sea To Sky, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'Sea To Sky',
+  heroImage: '/images/sea-to-sky.webp',
+  localAuthorityName: 'Municipality of Sea To Sky',
+  municipalLink: 'https://example.com',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: [],
+  locationLinks: [
+  {
+    "label": "Sea to Sky Corridor Planning & Development",
+    "href": "https://www.slrd.bc.ca/planning-development"
+  },
+  {
+    "label": "Sea to Sky Corridor Maps",
+    "href": "https://www.slrd.bc.ca/planning-building/mapping"
+  }
+],
+  serviceImages: [],
+  locationImages: [
+  {
+    "src": "/images/sea-to-sky.webp",
+    "alt": "BC Land Surveyor conducting Uav Mapping in Sea To Sky, BC",
+    "caption": "Professional Land Surveying in Sea-to-Sky, BC."
+  }
+]
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+

@@ -1,0 +1,70 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in Squamish, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'Squamish'
+heroImage: '/images/tantalus-hero-banner.webp'
+localAuthorityName: 'District of Squamish'
+municipalLink: 'https://squamish.ca/assets/BLDG/RESIDENTIAL-BP-Document-Checklist-Revised-FEB-FILLABLE_2022.pdf'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Squamish",
+  "description": "Professional Uav Mapping and geomatics services in Squamish, BC.",
+  "url": "https://www.tantalusgeomatics.com/squamish/services/uav-mapping/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Squamish",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.7016,
+    "longitude": -123.1558
+  }
+},
+  title: "Service Title",
+  description: "Expert Service Title services in Squamish, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'Squamish',
+  heroImage: '/images/tantalus-hero-banner.webp',
+  localAuthorityName: 'District of Squamish',
+  municipalLink: 'https://squamish.ca/assets/BLDG/RESIDENTIAL-BP-Document-Checklist-Revised-FEB-FILLABLE_2022.pdf',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: [],
+  locationLinks: [
+  {
+    "label": "District of Squamish Development",
+    "href": "https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/"
+  },
+  {
+    "label": "District of Squamish GIS Map",
+    "href": "https://squamish.ca/gis"
+  }
+],
+  serviceImages: [],
+  locationImages: [
+  {
+    "src": "/images/tantalus-hero-banner.webp",
+    "alt": "BC Land Surveyor conducting Uav Mapping in Squamish, BC",
+    "caption": "Professional Land Surveying in Squamish, BC."
+  }
+]
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+

@@ -1,0 +1,70 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in Bowen Island, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'Bowen Island'
+heroImage: '/images/bowen-island.webp'
+localAuthorityName: 'Bowen Island Municipality'
+municipalLink: 'https://www.bowenislandmunicipality.ca/building-permits/'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Bowen Island",
+  "description": "Professional Uav Mapping and geomatics services in Bowen Island, BC.",
+  "url": "https://www.tantalusgeomatics.com/bowen-island/services/uav-mapping/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bowen Island",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.3822,
+    "longitude": -123.3711
+  }
+},
+  title: "Service Title",
+  description: "Expert Service Title services in Bowen Island, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'Bowen Island',
+  heroImage: '/images/bowen-island.webp',
+  localAuthorityName: 'Bowen Island Municipality',
+  municipalLink: 'https://www.bowenislandmunicipality.ca/building-permits/',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: [],
+  locationLinks: [
+  {
+    "label": "Bowen Island Municipality Planning & Development",
+    "href": "https://www.bowenislandmunicipality.ca/planning-development/"
+  },
+  {
+    "label": "Bowen Island Municipality Maps",
+    "href": "https://bowenislandmunicipality.ca/bowmap/"
+  }
+],
+  serviceImages: [],
+  locationImages: [
+  {
+    "src": "/images/bowen-island.webp",
+    "alt": "BC Land Surveyor conducting Uav Mapping in Bowen Island, BC",
+    "caption": "Professional Land Surveying in Bowen Island, BC."
+  }
+]
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+

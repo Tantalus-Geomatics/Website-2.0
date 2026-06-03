@@ -1,0 +1,70 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in Pemberton, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'Pemberton'
+heroImage: '/images/mt-currie.webp'
+localAuthorityName: 'Village of Pemberton'
+municipalLink: 'https://www.pemberton.ca/government/departments/development-services/building-department'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Pemberton",
+  "description": "Professional Uav Mapping and geomatics services in Pemberton, BC.",
+  "url": "https://www.tantalusgeomatics.com/pemberton/services/uav-mapping/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Pemberton",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.321,
+    "longitude": -122.805
+  }
+},
+  title: "Service Title",
+  description: "Expert Service Title services in Pemberton, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'Pemberton',
+  heroImage: '/images/mt-currie.webp',
+  localAuthorityName: 'Village of Pemberton',
+  municipalLink: 'https://www.pemberton.ca/government/departments/development-services/building-department',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: [],
+  locationLinks: [
+  {
+    "label": "Village of Pemberton Planning & Development",
+    "href": "https://www.pemberton.ca/building-development/planning-development"
+  },
+  {
+    "label": "Village of Pemberton Mapping and GIS",
+    "href": "https://www.pemberton.ca/building-development/mapping-gis"
+  }
+],
+  serviceImages: [],
+  locationImages: [
+  {
+    "src": "/images/mt-currie.webp",
+    "alt": "BC Land Surveyor conducting Uav Mapping in Pemberton, BC",
+    "caption": "Professional Land Surveying in Pemberton, BC."
+  }
+]
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+

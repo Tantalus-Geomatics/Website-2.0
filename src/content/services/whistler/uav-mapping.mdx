@@ -1,0 +1,70 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in Whistler, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'Whistler'
+heroImage: '/images/black-tusk.webp'
+localAuthorityName: 'Resort Municipality of Whistler'
+municipalLink: 'https://www.whistler.ca/business/building-development/building-permits/'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Whistler",
+  "description": "Professional Uav Mapping and geomatics services in Whistler, BC.",
+  "url": "https://www.tantalusgeomatics.com/whistler/services/uav-mapping/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Whistler",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.1163,
+    "longitude": -122.9574
+  }
+},
+  title: "Service Title",
+  description: "Expert Service Title services in Whistler, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'Whistler',
+  heroImage: '/images/black-tusk.webp',
+  localAuthorityName: 'Resort Municipality of Whistler',
+  municipalLink: 'https://www.whistler.ca/business/building-development/building-permits/',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: [],
+  locationLinks: [
+  {
+    "label": "Resort Municipality of Whistler Development",
+    "href": "https://www.whistler.ca/business-development/land-use-and-development/"
+  },
+  {
+    "label": "Resort Municipality of Whistler Maps and Data",
+    "href": "https://www.whistler.ca/municipal-services/maps-and-data/"
+  }
+],
+  serviceImages: [],
+  locationImages: [
+  {
+    "src": "/images/black-tusk.webp",
+    "alt": "BC Land Surveyor conducting Uav Mapping in Whistler, BC",
+    "caption": "Professional Land Surveying in Whistler, BC."
+  }
+]
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+

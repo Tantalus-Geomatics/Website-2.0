@@ -7,7 +7,6 @@ import {
   Phone, 
   Calendar, 
   Tag,
-  BookOpen,
   Activity,
   LayoutGrid,
   Grid,
@@ -15,7 +14,6 @@ import {
   HardHat,
   Building2,
   ExternalLink,
-  FileText,
   Compass
 } from 'lucide-react';
 import PageShell from '../components/PageShell';

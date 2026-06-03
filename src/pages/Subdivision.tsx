@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, Phone, ShieldCheck, MapPinned, Search, ClipboardList, ChevronDown } from 'lucide-react';
+import { ArrowRight, MapPin, Phone, ChevronDown } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';

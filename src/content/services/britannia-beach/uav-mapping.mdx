@@ -1,0 +1,70 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in Britannia Beach, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'Britannia Beach'
+heroImage: '/images/britannia-beach.webp'
+localAuthorityName: 'Squamish-Lillooet Regional District'
+municipalLink: 'https://www.slrd.bc.ca/planning-development/building-services'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - Britannia Beach",
+  "description": "Professional Uav Mapping and geomatics services in Britannia Beach, BC.",
+  "url": "https://www.tantalusgeomatics.com/britannia-beach/services/uav-mapping/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Britannia Beach",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.6264,
+    "longitude": -123.2044
+  }
+},
+  title: "Service Title",
+  description: "Expert Service Title services in Britannia Beach, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'Britannia Beach',
+  heroImage: '/images/britannia-beach.webp',
+  localAuthorityName: 'Squamish-Lillooet Regional District',
+  municipalLink: 'https://www.slrd.bc.ca/planning-development/building-services',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: [],
+  locationLinks: [
+  {
+    "label": "Village of Britannia Beach Planning & Development",
+    "href": "https://www.slrd.bc.ca/planning-development"
+  },
+  {
+    "label": "Village of Britannia Beach Maps",
+    "href": "https://www.slrd.bc.ca/planning-building/mapping"
+  }
+],
+  serviceImages: [],
+  locationImages: [
+  {
+    "src": "/images/britannia-beach.webp",
+    "alt": "BC Land Surveyor conducting Uav Mapping in Britannia Beach, BC",
+    "caption": "Professional Land Surveying in Britannia Beach, BC."
+  }
+]
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+

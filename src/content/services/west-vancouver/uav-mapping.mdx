@@ -1,0 +1,70 @@
+---
+title: "Service Title"
+description: "Expert Service Title services in West Vancouver, ensuring accurate legal layout and strict municipal zoning compliance."
+locationName: 'West Vancouver'
+heroImage: '/images/west-vancouver.webp'
+localAuthorityName: 'District of West Vancouver'
+municipalLink: 'https://westvancouver.ca/home-building-property/permits-licences/building-permits'
+serviceName: "UAV Mapping"
+---
+
+import ServiceTemplate from '../../../templates/ServiceTemplate'
+
+export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - West Vancouver",
+  "description": "Professional Uav Mapping and geomatics services in West Vancouver, BC.",
+  "url": "https://www.tantalusgeomatics.com/west-vancouver/services/uav-mapping/",
+  "telephone": "+16042139934",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "West Vancouver",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.3692,
+    "longitude": -123.1702
+  }
+},
+  title: "Service Title",
+  description: "Expert Service Title services in West Vancouver, ensuring accurate legal layout and strict municipal zoning compliance.",
+  locationName: 'West Vancouver',
+  heroImage: '/images/west-vancouver.webp',
+  localAuthorityName: 'District of West Vancouver',
+  municipalLink: 'https://westvancouver.ca/home-building-property/permits-licences/building-permits',
+  serviceName: "UAV Mapping",
+  steps: [],
+  deliverables: [],
+  faqs: [],
+  serviceLinks: [],
+  locationLinks: [
+  {
+    "label": "District of West Vancouver Land Development",
+    "href": "https://westvancouver.ca/business-development/building-development/land-development"
+  },
+  {
+    "label": "District of West Vancouver Maps",
+    "href": "https://westvancouver.ca/business-development/building-development/maps"
+  }
+],
+  serviceImages: [],
+  locationImages: [
+  {
+    "src": "/images/west-vancouver.webp",
+    "alt": "BC Land Surveyor conducting Uav Mapping in West Vancouver, BC",
+    "caption": "Professional Land Surveying in West Vancouver, BC."
+  }
+]
+}
+
+export default ({ children }) => (
+  <ServiceTemplate {...metadata}>
+    {children}
+  </ServiceTemplate>
+)
+
+
