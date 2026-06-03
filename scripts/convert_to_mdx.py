@@ -23,10 +23,10 @@ def parse_txt_file(file_path):
     # Normalize line endings
     content = content.replace('\r\n', '\n')
 
-    # Identify the section headers using regex
+    # Identify the section headers using regex (robust to match variations in headers)
     header_pattern = re.compile(
-        r'^(# Title|### \*\*Body\*\*|### \*\*Steps\*\*|### \*\*Deliverables\*\*|### \*\*FAQs\*\*)', 
-        re.MULTILINE
+        r'^(#+\s*\*\*?Title\*\*?|#+\s*\*\*?Body\*\*?|#+\s*\*\*?Steps\*\*?|#+\s*\*\*?Deliverables(?:\s+section)?\*\*?|#+\s*\*\*?FAQs(?:\s+section)?\*\*?)', 
+        re.MULTILINE | re.IGNORECASE
     )
     
     matches = list(header_pattern.finditer(content))
@@ -36,7 +36,22 @@ def parse_txt_file(file_path):
         start = match.end()
         end = matches[i+1].start() if i+1 < len(matches) else len(content)
         # Clean section name to map into dictionary keys
-        section_key = match.group(1).replace('#', '').replace('*', '').strip().lower()
+        raw_key = match.group(1).replace('#', '').replace('*', '').strip().lower()
+        
+        # Normalize keys
+        if 'title' in raw_key:
+            section_key = 'title'
+        elif 'body' in raw_key:
+            section_key = 'body'
+        elif 'steps' in raw_key:
+            section_key = 'steps'
+        elif 'deliverables' in raw_key:
+            section_key = 'deliverables'
+        elif 'faqs' in raw_key:
+            section_key = 'faqs'
+        else:
+            section_key = raw_key
+            
         sections[section_key] = content[start:end].strip()
 
     return sections
@@ -101,16 +116,59 @@ def parse_faqs(faqs_text):
         return []
     
     faqs = []
-    # Match pattern: **1\. Question?** Answer body up to next question or end
-    faq_pattern = re.compile(r'\*\*?\d+[\.\\\s]+(.*?)\*\*?\s*(.*?)(?=\*\*?\d+[\.\\\s]+|\Z)', re.DOTALL)
-    
-    for match in faq_pattern.finditer(faqs_text):
-        question = clean_metadata_string(match.group(1))
-        answer = clean_metadata_string(match.group(2))
-        # Standardize extra spaces inside paragraphs
-        answer = re.sub(r'\s+', ' ', answer)
-        faqs.append({"question": question, "answer": answer})
+    # Find the start positions of each FAQ item
+    item_starts = [m.start() for m in re.finditer(r'(?:^|\n)\s*\*?\*?\d+[\.\\\s]+', faqs_text)]
+    if not item_starts:
+        item_starts = [m.start() for m in re.finditer(r'\*\*?\d+[\.\\\s]+', faqs_text)]
         
+    blocks = []
+    for i in range(len(item_starts)):
+        start = item_starts[i]
+        end = item_starts[i+1] if i+1 < len(item_starts) else len(faqs_text)
+        blocks.append(faqs_text[start:end].strip())
+        
+    for block in blocks:
+        if not block:
+            continue
+            
+        prefix_match = re.match(r'^\s*\*?\*?\d+[\.\\\s]+', block)
+        if not prefix_match:
+            continue
+            
+        prefix = prefix_match.group(0)
+        remaining = block[len(prefix):].strip()
+        
+        question = ""
+        answer = ""
+        
+        if '**' in remaining:
+            parts = remaining.split('**', 1)
+            question = parts[0].strip()
+            answer = parts[1].strip()
+        elif '*' in remaining:
+            parts = remaining.split('*', 1)
+            question = parts[0].strip()
+            answer = parts[1].strip()
+        else:
+            if '?' in remaining:
+                parts = remaining.split('?', 1)
+                question = parts[0].strip() + '?'
+                answer = parts[1].strip()
+            else:
+                parts = remaining.split('\n', 1)
+                question = parts[0].strip()
+                answer = parts[1].strip() if len(parts) > 1 else ""
+                
+        question = clean_metadata_string(question)
+        answer = clean_metadata_string(answer)
+        
+        # Standardize extra spaces inside paragraphs and join multi-line blocks
+        question = re.sub(r'\s+', ' ', question).strip()
+        answer = re.sub(r'\s+', ' ', answer).strip()
+        
+        if question:
+            faqs.append({"question": question, "answer": answer})
+            
     return faqs
 
 def convert_directory(source_dir, output_dir):
@@ -149,6 +207,9 @@ def convert_directory(source_dir, output_dir):
             raw_sections = parse_txt_file(source_path)
             
             title = raw_sections.get('title', 'Service Title')
+            if not title or title == 'Service Title':
+                title = f"{clean_service_name} in <span className=\"text-brand-green font-semibold\">{{{{LOCATION_NAME}}}}</span>"
+            
             body = raw_sections.get('body', '')
             steps = parse_steps(raw_sections.get('steps', ''))
             deliverables = parse_deliverables(raw_sections.get('deliverables', ''))
@@ -156,6 +217,10 @@ def convert_directory(source_dir, output_dir):
             
             # Generate SEO Description from title context
             clean_title_meta = title.replace('{{LOCATION_NAME}}', '').strip()
+            # Strip out HTML tags from clean_title_meta before putting it in description
+            clean_title_meta = clean_metadata_string(clean_title_meta)
+            # Remove trailing "in" if present
+            clean_title_meta = re.sub(r'\s+in\s*$', '', clean_title_meta, flags=re.IGNORECASE)
             description = f"Expert {clean_title_meta} services in {{{{LOCATION_NAME}}}}, ensuring accurate legal layout and strict municipal zoning compliance."
             description = clean_metadata_string(description)
             

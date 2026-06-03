@@ -1,5 +1,5 @@
 import React, { useState, useEffect, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { 
   ArrowRight, 
   Layers, 
@@ -159,6 +159,7 @@ export default function HubTemplate({
   locationImages = [],
   children
 }: HubTemplateProps) {
+  const { locationSlug } = useParams<{ locationSlug?: string }>();
   const fallbackImage = "/images/Squamish-Garibaldi-Estates-Property-Survey.webp";
   const [heroSrc, setHeroSrc] = useState(locationImages[0]?.src || fallbackImage);
 
@@ -289,16 +290,23 @@ export default function HubTemplate({
                         Available Services
                       </h4>
                       <div className="flex flex-wrap gap-x-6 gap-y-2">
-                        {categoryServices.map((service, idx) => (
-                          <Link
-                            key={idx}
-                            to={service.href}
-                            className="text-brand-green-dark font-medium hover:underline flex items-center gap-2 mt-2"
-                          >
-                            <ArrowRight className="w-4 h-4" />
-                            {service.title}
-                          </Link>
-                        ))}
+                        {categoryServices.map((service, idx) => {
+                          const parts = service.href.split('/').filter(Boolean);
+                          const serviceSlug = parts[parts.length - 1] || '';
+                          const targetHref = locationSlug 
+                            ? `/${locationSlug}/services/${serviceSlug}/` 
+                            : `/services/${serviceSlug}/`;
+                          return (
+                            <Link
+                              key={idx}
+                              to={targetHref}
+                              className="text-brand-green-dark font-medium hover:underline flex items-center gap-2 mt-2"
+                            >
+                              <ArrowRight className="w-4 h-4" />
+                              {service.title}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>

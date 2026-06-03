@@ -215,7 +215,7 @@ export default function ServiceTemplate({
     title.includes('Topographic') ? 'Topographic Surveys' :
     title.includes('Property Line') ? 'Property Line Surveys' :
     title.includes('Subdivision') ? 'Subdivision Surveys' :
-    title
+    title.replace(/<[^>]+>/g, '')
   );
 
   // Find category from prop or by searching SERVICE_CATEGORIES for serviceSlug
@@ -274,7 +274,7 @@ export default function ServiceTemplate({
         <div className="absolute inset-0 z-0">
           <img
             src={heroSrc}
-            alt={heroImageAlt || title}
+            alt={heroImageAlt || title.replace(/<[^>]+>/g, '')}
             className="w-full h-full object-cover object-top opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
@@ -634,7 +634,7 @@ export default function ServiceTemplate({
                 >
                   <img
                     src={image.src}
-                    alt={image.alt || `${title} gallery image ${index + 1}`}
+                    alt={image.alt || `${title.replace(/<[^>]+>/g, '')} gallery image ${index + 1}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
   Map,
   HardHat,
@@ -261,6 +261,7 @@ const SERVICE_AREAS = [
 ];
 
 export default function Services() {
+  const { locationSlug } = useParams<{ locationSlug?: string }>();
   const lead = useLeadForm();
 
   const servicesSchema = {
@@ -387,7 +388,7 @@ export default function Services() {
                           return (
                             <Link
                               key={slug}
-                              to={`/services/${service.slug}/`}
+                              to={locationSlug ? `/${locationSlug}/services/${service.slug}/` : `/services/${service.slug}/`}
                               className="text-brand-green-dark font-medium hover:underline flex items-center gap-2 mt-2"
                             >
                               <ArrowRight className="w-4 h-4" />
