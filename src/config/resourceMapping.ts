@@ -88,40 +88,48 @@ export const SERVICE_LINKS_MAP: Record<string, ResourceLink[]> = {
 
 export const LOCATION_LINKS_MAP: Record<string, ResourceLink[]> = {
   'squamish': [
-    { label: 'District of Squamish Development', href: 'https://squamish.ca/business-and-development/' },
-    { label: 'Squamish GIS Map', href: 'https://squamish.ca/gis' }
+    { label: 'District of Squamish Development', href: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/' },
+    { label: 'District of Squamish GIS Map', href: 'https://squamish.ca/gis' }
   ],
   'whistler': [
-    { label: 'Resort Municipality of Whistler Planning', href: 'https://whistler.ca/planning' },
-    { label: 'Whistler GIS Map', href: 'https://whistler.ca/gis' }
+    { label: 'Resort Municipality of Whistler Development', href: 'https://www.whistler.ca/business-development/land-use-and-development/' },
+    { label: 'Resort Municipality of Whistler Maps and Data', href: 'https://www.whistler.ca/municipal-services/maps-and-data/' }
   ],
   'pemberton': [
-    { label: 'Village of Pemberton Planning', href: 'https://www.pemberton.ca/government/departments/development-services/planning-and-development' },
-    { label: 'Pemberton Web Map', href: 'https://www.pemberton.ca/government/departments/development-services/gis-mapping' }
+    { label: 'Village of Pemberton Planning & Development', href: 'https://www.pemberton.ca/building-development/planning-development' },
+    { label: 'Village of Pemberton Mapping and GIS', href: 'https://www.pemberton.ca/building-development/mapping-gis' }
   ],
   'lillooet': [
-    { label: 'District of Lillooet Development', href: 'https://www.lillooet.ca/business-development/building-permits' },
-    { label: 'Lillooet Municipal Services', href: 'https://www.lillooet.ca/' }
+    { label: 'District of Lillooet Development', href: 'https://www.lillooet.ca/building-planning-development' },
+    { label: 'District of Lillooet Mapping', href: 'https://www.lillooet.ca/mapping-1' }
   ],
   'west-vancouver': [
-    { label: 'District of West Vancouver Planning', href: 'https://westvancouver.ca/home-building-property/planning-development' },
-    { label: 'West Vancouver WestMap GIS', href: 'https://westvancouver.ca/home-building-property/maps-data/westmap' }
+    { label: 'District of West Vancouver Land Development', href: 'https://westvancouver.ca/business-development/building-development/land-development' },
+    { label: 'District of West Vancouver Maps', href: 'https://westvancouver.ca/business-development/building-development/maps' }
   ],
   'bowen-island': [
-    { label: 'Bowen Island Planning & Development', href: 'https://www.bowenislandmunicipality.ca/planning-development/' },
-    { label: 'Bowen Island Maps', href: 'https://www.bowenislandmunicipality.ca/maps/' }
+    { label: 'Bowen Island Municipality Planning & Development', href: 'https://www.bowenislandmunicipality.ca/planning-development/' },
+    { label: 'Bowen Island Municipality Maps', href: 'https://bowenislandmunicipality.ca/bowmap/' }
   ],
   'britannia-beach': [
-    { label: 'SLRD Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
-    { label: 'SLRD Web Map', href: 'https://www.slrd.bc.ca/planning-development/maps-gis' }
+    { label: 'Village of Britannia Beach Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
+    { label: 'Village of Britannia Beach Maps', href: 'https://www.slrd.bc.ca/planning-building/mapping' }
   ],
   'furry-creek': [
-    { label: 'SLRD Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
-    { label: 'SLRD Web Map', href: 'https://www.slrd.bc.ca/planning-development/maps-gis' }
+    { label: 'Village of Furry Creek Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
+    { label: 'Village of Furry Creek Maps', href: 'https://www.slrd.bc.ca/planning-building/mapping' }
   ],
-  'north-vancouver': [
-    { label: 'District of North Vancouver Planning', href: 'https://www.dnv.org/property-and-development' },
-    { label: 'DNV GeoWeb GIS Map', href: 'https://www.dnv.org/property-and-development/maps-and-gis' }
+  'sea-to-sky': [
+    { label: 'Sea to Sky Corridor Planning & Development', href: 'https://www.slrd.bc.ca/planning-development' },
+    { label: 'Sea to Sky Corridor Maps', href: 'https://www.slrd.bc.ca/planning-building/mapping' }
+  ],
+  'district-north-vancouver': [
+    { label: 'District of North Vancouver Properties and Development', href: 'https://www.dnv.org/property-and-development' },
+    { label: 'District of North Vancouver Mapping', href: 'https://geoweb.dnv.org/' }
+  ],
+  'city-north-vancouver': [
+    { label: 'City of North Vancouver Building and Development', href: 'https://www.cnv.org/Business-Development/Building' },
+    { label: 'City of North Vancouver Mapping', href: 'https://www.cnv.org/City-Hall/About/Maps' }
   ]
 };
 

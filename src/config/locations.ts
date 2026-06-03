@@ -7,7 +7,11 @@ export const VALID_LOCATIONS = [
   'bowen-island',
   'britannia-beach',
   'furry-creek',
-  'north-vancouver'
+  'north-vancouver',
+  'gibsons',
+  'sechelt',
+  'powell-river',
+  'sea-to-sky'
 ] as const;
 
 export type ValidLocation = typeof VALID_LOCATIONS[number];
@@ -81,11 +85,46 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     localAuthorityName: 'Squamish-Lillooet Regional District',
     municipalLink: 'https://www.slrd.bc.ca/planning-development/building-services'
   },
-  'north-vancouver': {
+  'district-north-vancouver': {
+    lat: 49.3237,
+    lng: -122.9947,
+    locality: 'North Vancouver',
+    localAuthorityName: 'City and District of North Vancouver',
+    municipalLink: 'https://www.dnv.org/property-and-development/building-and-permits'
+  },
+  'city-north-vancouver': {
     lat: 49.3198,
     lng: -123.0724,
     locality: 'North Vancouver',
     localAuthorityName: 'City and District of North Vancouver',
+    municipalLink: 'https://www.dnv.org/property-and-development/building-and-permits'
+  },
+  'gibsons': {
+    lat: 49.4011,
+    lng: -123.5113,
+    locality: 'Gibsons',
+    localAuthorityName: 'Town of Gibsons',
+    municipalLink: 'https://www.dnv.org/property-and-development/building-and-permits'
+  },
+  'sechelt': {
+    lat: 49.4716,
+    lng: -123.7544,
+    locality: 'Sechelt',
+    localAuthorityName: 'District of Sechelt',
+    municipalLink: 'https://www.dnv.org/property-and-development/building-and-permits'
+  },
+  'powell-river': {
+    lat: 49.8352,
+    lng: -124.5247,
+    locality: 'Powell River',
+    localAuthorityName: 'City of Powell River',
+    municipalLink: 'https://www.dnv.org/property-and-development/building-and-permits'
+  },
+  'sea-to-sky': {
+    lat: 49.5841,
+    lng: -123.2255,
+    locality: 'Sea to Sky',
+    localAuthorityName: 'Sea-to-Sky Corridor',
     municipalLink: 'https://www.dnv.org/property-and-development/building-and-permits'
   }
 };

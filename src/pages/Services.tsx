@@ -42,7 +42,7 @@ const ALL_SERVICES = [
   {
     slug: 'subdivision',
     title: 'Subdivision & Consolidation',
-    description: 'Supporting developers through the lot subdivision and consolidation process, from initial design to final Land Title Office filing.',
+    description: 'Supporting developers through the lot subdivision process, from initial design to final Land Title Office filing.',
     href: '/subdivision/',
     icon: Scale,
   },
@@ -56,7 +56,7 @@ const ALL_SERVICES = [
   {
     slug: 'bare-land-strata-surveys',
     title: 'Strata Plans',
-    description: 'Surveys and plans for multi-unit housing, bare land strata layouts, and air-space parcels.',
+    description: 'Certified surveys and plans for bare land strata developments.',
     href: '/services/bare-land-strata-surveys/',
     icon: Building,
   },
@@ -86,7 +86,7 @@ const ALL_SERVICES = [
   {
     slug: 'uav-mapping',
     title: 'UAV Drone Mapping',
-    description: 'Aerial mapping and high-resolution photogrammetry ideal for large, complex, or inaccessible sites.',
+    description: 'Aerial mapping, high density LiDAR point clouds and high-resolution photogrammetry ideal for large, complex, or inaccessible sites.',
     href: '/services/uav-mapping/',
     icon: Trees,
     image: '/images/reality-capture.webp',
@@ -108,14 +108,14 @@ const ALL_SERVICES = [
   {
     slug: 'environmental-and-riparian-surveys',
     title: 'Environmental & Riparian Surveys',
-    description: 'Accurately locating trees, watercourses, and environmental features to ensure compliance with municipal bylaws and covenants.',
+    description: 'Accurately locating trees, watercourses, and environmental features to ensure compliance with provincial regulations, municipal bylaws and covenants.',
     href: '/services/environmental-and-riparian-surveys/',
     icon: Trees,
   },
   {
     slug: 'statutory-rights-of-way-surveys',
     title: 'Easement & Covenant Plans',
-    description: 'BCLS-certified plans required to register easements, covenants, and statutory rights-of-way on property titles.',
+    description: 'BCLS-certified plans required to register statutory rights-of-way on property titles.',
     href: '/services/statutory-rights-of-way-surveys/',
     icon: FileText,
   },

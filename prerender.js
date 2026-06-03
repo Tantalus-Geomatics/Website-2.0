@@ -27,7 +27,11 @@ const CORE_LOCATIONS = [
   'bowen-island',
   'britannia-beach',
   'furry-creek',
-  'north-vancouver'
+  'north-vancouver',
+  'gibsons',
+  'sechelt',
+  'powell-river',
+  'sea-to-sky'
 ];
 
 // 2. Dynamically discover all localized and base fallback routes
