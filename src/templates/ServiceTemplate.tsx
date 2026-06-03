@@ -372,6 +372,9 @@ export default function ServiceTemplate({
       <section className="py-16 md:py-24 bg-slate-50 border-t border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
+            <h2 className="text-xl sm:text-2xl font-light text-slate-900 mb-4 leading-snug text-center max-w-4xl mx-auto">
+              How do we ensure accuracy and efficiency in our land surveying projects?
+            </h2>
             <GeoDirectAnswer
               align="center"
               question="How do we ensure accuracy and efficiency in our land surveying projects?"

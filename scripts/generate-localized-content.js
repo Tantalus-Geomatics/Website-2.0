@@ -43,26 +43,34 @@ function sanitizeFrontmatter(content) {
 }
 
 function sanitizeMetadata(content) {
-  // Find the export const metadata block
-  const metadataMatch = content.match(/export const metadata = \{([\s\S]*?)\n\}/);
-  if (!metadataMatch) return content;
-
-  const metadataBlock = metadataMatch[1];
-  const sanitizedMetadataBlock = metadataBlock
-    .replace(/"([^"\\]*(?:\\.[^"\\]*)*)"/g, (match, p1) => {
-      const sanitized = p1
-        .replace(/\*/g, '')
-        .replace(/<[^>]+>/g, '');
-      return `"${sanitized}"`;
-    })
-    .replace(/'([^'\\]*(?:\\.[^'\\]*)*)'/g, (match, p1) => {
-      const sanitized = p1
-        .replace(/\*/g, '')
-        .replace(/<[^>]+>/g, '');
-      return `'${sanitized}'`;
-    });
-
-  return content.replace(metadataBlock, sanitizedMetadataBlock);
+  // Find the export const metadata block by matching from 'export const metadata = {' to the end of the metadata declaration.
+  const metadataStart = content.indexOf('export const metadata = {');
+  if (metadataStart === -1) return content;
+  
+  const metadataEnd = content.indexOf('export default', metadataStart);
+  if (metadataEnd === -1) return content;
+  
+  const metadataBlock = content.substring(metadataStart, metadataEnd);
+  
+  // Sanitize any string values inside this metadata block.
+  // Specifically, we want to strip HTML tags and asterisks from 'title', 'serviceName', 'description', etc.
+  const sanitizedMetadataBlock = metadataBlock.replace(/(title|serviceName|description|metaDescription)\s*:\s*(?:"([^"\\]*(?:\\.[^"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)')/g, (match, key, doubleQuotedValue, singleQuotedValue) => {
+    const isDouble = doubleQuotedValue !== undefined;
+    const value = isDouble ? doubleQuotedValue : singleQuotedValue;
+    const quote = isDouble ? '"' : "'";
+    
+    const sanitizedValue = value
+      .replace(/\*/g, '')
+      .replace(/\\"/g, '"') // temporarily unescape quotes if any
+      .replace(/\\'/g, "'")
+      .replace(/<[^>]+>/g, '') // strip HTML tags
+      .replace(/"/g, '\\"') // re-escape quotes
+      .replace(/'/g, "\\'");
+      
+    return `${key}: ${quote}${sanitizedValue}${quote}`;
+  });
+  
+  return content.substring(0, metadataStart) + sanitizedMetadataBlock + content.substring(metadataEnd);
 }
 
 function getImagesForLocation(locationSlug) {
@@ -121,6 +129,7 @@ function getCleanServiceName(serviceSlug) {
     'subdivisions-surveys': 'Subdivision Surveys',
     'terrestrial-lidar-scanning': 'Terrestrial LiDAR Scanning',
     'topographic-surveys-and-site-plans': 'Topographic Surveys and Site Plans',
+    'uav-mapping': 'UAV Mapping',
     'volume-and-earthwork-surveys': 'Volume and Earthwork Surveys'
   };
   return mapping[serviceSlug] || serviceSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
@@ -195,7 +204,7 @@ const LOCATION_MAPPING = {
   'squamish': {
     LOCATION_NAME: 'Squamish',
     LOCAL_AUTHORITY: 'District of Squamish',
-    MUNICIPAL_LINK: 'https://squamish.ca/assets/BLDG/RESIDENTIAL-BP-Document-Checklist-Revised-FEB-FILLABLE_2022.pdf',
+    MUNICIPAL_LINK: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
     HERO_IMAGE: '/images/Squamish-Garibaldi-Estates-Property-Survey.webp',
     GEOGRAPHY_PARAGRAPH: "Squamish's geography presents distinct environmental and geotechnical challenges, which are managed through designated Development Permit Areas (DPAs). Properties near the Squamish, Mamquam, or Cheakamus rivers often fall within Flood Hazard DPAs, requiring precise determination of Flood Construction Levels (FCLs) and natural boundaries. Similarly, projects in hillside areas like Valleycliffe or the Garibaldi Highlands must address steep slope and landslide hazard guidelines. Tantalus Geomatics specializes in mapping these critical features, including top-of-bank lines, watercourses, and slope gradients, ensuring your project seamlessly satisfies the District's environmental and geotechnical review processes.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Sea-to-Sky corridor. We work closely with local architects, engineers, and District of Squamish planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow. From initial site analysis to final municipal submission, we help you mitigate development risks, avoid costly design revisions, and keep your Squamish project moving forward on schedule."
@@ -203,7 +212,7 @@ const LOCATION_MAPPING = {
   'whistler': {
     LOCATION_NAME: 'Whistler',
     LOCAL_AUTHORITY: 'Resort Municipality of Whistler',
-    MUNICIPAL_LINK: 'https://www.whistler.ca/business/building-development/building-permits/',
+    MUNICIPAL_LINK: 'https://www.whistler.ca/business-development/',
     HERO_IMAGE: '/images/Whistler-Property-Survey.webp',
     GEOGRAPHY_PARAGRAPH: "Whistler's alpine terrain and heavy winter snowpack present unique environmental and geotechnical challenges, managed through the Resort Municipality of Whistler's (RMOW) strict development permit guidelines. Properties in areas like Whistler Creek, Alpine Meadows, or Alta Vista often require careful assessment of wildfire hazards, steep slopes, and riparian areas near the River of Golden Dreams or Fitzsimmons Creek. Tantalus Geomatics specializes in mapping these complex alpine features, including precise topographic contours, tree locations, and watercourse boundaries, ensuring your project meets all RMOW environmental and engineering requirements.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of Whistler's unique resort environment. We work closely with local architects, builders, and Resort Municipality of Whistler planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow. From initial site analysis to final municipal submission, we help you mitigate development risks, avoid costly design revisions, and keep your Whistler project moving forward on schedule."
@@ -211,7 +220,7 @@ const LOCATION_MAPPING = {
   'pemberton': {
     LOCATION_NAME: 'Pemberton',
     LOCAL_AUTHORITY: 'Village of Pemberton',
-    MUNICIPAL_LINK: 'https://www.pemberton.ca/government/departments/development-services/building-department',
+    MUNICIPAL_LINK: 'https://www.pemberton.ca/building-development',
     HERO_IMAGE: '/images/Pemberton-Property-Survey.webp',
     GEOGRAPHY_PARAGRAPH: "Pemberton's valley floor and surrounding mountain slopes present distinct agricultural, flood, and geotechnical considerations. Properties near the Lillooet River or in the Pemberton Valley floodplains require precise determination of Flood Construction Levels (FCLs) and natural boundaries. Tantalus Geomatics specializes in mapping these critical features, ensuring your project satisfies the Village of Pemberton's environmental and geotechnical review processes.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Pemberton Valley. We work closely with local builders, engineers, and Village of Pemberton planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow. From initial site analysis to final municipal submission, we help you mitigate development risks, avoid costly design revisions, and keep your Pemberton project moving forward on schedule."
@@ -219,7 +228,7 @@ const LOCATION_MAPPING = {
   'lillooet': {
     LOCATION_NAME: 'Lillooet',
     LOCAL_AUTHORITY: 'District of Lillooet',
-    MUNICIPAL_LINK: 'https://www.lillooet.ca/business-development/building-permits',
+    MUNICIPAL_LINK: 'https://www.lillooet.ca/building-planning-development',
     HERO_IMAGE: '/images/Lillooet-Property-Survey.webp',
     GEOGRAPHY_PARAGRAPH: "Lillooet's semi-arid climate and rugged Fraser Canyon terrain present unique geotechnical and slope stability challenges. Development on hillside properties requires precise topographic mapping and slope analysis to address landslide hazards and erosion control. Tantalus Geomatics provides certified topographic surveys that map these critical terrain features, ensuring compliance with the District of Lillooet's building bylaws.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that understands the unique terrain of the Lillooet region. We work closely with local contractors and District of Lillooet staff to deliver high-precision digital terrain models and detailed CAD files that keep your project moving forward on schedule."
@@ -227,7 +236,7 @@ const LOCATION_MAPPING = {
   'west-vancouver': {
     LOCATION_NAME: 'West Vancouver',
     LOCAL_AUTHORITY: 'District of West Vancouver',
-    MUNICIPAL_LINK: 'https://westvancouver.ca/home-building-property/permits-licences/building-permits',
+    MUNICIPAL_LINK: 'https://westvancouver.ca/business-development/building-development',
     HERO_IMAGE: '/images/West-Vancouver-Property-Survey.webp',
     GEOGRAPHY_PARAGRAPH: "West Vancouver's steep hillside terrain and coastal environment present significant engineering and zoning challenges. Properties in areas like British Properties, Caulfeild, or Horseshoe Bay require precise topographic mapping to manage steep slope development permits, creek setbacks, and marine boundary determinations. Tantalus Geomatics specializes in mapping these complex features, ensuring your project meets the District of West Vancouver's rigorous planning requirements.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the North Shore. We work closely with premier architects, engineers, and District of West Vancouver planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow. From initial site analysis to final municipal submission, we help you mitigate development risks, avoid costly design revisions, and keep your West Vancouver project moving forward on schedule."
@@ -235,7 +244,7 @@ const LOCATION_MAPPING = {
   'bowen-island': {
     LOCATION_NAME: 'Bowen Island',
     LOCAL_AUTHORITY: 'Bowen Island Municipality',
-    MUNICIPAL_LINK: 'https://www.bowenislandmunicipality.ca/building-permits/',
+    MUNICIPAL_LINK: 'https://bowenislandmunicipality.ca/property-development/planning-development/',
     HERO_IMAGE: '/images/Bowen-Island-Property-Survey.webp',
     GEOGRAPHY_PARAGRAPH: "Bowen Island's rugged island topography and sensitive coastal ecosystems require careful planning and precise spatial data. Properties often face challenges related to steep slopes, rocky terrain, and riparian protection areas. Tantalus Geomatics provides certified topographic surveys that map these critical features, ensuring your project complies with Bowen Island Municipality's environmental and development permit guidelines.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that understands the unique logistics and requirements of island development. We work closely with local builders and Bowen Island Municipality staff to deliver high-precision digital terrain models and detailed CAD files that keep your project moving forward on schedule."
@@ -243,7 +252,7 @@ const LOCATION_MAPPING = {
   'britannia-beach': {
     LOCATION_NAME: 'Britannia Beach',
     LOCAL_AUTHORITY: 'Squamish-Lillooet Regional District',
-    MUNICIPAL_LINK: 'https://www.slrd.bc.ca/planning-development/building-services',
+    MUNICIPAL_LINK: 'https://www.slrd.bc.ca/planning-development-services',
     HERO_IMAGE: '/images/Britannia-Beach-Property-Survey.webp',
     GEOGRAPHY_PARAGRAPH: "Britannia Beach's historic mining landscape and coastal hillside terrain present unique geotechnical and natural hazard considerations. Properties near Britannia Creek or on the steep slopes of Howe Sound require precise topographic mapping to address flood hazards, debris flow risks, and slope stability. Tantalus Geomatics specializes in mapping these critical features, ensuring your project satisfies the Squamish-Lillooet Regional District's (SLRD) development permit guidelines.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Howe Sound corridor. We work closely with local engineers and SLRD planning staff to deliver high-precision digital terrain models and detailed CAD files that keep your Britannia Beach project moving forward on schedule."
@@ -251,18 +260,50 @@ const LOCATION_MAPPING = {
   'furry-creek': {
     LOCATION_NAME: 'Furry Creek',
     LOCAL_AUTHORITY: 'Squamish-Lillooet Regional District',
-    MUNICIPAL_LINK: 'https://www.slrd.bc.ca/planning-development/building-services',
+    MUNICIPAL_LINK: 'https://www.slrd.bc.ca/planning-development-services',
     HERO_IMAGE: '/images/Furry-Creek-Property-Survey.webp',
     GEOGRAPHY_PARAGRAPH: "Furry Creek's dramatic coastal hillside terrain and master-planned community guidelines present unique development and engineering challenges. Properties require precise topographic mapping to manage steep slopes, creek setbacks, and marine boundary determinations. Tantalus Geomatics specializes in mapping these complex features, ensuring your project meets the Squamish-Lillooet Regional District's (SLRD) rigorous planning requirements.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Howe Sound corridor. We work closely with local architects, engineers, and SLRD planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
   },
-  'north-vancouver': {
-    LOCATION_NAME: 'North Vancouver',
-    LOCAL_AUTHORITY: 'City and District of North Vancouver',
-    MUNICIPAL_LINK: 'https://www.dnv.org/property-and-development/building-and-permits',
+  'city-north-vancouver': {
+    LOCATION_NAME: 'City of North Vancouver',
+    LOCAL_AUTHORITY: 'City of North Vancouver',
+    MUNICIPAL_LINK: 'https://www.cnv.org/business-development/building',
     HERO_IMAGE: '/images/North-Vancouver-Property-Survey.webp',
     GEOGRAPHY_PARAGRAPH: "North Vancouver's steep mountain slopes, dense forests, and numerous creek ravines present significant engineering and zoning challenges. Properties in areas like Deep Cove, Lynn Valley, or Lonsdale require precise topographic mapping to manage steep slope development permits, creek setbacks, and wildfire hazard assessments. Tantalus Geomatics specializes in mapping these complex features, ensuring your project meets all municipal environmental and engineering requirements.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the North Shore. We work closely with local architects, engineers, and municipal planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
+  },
+  'district-north-vancouver': {
+    LOCATION_NAME: 'District of North Vancouver',
+    LOCAL_AUTHORITY: 'District of North Vancouver',
+    MUNICIPAL_LINK: 'https://www.dnv.org/business-development',
+    HERO_IMAGE: '/images/North-Vancouver-Property-Survey.webp',
+    GEOGRAPHY_PARAGRAPH: "North Vancouver's steep mountain slopes, dense forests, and numerous creek ravines present significant engineering and zoning challenges. Properties in areas like Deep Cove, Lynn Valley, or Lonsdale require precise topographic mapping to manage steep slope development permits, creek setbacks, and wildfire hazard assessments. Tantalus Geomatics specializes in mapping these complex features, ensuring your project meets all municipal environmental and engineering requirements.",
+    PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the North Shore. We work closely with local architects, engineers, and municipal planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
+  },
+  'gibsons': {
+    LOCATION_NAME: 'Gibsons',
+    LOCAL_AUTHORITY: 'Town of Gibsons',
+    MUNICIPAL_LINK: 'https://gibsons.ca/business/building_development/',
+    HERO_IMAGE: '/images/gibsons.webp',
+    GEOGRAPHY_PARAGRAPH: "Gibsons’ dramatic transition from a bustling marine waterfront up to rolling, forested benches creates a diverse topographic landscape with distinct development constraints. Properties in areas like Lower Gibsons, Upper Gibsons, or Granthams Landing require careful mapping to navigate steep marine bluffs, complex stormwater runoff paths, and strict municipal regulations surrounding the sensitive Gibsons Aquifer watershed. Tantalus Geomatics specializes in mapping these complex features, ensuring your project meets all municipal environmental and engineering requirements.",
+    PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Sunshine Coast. We work closely with local architects, engineers, and municipal planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
+  },
+  'sechelt': {
+    LOCATION_NAME: 'Sechelt',
+    LOCAL_AUTHORITY: 'District of Sechelt',
+    MUNICIPAL_LINK: 'https://www.sechelt.ca/en/business-and-development/planning-and-development.aspx',
+    HERO_IMAGE: '/images/sechelt.webp',
+    GEOGRAPHY_PARAGRAPH: "Sechelt’s unique position on a narrow isthmus between the Sechelt Inlet and the Strait of Georgia features a mix of low-lying coastal floodplains, sandy shorelines, and steep hillside terrain. Properties in areas like West Sechelt, Tuwanek, or Davis Bay face challenges ranging from coastal erosion and marine flood hazards to steep slope geotechnical constraints and sensitive archaeological overlays. Tantalus Geomatics specializes in mapping these complex features, ensuring your project meets all municipal environmental and engineering requirements.",
+    PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Sunshine Coast. We work closely with local architects, engineers, and municipal planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
+  },
+  'powell-river': {
+    LOCATION_NAME: 'Powell River',
+    LOCAL_AUTHORITY: 'City of Powell River',
+    MUNICIPAL_LINK: 'https://powellriver.ca/pages/land-development-and-subdivision',
+    HERO_IMAGE: '/images/powel-river.webp',
+    GEOGRAPHY_PARAGRAPH: "Powell River’s rugged coastal topography, characterized by rocky shorelines, dense coastal rainforests, and a steep rise toward the Coast Mountains, presents distinct spatial and engineering hurdles. Properties in areas like Westview, Townsite, or Wildwood require precise legal and topographic surveying to address wildfire-urban interface hazards, complex bedrock terrain, and coastal development setbacks. Tantalus Geomatics specializes in mapping these complex features, ensuring your project meets all municipal environmental and engineering requirements.",
+    PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Sunshine Coast. We work closely with local architects, engineers, and municipal planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
   }
 };
 

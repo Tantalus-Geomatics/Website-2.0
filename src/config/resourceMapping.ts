@@ -483,7 +483,7 @@ export const LOCATION_IMAGES_MAP: Record<string, ResourceImage[]> = {
   ],
   'powell-river': [
     {
-      src: '/images/power-river.webp',
+      src: '/images/powel-river.webp',
       alt: 'Powell River Survey',
       caption: 'Professional Land Surveying in Powell River, BC.'
     }
