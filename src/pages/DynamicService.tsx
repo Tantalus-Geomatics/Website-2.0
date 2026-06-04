@@ -1,7 +1,6 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
-import ServiceTemplate from '../templates/ServiceTemplate';
 
 // Dynamically import all MDX files in the services content directory
 const modules = import.meta.glob('../content/services/sea-to-sky/*.mdx');
@@ -86,23 +85,7 @@ export default function DynamicService() {
         </div>
       </PageShell>
     }>
-      <ServiceTemplate
-        title={meta.title || fallbackTitle}
-        serviceName={meta.serviceName || fallbackTitle}
-        description={meta.description || `Professional ${meta.title || fallbackTitle} services by Tantalus Geomatics.`}
-        heroImage={meta.heroImage}
-        steps={meta.steps}
-        deliverables={meta.deliverables}
-        faqs={meta.faqs}
-        serviceLinks={meta.serviceLinks || meta.localLinks}
-        locationLinks={meta.locationLinks}
-        formVariant={meta.formVariant}
-        locationName={meta.locationName}
-        localAuthorityName={meta.localAuthorityName}
-        municipalLink={meta.municipalLink}
-      >
-        <Component />
-      </ServiceTemplate>
+      <Component />
     </Suspense>
   );
 }

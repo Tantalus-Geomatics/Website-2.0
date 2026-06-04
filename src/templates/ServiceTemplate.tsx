@@ -160,12 +160,14 @@ function getDeterministicImages(serviceName: string, pool: LocalImage[]): LocalI
 }
 
 function highlightLocation(text: string, locationName?: string): ReactNode {
-  if (!locationName || !text) return text;
-  const parts = text.split(new RegExp(`(${locationName})`, 'gi'));
+  if (!text) return text;
+  const targetLocation = locationName || 'the Sea to Sky';
+  const cleanedText = text.replace(/\bSea To Sky\b/gi, 'the Sea to Sky');
+  const parts = cleanedText.split(new RegExp(`(${targetLocation})`, 'gi'));
   return (
     <>
       {parts.map((part, index) => 
-        part.toLowerCase() === locationName.toLowerCase() ? (
+        part.toLowerCase() === targetLocation.toLowerCase() ? (
           <span key={index} className="text-brand-green-dark font-semibold">{part}</span>
         ) : (
           part
@@ -262,11 +264,14 @@ export default function ServiceTemplate({
 
   const galleryImages = getDeterministicImages(derivedServiceName, uniqueCombinedPool);
 
+  const cleanTitle = title.replace(/\bSea To Sky\b/gi, 'the Sea to Sky');
+  const cleanDescription = description.replace(/\bSea To Sky\b/gi, 'the Sea to Sky');
+
   return (
     <PageShell>
       <SEO
-        title={`${title} | Tantalus Geomatics Land Surveying`}
-        description={description}
+        title={`${cleanTitle} | Tantalus Geomatics Land Surveying`}
+        description={cleanDescription}
       />
 
       {/* 1. Hero Banner */}
@@ -274,7 +279,7 @@ export default function ServiceTemplate({
         <div className="absolute inset-0 z-0">
           <img
             src={heroSrc}
-            alt={heroImageAlt || title.replace(/<[^>]+>/g, '')}
+            alt={heroImageAlt || cleanTitle.replace(/<[^>]+>/g, '')}
             className="w-full h-full object-cover object-top opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
@@ -286,16 +291,10 @@ export default function ServiceTemplate({
             Professional Land Surveying Services
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
-            {locationName ? (
-              <>
-                {derivedServiceName} in <span className="text-brand-green">{locationName}</span>
-              </>
-            ) : (
-              title
-            )}
+            {derivedServiceName} in <span className="text-brand-green">{locationName || 'the Sea to Sky'}</span>
           </h1>
           <p className="text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-md max-w-2xl mx-auto font-light mb-10">
-            {highlightLocation(description, locationName)}
+            {highlightLocation(description, locationName || 'the Sea to Sky')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
@@ -337,7 +336,7 @@ export default function ServiceTemplate({
           <div className="mt-16 p-8 bg-stone-100 border-l-4 border-brand-green rounded-r-2xl shadow-sm">
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Why Choose Tantalus Geomatics?</h3>
             <p className="text-slate-700 text-lg font-light leading-relaxed">
-              Our team combines local <span className="font-semibold text-brand-green-dark">{locationName || 'Sea to Sky'}</span> expertise with state-of-the-art surveying technology. We deliver highly accurate, BCLS-certified plans that streamline your municipal permit approvals and protect your property investments.
+              Our team combines local <span className="font-semibold text-brand-green-dark">{locationName || 'the Sea to Sky'}</span> expertise with state-of-the-art surveying technology. We deliver highly accurate, BCLS-certified plans that streamline your municipal permit approvals and protect your property investments.
             </p>
           </div>
         </div>
@@ -373,7 +372,7 @@ export default function ServiceTemplate({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-light text-slate-900 mb-4 text-center">
-              Our {derivedServiceName} Process{locationName ? ` in ${locationName}` : ''}
+              Our {derivedServiceName} Process in {locationName || 'the Sea to Sky'}
             </h2>
             <GeoDirectAnswer
               align="center"
@@ -401,7 +400,7 @@ export default function ServiceTemplate({
                       {step.title}
                     </h3>
                     <p className="text-slate-600 font-light leading-relaxed text-base md:text-lg">
-                      {highlightLocation(step.description, locationName)}
+                      {highlightLocation(step.description, locationName || 'the Sea to Sky')}
                     </p>
                   </div>
                 </div>
@@ -514,7 +513,7 @@ export default function ServiceTemplate({
                   {isOpen && (
                     <div className="p-6 bg-white border-t border-slate-200">
                       <p className="text-slate-700 font-light leading-relaxed text-base">
-                        {highlightLocation(faq.answer, locationName)}
+                        {highlightLocation(faq.answer, locationName || 'the Sea to Sky')}
                       </p>
                     </div>
                   )}
@@ -566,7 +565,7 @@ export default function ServiceTemplate({
         <section className="py-16 md:py-24 bg-white border-b border-slate-200">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
-              Local Resources for {locationName || 'Sea to Sky'}
+              Local Resources for {locationName || 'the Sea to Sky'}
             </h2>
             <GeoDirectAnswer
               align="center"
