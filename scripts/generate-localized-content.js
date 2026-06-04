@@ -304,6 +304,14 @@ const LOCATION_MAPPING = {
     HERO_IMAGE: '/images/powel-river.webp',
     GEOGRAPHY_PARAGRAPH: "Powell River’s rugged coastal topography, characterized by rocky shorelines, dense coastal rainforests, and a steep rise toward the Coast Mountains, presents distinct spatial and engineering hurdles. Properties in areas like Westview, Townsite, or Wildwood require precise legal and topographic surveying to address wildfire-urban interface hazards, complex bedrock terrain, and coastal development setbacks. Tantalus Geomatics specializes in mapping these complex features, ensuring your project meets all municipal environmental and engineering requirements.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Sunshine Coast. We work closely with local architects, engineers, and municipal planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
+  },
+  'sea-to-sky': {
+    LOCATION_NAME: 'the Sea to Sky',
+    LOCAL_AUTHORITY: 'Squamish-Lillooet Regional District',
+    MUNICIPAL_LINK: 'https://www.slrd.bc.ca/planning-development-services',
+    HERO_IMAGE: '/images/sea-to-sky.webp',
+    GEOGRAPHY_PARAGRAPH: "The Sea to Sky's historic mining landscape and coastal hillside terrain present unique geotechnical and natural hazard considerations. Properties along the steep slopes of Howe Sound require precise topographic mapping to address flood hazards, debris flow risks, and slope stability. Tantalus Geomatics specializes in mapping these critical features, ensuring your project satisfies the Squamish-Lillooet Regional District's (SLRD) development permit guidelines.",
+    PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Sea to Sky corridor. We work closely with local engineers and SLRD planning staff to deliver high-precision digital terrain models and detailed CAD files that keep your Britannia Beach project moving forward on schedule."
   }
 };
 
@@ -418,6 +426,12 @@ baseTemplates.forEach(templateFile => {
 
     // Construct localized schema
     const geoData = LOCATION_GEO_DATA[locationSlug];
+    
+    // Normalize image paths to absolute URLs as required strictly by schema protocol engines
+    const absoluteSchemaImage = computedHeroImage.startsWith('http')
+      ? computedHeroImage
+      : `https://www.tantalusgeomatics.com${computedHeroImage}`;
+
     const localizedSchema = geoData ? {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
@@ -425,6 +439,8 @@ baseTemplates.forEach(templateFile => {
       "description": `Professional ${cleanServiceName} and geomatics services in ${geoData.locality}, BC.`,
       "url": `https://www.tantalusgeomatics.com/${locationSlug}/services/${serviceSlug}/`,
       "telephone": "+16042139934",
+      "priceRange": "$$",
+      "image": absoluteSchemaImage,
       "address": {
         "@type": "PostalAddress",
         "addressLocality": geoData.locality,

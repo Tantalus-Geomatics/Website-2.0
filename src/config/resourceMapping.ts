@@ -66,12 +66,47 @@ export const LOCATION_GEO_DATA: Record<string, { lat: number; lng: number; local
     localAuthorityName: 'Squamish-Lillooet Regional District',
     municipalLink: 'https://www.slrd.bc.ca/planning-development/building-services'
   },
-  'north-vancouver': {
+  'the-sea-to-sky': {
+    lat: 49.5841,
+    lng: -123.2255,
+    locality: 'the Sea to Sky',
+    localAuthorityName: 'Sea-to-Sky Corridor',
+    municipalLink: 'https://www.slrd.bc.ca/planning-development-services'
+  },
+  'district-north-vancouver': {
+    lat: 49.3237,
+    lng: -122.9947,
+    locality: 'North Vancouver',
+    localAuthorityName: 'City and District of North Vancouver',
+    municipalLink: 'https://www.dnv.org/business-development'
+  },
+  'city-north-vancouver': {
     lat: 49.3198,
     lng: -123.0724,
     locality: 'North Vancouver',
     localAuthorityName: 'City and District of North Vancouver',
-    municipalLink: 'https://www.dnv.org/property-and-development/building-and-permits'
+    municipalLink: 'https://www.cnv.org/business-development/building'
+  },
+  'gibsons': {
+    lat: 49.4011,
+    lng: -123.5113,
+    locality: 'Gibsons',
+    localAuthorityName: 'Town of Gibsons',
+    municipalLink: 'https://gibsons.ca/business/building_development/'
+  },
+  'sechelt': {
+    lat: 49.4716,
+    lng: -123.7544,
+    locality: 'Sechelt',
+    localAuthorityName: 'District of Sechelt',
+    municipalLink: 'https://www.sechelt.ca/en/business-and-development/planning-and-development.aspx'
+  },
+  'powell-river': {
+    lat: 49.8352,
+    lng: -124.5247,
+    locality: 'Powell River',
+    localAuthorityName: 'City of Powell River',
+    municipalLink: 'https://powellriver.ca/pages/land-development-and-subdivision'
   }
 };
 
@@ -147,18 +182,6 @@ export const LOCATION_LINKS_MAP: Record<string, ResourceLink[]> = {
     { label: 'District of North Vancouver Development Permit Procedure', href: 'https://docs.dnv.org/documents/Development_Permit_Application_Procedure.pdf' },
     { label: 'District of North Vancouver Subdivision Process', href: 'https://docs.dnv.org/documents/subdivision-application-process.pdf' },
     { label: 'District of North Vancouver Mapping', href: 'https://geoweb.dnv.org/' }
-  ],
-  'district-of-north-vancouver': [
-    { label: 'District of North Vancouver Building Permits', href: 'https://www.dnv.org/business-development/permits-and-inspections-building-and-renovating' },
-    { label: 'District of North Vancouver Development Permit Procedure', href: 'https://docs.dnv.org/documents/Development_Permit_Application_Procedure.pdf' },
-    { label: 'District of North Vancouver Subdivision Process', href: 'https://docs.dnv.org/documents/subdivision-application-process.pdf' },
-    { label: 'District of North Vancouver Mapping', href: 'https://geoweb.dnv.org/' }
-  ],
-  'city-north-vancouver': [
-    { label: 'City of North Vancouver Building Permits', href: 'https://www.cnv.org/property-and-development/building-and-development/permits-and-inspections/building-permits' },
-    { label: 'City of North Vancouver Development Permits', href: 'https://www.cnv.org/property-and-development/building-and-development/development-applications/development-permits' },
-    { label: 'City of North Vancouver Subdivisions', href: 'https://www.cnv.org/Business-Development/Building/Subdivisions' },
-    { label: 'City of North Vancouver Mapping', href: 'https://www.cnv.org/City-Hall/About/Maps' }
   ],
   'city-of-north-vancouver': [
     { label: 'City of North Vancouver Building Permits', href: 'https://www.cnv.org/property-and-development/building-and-development/permits-and-inspections/building-permits' },

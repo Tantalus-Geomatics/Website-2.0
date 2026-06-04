@@ -12,7 +12,7 @@ export const VALID_LOCATIONS = [
   'gibsons',
   'sechelt',
   'powell-river',
-  'sea-to-sky'
+  'the-sea-to-sky'
 ] as const;
 
 export type ValidLocation = typeof VALID_LOCATIONS[number];
@@ -121,10 +121,10 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     localAuthorityName: 'City of Powell River',
     municipalLink: 'https://powellriver.ca/pages/land-development-and-subdivision'
   },
-  'sea-to-sky': {
+  'the-sea-to-sky': {
     lat: 49.5841,
     lng: -123.2255,
-    locality: 'Sea to Sky',
+    locality: 'the Sea to Sky',
     localAuthorityName: 'Sea-to-Sky Corridor',
     municipalLink: 'https://www.slrd.bc.ca/planning-development-services'
   }
