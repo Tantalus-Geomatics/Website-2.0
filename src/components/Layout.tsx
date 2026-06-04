@@ -4,6 +4,7 @@ import { MapPin, Menu, X, Mountain, Mail, Phone, Linkedin, Github } from 'lucide
 import { GoogleMap, LoadScript, Polygon, MarkerF } from '@react-google-maps/api';
 import ClientOnly from '../components/ClientOnly'; // <-- Add this import
 import AuthorBio from './AuthorBio';
+import Breadcrumbs from './Breadcrumbs';
 
 // Converted service area coordinates to Google Maps { lat, lng } format
 const serviceAreaPaths = [
@@ -329,6 +330,7 @@ export default function Layout() {
 
       {/* Main Content */}
       <main className="flex-grow">
+        <Breadcrumbs />
         <Outlet />
       </main>
 

@@ -1,6 +1,6 @@
 ---
 title: "UAV Mapping in City of North Vancouver"
-description: "Expert UAV Mapping services in City of North Vancouver, ensuring accurate legal layout and strict municipal zoning compliance."
+description: "Professional UAV Mapping in City of North Vancouver, deploying aerial photogrammetry and advanced sensors to safely map large-scale, steep, or completely inaccessible regional wilderness layouts."
 locationName: 'City of North Vancouver'
 heroImage: '/images/Squamish-Garibaldi-Estates-Property-Survey.webp'
 localAuthorityName: 'City of North Vancouver'
@@ -11,8 +11,29 @@ serviceName: "UAV Mapping"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  schema: {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tantalus Geomatics Land Surveying - North Vancouver",
+  "description": "Professional UAV Mapping and geomatics services in North Vancouver, BC.",
+  "url": "https://www.tantalusgeomatics.com/city-north-vancouver/services/uav-mapping/",
+  "telephone": "+16042139934",
+  "priceRange": "$$",
+  "image": "https://www.tantalusgeomatics.com/images/Squamish-Garibaldi-Estates-Property-Survey.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "North Vancouver",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.3198,
+    "longitude": -123.0724
+  }
+},
   title: "UAV Mapping in City of North Vancouver",
-  description: "Expert UAV Mapping services in City of North Vancouver, ensuring accurate legal layout and strict municipal zoning compliance.",
+  description: "Professional UAV Mapping in City of North Vancouver, deploying aerial photogrammetry and advanced sensors to safely map large-scale, steep, or completely inaccessible regional wilderness layouts.",
   locationName: 'City of North Vancouver',
   heroImage: '/images/Squamish-Garibaldi-Estates-Property-Survey.webp',
   localAuthorityName: 'City of North Vancouver',
@@ -61,24 +82,7 @@ export const metadata = {
     }
   ],
   serviceLinks: [],
-  locationLinks: [
-  {
-    "label": "City of North Vancouver Building Permits",
-    "href": "https://www.cnv.org/property-and-development/building-and-development/permits-and-inspections/building-permits"
-  },
-  {
-    "label": "City of North Vancouver Development Permits",
-    "href": "https://www.cnv.org/property-and-development/building-and-development/development-applications/development-permits"
-  },
-  {
-    "label": "City of North Vancouver Subdivisions",
-    "href": "https://www.cnv.org/Business-Development/Building/Subdivisions"
-  },
-  {
-    "label": "City of North Vancouver Mapping",
-    "href": "https://www.cnv.org/City-Hall/About/Maps"
-  }
-],
+  locationLinks: [],
   serviceImages: [],
   locationImages: []
 }
