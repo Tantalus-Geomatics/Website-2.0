@@ -100,5 +100,30 @@ The global region slug has been migrated from `sea-to-sky` to `the-sea-to-sky` t
 
 ---
 
+## 5. SEO & GEO Hardening Architecture
+
+To maximize organic CTR, search engine visibility, and local authority, the application implements a robust, multi-layered structured data and metadata strategy.
+
+### Structured Schema Markup
+- **LocalBusiness & Person Entity Expansion:**
+  - Enriched the global `LocalBusiness` schema on the Home ([`src/pages/Home.tsx`](src/pages/Home.tsx)) and About ([`src/pages/About.tsx`](src/pages/About.tsx)) pages.
+  - Nested a structured `Person` profile block for the principal, Dennis Sherman, BCLS, P.Eng., explicitly declaring professional credentials (BCLS Commission #1104, EGBC Registration #57741, and Corporate Permit #1046).
+- **Dynamic FAQ Page Schema:**
+  - Programmatically generates a valid `FAQPage` JSON-LD schema block on the FAQ page ([`src/pages/FAQ.tsx`](src/pages/FAQ.tsx)) by mapping over the parsed `faqCategories` array, formatting each node with `Question` and `AcceptedAnswer` entities.
+- **Service Schema Nesting:**
+  - Updated the localized content generation script ([`scripts/generate-localized-content.js`](scripts/generate-localized-content.js)) to automatically nest a `Service` schema within the `ProfessionalService` entity for every generated sub-page, linking it back to the main organization.
+
+### Microdata Integration
+- **BreadcrumbList Microdata:**
+  - Marked up the dynamic link trail in [`src/components/Breadcrumbs.tsx`](src/components/Breadcrumbs.tsx) using semantic `BreadcrumbList`, `ListItem`, `item`, `name`, and `position` microdata properties to ensure flawless search engine parsing.
+
+### Metadata Customization
+- **Dynamic Hub Snippets:**
+  - Replaced generic boilerplate descriptions on location landing pages ([`src/pages/DynamicLocationHome.tsx`](src/pages/DynamicLocationHome.tsx)) with a dynamic hook that injects the unique city name and its corresponding governing authority (e.g., pulling from `LOCATION_GEO_DATA[locationSlug].localAuthorityName`) to maximize organic CTR.
+- **Global Production URL Patch:**
+  - Audited and patched the Open Graph URL rendering logic in [`src/components/SEO.tsx`](src/components/SEO.tsx) to replace any pre-rendered `localhost:3000` artifacts with the live canonical domain base: `https://www.tantalusgeomatics.com`.
+
+---
+
 > **Note on Incremental Documentation:**
 > This document is built and updated incrementally during codebase modifications to preserve token footprints, optimize context windows, and maintain precise, up-to-date architectural records.

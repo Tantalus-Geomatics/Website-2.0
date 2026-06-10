@@ -75,16 +75,18 @@ export default function SEO({ title, description, canonicalUrl, schema, ogImage,
     metaDescription.setAttribute('content', finalDescription);
 
     // 4. Update or Create Canonical URL
-    const finalUrl = canonicalUrl || window.location.href;
-    if (canonicalUrl) {
-      let canonical = document.querySelector('link[rel="canonical"]');
-      if (!canonical) {
-        canonical = document.createElement('link');
-        canonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonical);
-      }
-      canonical.setAttribute('href', canonicalUrl);
+    let finalUrl = canonicalUrl || window.location.href;
+    if (finalUrl.includes('localhost:3000')) {
+      finalUrl = finalUrl.replace(/https?:\/\/localhost:3000/g, 'https://www.tantalusgeomatics.com');
     }
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', finalUrl);
 
     // Helper to update or create meta tags (Open Graph & Twitter)
     const setMetaTag = (attrName: 'name' | 'property', attrValue: string, content: string) => {

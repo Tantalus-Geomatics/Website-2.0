@@ -28,10 +28,21 @@ export default function About() {
       "@type": "LocalBusiness",
       "@id": "https://tantalusgeomatics.com/#organization",
       "name": "Tantalus Geomatics Land Surveying Ltd.",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "name": "Association of BC Land Surveyors Corporate Permit Number",
+          "propertyID": "ABCLS Corporate Permit #",
+          "value": "1046" 
+        }
+      ],
       "areaServed": serviceAreas.map(area => ({
         "@type": "City",
         "name": area
-      }))
+      })),
+      "employee": {
+        "@id": "https://tantalusgeomatics.com/about/#dennis-sherman"
+      }
     },
       "about": {
       "@type": "Person",
@@ -63,7 +74,8 @@ export default function About() {
             "@type": "Organization",
             "name": "Association of British Columbia Land Surveyors",
             "url": "https://www.abcls.ca/"
-          }
+          },
+          "identifier": "BCLS Commission #1104"
         },
         {
           "@type": "EducationalOccupationalCredential",
@@ -73,7 +85,8 @@ export default function About() {
             "@type": "Organization",
             "name": "Engineers and Geoscientists British Columbia",
             "url": "https://www.egbc.ca/"
-          }
+          },
+          "identifier": "EGBC Registration #57741"
         }
       ],
       "worksFor": {

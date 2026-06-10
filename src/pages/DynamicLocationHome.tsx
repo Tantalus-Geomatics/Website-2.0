@@ -84,7 +84,7 @@ export default function DynamicLocationHome() {
   return (
     <HubTemplate
       title={`${localityName} Land Surveying Hub`}
-      description={`Professional land surveying, topographic mapping, and legal boundary definition services in ${localityName}, British Columbia. Explore our BCLS-certified services tailored to local municipal requirements.`}
+      description={`BCLS-certified land surveying, topographic mapping, and legal boundary definition in ${localityName}, BC. Tailored to meet the specific development permit guidelines of the ${localAuthorityName || 'local authority'}.`}
       relatedServices={services}
       locationName={localityName}
       localAuthorityName={localAuthorityName}

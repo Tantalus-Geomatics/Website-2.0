@@ -123,7 +123,51 @@ export default function Home() {
     "description": "Professional BCLS Land Surveying and Geomatics Engineering supporting residential and commercial projects throughout the Sea to Sky corridor.",
     "sameAs": [
       "https://www.linkedin.com/company/tantalus-geomatics"
-    ]
+    ],
+    "employee": {
+      "@type": "Person",
+      "@id": "https://tantalusgeomatics.com/about/#dennis-sherman",
+      "name": "Dennis Sherman",
+      "jobTitle": "Principal, BCLS, P.Eng",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "name": "British Columbia Land Surveyor Commission",
+          "propertyID": "BCLS Commission Number",
+          "value": "1104"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Professional Engineer License",
+          "propertyID": "EGBC License Number",
+          "value": "57741"
+        }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Professional License",
+          "name": "British Columbia Land Surveyor (BCLS)",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Association of British Columbia Land Surveyors",
+            "url": "https://www.abcls.ca/"
+          },
+          "identifier": "BCLS Commission #1104"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Professional License",
+          "name": "Professional Engineer (P.Eng)",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Engineers and Geoscientists British Columbia",
+            "url": "https://www.egbc.ca/"
+          },
+          "identifier": "EGBC Registration #57741"
+        }
+      ]
+    }
   };
 
   return (

@@ -451,6 +451,15 @@ baseTemplates.forEach(templateFile => {
         "@type": "GeoCoordinates",
         "latitude": geoData.lat,
         "longitude": geoData.lng
+      },
+      "hasService": {
+        "@type": "Service",
+        "name": cleanServiceName,
+        "description": `Professional ${cleanServiceName} in ${geoData.locality}, BC.`,
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://tantalusgeomatics.com/#organization"
+        }
       }
     } : null;
 

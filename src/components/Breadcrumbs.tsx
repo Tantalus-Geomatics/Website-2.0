@@ -118,33 +118,42 @@ export default function Breadcrumbs() {
   });
 
   return (
-    <nav aria-label="Breadcrumb" className="bg-brand-dark/40 border-b border-white/5 py-3 px-4 sm:px-6 lg:px-8">
+    <nav aria-label="Breadcrumb" itemScope itemType="https://schema.org/BreadcrumbList" className="bg-brand-dark/40 border-b border-white/5 py-3 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex items-center flex-wrap gap-2 text-xs sm:text-sm text-white/60">
         {/* Home Link */}
-        <Link 
-          to="/" 
-          className="flex items-center gap-1 hover:text-brand-green transition-colors"
-        >
-          <Home size={14} className="shrink-0" />
-          <span>Home</span>
-        </Link>
+        <div itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center">
+          <Link 
+            to="/" 
+            itemProp="item"
+            className="flex items-center gap-1 hover:text-brand-green transition-colors"
+          >
+            <Home size={14} className="shrink-0" />
+            <span itemProp="name">Home</span>
+          </Link>
+          <meta itemProp="position" content="1" />
+        </div>
 
         {/* Dynamic Breadcrumbs */}
         {breadcrumbs.map((crumb, index) => (
-          <div key={index} className="flex items-center gap-2">
+          <div key={index} itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
             <ChevronRight size={12} className="text-white/30 shrink-0" />
             {crumb.isLast ? (
-              <span className="font-semibold text-white truncate max-w-[200px] sm:max-w-none" aria-current="page">
-                {crumb.label}
-              </span>
+              <>
+                <span itemProp="name" className="font-semibold text-white truncate max-w-[200px] sm:max-w-none" aria-current="page">
+                  {crumb.label}
+                </span>
+                <meta itemProp="item" content={`https://www.tantalusgeomatics.com${crumb.href}`} />
+              </>
             ) : (
               <Link 
                 to={crumb.href} 
+                itemProp="item"
                 className="hover:text-brand-green transition-colors truncate max-w-[150px] sm:max-w-none"
               >
-                {crumb.label}
+                <span itemProp="name">{crumb.label}</span>
               </Link>
             )}
+            <meta itemProp="position" content={(index + 2).toString()} />
           </div>
         ))}
       </div>
