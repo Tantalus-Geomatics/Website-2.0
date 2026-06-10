@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 
 // Dynamically import all MDX files in the services content directory
-const modules = import.meta.glob('../content/services/sea-to-sky/*.mdx');
+const modules = import.meta.glob('../content/services/the-sea-to-sky/*.mdx');
 
 export default function DynamicService() {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
@@ -21,7 +21,7 @@ export default function DynamicService() {
       return;
     }
 
-    const key = `../content/services/sea-to-sky/${serviceSlug}.mdx`;
+    const key = `../content/services/the-sea-to-sky/${serviceSlug}.mdx`;
     if (key in modules) {
       setLoading(true);
       // Call the glob function to import the MDX module dynamically

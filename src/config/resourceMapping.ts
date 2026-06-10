@@ -76,15 +76,15 @@ export const LOCATION_GEO_DATA: Record<string, { lat: number; lng: number; local
   'district-north-vancouver': {
     lat: 49.3237,
     lng: -122.9947,
-    locality: 'North Vancouver',
-    localAuthorityName: 'City and District of North Vancouver',
+    locality: 'District of North Vancouver',
+    localAuthorityName: 'District of North Vancouver',
     municipalLink: 'https://www.dnv.org/business-development'
   },
   'city-north-vancouver': {
     lat: 49.3198,
     lng: -123.0724,
-    locality: 'North Vancouver',
-    localAuthorityName: 'City and District of North Vancouver',
+    locality: 'City of North Vancouver',
+    localAuthorityName: 'City of North Vancouver',
     municipalLink: 'https://www.cnv.org/business-development/building'
   },
   'gibsons': {
@@ -171,7 +171,7 @@ export const LOCATION_LINKS_MAP: Record<string, ResourceLink[]> = {
     { label: 'SLRD Subdivision Approvals', href: 'https://www.slrd.bc.ca/planning-building/planning-development-services/development-applications-approvals/subdivisions-slrd' },
     { label: 'Village of Furry Creek Maps', href: 'https://www.slrd.bc.ca/planning-building/mapping' }
   ],
-  'sea-to-sky': [
+  'the-sea-to-sky': [
     { label: 'SLRD Building Permits (Sea to Sky)', href: 'https://www.slrd.bc.ca/planning-building/building-department/building-permits' },
     { label: 'SLRD Development Application Forms & Guides', href: 'https://www.slrd.bc.ca/planning-building/planning-development-services/development-application-forms-guides-fees/application-forms-guides' },
     { label: 'SLRD Subdivision Approvals', href: 'https://www.slrd.bc.ca/planning-building/planning-development-services/development-applications-approvals/subdivisions-slrd' },
@@ -469,7 +469,7 @@ export const LOCATION_IMAGES_MAP: Record<string, ResourceImage[]> = {
       caption: 'Professional Land Surveying in West Vancouver, BC.'
     }
   ],
-  'sea-to-sky': [
+  'the-sea-to-sky': [
     {
       src: '/images/sea-to-sky.webp',
       alt: 'Sea-to-Sky Whytecliff Park Survey',

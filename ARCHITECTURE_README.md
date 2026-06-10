@@ -83,5 +83,22 @@ The user interface is structured hierarchically, cascading from global layout wr
 
 ---
 
+## 4. Global Region Slug Migration
+
+The global region slug has been migrated from `sea-to-sky` to `the-sea-to-sky` to align with official branding and SEO requirements.
+
+### Migration Details
+- **Centralized Configurations:**
+  - Updated [`src/config/locations.ts`](src/config/locations.ts) to use `'the-sea-to-sky'` inside `VALID_LOCATIONS` and `LOCATION_GEO_DATA`.
+  - Updated [`src/config/resourceMapping.ts`](src/config/resourceMapping.ts) to map all resource links and images under the `'the-sea-to-sky'` key.
+- **Content Generation & Scripting:**
+  - Updated [`scripts/generate-localized-content.js`](scripts/generate-localized-content.js) to target `'the-sea-to-sky'` as the configuration key and output directory.
+  - Permanently removed the old generated folder `src/content/services/sea-to-sky/` and regenerated all localized MDX files under `src/content/services/the-sea-to-sky/`.
+- **Routing & Fallbacks:**
+  - Updated [`src/pages/DynamicService.tsx`](src/pages/DynamicService.tsx) to dynamically import MDX files from `../content/services/the-sea-to-sky/*.mdx` for the generic/global track.
+  - The [`LocationRouteGuard`](src/App.tsx) automatically handles invalid/old `sea-to-sky` slugs by failing the `isValidLocation` check and gracefully redirecting users to the generic fallback path.
+
+---
+
 > **Note on Incremental Documentation:**
 > This document is built and updated incrementally during codebase modifications to preserve token footprints, optimize context windows, and maintain precise, up-to-date architectural records.

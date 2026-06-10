@@ -1,30 +1,31 @@
-# Tantalus Geomatics
+# Tantalus Geomatics Land Surveying Ltd.
 
-> Professional land surveying and geomatics engineering for homeowners, developers, and builders in British Columbia’s Sea to Sky corridor.
+> Professional Land Surveying and Geomatics engineering services throughout British Columbia, specializing in the Sea to Sky corridor, Squamish, North Vancouver, and Bowen Island.
 
-Tantalus Geomatics is a BC land surveying practice. The public site explains residential and development survey types (property lines, topographic surveys, building location certificates, permitting support), answers common questions, and offers ways to request a quote or get in touch. Pages are a single-page application; URLs below are the canonical HTML routes.
+This file provides an AI-friendly guide to the structural layout, services, and core resources of Tantalus Geomatics Land Surveying Ltd. Governed by the Association of BC Land Surveyors (Corporate Permit #1046), operations are led by Dennis, a dual-registered professional BCLS (#1104) and Professional Engineer (EGBC #57741).
 
-## Primary pages
+## Core Pages
 
-- [Home](https://www.tantalusgeomatics.com/): Overview, typical use cases (fences, permits, decks/pools, strata, trees, refinancing), and lead form for quotes.
-- [About](https://www.tantalusgeomatics.com/about): Company background and how the firm works with clients.
-- [Services](https://www.tantalusgeomatics.com/services): Residential surveys, land development, construction and infrastructure, and related deliverables.
-- [FAQ](https://www.tantalusgeomatics.com/faq): Common questions about surveys, timelines, costs, and process in BC.
-- [Contact](https://www.tantalusgeomatics.com/contact): How to reach the office and request information.
+- [Home](https://www.tantalusgeomatics.com/) - Main landing page outlining professional qualifications, legal boundary authority, and introductory service frameworks.
+- [About](https://www.tantalusgeomatics.com/about/) - Company background, credentialing details, and professional liability insurance oversight.
+- [Services](https://www.tantalusgeomatics.com/services/) - Master list of surveying services including Residential, Construction, Legal, Commercial, Engineering, and Strata workflows.
+- [FAQ](https://www.tantalusgeomatics.com/faq/) - Frequently asked questions on zoning laws, property markers, encroachments, and municipal approvals.
+- [Contact](https://www.tantalusgeomatics.com/contact/) - Inquiry pathways to request project estimates, submit site coordinates, or upload career resumes.
 
-## Service and topic detail
+## Regional Surveying Services
 
-- [Residential property surveys](https://www.tantalusgeomatics.com/residential): Site plans, property lines, tree surveys, and building location certificates for homeowners.
-- [Survey pricing](https://www.tantalusgeomatics.com/survey-pricing): Factors that affect survey cost and what to expect when budgeting.
-- [Topographic surveys](https://www.tantalusgeomatics.com/topographic-surveys): Terrain and site feature surveys for design, permitting, and compliance.
-- [Sea to Sky property line and boundary staking](https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking): Boundary staking and property line work in the Sea to Sky region.
-- [Surveys and title insurance](https://www.tantalusgeomatics.com/surveys-and-title-insurance): How surveys relate to real estate and title insurance considerations.
+### The Sea to Sky Corridor
+- [Topographic Surveys & Site Plans](https://www.tantalusgeomatics.com/the-sea-to-sky/services/topographic-surveys-and-site-plans/) - Mapping of ground elevations, contours, structural landmarks, and utility networks to anchor architectural blueprints.
 
-## Machine-readable index
+### City of North Vancouver
+- [Statutory Rights Of Way Surveys](https://www.tantalusgeomatics.com/city-north-vancouver/services/statutory-rights-of-way-surveys/) - Meticulous Land Title and Survey Authority (LTSA) compliant research, monumentation, and plan preparation for legal utility/easement corridors.
 
-- [Sitemap](https://www.tantalusgeomatics.com/sitemap.xml): Full list of public URLs and relative priorities for crawlers.
+### District of North Vancouver
+- [Boundary Surveys](https://www.tantalusgeomatics.com/district-north-vancouver/services/boundary-surveys/) - Cadastral research, field recovery of original markers, iron post monumentation, and official Posting Plan filing to formally protect property borders.
 
-## Optional
+### Squamish
+- [Proposed Strata Plans](https://www.tantalusgeomatics.com/squamish/services/proposed-strata-plans/) - Letter-sized legal layout plans and Form V unit entitlement calculations optimized for disclosure statements in multi-unit developments.
+- [Strata Plan Amendment Surveys](https://www.tantalusgeomatics.com/squamish/services/strata-plan-amendment-surveys/) - Terrestrial LiDAR and Robotic Total Station 3D data capture to formulate legal amending sheets under Part 15 of the Strata Property Act.
 
-- [Association of British Columbia Land Surveyors (ABCLS)](https://www.bcls.ca/): Provincial professional body for BC land surveyors; useful context for certification and standards.
-- This site does not publish `.md` mirrors of HTML pages; use the HTML URLs above or the sitemap for retrieval.
+### Bowen Island
+- [Volume And Earthwork Surveys](https://www.tantalusgeomatics.com/bowen-island/services/volume-and-earthwork-surveys/) - Drone orthoimagery and 3D TIN surfaces generated for precision cut-and-fill volumetric reports to verify contractor invoicing.

@@ -305,7 +305,7 @@ const LOCATION_MAPPING = {
     GEOGRAPHY_PARAGRAPH: "Powell River’s rugged coastal topography, characterized by rocky shorelines, dense coastal rainforests, and a steep rise toward the Coast Mountains, presents distinct spatial and engineering hurdles. Properties in areas like Westview, Townsite, or Wildwood require precise legal and topographic surveying to address wildfire-urban interface hazards, complex bedrock terrain, and coastal development setbacks. Tantalus Geomatics specializes in mapping these complex features, ensuring your project meets all municipal environmental and engineering requirements.",
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Sunshine Coast. We work closely with local architects, engineers, and municipal planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
   },
-  'sea-to-sky': {
+  'the-sea-to-sky': {
     LOCATION_NAME: 'the Sea to Sky',
     LOCAL_AUTHORITY: 'Squamish-Lillooet Regional District',
     MUNICIPAL_LINK: 'https://www.slrd.bc.ca/planning-development-services',
