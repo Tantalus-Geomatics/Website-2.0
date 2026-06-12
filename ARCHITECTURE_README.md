@@ -178,5 +178,20 @@ To further harden the website's search engine optimization, local authority targ
 
 ---
 
+## 8. Fault-Tolerant Prerendering & Sitemap Generation
+
+To ensure high-availability and robust static site generation, the prerendering pipeline has been hardened against single-page failures and aligned with the updated regional mapping architecture.
+
+### Core Location Key Alignment
+- **File:** [`prerender.js`](prerender.js)
+- **Fix:** Updated the legacy `'sea-to-sky'` slug to `'the-sea-to-sky'` in the `CORE_LOCATIONS` array to match the centralized configuration and prevent local SEO authority leakage.
+
+### Fault-Tolerant Crawling Loop
+- **File:** [`prerender.js`](prerender.js)
+- **Fix:** Wrapped the entire internal body of the page crawling loop (`for (const url of routesToPrerender)`) in an isolated `try-catch` block.
+- **Resilience:** If an individual page throws a timeout error or handles a React hydration crash, the script logs the warning to the console, gracefully closes the page, and continues to the next URL. This prevents single-page exceptions from terminating the script prematurely, ensuring child and master sitemaps are successfully written.
+
+---
+
 > **Note on Incremental Documentation:**
 > This document is built and updated incrementally during codebase modifications to preserve token footprints, optimize context windows, and maintain precise, up-to-date architectural records.

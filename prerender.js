@@ -31,7 +31,7 @@ const CORE_LOCATIONS = [
   'gibsons',
   'sechelt',
   'powell-river',
-  'sea-to-sky'
+  'the-sea-to-sky'
 ];
 
 // 2. Dynamically discover all localized and base fallback routes
@@ -125,46 +125,55 @@ async function generate() {
 
     try {
       for (const url of routesToPrerender) {
-        const page = await browser.newPage();
-        
-        page.on('console', msg => {
-          if (msg.type() === 'error') console.log(`[Browser Error]: ${msg.text()}`);
-        });
-        page.on('pageerror', err => console.error(`[React Crash]:`, err.toString()));
-
-        await page.evaluateOnNewDocument(() => {
-          window.__IS_PRERENDERING = true;
-        });
-        
-        await page.goto(`http://localhost:3000${url}`, { waitUntil: 'networkidle0' });
-
+        let page;
         try {
-          await page.waitForSelector('#root > div', { timeout: 10000 });
-        } catch (e) {
-          console.error(`⚠️ React render timeout on path: ${url}`);
+          page = await browser.newPage();
+          
+          page.on('console', msg => {
+            if (msg.type() === 'error') console.log(`[Browser Error]: ${msg.text()}`);
+          });
+          page.on('pageerror', err => console.error(`[React Crash]:`, err.toString()));
+
+          await page.evaluateOnNewDocument(() => {
+            window.__IS_PRERENDERING = true;
+          });
+          
+          await page.goto(`http://localhost:3000${url}`, { waitUntil: 'networkidle0' });
+
+          try {
+            await page.waitForSelector('#root > div', { timeout: 10000 });
+          } catch (e) {
+            console.error(`⚠️ React render timeout on path: ${url}`);
+          }
+
+          await page.evaluate(() => {
+            const removeDuplicates = (selector) => {
+              const elements = document.querySelectorAll(selector);
+              if (elements.length > 1) {
+                for (let i = 1; i < elements.length; i++) elements[i].remove();
+              }
+            };
+            removeDuplicates('title');
+            removeDuplicates('meta[name="description"]');
+            removeDuplicates('link[rel="canonical"]');
+          });
+
+          const html = await page.content();
+          const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
+          const filePath = toAbs(`dist/${fileName}`);
+          
+          fs.mkdirSync(path.dirname(filePath), { recursive: true });
+          fs.writeFileSync(filePath, html);
+          console.log(`📸 Prerendered: ${url}`);
+          
+          await page.close();
+        } catch (innerError) {
+          console.error(`❌ Prerender failed on path ${url}:`, innerError.message);
+          if (page) {
+            await page.close();
+          }
+          continue;
         }
-
-        await page.evaluate(() => {
-          const removeDuplicates = (selector) => {
-            const elements = document.querySelectorAll(selector);
-            if (elements.length > 1) {
-              for (let i = 1; i < elements.length; i++) elements[i].remove();
-            }
-          };
-          removeDuplicates('title');
-          removeDuplicates('meta[name="description"]');
-          removeDuplicates('link[rel="canonical"]');
-        });
-
-        const html = await page.content();
-        const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
-        const filePath = toAbs(`dist/${fileName}`);
-        
-        fs.mkdirSync(path.dirname(filePath), { recursive: true });
-        fs.writeFileSync(filePath, html);
-        console.log(`📸 Prerendered: ${url}`);
-        
-        await page.close();
       }
 
       // 3. Write individual structural child sitemaps
