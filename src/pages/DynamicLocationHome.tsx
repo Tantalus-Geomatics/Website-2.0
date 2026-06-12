@@ -81,10 +81,24 @@ export default function DynamicLocationHome() {
   const municipalLink = geoData.municipalLink;
   const locationImages = LOCATION_IMAGES_MAP[locationSlug] || [];
 
+  // Determine the city-specific meta description
+  let customDescription = '';
+  if (locationSlug === 'squamish') {
+    customDescription = "BCLS-certified land surveying in Squamish, BC — boundary surveys, subdivision plans, and strata development tailored to District of Squamish permitting and the Garibaldi Estates corridor.";
+  } else if (locationSlug === 'whistler') {
+    customDescription = "BCLS-certified land surveying in Whistler, BC — strata conversions, easement plans, and topographic surveys tailored to Resort Municipality of Whistler permitting requirements.";
+  } else if (locationSlug === 'city-north-vancouver' || locationSlug === 'district-north-vancouver') {
+    customDescription = "BCLS-certified land surveying in North Vancouver, BC — building location surveys, covenant plans, and lot consolidations tailored to DNV and CNV permit applications.";
+  } else if (locationSlug === 'pemberton') {
+    customDescription = "BCLS-certified land surveying in Pemberton, BC — rural subdivisions, agricultural lot surveys, and Crown land applications tailored to Village of Pemberton requirements.";
+  } else {
+    customDescription = `BCLS-certified land surveying in ${localityName}, BC — boundary surveys, topographic mapping, and legal plans tailored to ${localAuthorityName || 'local authority'} permitting requirements.`;
+  }
+
   return (
     <HubTemplate
       title={`${localityName} Land Surveying Hub`}
-      description={`BCLS-certified land surveying, topographic mapping, and legal boundary definition in ${localityName}, BC. Tailored to meet the specific development permit guidelines of the ${localAuthorityName || 'local authority'}.`}
+      description={customDescription}
       relatedServices={services}
       locationName={localityName}
       localAuthorityName={localAuthorityName}

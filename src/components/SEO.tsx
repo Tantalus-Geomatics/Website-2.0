@@ -75,9 +75,15 @@ export default function SEO({ title, description, canonicalUrl, schema, ogImage,
     metaDescription.setAttribute('content', finalDescription);
 
     // 4. Update or Create Canonical URL
-    let finalUrl = canonicalUrl || window.location.href;
-    if (finalUrl.includes('localhost:3000')) {
-      finalUrl = finalUrl.replace(/https?:\/\/localhost:3000/g, 'https://www.tantalusgeomatics.com');
+    const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://www.tantalusgeomatics.com').replace(/\/$/, '');
+    let finalUrl = canonicalUrl || '';
+    if (!finalUrl) {
+      const path = typeof window !== 'undefined' ? window.location.pathname + window.location.search : '';
+      finalUrl = `${siteUrl}${path}`;
+    } else if (finalUrl.startsWith('/')) {
+      finalUrl = `${siteUrl}${finalUrl}`;
+    } else if (finalUrl.includes('localhost:3000')) {
+      finalUrl = finalUrl.replace(/https?:\/\/localhost:3000/g, siteUrl);
     }
 
     let canonical = document.querySelector('link[rel="canonical"]');

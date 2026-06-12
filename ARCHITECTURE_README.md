@@ -143,5 +143,40 @@ To resolve React Hydration Mismatch errors (Error #418) caused by block-level el
 
 ---
 
+## 7. SEO & GEO Hardening v2
+
+To further harden the website's search engine optimization, local authority targeting, and content accuracy, a second phase of SEO and GEO hardening was implemented.
+
+### Canonical URL & Open Graph URL Resolution
+- **File:** [`src/components/SEO.tsx`](src/components/SEO.tsx)
+- **Fix:** Resolved the canonical base URL from the environment variable `import.meta.env.VITE_SITE_URL` (falling back to `https://www.tantalusgeomatics.com`) for all page types. This ensures that dynamic routes rendered by `DynamicLocationHome.tsx` and `DynamicLocationService.tsx` correctly resolve their `og:url` and canonical links to the production domain instead of `http://localhost:3000` during static pre-rendering.
+
+### FAQ Page Enhancements
+- **File:** [`src/pages/FAQ.tsx`](src/pages/FAQ.tsx)
+- **Fixes:**
+  - Replaced the generic meta description with a highly optimized, keyword-rich description: `"Expert answers to 90+ BC land surveying questions — property staking, topographic surveys, strata plans, subdivision, and covenants in the Sea to Sky corridor."`
+  - Verified and maintained the programmatic generation of the `FAQPage` JSON-LD schema block, which extracts and strips HTML from Q&As across all 6 categories.
+
+### LocalBusiness & Person Schema Alignment
+- **Files:** [`src/pages/Home.tsx`](src/pages/Home.tsx) and [`src/pages/About.tsx`](src/pages/About.tsx)
+- **Fixes:**
+  - Aligned the `ProfessionalService` and `Person` schemas to include all required fields: `name`, `url` (using `https://www.tantalusgeomatics.com`), `telephone`, `email` (`contact@tantalusgeomatics.com`), `address`, `areaServed` (expanded to all 12 target locations), and `employee` (fully detailing Dennis Sherman's credentials and York University alumni status).
+
+### Service Schema Injection
+- **File:** [`src/templates/ServiceTemplate.tsx`](src/templates/ServiceTemplate.tsx)
+- **Fix:** Programmatically constructed and injected a valid `Service` schema block into the HTML head via the `<SEO>` component for all service sub-pages (both generic and localized tracks). This ensures that every service page renders a valid `Service` schema with the correct `serviceType`, `provider`, and `areaServed` (falling back to `"Sea to Sky Corridor"` for generic pages).
+
+### Differentiated Location Hub Meta Descriptions
+- **File:** [`src/pages/DynamicLocationHome.tsx`](src/pages/DynamicLocationHome.tsx)
+- **Fix:** Implemented city-specific meta descriptions for the 14 location hubs. The four highest-priority locations (`squamish`, `whistler`, `city-north-vancouver`/`district-north-vancouver`, and `pemberton`) use custom, highly targeted copy, while all other locations dynamically fall back to a formula incorporating their specific local authority name.
+
+### Content & Grammar Corrections
+- **Files:**
+  - [`src/pages/About.tsx`](src/pages/About.tsx): Fixed grammar typo (`"led by a licensed BC Land Surveyor and Professional Engineering"` -> `"led by a licensed BC Land Surveyor and Professional Engineer"`).
+  - [`src/content/services/squamish/volume-and-earthwork-surveys.mdx`](src/content/services/squamish/volume-and-earthwork-surveys.mdx) & [`src/content/services/the-sea-to-sky/volume-and-earthwork-surveys.mdx`](src/content/services/the-sea-to-sky/volume-and-earthwork-surveys.mdx): Fixed `"ccomparison"` typo to `"comparison"`.
+  - [`src/content/services/squamish/gridline-and-construction-layout-surveys.mdx`](src/content/services/squamish/gridline-and-construction-layout-surveys.mdx) & [`src/content/services/the-sea-to-sky/gridline-and-construction-layout-surveys.mdx`](src/content/services/the-sea-to-sky/gridline-and-construction-layout-surveys.mdx): Fixed doubled modifier (`"guarantee our field placement is accurately accurate"` -> `"guarantee our field placement is accurate"`).
+
+---
+
 > **Note on Incremental Documentation:**
 > This document is built and updated incrementally during codebase modifications to preserve token footprints, optimize context windows, and maintain precise, up-to-date architectural records.

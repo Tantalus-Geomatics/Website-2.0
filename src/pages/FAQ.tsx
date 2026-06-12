@@ -124,7 +124,7 @@ const faqSchema = {
     <PageShell>
       <SEO 
         title="Land Surveying FAQ | Common Questions in the Sea-to-Sky"
-        description="Get expert answers to common BC land surveying questions — from property staking and topographic surveys to strata plans and subdivision requirements in the Sea to Sky."
+        description="Expert answers to 90+ BC land surveying questions — property staking, topographic surveys, strata plans, subdivision, and covenants in the Sea to Sky corridor."
         canonicalUrl="https://tantalusgeomatics.com/faq/"
         schema={faqSchema}
       />

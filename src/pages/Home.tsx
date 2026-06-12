@@ -89,7 +89,7 @@ export default function Home() {
 
   const homeSchema = {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@type": "ProfessionalService",
     "@id": "https://tantalusgeomatics.com/#organization",
     "name": "Tantalus Geomatics Land Surveying Ltd.",
     "identifier": [
@@ -101,12 +101,13 @@ export default function Home() {
       }
     ],
     "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
-    "url": "https://tantalusgeomatics.com",
-    "telephone": "+1-604-213-9934",
+    "url": "https://www.tantalusgeomatics.com",
+    "telephone": "+16042139934",
+    "email": "contact@tantalusgeomatics.com",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Squamish", // Primary office location
+      "addressLocality": "Squamish",
       "addressRegion": "BC",
       "addressCountry": "CA"
     },
@@ -116,9 +117,9 @@ export default function Home() {
       "longitude": "-123.1558"
     },
     "areaServed": [
-      "Squamish", "Whistler", "Pemberton", "Lillooet", 
-      "West Vancouver", "Bowen Island", "Britannia Beach", 
-      "Furry Creek", "North Vancouver"
+      "Squamish", "Whistler", "Pemberton", "Lillooet",
+      "North Vancouver", "West Vancouver", "Bowen Island",
+      "Gibsons", "Sechelt", "Furry Creek", "Britannia Beach", "Powell River"
     ],
     "description": "Professional BCLS Land Surveying and Geomatics Engineering supporting residential and commercial projects throughout the Sea to Sky corridor.",
     "sameAs": [
@@ -126,45 +127,24 @@ export default function Home() {
     ],
     "employee": {
       "@type": "Person",
-      "@id": "https://tantalusgeomatics.com/about/#dennis-sherman",
       "name": "Dennis Sherman",
-      "jobTitle": "Principal, BCLS, P.Eng",
-      "identifier": [
-        {
-          "@type": "PropertyValue",
-          "name": "British Columbia Land Surveyor Commission",
-          "propertyID": "BCLS Commission Number",
-          "value": "1104"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Professional Engineer License",
-          "propertyID": "EGBC License Number",
-          "value": "57741"
-        }
-      ],
+      "jobTitle": "British Columbia Land Surveyor and Professional Engineer",
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Lassonde School of Engineering, York University"
+      },
       "hasCredential": [
         {
           "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "Professional License",
-          "name": "British Columbia Land Surveyor (BCLS)",
-          "recognizedBy": {
-            "@type": "Organization",
-            "name": "Association of British Columbia Land Surveyors",
-            "url": "https://www.abcls.ca/"
-          },
-          "identifier": "BCLS Commission #1104"
+          "credentialCategory": "BCLS Commission #1104"
         },
         {
           "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "Professional License",
-          "name": "Professional Engineer (P.Eng)",
-          "recognizedBy": {
-            "@type": "Organization",
-            "name": "Engineers and Geoscientists British Columbia",
-            "url": "https://www.egbc.ca/"
-          },
-          "identifier": "EGBC Registration #57741"
+          "credentialCategory": "EGBC Registration #57741"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "ABCLS Corporate Permit #1046"
         }
       ]
     }

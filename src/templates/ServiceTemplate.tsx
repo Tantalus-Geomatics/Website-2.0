@@ -267,11 +267,24 @@ export default function ServiceTemplate({
   const cleanTitle = title.replace(/\bSea To Sky\b/gi, 'the Sea to Sky');
   const cleanDescription = description.replace(/\bSea To Sky\b/gi, 'the Sea to Sky');
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": derivedServiceName,
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Tantalus Geomatics Land Surveying Ltd.",
+      "url": "https://www.tantalusgeomatics.com"
+    },
+    "areaServed": locationName || "Sea to Sky Corridor"
+  };
+
   return (
     <PageShell>
       <SEO
         title={`${cleanTitle} | Tantalus Geomatics Land Surveying`}
         description={cleanDescription}
+        schema={serviceSchema}
       />
 
       {/* 1. Hero Banner */}

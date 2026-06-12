@@ -8,9 +8,9 @@ import { useLeadForm } from '../hooks/useLeadForm';
 export default function About() {
   const lead = useLeadForm();
   const serviceAreas = [
-    "Squamish", "Whistler", "Pemberton", "Lillooet", 
-    "West Vancouver", "Bowen Island", "Britannia Beach", 
-    "Furry Creek", "North Vancouver"
+    "Squamish", "Whistler", "Pemberton", "Lillooet",
+    "North Vancouver", "West Vancouver", "Bowen Island",
+    "Gibsons", "Sechelt", "Furry Creek", "Britannia Beach", "Powell River"
   ];
 
   // Enhanced AboutPage schema with Local Service Areas
@@ -25,9 +25,18 @@ export default function About() {
       "@id": "https://tantalusgeomatics.com/#website"
     },
     "mainEntity": {
-      "@type": "LocalBusiness",
+      "@type": "ProfessionalService",
       "@id": "https://tantalusgeomatics.com/#organization",
       "name": "Tantalus Geomatics Land Surveying Ltd.",
+      "url": "https://www.tantalusgeomatics.com",
+      "telephone": "+16042139934",
+      "email": "contact@tantalusgeomatics.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Squamish",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
       "identifier": [
         {
           "@type": "PropertyValue",
@@ -48,53 +57,41 @@ export default function About() {
       "@type": "Person",
       "@id": "https://tantalusgeomatics.com/about/#dennis-sherman",
       "name": "Dennis Sherman",
-      "jobTitle": "Principal, BCLS, P.Eng",
-      // 1. The specific commission number
+      "jobTitle": "British Columbia Land Surveyor and Professional Engineer",
       "identifier": [
         {
           "@type": "PropertyValue",
           "name": "British Columbia Land Surveyor Commission",
           "propertyID": "BCLS Commission Number",
-          "value": "1104" // Replace with Dennis's BCLS number
+          "value": "1104"
         },
         {
           "@type": "PropertyValue",
           "name": "Professional Engineer License",
           "propertyID": "EGBC License Number",
-          "value": "57741" // Replace with Dennis's P.Eng number
+          "value": "57741"
         }
       ],
-      // 2. The official credential relationship
       "hasCredential": [
         {
           "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "Professional License",
-          "name": "British Columbia Land Surveyor (BCLS)",
-          "recognizedBy": {
-            "@type": "Organization",
-            "name": "Association of British Columbia Land Surveyors",
-            "url": "https://www.abcls.ca/"
-          },
-          "identifier": "BCLS Commission #1104"
+          "credentialCategory": "BCLS Commission #1104"
         },
         {
           "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "Professional License",
-          "name": "Professional Engineer (P.Eng)",
-          "recognizedBy": {
-            "@type": "Organization",
-            "name": "Engineers and Geoscientists British Columbia",
-            "url": "https://www.egbc.ca/"
-          },
-          "identifier": "EGBC Registration #57741"
+          "credentialCategory": "EGBC Registration #57741"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "ABCLS Corporate Permit #1046"
         }
       ],
       "worksFor": {
         "@id": "https://tantalusgeomatics.com/#organization"
       },
       "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Lassonde School of Engineering at York University"
+        "@type": "EducationalOrganization",
+        "name": "Lassonde School of Engineering, York University"
       },
       "sameAs": [
         "https://www.linkedin.com/in/dennis-sherman/"
@@ -167,7 +164,7 @@ export default function About() {
                   <h3 className="font-semibold text-slate-900 mb-2 text-lg sm:text-xl">
                     What professional credentials and quality standards does Tantalus Geomatics maintain?
                   </h3>
-                  <p className="text-slate-600 text-sm sm:text-base">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineering, and is regulated by statues, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
+                  <p className="text-slate-600 text-sm sm:text-base">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineer, and is regulated by statues, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
                 </div>
               </div>
             </div>
