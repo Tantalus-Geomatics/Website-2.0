@@ -125,5 +125,23 @@ To maximize organic CTR, search engine visibility, and local authority, the appl
 
 ---
 
+## 6. React Hydration Mismatch Resolution (Error #418)
+
+To resolve React Hydration Mismatch errors (Error #418) caused by block-level elements being illegally nested inside inline paragraph (`<p>`) tags during pre-rendering, the application's layout templates and pages were audited and hardened.
+
+### Service Template Hardening
+- **File:** [`src/templates/ServiceTemplate.tsx`](src/templates/ServiceTemplate.tsx)
+- **Fixes:**
+  - Replaced all `<p>` tags wrapping dynamic content or rich-text sections inside the [`GeoDirectAnswer`](src/components/GeoDirectAnswer.tsx) component with standard block-level `<div>` tags.
+  - This ensures that any nested block-level structures (such as lists, headers, or custom block layout components) rendered within the dynamic content do not violate HTML/DOM nesting specifications.
+
+### Home Page Hardening
+- **File:** [`src/pages/Home.tsx`](src/pages/Home.tsx)
+- **Fixes:**
+  - Audited the JSX return block and replaced paragraph wrappers (`<p>`) wrapping nested rich-text sections or dynamic layouts inside the [`GeoDirectAnswer`](src/components/GeoDirectAnswer.tsx) component with standard `<div>` tags.
+  - This maintains strict DOM compliance and guarantees flawless static pre-rendering and client-side hydration.
+
+---
+
 > **Note on Incremental Documentation:**
 > This document is built and updated incrementally during codebase modifications to preserve token footprints, optimize context windows, and maintain precise, up-to-date architectural records.

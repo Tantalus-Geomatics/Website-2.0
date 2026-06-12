@@ -187,6 +187,7 @@ export default function Home() {
             alt="Tantalus Lookout"
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/60 to-brand-dark" />
         </div>
@@ -235,7 +236,7 @@ export default function Home() {
           <div className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-slate-900 mb-6">When Do I Need a Land Surveyor?</h2>
             <p className="text-lg sm:text-xl text-slate-700 font-light max-w-2xl mx-auto">
-              Explore common scenarios where a land survey is required. <Link to="/faq/" className="text-brand-green hover:underline">Read our FAQ</Link> for more details.
+              Explore common scenarios where a land survey is required. <Link to="/faq/" className="text-brand-green-dark hover:underline">Read our FAQ</Link> for more details.
             </p>
           </div>
 
@@ -339,9 +340,9 @@ export default function Home() {
               align="center"
               question="What core land surveying services does Tantalus Geomatics offer from project conception through completion?"
             >
-              <p className="text-lg text-slate-700 max-w-2xl mx-auto font-light">
+              <div className="text-lg text-slate-700 max-w-2xl mx-auto font-light">
                 Supporting your projects from conception to completion.
-              </p>
+              </div>
             </GeoDirectAnswer>
           </div>
 
@@ -382,9 +383,9 @@ export default function Home() {
                 <span className="text-brand-green font-medium">British Columbia</span>
               </h2>
               <GeoDirectAnswer question="Why should you engage a commissioned British Columbia Land Surveyor to protect your property rights?">
-                <p className="text-base sm:text-lg text-slate-700 mb-8 font-light leading-relaxed">
+                <div className="text-base sm:text-lg text-slate-700 mb-8 font-light leading-relaxed">
                   Protect your property rights by engaging a commissioned British Columbia Land Surveyor. This ensures your project meets rigorous technical standards and carries the legal authority necessary for municipal and provincial compliance.
-                </p>
+                </div>
               </GeoDirectAnswer>
               <ul className="space-y-6 mb-8">
                 <li className="flex items-start gap-3 text-slate-700 font-light">

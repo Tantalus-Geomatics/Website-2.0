@@ -283,6 +283,7 @@ export default function ServiceTemplate({
             className="w-full h-full object-cover object-top opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
+            fetchPriority="high"
           />
         </div>
 
@@ -378,9 +379,9 @@ export default function ServiceTemplate({
               align="center"
               question="How do we ensure accuracy and efficiency in our land surveying projects?"
             >
-              <p className="text-slate-600 font-light text-lg max-w-2xl mx-auto">
+              <div className="text-slate-600 font-light text-lg max-w-2xl mx-auto">
                 We follow a structured, transparent process to deliver precise results and keep your project on schedule.
-              </p>
+              </div>
             </GeoDirectAnswer>
           </div>
 
@@ -422,9 +423,9 @@ export default function ServiceTemplate({
               question="What professional documents and markers do you receive upon project completion?"
               questionClassName="text-white"
             >
-              <p className="text-white/70 font-light text-lg max-w-2xl mx-auto">
+              <div className="text-white/70 font-light text-lg max-w-2xl mx-auto">
                 Every project concludes with a comprehensive package of certified documents and physical markers to meet all legal and municipal requirements.
-              </p>
+              </div>
             </GeoDirectAnswer>
           </div>
 
@@ -481,9 +482,9 @@ export default function ServiceTemplate({
               align="center"
               question="Get answers to common questions about our land surveying services."
             >
-              <p className="text-slate-600 font-light text-lg">
+              <div className="text-slate-600 font-light text-lg">
                 Have questions about timelines, pricing, or requirements? Find quick answers below.
-              </p>
+              </div>
             </GeoDirectAnswer>
           </div>
 
@@ -536,9 +537,9 @@ export default function ServiceTemplate({
                 align="center"
                 question={`Explore more resources and guides for ${derivedServiceName}.`}
               >
-                <p className="text-slate-600 font-light text-lg">
+                <div className="text-slate-600 font-light text-lg">
                   Learn more about our pricing, boundary staking, and topographic site plans.
-                </p>
+                </div>
               </GeoDirectAnswer>
             </div>
 
@@ -571,9 +572,9 @@ export default function ServiceTemplate({
               align="center"
               question={`Where can you find official topographic and permit checklists for ${locationName || 'your municipality'}?`}
             >
-              <p className="text-slate-600 font-light text-lg max-w-2xl mx-auto mb-10">
+              <div className="text-slate-600 font-light text-lg max-w-2xl mx-auto mb-10">
                 Access official municipal planning guidelines, topographic requirements, and permit checklists directly from the local authority.
-              </p>
+              </div>
             </GeoDirectAnswer>
             
             {/* Location Links Grid */}
@@ -693,9 +694,9 @@ export default function ServiceTemplate({
             align="center"
             question="What information do we need to start your survey quote today?"
           >
-            <p className="text-center text-slate-700 font-light text-lg mb-10">
+            <div className="text-center text-slate-700 font-light text-lg mb-10">
               Providing us with your name, property address, contact information, and project details allows us to start your quote right away.
-            </p>
+            </div>
           </GeoDirectAnswer>
 
           <div className="bg-brand-dark p-8 md:p-10 border border-white/10 shadow-2xl rounded-2xl">

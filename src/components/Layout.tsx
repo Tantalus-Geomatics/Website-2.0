@@ -297,6 +297,7 @@ export default function Layout() {
               <button
                 className="md:hidden p-1 text-white/80 hover:text-white rounded-md shrink-0"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Open primary navigation menu"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
