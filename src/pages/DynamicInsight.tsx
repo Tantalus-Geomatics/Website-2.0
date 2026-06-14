@@ -95,8 +95,6 @@ export default function DynamicInsight() {
         description={meta.description || `Professional insights and guides on ${meta.title || fallbackTitle} by Tantalus Geomatics.`}
         publishDate={meta.publishDate || new Date().toISOString()}
         tags={meta.tags}
-        relevantLinks={meta.relevantLinks}
-        relatedServices={meta.relatedServices}
       >
         <Component />
       </PostTemplate>

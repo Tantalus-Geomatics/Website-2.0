@@ -1,20 +1,30 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Tantalus Geomatics Website
 
-# Run and deploy your AI Studio app
+Welcome to the repository for the **Tantalus Geomatics** website. This is a highly optimized, SEO-hardened static marketing platform built using a modern React 19 and Vite 6 stack. 
 
-This contains everything you need to run your app locally.
+The site utilizes a custom automated pipeline that takes raw service text files, compiles them into MDX templates, generates a multi-location localization matrix (14 target municipal areas), and pre-renders the entire application into fully static HTML using headless Chrome (Puppeteer). This ensures lightning-fast load times, flawless client-side hydration, and perfect search engine indexing on GitHub Pages.
 
-View your app in AI Studio: https://ai.studio/apps/0b366dc1-75d5-49bb-aee5-27ffbe88124b
+---
 
-## Run Locally
+## Tech Stack & Prerequisites
 
-**Prerequisites:**  Node.js
+### Core Core Technology
+* **Frontend Framework:** React 19 (Functional components, Hooks)
+* **Routing:** React Router v7 (`react-router-dom`)
+* **Build Tooling:** Vite 6 + TypeScript (`~5.8.2`)
+* **Styling:** Tailwind CSS v4 (using `@tailwindcss/vite`)
+* **Content Format:** MDX (Markdown Components via `@mdx-js/rollup` + `remark-frontmatter`)
 
+### Systems Prerequisites
+* **Node.js:** Version 20.x or higher
+* **Python:** Version 3.x or higher (for the initial text compilation step)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+
+## Getting Started
+
+### 1. Clone & Install Dependencies
+Clone the repository and install the Node modules. Because this project runs on React 19, you must use the legacy peer dependency flag to accommodate specific ecosystem plugins:
+
+```bash
+npm install --legacy-peer-deps

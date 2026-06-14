@@ -1,27 +1,14 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Tag, User, ExternalLink, ArrowRight, Award, ShieldCheck, BookOpen } from 'lucide-react';
+import { Calendar, Tag, User, Award, ShieldCheck } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
-
-export interface RelevantLink {
-  label: string;
-  href: string;
-}
-
-export interface RelatedService {
-  label: string;
-  href: string;
-  description?: string;
-}
 
 export interface PostTemplateProps {
   title: string;
   description: string;
   publishDate: string;
   tags?: string[];
-  relevantLinks?: RelevantLink[];
-  relatedServices?: RelatedService[];
   children: ReactNode;
 }
 
@@ -30,8 +17,6 @@ export default function PostTemplate({
   description,
   publishDate,
   tags = [],
-  relevantLinks = [],
-  relatedServices = [],
   children
 }: PostTemplateProps) {
   // Format date nicely
@@ -109,31 +94,6 @@ export default function PostTemplate({
               >
                 {children}
               </div>
-
-              {/* Relevant Links Section (if present) */}
-              {relevantLinks.length > 0 && (
-                <section className="mt-12 pt-8 border-t border-slate-200">
-                  <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                    <BookOpen size={18} className="text-brand-green-dark" />
-                    Relevant Resources & External Links
-                  </h3>
-                  <ul className="space-y-3">
-                    {relevantLinks.map((link, index) => (
-                      <li key={index}>
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-brand-green-dark hover:text-brand-green font-medium transition-colors group"
-                        >
-                          <span>{link.label}</span>
-                          <ExternalLink size={14} className="text-slate-400 group-hover:text-brand-green transition-colors" />
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              )}
             </article>
 
             {/* Sidebar with Author Bio */}
@@ -168,47 +128,6 @@ export default function PostTemplate({
           </div>
         </div>
       </main>
-
-      {/* Related Services Grid Section */}
-      {relatedServices.length > 0 && (
-        <section className="py-16 bg-slate-50 border-t border-slate-200">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-2">
-                Related Professional Services
-              </h2>
-              <p className="text-slate-600 font-light text-sm max-w-xl mx-auto">
-                Explore our specialized land surveying and geomatics services tailored to your project needs.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {relatedServices.map((service, index) => (
-                <Link
-                  key={index}
-                  to={service.href}
-                  className="flex flex-col justify-between p-6 bg-white border border-slate-200 rounded-2xl hover:border-brand-green hover:shadow-md transition-all group"
-                >
-                  <div>
-                    <h3 className="font-semibold text-slate-900 group-hover:text-brand-green-dark transition-colors text-lg mb-2">
-                      {service.label}
-                    </h3>
-                    {service.description && (
-                      <p className="text-slate-600 font-light text-sm leading-relaxed mb-4">
-                        {service.description}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-1 text-brand-green-dark font-semibold text-sm group-hover:text-brand-green transition-colors mt-auto">
-                    <span>Learn More</span>
-                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
     </PageShell>
   );
 }

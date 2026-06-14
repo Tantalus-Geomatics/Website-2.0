@@ -11,14 +11,8 @@ import ClientOnly from './ClientOnly';
 const TURNSTILE_SITE_KEY =
   import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
-export type LeadQuoteVariant =
-  | 'embedded'
-  | 'contact'
-  | 'stacked-residential'
-  | 'stacked-pricing';
-
 export interface LeadQuoteFormProps {
-  variant: LeadQuoteVariant;
+  variant: 'embedded' | 'contact' | 'stacked-residential' | 'stacked-pricing';
   formId: string;
   ariaLabel: string;
   formData: LeadFormFields;

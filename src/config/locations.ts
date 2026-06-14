@@ -1,4 +1,4 @@
-export const VALID_LOCATIONS = [
+const VALID_LOCATIONS = [
   'squamish',
   'whistler',
   'pemberton',

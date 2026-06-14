@@ -14,7 +14,6 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       mdx({
         remarkPlugins: [remarkFrontmatter],
-        providerImportSource: '@mdx-js/react',
       }),
     ],
     base: '/',

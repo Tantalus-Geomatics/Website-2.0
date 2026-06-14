@@ -24,21 +24,6 @@ import LeadQuoteForm from '../components/LeadQuoteForm';
 import { useLeadForm } from '../hooks/useLeadForm';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
-export interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-export interface ProcessStep {
-  title: string;
-  description: string;
-}
-
-export interface LocalLink {
-  label: string;
-  href: string;
-}
-
 export interface LocalImage {
   src: string;
   alt: string;
@@ -52,11 +37,11 @@ export interface ServiceTemplateProps {
   category?: string;
   heroImage?: string;
   heroImageAlt?: string;
-  steps?: ProcessStep[];
+  steps?: { title: string; description: string }[];
   deliverables?: string[];
-  faqs?: FAQItem[];
-  serviceLinks?: LocalLink[];
-  locationLinks?: LocalLink[];
+  faqs?: { question: string; answer: string }[];
+  serviceLinks?: { label: string; href: string }[];
+  locationLinks?: { label: string; href: string }[];
   serviceImages?: LocalImage[];
   locationImages?: LocalImage[];
   formVariant?: 'embedded' | 'stacked-residential';
@@ -69,7 +54,7 @@ export interface ServiceTemplateProps {
 const HERO_FALLBACK = '/images/Squamish-Garibaldi-Estates-Property-Survey.webp';
 const PHONE_TEL = 'tel:+16042139934';
 
-const defaultSteps: ProcessStep[] = [
+const defaultSteps: { title: string; description: string }[] = [
   {
     title: 'Consultation and Research',
     description: 'We review property records, LTSA plans, and municipal GIS data to understand your lot\'s context and regulatory requirements before arriving on-site.',
@@ -91,7 +76,7 @@ const defaultDeliverables: string[] = [
   'Detailed Topographic Site Map'
 ];
 
-const defaultFaqs: FAQItem[] = [
+const defaultFaqs: { question: string; answer: string }[] = [
   {
     question: 'How long does a typical survey take?',
     answer: 'Fieldwork usually takes 1-2 days, while research and drafting take another 1-2 weeks depending on the complexity of the property and the project requirements.'
@@ -106,7 +91,7 @@ const defaultFaqs: FAQItem[] = [
   }
 ];
 
-const defaultServiceLinks: LocalLink[] = [
+const defaultServiceLinks: { label: string; href: string }[] = [
   { label: 'Survey Pricing & Cost Factors', href: '/survey-pricing/' },
   { label: 'Property Line Staking', href: '/sea-to-sky-property-line-and-boundary-staking/' },
   { label: 'Topographic Surveys', href: '/topographic-surveys/' }

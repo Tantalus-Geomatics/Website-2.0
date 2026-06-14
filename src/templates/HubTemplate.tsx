@@ -3,10 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { 
   ArrowRight, 
   Layers, 
-  MapPin, 
   Phone, 
-  Calendar, 
-  Tag,
   Activity,
   LayoutGrid,
   Grid,
@@ -114,29 +111,10 @@ function getDeterministicImages(locationName: string, pool: { src: string; alt: 
   return clone.slice(0, 3);
 }
 
-export interface HubProject {
-  title: string;
-  href: string;
-  location?: string;
-  completionDate?: string;
-  heroImage?: string;
-  description?: string;
-}
-
-export interface HubPost {
-  title: string;
-  href: string;
-  publishDate?: string;
-  description?: string;
-  tags?: string[];
-}
-
 export interface HubTemplateProps {
   title: string;
   description: string;
   relatedServices?: HubService[];
-  relatedProjects?: HubProject[];
-  relatedPosts?: HubPost[];
   locationName: string;
   localAuthorityName?: string;
   municipalLink?: string;
@@ -148,8 +126,6 @@ export default function HubTemplate({
   title,
   description,
   relatedServices = [],
-  relatedProjects = [],
-  relatedPosts = [],
   locationName,
   localAuthorityName,
   municipalLink,
@@ -309,140 +285,6 @@ export default function HubTemplate({
                   </div>
                 );
               })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Featured Projects Section */}
-      {relatedProjects.length > 0 && (
-        <section className="py-16 md:py-24 bg-slate-50 border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-light text-slate-900 mb-4">
-                Featured Projects
-              </h2>
-              <p className="text-slate-600 font-light max-w-2xl mx-auto">
-                Discover our real-world case studies and successful projects related to {title.toLowerCase()}.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {relatedProjects.map((project, index) => (
-                <Link
-                  key={index}
-                  to={project.href}
-                  className="flex flex-col md:flex-row bg-stone-100 border border-slate-200 rounded-2xl overflow-hidden hover:border-brand-green hover:shadow-md transition-all group"
-                >
-                  {project.heroImage && (
-                    <div className="md:w-2/5 h-48 md:h-auto relative overflow-hidden shrink-0">
-                      <img
-                        src={project.heroImage}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
-                  <div className="p-6 flex flex-col justify-between flex-1">
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-3">
-                        {project.location && (
-                          <span className="flex items-center gap-1">
-                            <MapPin size={12} className="text-brand-green-dark" />
-                            {project.location}
-                          </span>
-                        )}
-                        {project.location && project.completionDate && <span>•</span>}
-                        {project.completionDate && (
-                          <span className="flex items-center gap-1">
-                            <Calendar size={12} className="text-brand-green-dark" />
-                            {project.completionDate}
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-brand-green-dark transition-colors">
-                        {project.title}
-                      </h3>
-                      {project.description && (
-                        <p className="text-slate-600 font-light text-sm leading-relaxed mb-4">
-                          {project.description}
-                        </p>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-1 text-brand-green-dark font-semibold text-sm group-hover:text-brand-green transition-colors mt-4">
-                      <span>View Case Study</span>
-                      <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Insights & Resources Section */}
-      {relatedPosts.length > 0 && (
-        <section className="py-16 md:py-24 bg-white border-b border-slate-200">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-light text-slate-900 mb-4">
-                Insights & Resources
-              </h2>
-              <p className="text-slate-600 font-light max-w-2xl mx-auto">
-                Read our latest articles, guides, and professional insights on {title.toLowerCase()}.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {relatedPosts.map((post, index) => (
-                <Link
-                  key={index}
-                  to={post.href}
-                  className="block p-6 bg-stone-100 border border-slate-200 rounded-2xl hover:border-brand-green hover:shadow-md transition-all group"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
-                    <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                      {post.publishDate && (
-                        <span className="flex items-center gap-1">
-                          <Calendar size={12} className="text-brand-green-dark" />
-                          {new Date(post.publishDate).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                          })}
-                        </span>
-                      )}
-                    </div>
-                    {post.tags && post.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {post.tags.slice(0, 2).map((tag, tagIdx) => (
-                          <span
-                            key={tagIdx}
-                            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-brand-green/10 text-brand-green-dark text-xs font-medium border border-brand-green/20"
-                          >
-                            <Tag size={10} />
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-brand-green-dark transition-colors">
-                    {post.title}
-                  </h3>
-                  {post.description && (
-                    <p className="text-slate-600 font-light text-sm leading-relaxed mb-4">
-                      {post.description}
-                    </p>
-                  )}
-                  <div className="flex items-center gap-1 text-brand-green-dark font-semibold text-sm group-hover:text-brand-green transition-colors">
-                    <span>Read Article</span>
-                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              ))}
             </div>
           </div>
         </section>
