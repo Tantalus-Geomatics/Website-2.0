@@ -6,6 +6,7 @@
 import { ReactElement } from 'react';
 import { Routes, Route, useParams, Navigate, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
+import ThirdPartyScripts from './components/ThirdPartyScripts';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -47,8 +48,10 @@ function LocationRouteGuard({ children }: LocationRouteGuardProps) {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
+    <>
+      <ThirdPartyScripts />
+      <Routes>
+        <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="services" element={<Services />} />
@@ -99,5 +102,6 @@ export default function App() {
         />
       </Route>
     </Routes>
+    </>
   );
 }
