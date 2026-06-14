@@ -278,6 +278,8 @@ export default function ServiceTemplate({
           <img
             src={heroSrc}
             alt={heroImageAlt || cleanTitle.replace(/<[^>]+>/g, '')}
+            width={1200}
+            height={800}
             className="w-full h-full object-cover object-top opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
@@ -636,6 +638,8 @@ export default function ServiceTemplate({
                   <img
                     src={image.src}
                     alt={image.alt || `${title.replace(/<[^>]+>/g, '')} gallery image ${index + 1}`}
+                    width={400}
+                    height={300}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />

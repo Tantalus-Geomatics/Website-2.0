@@ -165,6 +165,8 @@ export default function Home() {
           <img
             src="/images/tantalus-hero-banner.webp"
             alt="Tantalus Lookout"
+            width={1200}
+            height={800}
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
             fetchPriority="high"
@@ -244,6 +246,9 @@ export default function Home() {
                       <img 
                         src={useCase.image} 
                         alt={useCase.title}
+                        width={600}
+                        height={400}
+                        loading="lazy"
                         className="w-full h-40 sm:h-48 object-cover rounded-xl mb-5 grayscale-35"
                       />
                       <p className="text-slate-700 font-light leading-relaxed text-sm sm:text-base">
@@ -288,6 +293,9 @@ export default function Home() {
                     <img 
                       src={useCases[activeUseCase === -1 ? 0 : activeUseCase].image} 
                       alt={useCases[activeUseCase === -1 ? 0 : activeUseCase].title}
+                      width={800}
+                      height={450}
+                      loading="lazy"
                       className="w-full h-full object-cover opacity-100 transition-opacity grayscale-35 duration-500"
                       key={useCases[activeUseCase === -1 ? 0 : activeUseCase].image}
                       />
@@ -398,6 +406,9 @@ export default function Home() {
               <img
                 src="/images/Garibaldi-Highland-Road-Survey.webp"
                 alt="Garibaldi Highland Road Survey"
+                width={400}
+                height={300}
+                loading="lazy"
                 className="object-cover h-full w-full border-2 border-slate-200 grayscale hover:grayscale-0 transition-all duration-500"
                 referrerPolicy="no-referrer"
               />
@@ -405,12 +416,18 @@ export default function Home() {
                 <img
                   src="/images/spea-rar.webp"
                   alt="SPEA and RAR"
+                  width={400}
+                  height={150}
+                  loading="lazy"
                   className="object-cover h-full w-full border-2 border-slate-200 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
                 <img
                   src="/images/Squamish-Garibaldi-Estates-Property-Survey.webp"
                   alt="Garibaldi Estates Property Survey"
+                  width={400}
+                  height={150}
+                  loading="lazy"
                   className="object-cover h-full w-full border-2 border-slate-200 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />

@@ -76,6 +76,9 @@ export default function ProjectTemplate({
           <img
             src={heroSrc}
             alt={title}
+            width={1200}
+            height={800}
+            fetchPriority="high"
             className="w-full h-full object-cover opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
@@ -253,6 +256,8 @@ export default function ProjectTemplate({
                   <img
                     src={image}
                     alt={`${title} gallery image ${index + 1}`}
+                    width={400}
+                    height={300}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />

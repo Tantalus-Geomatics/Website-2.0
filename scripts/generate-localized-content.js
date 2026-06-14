@@ -148,7 +148,7 @@ function injectServiceImage(content, serviceSlug, locationName) {
   const cleanServiceName = getCleanServiceName(serviceSlug);
   const dynamicAlt = `BC Land Surveyor performing ${cleanServiceName} in ${locationName}, BC`;
 
-  const imgTag = `<img src="${src}" alt="${dynamicAlt}" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />`;
+  const imgTag = `<img src="${src}" alt="${dynamicAlt}" width="600" height="400" loading="lazy" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />`;
 
   // Find the end of the export default block
   const templateEndIndex = content.indexOf('</ServiceTemplate>');

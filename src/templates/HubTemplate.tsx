@@ -153,6 +153,9 @@ export default function HubTemplate({
           <img
             src={heroSrc}
             alt={`${locationName} Land Surveying`}
+            width={1200}
+            height={800}
+            fetchPriority="high"
             className="w-full h-full object-cover opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(fallbackImage)}
@@ -215,6 +218,8 @@ export default function HubTemplate({
                     <img
                       src={image.src}
                       alt={image.alt || `${locationName} Land Surveying`}
+                      width={400}
+                      height={225}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />

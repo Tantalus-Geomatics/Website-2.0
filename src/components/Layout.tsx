@@ -250,6 +250,9 @@ export default function Layout() {
               <img 
                 src="/tantalus-logo.webp" 
                 alt="Tantalus Geomatics Logo" 
+                width={180}
+                height={48}
+                fetchPriority="high"
                 className="h-7 sm:h-12 w-auto object-contain shrink-0"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
@@ -353,6 +356,9 @@ export default function Layout() {
                   <img 
                     src="/tantalus-logo.webp" 
                     alt="Tantalus Geomatics Logo" 
+                    width={120}
+                    height={32}
+                    loading="lazy"
                     className="h-8 w-auto object-contain"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
@@ -410,6 +416,9 @@ export default function Layout() {
                   <img 
                     src="/images/abcls-logo-horizontal.svg" 
                     alt="Association of BC Land Surveyors Logo" 
+                    width={200}
+                    height={50}
+                    loading="lazy"
                     className="w-full h-auto object-contain opacity-100"
                     referrerPolicy="no-referrer"
                   />

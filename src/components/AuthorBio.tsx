@@ -21,6 +21,9 @@ export default function AuthorBio() {
             <img
               src="/images/dennis-sherman-mugshot.webp"
               alt="Dennis Sherman, BCLS, P.Eng. - Commissioned British Columbia Land Surveyor and Professional Engineer in Squamish, Whistler, and the Sea to Sky Corridor"
+              width={192}
+              height={192}
+              loading="lazy"
               className="w-48 h-48 md:h-full object-cover rounded-xl border-2 border-brand-green shadow-xl"
             />
           </div>
