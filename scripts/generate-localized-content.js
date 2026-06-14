@@ -148,7 +148,11 @@ function injectServiceImage(content, serviceSlug, locationName) {
   const cleanServiceName = getCleanServiceName(serviceSlug);
   const dynamicAlt = `BC Land Surveyor performing ${cleanServiceName} in ${locationName}, BC`;
 
-  const imgTag = `<img src="${src}" alt="${dynamicAlt}" width="600" height="400" loading="lazy" className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 rounded-2xl shadow-lg border border-slate-200 object-cover" />`;
+  const webpSrc = src.endsWith('.webp') ? src : src.replace(/\.[^/.]+$/, "") + ".webp";
+  const pictureTag = `<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
+  <source srcSet="${webpSrc}" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
+  <img src="${src}" alt="${dynamicAlt}" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
+</picture>`;
 
   // Find the end of the export default block
   const templateEndIndex = content.indexOf('</ServiceTemplate>');
@@ -180,8 +184,8 @@ function injectServiceImage(content, serviceSlug, locationName) {
     return content;
   }
 
-  // Inject the image tag after the first paragraph
-  paragraphs[firstParaIdx] = paragraphs[firstParaIdx] + "\n\n" + imgTag;
+  // Inject the picture tag after the first paragraph
+  paragraphs[firstParaIdx] = paragraphs[firstParaIdx] + "\n\n" + pictureTag;
 
   // Reconstruct the body and full content
   const newBody = paragraphs.join("\n\n");

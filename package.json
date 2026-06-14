@@ -29,6 +29,7 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",
+    "critters": "^0.0.23",
     "express": "^5.2.1",
     "knip": "^6.16.1",
     "puppeteer": "^25.0.4",

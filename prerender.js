@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import express from 'express';
+import Critters from 'critters';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbs = (p) => path.resolve(__dirname, p);
@@ -123,6 +124,12 @@ async function generate() {
       return;
     }
 
+    const critters = new Critters({
+      path: toAbs('dist'),
+      publicPath: '/',
+      preload: 'media',
+    });
+
     try {
       for (const url of routesToPrerender) {
         let page;
@@ -159,12 +166,13 @@ async function generate() {
           });
 
           const html = await page.content();
+          const inlinedHtml = await critters.process(html);
           const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
           const filePath = toAbs(`dist/${fileName}`);
           
           fs.mkdirSync(path.dirname(filePath), { recursive: true });
-          fs.writeFileSync(filePath, html);
-          console.log(`📸 Prerendered: ${url}`);
+          fs.writeFileSync(filePath, inlinedHtml);
+          console.log(`📸 Prerendered & Inlined CSS: ${url}`);
           
           await page.close();
         } catch (innerError) {
