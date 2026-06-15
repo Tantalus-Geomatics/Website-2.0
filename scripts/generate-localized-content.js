@@ -73,6 +73,17 @@ function sanitizeMetadata(content) {
   return content.substring(0, metadataStart) + sanitizedMetadataBlock + content.substring(metadataEnd);
 }
 
+function removeDoubleThe(content) {
+  let previous;
+  let current = content;
+  const regex = /\b(the)\s+the\b/gi;
+  do {
+    previous = current;
+    current = current.replace(regex, (match, p1) => p1);
+  } while (current !== previous);
+  return current;
+}
+
 function getImagesForLocation(locationSlug) {
   if (LOCATION_IMAGES_MAP[locationSlug]) {
     return LOCATION_IMAGES_MAP[locationSlug];
@@ -473,6 +484,7 @@ baseTemplates.forEach(templateFile => {
     // Sanitize frontmatter variables
     localizedContent = sanitizeFrontmatter(localizedContent);
     localizedContent = sanitizeMetadata(localizedContent);
+    localizedContent = removeDoubleThe(localizedContent);
 
     // Define output directory and file path
     const outputDir = path.join(__dirname, `../src/content/services/${locationSlug}`);

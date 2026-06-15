@@ -339,7 +339,7 @@ export default function ServiceTemplate({
           <div className="mt-16 p-8 bg-stone-100 border-l-4 border-brand-green rounded-r-2xl shadow-sm">
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Why Choose Tantalus Geomatics?</h3>
             <p className="text-slate-700 text-lg font-light leading-relaxed">
-              Our team combines {locationName ? `local ${locationName} expertise` : 'expertise in the Sea to Sky'} with state-of-the-art surveying technology. We deliver highly accurate, BCLS-certified plans that streamline your municipal permit approvals and protect your property investments.
+              Our team combines {locationName ? `local ${locationName.toLowerCase().startsWith('the ') ? locationName.slice(4) : locationName} expertise` : 'expertise in the Sea to Sky'} with state-of-the-art surveying technology. We deliver highly accurate, BCLS-certified plans that streamline your municipal permit approvals and protect your property investments.
             </p>
           </div>
         </div>

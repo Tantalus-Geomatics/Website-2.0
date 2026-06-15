@@ -32,7 +32,7 @@ accurate volume calculation is predicated on the creation of complex 3D Triangul
 
 ### **FAQs**
 
-**1\. What is the difference between a base surface and a comparison surface?** A "base" surface represents the top of a particular material prior to any excavation taking place, such as the original ground or the top of a solid rock layer. A "ccomparison" surface represents the current state of the excavation within that material, measured by the surveyor at specific intervals (usually monthly) to calculate the quantity of material removed for contractor payment.
+**1\. What is the difference between a base surface and a comparison surface?** A "base" surface represents the top of a particular material prior to any excavation taking place, such as the original ground or the top of a solid rock layer. A "comparison" surface represents the current state of the excavation within that material, measured by the surveyor at specific intervals (usually monthly) to calculate the quantity of material removed for contractor payment.
 
 **2\. What is an Isopach surface?** An Isopach surface is a specialized 3D net surface generated during a volume calculation. It contains positive and negative elevations that represent the exact depth of fill or cut at any given point across the site. We use Isopach surfaces to verify the planimetric limits of the volume calculation and to provide a clear visual quality assurance check.
 

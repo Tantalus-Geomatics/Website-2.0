@@ -147,7 +147,7 @@ export default function About() {
               <h2 className="text-3xl font-light text-slate-900 mb-6">Your projects. Our solutions.</h2>
               <GeoDirectAnswer question="How does Tantalus Geomatics support residential, infrastructure, and environmental projects in BC?">
                 <p className="text-base sm:text-lg text-slate-700 mb-6 font-light leading-relaxed">
-                  Tantalus Geomatics provides the specialized expertise of a BC Land Surveyor and Professional Engineer to support the complexities of modern development. We serve as a strategic partner for residential, infrastructure, and environmental projects, providing the actionable data required for accurate design and regulatory compliance. Learn more about our <a href="/services/" className="text-brand-green hover:underline">professional services</a>.
+                  Tantalus Geomatics provides the specialized expertise of a BC Land Surveyor and Professional Engineer to support the complexities of modern development. We serve as a strategic partner for commercial, residential, construction, infrastructure, and environmental projects, providing the actionable data required for accurate design and regulatory compliance. Learn more about our <a href="/services/" className="text-brand-green hover:underline">professional services</a>.
                 </p>
               </GeoDirectAnswer>
                             
@@ -164,7 +164,7 @@ export default function About() {
                   <h3 className="font-semibold text-slate-900 mb-2 text-lg sm:text-xl">
                     What professional credentials and quality standards does Tantalus Geomatics maintain?
                   </h3>
-                  <p className="text-slate-600 text-sm sm:text-base">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineer, and is regulated by statues, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
+                  <p className="text-slate-600 text-sm sm:text-base">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineer, and is regulated by statutes, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
                 </div>
               </div>
             </div>
