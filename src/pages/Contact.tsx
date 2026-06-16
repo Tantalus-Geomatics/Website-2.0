@@ -73,6 +73,10 @@ export default function Contact() {
           <img
             src="/images/tantalus-hero-banner.webp"
             alt="Tantalus Lookout"
+            width={1200}
+            height={800}
+            fetchPriority="high"
+            loading="eager"
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />

@@ -114,6 +114,7 @@ function getDeterministicImages(locationName: string, pool: { src: string; alt: 
 export interface HubTemplateProps {
   title: string;
   description: string;
+  canonicalUrl?: string;
   relatedServices?: HubService[];
   locationName: string;
   localAuthorityName?: string;
@@ -125,6 +126,7 @@ export interface HubTemplateProps {
 export default function HubTemplate({
   title,
   description,
+  canonicalUrl,
   relatedServices = [],
   locationName,
   localAuthorityName,
@@ -145,6 +147,7 @@ export default function HubTemplate({
       <SEO
         title={`${title} | Tantalus Geomatics Land Surveying`}
         description={description}
+        canonicalUrl={canonicalUrl}
       />
 
       {/* Header / Hero Section */}
@@ -156,6 +159,7 @@ export default function HubTemplate({
             width={1200}
             height={800}
             fetchPriority="high"
+            loading="eager"
             className="w-full h-full object-cover opacity-40 mix-blend-overlay"
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(fallbackImage)}

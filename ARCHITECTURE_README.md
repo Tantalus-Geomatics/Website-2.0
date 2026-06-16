@@ -195,3 +195,35 @@ To ensure high-availability and robust static site generation, the prerendering 
 
 > **Note on Incremental Documentation:**
 > This document is built and updated incrementally during codebase modifications to preserve token footprints, optimize context windows, and maintain precise, up-to-date architectural records.
+
+---
+
+## 6. SEO & Performance Fixes v4
+
+A fourth SEO and performance audit pass addressed LCP hero loading, location hub metadata, duplicate service routes, map CLS, GTM loading, content corrections, and server-rendered structured data.
+
+### Performance
+- **`index.html`**: Added `<link rel="preload">` for the default hero image (`tantalus-hero-banner.webp`).
+- **`src/pages/Home.tsx`**, **`About.tsx`**, **`FAQ.tsx`**, **`Contact.tsx`**, **`Services.tsx`**, **`SurveyPricing.tsx`**, **`src/templates/HubTemplate.tsx`**, **`src/templates/ServiceTemplate.tsx`**: Added `fetchPriority="high"` and `loading="eager"` to hero `<img>` elements.
+- **`src/components/Layout.tsx`**: Reserved fixed `600px` height on the footer Google Maps container (and matching fallback placeholder) to prevent CLS during map load.
+- **`index.html`**: Moved GTM (`GTM-PFWRJL4M`) into the document `<head>` with `async` loading via the standard GTM snippet; removed duplicate deferred GTM injection from **`src/components/ThirdPartyScripts.tsx`**.
+
+### Location Hub SEO (`og:url`, canonical, differentiated copy)
+- **`src/config/locations.ts`**: Extended `GeoData` with optional `localityName`, `hubTitle`, and `metaDescription` fields. Differentiated DNV vs CNV hubs; added Squamish/Whistler meta descriptions; set `localityName: "The Sea to Sky"` for the `the-sea-to-sky` slug. Added `getLocationDisplayName()` helper.
+- **`src/pages/DynamicLocationHome.tsx`**: Renders `<SEO>` with production `canonicalUrl` during the loading state (so prerender captures metadata before async MDX glob resolves). Uses `hubTitle`, `metaDescription`, and `getLocationDisplayName()` from config.
+- **`src/templates/HubTemplate.tsx`**: Accepts and forwards `canonicalUrl` to `<SEO>`.
+
+### Duplicate `/services/{slug}/` routes
+- **`src/App.tsx`**: Replaced the generic `DynamicService` route with `NavigateToSeaToSky`, issuing a client-side 301-style redirect from `/services/:serviceSlug` to `/the-sea-to-sky/services/:serviceSlug/`.
+
+### Service page metadata
+- **`src/templates/ServiceTemplate.tsx`**: Added production `canonicalUrl` for localized and Sea-to-Sky service pages. Fixed "local the Sea to Sky" phrasing in the Why Choose Us block via `formatLocalExpertise()`.
+
+### Content & FAQ
+- **`src/pages/FAQ.tsx`**: Updated meta description to the v4 audit copy (em dash, topographic/strata keywords).
+- **`src/pages/About.tsx`**, FAQ MDX sources: Grammar fixes (`Professional Engineer`, `statutes`, `ccomparison`, `accurately accurate`) were already present from v2 hardening — verified, no further edits required.
+
+### Server-rendered schema & meta
+- **`index.html`**: Added `<div id="seo-root">` mount point in `<head>` for JSON-LD injection.
+- **`src/components/SEO.tsx`**: Refactored from deferred `useEffect` to synchronous `useLayoutEffect` for title, canonical, and Open Graph tags (captured during Puppeteer prerender). JSON-LD schema renders at React render-time via portal into `#seo-root`.
+- **`src/pages/DynamicLocationService.tsx`**: Passes explicit production `canonicalUrl` to `<SEO>`.

@@ -124,7 +124,7 @@ const faqSchema = {
     <PageShell>
       <SEO 
         title="Land Surveying FAQ | Common Questions in the Sea-to-Sky"
-        description="Expert answers to 90+ BC land surveying questions: property staking, mapping, subdivisions, and covenants in the Sea to Sky corridor."
+        description="Expert answers to 90+ BC land surveying questions — property staking, topographic surveys, strata plans, subdivision, and covenants in the Sea to Sky corridor."
         canonicalUrl="https://tantalusgeomatics.com/faq/"
         schema={faqSchema}
       />
@@ -135,6 +135,10 @@ const faqSchema = {
           <img
             src="/images/tantalus-hero-banner.webp"
             alt="Tantalus Lookout"
+            width={1200}
+            height={800}
+            fetchPriority="high"
+            loading="eager"
             className="w-full h-full object-cover opacity-70 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />

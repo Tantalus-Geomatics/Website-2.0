@@ -36,19 +36,7 @@ export default function ThirdPartyScripts() {
       }
       window.gtag = gtag;
 
-      // 2. Load Google Tag Manager (GTM-PFWRJL4M)
-      (function(w: any, d: Document, s: string, l: string, i: string) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        const f = d.getElementsByTagName(s)[0];
-        const j = d.createElement(s) as HTMLScriptElement;
-        const dl = l !== 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode?.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-PFWRJL4M');
-
-      // 3. Load Google Analytics (G-F8ZDC6NXGP)
+      // 2. Load Google Analytics (G-F8ZDC6NXGP)
       const gaScript = document.createElement('script');
       gaScript.async = true;
       gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-F8ZDC6NXGP';

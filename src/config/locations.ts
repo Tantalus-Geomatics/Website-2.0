@@ -25,8 +25,11 @@ export interface GeoData {
   lat: number;
   lng: number;
   locality: string;
+  localityName?: string;
   localAuthorityName?: string;
   municipalLink?: string;
+  metaDescription?: string;
+  hubTitle?: string;
 }
 
 export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
@@ -35,21 +38,24 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     lng: -123.1558,
     locality: 'Squamish',
     localAuthorityName: 'District of Squamish',
-    municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
+    municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
+    metaDescription: 'BCLS-certified land surveying in Squamish, BC — boundary surveys, subdivision plans, and strata development tailored to District of Squamish permitting and the Garibaldi Estates corridor.'
   },
   'whistler': {
     lat: 50.1163,
     lng: -122.9574,
     locality: 'Whistler',
     localAuthorityName: 'Resort Municipality of Whistler',
-    municipalLink: 'https://www.whistler.ca/business-development/'
+    municipalLink: 'https://www.whistler.ca/business-development/',
+    metaDescription: 'BCLS-certified land surveying in Whistler, BC — strata conversions, easement plans, and topographic surveys tailored to Resort Municipality of Whistler permitting requirements.'
   },
   'pemberton': {
     lat: 50.3210,
     lng: -122.8050,
     locality: 'Pemberton',
     localAuthorityName: 'Village of Pemberton',
-    municipalLink: 'https://www.pemberton.ca/building-development'
+    municipalLink: 'https://www.pemberton.ca/building-development',
+    metaDescription: 'BCLS-certified land surveying in Pemberton, BC — rural subdivisions, agricultural lot surveys, and Crown land applications tailored to Village of Pemberton requirements.'
   },
   'lillooet': {
     lat: 50.6853,
@@ -90,15 +96,21 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     lat: 49.3237,
     lng: -122.9947,
     locality: 'North Vancouver',
-    localAuthorityName: 'City and District of North Vancouver',
-    municipalLink: 'https://www.dnv.org/business-development'
+    localityName: 'District of North Vancouver',
+    localAuthorityName: 'District of North Vancouver (DNV)',
+    municipalLink: 'https://www.dnv.org/business-development',
+    metaDescription: 'BCLS-certified land surveying in the District of North Vancouver — boundary surveys, subdivision plans, and covenant work tailored to DNV Development Services permitting requirements.',
+    hubTitle: 'District of North Vancouver Land Surveying Hub'
   },
   'city-north-vancouver': {
     lat: 49.3198,
     lng: -123.0724,
     locality: 'North Vancouver',
-    localAuthorityName: 'City and District of North Vancouver',
-    municipalLink: 'https://www.cnv.org/business-development/building'
+    localityName: 'City of North Vancouver',
+    localAuthorityName: 'City of North Vancouver (CNV)',
+    municipalLink: 'https://www.cnv.org/business-development/building',
+    metaDescription: 'BCLS-certified land surveying in the City of North Vancouver — building location surveys, lot consolidations, and strata plans tailored to CNV Community Development permitting requirements.',
+    hubTitle: 'City of North Vancouver Land Surveying Hub'
   },
   'gibsons': {
     lat: 49.4011,
@@ -125,8 +137,13 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     lat: 49.5841,
     lng: -123.2255,
     locality: 'the Sea to Sky',
+    localityName: 'The Sea to Sky',
     localAuthorityName: 'Sea-to-Sky Corridor',
     municipalLink: 'https://www.slrd.bc.ca/planning-development-services'
   }
 };
 
+export function getLocationDisplayName(locationSlug: ValidLocation): string {
+  const geoData = LOCATION_GEO_DATA[locationSlug];
+  return geoData.localityName || geoData.locality;
+}

@@ -109,6 +109,7 @@ export default function DynamicLocationService() {
         <SEO
           title={data.meta.title || ''}
           description={data.meta.description || ''}
+          canonicalUrl={`https://www.tantalusgeomatics.com/${locationSlug}/services/${serviceSlug}/`}
           schema={localizedSchema}
         />
       )}

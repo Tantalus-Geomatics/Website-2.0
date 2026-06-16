@@ -432,11 +432,11 @@ export default function Layout() {
         </div>
 
         {/* Full-width Map Container */}
-        <div className="w-full relative left-0 right-0 z-0 mb-12">
-          <div className="w-full overflow-hidden relative z-0">
+        <div className="w-full relative left-0 right-0 z-0 mb-12" style={{ width: '100%', height: '600px' }}>
+          <div className="w-full h-full overflow-hidden relative z-0">
             <ClientOnly 
               fallback={
-                <div className="w-full h-full min-h-[600px] bg-brand-dark/50 animate-pulse flex flex-col items-center justify-center gap-4">
+                <div className="w-full h-[600px] bg-brand-dark/50 animate-pulse flex flex-col items-center justify-center gap-4">
                   <MapPin size={32} className="text-brand-green/50 animate-bounce" />
                   <span className="text-white/50 font-light tracking-wide">Loading Interactive Map...</span>
                 </div>

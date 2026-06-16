@@ -20,7 +20,6 @@ const TopographicSurveys = lazy(() => import('./pages/TopographicSurveys'));
 const PropertyLineStaking = lazy(() => import('./pages/PropertyLineStaking'));
 const SurveyTitleInsurance = lazy(() => import('./pages/SurveyTitleInsurance'));
 const Subdivision = lazy(() => import('./pages/Subdivision'));
-const DynamicService = lazy(() => import('./pages/DynamicService'));
 const DynamicInsight = lazy(() => import('./pages/DynamicInsight'));
 const DynamicProject = lazy(() => import('./pages/DynamicProject'));
 const DynamicLocationService = lazy(() => import('./pages/DynamicLocationService'));
@@ -57,6 +56,11 @@ function ScrollToTop() {
   return null;
 }
 
+function NavigateToSeaToSky() {
+  const { serviceSlug } = useParams<{ serviceSlug: string }>();
+  return <Navigate to={`/the-sea-to-sky/services/${serviceSlug}/`} replace />;
+}
+
 export default function App() {
   return (
     <>
@@ -80,7 +84,7 @@ export default function App() {
           <Route path="sea-to-sky-property-line-and-boundary-staking" element={<PropertyLineStaking />} />
           <Route path="surveys-and-title-insurance" element={<SurveyTitleInsurance />} />
           <Route path="subdivision" element={<Subdivision />} />
-          <Route path="services/:serviceSlug" element={<DynamicService />} />
+          <Route path="services/:serviceSlug" element={<NavigateToSeaToSky />} />
           <Route path="insights/:postSlug" element={<DynamicInsight />} />
           <Route path="projects/:projectSlug" element={<DynamicProject />} />
 

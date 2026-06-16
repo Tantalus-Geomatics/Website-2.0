@@ -1,4 +1,8 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
+import { createPortal } from 'react-dom';
+
+const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://www.tantalusgeomatics.com').replace(/\/$/, '');
+const DEFAULT_OG_IMAGE = 'https://tantalusgeomatics.com/images/Squamish-Garibaldi-Estates-Property-Survey.webp';
 
 interface SEOProps {
   title: string;
@@ -9,82 +13,96 @@ interface SEOProps {
   ogType?: string;
 }
 
-export default function SEO({ title, description, canonicalUrl, schema, ogImage, ogType }: SEOProps) {
-  useEffect(() => {
-    // 1. Clean and sanitize the title string (strip HTML/JSX markup)
-    const cleanTitle = title.replace(/<[^>]+>/g, '').trim();
+function computeFinalTitle(title: string): string {
+  const cleanTitle = title.replace(/<[^>]+>/g, '').trim();
+  const suffixRegex = /\s*\|\s*(Tantalus Geomatics Land Surveying|Tantalus Geomatics|Tantalus|Project Case Study\s*\|\s*Tantalus Geomatics)$/i;
 
-    // 2. Check if there is a legacy suffix or any branding suffix
-    const suffixRegex = /\s*\|\s*(Tantalus Geomatics Land Surveying|Tantalus Geomatics|Tantalus|Project Case Study\s*\|\s*Tantalus Geomatics)$/i;
-    
-    let finalTitle = cleanTitle;
-    if (suffixRegex.test(cleanTitle)) {
-      const baseTitle = cleanTitle.replace(suffixRegex, '').trim();
-      if (baseTitle.length > 38) {
-        let displayTitle = baseTitle;
-        if (baseTitle.length > 48) {
-          displayTitle = baseTitle.substring(0, 45) + '...';
-        }
-        finalTitle = `${displayTitle} | Tantalus`;
-      } else {
-        finalTitle = `${baseTitle} | Tantalus Geomatics`;
+  if (suffixRegex.test(cleanTitle)) {
+    const baseTitle = cleanTitle.replace(suffixRegex, '').trim();
+    if (baseTitle.length > 38) {
+      let displayTitle = baseTitle;
+      if (baseTitle.length > 48) {
+        displayTitle = baseTitle.substring(0, 45) + '...';
       }
-    } else {
-      // If no branding suffix, just ensure the clean title is under 60 characters
-      if (cleanTitle.length > 60) {
-        finalTitle = cleanTitle.substring(0, 57) + '...';
-      }
+      return `${displayTitle} | Tantalus`;
     }
+    return `${baseTitle} | Tantalus Geomatics`;
+  }
 
-    // Update Title (This native API automatically overwrites, never duplicates)
+  if (cleanTitle.length > 60) {
+    return cleanTitle.substring(0, 57) + '...';
+  }
+  return cleanTitle;
+}
+
+function computeFinalDescription(description: string): string {
+  const locationPattern = /Professional land surveying, topographic mapping, and legal boundary definition services in ([^,]+), British Columbia\./i;
+  const match = description.match(locationPattern);
+  if (match) {
+    const locationName = match[1];
+    return `BCLS-certified land surveying, topographic mapping, and legal boundary definition in ${locationName}, BC. Tailored to local municipal requirements.`;
+  }
+
+  if (description.length <= 155) {
+    return description;
+  }
+
+  const sentences = description.split(/(?<=[.!?])\s+/);
+  let currentDesc = '';
+  for (const sentence of sentences) {
+    if ((currentDesc + (currentDesc ? ' ' : '') + sentence).length <= 155) {
+      currentDesc += (currentDesc ? ' ' : '') + sentence;
+    } else {
+      break;
+    }
+  }
+
+  if (currentDesc) {
+    return currentDesc;
+  }
+
+  return description.substring(0, 152) + '...';
+}
+
+function computeFinalUrl(canonicalUrl?: string): string {
+  if (!canonicalUrl) {
+    if (typeof window !== 'undefined') {
+      return `${SITE_URL}${window.location.pathname}${window.location.search}`;
+    }
+    return SITE_URL;
+  }
+
+  if (canonicalUrl.startsWith('/')) {
+    return `${SITE_URL}${canonicalUrl}`;
+  }
+
+  if (canonicalUrl.includes('localhost:3000')) {
+    return canonicalUrl.replace(/https?:\/\/localhost:3000/g, SITE_URL);
+  }
+
+  return canonicalUrl;
+}
+
+function setMetaTag(attrName: 'name' | 'property', attrValue: string, content: string) {
+  let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
+  if (!element) {
+    element = document.createElement('meta');
+    element.setAttribute(attrName, attrValue);
+    document.head.appendChild(element);
+  }
+  element.setAttribute('content', content);
+}
+
+export default function SEO({ title, description, canonicalUrl, schema, ogImage, ogType }: SEOProps) {
+  const finalTitle = computeFinalTitle(title);
+  const finalDescription = computeFinalDescription(description);
+  const finalUrl = computeFinalUrl(canonicalUrl);
+  const finalImage = ogImage || DEFAULT_OG_IMAGE;
+
+  useLayoutEffect(() => {
     document.title = finalTitle;
 
-    // Intercept and compress regional/location landing page descriptions
-    let finalDescription = description;
-    const locationPattern = /Professional land surveying, topographic mapping, and legal boundary definition services in ([^,]+), British Columbia\./i;
-    const match = description.match(locationPattern);
-    if (match) {
-      const locationName = match[1];
-      finalDescription = `BCLS-certified land surveying, topographic mapping, and legal boundary definition in ${locationName}, BC. Tailored to local municipal requirements.`;
-    } else if (finalDescription.length > 155) {
-      // Smart shortener: try to split by sentences and take what fits
-      const sentences = finalDescription.split(/(?<=[.!?])\s+/);
-      let currentDesc = '';
-      for (const sentence of sentences) {
-        if ((currentDesc + (currentDesc ? ' ' : '') + sentence).length <= 155) {
-          currentDesc += (currentDesc ? ' ' : '') + sentence;
-        } else {
-          break;
-        }
-      }
-      if (currentDesc) {
-        finalDescription = currentDesc;
-      } else {
-        // Fallback to simple truncation if even the first sentence is too long
-        finalDescription = finalDescription.substring(0, 152) + '...';
-      }
-    }
-
-    // 3. Update or Create Meta Description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', finalDescription);
-
-    // 4. Update or Create Canonical URL
-    const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://www.tantalusgeomatics.com').replace(/\/$/, '');
-    let finalUrl = canonicalUrl || '';
-    if (!finalUrl) {
-      const path = typeof window !== 'undefined' ? window.location.pathname + window.location.search : '';
-      finalUrl = `${siteUrl}${path}`;
-    } else if (finalUrl.startsWith('/')) {
-      finalUrl = `${siteUrl}${finalUrl}`;
-    } else if (finalUrl.includes('localhost:3000')) {
-      finalUrl = finalUrl.replace(/https?:\/\/localhost:3000/g, siteUrl);
-    }
+    setMetaTag('name', 'description', finalDescription);
 
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
@@ -94,44 +112,32 @@ export default function SEO({ title, description, canonicalUrl, schema, ogImage,
     }
     canonical.setAttribute('href', finalUrl);
 
-    // Helper to update or create meta tags (Open Graph & Twitter)
-    const setMetaTag = (attrName: 'name' | 'property', attrValue: string, content: string) => {
-      let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
-      if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute(attrName, attrValue);
-        document.head.appendChild(element);
-      }
-      element.setAttribute('content', content);
-    };
-
-    // 5. Inject Open Graph Meta Tags
-    const defaultImage = 'https://tantalusgeomatics.com/images/Squamish-Garibaldi-Estates-Property-Survey.webp';
-    const finalImage = ogImage || defaultImage;
-
     setMetaTag('property', 'og:title', finalTitle);
     setMetaTag('property', 'og:description', finalDescription);
     setMetaTag('property', 'og:url', finalUrl);
     setMetaTag('property', 'og:image', finalImage);
     setMetaTag('property', 'og:type', ogType || 'website');
-
-    // 6. Inject X (Twitter) Card Meta Tags
     setMetaTag('name', 'twitter:card', 'summary_large_image');
     setMetaTag('name', 'twitter:title', finalTitle);
     setMetaTag('name', 'twitter:description', finalDescription);
     setMetaTag('name', 'twitter:image', finalImage);
+  }, [finalTitle, finalDescription, finalUrl, finalImage, ogType]);
 
-  }, [title, description, canonicalUrl, ogImage, ogType]);
+  const schemaScript = schema ? (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  ) : null;
 
-  return (
-    <>
-      {/* Inject Schema.org JSON-LD directly into the DOM */}
-      {schema && (
-        <script 
-          type="application/ld+json" 
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} 
-        />
-      )}
-    </>
-  );
+  if (typeof document === 'undefined') {
+    return schemaScript;
+  }
+
+  const seoRoot = document.getElementById('seo-root');
+  if (seoRoot && schemaScript) {
+    return createPortal(schemaScript, seoRoot);
+  }
+
+  return schemaScript;
 }

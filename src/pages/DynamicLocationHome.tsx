@@ -1,11 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import HubTemplate, { HubService } from '../templates/HubTemplate';
-import { isValidLocation, LOCATION_GEO_DATA } from '../config/locations';
+import { isValidLocation, LOCATION_GEO_DATA, getLocationDisplayName, type ValidLocation } from '../config/locations';
 import { LOCATION_IMAGES_MAP } from '../config/resourceMapping';
 import PageShell from '../components/PageShell';
+import SEO from '../components/SEO';
 
 const localizedModules = import.meta.glob('../content/services/*/*.mdx');
+const SITE_URL = 'https://www.tantalusgeomatics.com';
+
+function buildHubMeta(locationSlug: ValidLocation) {
+  const geoData = LOCATION_GEO_DATA[locationSlug];
+  const displayName = getLocationDisplayName(locationSlug);
+  const hubTitle = geoData.hubTitle || `${displayName} Land Surveying Hub`;
+  const metaDescription = geoData.metaDescription
+    || `BCLS-certified land surveying in ${displayName}, BC — boundary surveys, topographic mapping, and legal plans tailored to ${geoData.localAuthorityName || 'local authority'} permitting requirements.`;
+
+  return {
+    geoData,
+    displayName,
+    hubTitle,
+    metaDescription,
+    canonicalUrl: `${SITE_URL}/${locationSlug}/`,
+  };
+}
 
 export default function DynamicLocationHome() {
   const { locationSlug } = useParams<{ locationSlug: string }>();
@@ -21,8 +39,7 @@ export default function DynamicLocationHome() {
     const loadServices = async () => {
       setLoading(true);
       const loadedServices: HubService[] = [];
-      
-      // Filter modules that belong to this location
+
       const prefix = `../content/services/${locationSlug}/`;
       const matchingKeys = Object.keys(localizedModules).filter(key => key.startsWith(prefix));
 
@@ -31,7 +48,7 @@ export default function DynamicLocationHome() {
           const mod = await (localizedModules[key] as () => Promise<any>)();
           const meta = mod.frontmatter || mod.metadata || {};
           const serviceSlug = key.replace(prefix, '').replace(/\.mdx$/, '');
-          
+
           loadedServices.push({
             title: meta.title || serviceSlug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
             href: `/${locationSlug}/services/${serviceSlug}/`,
@@ -42,7 +59,6 @@ export default function DynamicLocationHome() {
         }
       }
 
-      // Sort services alphabetically by title
       loadedServices.sort((a, b) => a.title.localeCompare(b.title));
       setServices(loadedServices);
       setLoading(false);
@@ -65,9 +81,19 @@ export default function DynamicLocationHome() {
     );
   }
 
+  const { geoData, displayName, hubTitle, metaDescription, canonicalUrl } = buildHubMeta(locationSlug);
+  const localAuthorityName = geoData.localAuthorityName;
+  const municipalLink = geoData.municipalLink;
+  const locationImages = LOCATION_IMAGES_MAP[locationSlug] || [];
+
   if (loading) {
     return (
       <PageShell>
+        <SEO
+          title={`${hubTitle} | Tantalus Geomatics Land Surveying`}
+          description={metaDescription}
+          canonicalUrl={canonicalUrl}
+        />
         <div className="min-h-screen flex items-center justify-center text-white bg-brand-black">
           <div className="animate-pulse text-brand-green text-xl">Loading location hub...</div>
         </div>
@@ -75,39 +101,20 @@ export default function DynamicLocationHome() {
     );
   }
 
-  const geoData = LOCATION_GEO_DATA[locationSlug];
-  const localityName = geoData.locality;
-  const localAuthorityName = geoData.localAuthorityName;
-  const municipalLink = geoData.municipalLink;
-  const locationImages = LOCATION_IMAGES_MAP[locationSlug] || [];
-
-  // Determine the city-specific meta description
-  let customDescription = '';
-  if (locationSlug === 'squamish') {
-    customDescription = "BCLS-certified land surveying in Squamish, BC — boundary surveys, subdivision plans, and strata development tailored to District of Squamish permitting and the Garibaldi Estates corridor.";
-  } else if (locationSlug === 'whistler') {
-    customDescription = "BCLS-certified land surveying in Whistler, BC — strata conversions, easement plans, and topographic surveys tailored to Resort Municipality of Whistler permitting requirements.";
-  } else if (locationSlug === 'city-north-vancouver' || locationSlug === 'district-north-vancouver') {
-    customDescription = "BCLS-certified land surveying in North Vancouver, BC — building location surveys, covenant plans, and lot consolidations tailored to DNV and CNV permit applications.";
-  } else if (locationSlug === 'pemberton') {
-    customDescription = "BCLS-certified land surveying in Pemberton, BC — rural subdivisions, agricultural lot surveys, and Crown land applications tailored to Village of Pemberton requirements.";
-  } else {
-    customDescription = `BCLS-certified land surveying in ${localityName}, BC — boundary surveys, topographic mapping, and legal plans tailored to ${localAuthorityName || 'local authority'} permitting requirements.`;
-  }
-
   return (
     <HubTemplate
-      title={`${localityName} Land Surveying Hub`}
-      description={customDescription}
+      title={hubTitle}
+      description={metaDescription}
+      canonicalUrl={canonicalUrl}
       relatedServices={services}
-      locationName={localityName}
+      locationName={displayName}
       localAuthorityName={localAuthorityName}
       municipalLink={municipalLink}
       locationImages={locationImages}
     >
-      <h2>Professional Land Surveying in {localityName}, BC</h2>
+      <h2>Professional Land Surveying in {displayName}, BC</h2>
       <p>
-        Tantalus Geomatics provides comprehensive land surveying and geomatics services across {localityName} and the surrounding region. Our team of British Columbia Land Surveyors (BCLS) and Professional Engineers (P.Eng.) combines deep local knowledge with state-of-the-art technology to deliver highly accurate, certified plans that streamline your municipal permit approvals and protect your property investments.
+        Tantalus Geomatics provides comprehensive land surveying and geomatics services across {displayName} and the surrounding region. Our team of British Columbia Land Surveyors (BCLS) and Professional Engineers (P.Eng.) combines deep local knowledge with state-of-the-art technology to deliver highly accurate, certified plans that streamline your municipal permit approvals and protect your property investments.
       </p>
       <p>
         Whether you are planning a residential build, a commercial development, or a complex subdivision, we work closely with local architects, builders, and municipal planning staff to ensure full compliance with local zoning bylaws and development guidelines.

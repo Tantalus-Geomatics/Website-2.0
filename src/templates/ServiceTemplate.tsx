@@ -146,6 +146,10 @@ function getDeterministicImages(serviceName: string, pool: LocalImage[]): LocalI
   return clone.slice(0, 6);
 }
 
+function formatLocalExpertise(locationName: string): string {
+  return locationName.replace(/^the\s+/i, '').trim();
+}
+
 function highlightLocation(text: string, locationName?: string): ReactNode {
   if (!text) return text;
   const targetLocation = locationName || 'the Sea to Sky';
@@ -268,11 +272,18 @@ export default function ServiceTemplate({
     "areaServed": locationName || "Sea to Sky Corridor"
   };
 
+  const canonicalUrl = serviceSlug
+    ? locationSlug
+      ? `https://www.tantalusgeomatics.com/${locationSlug}/services/${serviceSlug}/`
+      : `https://www.tantalusgeomatics.com/the-sea-to-sky/services/${serviceSlug}/`
+    : undefined;
+
   return (
     <PageShell>
       <SEO
         title={`${cleanTitle} | Tantalus Geomatics Land Surveying`}
         description={cleanDescription}
+        canonicalUrl={canonicalUrl}
         schema={serviceSchema}
       />
 
@@ -288,6 +299,7 @@ export default function ServiceTemplate({
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
             fetchPriority="high"
+            loading="eager"
           />
         </div>
 
@@ -341,7 +353,7 @@ export default function ServiceTemplate({
           <div className="mt-16 p-8 bg-stone-100 border-l-4 border-brand-green rounded-r-2xl shadow-sm">
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Why Choose Tantalus Geomatics?</h3>
             <p className="text-slate-700 text-lg font-light leading-relaxed">
-              Our team combines {locationName ? `local ${locationName.toLowerCase().startsWith('the ') ? locationName.slice(4) : locationName} expertise` : 'expertise in the Sea to Sky'} with state-of-the-art surveying technology. We deliver highly accurate, BCLS-certified plans that streamline your municipal permit approvals and protect your property investments.
+              Our team combines {locationName ? `local ${formatLocalExpertise(locationName)} expertise` : 'local Sea to Sky expertise'} with state-of-the-art surveying technology. We deliver highly accurate, BCLS-certified plans that streamline your municipal permit approvals and protect your property investments.
             </p>
           </div>
         </div>
