@@ -26,7 +26,8 @@ const serviceAreaPaths = [
 
 // Specific coordinates for the location pins
 const serviceLocations = [
-  { name: "North Vancouver", lat: 49.3199, lng: -123.0724, slug: "north-vancouver" },
+  { name: "District of North Vancouver", lat: 49.3237, lng: -122.9947, slug: "district-north-vancouver" },
+  { name: "City of North Vancouver", lat: 49.3198, lng: -123.0724, slug: "city-north-vancouver" },
   { name: "West Vancouver", lat: 49.3286, lng: -123.1602, slug: "west-vancouver" },
   { name: "Bowen Island", lat: 49.3783, lng: -123.3286, slug: "bowen-island" },
   { name: "Gibsons", lat: 49.4011, lng: -123.5113, slug: "gibsons" },
@@ -37,7 +38,8 @@ const serviceLocations = [
   { name: "Powell River", lat: 49.8352, lng: -124.5247, slug: "powell-river" },
   { name: "Whistler", lat: 50.1163, lng: -122.9574, slug: "whistler" },
   { name: "Pemberton", lat: 50.3162, lng: -122.8027, slug: "pemberton" },
-  { name: "Lillooet", lat: 50.6861, lng: -121.9365, slug: "lillooet" }
+  { name: "Lillooet", lat: 50.6861, lng: -121.9365, slug: "lillooet" },
+  { name: "The Sea to Sky", lat: 49.5841, lng: -123.2255, slug: "the-sea-to-sky" }
 ];
 
 // Custom smaller pin using inline SVG to reduce overlap

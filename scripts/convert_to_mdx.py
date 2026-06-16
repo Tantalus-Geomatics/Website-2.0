@@ -328,6 +328,11 @@ export default ({{ children }}) => (
 {body}
 """
             with open(output_path, 'w', encoding='utf-8') as out_f:
+                # Normalize any "the the" (case-insensitive) to a single "the" (preserving the case of the first one)
+                previous_template = None
+                while previous_template != mdx_template:
+                    previous_template = mdx_template
+                    mdx_template = re.sub(r'\b(the)\s+the\b', r'\1', mdx_template, flags=re.IGNORECASE)
                 out_f.write(mdx_template)
                 
             print(f"SUCCESS Compiled: {file_name} -> {output_file_name}")
