@@ -149,7 +149,9 @@ function getDeterministicImages(serviceName: string, pool: LocalImage[]): LocalI
 function highlightLocation(text: string, locationName?: string): ReactNode {
   if (!text) return text;
   const targetLocation = locationName || 'the Sea to Sky';
-  const cleanedText = text.replace(/\bSea To Sky\b/gi, 'the Sea to Sky');
+  const cleanedText = text
+    .replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky')
+    .replace(/\bthe\s+the\b/gi, 'the');
   const parts = cleanedText.split(new RegExp(`(${targetLocation})`, 'gi'));
   return (
     <>
@@ -251,8 +253,8 @@ export default function ServiceTemplate({
 
   const galleryImages = getDeterministicImages(derivedServiceName, uniqueCombinedPool);
 
-  const cleanTitle = title.replace(/\bSea To Sky\b/gi, 'the Sea to Sky');
-  const cleanDescription = description.replace(/\bSea To Sky\b/gi, 'the Sea to Sky');
+  const cleanTitle = title.replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky').replace(/\bthe\s+the\b/gi, 'the');
+  const cleanDescription = description.replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky').replace(/\bthe\s+the\b/gi, 'the');
 
   const serviceSchema = {
     "@context": "https://schema.org",
