@@ -227,3 +227,34 @@ A fourth SEO and performance audit pass addressed LCP hero loading, location hub
 - **`index.html`**: Added `<div id="seo-root">` mount point in `<head>` for JSON-LD injection.
 - **`src/components/SEO.tsx`**: Refactored from deferred `useEffect` to synchronous `useLayoutEffect` for title, canonical, and Open Graph tags (captured during Puppeteer prerender). JSON-LD schema renders at React render-time via portal into `#seo-root`.
 - **`src/pages/DynamicLocationService.tsx`**: Passes explicit production `canonicalUrl` to `<SEO>`.
+
+---
+
+## 7. SEO Fixes v5 + Social Links
+
+A fifth SEO/GEO audit pass fixed Sea to Sky metadata duplication, hub page copy, grammar in shared service content, JSON-LD head injection, and footer social links.
+
+### Sea to Sky metadata (Tasks 1–2)
+- **`src/config/locations.ts`**: Set `locality: "Sea to Sky"` (no article) for metadata/schema sentence templates; kept `localityName: "The Sea to Sky"` for hub display; added `hubTitle: "The Sea to Sky Land Surveying Hub"`; added `getServiceLocationName()` helper for mid-sentence H1 labels (`"the Sea to Sky"`).
+- **`scripts/generate-localized-content.js`**: Split `LOCATION_NAME` (`"Sea to Sky"`) from `SERVICE_LOCATION_NAME` (`"the Sea to Sky"`) for the `the-sea-to-sky` slug; post-processes titles/descriptions to `"in the Sea to Sky"`; schema descriptions use `the ${locality}` pattern once.
+- **`src/templates/ServiceTemplate.tsx`**: Strips HTML from title before Sea-to-Sky normalization so `<title>`, og tags, and hero alt avoid duplicate `"the"`.
+- **`src/content/services/the-sea-to-sky/*.mdx`**: Updated embedded schema `addressLocality` and organization name to `"Sea to Sky"` (30 service pages).
+
+### Location hub SEO (Tasks 3–4, 6, 8)
+- **`src/pages/DynamicLocationHome.tsx`**: Verified production `canonicalUrl` for all hubs during loading and loaded states (no per-slug conditional); uses `hubTitle`, `metaDescription`, and `getLocationDisplayName()` — DNV/CNV/Squamish/Whistler differentiated copy already wired.
+- **`src/templates/HubTemplate.tsx`**: Services subheading now uses `locationName` (e.g. `"tailored to Squamish."`) instead of lowercased hub title slug text; hero `alt` uses `hubTitle` for capitalized `"The Sea to Sky Land Surveying Hub"`.
+
+### Content & FAQ (Tasks 5, 7)
+- **`src/content/base/services/*.mdx`** and **`src/content/base/services/text_files/*.txt`**: Fixed `"an professional arsenal"` → `"a professional arsenal"` at source (4 MDX + 4 text templates).
+- **`src/content/services/**/*.mdx`**: Bulk-applied the same grammar fix across all localized service pages (~56 files).
+- **`src/pages/FAQ.tsx`**: Verified v4 meta description already matches audit copy (no edit required).
+
+### Performance (Tasks 9–10)
+- **`index.html`**: Verified hero image `<link rel="preload">` and GTM `async` snippet already present; added non-empty `#seo-root` anchor comment.
+- **`src/templates/HubTemplate.tsx`**, **`src/pages/Home.tsx`**, **`src/components/Layout.tsx`**: Verified `fetchPriority="high"` / `loading="eager"` on hero images and fixed `600px` map container height already in place.
+
+### Server-rendered schema (Task 11)
+- **`src/components/SEO.tsx`**: JSON-LD schema portals into `#seo-root` (fallback: `document.head`) at render time so Puppeteer captures `<script type="application/ld+json">` in prerendered HTML.
+
+### Footer social links (Task 12)
+- **`src/components/Layout.tsx`**: Added Instagram, Facebook, and WhatsApp (`MessageCircle`) icon links after GitHub, matching existing LinkedIn/GitHub styling and `rel="noopener noreferrer"`.

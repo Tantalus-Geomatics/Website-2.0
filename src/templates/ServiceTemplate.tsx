@@ -257,7 +257,7 @@ export default function ServiceTemplate({
 
   const galleryImages = getDeterministicImages(derivedServiceName, uniqueCombinedPool);
 
-  const cleanTitle = title.replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky').replace(/\bthe\s+the\b/gi, 'the');
+  const cleanTitle = title.replace(/<[^>]+>/g, '').replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky').replace(/\bthe\s+the\b/gi, 'the');
   const cleanDescription = description.replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky').replace(/\bthe\s+the\b/gi, 'the');
 
   const serviceSchema = {

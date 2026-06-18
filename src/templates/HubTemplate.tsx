@@ -155,7 +155,7 @@ export default function HubTemplate({
         <div className="absolute inset-0 z-0">
           <img
             src={heroSrc}
-            alt={`${locationName} Land Surveying`}
+            alt={title}
             width={1200}
             height={800}
             fetchPriority="high"
@@ -210,7 +210,7 @@ export default function HubTemplate({
                 Services
               </h2>
               <p className="text-slate-600 font-light max-w-2xl mx-auto">
-                Explore our professional surveying services tailored to {title.toLowerCase()}.
+                Explore our professional surveying services tailored to {locationName}.
               </p>
             </div>
 

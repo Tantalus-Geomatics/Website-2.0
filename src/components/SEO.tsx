@@ -134,10 +134,10 @@ export default function SEO({ title, description, canonicalUrl, schema, ogImage,
     return schemaScript;
   }
 
-  const seoRoot = document.getElementById('seo-root');
-  if (seoRoot && schemaScript) {
-    return createPortal(schemaScript, seoRoot);
+  const headTarget = document.getElementById('seo-root') || document.head;
+  if (schemaScript) {
+    return createPortal(schemaScript, headTarget);
   }
 
-  return schemaScript;
+  return null;
 }

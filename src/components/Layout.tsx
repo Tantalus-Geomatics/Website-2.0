@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { MapPin, Menu, X, Mountain, Mail, Phone, Linkedin, Github } from 'lucide-react';
+import { MapPin, Menu, X, Mountain, Mail, Phone, Linkedin, Github, Instagram, Facebook, MessageCircle } from 'lucide-react';
 import { GoogleMap, LoadScript, Polygon, MarkerF } from '@react-google-maps/api';
 import ClientOnly from '../components/ClientOnly'; // <-- Add this import
 import AuthorBio from './AuthorBio';
@@ -399,6 +399,15 @@ export default function Layout() {
                 </a>
                 <a href="https://github.com/Tantalus-Geomatics" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
                   <Github className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                </a>
+                <a href="https://www.instagram.com/tantalus_geomatics" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on Instagram">
+                  <Instagram className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61591192851840" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on Facebook">
+                  <Facebook className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                </a>
+                <a href="https://wa.me/16042139934" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on WhatsApp">
+                  <MessageCircle className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
                 </a>
               </div>
             </div>

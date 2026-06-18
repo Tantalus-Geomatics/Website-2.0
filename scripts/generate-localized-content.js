@@ -321,7 +321,8 @@ const LOCATION_MAPPING = {
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Sunshine Coast. We work closely with local architects, engineers, and municipal planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
   },
   'the-sea-to-sky': {
-    LOCATION_NAME: 'the Sea to Sky',
+    LOCATION_NAME: 'Sea to Sky',
+    SERVICE_LOCATION_NAME: 'the Sea to Sky',
     LOCAL_AUTHORITY: 'Squamish-Lillooet Regional District',
     MUNICIPAL_LINK: 'https://www.slrd.bc.ca/planning-development-services',
     HERO_IMAGE: '/images/sea-to-sky.webp',
@@ -407,16 +408,17 @@ baseTemplates.forEach(templateFile => {
       : "/images/Squamish-Garibaldi-Estates-Property-Survey.webp";
 
     const cleanServiceName = getCleanServiceName(serviceSlug);
-    const dynamicAlt = `BC Land Surveyor conducting ${cleanServiceName} in ${locationData.LOCATION_NAME}, BC`;
+    const serviceLocationName = locationData.SERVICE_LOCATION_NAME || locationData.LOCATION_NAME;
+    const dynamicAlt = `BC Land Surveyor conducting ${cleanServiceName} in ${serviceLocationName}, BC`;
 
     const dynamicServiceImages = serviceImages.map(img => ({
       ...img,
-      alt: `BC Land Surveyor conducting ${cleanServiceName} in ${locationData.LOCATION_NAME}, BC`
+      alt: `BC Land Surveyor conducting ${cleanServiceName} in ${serviceLocationName}, BC`
     }));
 
     const dynamicLocationImages = locationImages.map(img => ({
       ...img,
-      alt: `BC Land Surveyor conducting ${cleanServiceName} in ${locationData.LOCATION_NAME}, BC`
+      alt: `BC Land Surveyor conducting ${cleanServiceName} in ${serviceLocationName}, BC`
     }));
 
     const data = {
@@ -436,11 +438,22 @@ baseTemplates.forEach(templateFile => {
       localizedContent = localizedContent.replace(placeholder, value);
     });
 
+    if (locationData.SERVICE_LOCATION_NAME) {
+      localizedContent = localizedContent.replace(
+        /locationName: 'Sea to Sky'/g,
+        `locationName: '${locationData.SERVICE_LOCATION_NAME}'`
+      );
+      localizedContent = localizedContent.replace(/\bin Sea to Sky\b/g, 'in the Sea to Sky');
+    }
+
     // Inject inline service image if available
-    localizedContent = injectServiceImage(localizedContent, serviceSlug, locationData.LOCATION_NAME);
+    localizedContent = injectServiceImage(localizedContent, serviceSlug, serviceLocationName);
 
     // Construct localized schema
     const geoData = LOCATION_GEO_DATA[locationSlug];
+    const schemaRegionLabel = locationSlug === 'the-sea-to-sky'
+      ? `the ${geoData?.locality || locationData.LOCATION_NAME}`
+      : geoData?.locality || locationData.LOCATION_NAME;
     
     // Normalize image paths to absolute URLs as required strictly by schema protocol engines
     const absoluteSchemaImage = computedHeroImage.startsWith('http')
@@ -451,7 +464,7 @@ baseTemplates.forEach(templateFile => {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": `Tantalus Geomatics Land Surveying - ${geoData.locality}`,
-      "description": `Professional ${cleanServiceName} and geomatics services in ${geoData.locality}, BC.`,
+      "description": `Professional ${cleanServiceName} and geomatics services in ${schemaRegionLabel}, BC.`,
       "url": `https://www.tantalusgeomatics.com/${locationSlug}/services/${serviceSlug}/`,
       "telephone": "+16042139934",
       "priceRange": "$$",
@@ -470,7 +483,7 @@ baseTemplates.forEach(templateFile => {
       "hasService": {
         "@type": "Service",
         "name": cleanServiceName,
-        "description": `Professional ${cleanServiceName} in ${geoData.locality}, BC.`,
+        "description": `Professional ${cleanServiceName} in ${schemaRegionLabel}, BC.`,
         "provider": {
           "@type": "LocalBusiness",
           "@id": "https://tantalusgeomatics.com/#organization"

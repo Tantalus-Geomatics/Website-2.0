@@ -136,14 +136,24 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
   'the-sea-to-sky': {
     lat: 49.5841,
     lng: -123.2255,
-    locality: 'the Sea to Sky',
+    locality: 'Sea to Sky',
     localityName: 'The Sea to Sky',
     localAuthorityName: 'Sea-to-Sky Corridor',
-    municipalLink: 'https://www.slrd.bc.ca/planning-development-services'
+    municipalLink: 'https://www.slrd.bc.ca/planning-development-services',
+    hubTitle: 'The Sea to Sky Land Surveying Hub'
   }
 };
 
 export function getLocationDisplayName(locationSlug: ValidLocation): string {
+  const geoData = LOCATION_GEO_DATA[locationSlug];
+  return geoData.localityName || geoData.locality;
+}
+
+/** Mid-sentence location label for service page H1/body (e.g. "the Sea to Sky"). */
+export function getServiceLocationName(locationSlug: ValidLocation): string {
+  if (locationSlug === 'the-sea-to-sky') {
+    return 'the Sea to Sky';
+  }
   const geoData = LOCATION_GEO_DATA[locationSlug];
   return geoData.localityName || geoData.locality;
 }
