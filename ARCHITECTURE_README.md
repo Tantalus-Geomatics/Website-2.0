@@ -260,3 +260,16 @@ A fifth SEO/GEO audit pass fixed Sea to Sky metadata duplication, hub page copy,
 - **`src/components/Layout.tsx`**: Added Instagram, Facebook, and WhatsApp (`MessageCircle`) icon links after GitHub, matching existing LinkedIn/GitHub styling and `rel="noopener noreferrer"`.
 - **`src/templates/ServiceTemplate.tsx`**: Removed duplicate <h3> heading from deliverables section in `src/templates/ServiceTemplate.tsx`.
 - **`src/content/services/*/natural-boundary-surveys.mdx`**: Fixed FAQ content bleed into deliverables array in `natural-boundary-surveys.mdx` across all location variants.
+
+---
+
+## 8. Natural Boundary Survey FAQ Fix
+
+Removed misplaced FAQ markdown block from deliverables body in natural-boundary-surveys.mdx across all location variants (14 files updated).
+
+### Fix Details
+- **`scripts/convert_to_mdx.py`**: Updated the header pattern regex and the normalization logic to correctly match and parse `FAQ` (without `s`) as the `faqs` section. This prevents the FAQ block from bleeding into the `deliverables` array.
+- **`src/content/base/services/natural-boundary-surveys.mdx`**: Regenerated the base template, removing the misplaced FAQ block from the `deliverables` array and correctly populating the `faqs` array with the 5 natural boundary survey FAQs.
+- **`src/content/services/*/natural-boundary-surveys.mdx`**: Regenerated all 14 location-specific service pages, ensuring they have the correct 4 deliverables and the 5 FAQs correctly structured.
+- **`src/pages/FAQ.tsx`**: Verified that the 5 FAQs are automatically preserved and rendered on the main FAQ page by dynamically importing the `faqs` array from the Squamish service page.
+

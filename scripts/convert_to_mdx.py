@@ -25,7 +25,7 @@ def parse_txt_file(file_path):
 
     # Identify the section headers using regex (robust to match variations in headers)
     header_pattern = re.compile(
-        r'^(#+\s*\*\*?Title\*\*?|#+\s*\*\*?Body\*\*?|#+\s*\*\*?Steps\*\*?|#+\s*\*\*?Deliverables(?:\s+section)?\*\*?|#+\s*\*\*?FAQs(?:\s+section)?\*\*?)', 
+        r'^(#+\s*\*\*?Title\*\*?|#+\s*\*\*?Body\*\*?|#+\s*\*\*?Steps\*\*?|#+\s*\*\*?Deliverables(?:\s+section)?\*\*?|#+\s*\*\*?FAQs?(?:\s+section)?\*\*?)', 
         re.MULTILINE | re.IGNORECASE
     )
     
@@ -47,7 +47,7 @@ def parse_txt_file(file_path):
             section_key = 'steps'
         elif 'deliverables' in raw_key:
             section_key = 'deliverables'
-        elif 'faqs' in raw_key:
+        elif 'faq' in raw_key:
             section_key = 'faqs'
         else:
             section_key = raw_key
