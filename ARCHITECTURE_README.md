@@ -258,3 +258,4 @@ A fifth SEO/GEO audit pass fixed Sea to Sky metadata duplication, hub page copy,
 
 ### Footer social links (Task 12)
 - **`src/components/Layout.tsx`**: Added Instagram, Facebook, and WhatsApp (`MessageCircle`) icon links after GitHub, matching existing LinkedIn/GitHub styling and `rel="noopener noreferrer"`.
+- **`src/templates/ServiceTemplate.tsx`**: Removed duplicate <h3> heading from deliverables section in `src/templates/ServiceTemplate.tsx`.

@@ -18,14 +18,14 @@ export function GeoDirectAnswer({
   align = 'left',
   questionClassName = '',
 }: {
-  question: ReactNode;
+  question?: ReactNode;
   children: ReactNode;
   align?: Align;
   questionClassName?: string;
 }) {
   return (
     <>
-      <h3 className={`${questionBase[align]} ${questionClassName}`.trim()}>{question}</h3>
+      {question && <h3 className={`${questionBase[align]} ${questionClassName}`.trim()}>{question}</h3>}
       {children}
     </>
   );

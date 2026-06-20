@@ -436,7 +436,6 @@ export default function ServiceTemplate({
             </h2>
             <GeoDirectAnswer
               align="center"
-              question="What professional documents and markers do you receive upon project completion?"
               questionClassName="text-white"
             >
               <div className="text-white/70 font-light text-lg max-w-2xl mx-auto">
