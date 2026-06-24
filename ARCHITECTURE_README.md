@@ -273,3 +273,23 @@ Removed misplaced FAQ markdown block from deliverables body in natural-boundary-
 - **`src/content/services/*/natural-boundary-surveys.mdx`**: Regenerated all 14 location-specific service pages, ensuring they have the correct 4 deliverables and the 5 FAQs correctly structured.
 - **`src/pages/FAQ.tsx`**: Verified that the 5 FAQs are automatically preserved and rendered on the main FAQ page by dynamically importing the `faqs` array from the Squamish service page.
 
+---
+
+## 8. Footer Features — YouTube, Review Carousel, Chamber Badge
+
+To enhance social proof, local credibility, and social media presence, three new features were integrated into the global footer.
+
+### YouTube Social Link
+- **File:** [`src/components/Layout.tsx`](src/components/Layout.tsx)
+- **Details:** Added a YouTube icon link to the social links row in the footer left column, following the exact styling and `rel="noopener noreferrer"` pattern of existing social icons.
+
+### Review Carousel
+- **Files:**
+  - [`src/data/reviews.ts`](src/data/reviews.ts): Created a centralized reviews data file with structured seed reviews.
+  - [`src/components/ReviewCarousel.tsx`](src/components/ReviewCarousel.tsx): Built a self-contained, responsive carousel component using only React hooks and `lucide-react` icons. It supports auto-advance, hover-pause, infinite looping, and custom source badges.
+  - [`src/components/Layout.tsx`](src/components/Layout.tsx): Integrated the `ReviewCarousel` at the very top of the footer in its own full-width section with a visual separator.
+
+### Squamish Chamber of Commerce Badge
+- **File:** [`src/components/Layout.tsx`](src/components/Layout.tsx)
+- **Details:** Inserted the official Squamish Chamber of Commerce badge between the contact info and social links row in the left column of the footer, styled to visually match the scale and weight of the ABCLS badge.
+

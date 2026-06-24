@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { MapPin, Menu, X, Mountain, Mail, Phone, Linkedin, Github, Instagram, Facebook, MessageCircle } from 'lucide-react';
+import { MapPin, Menu, X, Mountain, Mail, Phone, Linkedin, Github, Instagram, Facebook, MessageCircle, Youtube } from 'lucide-react';
 import { GoogleMap, LoadScript, Polygon, MarkerF } from '@react-google-maps/api';
 import ClientOnly from '../components/ClientOnly'; // <-- Add this import
 import AuthorBio from './AuthorBio';
+import { ReviewCarousel } from './ReviewCarousel';
 import Breadcrumbs from './Breadcrumbs';
 
 // Converted service area coordinates to Google Maps { lat, lng } format
@@ -340,11 +341,22 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      {/* Global Author Biography Component */}
-      <AuthorBio />
-
       {/* Footer */}
       <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8">
+        <section className="border-b border-white/10 py-10 mb-10">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-lg font-semibold text-white mb-6 text-center">
+              What Our Clients Say
+            </h2>
+            <ReviewCarousel />
+          </div>
+        </section>
+
+        {/* Global Author Biography Component */}
+        <div className="mb-12">
+          <AuthorBio />
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Main Balanced 2-Column Grid */}
@@ -390,6 +402,23 @@ export default function Layout() {
                     <a href="mailto:contact@tantalusgeomatics.com" className="hover:text-white transition-colors">contact@tantalusgeomatics.com</a>
                   </li>
                 </ul>
+
+                {/* Chamber of Commerce Badge */}
+                <a
+                  href="https://www.squamishchamber.com/member/tantalus-geomatics-land-surveying-ltd/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Tantalus Geomatics — Proud Member of the Squamish Chamber of Commerce"
+                  className="inline-block mt-4 mb-2"
+                >
+                  <img
+                    src="/images/SCC7817_ProudMemberSticker_Vertical.webp"
+                    alt="Proud Member — Squamish Chamber of Commerce"
+                    width={80}
+                    height={80}
+                    className="opacity-90 hover:opacity-100 transition-opacity"
+                  />
+                </a>
               </div>
               
               {/* Social Links matching the exact bottom alignment of the right column */}
@@ -408,6 +437,9 @@ export default function Layout() {
                 </a>
                 <a href="https://wa.me/16042139934" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on WhatsApp">
                   <MessageCircle className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+                </a>
+                <a href="https://www.youtube.com/@TantalusGeomaticsLandSurveying" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on YouTube">
+                  <Youtube className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
                 </a>
               </div>
             </div>
