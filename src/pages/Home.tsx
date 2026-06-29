@@ -368,25 +368,25 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 leading-tight">
-               Why Professional Certification Matters in<br className="hidden sm:block" />
+               Why Professional Expertise Matters in<br className="hidden sm:block" />
                 <span className="text-brand-green font-medium">British Columbia</span>
               </h2>
               <GeoDirectAnswer question="Why should you engage a commissioned British Columbia Land Surveyor to protect your property rights?">
                 <div className="text-base sm:text-lg text-slate-700 mb-8 font-light leading-relaxed">
-                  Protect your property rights by engaging a commissioned British Columbia Land Surveyor. This ensures your project meets rigorous technical standards and carries the legal authority necessary for municipal and provincial compliance.
+                  By engaging a commissioned British Columbia Land Surveyor, it ensures your project meets rigorous technical standards and carries the legal authority necessary for municipal and provincial compliance.
                 </div>
               </GeoDirectAnswer>
               <ul className="space-y-6 mb-8">
                 <li className="flex items-start gap-3 text-slate-700 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-slate-900 font-medium">Legal Boundary Authority:</strong> Only a licensed Land Surveyor has the legal authority to define property lines and set permanent boundary markers. Non-licensed individuals are not legally permitted to verify property limits, and their work lacks standing in the event of a boundary dispute or encroachment claim.
+                    <strong className="text-slate-900 font-medium">Legal Boundaries:</strong> Only a licensed Land Surveyor has the legal authority to define property lines and set permanent boundary markers. Non-licensed individuals are not legally permitted to verify property limits, and their work lacks standing in the event of a boundary dispute or an encroachment claim.
                   </div>
                 </li>
                 <li className="flex items-start gap-3 text-slate-700 font-light">
                   <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 shrink-0" />
                   <div>
-                    <strong className="text-slate-900 font-medium">Professional Indemnity & Accountability:</strong> Licensed surveyors are governed by a strict code of professional ethics and carry mandatory professional liability insurance. This oversight provides a layer of protection for your investment that non-licensed service providers cannot offer.
+                    <strong className="text-slate-900 font-medium">Professional Accountability:</strong> Licensed surveyors are governed by a strict code of professional ethics and carry mandatory professional liability insurance. This oversight provides a layer of protection for your investment that non-licensed service providers cannot offer.
                   </div>
                 </li>
                 <li className="flex items-start gap-3 text-slate-700 font-light">

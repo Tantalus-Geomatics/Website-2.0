@@ -26,10 +26,18 @@ export const reviews: Review[] = [
   },
   {
     id: 3,
-    author: "Shady Acres",
+    author: "Angela Muellers",
     rating: 5,
     date: "June 2026",
-    body: "Dennis was excellent to work with. I recommend him.",
+    body: "Tantalus Geomatics exceeded my expectations. Dennis came out to my common property to clear up a boundary issue, instead of quoting a price sight unseen. In the end, his visit cost much less than what was quoted from another local company.",
+    source: "google",
+  },
+  {
+    id: 4,
+    author: "D.T",
+    rating: 5,
+    date: "March 2026",
+    body: "If you need quality surveying look no further. The owner was very helpful and quick to respond when we were buying our house and had issues with the sellers previous survey work. He quickly and professionally resolved the issues we were having and made the process painless. Would 10 out of 10 recommend, highly professional and knowledgeable. 5 stars for sure.",
     source: "google",
   },
 ];

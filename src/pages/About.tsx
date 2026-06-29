@@ -149,9 +149,9 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <h2 className="text-3xl font-light text-slate-900 mb-6">Your projects. Our solutions.</h2>
-              <GeoDirectAnswer question="How does Tantalus Geomatics support residential, infrastructure, and environmental projects in BC?">
+              <GeoDirectAnswer question="How can Tantalus Geomatics support your projects in BC?">
                 <p className="text-base sm:text-lg text-slate-700 mb-6 font-light leading-relaxed">
-                  Tantalus Geomatics provides the specialized expertise of a BC Land Surveyor and Professional Engineer to support the complexities of modern development. We serve as a strategic partner for commercial, residential, construction, infrastructure, and environmental projects, providing the actionable data required for accurate design and regulatory compliance. Learn more about our <a href="/services/" className="text-brand-green hover:underline">professional services</a>.
+                  Tantalus Geomatics provides the specialized expertise of a BC Land Surveyor and Professional Engineer to support the complexities of modern land development. We serve as a strategic partner for residential, commercial, construction, infrastructure, engineering, government and professional clients, providing the data required for accurate design and regulatory compliance. Learn more about our <a href="/services/" className="text-brand-green hover:underline">professional services</a>.
                 </p>
               </GeoDirectAnswer>
                             
@@ -159,16 +159,16 @@ export default function About() {
                 <div className="bg-stone-100 p-6 border border-slate-200 rounded-2xl shadow-sm">
                   <MapPin className="text-brand-green mb-3 w-8 h-8" />
                   <h3 className="font-semibold text-slate-900 mb-2 text-lg sm:text-xl">
-                    How does Tantalus Geomatics Land Surveying support local projects?
+                    How does Tantalus Geomatics Land Surveying support our clients?
                   </h3>
-                  <p className="text-slate-600 text-sm sm:text-base">We leverage a deep knowledge of municipal and provincial regulations to move local projects forward efficiently.</p>
+                  <p className="text-slate-600 text-sm sm:text-base">We leverage a deep knowledge of municipal and provincial regulations to move projects forward efficiently. We maintain positive working relationships with government, first nations, approving authorities, and project stakeholders to ensure seemless approvals.</p>
                 </div>
                 <div className="bg-stone-100 p-6 border border-slate-200 rounded-2xl shadow-sm">
                   <Award className="text-brand-green mb-3 w-8 h-8" />
                   <h3 className="font-semibold text-slate-900 mb-2 text-lg sm:text-xl">
                     What professional credentials and quality standards does Tantalus Geomatics maintain?
                   </h3>
-                  <p className="text-slate-600 text-sm sm:text-base">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineer, and is regulated by statutes, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
+                  <p className="text-slate-600 text-sm sm:text-base">Tantalus Geomatics Land Surveying is led by a licensed BC Land Surveyor and Professional Engineer. They are regulated by statutes, bylaws and standards established by the Association of BC Land Surveyors, Engineers and Geoscientists of British Columbia and the Province of British Columbia.</p>
                 </div>
               </div>
             </div>
@@ -205,12 +205,12 @@ export default function About() {
                 </div>
                 <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-2">Dennis Sherman</h2>
                 <p className="text-xl text-brand-green font-medium mb-8">British Columbia Land Surveyor and Professional Engineer</p>
-                <GeoDirectAnswer question="Who is Dennis Sherman, BCLS, P.Eng., and what experience does he bring to Sea to Sky projects?">
+                <GeoDirectAnswer question="Who is Dennis Sherman and what experience does he bring to your projects?">
                   <p className="text-base sm:text-lg text-slate-700 mb-6 font-light leading-relaxed">
-                  Dennis Sherman, BCLS, P.Eng, is a dual-registered professional specializing in the integration of land surveying and geomatics engineering. Driven by a lifelong interest in maps and mathematics, and a love for the outdoors, Dennis has dedicated his career to the precision of geomatics. His background is uniquely distinguished by experience in software development for geomatics applications, allowing him to bring a deeper level of technical insight to complex spatial challenges.
+                  Dennis Sherman, BCLS, P.Eng, is a dual-registered professional specializing in the integration of land surveying and geomatics engineering. Driven by a lifelong interest in maps and mathematics, and a love for the outdoors, Dennis has dedicated his career to the art and science of Earth measurements. His background is complimented by experience in software development for geomatics applications, allowing him to bring a deeper level of technical insight to complex spatial challenges.
                   </p>
                   <p className="text-base sm:text-lg text-slate-700 font-light leading-relaxed">
-                  A graduate of the Lassonde School of Engineering at York University, Dennis has managed diverse surveying operations across Canada—from the shores of Haida Gwaii, to the plains of Wood Buffalo National Park, to the infrastructure of the Greater Toronto Area. Focused on the Sea-to-Sky corridor since 2018, his commitment to professional accountability and high-quality deliverables ensures that every client receives the clarity and legal certainty their project demands. <a href="/contact/" className="text-brand-green hover:underline">Contact Dennis and the team</a> to discuss your next project.
+                  A graduate of the Lassonde School of Engineering at York University, Dennis has managed diverse surveying operations across Canada, from the shores of Haida Gwaii, to the plains of Wood Buffalo National Park, to the infrastructure of the Greater Toronto Area. Focused on the Sea-to-Sky corridor since 2018, his commitment to professional accountability and high-quality deliverables ensures that every client receives the clarity and legal certainty their project demands. <a href="/contact/" className="text-brand-green hover:underline">Contact Dennis and the team</a> to discuss your next project.
                   </p>
                 </GeoDirectAnswer>
               </div>

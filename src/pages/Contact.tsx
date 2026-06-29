@@ -109,7 +109,7 @@ export default function Contact() {
             
             {/* Contact Info */}
             <div>
-              <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4 sm:mb-6">Contact Us Today</h2>
+              <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4 sm:mb-6">Provide Us with Your Details</h2>
               <GeoDirectAnswer question="What should you include when you contact Tantalus Geomatics about your project?">
                 <p className="text-base sm:text-lg text-slate-700 font-light mb-8 sm:mb-12 leading-relaxed">
                   Provide us with your contact information and a brief description of your project's requirements. We will contact you right away to determine how we can best support your project.
@@ -119,7 +119,7 @@ export default function Contact() {
               <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4 sm:mb-6">Professional Consultations</h2>
               <GeoDirectAnswer question="When does it make sense to book a professional consultation before you build?">
                 <p className="text-base sm:text-lg text-slate-700 font-light mb-8 sm:mb-12 leading-relaxed">
-                  Do you have a plan to build on your property, but you are not sure where to start? We offer consultations to help you navigate the municipal permitting process. Let us help you identify the specific regulatory and <a href="/services" className="text-brand-green hover:underline">survey requirements</a> for your site.
+                  Do you have a plan to build on your property, but you are not sure where to start? We offer consultations to help you navigate the land development, construction and permitting process. Let us help you identify the specific regulatory and <a href="/services" className="text-brand-green hover:underline">survey requirements</a> for your site.
                 </p>
               </GeoDirectAnswer>
 
@@ -158,7 +158,7 @@ export default function Contact() {
                     <h3 className="font-semibold text-slate-900 mb-1 text-lg">
                       What phone number can you call to reach Tantalus Geomatics?
                     </h3>
-                    <p className="text-slate-600 text-sm sm:text-base">(604) 213 9934</p>
+                    <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
                   </div>
                 </div>
               </div>
