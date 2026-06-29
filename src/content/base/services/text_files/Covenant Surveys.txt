@@ -15,7 +15,7 @@ Tantalus Geomatics Land Surveying specializes in the creation and spatial defini
 
 ### **Steps**
 
-1. **Research** The *BCLS* accesses the Land Title and Survey Authority of British Columbia (LTSA) to retrieve the current Certificates of Title, historical subdivision plans, and original field notes. We review all existing encumbrances, easements, and rights of way to ensure the proposed covenant does not conflict with any existing property rights. Additionally, the BCLS determines whether the covenant will require a physical survey resulting in a reference plan, or if it can be created via an explanatory plan, both under Section 99(1)(e) of the **Land Title Act**.
+1. **Research** The *BCLS* accesses the Land Title and Survey Authority of British Columbia (LTSA) to retrieve the current Certificates of Title, historical subdivision plans, and existing charge documents. We review all existing encumbrances, easements, and rights of way to ensure the proposed covenant does not conflict with any existing property rights. Additionally, the BCLS determines whether the covenant will require a physical survey resulting in a reference plan, or if it can be created via an explanatory plan, both under Section 99(1)(e) of the **Land Title Act**.
 
 2. **Field Work** If a reference plan is required, a field survey is also required. Before new covenant boundaries can be established, the exterior limits of the parent parcel must be rigorously re-established on the ground, where our survey crews conduct a physical search to recover enough original survey monuments to accurately determine the original boundaries. The ruggedness of the terrain, the density of the vegetation, and the age of the original survey directly impact the scope of the field work and the time required to complete the survey. Next, the field crew places iron posts at the corners of the new covenant.
 
@@ -25,7 +25,7 @@ Tantalus Geomatics Land Surveying specializes in the creation and spatial defini
 
 * **Certified Legal Plans:** Digitally certified PDF Reference Plans or Explanatory Plans, fully compliant with LTSA standards, ready for deposit in the Land Title Register to secure the covenant.  
 * **Property Corner Monumentation:** Standard iron posts, lead plugs, or rock posts securely set in the ground to permanently mark the boundaries and intersections of the covenant area.  
-* **Topographic 3D CAD Files:** CAD drawings (DWG/DXF) mapping the covenant boundaries and site topography for integration by your architects and civil engineers.  
+* **Topographic 3D CAD Files:** CAD drawings (DWG/DXF) depicting the covenant boundaries and site topography for integration by your architects and civil engineers.  
 
 ### **FAQs**
 
