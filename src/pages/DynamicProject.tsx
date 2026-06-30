@@ -4,6 +4,7 @@ import PageShell from '../components/PageShell';
 import ProjectTemplate from '../templates/ProjectTemplate';
 import RichImage from '../components/RichImage';
 import RichMap from '../components/RichMap';
+import RichVideo from '../components/RichVideo';
 
 // Dynamically import all MDX files in the projects content directory recursively
 const modules = import.meta.glob('../content/projects/**/*.mdx');
@@ -102,7 +103,7 @@ export default function DynamicProject() {
         projectScope={meta.projectScope}
         finalDeliverables={meta.finalDeliverables}
       >
-        <Component components={{ RichImage, RichMap }} />
+        <Component components={{ RichImage, RichMap, RichVideo }} />
       </ProjectTemplate>
     </Suspense>
   );

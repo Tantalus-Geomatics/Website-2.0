@@ -402,5 +402,15 @@ To support richer content presentation and per-post terminology definitions, the
 
 Updated Insight page hero subtitle and tag pill colors to match brand-green, consistent with Project page badge styling.
 
+### 6. Video Embed Directive
+- **Syntax:**
+  - **Videos:** `[[video: {url} | width: {percent} | caption: "{text}"]]`
+- **Components:**
+  - [`src/components/RichVideo.tsx`](src/components/RichVideo.tsx): Renders responsive, centered 16:9 video embeds (YouTube or Vimeo) with optional captions, styled for light backgrounds.
+- **Compilers:**
+  - Updated [`scripts/convert_project_to_mdx.py`](scripts/convert_project_to_mdx.py) and [`scripts/convert_insight_to_mdx.py`](scripts/convert_insight_to_mdx.py) to parse this bracket-tag directive into structured JSX tags (`<RichVideo />`) inside the body prose.
+- **Wiring:**
+  - Imported and registered `RichVideo` in [`src/pages/DynamicProject.tsx`](src/pages/DynamicProject.tsx) and [`src/pages/DynamicInsight.tsx`](src/pages/DynamicInsight.tsx) via the MDX `components` prop.
+
 
 

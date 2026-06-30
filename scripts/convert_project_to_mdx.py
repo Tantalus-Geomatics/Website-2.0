@@ -195,10 +195,45 @@ def parse_directives(body_text):
                         
         return f'<RichMap lat={{{lat}}} lng={{{lng}}} zoom={{{zoom_val}}} height={{{height_val}}} />'
 
+    # Regex to find [[video: ...]]
+    def replace_video(match):
+        content = match.group(1).strip()
+        parts = content.split('|')
+        url_val = parts[0].strip()
+        
+        width_val = 100
+        caption_val = None
+        
+        for part in parts[1:]:
+            part = part.strip()
+            if not part:
+                continue
+            if ':' in part:
+                k, v = part.split(':', 1)
+                k = k.strip().lower()
+                v = v.strip()
+                if k == 'width':
+                    width_match = re.search(r'\d+', v)
+                    if width_match:
+                        width_val = int(width_match.group())
+                elif k == 'caption':
+                    if (v.startswith('"') and v.endswith('"')) or (v.startswith("'") and v.endswith("'")):
+                        v = v[1:-1]
+                    caption_val = v
+                    
+        jsx = f'<RichVideo url="{url_val}" width={{{width_val}}}'
+        if caption_val is not None:
+            safe_caption = caption_val.replace('"', '\\"')
+            jsx += f' caption="{safe_caption}"'
+        jsx += ' />'
+        return jsx
+
     # Replace [[image: ...]]
     body_text = re.sub(r'\[\[\s*image:\s*(.*?[^\]]*?)\s*\]\]', replace_image, body_text, flags=re.IGNORECASE)
     # Replace [[map: ...]]
     body_text = re.sub(r'\[\[\s*map:\s*(.*?[^\]]*?)\s*\]\]', replace_map, body_text, flags=re.IGNORECASE)
+    # Replace [[video: ...]]
+    body_text = re.sub(r'\[\[\s*video:\s*(.*?[^\]]*?)\s*\]\]', replace_video, body_text, flags=re.IGNORECASE)
     
     return body_text
 

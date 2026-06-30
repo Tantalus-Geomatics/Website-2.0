@@ -18,6 +18,13 @@ Legal Surveys, Covenants, Property Law, BC Land Title Act, Squamish, Whistler, S
 
 covenant-survey-sea-to-sky.webp
 
+### Glossary
+
+**Section 219 Covenant** A legally binding restriction registered on a property's land title under the Land Title Act.
+**Accretion** The gradual, natural addition of land to a property through deposition.
+**Avulsion** A sudden, perceptible change in a water body's boundary caused by a cataclysmic event, which does not change the legal property line.
+**BCLS** A British Columbia Land Surveyor — the only professional designation with statutory authority to define legal boundaries in BC.
+
 ### Body
 
 If you have recently received subdivision approval or a development permit in British Columbia, there is a good chance your municipality, lender, or engineer has mentioned a **Section 219 covenant**. For most property owners, this is a term that appears in a stack of legal documents without much explanation. This guide demystifies what a covenant is, why it is being required of you, and what role a British Columbia Land Surveyor (*BCLS*) plays in preparing and registering it.
@@ -25,6 +32,8 @@ If you have recently received subdivision approval or a development permit in Br
 ## What Is a Section 219 Covenant?
 
 A covenant registered under **Section 219 of the Land Title Act** is a legally binding agreement between a property owner and a second party — most commonly a municipality, the Province of British Columbia, or a utility provider — that restricts or requires specific uses of the land. Unlike a contract between two people, a Section 219 covenant is registered directly on the land title and binds not just the current owner but all future owners of the property.
+
+[[image: covenant-plan-example.webp | float: right | width: 38 | caption: "Example of a registered Section 219 covenant plan showing the septic reserve boundary"]]
 
 Common examples of what a Section 219 covenant can restrict or require include:
 
@@ -39,6 +48,10 @@ Municipalities use Section 219 covenants as a development control tool. When a p
 
 Your lender may also require a covenant search and review as part of their due diligence before advancing mortgage funds. An existing covenant that limits development potential can affect the appraised value of the property and, consequently, the amount a lender is willing to advance.
 
+[[map: 49.7016,-123.1558 | zoom: 13 | height: 300]]
+
+The Sea to Sky corridor sees a high volume of Section 219 covenants tied to septic reserves and riparian setbacks, given the prevalence of on-site sewage systems and watercourses throughout Squamish, Whistler, and the surrounding rural areas.
+
 ## What Does a BC Land Surveyor Do?
 
 Preparing a Section 219 covenant requires a *BCLS* whenever the covenant area is defined by a legal boundary or a surveyed line rather than a simple administrative description. The *BCLS* will:
@@ -50,15 +63,12 @@ Preparing a Section 219 covenant requires a *BCLS* whenever the covenant area is
 
 The covenant plan is a legal instrument. Only a commissioned *BCLS* holds the statutory authority under the **Land Surveyors Act** to prepare and certify it.
 
+For a step-by-step walkthrough of how a covenant survey is researched, fielded, and registered, watch the short explainer below.
+
+[[video: https://youtube.com/shorts/80oQhHy9M-0?si=G4mctasQ5lKoRyPL | width: 80 | caption: "How a Section 219 covenant survey works, from research to registration"]]
+
 ## How Long Does It Take?
 
 A straightforward covenant survey for a residential lot typically takes two to four weeks from engagement to registered plan, depending on current LTSA processing times and the complexity of the covenant boundary. For projects on a subdivision or development permit critical path, engaging your surveyor early is essential — covenant registration must often precede the final subdivision approval or building permit issuance.
 
 If you have questions about whether your project requires a covenant survey, or if your municipality has imposed a covenant as a condition of approval, contact Tantalus Geomatics for a no-obligation consultation.
-
-
-### Glossary
-**Section 219 Covenant** A legally binding restriction registered on a property's land title under the Land Title Act.
-**Accretion** The gradual, natural addition of land to a property through deposition.
-**Avulsion** The sudden, rapid removal or shift of land, usually by flooding or a change in a river's course.
-**BCLS** A British Columbia Land Surveyor — the only professional designation with statutory authority to define legal boundaries in BC.

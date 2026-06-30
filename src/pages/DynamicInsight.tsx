@@ -4,6 +4,7 @@ import PageShell from '../components/PageShell';
 import PostTemplate from '../templates/PostTemplate';
 import RichImage from '../components/RichImage';
 import RichMap from '../components/RichMap';
+import RichVideo from '../components/RichVideo';
 
 // Dynamically import all MDX files in the blog content directory recursively
 const modules = import.meta.glob('../content/blog/**/*.mdx');
@@ -99,7 +100,7 @@ export default function DynamicInsight() {
         tags={meta.tags}
         glossary={meta.glossary}
       >
-        <Component components={{ RichImage, RichMap }} />
+        <Component components={{ RichImage, RichMap, RichVideo }} />
       </PostTemplate>
     </Suspense>
   );

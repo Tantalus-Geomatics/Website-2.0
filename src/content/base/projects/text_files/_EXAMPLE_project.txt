@@ -1,4 +1,4 @@
---- 
+---
 category: "Legal Surveys"
 ---
 
@@ -46,4 +46,22 @@ squamish-strata-plan-closeup.webp
 
 This project involved a complex multi-stage legal survey engagement for a private residential client in Squamish's Garibaldi Highlands neighbourhood. The client acquired a large RS-1 zoned parcel with the intent to subdivide it into two fee-simple lots, register a covenant identifying the septic reserve area, and subsequently create a two-lot bare land strata corporation to facilitate individual financing of each duplex unit.
 
-Tantalus Geomatics managed the complete legal survey workflow from initial LTSA research through to final Land Title Office filings. The project required close coordination with the District of Squamish Development Services, the Ministry of Health (for the on-site septic covenant), and the client's conveyancing lawyer to sequence the three separate legal plan registrations correctly and within the municipality's subdivision approval timelines.
+[[image: garibaldi-survey-corner.webp | float: right | width: 40 | caption: "Property corner monument set during the boundary survey"]]
+
+Tantalus Geomatics managed the complete legal survey workflow from initial LTSA research through to final Land Title Office filings. The field crew used RTK GNSS receivers to re-establish the parent parcel boundary and confirm horizontal accuracy to within centimetre precision before setting the new corner posts dividing the two lots. The dense coastal forest cover on the eastern edge of the property required several additional site visits to maintain satellite lock during data collection.
+
+The project required close coordination with the District of Squamish Development Services, the Ministry of Health (for the on-site septic covenant), and the client's conveyancing lawyer to sequence the three separate legal plan registrations correctly and within the municipality's subdivision approval timelines.
+
+[[map: 49.7016,-123.1558 | zoom: 15 | height: 340]]
+
+The subject property sits within the Garibaldi Highlands area of Squamish, close to local trail networks and within the District's standard residential subdivision permitting boundary. Coordination with the District's GIS mapping resources confirmed no conflicting easements or rights-of-way affected the proposed lot line.
+
+Once the boundary was confirmed and the covenant registered, our team moved to the strata plan preparation phase, including a full topographic survey to support the client's architect in finalizing the duplex building envelope on each new lot.
+
+[[image: strata-plan-overview.webp | float: none | width: 85 | caption: "Final registered two-lot bare land strata plan"]]
+
+To give the client a clear walkthrough of the completed survey process and how the three legal instruments interact on title, we recorded a short summary video covering the subdivision, covenant, and strata sequence used on this project.
+
+[[video: https://youtube.com/shorts/80oQhHy9M-0?si=G4mctasQ5lKoRyPL | width: 75 | caption: "Project walkthrough: subdivision, covenant, and strata sequencing explained"]]
+
+The completed project gave the client two independently financeable, legally distinct strata lots — each with clear title, a registered septic covenant protecting the on-site field, and certified topographic data ready for permit-stage architectural drawings.
