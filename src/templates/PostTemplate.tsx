@@ -58,7 +58,7 @@ export default function PostTemplate({
             {title}
           </h1>
 
-          <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-6">
+          <p className="text-lg md:text-xl text-brand-green/90 font-light leading-relaxed mb-6">
             {description}
           </p>
 
@@ -67,7 +67,7 @@ export default function PostTemplate({
               {tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/10 text-white/90 text-xs font-medium border border-white/10"
+                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-medium border border-brand-green/20"
                 >
                   <Tag size={10} />
                   {tag}

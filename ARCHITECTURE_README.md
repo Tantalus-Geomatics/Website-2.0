@@ -400,5 +400,7 @@ To support richer content presentation and per-post terminology definitions, the
 - **File:** [`src/templates/PostTemplate.tsx`](src/templates/PostTemplate.tsx)
 - **Details:** Updated the `<h2>` section divider lines in the article body to use `border-b-2` (2px) thickness instead of `border-b` (1px) to match the homepage's visual weight.
 
+Updated Insight page hero subtitle and tag pill colors to match brand-green, consistent with Project page badge styling.
+
 
 
