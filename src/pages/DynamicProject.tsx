@@ -2,6 +2,8 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import ProjectTemplate from '../templates/ProjectTemplate';
+import RichImage from '../components/RichImage';
+import RichMap from '../components/RichMap';
 
 // Dynamically import all MDX files in the projects content directory recursively
 const modules = import.meta.glob('../content/projects/**/*.mdx');
@@ -100,7 +102,7 @@ export default function DynamicProject() {
         projectScope={meta.projectScope}
         finalDeliverables={meta.finalDeliverables}
       >
-        <Component />
+        <Component components={{ RichImage, RichMap }} />
       </ProjectTemplate>
     </Suspense>
   );

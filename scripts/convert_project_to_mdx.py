@@ -121,6 +121,87 @@ def parse_gallery_images(text):
             
     return images
 
+def parse_directives(body_text):
+    # Regex to find [[image: ...]]
+    def replace_image(match):
+        content = match.group(1).strip()
+        parts = content.split('|')
+        filename = parts[0].strip()
+        
+        float_val = "none"
+        width_val = 100
+        caption_val = None
+        
+        for part in parts[1:]:
+            part = part.strip()
+            if not part:
+                continue
+            if ':' in part:
+                k, v = part.split(':', 1)
+                k = k.strip().lower()
+                v = v.strip()
+                if k == 'float':
+                    float_val = v.lower()
+                elif k == 'width':
+                    width_match = re.search(r'\d+', v)
+                    if width_match:
+                        width_val = int(width_match.group())
+                elif k == 'caption':
+                    if (v.startswith('"') and v.endswith('"')) or (v.startswith("'") and v.endswith("'")):
+                        v = v[1:-1]
+                    caption_val = v
+                    
+        jsx = f'<RichImage src="{filename}" float="{float_val}" width={{{width_val}}}'
+        if caption_val is not None:
+            safe_caption = caption_val.replace('"', '\\"')
+            jsx += f' caption="{safe_caption}"'
+        jsx += ' />'
+        return jsx
+
+    # Regex to find [[map: ...]]
+    def replace_map(match):
+        content = match.group(1).strip()
+        parts = content.split('|')
+        coords = parts[0].strip()
+        
+        lat, lng = 0.0, 0.0
+        if ',' in coords:
+            try:
+                lat_str, lng_str = coords.split(',', 1)
+                lat = float(lat_str.strip())
+                lng = float(lng_str.strip())
+            except ValueError:
+                pass
+                
+        zoom_val = 14
+        height_val = 320
+        
+        for part in parts[1:]:
+            part = part.strip()
+            if not part:
+                continue
+            if ':' in part:
+                k, v = part.split(':', 1)
+                k = k.strip().lower()
+                v = v.strip()
+                if k == 'zoom':
+                    zoom_match = re.search(r'\d+', v)
+                    if zoom_match:
+                        zoom_val = int(zoom_match.group())
+                elif k == 'height':
+                    height_match = re.search(r'\d+', v)
+                    if height_match:
+                        height_val = int(height_match.group())
+                        
+        return f'<RichMap lat={{{lat}}} lng={{{lng}}} zoom={{{zoom_val}}} height={{{height_val}}} />'
+
+    # Replace [[image: ...]]
+    body_text = re.sub(r'\[\[\s*image:\s*(.*?[^\]]*?)\s*\]\]', replace_image, body_text, flags=re.IGNORECASE)
+    # Replace [[map: ...]]
+    body_text = re.sub(r'\[\[\s*map:\s*(.*?[^\]]*?)\s*\]\]', replace_map, body_text, flags=re.IGNORECASE)
+    
+    return body_text
+
 def convert_directory(source_dir, output_dir):
     """
     Iterates through all .txt files in source_dir and converts them to .mdx in output_dir.
@@ -163,7 +244,7 @@ def convert_directory(source_dir, output_dir):
             gallery_images = parse_gallery_images(raw_sections.get('galleryImages', ''))
             project_scope = parse_bulleted_list(raw_sections.get('projectScope', ''))
             final_deliverables = parse_bulleted_list(raw_sections.get('finalDeliverables', ''))
-            body = raw_sections.get('body', '')
+            body = parse_directives(raw_sections.get('body', ''))
             
             # Auto-generate description
             description = f"A {location} land surveying project by Tantalus Geomatics: {title}."

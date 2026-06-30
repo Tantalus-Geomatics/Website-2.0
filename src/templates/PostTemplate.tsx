@@ -1,14 +1,19 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
-import { Calendar, Tag, User, Award, ShieldCheck } from 'lucide-react';
+import { Calendar, Tag, User, BookOpen } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+
+export interface GlossaryTerm {
+  term: string;
+  definition: string;
+}
 
 export interface PostTemplateProps {
   title: string;
   description: string;
   publishDate: string;
   tags?: string[];
+  glossary?: GlossaryTerm[];
   children: ReactNode;
 }
 
@@ -17,6 +22,7 @@ export default function PostTemplate({
   description,
   publishDate,
   tags = [],
+  glossary = [],
   children
 }: PostTemplateProps) {
   // Format date nicely
@@ -80,8 +86,8 @@ export default function PostTemplate({
             {/* Article Body */}
             <article className="lg:col-span-8">
               {/* MDX Content Wrapper with custom typography styling */}
-              <div className="prose-custom text-slate-800 font-light leading-relaxed
-                [&>h2]:text-2xl [&>h2]:font-semibold [&>h2]:text-slate-900 [&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:border-b [&>h2]:border-slate-100 [&>h2]:pb-2
+              <div className="prose-custom text-slate-800 font-light leading-relaxed overflow-auto
+                [&>h2]:text-2xl [&>h2]:font-semibold [&>h2]:text-slate-900 [&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:border-b-2 [&>h2]:border-slate-100 [&>h2]:pb-2
                 [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-slate-900 [&>h3]:mt-8 [&>h3]:mb-3
                 [&>p]:mb-6 [&>p]:leading-relaxed
                 [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:mb-6 [&>ul]:space-y-2
@@ -93,36 +99,33 @@ export default function PostTemplate({
                 [&>hr]:my-10 [&>hr]:border-slate-200"
               >
                 {children}
+                <div className="clear-both" />
               </div>
             </article>
 
-            {/* Sidebar with Author Bio */}
+            {/* Sidebar with Glossary */}
             <aside className="lg:col-span-4 space-y-8">
-              {/* Author Bio Card */}
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green-dark shrink-0">
-                    <Award size={24} />
+              {glossary && glossary.length > 0 && (
+                <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl shadow-sm">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green-dark shrink-0">
+                      <BookOpen size={24} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900 text-base">Glossary of Terms</h3>
+                      <p className="text-xs text-brand-green-dark font-semibold tracking-wider uppercase">Key Definitions</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-base">Dennis Sherman</h4>
-                    <p className="text-xs text-brand-green-dark font-semibold tracking-wider uppercase">BCLS, P.Eng.</p>
-                  </div>
+                  <dl className="space-y-4">
+                    {glossary.map((item, i) => (
+                      <div key={i} className="border-t border-slate-200/60 pt-3 first:border-t-0 first:pt-0">
+                        <dt className="text-sm font-semibold text-slate-900">{item.term}</dt>
+                        <dd className="text-sm text-slate-600 font-light mt-1 leading-relaxed">{item.definition}</dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
-                
-                <p className="text-sm text-slate-600 leading-relaxed font-light mb-4">
-                  Dennis Sherman is a dual-registered professional, holding credentials as both a <strong>British Columbia Land Surveyor (BCLS)</strong> and a <strong>Professional Engineer (P.Eng.)</strong>.
-                </p>
-                
-                <p className="text-sm text-slate-600 leading-relaxed font-light mb-4">
-                  This rare combination of legal boundary expertise and engineering design capabilities allows Dennis to provide comprehensive, high-precision geomatics solutions for complex land development, municipal approvals, and infrastructure projects across the Sea to Sky corridor.
-                </p>
-
-                <div className="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs text-slate-500 font-medium">
-                  <ShieldCheck size={14} className="text-brand-green-dark" />
-                  <span>Certified Professional Expertise</span>
-                </div>
-              </div>
+              )}
             </aside>
 
           </div>

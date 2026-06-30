@@ -55,3 +55,10 @@ The covenant plan is a legal instrument. Only a commissioned *BCLS* holds the st
 A straightforward covenant survey for a residential lot typically takes two to four weeks from engagement to registered plan, depending on current LTSA processing times and the complexity of the covenant boundary. For projects on a subdivision or development permit critical path, engaging your surveyor early is essential — covenant registration must often precede the final subdivision approval or building permit issuance.
 
 If you have questions about whether your project requires a covenant survey, or if your municipality has imposed a covenant as a condition of approval, contact Tantalus Geomatics for a no-obligation consultation.
+
+
+### Glossary
+**Section 219 Covenant** A legally binding restriction registered on a property's land title under the Land Title Act.
+**Accretion** The gradual, natural addition of land to a property through deposition.
+**Avulsion** The sudden, rapid removal or shift of land, usually by flooding or a change in a river's course.
+**BCLS** A British Columbia Land Surveyor — the only professional designation with statutory authority to define legal boundaries in BC.

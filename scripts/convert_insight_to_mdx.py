@@ -37,7 +37,7 @@ def parse_txt_file(file_path):
 
     # Identify the section headers using regex (robust to match variations in headers)
     header_pattern = re.compile(
-        r'^(#+\s*\*{0,2}Title\*{0,2}|#+\s*\*{0,2}Description\*{0,2}|#+\s*\*{0,2}Publish\s+Date\*{0,2}|#+\s*\*{0,2}Tags\*{0,2}|#+\s*\*{0,2}Hero\s+Image\*{0,2}|#+\s*\*{0,2}Body\*{0,2})', 
+        r'^(#+\s*\*{0,2}Title\*{0,2}|#+\s*\*{0,2}Description\*{0,2}|#+\s*\*{0,2}Publish\s+Date\*{0,2}|#+\s*\*{0,2}Tags\*{0,2}|#+\s*\*{0,2}Hero\s+Image\*{0,2}|#+\s*\*{0,2}Body\*{0,2}|#+\s*\*{0,2}Glossary\*{0,2})', 
         re.MULTILINE | re.IGNORECASE
     )
     
@@ -63,6 +63,8 @@ def parse_txt_file(file_path):
             section_key = 'heroImage'
         elif 'body' in raw_key:
             section_key = 'body'
+        elif 'glossary' in raw_key:
+            section_key = 'glossary'
         else:
             section_key = raw_key
             
@@ -96,6 +98,112 @@ def parse_tags(text):
             tags.append(part)
             
     return tags
+
+def parse_glossary(text):
+    """
+    Parses glossary section into an array of dicts: [{"term": "...", "definition": "..."}]
+    Each line is formatted as: **{Term}** {Definition}
+    """
+    if not text:
+        return []
+    
+    terms = []
+    lines = text.split('\n')
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        # Match **{Term}** {Definition}
+        match = re.match(r'^\s*\*\*(.*?)\*\*\s*(.*)$', line)
+        if match:
+            term = match.group(1).strip()
+            definition = match.group(2).strip()
+            terms.append({
+                "term": term,
+                "definition": definition
+            })
+    return terms
+
+def parse_directives(body_text):
+    # Regex to find [[image: ...]]
+    def replace_image(match):
+        content = match.group(1).strip()
+        parts = content.split('|')
+        filename = parts[0].strip()
+        
+        float_val = "none"
+        width_val = 100
+        caption_val = None
+        
+        for part in parts[1:]:
+            part = part.strip()
+            if not part:
+                continue
+            if ':' in part:
+                k, v = part.split(':', 1)
+                k = k.strip().lower()
+                v = v.strip()
+                if k == 'float':
+                    float_val = v.lower()
+                elif k == 'width':
+                    width_match = re.search(r'\d+', v)
+                    if width_match:
+                        width_val = int(width_match.group())
+                elif k == 'caption':
+                    if (v.startswith('"') and v.endswith('"')) or (v.startswith("'") and v.endswith("'")):
+                        v = v[1:-1]
+                    caption_val = v
+                    
+        jsx = f'<RichImage src="{filename}" float="{float_val}" width={{{width_val}}}'
+        if caption_val is not None:
+            safe_caption = caption_val.replace('"', '\\"')
+            jsx += f' caption="{safe_caption}"'
+        jsx += ' />'
+        return jsx
+
+    # Regex to find [[map: ...]]
+    def replace_map(match):
+        content = match.group(1).strip()
+        parts = content.split('|')
+        coords = parts[0].strip()
+        
+        lat, lng = 0.0, 0.0
+        if ',' in coords:
+            try:
+                lat_str, lng_str = coords.split(',', 1)
+                lat = float(lat_str.strip())
+                lng = float(lng_str.strip())
+            except ValueError:
+                pass
+                
+        zoom_val = 14
+        height_val = 320
+        
+        for part in parts[1:]:
+            part = part.strip()
+            if not part:
+                continue
+            if ':' in part:
+                k, v = part.split(':', 1)
+                k = k.strip().lower()
+                v = v.strip()
+                if k == 'zoom':
+                    zoom_match = re.search(r'\d+', v)
+                    if zoom_match:
+                        zoom_val = int(zoom_match.group())
+                elif k == 'height':
+                    height_match = re.search(r'\d+', v)
+                    if height_match:
+                        height_val = int(height_match.group())
+                        
+        return f'<RichMap lat={{{lat}}} lng={{{lng}}} zoom={{{zoom_val}}} height={{{height_val}}} />'
+
+    # Replace [[image: ...]]
+    body_text = re.sub(r'\[\[\s*image:\s*(.*?[^\]]*?)\s*\]\]', replace_image, body_text, flags=re.IGNORECASE)
+    # Replace [[map: ...]]
+    body_text = re.sub(r'\[\[\s*map:\s*(.*?[^\]]*?)\s*\]\]', replace_map, body_text, flags=re.IGNORECASE)
+    
+    return body_text
 
 def convert_directory(source_dir, output_dir):
     """
@@ -132,7 +240,8 @@ def convert_directory(source_dir, output_dir):
             publish_date = clean_metadata_string(raw_sections.get('publishDate', ''))
             tags = parse_tags(raw_sections.get('tags', ''))
             hero_image = format_image_path(clean_metadata_string(raw_sections.get('heroImage', '')))
-            body = raw_sections.get('body', '')
+            body = parse_directives(raw_sections.get('body', ''))
+            glossary = parse_glossary(raw_sections.get('glossary', ''))
             
             # Helper to correctly indent multiline JSON inside the metadata code block
             def format_js_array(data_list):
@@ -151,6 +260,7 @@ description: "{safe_desc}"
 publishDate: "{safe_publish_date}"
 tags: {json.dumps(tags, ensure_ascii=False)}
 heroImage: "{safe_hero_image}"
+glossary: {json.dumps(glossary, ensure_ascii=False)}
 ---
 
 export const metadata = {{
@@ -159,6 +269,7 @@ export const metadata = {{
   publishDate: "{safe_publish_date}",
   tags: {format_js_array(tags)},
   heroImage: "{safe_hero_image}",
+  glossary: {format_js_array(glossary)},
 }}
 
 export default function Content({{ children }}) {{ return <>{{children}}</> }}

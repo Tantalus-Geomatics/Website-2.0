@@ -360,3 +360,45 @@ export default function Content({ children }) { return <>{children}</> }
 4. Rebuild and deploy.
 
 
+## 10. Project & Insight Layout Updates v2
+
+To support richer content presentation and per-post terminology definitions, the Project and Insight page pipelines have been updated with inline block directives, a dynamic glossary system, and layout refinements.
+
+### 1. Back Button Removal
+- **File:** [`src/templates/ProjectTemplate.tsx`](src/templates/ProjectTemplate.tsx)
+- **Details:** Removed the "← Back to Home" link above the "PROJECT CASE STUDY" badge to streamline the header layout, while preserving the badge and adjusting spacing.
+
+### 2. Project Summary Header
+- **File:** [`src/templates/ProjectTemplate.tsx`](src/templates/ProjectTemplate.tsx)
+- **Details:** Added a visible `<h2>` heading styled as `text-2xl font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-100` above the main body prose to clearly label the "Project Summary" section.
+
+### 3. Rich Content Block Directives
+- **Syntax:**
+  - **Images:** `[[image: {filename} | float: left|right|none | width: {percent} | caption: "{text}"]]`
+  - **Maps:** `[[map: {lat},{lng} | zoom: {1-20} | height: {px}]]`
+- **Components:**
+  - [`src/components/RichImage.tsx`](src/components/RichImage.tsx): Renders responsive, floated or centered images with optional captions, styled for light backgrounds.
+  - [`src/components/RichMap.tsx`](src/components/RichMap.tsx): Renders a keyless Google Maps iframe embed with custom height and zoom.
+- **Compilers:**
+  - Updated [`scripts/convert_project_to_mdx.py`](scripts/convert_project_to_mdx.py) and [`scripts/convert_insight_to_mdx.py`](scripts/convert_insight_to_mdx.py) to parse these bracket-tag directives into structured JSX tags (`<RichImage />` and `<RichMap />`) inside the body prose.
+- **Wiring:**
+  - Imported and registered `RichImage` and `RichMap` in [`src/pages/DynamicProject.tsx`](src/pages/DynamicProject.tsx) and [`src/pages/DynamicInsight.tsx`](src/pages/DynamicInsight.tsx) via the MDX `components` prop.
+  - Added `overflow-auto` and a `<div className="clear-both" />` clearfix to the prose containers in [`src/templates/ProjectTemplate.tsx`](src/templates/ProjectTemplate.tsx) and [`src/templates/PostTemplate.tsx`](src/templates/PostTemplate.tsx) to prevent floated images from colliding with subsequent layout sections.
+
+### 4. Per-Post Glossary System
+- **File:** [`src/templates/PostTemplate.tsx`](src/templates/PostTemplate.tsx)
+- **Details:** Removed the static Dennis Sherman bio card from the sidebar and replaced it with a dynamic, per-post glossary card.
+- **Syntax:**
+  ```
+  ### Glossary
+  **{Term}** {Definition}
+  ```
+- **Compiler:** Updated [`scripts/convert_insight_to_mdx.py`](scripts/convert_insight_to_mdx.py) to parse the `### Glossary` section into a `glossary` array of objects in the frontmatter and metadata export.
+- **Example:** Updated [`src/content/base/blog/text_files/_EXAMPLE_insight.txt`](src/content/base/blog/text_files/_EXAMPLE_insight.txt) with a glossary section containing definitions for *Section 219 Covenant*, *Accretion*, *Avulsion*, and *BCLS*.
+
+### 5. Thicker Section Dividers
+- **File:** [`src/templates/PostTemplate.tsx`](src/templates/PostTemplate.tsx)
+- **Details:** Updated the `<h2>` section divider lines in the article body to use `border-b-2` (2px) thickness instead of `border-b` (1px) to match the homepage's visual weight.
+
+
+

@@ -2,6 +2,8 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import PostTemplate from '../templates/PostTemplate';
+import RichImage from '../components/RichImage';
+import RichMap from '../components/RichMap';
 
 // Dynamically import all MDX files in the blog content directory recursively
 const modules = import.meta.glob('../content/blog/**/*.mdx');
@@ -95,8 +97,9 @@ export default function DynamicInsight() {
         description={meta.description || `Professional insights and guides on ${meta.title || fallbackTitle} by Tantalus Geomatics.`}
         publishDate={meta.publishDate || new Date().toISOString()}
         tags={meta.tags}
+        glossary={meta.glossary}
       >
-        <Component />
+        <Component components={{ RichImage, RichMap }} />
       </PostTemplate>
     </Suspense>
   );

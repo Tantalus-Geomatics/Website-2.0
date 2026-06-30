@@ -1,12 +1,10 @@
 import { useState, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import { 
   MapPin, 
   Calendar, 
   Briefcase, 
   CheckSquare, 
   Image as ImageIcon, 
-  ArrowLeft, 
   X, 
   ChevronRight,
   Maximize2
@@ -88,15 +86,6 @@ export default function ProjectTemplate({
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-12">
           <div className="max-w-3xl">
-            {/* Back to Home / Projects Link */}
-            <Link 
-              to="/" 
-              className="inline-flex items-center gap-2 text-brand-green hover:text-brand-green-light text-sm font-semibold uppercase tracking-wider mb-6 transition-colors group"
-            >
-              <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
-              Back to Home
-            </Link>
-
             <span className="inline-block px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-semibold uppercase tracking-wider border border-brand-green/20 mb-4">
               Project Case Study
             </span>
@@ -138,7 +127,7 @@ export default function ProjectTemplate({
             <article className="lg:col-span-8">
               <div className="bg-white rounded-2xl border border-slate-100 p-6 md:p-8 shadow-sm">
                 {/* MDX Content Wrapper with custom typography styling */}
-                <div className="prose-custom text-slate-800 font-light leading-relaxed
+                <div className="prose-custom text-slate-800 font-light leading-relaxed overflow-auto
                   [&>h2]:text-2xl [&>h2]:font-semibold [&>h2]:text-slate-900 [&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:border-b [&>h2]:border-slate-100 [&>h2]:pb-2
                   [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-slate-900 [&>h3]:mt-8 [&>h3]:mb-3
                   [&>p]:mb-6 [&>p]:leading-relaxed
@@ -150,7 +139,9 @@ export default function ProjectTemplate({
                   [&>strong]:font-semibold [&>strong]:text-slate-900
                   [&>hr]:my-10 [&>hr]:border-slate-200"
                 >
+                  <h2 className="text-2xl font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-100">Project Summary</h2>
                   {children}
+                  <div className="clear-both" />
                 </div>
               </div>
             </article>
