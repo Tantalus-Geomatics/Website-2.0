@@ -293,3 +293,70 @@ To enhance social proof, local credibility, and social media presence, three new
 - **File:** [`src/components/Layout.tsx`](src/components/Layout.tsx)
 - **Details:** Inserted the official Squamish Chamber of Commerce badge between the contact info and social links row in the left column of the footer, styled to visually match the scale and weight of the ABCLS badge.
 
+---
+
+## 9. Project Pages & Insight Pages Pipeline
+
+To support dynamic case studies and professional insights, the application implements a robust content pipeline that converts structured text files into MDX pages, integrated with the global routing and template architecture.
+
+### Route Patterns
+The following routes are registered in [`src/App.tsx`](src/App.tsx) to handle both global and localized tracks:
+- **Projects (Global):** `/projects/:projectSlug` -> [`DynamicProject`](src/pages/DynamicProject.tsx)
+- **Projects (Localized):** `/:locationSlug/projects/:projectSlug` -> [`DynamicProject`](src/pages/DynamicProject.tsx)
+- **Insights (Global):** `/insights/:postSlug` -> [`DynamicInsight`](src/pages/DynamicInsight.tsx)
+- **Insights (Localized):** `/:locationSlug/insights/:postSlug` -> [`DynamicInsight`](src/pages/DynamicInsight.tsx)
+
+### Content Directory Structure
+- **Projects Content:** [`src/content/projects/`](src/content/projects/) (glob pattern: `../content/projects/**/*.mdx`)
+- **Insights Content:** [`src/content/blog/`](src/content/blog/) (glob pattern: `../content/blog/**/*.mdx`)
+- **Base Project Sources:** [`src/content/base/projects/text_files/`](src/content/base/projects/text_files/)
+- **Base Insight Sources:** [`src/content/base/blog/text_files/`](src/content/base/blog/text_files/)
+
+### Content Pipeline Scripts
+Two standalone Python scripts automate the conversion of structured text files into MDX:
+1. **Project Compiler:** [`scripts/convert_project_to_mdx.py`](scripts/convert_project_to_mdx.py)
+   - Parses sections: `Title`, `Client`, `Location`, `Completion Date`, `Hero Image`, `Gallery Images`, `Project Scope`, `Deliverables`, and `Body`.
+   - Auto-generates geocentric meta descriptions: `"A {location} land surveying project by Tantalus Geomatics: {title}."`
+   - Formats image paths to reference `/images/` automatically.
+2. **Insight Compiler:** [`scripts/convert_insight_to_mdx.py`](scripts/convert_insight_to_mdx.py)
+   - Parses sections: `Title`, `Description`, `Publish Date`, `Tags`, `Hero Image`, and `Body`.
+   - Supports comma-separated or one-per-line tags.
+
+### MDX Output Format
+Unlike service pages, project and blog MDX files do not wrap themselves in a template. Instead, they export metadata and a clean body prose component, allowing [`DynamicProject`](src/pages/DynamicProject.tsx) and [`DynamicInsight`](src/pages/DynamicInsight.tsx) to handle the wrapping dynamically:
+```mdx
+---
+title: "..."
+...
+---
+
+export const metadata = {
+  title: "...",
+  ...
+}
+
+export default function Content({ children }) { return <>{children}</> }
+
+{body prose}
+```
+
+### Workflow for Adding New Content
+#### Adding a Project Case Study:
+1. Create a structured text file in [`src/content/base/projects/text_files/`](src/content/base/projects/text_files/) (e.g., `my-project.txt`).
+2. Run the compiler from the project root:
+   ```bash
+   python scripts/convert_project_to_mdx.py
+   ```
+3. Copy the compiled MDX file from `src/content/base/projects/` to [`src/content/projects/`](src/content/projects/) (or a localized subdirectory like `src/content/projects/squamish/`).
+4. Rebuild and deploy.
+
+#### Adding an Insight Article:
+1. Create a structured text file in [`src/content/base/blog/text_files/`](src/content/base/blog/text_files/) (e.g., `my-article.txt`).
+2. Run the compiler from the project root:
+   ```bash
+   python scripts/convert_insight_to_mdx.py
+   ```
+3. Copy the compiled MDX file from `src/content/base/blog/` to [`src/content/blog/`](src/content/blog/) (or a localized subdirectory like `src/content/blog/squamish/`).
+4. Rebuild and deploy.
+
+
