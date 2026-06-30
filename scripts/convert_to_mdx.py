@@ -225,49 +225,43 @@ def convert_directory(source_dir, output_dir):
             # Master dictionary linking specific, high-intent suffixes to eliminate generic boilerplate text
             SERVICE_DESCRIPTION_SUFFIXES = {
                 # Advanced Mapping, Monitoring & Reality Capture
-                "3D Settlement Monitoring": "deploying millimeter-accurate monitoring networks to track structural shifts, shoring deflections, and ground subsidence throughout construction phases.",
+                "3D Settlement Monitoring": "deploying millimeter-accurate monitoring networks to track structural shifts, shoring deflections, and ground movements throughout construction.",
                 "Terrestrial Lidar Scanning": "capturing high-density digital twins and millimeter-accurate 3D point clouds of complex architectural facades, mechanical plants, and civil works.",
                 "Terrestrial LiDAR Scanning": "capturing high-density digital twins and millimeter-accurate 3D point clouds of complex architectural facades, mechanical plants, and civil works.",
-                "Uav Mapping": "deploying aerial photogrammetry and advanced sensors to safely map large-scale, steep, or completely inaccessible regional wilderness layouts.",
-                "UAV Mapping": "deploying aerial photogrammetry and advanced sensors to safely map large-scale, steep, or completely inaccessible regional wilderness layouts.",
+                "Uav Mapping": "deploying aerial photogrammetry and LiDAR sensors to safely map large-scale, steep, or inaccessible areas.",
+                "UAV Mapping": "deploying aerial photogrammetry and LiDAR sensors to safely map large-scale, steep, or inaccessible areas.",
                 
                 # Land Partitions, Subdivisions & Strata Layouts
-                "Air Space Subdivision Surveys": "defining independent three-dimensional volumetric parcels for complex multi-use developments, air rights allocations, and shared infrastructure namespaces.",
-                "Bare Land Strata Surveys": "defining legal boundaries, shared access roadways, and common utility infrastructure parameters for strata-titled master communities.",
-                "Building Strata Surveys": "drafting precise legal definitions of individual strata lots, common property parameters, and limited common structures inside multi-unit packages.",
-                "Phased Strata Surveys": "managing structural boundary layouts and legal filings for progressive multi-phase strata developments as consecutive structures achieve completion.",
-                "Proposed Strata Plans": "drafting preliminary boundaries and building unit partitions from architectural sheets to support pre-construction sales and disclosures.",
-                "Strata Plan Amendment Surveys": "re-surveying altered building layouts, unit adjustments, or common property allocations to update registered strata configurations.",
-                "Strata Surveys": "producing certified legal layouts and floor plans to define unique ownership boundaries within strata-titled residential or commercial developments.",
-                "Subdivision Surveys": "guiding land developers through parcel partitions, boundary adjustments, and greenfield developments from initial design up to final Land Title Office filing.",
-                "Subdivisions Surveys": "guiding land developers through parcel partitions, boundary adjustments, and greenfield developments from initial design up to final Land Title Office filing.",
+                "Air Space Subdivision Surveys": "defining independent three-dimensional volumetric parcels for complex multi-use developments, rights allocations, and shared infrastructure ownership.",
+                "Bare Land Strata Surveys": "defining legal boundaries, strata roads, and utility corridors for strata communities.",
+                "Building Strata Surveys": "defining the legal extents of individual strata lots, common property, and limited common property within multi-unit developments.",
+                "Phased Strata Surveys": "boundary surveys, construction support and legal filings for multi-phase strata developments.",
+                "Proposed Strata Plans": "preliminary strata lot boundaries and floor areas from architectural drawings to support pre-construction sales and disclosures.",
+                "Strata Plan Amendment Surveys": "re-surveying altered building layouts, strata lot boundary adjustments, or common property allocations to update registered strata plans.",
+                "Strata Surveys": "creating strata lots, common property and limited common property to define ownership boundaries within strata-titled residential or commercial developments.",
+                "Subdivision Surveys": "guiding land developers through the process of subdividing large parcels, boundary adjustments, and greenfield developments from initial design up to final Land Title Office filing.",
                 
                 # Boundaries & Property Legal Assessments
-                "BC Land Surveyors Building Location Surveys": "producing certified BCLS plans confirming structural foundations and structural improvements conform strictly to legal property lines and municipal setback regulations.",
-                "Block Outline Surveys": "establishing high-precision legal control networks across entire municipal blocks to anchor reliable boundary reinstatements.",
-                "Boundary Surveys": "re-establishing forgotten historical survey monuments to definitively map legal boundaries ahead of major structural landscaping or home renovations.",
-                "Consolidation Surveys": "combining multiple adjacent property titles into a single unified legal parcel to maximize municipal zoning advantages and site footprints.",
-                "Property Line Surveys": "marking physical property boundaries to secure land asset usage data, guide fence installation, and eliminate boundary uncertainty.",
+                "BC Land Surveyors Building Location Surveys": "producing certified plans confirming foundations and structural improvements conform to legal property lines and municipal setback regulations.",
+                "Block Outline Surveys": "establishing high-precision legal control networks to raise title before you build.",
+                "Boundary Surveys": "re-establishing original survey monuments to mark legal boundaries ahead of major structural landscaping or home renovations.",
+                "Consolidation Surveys": "combining multiple adjacent parcels into a single unified parcel to maximize municipal zoning advantages and site footprints.",
                 "Topographic Surveys And Site Plans": "mapping detailed ground elevations, structural contours, visible utility networks, and landmarks to anchor architectural design blueprints.",
-                "Topographic Surveys & Site Plans": "mapping detailed ground elevations, structural contours, visible utility networks, and landmarks to anchor architectural design blueprints.",
-                "Topographic Surveys": "mapping detailed ground elevations, structural contours, visible utility networks, and landmarks to anchor architectural design blueprints.",
                 
                 # Rights, Easements & Environmental Constraints
-                "Covenant Surveys": "mapping protected geographic zones, environmental limits, or development constraints required to register restrictive covenants on land titles.",
-                "Easement Surveys": "defining clear path parameters across a parcel to legally grant utility networks or shared access privileges to adjacent properties.",
-                "Land Act Surveys": "executing certified legal surveys for Crown land tenures, statutory rights-of-way, resource boundaries, or provincial property transfers.",
-                "Natural Boundary Surveys": "re-establishing dynamic riparian lines, high-water marks, and accretion or erosion limits to protect waterfront real estate dimensions.",
+                "Covenant Surveys": "defining protected areas, environmental limits, or development constraints required to register restrictive covenants on land titles.",
+                "Easement Surveys": "defining the extent of rights of one parcel over another.",
+                "Land Act Surveys": "legal surveys for Crown land tenures, roads, resource boundaries, or provincial property transfers.",
+                "Natural Boundary Surveys": "identifying riparian setbacks, high-water marks, present natural boundaries and changes due to accretion or erosion limits.",
                 "Statutory Rights Of Way Surveys": "surveying corridor lines for public infrastructure networks or utility lines required for formal LTSA documentation.",
-                "Statutory Rights of Way Surveys": "surveying corridor lines for public infrastructure networks or utility lines required for formal LTSA documentation.",
                 
                 # Site Civil Layouts, Controls & Calculations
-                "Excavation Layout Surveys": "marking structural dig limits, shoring alignments, and precision elevation benchmarks to guide heavy site machine operators safely.",
-                "Form And Foundation Surveys": "certifying concrete formwork layouts and structural foundation placements comply with municipal guidelines before pouring steps occur.",
-                "Gridline And Construction Layout Surveys": "translating complex architectural site design designs into real-world physical layout indicators and precision coordinate grids directly on-site.",
+                "Excavation Layout Surveys": "marking dig limits, shoring alignments, and precise vertical benchmarks to guide heavy site machine operators safely.",
+                "Form And Foundation Surveys": "certifying concrete formwork layouts and foundation as-builts to demonstrate conformity with municipal regulations before pouring concrete.",
+                "Gridline And Construction Layout Surveys": "translating complex architectural site designs into a physical layout in the real world.",
                 "Infrastructure Layout And Construction Surveys": "providing dimension control systems for complex civil engineering works, municipal utilities, and roadway development grids.",
-                "Road Surveys": "establishing alignment controls, horizontal curves, and geometric layout tracking for structural access roads or highway corridors.",
-                "Volume And Earthwork Surveys": "quantifying material changes, grading configurations, and cut-and-fill balances to optimize mass-haul site logistics and tracking metrics.",
-                "Volume & Earthwork Surveys": "quantifying material changes, grading configurations, and cut-and-fill balances to optimize mass-haul site logistics and tracking metrics."
+                "Road Surveys": "establishing legal boundaries, alignments, horizontal curves, and geometric layouts for strata roads, forest service roads, access roads or highways.",
+                "Volume And Earthwork Surveys": "quantifying material changes, grading results, and cut-and-fill balances to optimize mass-haul site logistics and financial tracking."
             }
 
             # Gather custom details based on matched titles, default elegantly to catch-all if unlisted
