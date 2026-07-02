@@ -382,7 +382,7 @@ To support richer content presentation and per-post terminology definitions, the
 - **Compilers:**
   - Updated [`scripts/convert_project_to_mdx.py`](scripts/convert_project_to_mdx.py) and [`scripts/convert_insight_to_mdx.py`](scripts/convert_insight_to_mdx.py) to parse these bracket-tag directives into structured JSX tags (`<RichImage />` and `<RichMap />`) inside the body prose.
 - **Wiring:**
-  - Imported and registered `RichImage` and `RichMap` in [`src/pages/DynamicProject.tsx`](src/pages/DynamicProject.tsx) and [`src/pages/DynamicInsight.tsx`](src/pages/DynamicInsight.tsx) via the MDX `components` prop.
+  - Imported and registered `RichImage` and `RichMap` in [`src/pages/DynamicProject.tsx`](src/pages/DynamicProject.tsx) and [`src/pages/DynamicInsight.tsx`](src/pages/DynamicInsight.tsx) via the MDX `components` prop, explicitly passing `components={mdxComponents}` at the `<Component />` call site in both Dynamic page files.
   - Added `overflow-auto` and a `<div className="clear-both" />` clearfix to the prose containers in [`src/templates/ProjectTemplate.tsx`](src/templates/ProjectTemplate.tsx) and [`src/templates/PostTemplate.tsx`](src/templates/PostTemplate.tsx) to prevent floated images from colliding with subsequent layout sections.
 
 ### 4. Per-Post Glossary System

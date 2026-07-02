@@ -85,6 +85,12 @@ export default function DynamicInsight() {
     ? postSlug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
     : 'Insight';
 
+  const mdxComponents = {
+    RichImage,
+    RichMap,
+    RichVideo,
+  };
+
   return (
     <Suspense fallback={
       <PageShell>
@@ -100,7 +106,7 @@ export default function DynamicInsight() {
         tags={meta.tags}
         glossary={meta.glossary}
       >
-        <Component components={{ RichImage, RichMap, RichVideo }} />
+        <Component components={mdxComponents} />
       </PostTemplate>
     </Suspense>
   );

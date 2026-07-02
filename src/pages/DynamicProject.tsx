@@ -85,6 +85,12 @@ export default function DynamicProject() {
     ? projectSlug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
     : 'Project';
 
+  const mdxComponents = {
+    RichImage,
+    RichMap,
+    RichVideo,
+  };
+
   return (
     <Suspense fallback={
       <PageShell>
@@ -103,7 +109,7 @@ export default function DynamicProject() {
         projectScope={meta.projectScope}
         finalDeliverables={meta.finalDeliverables}
       >
-        <Component components={{ RichImage, RichMap, RichVideo }} />
+        <Component components={mdxComponents} />
       </ProjectTemplate>
     </Suspense>
   );
