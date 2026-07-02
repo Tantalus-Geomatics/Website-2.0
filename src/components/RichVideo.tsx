@@ -5,11 +5,25 @@ interface RichVideoProps {
 }
 
 function getEmbedUrl(url: string): string | null {
-  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/);
-  if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}`;
+  // Standard: youtube.com/watch?v=ID or youtube.com/watch?v=ID&other=params
+  const ytWatch = url.match(/youtube\.com\/watch\?(?:.*&)?v=([\w-]{11})/);
+  if (ytWatch) return `https://www.youtube.com/embed/${ytWatch[1]}`;
 
-  const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
-  if (vimeoMatch) return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+  // Shortened: youtu.be/ID or youtu.be/ID?si=...
+  const ytShort = url.match(/youtu\.be\/([\w-]{11})/);
+  if (ytShort) return `https://www.youtube.com/embed/${ytShort[1]}`;
+
+  // Already an embed URL
+  const ytEmbed = url.match(/youtube\.com\/embed\/([\w-]{11})/);
+  if (ytEmbed) return `https://www.youtube.com/embed/${ytEmbed[1]}`;
+
+  // YouTube Shorts: youtube.com/shorts/ID or youtube.com/shorts/ID?si=...
+  const ytShorts = url.match(/youtube\.com\/shorts\/([\w-]{11})/);
+  if (ytShorts) return `https://www.youtube.com/embed/${ytShorts[1]}`;
+
+  // Vimeo: vimeo.com/ID
+  const vimeo = url.match(/vimeo\.com\/(\d+)/);
+  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`;
 
   return null;
 }
@@ -19,7 +33,12 @@ export default function RichVideo({ url, width = 100, caption }: RichVideoProps)
 
   if (!embedUrl) {
     console.warn(`RichVideo: could not parse video URL "${url}"`);
-    return null;
+    // Render a stable fallback — never return null from a hydrated component
+    return (
+      <div className="w-full my-4 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-400 text-sm italic" style={{ height: 120 }}>
+        Video unavailable — unsupported URL format
+      </div>
+    );
   }
 
   return (

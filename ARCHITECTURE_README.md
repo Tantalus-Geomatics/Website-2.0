@@ -406,7 +406,7 @@ Updated Insight page hero subtitle and tag pill colors to match brand-green, con
 - **Syntax:**
   - **Videos:** `[[video: {url} | width: {percent} | caption: "{text}"]]`
 - **Components:**
-  - [`src/components/RichVideo.tsx`](src/components/RichVideo.tsx): Renders responsive, centered 16:9 video embeds (YouTube or Vimeo) with optional captions, styled for light backgrounds.
+  - [`src/components/RichVideo.tsx`](src/components/RichVideo.tsx): Renders responsive, centered 16:9 video embeds (YouTube or Vimeo) with optional captions, styled for light backgrounds. Extended getEmbedUrl to handle youtube.com/shorts/ URLs. Added stable fallback render instead of null return to prevent React hydration mismatch #418.
 - **Compilers:**
   - Updated [`scripts/convert_project_to_mdx.py`](scripts/convert_project_to_mdx.py) and [`scripts/convert_insight_to_mdx.py`](scripts/convert_insight_to_mdx.py) to parse this bracket-tag directive into structured JSX tags (`<RichVideo />`) inside the body prose.
 - **Wiring:**
