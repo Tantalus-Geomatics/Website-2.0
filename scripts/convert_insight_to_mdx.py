@@ -328,7 +328,7 @@ if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
     base_dir = os.path.dirname(script_dir)
     SOURCE_FOLDER = os.path.join(base_dir, "src", "content", "base", "blog", "text_files")
-    OUTPUT_FOLDER = os.path.join(base_dir, "src", "content", "base", "blog")
+    OUTPUT_FOLDER = os.path.join(base_dir, "src", "content", "blog")
     
     # Ensure source folder exists for immediate use
     if not os.path.exists(SOURCE_FOLDER):
