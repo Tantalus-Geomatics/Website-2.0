@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000",
-    "generate-mdx": "python scripts/convert_to_mdx.py",
+    "generate-mdx": "python scripts/convert_to_mdx.py && python scripts/convert_project_to_mdx.py && python scripts/convert_insight_to_mdx.py",
     "localize-content": "tsx scripts/generate-localized-content.js",
     "build": "npm run generate-mdx && npm run localize-content && vite build && node prerender.js",
     "postbuild": "node -e \"import('fs').then(fs => fs.copyFileSync('dist/index.html', 'dist/404.html'))\"",
