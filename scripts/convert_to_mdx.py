@@ -253,7 +253,7 @@ def convert_directory(source_dir, output_dir):
                 "Easement Surveys": "defining the extent of rights of one parcel over another.",
                 "Land Act Surveys": "legal surveys for Crown land tenures, roads, resource boundaries, or provincial property transfers.",
                 "Natural Boundary Surveys": "identifying riparian setbacks, high-water marks, present natural boundaries and changes due to accretion or erosion limits.",
-                "Statutory Rights Of Way Surveys": "surveying corridor lines for public infrastructure networks or utility lines required for formal LTSA documentation.",
+                "Statutory Rights Of Way Surveys": "surveying corridors for public infrastructure or utility lines required for LTSA registration.",
                 
                 # Site Civil Layouts, Controls & Calculations
                 "Excavation Layout Surveys": "marking dig limits, shoring alignments, and precise vertical benchmarks to guide heavy site machine operators safely.",
