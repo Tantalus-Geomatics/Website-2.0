@@ -237,7 +237,7 @@ def convert_directory(source_dir, output_dir):
                 "Building Strata Surveys": "defining the legal extents of individual strata lots, common property, and limited common property within multi-unit developments.",
                 "Phased Strata Surveys": "boundary surveys, construction support and legal filings for multi-phase strata developments.",
                 "Proposed Strata Plans": "preliminary strata lot boundaries and floor areas from architectural drawings to support pre-construction sales and disclosures.",
-                "Strata Plan Amendment Surveys": "re-surveying altered building layouts, strata lot boundary adjustments, or common property allocations to update registered strata plans.",
+                "Strata Plan Amendment Surveys": "re-defining updated building layouts, strata lot boundary adjustments, or common property modifications to update registered strata plans.",
                 "Strata Surveys": "creating strata lots, common property and limited common property to define ownership boundaries within strata-titled residential or commercial developments.",
                 "Subdivision Surveys": "guiding land developers through the process of subdividing large parcels, boundary adjustments, and greenfield developments from initial design up to final Land Title Office filing.",
                 
