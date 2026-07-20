@@ -18,7 +18,14 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Boundary marking, site plans for permits, and zoning layout inspections for homeowners.',
     icon: Home,
     image: '/images/old-home.webp',
-    serviceSlugs: ["bc-land-surveyors-building-location-surveys","topographic-surveys-and-site-plans"]
+    serviceSlugs: [
+      "bc-land-surveyors-building-location-surveys",
+      "boundary-surveys",
+      "environmental-and-riparian-surveys",
+      "natural-boundary-surveys",
+      "topographic-surveys-and-site-plans",
+      "uav-mapping"
+    ]
   },
   {
     id: 'construction',
@@ -27,7 +34,21 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Precise layout staking for foundations, gridlines, and structural site utilities.',
     icon: HardHat,
     image: '/images/construction.webp',
-    serviceSlugs: ["environmental-and-riparian-surveys","excavation-layout-surveys","form-and-foundation-surveys","gridline-and-construction-layout-surveys","infrastructure-layout-and-construction-surveys","road-surveys"]
+    serviceSlugs: [
+      "3d-settlement-monitoring",
+      "boundary-surveys",
+      "block-outline-surveys",
+      "environmental-and-riparian-surveys",
+      "excavation-layout-surveys",
+      "form-and-foundation-surveys",
+      "gridline-and-construction-layout-surveys",
+      "infrastructure-layout-and-construction-surveys",
+      "road-surveys",
+      "terrestrial-lidar-scanning",
+      "topographic-surveys-and-site-plans",
+      "uav-mapping",
+      "volume-and-earthwork-surveys"
+    ]
   },
   {
     id: 'legal',
@@ -36,7 +57,19 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Subdivision plans, airspace parcels, and easement plans registered at the Land Title Office.',
     icon: Scale,
     image: '/images/survey-marker-post.webp',
-    serviceSlugs: ["block-outline-surveys","boundary-surveys","consolidation-surveys","covenant-surveys","easement-surveys","land-act-surveys","natural-boundary-surveys","statutory-rights-of-way-surveys","subdivisions-surveys"]
+    serviceSlugs: [
+      "air-space-subdivision-surveys",
+      "boundary-surveys",
+      "block-outline-surveys",
+      "consolidation-surveys",
+      "covenant-surveys",
+      "easement-surveys",
+      "land-act-surveys",
+      "natural-boundary-surveys",
+      "road-surveys",
+      "statutory-rights-of-way-surveys",
+      "subdivisions-surveys"
+    ]
   },
   {
     id: 'commercial',
@@ -45,7 +78,20 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Comprehensive geomatics frameworks tailored for commercial real estate developments.',
     icon: Building,
     image: '/images/land-development.webp',
-    serviceSlugs: ["volume-and-earthwork-surveys", "topographic-surveys-and-site-plans", "air-space-subdivision-surveys"]
+    serviceSlugs: [
+      "air-space-subdivision-surveys",
+      "bc-land-surveyors-building-location-surveys",
+      "boundary-surveys",
+      "block-outline-surveys",
+      "consolidation-surveys",
+      "environmental-and-riparian-surveys",
+      "natural-boundary-surveys",
+      "phased-strata-surveys",
+      "proposed-strata-plans",
+      "strata-surveys",
+      "topographic-surveys-and-site-plans",
+      "volume-and-earthwork-surveys"
+    ]
   },
   {
     id: 'engineering',
@@ -54,7 +100,17 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'High-precision 3D structural settlement monitoring and deformation analysis.',
     icon: Mountain,
     image: '/images/3d-settlement-monitoring.webp',
-    serviceSlugs: ["3d-settlement-monitoring","terrestrial-lidar-scanning","uav-mapping","volume-and-earthwork-surveys"]
+    serviceSlugs: [
+      "3d-settlement-monitoring",
+      "excavation-layout-surveys",
+      "road-surveys",
+      "statutory-rights-of-way-surveys",
+      "subdivisions-surveys",
+      "terrestrial-lidar-scanning",
+      "topographic-surveys-and-site-plans",
+      "uav-mapping",
+      "volume-and-earthwork-surveys"
+    ]
   },
   {
     id: 'strata',
@@ -63,6 +119,15 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
     homeDescription: 'Specialized building strata plans, bare land strata layouts, and phased multi-unit development surveys.',
     icon: Layers,
     image: '/images/bare-land-strata-surveys.webp',
-    serviceSlugs: ["air-space-subdivision-surveys","bare-land-strata-surveys","building-strata-surveys","phased-strata-surveys","proposed-strata-plans","strata-plan-amendment-surveys","strata-surveys"]
+    serviceSlugs: [
+      "air-space-subdivision-surveys",
+      "bare-land-strata-surveys",
+      "building-strata-surveys",
+      "phased-strata-surveys",
+      "proposed-strata-plans",
+      "statutory-rights-of-way-surveys",
+      "strata-plan-amendment-surveys",
+      "strata-surveys"
+    ]
   }
 ];

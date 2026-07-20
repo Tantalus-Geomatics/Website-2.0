@@ -412,5 +412,16 @@ Updated Insight page hero subtitle and tag pill colors to match brand-green, con
 - **Wiring:**
   - Imported and registered `RichVideo` in [`src/pages/DynamicProject.tsx`](src/pages/DynamicProject.tsx) and [`src/pages/DynamicInsight.tsx`](src/pages/DynamicInsight.tsx) via the MDX `components` prop.
 
+## 11. Service Category Reorganization
+
+The service categories and their child service mappings have been reorganized to align with updated business and SEO requirements.
+
+### Changes Made
+- **Centralized Configuration:** Updated [`src/config/servicesStructure.ts`](src/config/servicesStructure.ts) to map the 28 geomatics services to the 6 core categories (Strata Surveys, Engineering Surveys, Commercial Surveys, Construction Surveys, Legal Surveys, and Residential Surveys) using the new structure.
+- **Localization Script Analysis:** Verified that [`scripts/generate-localized-content.js`](scripts/generate-localized-content.js) does not have its own hardcoded category map, nor does it import from `servicesStructure.ts` to generate category lists at build time. Instead, the "related services in this category" list is resolved dynamically at runtime in [`src/templates/ServiceTemplate.tsx`](src/templates/ServiceTemplate.tsx) using the centralized `SERVICE_CATEGORIES` configuration. This corresponds to **Pattern A** (where updating `servicesStructure.ts` alone is sufficient for category membership, and the next full build regenerates all files).
+- **Content Regeneration:** Triggered a full content regeneration via `npm run generate-mdx && npm run localize-content`, which successfully regenerated all 420 localized MDX files under `src/content/services/*/` to ensure clean, up-to-date metadata and schema.
+- **Services Index Verification:** Confirmed that [`src/pages/Services.tsx`](src/pages/Services.tsx) dynamically consumes `SERVICE_CATEGORIES` and therefore automatically reflects the new category structure without requiring any hardcoded changes.
+
+
 
 
