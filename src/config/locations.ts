@@ -136,7 +136,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
   'the-sea-to-sky': {
     lat: 49.5841,
     lng: -123.2255,
-    locality: 'Sea to Sky',
+    locality: 'The Sea to Sky',
     localityName: 'The Sea to Sky',
     localAuthorityName: 'Sea-to-Sky Corridor',
     municipalLink: 'https://www.slrd.bc.ca/planning-development-services',
