@@ -321,7 +321,7 @@ const LOCATION_MAPPING = {
     PARTNERSHIP_PARAGRAPH: "By choosing Tantalus Geomatics, you partner with a team that possesses deep local knowledge of the Sunshine Coast. We work closely with local architects, engineers, and municipal planning staff to deliver high-precision digital terrain models and detailed CAD files that integrate perfectly into your design workflow."
   },
   'the-sea-to-sky': {
-    LOCATION_NAME: 'Sea to Sky',
+    LOCATION_NAME: 'the Sea to Sky',
     SERVICE_LOCATION_NAME: 'the Sea to Sky',
     LOCAL_AUTHORITY: 'Squamish-Lillooet Regional District',
     MUNICIPAL_LINK: 'https://www.slrd.bc.ca/planning-development-services',
