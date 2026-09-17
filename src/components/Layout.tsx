@@ -364,85 +364,105 @@ export default function Layout() {
             
             {/* Left Column: Branding, Contact Details, and Social Links */}
             <div className="flex flex-col justify-between space-y-6">
-              <div>
-                {/* Branding elements (Logo, Title, Subtitle) header block */}
-                <div className="flex items-center gap-2 mb-4">
-                  <img 
-                    src="/tantalus-logo.webp" 
-                    alt="Tantalus Geomatics Logo" 
-                    width={120}
-                    height={32}
-                    loading="lazy"
-                    className="h-8 w-auto object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                    }}
-                  />
-                  <Mountain size={24} className="text-white hidden" />
-                  <div className="flex flex-col">
-                    <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics</span>
-                    <span className="text-xs font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
-                  </div>
-                </div>
-                
-                {/* Company Tagline */}
-                <p className="text-sm text-white/60 mb-6">
-                  Professional Land Surveying throughout the Sea to Sky corridor.
-                </p>
-
-                {/* Contact Information */}
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-center gap-3">
-                    <Phone size={16} className="text-brand-green" />
-                    <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Mail size={16} className="text-brand-green" />
-                    <a href="mailto:contact@tantalusgeomatics.com" className="hover:text-white transition-colors">contact@tantalusgeomatics.com</a>
-                  </li>
-                </ul>
-
-                {/* Chamber of Commerce Badge */}
-                <a
-                  href="https://www.squamishchamber.com/member/tantalus-geomatics-land-surveying-ltd/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Tantalus Geomatics — Proud Member of the Squamish Chamber of Commerce"
-                  className="inline-block mt-4 mb-2"
-                >
-                  <img
-                    src="/images/SCC7817_ProudMemberSticker_Vertical.webp"
-                    alt="Proud Member — Squamish Chamber of Commerce"
-                    width={80}
-                    height={80}
-                    className="opacity-90 hover:opacity-100 transition-opacity"
-                  />
-                </a>
-              </div>
               
-              {/* Social Links matching the exact bottom alignment of the right column */}
-              <div className="flex items-center gap-4 pt-2">
-                <a href="https://www.linkedin.com/company/tantalus-geomatics" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                  <Linkedin className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                </a>
-                <a href="https://github.com/Tantalus-Geomatics" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                  <Github className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                </a>
-                <a href="https://www.instagram.com/tantalus_geomatics" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on Instagram">
-                  <Instagram className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61591192851840" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on Facebook">
-                  <Facebook className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                </a>
-                <a href="https://wa.me/16042139934" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on WhatsApp">
-                  <MessageCircle className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                </a>
-                <a href="https://www.youtube.com/@TantalusGeomaticsLandSurveying" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on YouTube">
-                  <Youtube className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
-                </a>
-              </div>
+        <div>
+          {/* Branding elements (Logo, Title, Subtitle) header block */}
+          <div className="flex items-center gap-2 mb-4">
+            <img 
+              src="/tantalus-logo.webp" 
+              alt="Tantalus Geomatics Logo" 
+              width={120}
+              height={32}
+              loading="lazy"
+              className="h-8 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              }}
+            />
+            <Mountain size={24} className="text-white hidden" />
+            <div className="flex flex-col">
+              <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics</span>
+              <span className="text-xs font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
             </div>
+          </div>
+          
+          {/* Company Tagline */}
+          <p className="text-sm text-white/60 mb-6">
+            Professional Land Surveying throughout the Sea to Sky corridor.
+          </p>
+
+          {/* Contact Information */}
+          <ul className="space-y-3 text-sm mb-4">
+            <li className="flex items-center gap-3">
+              <Phone size={16} className="text-brand-green" />
+              <a href="tel:+16042139934" className="hover:text-white transition-colors">(604) 213 9934</a>
+            </li>
+            <li className="flex items-center gap-3">
+              <Mail size={16} className="text-brand-green" />
+              <a href="mailto:contact@tantalusgeomatics.com" className="hover:text-white transition-colors">contact@tantalusgeomatics.com</a>
+            </li>
+          </ul>
+
+          {/* Partner Badges Container */}
+          <div className="flex items-center gap-4 mt-4 mb-2">
+            {/* Chamber of Commerce Badge */}
+            <a
+              href="https://www.squamishchamber.com/member/tantalus-geomatics-land-surveying-ltd/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Tantalus Geomatics — Proud Member of the Squamish Chamber of Commerce"
+              className="inline-block"
+            >
+              <img
+                src="/images/SCC7817_ProudMemberSticker_Vertical.webp"
+                alt="Proud Member — Squamish Chamber of Commerce"
+                width={80}
+                height={80}
+                className="opacity-90 hover:opacity-100 transition-opacity h-20 w-auto object-contain"
+              />
+            </a>
+
+            {/* Vancouver Construction Network Badge */}
+            <a
+              href="https://vancouverconstructionnetwork.com/directory/listing/tantalus-geomatics-land-surveying-ltd"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Vancouver Construction Network Partner"
+              className="inline-block"
+            >
+              <img
+                src="https://vancouverconstructionnetwork.com/images/vcn-partner-badge-light.png"
+                alt="Vancouver Construction Network Partner"
+                height={80}
+                className="opacity-90 hover:opacity-100 transition-opacity h-20 w-auto object-contain"
+              />
+            </a>
+          </div>
+        </div>
+        
+        {/* Social Links matching the exact bottom alignment of the right column */}
+        <div className="flex items-center gap-4 pt-2">
+          <a href="https://www.linkedin.com/company/tantalus-geomatics" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+            <Linkedin className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+          </a>
+          <a href="https://github.com/Tantalus-Geomatics" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+            <Github className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+          </a>
+          <a href="https://www.instagram.com/tantalus_geomatics" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on Instagram">
+            <Instagram className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61591192851840" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on Facebook">
+            <Facebook className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+          </a>
+          <a href="https://wa.me/16042139934" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on WhatsApp">
+            <MessageCircle className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+          </a>
+          <a href="https://www.youtube.com/@TantalusGeomaticsLandSurveying" target="_blank" rel="noopener noreferrer" aria-label="Tantalus Geomatics on YouTube">
+            <Youtube className="w-5 h-5 text-white/50 hover:text-white transition-colors" />
+          </a>
+        </div>
+      </div>
 
             {/* Right Column: ABCLS Affiliation Information */}
             <div className="flex flex-col justify-between space-y-6 lg:pl-6">
