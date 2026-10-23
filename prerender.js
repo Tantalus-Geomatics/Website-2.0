@@ -210,7 +210,7 @@ async function generate() {
     } catch (err) {
       console.error('❌ Puppeteer launch failed:', err.message);
       server.close();
-      return;
+      process.exit(1);
     }
 
     const critters = new Critters({
@@ -219,58 +219,68 @@ async function generate() {
       preload: 'media',
     });
 
+    const failedRoutes = [];
+    const isTimeout = (err) => /timeout|timed out/i.test(String(err && (err.message || err)));
+
+    async function prerenderRoute(url) {
+      const page = await browser.newPage();
+      try {
+        page.on('console', msg => {
+          if (msg.type() === 'error') console.log(`[Browser Error]: ${msg.text()}`);
+        });
+        page.on('pageerror', err => console.error(`[React Crash]:`, err.toString()));
+
+        await page.evaluateOnNewDocument(() => {
+          window.__IS_PRERENDERING = true;
+        });
+
+        await page.goto(`http://localhost:3000${url}`, { waitUntil: 'networkidle0', timeout: 60000 });
+        await page.waitForSelector('#root > div', { timeout: 20000 });
+
+        await page.evaluate(() => {
+          const removeDuplicates = (selector) => {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length > 1) {
+              for (let i = 1; i < elements.length; i++) elements[i].remove();
+            }
+          };
+          removeDuplicates('title');
+          removeDuplicates('meta[name="description"]');
+          removeDuplicates('link[rel="canonical"]');
+        });
+
+        const html = await page.content();
+        assertPrerenderedPage(url, html);
+        const inlinedHtml = await critters.process(html);
+        const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
+        const filePath = toAbs(`dist/${fileName}`);
+
+        fs.mkdirSync(path.dirname(filePath), { recursive: true });
+        fs.writeFileSync(filePath, inlinedHtml);
+        console.log(`📸 Prerendered & Inlined CSS: ${url}`);
+      } finally {
+        await page.close();
+      }
+    }
+
     try {
       for (const url of routesToPrerender) {
-        let page;
         try {
-          page = await browser.newPage();
-          
-          page.on('console', msg => {
-            if (msg.type() === 'error') console.log(`[Browser Error]: ${msg.text()}`);
-          });
-          page.on('pageerror', err => console.error(`[React Crash]:`, err.toString()));
-
-          await page.evaluateOnNewDocument(() => {
-            window.__IS_PRERENDERING = true;
-          });
-          
-          await page.goto(`http://localhost:3000${url}`, { waitUntil: 'networkidle0' });
-
-          try {
-            await page.waitForSelector('#root > div', { timeout: 10000 });
-          } catch (e) {
-            console.error(`⚠️ React render timeout on path: ${url}`);
-          }
-
-          await page.evaluate(() => {
-            const removeDuplicates = (selector) => {
-              const elements = document.querySelectorAll(selector);
-              if (elements.length > 1) {
-                for (let i = 1; i < elements.length; i++) elements[i].remove();
-              }
-            };
-            removeDuplicates('title');
-            removeDuplicates('meta[name="description"]');
-            removeDuplicates('link[rel="canonical"]');
-          });
-
-          const html = await page.content();
-          assertPrerenderedPage(url, html);
-          const inlinedHtml = await critters.process(html);
-          const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
-          const filePath = toAbs(`dist/${fileName}`);
-          
-          fs.mkdirSync(path.dirname(filePath), { recursive: true });
-          fs.writeFileSync(filePath, inlinedHtml);
-          console.log(`📸 Prerendered & Inlined CSS: ${url}`);
-          
-          await page.close();
+          await prerenderRoute(url);
         } catch (innerError) {
-          console.error(`❌ Prerender failed on path ${url}:`, innerError.message);
-          if (page) {
-            await page.close();
+          if (isTimeout(innerError)) {
+            console.error(`⏱️ Timeout on ${url}; retrying once.`);
+            try {
+              await prerenderRoute(url);
+              continue;
+            } catch (retryError) {
+              console.error(`❌ Prerender failed on path ${url}:`, retryError.message);
+              failedRoutes.push({ url, message: retryError.message });
+              continue;
+            }
           }
-          continue;
+          console.error(`❌ Prerender failed on path ${url}:`, innerError.message);
+          failedRoutes.push({ url, message: innerError.message });
         }
       }
 
@@ -307,11 +317,20 @@ async function generate() {
 
     } catch (error) {
       console.error('❌ Error during compilation runs:', error);
+      failedRoutes.push({ url: '(prerender)', message: error.message });
     } finally {
       await browser.close();
       server.close();
       if (fs.existsSync(toAbs('dist/shell.html'))) fs.unlinkSync(toAbs('dist/shell.html'));
       console.log('🛑 Headless Chrome closed. Prerendering complete.');
+    }
+
+    if (failedRoutes.length > 0) {
+      console.error(`\nPrerender failed on ${failedRoutes.length} route(s):`);
+      for (const failure of failedRoutes) {
+        console.error(` - ${failure.url}: ${failure.message}`);
+      }
+      process.exit(1);
     }
 
     if (INDEXNOW_KEY) {
