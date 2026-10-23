@@ -5,7 +5,7 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
-const CANONICAL = 'https://tantalusgeomatics.com/subdivision/';
+const CANONICAL = 'https://www.tantalusgeomatics.com/subdivision/';
 
 // Reusable Accordion Component for the Dropdown Menus
 const AccordionItem = ({ title, defaultOpen = false, children }) => {
@@ -42,12 +42,12 @@ export default function Subdivisions() {
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${CANONICAL}/#webpage`,
+    '@id': `${CANONICAL}#webpage`,
     'url': CANONICAL,
     'name': 'The Process of Subdividing a Parcel in British Columbia | Tantalus Geomatics',
     'description': 'A comprehensive technical guide on the process of subdividing a parcel in British Columbia, including municipal reviews, surveys, and Land Title registration.',
     'isPartOf': {
-      '@id': 'https://tantalusgeomatics.com/#website'
+      '@id': 'https://www.tantalusgeomatics.com/#website'
     },
     'about': [
       { '@type': 'Thing', 'name': 'Land Subdivision' },
@@ -59,7 +59,7 @@ export default function Subdivisions() {
       'name': 'Land Subdivision Surveys',
       'serviceType': 'Land Surveying',
       'provider': {
-        '@id': 'https://tantalusgeomatics.com/#organization'
+        '@id': 'https://www.tantalusgeomatics.com/#organization'
       },
       'areaServed': serviceAreas.map(city => ({
         '@type': 'City',
@@ -73,13 +73,13 @@ export default function Subdivisions() {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://tantalusgeomatics.com/'
+          'item': 'https://www.tantalusgeomatics.com/'
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Residential Surveys',
-          'item': 'https://tantalusgeomatics.com/residential/'
+          'item': 'https://www.tantalusgeomatics.com/residential/'
         },
         {
           '@type': 'ListItem',
@@ -90,7 +90,7 @@ export default function Subdivisions() {
       ]
     },
     'provider': {
-      '@id': 'https://tantalusgeomatics.com/#organization'
+      '@id': 'https://www.tantalusgeomatics.com/#organization'
     }
   };
 

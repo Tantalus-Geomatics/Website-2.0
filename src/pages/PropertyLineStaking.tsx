@@ -4,7 +4,7 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
-const CANONICAL = 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking/';
+const CANONICAL = 'https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking/';
 
 const problems = [
   {
@@ -25,12 +25,12 @@ export default function PropertyLineStaking() {
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${CANONICAL}/#webpage`,
+    '@id': `${CANONICAL}#webpage`,
     'url': CANONICAL,
     'name': 'Sea to Sky Property Line Staking | Tantalus Geomatics',
     'description': 'Why property line staking matters for fences, retaining walls, and trees in Squamish, Whistler, and West Vancouver. Protect your land with a certified BCLS boundary survey.',
     'isPartOf': {
-      '@id': 'https://tantalusgeomatics.com/#website'
+      '@id': 'https://www.tantalusgeomatics.com/#website'
     },
     'breadcrumb': {
       '@type': 'BreadcrumbList',
@@ -39,19 +39,19 @@ export default function PropertyLineStaking() {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://tantalusgeomatics.com/'
+          'item': 'https://www.tantalusgeomatics.com/'
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Residential Surveys',
-          'item': 'https://tantalusgeomatics.com/residential/'
+          'item': 'https://www.tantalusgeomatics.com/residential/'
         },
         {
           '@type': 'ListItem',
           'position': 3,
           'name': 'Property Line Staking',
-          'item': 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking/'
+          'item': 'https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking/'
         }
       ]
     },
@@ -60,7 +60,7 @@ export default function PropertyLineStaking() {
       'name': 'Property Line Staking & Boundary Surveys',
       'serviceType': 'Land Surveying',
       'provider': {
-        '@id': 'https://tantalusgeomatics.com/#organization'
+        '@id': 'https://www.tantalusgeomatics.com/#organization'
       },
       'areaServed': [
         { '@type': 'City', 'name': 'Squamish' },

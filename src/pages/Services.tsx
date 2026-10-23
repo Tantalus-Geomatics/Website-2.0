@@ -274,7 +274,7 @@ export default function Services() {
         '@type': 'Service',
         'name': service.title,
         'description': service.description,
-        'url': `https://tantalusgeomatics.com${service.href}`,
+        'url': `https://www.tantalusgeomatics.com${service.href}`,
         'areaServed': SERVICE_AREAS.map(area => ({
           '@type': 'City',
           'name': area
@@ -293,7 +293,7 @@ export default function Services() {
       <SEO
         title="Land Surveying Services in Sea to Sky"
         description="Comprehensive land surveying and geomatics engineering solutions including topographic Surveys, Construction Surveys, Legal Boundary Surveys, Strata Surveys, drone surveys and 3D laser scanning."
-        canonicalUrl="https://tantalusgeomatics.com/services/"
+        canonicalUrl="https://www.tantalusgeomatics.com/services/"
         schema={servicesSchema}
       />
 

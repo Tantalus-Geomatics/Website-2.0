@@ -26,12 +26,12 @@ export default function TopographicSurveys() {
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${CANONICAL}/#webpage`,
+    '@id': `${CANONICAL}#webpage`,
     'url': CANONICAL,
     'name': 'The First Step to Building: Topographic Surveys Explained | Tantalus Geomatics',
     'description': 'How topographic surveys support permit applications, site designs, and regulatory compliance throughout British Columbia.',
     'isPartOf': {
-      '@id': 'https://tantalusgeomatics.com/#website'
+      '@id': 'https://www.tantalusgeomatics.com/#website'
     },
     'breadcrumb': {
       '@type': 'BreadcrumbList',
@@ -40,19 +40,19 @@ export default function TopographicSurveys() {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://tantalusgeomatics.com/'
+          'item': 'https://www.tantalusgeomatics.com/'
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Residential Surveys',
-          'item': 'https://tantalusgeomatics.com/residential/'
+          'item': 'https://www.tantalusgeomatics.com/residential/'
         },
         {
           '@type': 'ListItem',
           'position': 3,
           'name': 'Topographic Surveys',
-          'item': 'https://tantalusgeomatics.com/topographic-surveys/'
+          'item': 'https://www.tantalusgeomatics.com/topographic-surveys/'
         }
       ]
     },
@@ -61,7 +61,7 @@ export default function TopographicSurveys() {
       'name': 'Topographic Surveys & Site Plans',
       'serviceType': 'Land Surveying',
       'provider': {
-        '@id': 'https://tantalusgeomatics.com/#organization'
+        '@id': 'https://www.tantalusgeomatics.com/#organization'
       },
       'areaServed': [
         { '@type': 'City', 'name': 'Squamish' },

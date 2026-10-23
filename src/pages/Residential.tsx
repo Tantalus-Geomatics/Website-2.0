@@ -25,12 +25,12 @@ const serviceAreas = [
 const residentialSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  '@id': 'https://tantalusgeomatics.com/residential/#service',
+  '@id': 'https://www.tantalusgeomatics.com/residential/#service',
   'name': 'Residential Land Surveying',
   'serviceType': 'Land Surveying',
   'provider': {
     '@type': 'LocalBusiness',
-    '@id': 'https://tantalusgeomatics.com/#organization',
+    '@id': 'https://www.tantalusgeomatics.com/#organization',
     'name': 'Tantalus Geomatics Land Surveying Ltd.',
     'areaServed': serviceAreas.map(area => ({
       '@type': 'City',
@@ -42,7 +42,7 @@ const residentialSchema = {
     'name': area
   })),
   'description': 'Professional BCLS certified land surveys for homeowners in the Sea to Sky corridor. Specialized in property lines, topographic surveys, and building permits.',
-  'url': 'https://tantalusgeomatics.com/residential/',
+  'url': 'https://www.tantalusgeomatics.com/residential/',
   'hasOfferCatalog': {
     '@type': 'OfferCatalog',
     'name': 'Residential Surveying Services',
@@ -86,7 +86,7 @@ const residentialSchema = {
       <SEO
         title="Residential Land Surveying Services in British Columbia | Tantalus Geomatics"
         description="Get BC Land Surveyor certified topographic surveys, site plans, property line marking, and building location certificates."
-        canonicalUrl="https://tantalusgeomatics.com/residential/"
+        canonicalUrl="https://www.tantalusgeomatics.com/residential/"
         schema={residentialSchema}
       />
 

@@ -17,16 +17,16 @@ export default function Contact() {
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "@id": "https://tantalusgeomatics.com/contact/#webpage",
-    "url": "https://tantalusgeomatics.com/contact/",
+    "@id": "https://www.tantalusgeomatics.com/contact/#webpage",
+    "url": "https://www.tantalusgeomatics.com/contact/",
     "name": "Contact Tantalus Geomatics | BC Land Surveyor",
     "description": "Request a quote for land surveying services in Squamish, Whistler, and the Sea to Sky corridor.",
     "isPartOf": {
-      "@id": "https://tantalusgeomatics.com/#website"
+      "@id": "https://www.tantalusgeomatics.com/#website"
     },
     "mainEntity": {
       "@type": "LocalBusiness",
-      "@id": "https://tantalusgeomatics.com/#organization",
+      "@id": "https://www.tantalusgeomatics.com/#organization",
       "name": "Tantalus Geomatics Land Surveying Ltd.",
       "email": "contact@tantalusgeomatics.com",
       "telephone": "+1-604-213-9934",
@@ -48,7 +48,7 @@ export default function Contact() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://tantalusgeomatics.com/"
+          "item": "https://www.tantalusgeomatics.com/"
         },
         {
           "@type": "ListItem",
@@ -64,7 +64,7 @@ export default function Contact() {
       <SEO 
         title="Contact a BC Land Surveyor | Request a Quote"
         description="Get in touch with Tantalus Geomatics for your land surveying needs in Squamish, Whistler, Pemberton, Lillooet, North Vancouver, West Vancouver, and Bowen Island."
-        canonicalUrl="https://tantalusgeomatics.com/contact/"
+        canonicalUrl="https://www.tantalusgeomatics.com/contact/"
         schema={contactSchema}
       />
       {/* Hero */}

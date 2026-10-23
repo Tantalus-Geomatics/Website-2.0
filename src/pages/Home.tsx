@@ -90,7 +90,7 @@ export default function Home() {
   const homeSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://tantalusgeomatics.com/#organization",
+    "@id": "https://www.tantalusgeomatics.com/#organization",
     "name": "Tantalus Geomatics Land Surveying Ltd.",
     "identifier": [
       {
@@ -100,7 +100,7 @@ export default function Home() {
         "value": "1046" 
       }
     ],
-    "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
+    "image": "https://www.tantalusgeomatics.com/tantalus-logo.webp",
     "url": "https://www.tantalusgeomatics.com",
     "telephone": "+16042139934",
     "email": "contact@tantalusgeomatics.com",
@@ -155,7 +155,7 @@ export default function Home() {
       <SEO 
         title="BC Land Surveyor in Squamish, Whistler & Sea to Sky"
         description="Hire a professional BC Land Surveyor (BCLS) for topographic surveys, legal boundaries, construction surveys and drone surveys in Squamish, Whistler, and Pemberton."
-        canonicalUrl="https://tantalusgeomatics.com/"
+        canonicalUrl="https://www.tantalusgeomatics.com/"
         schema={homeSchema}
       />
       

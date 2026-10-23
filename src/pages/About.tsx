@@ -17,16 +17,16 @@ export default function About() {
   const aboutSchema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "@id": "https://tantalusgeomatics.com/about/#webpage",
-    "url": "https://tantalusgeomatics.com/about/",
+    "@id": "https://www.tantalusgeomatics.com/about/#webpage",
+    "url": "https://www.tantalusgeomatics.com/about/",
     "name": "About Tantalus Geomatics Land Surveying",
     "description": "Learn about Tantalus Geomatics Land Surveying, a professional land surveying company delivering surveying services throughout the Sea to Sky.",
     "isPartOf": {
-      "@id": "https://tantalusgeomatics.com/#website"
+      "@id": "https://www.tantalusgeomatics.com/#website"
     },
     "mainEntity": {
       "@type": "ProfessionalService",
-      "@id": "https://tantalusgeomatics.com/#organization",
+      "@id": "https://www.tantalusgeomatics.com/#organization",
       "name": "Tantalus Geomatics Land Surveying Ltd.",
       "url": "https://www.tantalusgeomatics.com",
       "telephone": "+16042139934",
@@ -50,12 +50,12 @@ export default function About() {
         "name": area
       })),
       "employee": {
-        "@id": "https://tantalusgeomatics.com/about/#dennis-sherman"
+        "@id": "https://www.tantalusgeomatics.com/about/#dennis-sherman"
       }
     },
       "about": {
       "@type": "Person",
-      "@id": "https://tantalusgeomatics.com/about/#dennis-sherman",
+      "@id": "https://www.tantalusgeomatics.com/about/#dennis-sherman",
       "name": "Dennis Sherman",
       "jobTitle": "British Columbia Land Surveyor and Professional Engineer",
       "identifier": [
@@ -87,7 +87,7 @@ export default function About() {
         }
       ],
       "worksFor": {
-        "@id": "https://tantalusgeomatics.com/#organization"
+        "@id": "https://www.tantalusgeomatics.com/#organization"
       },
       "alumniOf": {
         "@type": "EducationalOrganization",
@@ -105,7 +105,7 @@ export default function About() {
       <SEO 
         title="About Tantalus Geomatics Land Surveying"
         description="Learn about Tantalus Geomatics Land Surveying, a professional land surveying company delivering surveying services throughout the Sea to Sky. Tantalus is led by Land Surveyor and Professional Engineer Dennis Sherman."
-        canonicalUrl="https://tantalusgeomatics.com/about/"
+        canonicalUrl="https://www.tantalusgeomatics.com/about/"
         schema={aboutSchema}
       />
       {/* Hero */}

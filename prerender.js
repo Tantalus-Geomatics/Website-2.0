@@ -13,12 +13,26 @@ const INDEXNOW_KEY = process.env.INDEXNOW_KEY;
 
 // 1. Separate tracking arrays for individual child sitemaps
 const sitemapFeeds = {
-  pages: ['/', '/about/', '/services/', '/faq/', '/contact/', '/residential/', '/survey-pricing/', '/surveys-and-title-insurance/', '/subdivision/'],
+  pages: [
+    '/',
+    '/about/',
+    '/services/',
+    '/faq/',
+    '/contact/',
+    '/residential/',
+    '/survey-pricing/',
+    '/surveys-and-title-insurance/',
+    '/subdivision/',
+    '/topographic-surveys/',
+    '/sea-to-sky-property-line-and-boundary-staking/',
+  ],
   services: [],
   blog: [],
   projects: []
 };
 
+// north-vancouver is not a real location (city and district are). It used to
+// prerender as a second copy of the homepage. It is a static refresh stub now.
 const CORE_LOCATIONS = [
   'squamish',
   'whistler',
@@ -28,12 +42,33 @@ const CORE_LOCATIONS = [
   'bowen-island',
   'britannia-beach',
   'furry-creek',
-  'north-vancouver',
   'gibsons',
   'sechelt',
   'powell-river',
   'the-sea-to-sky'
 ];
+
+// Plain HTML files. Not prerendered, not listed in a sitemap.
+const REDIRECT_STUBS = [
+  {
+    path: '/north-vancouver/',
+    target: 'https://www.tantalusgeomatics.com/',
+  },
+  {
+    path: '/services/topographic-surveys/',
+    target: 'https://www.tantalusgeomatics.com/topographic-surveys/',
+  },
+  {
+    path: '/services/property-line-surveys/',
+    target: 'https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking/',
+  },
+];
+const REDIRECT_STUB_PATHS = new Set(REDIRECT_STUBS.map((stub) => stub.path));
+
+// Short /services/{slug}/ URLs are prerendered so existing links still resolve,
+// but they are not submitted in the sitemap. Their canonical stays on the
+// Sea to Sky URL. The two stubs below are written as static HTML instead.
+const prerenderOnly = [];
 
 // 2. Dynamically discover all localized and base fallback routes
 function generateRouteMatrix() {
@@ -67,12 +102,13 @@ function generateRouteMatrix() {
 
       for (const file of files) {
         const slug = file.replace(/\.(mdx|md)$/, '');
-        
-        // A. Add the root-level, non-localized fallback version of this content
-        sitemapFeeds[feedKey].push(`/${routePrefix}/${slug}/`);
-        
-        // B. Add the fully localized regional path matrix version
-        sitemapFeeds[feedKey].push(`/${location}/${routePrefix}/${slug}/`);
+        const shortPath = `/${routePrefix}/${slug}/`;
+        const localizedPath = `/${location}/${routePrefix}/${slug}/`;
+
+        sitemapFeeds[feedKey].push(localizedPath);
+        if (!REDIRECT_STUB_PATHS.has(shortPath)) {
+          prerenderOnly.push(shortPath);
+        }
       }
     }
   }
@@ -92,8 +128,61 @@ function generateRouteMatrix() {
     ...sitemapFeeds.pages,
     ...sitemapFeeds.services,
     ...sitemapFeeds.blog,
-    ...sitemapFeeds.projects
+    ...sitemapFeeds.projects,
+    ...new Set(prerenderOnly),
   ];
+}
+
+function writeRedirectStub(routePath, target) {
+  const html = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting…</title>
+  <link rel="canonical" href="${target}">
+  <meta http-equiv="refresh" content="0; url=${target}">
+  <link rel="icon" href="/tantalus-logo-square.png" sizes="48x48" type="image/png">
+</head>
+<body>
+  <p><a href="${target}">Continue</a></p>
+</body>
+</html>
+`;
+  const fileName = path.join(routePath.slice(1), 'index.html');
+  const filePath = toAbs(`dist/${fileName}`);
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, html);
+  console.log(`↪️  Static refresh stub: ${routePath} → ${target}`);
+}
+
+function assertPrerenderedPage(url, html) {
+  const canonicalMatch = html.match(/<link[^>]*rel="canonical"[^>]*>/i);
+  const hrefMatch = canonicalMatch && canonicalMatch[0].match(/href="([^"]+)"/i);
+  const canonical = hrefMatch ? hrefMatch[1] : '';
+  if (!canonical.startsWith(`${hostname}/`)) {
+    throw new Error(`Bad canonical on ${url}: ${canonical || '(missing)'}`);
+  }
+  if (/index\.html/i.test(canonical) || canonical.includes('//#')) {
+    throw new Error(`Unnormalized canonical on ${url}: ${canonical}`);
+  }
+  if (/<h1[^>]*>\s*404\s*<\/h1>/i.test(html)) {
+    throw new Error(`Refusing to prerender a 404 document at ${url}`);
+  }
+  const expectedSelf = `${hostname}${url}`;
+  const isShortService = /^\/services\/[^/]+\/$/.test(url);
+  if (isShortService) {
+    const slug = url.split('/')[2];
+    const expected = `${hostname}/the-sea-to-sky/services/${slug}/`;
+    if (canonical !== expected) {
+      throw new Error(`Short URL ${url} canonical is ${canonical}, expected ${expected}`);
+    }
+  } else if (canonical !== expectedSelf) {
+    throw new Error(`Expected self-canonical ${expectedSelf} on ${url}, got ${canonical}`);
+  }
+  if (html.includes('https://tantalusgeomatics.com/#') || html.includes('//#')) {
+    throw new Error(`JSON-LD @id still uses the apex host or a double slash on ${url}`);
+  }
 }
 
 const routesToPrerender = generateRouteMatrix();
@@ -166,6 +255,7 @@ async function generate() {
           });
 
           const html = await page.content();
+          assertPrerenderedPage(url, html);
           const inlinedHtml = await critters.process(html);
           const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
           const filePath = toAbs(`dist/${fileName}`);
@@ -182,6 +272,10 @@ async function generate() {
           }
           continue;
         }
+      }
+
+      for (const stub of REDIRECT_STUBS) {
+        writeRedirectStub(stub.path, stub.target);
       }
 
       // 3. Write individual structural child sitemaps
