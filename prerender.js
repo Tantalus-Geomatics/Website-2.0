@@ -356,23 +356,31 @@ function reportHttpErrors(entries) {
   }
 
   const sorted = [...groups.values()].sort((a, b) => b.count - a.count || a.host.localeCompare(b.host));
-  console.log(`\nHTTP 400/404 during prerender: ${entries.length} response(s), ${sorted.length} host/path group(s).`);
-  for (const group of sorted) {
-    const kind = !group.firstParty
-      ? 'third-party'
-      : group.isImage ? 'first-party image' : 'first-party';
-    console.log(` - ${group.status} x${group.count} ${group.host} ${group.pattern} [${kind}]`);
-    for (const sample of group.samples) console.log(`    e.g. ${sample}`);
+  const firstPartyGroups = sorted.filter((group) => group.firstParty);
+  const thirdPartyGroups = sorted.filter((group) => !group.firstParty);
+  const firstPartyCount = firstPartyGroups.reduce((sum, group) => sum + group.count, 0);
+  const thirdPartyCount = thirdPartyGroups.reduce((sum, group) => sum + group.count, 0);
+
+  function printGroups(groups) {
+    for (const group of groups) {
+      const kind = group.isImage ? 'image' : 'other';
+      console.log(` - ${group.status} x${group.count} ${group.host} ${group.pattern} [${kind}]`);
+      for (const sample of group.samples) console.log(`    e.g. ${sample}`);
+    }
   }
-  const firstPartyResponses = entries.filter((entry) => {
-    try { return firstPartyHosts.has(new URL(entry.url).hostname); } catch { return false; }
-  });
-  console.log(`First-party 400/404 responses: ${firstPartyResponses.length}`);
+
+  console.log(`\nFirst-party HTTP 400/404: ${firstPartyCount} response(s), ${firstPartyGroups.length} group(s).`);
+  printGroups(firstPartyGroups);
+  console.log(`Third-party HTTP 400/404 (informational, not a build failure): ${thirdPartyCount} response(s), ${thirdPartyGroups.length} group(s).`);
+  printGroups(thirdPartyGroups);
+
   fs.writeFileSync('/tmp/prerender-http-errors.json', JSON.stringify({
     total: entries.length,
-    firstParty: firstPartyResponses.length,
+    firstParty: firstPartyCount,
+    thirdParty: thirdPartyCount,
     groups: sorted,
   }, null, 2));
+  return firstPartyCount;
 }
 
 function loadingPlaceholdersIn(html) {
@@ -678,12 +686,13 @@ async function generate() {
         console.error(` - ${hit.file}: ${hit.placeholders.join(', ')}`);
       }
     }
-    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0 || loadingPages.length > 0) {
+    const firstPartyHttpErrors = reportHttpErrors(httpErrors);
+    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0 || loadingPages.length > 0 || firstPartyHttpErrors > 0) {
       process.exit(1);
     }
     console.log(`Route coverage ok: ${expectedRoutes.size} renderable and sitemap URLs have a prerendered page.`);
     console.log('Loading placeholders: 0');
-    reportHttpErrors(httpErrors);
+    console.log('First-party failed responses: 0');
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
