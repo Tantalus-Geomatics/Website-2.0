@@ -294,14 +294,93 @@ function collectRenderableRoutes() {
   return routes;
 }
 
+// The footer map is client-only. Its "Loading Interactive Map" line (with
+// "...", a single "…", or no dots) is allowed. Every other "Loading" string
+// is a placeholder that was saved too early.
+function stripAllowedLoadingPlaceholder(text) {
+  return String(text)
+    .split('Loading Interactive Map...').join('')
+    .split('Loading Interactive Map…').join('')
+    .split('Loading Interactive Map').join('');
+}
+
+function reportHttpErrors(entries) {
+  const firstPartyHosts = new Set([
+    'localhost',
+    '127.0.0.1',
+    'tantalusgeomatics.com',
+    'www.tantalusgeomatics.com',
+  ]);
+
+  function classify(raw) {
+    let host = '(unparsed)';
+    let path = raw;
+    let search = '';
+    try {
+      const parsed = new URL(raw);
+      host = parsed.hostname;
+      path = parsed.pathname || '/';
+      search = parsed.search;
+    } catch {
+      // Leave unparsed URLs in their own group.
+    }
+    let pattern = path
+      .replace(/\/assets\/[^/]+/g, '/assets/*')
+      .replace(/\/images\/[^/]+/g, '/images/*');
+    if (!firstPartyHosts.has(host)) {
+      pattern = pattern.replace(/\/[A-Za-z0-9_-]{16,}/g, '/*');
+    }
+    if (search) pattern += '?*';
+    const ext = (path.split('.').pop() || '').toLowerCase();
+    const isImage = /^(png|jpe?g|webp|gif|svg|avif|ico)$/.test(ext) || path.includes('/images/');
+    return {
+      host,
+      pattern,
+      isImage,
+      firstParty: firstPartyHosts.has(host),
+    };
+  }
+
+  const groups = new Map();
+  for (const entry of entries) {
+    const info = classify(entry.url);
+    const key = `${entry.status}\t${info.host}\t${info.pattern}`;
+    if (!groups.has(key)) {
+      groups.set(key, { status: entry.status, ...info, count: 0, samples: [] });
+    }
+    const group = groups.get(key);
+    group.count += 1;
+    if (group.samples.length < 3 && !group.samples.includes(entry.url)) {
+      group.samples.push(entry.url);
+    }
+  }
+
+  const sorted = [...groups.values()].sort((a, b) => b.count - a.count || a.host.localeCompare(b.host));
+  console.log(`\nHTTP 400/404 during prerender: ${entries.length} response(s), ${sorted.length} host/path group(s).`);
+  for (const group of sorted) {
+    const kind = !group.firstParty
+      ? 'third-party'
+      : group.isImage ? 'first-party image' : 'first-party';
+    console.log(` - ${group.status} x${group.count} ${group.host} ${group.pattern} [${kind}]`);
+    for (const sample of group.samples) console.log(`    e.g. ${sample}`);
+  }
+  const firstPartyResponses = entries.filter((entry) => {
+    try { return firstPartyHosts.has(new URL(entry.url).hostname); } catch { return false; }
+  });
+  console.log(`First-party 400/404 responses: ${firstPartyResponses.length}`);
+  fs.writeFileSync('/tmp/prerender-http-errors.json', JSON.stringify({
+    total: entries.length,
+    firstParty: firstPartyResponses.length,
+    groups: sorted,
+  }, null, 2));
+}
+
 function loadingPlaceholdersIn(html) {
+  const text = stripAllowedLoadingPlaceholder(html);
   const found = new Set();
-  const text = html.split('Loading Interactive Map...').join('');
-  if (text.includes('Loading FAQs')) found.add('Loading FAQs');
-  if (text.includes('Loading Form')) found.add('Loading Form');
-  if (text.includes('Loading...')) found.add('Loading...');
-  for (const match of text.matchAll(/Loading [^<"]{1,80}\.\.\./g)) {
-    found.add(match[0]);
+  for (const match of text.matchAll(/Loading(?:…|\.{2,}|[^.\u2026<"]{0,60})/g)) {
+    const snippet = match[0].replace(/\s+/g, ' ').trim();
+    if (snippet) found.add(snippet.slice(0, 80));
   }
   return [...found];
 }
@@ -434,7 +513,9 @@ async function generate() {
     });
 
     const failedRoutes = [];
-    const isTimeout = (err) => /timeout|timed out/i.test(String(err && (err.message || err)));
+    const httpErrors = [];
+    // Puppeteer reports waitForFunction as "Waiting failed: 45000ms exceeded".
+    const isTimeout = (err) => /timeout|timed out|exceeded/i.test(String(err && (err.message || err)));
 
     async function prerenderRoute(url) {
       const page = await browser.newPage();
@@ -443,6 +524,12 @@ async function generate() {
           if (msg.type() === 'error') console.log(`[Browser Error]: ${msg.text()}`);
         });
         page.on('pageerror', err => console.error(`[React Crash]:`, err.toString()));
+        page.on('response', (response) => {
+          const status = response.status();
+          if (status === 400 || status === 404) {
+            httpErrors.push({ status, url: response.url(), page: url });
+          }
+        });
 
         await page.evaluateOnNewDocument(() => {
           window.__IS_PRERENDERING = true;
@@ -458,10 +545,11 @@ async function generate() {
           if (!root) return false;
           const heading = root.querySelector('h1');
           if (!heading || !heading.textContent || !heading.textContent.trim()) return false;
-          const text = (root.innerText || '').split('Loading Interactive Map...').join('');
-          if (text.includes('Loading FAQs') || text.includes('Loading Form')) return false;
-          if (text.includes('Loading...')) return false;
-          if (/Loading [^.]{1,80}\.\.\./.test(text)) return false;
+          let text = root.innerText || '';
+          text = text.split('Loading Interactive Map...').join('')
+            .split('Loading Interactive Map…').join('')
+            .split('Loading Interactive Map').join('');
+          if (text.includes('Loading')) return false;
           return true;
         }, { timeout: 45000 });
 
@@ -595,6 +683,7 @@ async function generate() {
     }
     console.log(`Route coverage ok: ${expectedRoutes.size} renderable and sitemap URLs have a prerendered page.`);
     console.log('Loading placeholders: 0');
+    reportHttpErrors(httpErrors);
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
