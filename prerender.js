@@ -62,6 +62,14 @@ const REDIRECT_STUBS = [
     path: '/services/property-line-surveys/',
     target: 'https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking/',
   },
+  // Hand-written source for this URL is in archive/town-pages/squamish/.
+  // There is no generated property-line-surveys page (that slug is not in the
+  // 28-service catalog). The stub cannot refresh to its own URL, so it points
+  // at the generated Squamish boundary survey, which is the live page for this work.
+  {
+    path: '/squamish/services/property-line-surveys/',
+    target: 'https://www.tantalusgeomatics.com/squamish/services/boundary-surveys/',
+  },
 ];
 const REDIRECT_STUB_PATHS = new Set(REDIRECT_STUBS.map((stub) => stub.path));
 
@@ -286,14 +294,101 @@ function collectRenderableRoutes() {
   return routes;
 }
 
+// The footer map is client-only. Its "Loading Interactive Map" line (with
+// "...", a single "…", or no dots) is allowed. Every other "Loading" string
+// is a placeholder that was saved too early.
+function stripAllowedLoadingPlaceholder(text) {
+  return String(text)
+    .split('Loading Interactive Map...').join('')
+    .split('Loading Interactive Map…').join('')
+    .split('Loading Interactive Map').join('');
+}
+
+function reportHttpErrors(entries) {
+  const firstPartyHosts = new Set([
+    'localhost',
+    '127.0.0.1',
+    'tantalusgeomatics.com',
+    'www.tantalusgeomatics.com',
+  ]);
+
+  function classify(raw) {
+    let host = '(unparsed)';
+    let path = raw;
+    let search = '';
+    try {
+      const parsed = new URL(raw);
+      host = parsed.hostname;
+      path = parsed.pathname || '/';
+      search = parsed.search;
+    } catch {
+      // Leave unparsed URLs in their own group.
+    }
+    let pattern = path
+      .replace(/\/assets\/[^/]+/g, '/assets/*')
+      .replace(/\/images\/[^/]+/g, '/images/*');
+    if (!firstPartyHosts.has(host)) {
+      pattern = pattern.replace(/\/[A-Za-z0-9_-]{16,}/g, '/*');
+    }
+    if (search) pattern += '?*';
+    const ext = (path.split('.').pop() || '').toLowerCase();
+    const isImage = /^(png|jpe?g|webp|gif|svg|avif|ico)$/.test(ext) || path.includes('/images/');
+    return {
+      host,
+      pattern,
+      isImage,
+      firstParty: firstPartyHosts.has(host),
+    };
+  }
+
+  const groups = new Map();
+  for (const entry of entries) {
+    const info = classify(entry.url);
+    const key = `${entry.status}\t${info.host}\t${info.pattern}`;
+    if (!groups.has(key)) {
+      groups.set(key, { status: entry.status, ...info, count: 0, samples: [] });
+    }
+    const group = groups.get(key);
+    group.count += 1;
+    if (group.samples.length < 3 && !group.samples.includes(entry.url)) {
+      group.samples.push(entry.url);
+    }
+  }
+
+  const sorted = [...groups.values()].sort((a, b) => b.count - a.count || a.host.localeCompare(b.host));
+  const firstPartyGroups = sorted.filter((group) => group.firstParty);
+  const thirdPartyGroups = sorted.filter((group) => !group.firstParty);
+  const firstPartyCount = firstPartyGroups.reduce((sum, group) => sum + group.count, 0);
+  const thirdPartyCount = thirdPartyGroups.reduce((sum, group) => sum + group.count, 0);
+
+  function printGroups(groups) {
+    for (const group of groups) {
+      const kind = group.isImage ? 'image' : 'other';
+      console.log(` - ${group.status} x${group.count} ${group.host} ${group.pattern} [${kind}]`);
+      for (const sample of group.samples) console.log(`    e.g. ${sample}`);
+    }
+  }
+
+  console.log(`\nFirst-party HTTP 400/404: ${firstPartyCount} response(s), ${firstPartyGroups.length} group(s).`);
+  printGroups(firstPartyGroups);
+  console.log(`Third-party HTTP 400/404 (informational, not a build failure): ${thirdPartyCount} response(s), ${thirdPartyGroups.length} group(s).`);
+  printGroups(thirdPartyGroups);
+
+  fs.writeFileSync('/tmp/prerender-http-errors.json', JSON.stringify({
+    total: entries.length,
+    firstParty: firstPartyCount,
+    thirdParty: thirdPartyCount,
+    groups: sorted,
+  }, null, 2));
+  return firstPartyCount;
+}
+
 function loadingPlaceholdersIn(html) {
+  const text = stripAllowedLoadingPlaceholder(html);
   const found = new Set();
-  const text = html.split('Loading Interactive Map...').join('');
-  if (text.includes('Loading FAQs')) found.add('Loading FAQs');
-  if (text.includes('Loading Form')) found.add('Loading Form');
-  if (text.includes('Loading...')) found.add('Loading...');
-  for (const match of text.matchAll(/Loading [^<"]{1,80}\.\.\./g)) {
-    found.add(match[0]);
+  for (const match of text.matchAll(/Loading(?:…|\.{2,}|[^.\u2026<"]{0,60})/g)) {
+    const snippet = match[0].replace(/\s+/g, ' ').trim();
+    if (snippet) found.add(snippet.slice(0, 80));
   }
   return [...found];
 }
@@ -426,7 +521,9 @@ async function generate() {
     });
 
     const failedRoutes = [];
-    const isTimeout = (err) => /timeout|timed out/i.test(String(err && (err.message || err)));
+    const httpErrors = [];
+    // Puppeteer reports waitForFunction as "Waiting failed: 45000ms exceeded".
+    const isTimeout = (err) => /timeout|timed out|exceeded/i.test(String(err && (err.message || err)));
 
     async function prerenderRoute(url) {
       const page = await browser.newPage();
@@ -435,6 +532,12 @@ async function generate() {
           if (msg.type() === 'error') console.log(`[Browser Error]: ${msg.text()}`);
         });
         page.on('pageerror', err => console.error(`[React Crash]:`, err.toString()));
+        page.on('response', (response) => {
+          const status = response.status();
+          if (status === 400 || status === 404) {
+            httpErrors.push({ status, url: response.url(), page: url });
+          }
+        });
 
         await page.evaluateOnNewDocument(() => {
           window.__IS_PRERENDERING = true;
@@ -450,10 +553,11 @@ async function generate() {
           if (!root) return false;
           const heading = root.querySelector('h1');
           if (!heading || !heading.textContent || !heading.textContent.trim()) return false;
-          const text = (root.innerText || '').split('Loading Interactive Map...').join('');
-          if (text.includes('Loading FAQs') || text.includes('Loading Form')) return false;
-          if (text.includes('Loading...')) return false;
-          if (/Loading [^.]{1,80}\.\.\./.test(text)) return false;
+          let text = root.innerText || '';
+          text = text.split('Loading Interactive Map...').join('')
+            .split('Loading Interactive Map…').join('')
+            .split('Loading Interactive Map').join('');
+          if (text.includes('Loading')) return false;
           return true;
         }, { timeout: 45000 });
 
@@ -582,11 +686,13 @@ async function generate() {
         console.error(` - ${hit.file}: ${hit.placeholders.join(', ')}`);
       }
     }
-    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0 || loadingPages.length > 0) {
+    const firstPartyHttpErrors = reportHttpErrors(httpErrors);
+    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0 || loadingPages.length > 0 || firstPartyHttpErrors > 0) {
       process.exit(1);
     }
     console.log(`Route coverage ok: ${expectedRoutes.size} renderable and sitemap URLs have a prerendered page.`);
     console.log('Loading placeholders: 0');
+    console.log('First-party failed responses: 0');
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
