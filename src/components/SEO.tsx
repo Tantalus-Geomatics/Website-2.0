@@ -40,7 +40,7 @@ function computeFinalDescription(description: string): string {
   const match = description.match(locationPattern);
   if (match) {
     const locationName = match[1];
-    return `BCLS-certified land surveying, topographic mapping, and legal boundary definition in ${locationName}, BC. Tailored to local municipal requirements.`;
+    return `Land surveying by a BC Land Surveyor (BCLS) in ${locationName}, BC, with topographic mapping and legal boundary definition. Tailored to local municipal requirements.`;
   }
 
   if (description.length <= 155) {
@@ -64,23 +64,56 @@ function computeFinalDescription(description: string): string {
   return description.substring(0, 152) + '...';
 }
 
-function computeFinalUrl(canonicalUrl?: string): string {
-  if (!canonicalUrl) {
-    if (typeof window !== 'undefined') {
-      return `${SITE_URL}${window.location.pathname}${window.location.search}`;
+/**
+ * One canonical shape for every page: https://www.tantalusgeomatics.com/<path>/
+ * Trailing slash, no /index.html, no extra slash before a hash.
+ * The route (window.location.pathname) wins over a passed-in URL so a stale
+ * host or path on a page cannot drift again.
+ */
+export function normalizeCanonicalPath(input: string): string {
+  let path = (input || '/').trim();
+
+  if (/^https?:\/\//i.test(path)) {
+    try {
+      path = new URL(path).pathname;
+    } catch {
+      path = '/';
     }
-    return SITE_URL;
   }
 
-  if (canonicalUrl.startsWith('/')) {
-    return `${SITE_URL}${canonicalUrl}`;
-  }
+  path = path.split('?')[0].split('#')[0];
+  path = path.replace(/\/{2,}/g, '/');
+  path = path.replace(/\/index\.html$/i, '/');
+  if (/^\/?index\.html$/i.test(path)) path = '/';
+  if (!path.startsWith('/')) path = `/${path}`;
+  if (!path.endsWith('/')) path = `${path}/`;
+  return path;
+}
 
-  if (canonicalUrl.includes('localhost:3000')) {
-    return canonicalUrl.replace(/https?:\/\/localhost:3000/g, SITE_URL);
-  }
+export function canonicalFromPath(input: string): string {
+  return `${SITE_URL}${normalizeCanonicalPath(input)}`;
+}
 
-  return canonicalUrl;
+function computeFinalUrl(canonicalUrl?: string): string {
+  const fromRoute = typeof window !== 'undefined' ? window.location.pathname : '';
+  return canonicalFromPath(fromRoute || canonicalUrl || '/');
+}
+
+function normalizeSchemaValue(value: unknown): unknown {
+  if (typeof value === 'string') {
+    return value
+      .replace(/https:\/\/tantalusgeomatics\.com(?!\/images\/)/g, SITE_URL)
+      .replace(/\/+#/g, '/#');
+  }
+  if (Array.isArray(value)) return value.map(normalizeSchemaValue);
+  if (value && typeof value === 'object') {
+    const out: Record<string, unknown> = {};
+    for (const [key, child] of Object.entries(value as Record<string, unknown>)) {
+      out[key] = normalizeSchemaValue(child);
+    }
+    return out;
+  }
+  return value;
 }
 
 function setMetaTag(attrName: 'name' | 'property', attrValue: string, content: string) {
@@ -126,7 +159,7 @@ export default function SEO({ title, description, canonicalUrl, schema, ogImage,
   const schemaScript = schema ? (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(normalizeSchemaValue(schema)) }}
     />
   ) : null;
 

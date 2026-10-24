@@ -225,9 +225,9 @@ def convert_directory(source_dir, output_dir):
             # Master dictionary linking specific, high-intent suffixes to eliminate generic boilerplate text
             SERVICE_DESCRIPTION_SUFFIXES = {
                 # Advanced Mapping, Monitoring & Reality Capture
-                "3D Settlement Monitoring": "deploying millimeter-accurate monitoring networks to track structural shifts, shoring deflections, and ground movements throughout construction.",
-                "Terrestrial Lidar Scanning": "capturing high-density digital twins and millimeter-accurate 3D point clouds of complex architectural facades, mechanical plants, and civil works.",
-                "Terrestrial LiDAR Scanning": "capturing high-density digital twins and millimeter-accurate 3D point clouds of complex architectural facades, mechanical plants, and civil works.",
+                "3D Settlement Monitoring": "deploying high-precision monitoring networks to track structural shifts, shoring deflections, and ground movements throughout construction.",
+                "Terrestrial Lidar Scanning": "capturing high-density digital twins and high-precision 3D point clouds of complex architectural facades, mechanical plants, and civil works.",
+                "Terrestrial LiDAR Scanning": "capturing high-density digital twins and high-precision 3D point clouds of complex architectural facades, mechanical plants, and civil works.",
                 "Uav Mapping": "deploying aerial photogrammetry and LiDAR sensors to safely map large-scale, steep, or inaccessible areas.",
                 "UAV Mapping": "deploying aerial photogrammetry and LiDAR sensors to safely map large-scale, steep, or inaccessible areas.",
                 

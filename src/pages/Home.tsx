@@ -28,13 +28,13 @@ export default function Home() {
     {
       title: "Property Line Surveys",
       icon: <Fence className="w-6 h-6" />,
-      content: "Many homeowners discover their existing fences are misaligned with their legal property lines once a formal survey is conducted. A BCLS-certified survey is the only way to definitively establish your boundaries and replace property corners before you invest in new fencing.",
+      content: "Many homeowners discover their existing fences are misaligned with their legal property lines once a formal survey is conducted. A survey signed by a BC Land Surveyor (BCLS) is the only way to definitively establish your boundaries and replace property corners before you invest in new fencing.",
       image: "/images/squamish-property-line.webp"
     },
     {
       title: "Design and Construction",
       icon: <Hammer className="w-6 h-6" />,
-      content: "Municipalities require BCLS-certified topographic surveys to verify that proposed designs comply with site coverage and setback zoning bylaws. These surveys provide the foundational data architects and designers need to align their plans with the physical and legal constraints of the site.",
+      content: "Municipalities require topographic surveys signed by a BC Land Surveyor (BCLS) to verify that proposed designs comply with site coverage and setback zoning bylaws. These surveys provide the foundational data architects and designers need to align their plans with the physical and legal constraints of the site.",
       image: "/images/adu.webp"
     },
     {
@@ -58,7 +58,7 @@ export default function Home() {
     {
       title: "Strata Developments",
       icon: <Building className="w-6 h-6" />,
-      content: "Developing multi-unit housing or duplexes requires a BCLS-certified strata plan to define individual strata lot boundaries and common property. Tantalus Geomatics provides the precise measurements and documentation needed to successfully register your project at the Land Title Office.",
+      content: "Developing multi-unit housing or duplexes requires a strata plan signed by a BC Land Surveyor (BCLS) to define individual strata lot boundaries and common property. Tantalus Geomatics provides the precise measurements and documentation needed to successfully register your project at the Land Title Office.",
       image: "/images/strata.webp"
     },
     {
@@ -90,7 +90,7 @@ export default function Home() {
   const homeSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://tantalusgeomatics.com/#organization",
+    "@id": "https://www.tantalusgeomatics.com/#organization",
     "name": "Tantalus Geomatics Land Surveying Ltd.",
     "identifier": [
       {
@@ -100,7 +100,7 @@ export default function Home() {
         "value": "1046" 
       }
     ],
-    "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
+    "image": "https://www.tantalusgeomatics.com/tantalus-logo.webp",
     "url": "https://www.tantalusgeomatics.com",
     "telephone": "+16042139934",
     "email": "contact@tantalusgeomatics.com",
@@ -155,7 +155,7 @@ export default function Home() {
       <SEO 
         title="BC Land Surveyor in Squamish, Whistler & Sea to Sky"
         description="Hire a professional BC Land Surveyor (BCLS) for topographic surveys, legal boundaries, construction surveys and drone surveys in Squamish, Whistler, and Pemberton."
-        canonicalUrl="https://tantalusgeomatics.com/"
+        canonicalUrl="https://www.tantalusgeomatics.com/"
         schema={homeSchema}
       />
       

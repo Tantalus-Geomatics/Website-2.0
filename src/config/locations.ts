@@ -39,7 +39,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     locality: 'Squamish',
     localAuthorityName: 'District of Squamish',
     municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
-    metaDescription: 'BCLS-certified land surveying in Squamish, BC — boundary surveys, subdivision plans, and strata development tailored to District of Squamish permitting and the Garibaldi Estates corridor.'
+    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in Squamish, BC — boundary surveys, subdivision plans, and strata development tailored to District of Squamish permitting and the Garibaldi Estates corridor.'
   },
   'whistler': {
     lat: 50.1163,
@@ -47,7 +47,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     locality: 'Whistler',
     localAuthorityName: 'Resort Municipality of Whistler',
     municipalLink: 'https://www.whistler.ca/business-development/',
-    metaDescription: 'BCLS-certified land surveying in Whistler, BC — strata conversions, easement plans, and topographic surveys tailored to Resort Municipality of Whistler permitting requirements.'
+    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in Whistler, BC — strata conversions, easement plans, and topographic surveys tailored to Resort Municipality of Whistler permitting requirements.'
   },
   'pemberton': {
     lat: 50.3210,
@@ -55,7 +55,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     locality: 'Pemberton',
     localAuthorityName: 'Village of Pemberton',
     municipalLink: 'https://www.pemberton.ca/building-development',
-    metaDescription: 'BCLS-certified land surveying in Pemberton, BC — rural subdivisions, agricultural lot surveys, and Crown land applications tailored to Village of Pemberton requirements.'
+    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in Pemberton, BC — rural subdivisions, agricultural lot surveys, and Crown land applications tailored to Village of Pemberton requirements.'
   },
   'lillooet': {
     lat: 50.6853,
@@ -99,7 +99,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     localityName: 'District of North Vancouver',
     localAuthorityName: 'District of North Vancouver (DNV)',
     municipalLink: 'https://www.dnv.org/business-development',
-    metaDescription: 'BCLS-certified land surveying in the District of North Vancouver — boundary surveys, subdivision plans, and covenant work tailored to DNV Development Services permitting requirements.',
+    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in the District of North Vancouver — boundary surveys, subdivision plans, and covenant work tailored to DNV Development Services permitting requirements.',
     hubTitle: 'District of North Vancouver Land Surveying Hub'
   },
   'city-north-vancouver': {
@@ -109,7 +109,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     localityName: 'City of North Vancouver',
     localAuthorityName: 'City of North Vancouver (CNV)',
     municipalLink: 'https://www.cnv.org/business-development/building',
-    metaDescription: 'BCLS-certified land surveying in the City of North Vancouver — building location surveys, lot consolidations, and strata plans tailored to CNV Community Development permitting requirements.',
+    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in the City of North Vancouver — building location surveys, lot consolidations, and strata plans tailored to CNV Community Development permitting requirements.',
     hubTitle: 'City of North Vancouver Land Surveying Hub'
   },
   'gibsons': {

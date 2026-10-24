@@ -99,14 +99,14 @@ const stripHtml = (html) => {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "@id": "https://tantalusgeomatics.com/faq/#webpage",
-  "url": "https://tantalusgeomatics.com/faq/",
+  "@id": "https://www.tantalusgeomatics.com/faq/#webpage",
+  "url": "https://www.tantalusgeomatics.com/faq/",
   "name": "Land Surveying FAQ | Common Questions in the Sea-to-Sky",
   "isPartOf": {
-    "@id": "https://tantalusgeomatics.com/#website"
+    "@id": "https://www.tantalusgeomatics.com/#website"
   },
   "publisher": {
-    "@id": "https://tantalusgeomatics.com/#organization"
+    "@id": "https://www.tantalusgeomatics.com/#organization"
   },
   "mainEntity": faqCategories.flatMap(category => 
     category.faqs.map(faq => ({
@@ -125,7 +125,7 @@ const faqSchema = {
       <SEO 
         title="Land Surveying FAQ | Common Questions in the Sea-to-Sky"
         description="Expert answers to 90+ BC land surveying questions — property staking, topographic surveys, strata plans, subdivision, and covenants in the Sea to Sky corridor."
-        canonicalUrl="https://tantalusgeomatics.com/faq/"
+        canonicalUrl="https://www.tantalusgeomatics.com/faq/"
         schema={faqSchema}
       />
       

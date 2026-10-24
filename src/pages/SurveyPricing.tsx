@@ -45,12 +45,12 @@ export default function SurveyPricing() {
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${CANONICAL}/#webpage`,
+    '@id': `${CANONICAL}#webpage`,
     'url': CANONICAL,
     'name': 'Land Survey Pricing & Cost Factors | Tantalus Geomatics',
     'description': 'Understand the professional, legal, and environmental factors that determine the cost of land surveys in British Columbia.',
     'isPartOf': {
-      '@id': 'https://tantalusgeomatics.com/#website'
+      '@id': 'https://www.tantalusgeomatics.com/#website'
     },
     'breadcrumb': {
       '@type': 'BreadcrumbList',
@@ -59,19 +59,19 @@ export default function SurveyPricing() {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://tantalusgeomatics.com/'
+          'item': 'https://www.tantalusgeomatics.com/'
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Residential Surveys',
-          'item': 'https://tantalusgeomatics.com/residential/'
+          'item': 'https://www.tantalusgeomatics.com/residential/'
         },
         {
           '@type': 'ListItem',
           'position': 3,
           'name': 'Survey Pricing',
-          'item': 'https://tantalusgeomatics.com/survey-pricing/'
+          'item': 'https://www.tantalusgeomatics.com/survey-pricing/'
         }
       ]
     },
@@ -80,7 +80,7 @@ export default function SurveyPricing() {
       'name': 'Land Survey Pricing Estimates',
       'serviceType': 'Land Surveying',
       'provider': {
-        '@id': 'https://tantalusgeomatics.com/#organization'
+        '@id': 'https://www.tantalusgeomatics.com/#organization'
       },
       'areaServed': [
         { '@type': 'City', 'name': 'Squamish' },

@@ -4,7 +4,7 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
-const CANONICAL = 'https://tantalusgeomatics.com/surveys-and-title-insurance/';
+const CANONICAL = 'https://www.tantalusgeomatics.com/surveys-and-title-insurance/';
 
 const problems = [
   {
@@ -32,12 +32,12 @@ export default function SurveyTitleInsurance() {
     const pageSchema = {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      '@id': `${CANONICAL}/#webpage`,
+      '@id': `${CANONICAL}#webpage`,
       'url': CANONICAL,
       'name': 'Building Location Surveys vs. Title Insurance in BC | Tantalus Geomatics',
       'description': 'Understand the benefits of a land survey in addition to mortgage insurance when buying or selling a property in British Columbia.',
       'isPartOf': {
-        '@id': 'https://tantalusgeomatics.com/#website'
+        '@id': 'https://www.tantalusgeomatics.com/#website'
       },
       'about': [
         { '@type': 'Thing', 'name': 'Title Insurance' },
@@ -50,7 +50,7 @@ export default function SurveyTitleInsurance() {
         'name': 'Building Location Surveys',
         'serviceType': 'Land Surveying',
         'provider': {
-          '@id': 'https://tantalusgeomatics.com/#organization'
+          '@id': 'https://www.tantalusgeomatics.com/#organization'
         },
         // We map your array into the exact Schema.org format for cities
         'areaServed': serviceAreas.map(city => ({
@@ -65,24 +65,24 @@ export default function SurveyTitleInsurance() {
             '@type': 'ListItem',
             'position': 1,
             'name': 'Home',
-            'item': 'https://tantalusgeomatics.com/'
+            'item': 'https://www.tantalusgeomatics.com/'
           },
           {
             '@type': 'ListItem',
             'position': 2,
             'name': 'Residential Surveys',
-            'item': 'https://tantalusgeomatics.com/residential/'
+            'item': 'https://www.tantalusgeomatics.com/residential/'
           },
           {
             '@type': 'ListItem',
             'position': 3,
             'name': 'Surveys vs. Title Insurance',
-            'item': 'https://tantalusgeomatics.com/surveys-and-title-insurance/'
+            'item': 'https://www.tantalusgeomatics.com/surveys-and-title-insurance/'
           }
         ]
       },
       'provider': {
-        '@id': 'https://tantalusgeomatics.com/#organization'
+        '@id': 'https://www.tantalusgeomatics.com/#organization'
       }
     };
 

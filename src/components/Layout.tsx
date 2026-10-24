@@ -79,11 +79,12 @@ const polygonOptions = {
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": "https://www.tantalusgeomatics.com/#organization",
   "name": "Tantalus Geomatics Land Surveying Ltd.",
   "description": "Professional land surveying, topographic mapping, and legal boundary definition across the Sea to Sky Corridor, North Shore, and Sunshine Coast.",
-  "url": "https://tantalusgeomatics.com",
-  "logo": "https://tantalusgeomatics.com/tantalus-logo.webp",
-  "image": "https://tantalusgeomatics.com/tantalus-logo.webp",
+  "url": "https://www.tantalusgeomatics.com",
+  "logo": "https://www.tantalusgeomatics.com/tantalus-logo.webp",
+  "image": "https://www.tantalusgeomatics.com/tantalus-logo.webp",
   "telephone": "+16042139934",
   "email": "contact@tantalusgeomatics.com",
   "priceRange": "$$",
@@ -121,13 +122,13 @@ const schemaData = {
       {
         "@type": "EducationalOccupationalCredential",
         "name": "Professional Engineer (P.Eng.)",
-        "credentialCategory": "Professional License",
+        "credentialCategory": "Professional Licence",
         "recognizedBy": {
           "@type": "Organization",
           "alternateName": "EGBC",
           "name": "Engineers & Geoscientists British Columbia"
         },
-        "identifier": "EGBC License #57741"
+        "identifier": "EGBC Registration #57741"
       }
     ]
   },
@@ -154,13 +155,13 @@ const schemaData = {
       {
         "@type": "EducationalOccupationalCredential",
         "name": "Professional Engineer (P.Eng.)",
-        "credentialCategory": "Professional License",
+        "credentialCategory": "Professional Licence",
         "recognizedBy": {
           "@type": "ProfessionalAssociation",
           "name": "Engineers & Geoscientists British Columbia",
           "abbreviation": "EGBC"
         },
-        "identifier": "EGBC License #57741"
+        "identifier": "EGBC Registration #57741"
       }
     ]
   },

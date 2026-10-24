@@ -13,7 +13,7 @@ const problems = [
   },
   {
     problem: 'Architecture and Engineering Design',
-    description: 'Architects and Engineers rely on accurate topographic data for building design, site servicing plans, flood hazard mitigation, environmental assessments and geotechnical designs.',
+    description: 'Architects and Engineers use topographic measurements, taken with survey-grade equipment, for building design, site servicing plans, flood hazard mitigation, environmental assessments and geotechnical designs.',
   },
   {
     problem: 'Protection of Natural Assets',
@@ -26,12 +26,12 @@ export default function TopographicSurveys() {
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${CANONICAL}/#webpage`,
+    '@id': `${CANONICAL}#webpage`,
     'url': CANONICAL,
     'name': 'The First Step to Building: Topographic Surveys Explained | Tantalus Geomatics',
     'description': 'How topographic surveys support permit applications, site designs, and regulatory compliance throughout British Columbia.',
     'isPartOf': {
-      '@id': 'https://tantalusgeomatics.com/#website'
+      '@id': 'https://www.tantalusgeomatics.com/#website'
     },
     'breadcrumb': {
       '@type': 'BreadcrumbList',
@@ -40,19 +40,19 @@ export default function TopographicSurveys() {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://tantalusgeomatics.com/'
+          'item': 'https://www.tantalusgeomatics.com/'
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Residential Surveys',
-          'item': 'https://tantalusgeomatics.com/residential/'
+          'item': 'https://www.tantalusgeomatics.com/residential/'
         },
         {
           '@type': 'ListItem',
           'position': 3,
           'name': 'Topographic Surveys',
-          'item': 'https://tantalusgeomatics.com/topographic-surveys/'
+          'item': 'https://www.tantalusgeomatics.com/topographic-surveys/'
         }
       ]
     },
@@ -61,7 +61,7 @@ export default function TopographicSurveys() {
       'name': 'Topographic Surveys & Site Plans',
       'serviceType': 'Land Surveying',
       'provider': {
-        '@id': 'https://tantalusgeomatics.com/#organization'
+        '@id': 'https://www.tantalusgeomatics.com/#organization'
       },
       'areaServed': [
         { '@type': 'City', 'name': 'Squamish' },
@@ -81,7 +81,7 @@ export default function TopographicSurveys() {
     <PageShell>
       <SEO
         title="The First Step to Building: Topographic Surveys Explained | Tantalus Geomatics"
-        description="Why a topographic survey is the digital blueprint for your design. We work with other professionals and municipal officials to guide you through the construction proccess with ease."
+        description="Why a topographic survey is used in design. We work with other professionals and municipal officials to support you during construction."
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />
@@ -102,7 +102,7 @@ export default function TopographicSurveys() {
             Land Development in British Columbia
           </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
-            Develop Your Property with Confidence.
+            A topographic survey before you build.
           </h1>
           <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-3xl mx-auto mb-10">
             Building a home in British Columbia involves a complex intersections of legal, permitting, environmental, and engineering requirements. A topographic survey translates the physical reality of your land into the data required by your architect, engineer, and the city.
@@ -125,9 +125,9 @@ export default function TopographicSurveys() {
             question="What is included in a Tantalus Geomatics Topographic Survey?"
             questionClassName="max-w-3xl"
           >
-            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-slate-900 font-light text-lg italic">A BC Land Surveyor certified topographic survey satisfies the permitting and design requirements to move your project forward.</blockquote>
+            <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-slate-900 font-light text-lg italic">A topographic survey prepared and signed by a BC Land Surveyor (BCLS) is one of the documents often used for permit applications and design.</blockquote>
             <p className="text-slate-700 font-light mb-10 max-w-3xl">
-              Land use planning, design and development requires up-to-date and accurate data. A BC Land Surveyor's topographic survey and site plan is critical for:
+              Land use planning, design and development uses measurements of the site as it stands. A topographic survey and site plan prepared and signed by a BC Land Surveyor (BCLS) is used for:
             </p>
           </GeoDirectAnswer>
           <div className="space-y-6">
@@ -150,7 +150,7 @@ export default function TopographicSurveys() {
               to="/contact/"
               className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg rounded-full"
             >
-              Contact Us Today to Design with Confidence
+              Contact Us About a Topographic Survey
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
             </Link>
           </div>
@@ -168,7 +168,7 @@ export default function TopographicSurveys() {
             question="How does Tantalus Geomatics Land Surveying conduct a topographic survey?"
           >
             <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-              Conducting a Topographic Survey is a technical process that combines legal, environmental, and engineering requirements. We follow a standard professional process to ensure all the necessary details are efficiently captured to move your project forward.
+              Conducting a Topographic Survey is a technical process that combines legal, environmental, and engineering requirements. We follow a standard professional process and aim to capture the site details the design calls for.
             </p>
           </GeoDirectAnswer>
 
@@ -183,13 +183,13 @@ export default function TopographicSurveys() {
               {
                 step: '2',
                 title: 'Field visit',
-                body: 'Our crew visits your property to perform a field survey. We search for original property corner posts and use professional-grade equipment to take precise measurements that accurately capture all the necessary site features. Our use of modern technologies, such as robotic total stations, GPS, drones and laser scanners allows us to efficiently survey large tracts of land.',
+                body: 'Our field crew, working under the direct supervision of a BC Land Surveyor, visits your property to perform a field survey. We search for original property corner posts and measure site features with survey-grade equipment. Robotic total stations, GPS, drones and laser scanners are used on large tracts of land.',
                 icon: MapPinned,
               },
               {
                 step: '3',
                 title: 'Certified survey plan',
-                body: 'After the field work, we process the data and draft a topographic survey plan or a site plan to satisfy your permitting and design requirements. This document is signed and sealed by a British Columbia Land Surveyor (BCLS). This is the official survey document you will need for your permit submission and technical design needs.',
+                body: 'After the field work, we process the data and draft a topographic survey plan or a site plan for the permit application and the design. This document is signed and sealed by a British Columbia Land Surveyor (BCLS). It is the survey document used for a permit submission and for technical design.',
                 icon: FileCheck,
               },
             ].map(({ step, title, body, icon: Icon }) => (
@@ -316,7 +316,7 @@ export default function TopographicSurveys() {
                     </a>
                   </div>
                 </li>
-                <li>Preparation of field reference data to ensure we capture everything necessary to move your project forward.</li>
+                <li>Preparation of field reference data to help us capture the site details the work calls for.</li>
               </ul>
             </div>
 
@@ -330,9 +330,9 @@ export default function TopographicSurveys() {
               </span>
               <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-6">Field Visit</h3>
               <ul className="text-left text-slate-600 leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
-                <li>We first search for sufficient property corner posts to accurately locate your parcel's boundaries.</li>
-                <li>Next, we use high precision instruments, such as robotic total stations, rtk gps receivers, drones and laser scanners to accurately survey all the necessary topographic and site features.</li>
-                <li>Finally, we use high accuracy GPS receivers and existing monuments to ensure your project's elevations are related to the official geodetic datum specified by the District of Squamish.</li>
+                <li>We first search for property corner posts and use them, with survey-grade equipment, to locate the parcel boundaries.</li>
+                <li>Next, we measure topographic and site features with survey-grade equipment, such as robotic total stations, RTK GPS receivers, drones and laser scanners.</li>
+                <li>Finally, we tie elevations to the geodetic datum specified by the District of Squamish, using GPS receivers and existing monuments.</li>
               </ul>
             </div>
 
@@ -365,10 +365,10 @@ export default function TopographicSurveys() {
             <MapPin className="w-7 h-7 text-brand-green" aria-hidden />
           </div>
           <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
-            Ready to start your project with confidence?
+            Ready to talk about a topographic survey?
           </h2>
           <p className="text-slate-700 font-light leading-relaxed mb-10 max-w-xl mx-auto">
-          Tantalus Geomatics provides the local expertise and BCLS certification required for projects in the Sea-to-Sky corridor. Tell us about your property so we can help you move forward with confidence.
+          Survey plans are prepared and signed by a BC Land Surveyor (BCLS) at Tantalus Geomatics, in the Sea-to-Sky corridor. Tell us about your property so we can help with the next step.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link

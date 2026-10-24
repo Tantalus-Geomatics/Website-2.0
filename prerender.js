@@ -13,12 +13,26 @@ const INDEXNOW_KEY = process.env.INDEXNOW_KEY;
 
 // 1. Separate tracking arrays for individual child sitemaps
 const sitemapFeeds = {
-  pages: ['/', '/about/', '/services/', '/faq/', '/contact/', '/residential/', '/survey-pricing/', '/surveys-and-title-insurance/', '/subdivision/'],
+  pages: [
+    '/',
+    '/about/',
+    '/services/',
+    '/faq/',
+    '/contact/',
+    '/residential/',
+    '/survey-pricing/',
+    '/surveys-and-title-insurance/',
+    '/subdivision/',
+    '/topographic-surveys/',
+    '/sea-to-sky-property-line-and-boundary-staking/',
+  ],
   services: [],
   blog: [],
   projects: []
 };
 
+// north-vancouver is not a real location (city and district are). It used to
+// prerender as a second copy of the homepage. It is a static refresh stub now.
 const CORE_LOCATIONS = [
   'squamish',
   'whistler',
@@ -28,12 +42,33 @@ const CORE_LOCATIONS = [
   'bowen-island',
   'britannia-beach',
   'furry-creek',
-  'north-vancouver',
   'gibsons',
   'sechelt',
   'powell-river',
   'the-sea-to-sky'
 ];
+
+// Plain HTML files. Not prerendered, not listed in a sitemap.
+const REDIRECT_STUBS = [
+  {
+    path: '/north-vancouver/',
+    target: 'https://www.tantalusgeomatics.com/',
+  },
+  {
+    path: '/services/topographic-surveys/',
+    target: 'https://www.tantalusgeomatics.com/topographic-surveys/',
+  },
+  {
+    path: '/services/property-line-surveys/',
+    target: 'https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking/',
+  },
+];
+const REDIRECT_STUB_PATHS = new Set(REDIRECT_STUBS.map((stub) => stub.path));
+
+// Short /services/{slug}/ URLs are prerendered so existing links still resolve,
+// but they are not submitted in the sitemap. Their canonical stays on the
+// Sea to Sky URL. The two stubs below are written as static HTML instead.
+const prerenderOnly = [];
 
 // 2. Dynamically discover all localized and base fallback routes
 function generateRouteMatrix() {
@@ -48,9 +83,25 @@ function generateRouteMatrix() {
     return sitemapFeeds.pages;
   }
 
+  function contentSlugs(dir) {
+    if (!fs.existsSync(dir)) return [];
+    return fs.readdirSync(dir, { withFileTypes: true })
+      .filter((dirent) => dirent.isFile() && /\.(mdx|md)$/.test(dirent.name))
+      .map((dirent) => dirent.name)
+      .filter((name) => fs.statSync(path.join(dir, name)).size > 0)
+      .map((name) => name.replace(/\.(mdx|md)$/, ''))
+      .filter(isPublishableSlug);
+  }
+
   function scanCategory(categoryFolder, routePrefix, feedKey) {
     const categoryPath = path.join(contentDir, categoryFolder);
     if (!fs.existsSync(categoryPath)) return;
+
+    // Files sitting in the category root (not a location folder) are still
+    // routes: /insights/:slug and /projects/:slug. Empty fixtures are not pages.
+    for (const slug of contentSlugs(categoryPath)) {
+      sitemapFeeds[feedKey].push(`/${routePrefix}/${slug}/`);
+    }
 
     // Read location subdirectories (squamish, whistler, etc.)
     const locations = fs.readdirSync(categoryPath, { withFileTypes: true })
@@ -62,17 +113,14 @@ function generateRouteMatrix() {
       sitemapFeeds.pages.push(`/${location}/`);
 
       const locationPath = path.join(categoryPath, location);
-      const files = fs.readdirSync(locationPath)
-        .filter(file => file.endsWith('.mdx') || file.endsWith('.md'));
+      for (const slug of contentSlugs(locationPath)) {
+        const shortPath = `/${routePrefix}/${slug}/`;
+        const localizedPath = `/${location}/${routePrefix}/${slug}/`;
 
-      for (const file of files) {
-        const slug = file.replace(/\.(mdx|md)$/, '');
-        
-        // A. Add the root-level, non-localized fallback version of this content
-        sitemapFeeds[feedKey].push(`/${routePrefix}/${slug}/`);
-        
-        // B. Add the fully localized regional path matrix version
-        sitemapFeeds[feedKey].push(`/${location}/${routePrefix}/${slug}/`);
+        sitemapFeeds[feedKey].push(localizedPath);
+        if (!REDIRECT_STUB_PATHS.has(shortPath)) {
+          prerenderOnly.push(shortPath);
+        }
       }
     }
   }
@@ -92,8 +140,255 @@ function generateRouteMatrix() {
     ...sitemapFeeds.pages,
     ...sitemapFeeds.services,
     ...sitemapFeeds.blog,
-    ...sitemapFeeds.projects
+    ...sitemapFeeds.projects,
+    ...new Set(prerenderOnly),
   ];
+}
+
+// Pipeline demos (_EXAMPLE_insight.txt, _EXAMPLE_project.txt) are not pages.
+function isPublishableSlug(slug) {
+  return !slug.startsWith('_EXAMPLE') && !slug.startsWith('example-');
+}
+
+function writeRedirectStub(routePath, target) {
+  const html = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting…</title>
+  <link rel="canonical" href="${target}">
+  <meta http-equiv="refresh" content="0; url=${target}">
+  <link rel="icon" href="/tantalus-logo-square.png" sizes="48x48" type="image/png">
+</head>
+<body>
+  <p><a href="${target}">Continue</a></p>
+</body>
+</html>
+`;
+  const fileName = path.join(routePath.slice(1), 'index.html');
+  const filePath = toAbs(`dist/${fileName}`);
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, html);
+  console.log(`↪️  Static refresh stub: ${routePath} → ${target}`);
+}
+
+function assertPrerenderedPage(url, html) {
+  const canonicalMatch = html.match(/<link[^>]*rel="canonical"[^>]*>/i);
+  const hrefMatch = canonicalMatch && canonicalMatch[0].match(/href="([^"]+)"/i);
+  const canonical = hrefMatch ? hrefMatch[1] : '';
+  if (!canonical.startsWith(`${hostname}/`)) {
+    throw new Error(`Bad canonical on ${url}: ${canonical || '(missing)'}`);
+  }
+  if (/index\.html/i.test(canonical) || canonical.includes('//#')) {
+    throw new Error(`Unnormalized canonical on ${url}: ${canonical}`);
+  }
+  if (/<h1[^>]*>\s*404\s*<\/h1>/i.test(html)) {
+    throw new Error(`Refusing to prerender a 404 document at ${url}`);
+  }
+  const expectedSelf = `${hostname}${url}`;
+  const isShortService = /^\/services\/[^/]+\/$/.test(url);
+  if (isShortService) {
+    const slug = url.split('/')[2];
+    const expected = `${hostname}/the-sea-to-sky/services/${slug}/`;
+    if (canonical !== expected) {
+      throw new Error(`Short URL ${url} canonical is ${canonical}, expected ${expected}`);
+    }
+  } else if (canonical !== expectedSelf) {
+    throw new Error(`Expected self-canonical ${expectedSelf} on ${url}, got ${canonical}`);
+  }
+  if (html.includes('https://tantalusgeomatics.com/#') || html.includes('//#')) {
+    throw new Error(`JSON-LD @id still uses the apex host or a double slash on ${url}`);
+  }
+}
+
+// Hard-coded copy of the static paths in src/App.tsx. This list is not read
+// from the router, so a new <Route> there must be added here too. Location,
+// service, insight, and project routes come from the content files.
+const STATIC_ROUTER_ROUTES = [
+  '/',
+  '/about/',
+  '/services/',
+  '/faq/',
+  '/contact/',
+  '/residential/',
+  '/survey-pricing/',
+  '/surveys-and-title-insurance/',
+  '/subdivision/',
+  '/topographic-surveys/',
+  '/sea-to-sky-property-line-and-boundary-staking/',
+];
+
+function readValidLocations() {
+  const text = fs.readFileSync(toAbs('src/config/locations.ts'), 'utf8');
+  const match = text.match(/VALID_LOCATIONS\s*=\s*\[([\s\S]*?)\]/);
+  if (!match) throw new Error('Could not parse VALID_LOCATIONS from src/config/locations.ts');
+  return match[1]
+    .split(',')
+    .map((entry) => entry.replace(/['"\s]/g, ''))
+    .filter((entry) => entry && entry !== 'asconst');
+}
+
+function nonEmptySlugs(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter((dirent) => dirent.isFile() && /\.(mdx|md)$/.test(dirent.name))
+    .map((dirent) => dirent.name)
+    .filter((name) => fs.statSync(path.join(dir, name)).size > 0)
+    .map((name) => name.replace(/\.(mdx|md)$/, ''))
+    .filter(isPublishableSlug);
+}
+
+function childDirectories(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+}
+
+function collectRenderableRoutes() {
+  const routes = new Set(STATIC_ROUTER_ROUTES);
+  const validLocations = new Set(readValidLocations());
+  for (const location of validLocations) {
+    routes.add(`/${location}/`);
+  }
+
+  const serviceSlugs = new Set();
+  const servicesDir = toAbs('src/content/services');
+  for (const location of childDirectories(servicesDir)) {
+    if (!validLocations.has(location)) continue;
+    for (const slug of nonEmptySlugs(path.join(servicesDir, location))) {
+      routes.add(`/${location}/services/${slug}/`);
+      serviceSlugs.add(slug);
+    }
+  }
+  for (const slug of serviceSlugs) {
+    routes.add(`/services/${slug}/`);
+  }
+
+  const nested = [
+    ['blog', 'insights'],
+    ['projects', 'projects'],
+  ];
+  for (const [folder, routePrefix] of nested) {
+    const categoryDir = toAbs(`src/content/${folder}`);
+    for (const slug of nonEmptySlugs(categoryDir)) {
+      routes.add(`/${routePrefix}/${slug}/`);
+    }
+    for (const location of childDirectories(categoryDir)) {
+      if (!validLocations.has(location)) continue;
+      for (const slug of nonEmptySlugs(path.join(categoryDir, location))) {
+        routes.add(`/${location}/${routePrefix}/${slug}/`);
+      }
+    }
+  }
+
+  return routes;
+}
+
+function loadingPlaceholdersIn(html) {
+  const found = new Set();
+  const text = html.split('Loading Interactive Map...').join('');
+  if (text.includes('Loading FAQs')) found.add('Loading FAQs');
+  if (text.includes('Loading Form')) found.add('Loading Form');
+  if (text.includes('Loading...')) found.add('Loading...');
+  for (const match of text.matchAll(/Loading [^<"]{1,80}\.\.\./g)) {
+    found.add(match[0]);
+  }
+  return [...found];
+}
+
+function builtPagesWithLoadingPlaceholders() {
+  const hits = [];
+  const distDir = toAbs('dist');
+  function walk(dir) {
+    for (const dirent of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, dirent.name);
+      if (dirent.isDirectory()) walk(full);
+      else if (dirent.name.endsWith('.html')) {
+        const placeholders = loadingPlaceholdersIn(fs.readFileSync(full, 'utf8'));
+        if (placeholders.length > 0) {
+          hits.push({ file: path.relative(distDir, full), placeholders });
+        }
+      }
+    }
+  }
+  if (fs.existsSync(distDir)) walk(distDir);
+  return hits;
+}
+
+function collectSitemapRoutes() {
+  const routes = new Set();
+  const distDir = toAbs('dist');
+  if (!fs.existsSync(distDir)) return routes;
+  for (const name of fs.readdirSync(distDir)) {
+    if (!/^sitemap-.+\.xml$/.test(name) || name === 'sitemap-index.xml') continue;
+    const xml = fs.readFileSync(path.join(distDir, name), 'utf8');
+    for (const match of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      let pathname = new URL(match[1]).pathname;
+      if (!pathname.endsWith('/')) pathname += '/';
+      routes.add(pathname);
+    }
+  }
+  return routes;
+}
+
+function distIndexPath(routePath) {
+  if (routePath === '/') return toAbs('dist/index.html');
+  return toAbs(`dist${routePath}index.html`);
+}
+
+function missingPrerenderedRoutes(routes) {
+  return [...routes].filter((routePath) => !fs.existsSync(distIndexPath(routePath))).sort();
+}
+
+const PAGE_HOSTS = new Set(['www.tantalusgeomatics.com', 'tantalusgeomatics.com']);
+
+function internalPagePath(href) {
+  const raw = String(href || '').trim();
+  if (!raw || raw.startsWith('#') || /^(mailto:|tel:|sms:|javascript:)/i.test(raw)) return null;
+  let url;
+  try {
+    url = new URL(raw, 'https://www.tantalusgeomatics.com');
+  } catch {
+    return null;
+  }
+  if (!PAGE_HOSTS.has(url.hostname)) return null;
+  let pathname = decodeURIComponent(url.pathname).replace(/\/{2,}/g, '/');
+  const leaf = pathname.split('/').pop() || '';
+  if (/\.[a-z0-9]{1,8}$/i.test(leaf) && !/^index\.html$/i.test(leaf)) return null;
+  if (pathname === '/index.html') return '/';
+  pathname = pathname.replace(/\/index\.html$/i, '/');
+  if (!pathname.startsWith('/')) pathname = `/${pathname}`;
+  if (!pathname.endsWith('/')) pathname += '/';
+  return pathname;
+}
+
+function internalHrefsMissingPages() {
+  const missing = new Map();
+  const distDir = toAbs('dist');
+  const htmlFiles = [];
+  function walk(dir) {
+    for (const dirent of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, dirent.name);
+      if (dirent.isDirectory()) walk(full);
+      else if (dirent.name.endsWith('.html')) htmlFiles.push(full);
+    }
+  }
+  if (fs.existsSync(distDir)) walk(distDir);
+
+  for (const file of htmlFiles) {
+    const html = fs.readFileSync(file, 'utf8');
+    const source = path.relative(distDir, file);
+    for (const match of html.matchAll(/href\s*=\s*["']([^"']+)["']/gi)) {
+      const routePath = internalPagePath(match[1]);
+      if (!routePath) continue;
+      if (fs.existsSync(distIndexPath(routePath))) continue;
+      if (!missing.has(routePath)) missing.set(routePath, new Set());
+      missing.get(routePath).add(source);
+    }
+  }
+  return [...missing.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 }
 
 const routesToPrerender = generateRouteMatrix();
@@ -121,7 +416,7 @@ async function generate() {
     } catch (err) {
       console.error('❌ Puppeteer launch failed:', err.message);
       server.close();
-      return;
+      process.exit(1);
     }
 
     const critters = new Critters({
@@ -130,64 +425,98 @@ async function generate() {
       preload: 'media',
     });
 
+    const failedRoutes = [];
+    const isTimeout = (err) => /timeout|timed out/i.test(String(err && (err.message || err)));
+
+    async function prerenderRoute(url) {
+      const page = await browser.newPage();
+      try {
+        page.on('console', msg => {
+          if (msg.type() === 'error') console.log(`[Browser Error]: ${msg.text()}`);
+        });
+        page.on('pageerror', err => console.error(`[React Crash]:`, err.toString()));
+
+        await page.evaluateOnNewDocument(() => {
+          window.__IS_PRERENDERING = true;
+        });
+
+        // domcontentloaded, then the heading and the lazy FAQ and quote form.
+        // networkidle0 drops a finished page when a third-party request never
+        // goes idle (the 2026-09-17 Sechelt timeout). Waiting only for the
+        // first h1 saves the page while those chunks still say "Loading...".
+        await page.goto(`http://localhost:3000${url}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.waitForFunction(() => {
+          const root = document.querySelector('#root');
+          if (!root) return false;
+          const heading = root.querySelector('h1');
+          if (!heading || !heading.textContent || !heading.textContent.trim()) return false;
+          const text = (root.innerText || '').split('Loading Interactive Map...').join('');
+          if (text.includes('Loading FAQs') || text.includes('Loading Form')) return false;
+          if (text.includes('Loading...')) return false;
+          if (/Loading [^.]{1,80}\.\.\./.test(text)) return false;
+          return true;
+        }, { timeout: 45000 });
+
+        await page.evaluate(() => {
+          const removeDuplicates = (selector) => {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length > 1) {
+              for (let i = 1; i < elements.length; i++) elements[i].remove();
+            }
+          };
+          removeDuplicates('title');
+          removeDuplicates('meta[name="description"]');
+          removeDuplicates('link[rel="canonical"]');
+        });
+
+        const html = await page.content();
+        assertPrerenderedPage(url, html);
+        const inlinedHtml = await critters.process(html);
+        const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
+        const filePath = toAbs(`dist/${fileName}`);
+
+        fs.mkdirSync(path.dirname(filePath), { recursive: true });
+        fs.writeFileSync(filePath, inlinedHtml);
+        console.log(`📸 Prerendered & Inlined CSS: ${url}`);
+      } finally {
+        await page.close();
+      }
+    }
+
     try {
       for (const url of routesToPrerender) {
-        let page;
         try {
-          page = await browser.newPage();
-          
-          page.on('console', msg => {
-            if (msg.type() === 'error') console.log(`[Browser Error]: ${msg.text()}`);
-          });
-          page.on('pageerror', err => console.error(`[React Crash]:`, err.toString()));
-
-          await page.evaluateOnNewDocument(() => {
-            window.__IS_PRERENDERING = true;
-          });
-          
-          await page.goto(`http://localhost:3000${url}`, { waitUntil: 'networkidle0' });
-
-          try {
-            await page.waitForSelector('#root > div', { timeout: 10000 });
-          } catch (e) {
-            console.error(`⚠️ React render timeout on path: ${url}`);
-          }
-
-          await page.evaluate(() => {
-            const removeDuplicates = (selector) => {
-              const elements = document.querySelectorAll(selector);
-              if (elements.length > 1) {
-                for (let i = 1; i < elements.length; i++) elements[i].remove();
-              }
-            };
-            removeDuplicates('title');
-            removeDuplicates('meta[name="description"]');
-            removeDuplicates('link[rel="canonical"]');
-          });
-
-          const html = await page.content();
-          const inlinedHtml = await critters.process(html);
-          const fileName = url === '/' ? 'index.html' : path.join(url.slice(1), 'index.html');
-          const filePath = toAbs(`dist/${fileName}`);
-          
-          fs.mkdirSync(path.dirname(filePath), { recursive: true });
-          fs.writeFileSync(filePath, inlinedHtml);
-          console.log(`📸 Prerendered & Inlined CSS: ${url}`);
-          
-          await page.close();
+          await prerenderRoute(url);
         } catch (innerError) {
-          console.error(`❌ Prerender failed on path ${url}:`, innerError.message);
-          if (page) {
-            await page.close();
+          if (isTimeout(innerError)) {
+            console.error(`⏱️ Timeout on ${url}; retrying once.`);
+            try {
+              await prerenderRoute(url);
+              continue;
+            } catch (retryError) {
+              console.error(`❌ Prerender failed on path ${url}:`, retryError.message);
+              failedRoutes.push({ url, message: retryError.message });
+              continue;
+            }
           }
-          continue;
+          console.error(`❌ Prerender failed on path ${url}:`, innerError.message);
+          failedRoutes.push({ url, message: innerError.message });
         }
       }
 
-      // 3. Write individual structural child sitemaps
+      for (const stub of REDIRECT_STUBS) {
+        writeRedirectStub(stub.path, stub.target);
+      }
+
+      // 3. Write individual structural child sitemaps. An empty feed is not
+      // written, and a leftover file from an earlier build is removed.
       const today = new Date().toISOString().split('T')[0];
       Object.entries(sitemapFeeds).forEach(([feedKey, urls]) => {
-        if (urls.length === 0) return;
+        const childPath = toAbs(`dist/sitemap-${feedKey}.xml`);
+        if (urls.length === 0) {
+          if (fs.existsSync(childPath)) fs.unlinkSync(childPath);
+          return;
+        }
         
         let childSitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
         urls.forEach(url => {
@@ -195,9 +524,8 @@ async function generate() {
         });
         childSitemap += `</urlset>`;
         
-        const childPath = `dist/sitemap-${feedKey}.xml`;
-        fs.writeFileSync(toAbs(childPath), childSitemap);
-        console.log(`🗺️ Generated child sitemap: ${childPath} (${urls.length} URLs)`);
+        fs.writeFileSync(childPath, childSitemap);
+        console.log(`🗺️ Generated child sitemap: dist/sitemap-${feedKey}.xml (${urls.length} URLs)`);
       });
 
       // 4. Generate the master index shell wrapper
@@ -213,12 +541,52 @@ async function generate() {
 
     } catch (error) {
       console.error('❌ Error during compilation runs:', error);
+      failedRoutes.push({ url: '(prerender)', message: error.message });
     } finally {
       await browser.close();
       server.close();
       if (fs.existsSync(toAbs('dist/shell.html'))) fs.unlinkSync(toAbs('dist/shell.html'));
       console.log('🛑 Headless Chrome closed. Prerendering complete.');
     }
+
+    const expectedRoutes = new Set([
+      ...collectRenderableRoutes(),
+      ...collectSitemapRoutes(),
+    ]);
+    const missingRoutes = missingPrerenderedRoutes(expectedRoutes);
+    const missingLinks = internalHrefsMissingPages();
+
+    if (failedRoutes.length > 0) {
+      console.error(`\nPrerender failed on ${failedRoutes.length} route(s):`);
+      for (const failure of failedRoutes) {
+        console.error(` - ${failure.url}: ${failure.message}`);
+      }
+    }
+    if (missingRoutes.length > 0) {
+      console.error(`\nRoute coverage failed on ${missingRoutes.length} route(s) with no dist page:`);
+      for (const routePath of missingRoutes) {
+        console.error(` - ${routePath}`);
+      }
+    }
+    if (missingLinks.length > 0) {
+      console.error(`\nInternal links point at ${missingLinks.length} URL(s) with no prerendered page:`);
+      for (const [routePath, sources] of missingLinks) {
+        const sample = [...sources].slice(0, 3).join(', ');
+        console.error(` - ${routePath} (from ${sample})`);
+      }
+    }
+    const loadingPages = builtPagesWithLoadingPlaceholders();
+    if (loadingPages.length > 0) {
+      console.error(`\nLoading placeholder left in ${loadingPages.length} built page(s):`);
+      for (const hit of loadingPages) {
+        console.error(` - ${hit.file}: ${hit.placeholders.join(', ')}`);
+      }
+    }
+    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0 || loadingPages.length > 0) {
+      process.exit(1);
+    }
+    console.log(`Route coverage ok: ${expectedRoutes.size} renderable and sitemap URLs have a prerendered page.`);
+    console.log('Loading placeholders: 0');
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);

@@ -4,7 +4,7 @@ import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
-const CANONICAL = 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking/';
+const CANONICAL = 'https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking/';
 
 const problems = [
   {
@@ -25,12 +25,12 @@ export default function PropertyLineStaking() {
   const pageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${CANONICAL}/#webpage`,
+    '@id': `${CANONICAL}#webpage`,
     'url': CANONICAL,
     'name': 'Sea to Sky Property Line Staking | Tantalus Geomatics',
-    'description': 'Why property line staking matters for fences, retaining walls, and trees in Squamish, Whistler, and West Vancouver. Protect your land with a certified BCLS boundary survey.',
+    'description': 'Why property line staking matters for fences, retaining walls, and trees in Squamish, Whistler, and West Vancouver. A boundary survey prepared and signed by a BC Land Surveyor (BCLS).',
     'isPartOf': {
-      '@id': 'https://tantalusgeomatics.com/#website'
+      '@id': 'https://www.tantalusgeomatics.com/#website'
     },
     'breadcrumb': {
       '@type': 'BreadcrumbList',
@@ -39,19 +39,19 @@ export default function PropertyLineStaking() {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://tantalusgeomatics.com/'
+          'item': 'https://www.tantalusgeomatics.com/'
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Residential Surveys',
-          'item': 'https://tantalusgeomatics.com/residential/'
+          'item': 'https://www.tantalusgeomatics.com/residential/'
         },
         {
           '@type': 'ListItem',
           'position': 3,
           'name': 'Property Line Staking',
-          'item': 'https://tantalusgeomatics.com/sea-to-sky-property-line-staking/'
+          'item': 'https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking/'
         }
       ]
     },
@@ -60,7 +60,7 @@ export default function PropertyLineStaking() {
       'name': 'Property Line Staking & Boundary Surveys',
       'serviceType': 'Land Surveying',
       'provider': {
-        '@id': 'https://tantalusgeomatics.com/#organization'
+        '@id': 'https://www.tantalusgeomatics.com/#organization'
       },
       'areaServed': [
         { '@type': 'City', 'name': 'Squamish' },
@@ -80,7 +80,7 @@ export default function PropertyLineStaking() {
     <PageShell>
       <SEO
         title="Sea to Sky Property Line Staking | Fences, Walls & Trees"
-        description="Confirm your property line before you build a fence or cut down a tree. A licenced Land Surveyor is the only professional in British Columbia qualified to stake property boundaries."
+        description="Confirm your property line before you build a fence or cut down a tree. Only a BC Land Surveyor (BCLS) can legally re-establish and mark property boundaries in British Columbia."
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />
@@ -101,10 +101,10 @@ export default function PropertyLineStaking() {
             Sea to Sky homeowners
           </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
-            Eliminate the Guesswork. Protect Your Land with a Certified Boundary Survey.
+            A boundary survey before you build a fence, wall, or remove a tree.
           </h1>
           <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-3xl mx-auto mb-10">
-            Building a fence? Planning to remove a tree? Installing a retaining wall? A certified boundary survey provides the peace of mind you need to avoid costly fines and legal disputes.
+            Building a fence? Planning to remove a tree? Installing a retaining wall? A boundary survey prepared and signed by a BC Land Surveyor (BCLS) shows the boundary before that work starts.
           </p>
             <div className="flex justify-center px-4 sm:px-0">
               <a
@@ -121,12 +121,12 @@ export default function PropertyLineStaking() {
       <section className="py-14 md:py-20 bg-white border-b-2 border-brand-green">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <GeoDirectAnswer
-            question="What can go wrong with property improvements without a certified BCLS boundary survey?"
+            question="What can go wrong with property improvements without a boundary survey prepared and signed by a BC Land Surveyor (BCLS)?"
             questionClassName="max-w-3xl"
           >
             <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-8 text-slate-900 font-light text-lg italic">Good neighbors respect boundaries. Great neighbors work together to verify them before any work is done.</blockquote>
             <p className="text-slate-700 font-light mb-10 max-w-3xl">
-              Property improvements should provide value, not headaches. Without a certified BCLS survey, a few inches of error can lead to:
+              Property improvements can be affected by where the boundary is. Without a boundary survey prepared and signed by a BC Land Surveyor (BCLS), work can end up on the wrong side of the line. That can lead to:
             </p>
           </GeoDirectAnswer>
           <div className="space-y-6">
@@ -149,7 +149,7 @@ export default function PropertyLineStaking() {
               to="/contact/"
               className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold transition-colors shadow-lg rounded-full"
             >
-              Contact Us Today to Start with Confidence
+              Contact Us About a Boundary Survey
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden />
             </Link>
           </div>
@@ -167,7 +167,7 @@ export default function PropertyLineStaking() {
             question="How does Tantalus Geomatics determine and document your property boundary?"
           >
             <p className="text-center text-slate-700 font-light max-w-2xl mx-auto mb-12 md:mb-16">
-              Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. We follow a standard professional sequence to ensure your property lines are accurately identified and legally documented.
+              Determining a property boundary is a legal process that combines researching historical records and locating physical evidence on the ground. We follow a standard professional sequence. The boundary is interpreted from the records and from measurements taken with survey-grade equipment, and the plan is prepared and signed by a BC Land Surveyor (BCLS).
             </p>
           </GeoDirectAnswer>
 
@@ -182,13 +182,13 @@ export default function PropertyLineStaking() {
               {
                 step: '2',
                 title: 'Field visit',
-                body: 'Once we have the data, our crew visits your property to perform a field survey. We search for original iron pins and use professional-grade equipment to take precise measurements. If markers are missing, we use the surrounding evidence to determine their correct legal position and set new ones as needed.',
+                body: 'Once we have the data, our field crew, working under the direct supervision of a BC Land Surveyor, visits your property to perform a field survey. We search for original iron pins and measure with survey-grade equipment. If markers are missing, we use the surrounding evidence to re-establish the corner and set a new post.',
                 icon: MapPinned,
               },
               {
                 step: '3',
                 title: 'Certified survey plan',
-                body: 'After the field work, we process the data and draft a formal survey plan. This document is signed and sealed by a British Columbia Land Surveyor (BCLS). This is the official document you will need for your building permit, your fence contractor, or to resolve any questions with a neighbor.',
+                body: 'After the field work, we process the data and draft a formal survey plan. This document is signed and sealed by a British Columbia Land Surveyor (BCLS). It can be included with a building permit application, given to a fence contractor, or used when there is a question about the boundary.',
                 icon: FileCheck,
               },
             ].map(({ step, title, body, icon: Icon }) => (
@@ -295,7 +295,7 @@ export default function PropertyLineStaking() {
                     </a>
                   </div>
                 </li>
-                <li>Preparation of field reference data to ensure we capture everything necessary to move your project forward.</li>
+                <li>Preparation of field reference data to help us capture the site details the work calls for.</li>
               </ul>
             </div>
 
@@ -310,7 +310,7 @@ export default function PropertyLineStaking() {
               <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-6">Field Visit</h3>
               <ul className="text-left text-slate-600 leading-relaxed text-sm sm:text-base list-disc list-outside ml-4 space-y-4 w-full">
                 <li>We first search for each of the relevant property corner posts.</li>
-                <li>If any of the posts are missing, we expand our search until we have found enough adjacent evidence to accurately re-establish the corner's location.</li>
+                <li>If any of the posts are missing, we expand our search until we have found enough adjacent evidence to re-establish the corner, measured with survey-grade equipment.</li>
                 <li>We then measure all the features you request along the property line (e.g. trees, fences, retaining walls, etc...).</li>
                 <li>If a municipal permit is required, we collect the site and topographic data required to prepare a tree removal plan to accompany your permit submission.</li>
                 <li>If staking is required, we set new iron posts at any of the missing corners and set stakes at intermediate positions along the line.</li>
@@ -347,10 +347,10 @@ export default function PropertyLineStaking() {
             <MapPin className="w-7 h-7 text-brand-green" aria-hidden />
           </div>
           <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4">
-            Ready to start your project with confidence?
+            Ready to talk about a boundary survey?
           </h2>
           <p className="text-slate-700 font-light leading-relaxed mb-10 max-w-xl mx-auto">
-          Tantalus Geomatics provides the local expertise and BCLS certification required for projects in the Sea-to-Sky corridor. Tell us about your property so we can help you move forward with confidence.
+          Survey plans are prepared and signed by a BC Land Surveyor (BCLS) at Tantalus Geomatics, in the Sea-to-Sky corridor. Tell us about your property so we can help with the next step.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link

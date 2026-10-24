@@ -486,7 +486,7 @@ baseTemplates.forEach(templateFile => {
         "description": `Professional ${cleanServiceName} in ${schemaRegionLabel}, BC.`,
         "provider": {
           "@type": "LocalBusiness",
-          "@id": "https://tantalusgeomatics.com/#organization"
+          "@id": "https://www.tantalusgeomatics.com/#organization"
         }
       }
     } : null;
