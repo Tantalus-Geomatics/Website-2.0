@@ -40,7 +40,7 @@ function computeFinalDescription(description: string): string {
   const match = description.match(locationPattern);
   if (match) {
     const locationName = match[1];
-    return `BCLS-certified land surveying, topographic mapping, and legal boundary definition in ${locationName}, BC. Tailored to local municipal requirements.`;
+    return `Land surveying by a BC Land Surveyor (BCLS) in ${locationName}, BC, with topographic mapping and legal boundary definition. Tailored to local municipal requirements.`;
   }
 
   if (description.length <= 155) {

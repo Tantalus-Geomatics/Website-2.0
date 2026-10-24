@@ -96,7 +96,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryConfig[] = [
   {
     id: 'engineering',
     title: 'Engineering Surveys',
-    description: 'Millimeter-accurate tracking networks, structural deformation analysis, and settlement safety verification metrics for complex infrastructure systems.',
+    description: 'High-precision tracking networks, structural deformation analysis, and settlement safety verification metrics for complex infrastructure systems.',
     homeDescription: 'High-precision 3D structural settlement monitoring and deformation analysis.',
     icon: Mountain,
     image: '/images/3d-settlement-monitoring.webp',

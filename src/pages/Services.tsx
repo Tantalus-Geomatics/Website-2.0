@@ -145,7 +145,7 @@ const ALL_SERVICES = [
   {
     slug: 'land-act-surveys',
     title: 'Land Act Surveys',
-    description: 'Acquiring Crown land, securing major resource tenures, or establishing public infrastructure in {{LOCATION_NAME}} requires navigating the systematic legislative framework of the Land Act. A Land Act survey is a specialized process used to create, define, or alter the boundaries of provincial Crown land, typically culminating in the issuance of a Crown grant, a lease, a license of occupation, or the establishment of a public road. As a dual-registered firm of British Columbia Land Surveyors (*BCLS*) and Professional Engineers, our professional geomatics team delivers the high statutory authority and spatial precision required to legally define these Crown parcels and secure your tenure rights.',
+    description: 'Acquiring Crown land, securing major resource tenures, or establishing public infrastructure in {{LOCATION_NAME}} requires navigating the systematic legislative framework of the Land Act. A Land Act survey is a specialized process used to create, define, or alter the boundaries of provincial Crown land, typically culminating in the issuance of a Crown grant, a lease, a licence of occupation, or the establishment of a public road. As a dual-registered firm of British Columbia Land Surveyors (*BCLS*) and Professional Engineers, our professional geomatics team delivers the high statutory authority and spatial precision required to legally define these Crown parcels and secure your tenure rights.',
     href: '/services/land-act-surveys/',
     icon: FileText,
     image: '/images/survey-marker-post.webp'

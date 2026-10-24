@@ -14,7 +14,7 @@ function buildHubMeta(locationSlug: ValidLocation) {
   const displayName = getLocationDisplayName(locationSlug);
   const hubTitle = geoData.hubTitle || `${displayName} Land Surveying Hub`;
   const metaDescription = geoData.metaDescription
-    || `BCLS-certified land surveying in ${displayName}, BC — boundary surveys, topographic mapping, and legal plans tailored to ${geoData.localAuthorityName || 'local authority'} permitting requirements.`;
+    || `Land surveying by a BC Land Surveyor (BCLS) in ${displayName}, BC — boundary surveys, topographic mapping, and legal plans tailored to ${geoData.localAuthorityName || 'local authority'} permitting requirements.`;
 
   return {
     geoData,

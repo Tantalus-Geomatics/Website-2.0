@@ -142,7 +142,7 @@ const residentialSchema = {
               {
                 step: '2',
                 title: 'Field Visit',
-                body: 'Our crew visits your property to perform a field survey. We search for original property corner posts and use professional-grade equipment to take precise measurements and accurately place markers as required by your project. Our use of modern technologies, such as robotic total stations, GPS, drones and laser scanners allows us to efficiently survey large tracts of land.',
+                body: 'Our field crew, working under the direct supervision of a BC Land Surveyor, visits your property to perform a field survey. We search for original property corner posts and use professional-grade equipment to take precise measurements and accurately place markers as required by your project. Our use of modern technologies, such as robotic total stations, GPS, drones and laser scanners allows us to efficiently survey large tracts of land.',
                 icon: MapPinned,
               },
               {

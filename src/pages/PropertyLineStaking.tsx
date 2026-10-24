@@ -80,7 +80,7 @@ export default function PropertyLineStaking() {
     <PageShell>
       <SEO
         title="Sea to Sky Property Line Staking | Fences, Walls & Trees"
-        description="Confirm your property line before you build a fence or cut down a tree. A licenced Land Surveyor is the only professional in British Columbia qualified to stake property boundaries."
+        description="Confirm your property line before you build a fence or cut down a tree. Only a BC Land Surveyor (BCLS) can legally re-establish and mark property boundaries in British Columbia."
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />
@@ -182,7 +182,7 @@ export default function PropertyLineStaking() {
               {
                 step: '2',
                 title: 'Field visit',
-                body: 'Once we have the data, our crew visits your property to perform a field survey. We search for original iron pins and measure with survey-grade equipment. If markers are missing, we use the surrounding evidence to re-establish the corner and set a new post.',
+                body: 'Once we have the data, our field crew, working under the direct supervision of a BC Land Surveyor, visits your property to perform a field survey. We search for original iron pins and measure with survey-grade equipment. If markers are missing, we use the surrounding evidence to re-establish the corner and set a new post.',
                 icon: MapPinned,
               },
               {

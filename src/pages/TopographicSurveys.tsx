@@ -183,7 +183,7 @@ export default function TopographicSurveys() {
               {
                 step: '2',
                 title: 'Field visit',
-                body: 'Our crew visits your property to perform a field survey. We search for original property corner posts and measure site features with survey-grade equipment. Robotic total stations, GPS, drones and laser scanners are used on large tracts of land.',
+                body: 'Our field crew, working under the direct supervision of a BC Land Surveyor, visits your property to perform a field survey. We search for original property corner posts and measure site features with survey-grade equipment. Robotic total stations, GPS, drones and laser scanners are used on large tracts of land.',
                 icon: MapPinned,
               },
               {

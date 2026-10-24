@@ -509,6 +509,15 @@ baseTemplates.forEach(templateFile => {
       console.log(`  Created directory: ${outputDir}`);
     }
 
+    // Sechelt 3D settlement monitoring meta and schema descriptions use
+    // "high-precision" rather than "millimeter-accurate". The shared
+    // generator suffix still says millimeter-accurate for every other town.
+    if (locationSlug === 'sechelt' && serviceSlug === '3d-settlement-monitoring') {
+      localizedContent = localizedContent
+        .replaceAll('Millimeter-accurate', 'High-precision')
+        .replaceAll('millimeter-accurate', 'high-precision');
+    }
+
     // Write the localized MDX file
     try {
       fs.writeFileSync(outputFilePath, localizedContent, 'utf8');

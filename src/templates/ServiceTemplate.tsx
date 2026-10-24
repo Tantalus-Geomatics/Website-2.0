@@ -63,16 +63,16 @@ const defaultSteps: { title: string; description: string }[] = [
   },
   {
     title: 'On-Site Field Survey',
-    description: 'Our crew uses high-precision robotic total stations and GPS equipment to measure and mark boundaries or capture detailed topographic data.',
+    description: 'Our field crew, working under the direct supervision of a BC Land Surveyor, uses high-precision robotic total stations and GPS equipment to measure and mark boundaries or capture detailed topographic data.',
   },
   {
     title: 'Drafting and Certification',
-    description: 'We process the field data, draft professional plans, and provide certified BCLS documents tailored to your project requirements.',
+    description: 'We process the field data, draft professional plans, and provide documents signed by a BC Land Surveyor tailored to your project requirements.',
   }
 ];
 
 const defaultDeliverables: string[] = [
-  'Certified BCLS Plan (PDF & Physical Copies)',
+  'Survey Plan Signed by a BCLS (PDF & Physical Copies)',
   'Digital CAD Files (DWG/DXF formats)',
   'On-Site Boundary Markers & Stakes',
   'Detailed Topographic Site Map'
@@ -89,7 +89,7 @@ const defaultFaqs: { question: string; answer: string }[] = [
   },
   {
     question: 'Do I need to be home during the field survey?',
-    answer: 'No, as long as our crew has clear access to your entire property and any boundary markers. We will coordinate access details with you beforehand.'
+    answer: 'No, as long as our field crew has clear access to your entire property and any boundary markers. We will coordinate access details with you beforehand.'
   }
 ];
 
@@ -353,7 +353,7 @@ export default function ServiceTemplate({
           <div className="mt-16 p-8 bg-stone-100 border-l-4 border-brand-green rounded-r-2xl shadow-sm">
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Why Choose Tantalus Geomatics?</h3>
             <p className="text-slate-700 text-lg font-light leading-relaxed">
-              Our team combines {locationName ? `local ${formatLocalExpertise(locationName)} expertise` : 'local Sea to Sky expertise'} with state-of-the-art surveying technology. We deliver highly accurate, BCLS-certified plans that streamline your municipal permit approvals and protect your property investments.
+              We combine {locationName ? `local ${formatLocalExpertise(locationName)} expertise` : 'local Sea to Sky expertise'} with modern surveying technology. We deliver highly accurate plans signed by a BC Land Surveyor (BCLS) that streamline your municipal permit approvals and protect your property investments.
             </p>
           </div>
         </div>
@@ -393,10 +393,10 @@ export default function ServiceTemplate({
             </h2>
             <GeoDirectAnswer
               align="center"
-              question="How do we ensure accuracy and efficiency in our land surveying projects?"
+              question="How does a survey project work?"
             >
               <div className="text-slate-600 font-light text-lg max-w-2xl mx-auto">
-                We follow a structured, transparent process to deliver precise results and keep your project on schedule.
+                We follow a structured process from research to fieldwork to a plan signed by a BC Land Surveyor.
               </div>
             </GeoDirectAnswer>
           </div>

@@ -67,8 +67,8 @@ export default function About() {
         },
         {
           "@type": "PropertyValue",
-          "name": "Professional Engineer License",
-          "propertyID": "EGBC License Number",
+          "name": "Professional Engineer Licence",
+          "propertyID": "EGBC Licence Number",
           "value": "57741"
         }
       ],

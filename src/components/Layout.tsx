@@ -122,13 +122,13 @@ const schemaData = {
       {
         "@type": "EducationalOccupationalCredential",
         "name": "Professional Engineer (P.Eng.)",
-        "credentialCategory": "Professional License",
+        "credentialCategory": "Professional Licence",
         "recognizedBy": {
           "@type": "Organization",
           "alternateName": "EGBC",
           "name": "Engineers & Geoscientists British Columbia"
         },
-        "identifier": "EGBC License #57741"
+        "identifier": "EGBC Registration #57741"
       }
     ]
   },
@@ -155,13 +155,13 @@ const schemaData = {
       {
         "@type": "EducationalOccupationalCredential",
         "name": "Professional Engineer (P.Eng.)",
-        "credentialCategory": "Professional License",
+        "credentialCategory": "Professional Licence",
         "recognizedBy": {
           "@type": "ProfessionalAssociation",
           "name": "Engineers & Geoscientists British Columbia",
           "abbreviation": "EGBC"
         },
-        "identifier": "EGBC License #57741"
+        "identifier": "EGBC Registration #57741"
       }
     ]
   },
