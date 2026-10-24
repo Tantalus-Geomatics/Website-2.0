@@ -89,7 +89,8 @@ function generateRouteMatrix() {
       .filter((dirent) => dirent.isFile() && /\.(mdx|md)$/.test(dirent.name))
       .map((dirent) => dirent.name)
       .filter((name) => fs.statSync(path.join(dir, name)).size > 0)
-      .map((name) => name.replace(/\.(mdx|md)$/, ''));
+      .map((name) => name.replace(/\.(mdx|md)$/, ''))
+      .filter(isPublishableSlug);
   }
 
   function scanCategory(categoryFolder, routePrefix, feedKey) {
@@ -144,6 +145,11 @@ function generateRouteMatrix() {
   ];
 }
 
+// Pipeline demos (_EXAMPLE_insight.txt, _EXAMPLE_project.txt) are not pages.
+function isPublishableSlug(slug) {
+  return !slug.startsWith('_EXAMPLE') && !slug.startsWith('example-');
+}
+
 function writeRedirectStub(routePath, target) {
   const html = `<!doctype html>
 <html lang="en">
@@ -196,8 +202,9 @@ function assertPrerenderedPage(url, html) {
   }
 }
 
-// Mirrors the static paths in src/App.tsx. Location, service, insight, and
-// project routes are added from the content files the router actually loads.
+// Hard-coded copy of the static paths in src/App.tsx. This list is not read
+// from the router, so a new <Route> there must be added here too. Location,
+// service, insight, and project routes come from the content files.
 const STATIC_ROUTER_ROUTES = [
   '/',
   '/about/',
@@ -228,7 +235,8 @@ function nonEmptySlugs(dir) {
     .filter((dirent) => dirent.isFile() && /\.(mdx|md)$/.test(dirent.name))
     .map((dirent) => dirent.name)
     .filter((name) => fs.statSync(path.join(dir, name)).size > 0)
-    .map((name) => name.replace(/\.(mdx|md)$/, ''));
+    .map((name) => name.replace(/\.(mdx|md)$/, ''))
+    .filter(isPublishableSlug);
 }
 
 function childDirectories(dir) {
@@ -276,6 +284,37 @@ function collectRenderableRoutes() {
   }
 
   return routes;
+}
+
+function loadingPlaceholdersIn(html) {
+  const found = new Set();
+  const text = html.split('Loading Interactive Map...').join('');
+  if (text.includes('Loading FAQs')) found.add('Loading FAQs');
+  if (text.includes('Loading Form')) found.add('Loading Form');
+  if (text.includes('Loading...')) found.add('Loading...');
+  for (const match of text.matchAll(/Loading [^<"]{1,80}\.\.\./g)) {
+    found.add(match[0]);
+  }
+  return [...found];
+}
+
+function builtPagesWithLoadingPlaceholders() {
+  const hits = [];
+  const distDir = toAbs('dist');
+  function walk(dir) {
+    for (const dirent of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, dirent.name);
+      if (dirent.isDirectory()) walk(full);
+      else if (dirent.name.endsWith('.html')) {
+        const placeholders = loadingPlaceholdersIn(fs.readFileSync(full, 'utf8'));
+        if (placeholders.length > 0) {
+          hits.push({ file: path.relative(distDir, full), placeholders });
+        }
+      }
+    }
+  }
+  if (fs.existsSync(distDir)) walk(distDir);
+  return hits;
 }
 
 function collectSitemapRoutes() {
@@ -401,15 +440,21 @@ async function generate() {
           window.__IS_PRERENDERING = true;
         });
 
-        // domcontentloaded, then wait for the page h1. networkidle0 drops a
-        // finished page when a third-party request never goes idle. That is
-        // what left /sechelt/services/3d-settlement-monitoring/ out of the
-        // 2026-09-17 deploy: a 30s navigation timeout was logged and skipped,
-        // while the sitemap still listed the URL.
+        // domcontentloaded, then the heading and the lazy FAQ and quote form.
+        // networkidle0 drops a finished page when a third-party request never
+        // goes idle (the 2026-09-17 Sechelt timeout). Waiting only for the
+        // first h1 saves the page while those chunks still say "Loading...".
         await page.goto(`http://localhost:3000${url}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
         await page.waitForFunction(() => {
-          const heading = document.querySelector('#root h1');
-          return Boolean(heading && heading.textContent && heading.textContent.trim());
+          const root = document.querySelector('#root');
+          if (!root) return false;
+          const heading = root.querySelector('h1');
+          if (!heading || !heading.textContent || !heading.textContent.trim()) return false;
+          const text = (root.innerText || '').split('Loading Interactive Map...').join('');
+          if (text.includes('Loading FAQs') || text.includes('Loading Form')) return false;
+          if (text.includes('Loading...')) return false;
+          if (/Loading [^.]{1,80}\.\.\./.test(text)) return false;
+          return true;
         }, { timeout: 45000 });
 
         await page.evaluate(() => {
@@ -463,10 +508,15 @@ async function generate() {
         writeRedirectStub(stub.path, stub.target);
       }
 
-      // 3. Write individual structural child sitemaps
+      // 3. Write individual structural child sitemaps. An empty feed is not
+      // written, and a leftover file from an earlier build is removed.
       const today = new Date().toISOString().split('T')[0];
       Object.entries(sitemapFeeds).forEach(([feedKey, urls]) => {
-        if (urls.length === 0) return;
+        const childPath = toAbs(`dist/sitemap-${feedKey}.xml`);
+        if (urls.length === 0) {
+          if (fs.existsSync(childPath)) fs.unlinkSync(childPath);
+          return;
+        }
         
         let childSitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
         urls.forEach(url => {
@@ -474,9 +524,8 @@ async function generate() {
         });
         childSitemap += `</urlset>`;
         
-        const childPath = `dist/sitemap-${feedKey}.xml`;
-        fs.writeFileSync(toAbs(childPath), childSitemap);
-        console.log(`🗺️ Generated child sitemap: ${childPath} (${urls.length} URLs)`);
+        fs.writeFileSync(childPath, childSitemap);
+        console.log(`🗺️ Generated child sitemap: dist/sitemap-${feedKey}.xml (${urls.length} URLs)`);
       });
 
       // 4. Generate the master index shell wrapper
@@ -526,10 +575,18 @@ async function generate() {
         console.error(` - ${routePath} (from ${sample})`);
       }
     }
-    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0) {
+    const loadingPages = builtPagesWithLoadingPlaceholders();
+    if (loadingPages.length > 0) {
+      console.error(`\nLoading placeholder left in ${loadingPages.length} built page(s):`);
+      for (const hit of loadingPages) {
+        console.error(` - ${hit.file}: ${hit.placeholders.join(', ')}`);
+      }
+    }
+    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0 || loadingPages.length > 0) {
       process.exit(1);
     }
     console.log(`Route coverage ok: ${expectedRoutes.size} renderable and sitemap URLs have a prerendered page.`);
+    console.log('Loading placeholders: 0');
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);

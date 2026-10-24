@@ -104,10 +104,6 @@ export default function Breadcrumbs() {
       href = '/services/';
     }
 
-    // Insights and projects have article routes and no index page. Keep the
-    // label, and do not link a URL the site does not prerender.
-    const linkable = !isLast && chunk !== 'insights' && chunk !== 'projects';
-
     // Resolve human-readable label
     let label = chunk;
     if (isValidLocation(chunk)) {
@@ -118,7 +114,7 @@ export default function Breadcrumbs() {
       label = titleCase(chunk);
     }
 
-    return { label, href, isLast, linkable };
+    return { label, href, isLast };
   });
 
   return (
@@ -141,20 +137,12 @@ export default function Breadcrumbs() {
         {breadcrumbs.map((crumb, index) => (
           <div key={index} itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
             <ChevronRight size={12} className="text-white/30 shrink-0" />
-            {crumb.isLast || !crumb.linkable ? (
+            {crumb.isLast ? (
               <>
-                <span
-                  itemProp="name"
-                  className={crumb.isLast
-                    ? 'font-semibold text-white truncate max-w-[200px] sm:max-w-none'
-                    : 'truncate max-w-[150px] sm:max-w-none'}
-                  aria-current={crumb.isLast ? 'page' : undefined}
-                >
+                <span itemProp="name" className="font-semibold text-white truncate max-w-[200px] sm:max-w-none" aria-current="page">
                   {crumb.label}
                 </span>
-                {crumb.isLast && (
-                  <meta itemProp="item" content={`https://www.tantalusgeomatics.com${crumb.href}`} />
-                )}
+                <meta itemProp="item" content={`https://www.tantalusgeomatics.com${crumb.href}`} />
               </>
             ) : (
               <Link 
