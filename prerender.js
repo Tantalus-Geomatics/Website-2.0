@@ -83,9 +83,24 @@ function generateRouteMatrix() {
     return sitemapFeeds.pages;
   }
 
+  function contentSlugs(dir) {
+    if (!fs.existsSync(dir)) return [];
+    return fs.readdirSync(dir, { withFileTypes: true })
+      .filter((dirent) => dirent.isFile() && /\.(mdx|md)$/.test(dirent.name))
+      .map((dirent) => dirent.name)
+      .filter((name) => fs.statSync(path.join(dir, name)).size > 0)
+      .map((name) => name.replace(/\.(mdx|md)$/, ''));
+  }
+
   function scanCategory(categoryFolder, routePrefix, feedKey) {
     const categoryPath = path.join(contentDir, categoryFolder);
     if (!fs.existsSync(categoryPath)) return;
+
+    // Files sitting in the category root (not a location folder) are still
+    // routes: /insights/:slug and /projects/:slug. Empty fixtures are not pages.
+    for (const slug of contentSlugs(categoryPath)) {
+      sitemapFeeds[feedKey].push(`/${routePrefix}/${slug}/`);
+    }
 
     // Read location subdirectories (squamish, whistler, etc.)
     const locations = fs.readdirSync(categoryPath, { withFileTypes: true })
@@ -97,11 +112,7 @@ function generateRouteMatrix() {
       sitemapFeeds.pages.push(`/${location}/`);
 
       const locationPath = path.join(categoryPath, location);
-      const files = fs.readdirSync(locationPath)
-        .filter(file => file.endsWith('.mdx') || file.endsWith('.md'));
-
-      for (const file of files) {
-        const slug = file.replace(/\.(mdx|md)$/, '');
+      for (const slug of contentSlugs(locationPath)) {
         const shortPath = `/${routePrefix}/${slug}/`;
         const localizedPath = `/${location}/${routePrefix}/${slug}/`;
 
@@ -185,6 +196,162 @@ function assertPrerenderedPage(url, html) {
   }
 }
 
+// Mirrors the static paths in src/App.tsx. Location, service, insight, and
+// project routes are added from the content files the router actually loads.
+const STATIC_ROUTER_ROUTES = [
+  '/',
+  '/about/',
+  '/services/',
+  '/faq/',
+  '/contact/',
+  '/residential/',
+  '/survey-pricing/',
+  '/surveys-and-title-insurance/',
+  '/subdivision/',
+  '/topographic-surveys/',
+  '/sea-to-sky-property-line-and-boundary-staking/',
+];
+
+function readValidLocations() {
+  const text = fs.readFileSync(toAbs('src/config/locations.ts'), 'utf8');
+  const match = text.match(/VALID_LOCATIONS\s*=\s*\[([\s\S]*?)\]/);
+  if (!match) throw new Error('Could not parse VALID_LOCATIONS from src/config/locations.ts');
+  return match[1]
+    .split(',')
+    .map((entry) => entry.replace(/['"\s]/g, ''))
+    .filter((entry) => entry && entry !== 'asconst');
+}
+
+function nonEmptySlugs(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter((dirent) => dirent.isFile() && /\.(mdx|md)$/.test(dirent.name))
+    .map((dirent) => dirent.name)
+    .filter((name) => fs.statSync(path.join(dir, name)).size > 0)
+    .map((name) => name.replace(/\.(mdx|md)$/, ''));
+}
+
+function childDirectories(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+}
+
+function collectRenderableRoutes() {
+  const routes = new Set(STATIC_ROUTER_ROUTES);
+  const validLocations = new Set(readValidLocations());
+  for (const location of validLocations) {
+    routes.add(`/${location}/`);
+  }
+
+  const serviceSlugs = new Set();
+  const servicesDir = toAbs('src/content/services');
+  for (const location of childDirectories(servicesDir)) {
+    if (!validLocations.has(location)) continue;
+    for (const slug of nonEmptySlugs(path.join(servicesDir, location))) {
+      routes.add(`/${location}/services/${slug}/`);
+      serviceSlugs.add(slug);
+    }
+  }
+  for (const slug of serviceSlugs) {
+    routes.add(`/services/${slug}/`);
+  }
+
+  const nested = [
+    ['blog', 'insights'],
+    ['projects', 'projects'],
+  ];
+  for (const [folder, routePrefix] of nested) {
+    const categoryDir = toAbs(`src/content/${folder}`);
+    for (const slug of nonEmptySlugs(categoryDir)) {
+      routes.add(`/${routePrefix}/${slug}/`);
+    }
+    for (const location of childDirectories(categoryDir)) {
+      if (!validLocations.has(location)) continue;
+      for (const slug of nonEmptySlugs(path.join(categoryDir, location))) {
+        routes.add(`/${location}/${routePrefix}/${slug}/`);
+      }
+    }
+  }
+
+  return routes;
+}
+
+function collectSitemapRoutes() {
+  const routes = new Set();
+  const distDir = toAbs('dist');
+  if (!fs.existsSync(distDir)) return routes;
+  for (const name of fs.readdirSync(distDir)) {
+    if (!/^sitemap-.+\.xml$/.test(name) || name === 'sitemap-index.xml') continue;
+    const xml = fs.readFileSync(path.join(distDir, name), 'utf8');
+    for (const match of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      let pathname = new URL(match[1]).pathname;
+      if (!pathname.endsWith('/')) pathname += '/';
+      routes.add(pathname);
+    }
+  }
+  return routes;
+}
+
+function distIndexPath(routePath) {
+  if (routePath === '/') return toAbs('dist/index.html');
+  return toAbs(`dist${routePath}index.html`);
+}
+
+function missingPrerenderedRoutes(routes) {
+  return [...routes].filter((routePath) => !fs.existsSync(distIndexPath(routePath))).sort();
+}
+
+const PAGE_HOSTS = new Set(['www.tantalusgeomatics.com', 'tantalusgeomatics.com']);
+
+function internalPagePath(href) {
+  const raw = String(href || '').trim();
+  if (!raw || raw.startsWith('#') || /^(mailto:|tel:|sms:|javascript:)/i.test(raw)) return null;
+  let url;
+  try {
+    url = new URL(raw, 'https://www.tantalusgeomatics.com');
+  } catch {
+    return null;
+  }
+  if (!PAGE_HOSTS.has(url.hostname)) return null;
+  let pathname = decodeURIComponent(url.pathname).replace(/\/{2,}/g, '/');
+  const leaf = pathname.split('/').pop() || '';
+  if (/\.[a-z0-9]{1,8}$/i.test(leaf) && !/^index\.html$/i.test(leaf)) return null;
+  if (pathname === '/index.html') return '/';
+  pathname = pathname.replace(/\/index\.html$/i, '/');
+  if (!pathname.startsWith('/')) pathname = `/${pathname}`;
+  if (!pathname.endsWith('/')) pathname += '/';
+  return pathname;
+}
+
+function internalHrefsMissingPages() {
+  const missing = new Map();
+  const distDir = toAbs('dist');
+  const htmlFiles = [];
+  function walk(dir) {
+    for (const dirent of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, dirent.name);
+      if (dirent.isDirectory()) walk(full);
+      else if (dirent.name.endsWith('.html')) htmlFiles.push(full);
+    }
+  }
+  if (fs.existsSync(distDir)) walk(distDir);
+
+  for (const file of htmlFiles) {
+    const html = fs.readFileSync(file, 'utf8');
+    const source = path.relative(distDir, file);
+    for (const match of html.matchAll(/href\s*=\s*["']([^"']+)["']/gi)) {
+      const routePath = internalPagePath(match[1]);
+      if (!routePath) continue;
+      if (fs.existsSync(distIndexPath(routePath))) continue;
+      if (!missing.has(routePath)) missing.set(routePath, new Set());
+      missing.get(routePath).add(source);
+    }
+  }
+  return [...missing.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+}
+
 const routesToPrerender = generateRouteMatrix();
 
 async function generate() {
@@ -234,8 +401,16 @@ async function generate() {
           window.__IS_PRERENDERING = true;
         });
 
-        await page.goto(`http://localhost:3000${url}`, { waitUntil: 'networkidle0', timeout: 60000 });
-        await page.waitForSelector('#root > div', { timeout: 20000 });
+        // domcontentloaded, then wait for the page h1. networkidle0 drops a
+        // finished page when a third-party request never goes idle. That is
+        // what left /sechelt/services/3d-settlement-monitoring/ out of the
+        // 2026-09-17 deploy: a 30s navigation timeout was logged and skipped,
+        // while the sitemap still listed the URL.
+        await page.goto(`http://localhost:3000${url}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.waitForFunction(() => {
+          const heading = document.querySelector('#root h1');
+          return Boolean(heading && heading.textContent && heading.textContent.trim());
+        }, { timeout: 45000 });
 
         await page.evaluate(() => {
           const removeDuplicates = (selector) => {
@@ -325,13 +500,36 @@ async function generate() {
       console.log('🛑 Headless Chrome closed. Prerendering complete.');
     }
 
+    const expectedRoutes = new Set([
+      ...collectRenderableRoutes(),
+      ...collectSitemapRoutes(),
+    ]);
+    const missingRoutes = missingPrerenderedRoutes(expectedRoutes);
+    const missingLinks = internalHrefsMissingPages();
+
     if (failedRoutes.length > 0) {
       console.error(`\nPrerender failed on ${failedRoutes.length} route(s):`);
       for (const failure of failedRoutes) {
         console.error(` - ${failure.url}: ${failure.message}`);
       }
+    }
+    if (missingRoutes.length > 0) {
+      console.error(`\nRoute coverage failed on ${missingRoutes.length} route(s) with no dist page:`);
+      for (const routePath of missingRoutes) {
+        console.error(` - ${routePath}`);
+      }
+    }
+    if (missingLinks.length > 0) {
+      console.error(`\nInternal links point at ${missingLinks.length} URL(s) with no prerendered page:`);
+      for (const [routePath, sources] of missingLinks) {
+        const sample = [...sources].slice(0, 3).join(', ');
+        console.error(` - ${routePath} (from ${sample})`);
+      }
+    }
+    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0) {
       process.exit(1);
     }
+    console.log(`Route coverage ok: ${expectedRoutes.size} renderable and sitemap URLs have a prerendered page.`);
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
