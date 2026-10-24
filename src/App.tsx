@@ -37,7 +37,7 @@ function LocationRouteGuard({ children }: LocationRouteGuardProps) {
     // Fallback to non-localized path if locationSlug is invalid
     const pathParts = location.pathname.split('/').filter(Boolean);
     if (pathParts.length > 1) {
-      const fallbackPath = '/' + pathParts.slice(1).join('/');
+      const fallbackPath = '/' + pathParts.slice(1).join('/') + '/';
       return <Navigate to={fallbackPath} replace />;
     }
     return <Navigate to="/" replace />;

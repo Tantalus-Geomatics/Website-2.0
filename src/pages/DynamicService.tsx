@@ -61,7 +61,7 @@ export default function DynamicService() {
         <div className="min-h-screen flex flex-col items-center justify-center text-white bg-brand-black px-4">
           <h1 className="text-6xl font-bold mb-4 text-brand-green">404</h1>
           <p className="text-xl mb-8 text-slate-300">Service not found</p>
-          <Link to="/services" className="px-6 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold rounded-full transition-all">
+          <Link to="/services/" className="px-6 py-3 bg-brand-green hover:bg-brand-green-light text-black font-semibold rounded-full transition-all">
             Back to Services
           </Link>
         </div>

@@ -112,12 +112,12 @@ export const LOCATION_GEO_DATA: Record<string, { lat: number; lng: number; local
 
 export const SERVICE_LINKS_MAP: Record<string, ResourceLink[]> = {
   'subdivision-surveys': [
-    { label: 'Subdivision Survey Guide', href: '/services/subdivision-surveys/guide' },
+    { label: 'Subdivision Survey Guide', href: '/services/subdivision-surveys/guide/' },
     { label: 'LTSA Subdivision Requirements', href: 'https://ltsa.ca' }
   ],
   'topographic-surveys': [
-    { label: 'Topographic Survey Pricing', href: '/survey-pricing' },
-    { label: 'Understanding Site Plans', href: '/services/topographic-surveys/site-plans' }
+    { label: 'Topographic Survey Pricing', href: '/survey-pricing/' },
+    { label: 'Understanding Site Plans', href: '/services/topographic-surveys/site-plans/' }
   ]
 };
 

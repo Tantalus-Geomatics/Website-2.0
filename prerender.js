@@ -62,6 +62,14 @@ const REDIRECT_STUBS = [
     path: '/services/property-line-surveys/',
     target: 'https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking/',
   },
+  // Hand-written source for this URL is in archive/town-pages/squamish/.
+  // There is no generated property-line-surveys page (that slug is not in the
+  // 28-service catalog). The stub cannot refresh to its own URL, so it points
+  // at the generated Squamish boundary survey, which is the live page for this work.
+  {
+    path: '/squamish/services/property-line-surveys/',
+    target: 'https://www.tantalusgeomatics.com/squamish/services/boundary-surveys/',
+  },
 ];
 const REDIRECT_STUB_PATHS = new Set(REDIRECT_STUBS.map((stub) => stub.path));
 

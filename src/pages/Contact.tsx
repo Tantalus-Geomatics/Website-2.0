@@ -119,7 +119,7 @@ export default function Contact() {
               <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-4 sm:mb-6">Professional Consultations</h2>
               <GeoDirectAnswer question="When does it make sense to book a professional consultation before you build?">
                 <p className="text-base sm:text-lg text-slate-700 font-light mb-8 sm:mb-12 leading-relaxed">
-                  Do you have a plan to build on your property, but you are not sure where to start? We offer consultations to help you navigate the land development, construction and permitting process. Let us help you identify the specific regulatory and <a href="/services" className="text-brand-green hover:underline">survey requirements</a> for your site.
+                  Do you have a plan to build on your property, but you are not sure where to start? We offer consultations to help you navigate the land development, construction and permitting process. Let us help you identify the specific regulatory and <a href="/services/" className="text-brand-green hover:underline">survey requirements</a> for your site.
                 </p>
               </GeoDirectAnswer>
 
