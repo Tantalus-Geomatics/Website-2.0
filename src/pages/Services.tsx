@@ -18,6 +18,7 @@ import {
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { useLeadForm } from '../hooks/useLeadForm';
 import { SERVICE_CATEGORIES } from '../config/servicesStructure';
 
@@ -292,7 +293,7 @@ export default function Services() {
     <PageShell>
       <SEO
         title="Land Surveying Services in Sea to Sky"
-        description="Comprehensive land surveying and geomatics engineering solutions including topographic Surveys, Construction Surveys, Legal Boundary Surveys, Strata Surveys, drone surveys and 3D laser scanning."
+        description={STATIC_META_DESCRIPTIONS['/services/']}
         canonicalUrl="https://www.tantalusgeomatics.com/services/"
         schema={servicesSchema}
       />

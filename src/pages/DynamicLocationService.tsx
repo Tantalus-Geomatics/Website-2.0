@@ -2,6 +2,7 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { serviceMetaDescription } from '../data/serviceMetaDescriptions';
 import { isValidLocation, LOCATION_GEO_DATA } from '../config/locations';
 
 // Dynamically import all unified localized MDX files nested under content/services/[location]/[service].mdx
@@ -108,7 +109,7 @@ export default function DynamicLocationService() {
       {localizedSchema && (
         <SEO
           title={data.meta.title || ''}
-          description={data.meta.description || ''}
+          description={serviceMetaDescription(locationSlug, serviceSlug) || data.meta.description || ''}
           canonicalUrl={`https://www.tantalusgeomatics.com/${locationSlug}/services/${serviceSlug}/`}
           schema={localizedSchema}
         />

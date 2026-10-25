@@ -1,0 +1,30 @@
+// Meta descriptions for the 11 hand-written pages and 14 location hubs.
+export const STATIC_META_DESCRIPTIONS = {
+  "/": "Tantalus Geomatics Land Surveying Ltd. in Squamish is led by a BC Land Surveyor (BCLS) and P.Eng., serving the Sea to Sky, North Shore and Sunshine Coast.",
+  "/about/": "Tantalus Geomatics is led by owner Dennis Sherman, BCLS, P.Eng., a dual-registered land surveyor and engineer focused on the Sea-to-Sky corridor.",
+  "/contact/": "Contact Tantalus Geomatics in Squamish, BC for a land survey quote or consultation. Call (604) 213 9934 or email contact@tantalusgeomatics.com.",
+  "/services/": "Legal, residential, construction, strata and engineering surveys from Tantalus Geomatics, plus drone (UAV) mapping and 3D laser scanning across the Sea to Sky.",
+  "/faq/": "Answers to 90+ common BC land surveying questions from Tantalus Geomatics: property staking, topographic surveys, strata plans, subdivisions and covenants.",
+  "/residential/": "Residential surveys for BC homeowners by Tantalus Geomatics: topographic surveys, site plans for permits, property line marking and building location surveys.",
+  "/survey-pricing/": "What does a land survey cost in BC? Tantalus Geomatics explains the legal, historical and terrain factors that drive survey pricing, and how to get a quote.",
+  "/surveys-and-title-insurance/": "Why a building location survey still matters when you buy BC real estate, and how it complements title insurance. A buyer's guide from Tantalus Geomatics.",
+  "/subdivision/": "How to subdivide a parcel in BC: municipal approvals, field surveys and Land Title Office plan registration, explained by BCLS-led Tantalus Geomatics.",
+  "/topographic-surveys/": "Why a topographic survey is the first step to building in BC, and how Tantalus Geomatics works with designers and municipal staff through construction.",
+  "/sea-to-sky-property-line-and-boundary-staking/": "Building a fence, wall or removing a tree in the Sea to Sky? Tantalus Geomatics re-marks your legal property line before you build. BC Land Surveyor (BCLS).",
+  "/squamish/": "Squamish land surveyor: Tantalus Geomatics is based in Squamish, providing boundary surveys, subdivision and strata plans for District of Squamish permits.",
+  "/whistler/": "Boundary and topographic surveys in Whistler by Tantalus Geomatics, with strata conversions and easement plans for Resort Municipality of Whistler permits.",
+  "/pemberton/": "Tantalus Geomatics surveys Pemberton and area: boundary, topographic and subdivision surveys for Village of Pemberton and SLRD applications.",
+  "/the-sea-to-sky/": "Land surveying across the Sea to Sky corridor, from Squamish to Whistler and Pemberton. Tantalus Geomatics delivers legal, topographic and construction surveys.",
+  "/west-vancouver/": "West Vancouver land surveys by BCLS-led Tantalus Geomatics: boundary, topographic and building location surveys for District of West Vancouver permits.",
+  "/bowen-island/": "Bowen Island land surveying by Tantalus Geomatics: boundary surveys, topographic site plans and legal plans for Bowen Island Municipality applications.",
+  "/district-north-vancouver/": "District of North Vancouver land surveyor: Tantalus Geomatics prepares boundary surveys, subdivision plans and covenant surveys for DNV permit applications.",
+  "/city-north-vancouver/": "City of North Vancouver land surveys from Tantalus Geomatics: building location surveys, lot consolidations and strata plans for CNV permit applications.",
+  "/gibsons/": "Land surveying in Gibsons on the Sunshine Coast. Tantalus Geomatics provides boundary, topographic and legal surveys for Town of Gibsons permit applications.",
+  "/sechelt/": "Sechelt land surveys by BCLS-led Tantalus Geomatics: boundary, topographic and legal plans for District of Sechelt development applications.",
+  "/lillooet/": "Land surveying in Lillooet by Tantalus Geomatics: boundary surveys, topographic mapping and legal plans for District of Lillooet development applications.",
+  "/furry-creek/": "Furry Creek land surveys from BCLS-led Tantalus Geomatics: boundary, topographic and construction surveys for Squamish-Lillooet Regional District approvals.",
+  "/britannia-beach/": "Britannia Beach land surveying by Tantalus Geomatics, just south of Squamish: boundary, topographic and legal surveys for SLRD planning applications.",
+  "/powell-river/": "Powell River land surveys by BCLS-led Tantalus Geomatics: boundary and topographic plans for the City of Powell River and qathet Regional District.",
+} as const;
+
+export type StaticMetaPath = keyof typeof STATIC_META_DESCRIPTIONS;

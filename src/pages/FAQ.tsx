@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp, AlertCircle, Lightbulb, ArrowRight, Phone } fro
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { useLeadForm } from '../hooks/useLeadForm';
 import { SERVICE_CATEGORIES } from '../config/servicesStructure';
 
@@ -124,7 +125,7 @@ const faqSchema = {
     <PageShell>
       <SEO 
         title="Land Surveying FAQ | Common Questions in the Sea-to-Sky"
-        description="Expert answers to 90+ BC land surveying questions — property staking, topographic surveys, strata plans, subdivision, and covenants in the Sea to Sky corridor."
+        description={STATIC_META_DESCRIPTIONS['/faq/']}
         canonicalUrl="https://www.tantalusgeomatics.com/faq/"
         schema={faqSchema}
       />

@@ -2,6 +2,7 @@ import { Award, Users, MapPin, Phone } from 'lucide-react';
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
 
@@ -104,7 +105,7 @@ export default function About() {
     <PageShell>
       <SEO 
         title="About Tantalus Geomatics Land Surveying"
-        description="Learn about Tantalus Geomatics Land Surveying, a professional land surveying company delivering surveying services throughout the Sea to Sky. Tantalus is led by Land Surveyor and Professional Engineer Dennis Sherman."
+        description={STATIC_META_DESCRIPTIONS['/about/']}
         canonicalUrl="https://www.tantalusgeomatics.com/about/"
         schema={aboutSchema}
       />

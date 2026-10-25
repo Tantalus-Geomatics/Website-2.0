@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
 
@@ -85,7 +86,7 @@ const residentialSchema = {
     <PageShell>
       <SEO
         title="Residential Land Surveying Services in British Columbia | Tantalus Geomatics"
-        description="Get BC Land Surveyor certified topographic surveys, site plans, property line marking, and building location certificates."
+        description={STATIC_META_DESCRIPTIONS['/residential/']}
         canonicalUrl="https://www.tantalusgeomatics.com/residential/"
         schema={residentialSchema}
       />

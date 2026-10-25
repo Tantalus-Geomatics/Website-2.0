@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
 import { SERVICE_CATEGORIES } from '../config/servicesStructure';
@@ -154,7 +155,7 @@ export default function Home() {
     <div className="flex flex-col bg-brand-black">
       <SEO 
         title="BC Land Surveyor in Squamish, Whistler & Sea to Sky"
-        description="Hire a professional BC Land Surveyor (BCLS) for topographic surveys, legal boundaries, construction surveys and drone surveys in Squamish, Whistler, and Pemberton."
+        description={STATIC_META_DESCRIPTIONS['/']}
         canonicalUrl="https://www.tantalusgeomatics.com/"
         schema={homeSchema}
       />
