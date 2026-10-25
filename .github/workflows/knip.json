@@ -3,6 +3,7 @@
     "entry": [
       "src/main.tsx", 
       "scripts/generate-localized-content.js",
+      "scripts/check-meta-descriptions.js",
       "prerender.js",
       "vite.config.ts"
     ],

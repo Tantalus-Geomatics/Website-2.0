@@ -20,18 +20,11 @@ function computeFinalTitle(title: string): string {
   if (suffixRegex.test(cleanTitle)) {
     const baseTitle = cleanTitle.replace(suffixRegex, '').trim();
     if (baseTitle.length > 38) {
-      let displayTitle = baseTitle;
-      if (baseTitle.length > 48) {
-        displayTitle = baseTitle.substring(0, 45) + '...';
-      }
-      return `${displayTitle} | Tantalus`;
+      return `${baseTitle} | Tantalus`;
     }
     return `${baseTitle} | Tantalus Geomatics`;
   }
 
-  if (cleanTitle.length > 60) {
-    return cleanTitle.substring(0, 57) + '...';
-  }
   return cleanTitle;
 }
 
@@ -43,25 +36,7 @@ function computeFinalDescription(description: string): string {
     return `Land surveying by a BC Land Surveyor (BCLS) in ${locationName}, BC, with topographic mapping and legal boundary definition. Tailored to local municipal requirements.`;
   }
 
-  if (description.length <= 155) {
-    return description;
-  }
-
-  const sentences = description.split(/(?<=[.!?])\s+/);
-  let currentDesc = '';
-  for (const sentence of sentences) {
-    if ((currentDesc + (currentDesc ? ' ' : '') + sentence).length <= 155) {
-      currentDesc += (currentDesc ? ' ' : '') + sentence;
-    } else {
-      break;
-    }
-  }
-
-  if (currentDesc) {
-    return currentDesc;
-  }
-
-  return description.substring(0, 152) + '...';
+  return description;
 }
 
 /**

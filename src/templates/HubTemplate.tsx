@@ -114,6 +114,7 @@ function getDeterministicImages(locationName: string, pool: { src: string; alt: 
 export interface HubTemplateProps {
   title: string;
   description: string;
+  metaDescription?: string;
   canonicalUrl?: string;
   relatedServices?: HubService[];
   locationName: string;
@@ -126,6 +127,7 @@ export interface HubTemplateProps {
 export default function HubTemplate({
   title,
   description,
+  metaDescription,
   canonicalUrl,
   relatedServices = [],
   locationName,
@@ -146,7 +148,7 @@ export default function HubTemplate({
     <PageShell>
       <SEO
         title={`${title} | Tantalus Geomatics Land Surveying`}
-        description={description}
+        description={metaDescription || description}
         canonicalUrl={canonicalUrl}
       />
 

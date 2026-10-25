@@ -1,3 +1,5 @@
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
+
 const VALID_LOCATIONS = [
   'squamish',
   'whistler',
@@ -39,7 +41,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     locality: 'Squamish',
     localAuthorityName: 'District of Squamish',
     municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
-    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in Squamish, BC — boundary surveys, subdivision plans, and strata development tailored to District of Squamish permitting and the Garibaldi Estates corridor.'
+    metaDescription: STATIC_META_DESCRIPTIONS['/squamish/']
   },
   'whistler': {
     lat: 50.1163,
@@ -47,7 +49,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     locality: 'Whistler',
     localAuthorityName: 'Resort Municipality of Whistler',
     municipalLink: 'https://www.whistler.ca/business-development/',
-    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in Whistler, BC — strata conversions, easement plans, and topographic surveys tailored to Resort Municipality of Whistler permitting requirements.'
+    metaDescription: STATIC_META_DESCRIPTIONS['/whistler/']
   },
   'pemberton': {
     lat: 50.3210,
@@ -55,42 +57,47 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     locality: 'Pemberton',
     localAuthorityName: 'Village of Pemberton',
     municipalLink: 'https://www.pemberton.ca/building-development',
-    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in Pemberton, BC — rural subdivisions, agricultural lot surveys, and Crown land applications tailored to Village of Pemberton requirements.'
+    metaDescription: STATIC_META_DESCRIPTIONS['/pemberton/']
   },
   'lillooet': {
     lat: 50.6853,
     lng: -121.9364,
     locality: 'Lillooet',
     localAuthorityName: 'District of Lillooet',
-    municipalLink: 'https://www.lillooet.ca/building-planning-development'
+    municipalLink: 'https://www.lillooet.ca/building-planning-development',
+    metaDescription: STATIC_META_DESCRIPTIONS['/lillooet/']
   },
   'west-vancouver': {
     lat: 49.3692,
     lng: -123.1702,
     locality: 'West Vancouver',
     localAuthorityName: 'District of West Vancouver',
-    municipalLink: 'https://westvancouver.ca/business-development/building-development'
+    municipalLink: 'https://westvancouver.ca/business-development/building-development',
+    metaDescription: STATIC_META_DESCRIPTIONS['/west-vancouver/']
   },
   'bowen-island': {
     lat: 49.3822,
     lng: -123.3711,
     locality: 'Bowen Island',
     localAuthorityName: 'Bowen Island Municipality',
-    municipalLink: 'https://bowenislandmunicipality.ca/property-development/planning-development/'
+    municipalLink: 'https://bowenislandmunicipality.ca/property-development/planning-development/',
+    metaDescription: STATIC_META_DESCRIPTIONS['/bowen-island/']
   },
   'britannia-beach': {
     lat: 49.6264,
     lng: -123.2044,
     locality: 'Britannia Beach',
     localAuthorityName: 'Squamish-Lillooet Regional District',
-    municipalLink: 'https://www.slrd.bc.ca/planning-development-services'
+    municipalLink: 'https://www.slrd.bc.ca/planning-development-services',
+    metaDescription: STATIC_META_DESCRIPTIONS['/britannia-beach/']
   },
   'furry-creek': {
     lat: 49.5833,
     lng: -123.2167,
     locality: 'Furry Creek',
     localAuthorityName: 'Squamish-Lillooet Regional District',
-    municipalLink: 'https://www.slrd.bc.ca/planning-development-services'
+    municipalLink: 'https://www.slrd.bc.ca/planning-development-services',
+    metaDescription: STATIC_META_DESCRIPTIONS['/furry-creek/']
   },
   'district-north-vancouver': {
     lat: 49.3237,
@@ -99,7 +106,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     localityName: 'District of North Vancouver',
     localAuthorityName: 'District of North Vancouver (DNV)',
     municipalLink: 'https://www.dnv.org/business-development',
-    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in the District of North Vancouver — boundary surveys, subdivision plans, and covenant work tailored to DNV Development Services permitting requirements.',
+    metaDescription: STATIC_META_DESCRIPTIONS['/district-north-vancouver/'],
     hubTitle: 'District of North Vancouver Land Surveying Hub'
   },
   'city-north-vancouver': {
@@ -109,7 +116,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     localityName: 'City of North Vancouver',
     localAuthorityName: 'City of North Vancouver (CNV)',
     municipalLink: 'https://www.cnv.org/business-development/building',
-    metaDescription: 'Land surveying by a BC Land Surveyor (BCLS) in the City of North Vancouver — building location surveys, lot consolidations, and strata plans tailored to CNV Community Development permitting requirements.',
+    metaDescription: STATIC_META_DESCRIPTIONS['/city-north-vancouver/'],
     hubTitle: 'City of North Vancouver Land Surveying Hub'
   },
   'gibsons': {
@@ -117,21 +124,24 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     lng: -123.5113,
     locality: 'Gibsons',
     localAuthorityName: 'Town of Gibsons',
-    municipalLink: 'https://gibsons.ca/business/building_development/'
+    municipalLink: 'https://gibsons.ca/business/building_development/',
+    metaDescription: STATIC_META_DESCRIPTIONS['/gibsons/']
   },
   'sechelt': {
     lat: 49.4716,
     lng: -123.7544,
     locality: 'Sechelt',
     localAuthorityName: 'District of Sechelt',
-    municipalLink: 'https://www.sechelt.ca/en/business-and-development/planning-and-development.aspx'
+    municipalLink: 'https://www.sechelt.ca/en/business-and-development/planning-and-development.aspx',
+    metaDescription: STATIC_META_DESCRIPTIONS['/sechelt/']
   },
   'powell-river': {
     lat: 49.8352,
     lng: -124.5247,
     locality: 'Powell River',
     localAuthorityName: 'City of Powell River',
-    municipalLink: 'https://powellriver.ca/pages/land-development-and-subdivision'
+    municipalLink: 'https://powellriver.ca/pages/land-development-and-subdivision',
+    metaDescription: STATIC_META_DESCRIPTIONS['/powell-river/']
   },
   'the-sea-to-sky': {
     lat: 49.5841,
@@ -140,6 +150,7 @@ export const LOCATION_GEO_DATA: Record<ValidLocation, GeoData> = {
     localityName: 'The Sea to Sky',
     localAuthorityName: 'Sea-to-Sky Corridor',
     municipalLink: 'https://www.slrd.bc.ca/planning-development-services',
+    metaDescription: STATIC_META_DESCRIPTIONS['/the-sea-to-sky/'],
     hubTitle: 'The Sea to Sky Land Surveying Hub'
   }
 };

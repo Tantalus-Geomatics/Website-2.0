@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Phone, ChevronDown } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
 const CANONICAL = 'https://www.tantalusgeomatics.com/subdivision/';
@@ -185,7 +186,7 @@ export default function Subdivisions() {
     <PageShell>
       <SEO
         title="The Process of Subdividing a Parcel in BC | Tantalus Geomatics"
-        description="A comprehensive technical guide to navigating municipal regulations, field surveys, and plan registration for land subdivision in British Columbia."
+        description={STATIC_META_DESCRIPTIONS['/subdivision/']}
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />

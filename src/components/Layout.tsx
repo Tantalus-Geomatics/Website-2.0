@@ -245,7 +245,7 @@ export default function Layout() {
       </div>
 
       {/* Navigation */}
-      <header className="bg-brand-dark border-b-2 border-brand-green sticky top-0 z-50">
+      <header className="bg-brand-dark border-b-2 border-brand-green sticky top-0 z-50" data-nosnippet="">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative">
           <div className="flex justify-between h-20 sm:h-24 items-center gap-2">
             
@@ -265,7 +265,7 @@ export default function Layout() {
               />
               <Mountain size={32} className="text-white hidden sm:w-10 sm:h-10 shrink-0" />
               <div className="flex flex-col min-w-0">
-                <span className="font-normal text-[15px] sm:text-2xl leading-tight text-white tracking-wide truncate">Tantalus Geomatics</span>
+                <span className="font-normal text-[15px] sm:text-2xl leading-tight text-white tracking-wide truncate">Tantalus Geomatics{' '}</span>
                 <span className="text-[10px] sm:text-sm font-normal text-brand-green tracking-wide truncate">Land Surveying Ltd.</span>
               </div>
             </Link>
@@ -343,8 +343,8 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8">
-        <section className="border-b border-white/10 py-10 mb-10">
+      <footer className="bg-brand-dark border-t-2 border-brand-green text-white/70 pt-12 pb-8" data-nosnippet="">
+        <section className="border-b border-white/10 py-10 mb-10" data-nosnippet="">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-lg font-semibold text-white mb-6 text-center">
               What Our Clients Say
@@ -383,7 +383,7 @@ export default function Layout() {
             />
             <Mountain size={24} className="text-white hidden" />
             <div className="flex flex-col">
-              <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics</span>
+              <span className="font-normal text-lg leading-tight text-white tracking-wide">Tantalus Geomatics{' '}</span>
               <span className="text-xs font-normal text-brand-green tracking-wide">Land Surveying Ltd.</span>
             </div>
           </div>

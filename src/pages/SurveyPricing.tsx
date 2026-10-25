@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
 const CANONICAL = 'https://www.tantalusgeomatics.com/survey-pricing/';
@@ -102,7 +103,7 @@ export default function SurveyPricing() {
     <PageShell>
       <SEO
         title="Land Survey Pricing & Cost Factors in British Columbia"
-        description="Learn the legal, historical, and topographical factors that influence land survey costs in BC. Transparent pricing insights from a Licensed BC Land Surveyor."
+        description={STATIC_META_DESCRIPTIONS['/survey-pricing/']}
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />

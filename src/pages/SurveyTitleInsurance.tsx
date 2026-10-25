@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone, Search, ShieldCheck } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
 const CANONICAL = 'https://www.tantalusgeomatics.com/surveys-and-title-insurance/';
@@ -90,7 +91,7 @@ export default function SurveyTitleInsurance() {
     <PageShell>
       <SEO
         title="Building Location Surveys vs. Title Insurance | Tantalus Geomatics"
-        description="Learn why a Building Location Certificate is crucial when buying real estate in BC, and how it complements title insurance for full protection."
+        description={STATIC_META_DESCRIPTIONS['/surveys-and-title-insurance/']}
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />

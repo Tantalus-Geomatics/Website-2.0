@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
 const CANONICAL = 'https://www.tantalusgeomatics.com/topographic-surveys/';
@@ -81,7 +82,7 @@ export default function TopographicSurveys() {
     <PageShell>
       <SEO
         title="The First Step to Building: Topographic Surveys Explained | Tantalus Geomatics"
-        description="Why a topographic survey is used in design. We work with other professionals and municipal officials to support you during construction."
+        description={STATIC_META_DESCRIPTIONS['/topographic-surveys/']}
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />

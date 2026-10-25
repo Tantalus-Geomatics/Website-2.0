@@ -20,6 +20,7 @@ import {
 import { SERVICE_CATEGORIES } from '../config/servicesStructure';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { serviceMetaDescription } from '../data/serviceMetaDescriptions';
 import { useLeadForm } from '../hooks/useLeadForm';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
@@ -259,6 +260,7 @@ export default function ServiceTemplate({
 
   const cleanTitle = title.replace(/<[^>]+>/g, '').replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky').replace(/\bthe\s+the\b/gi, 'the');
   const cleanDescription = description.replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky').replace(/\bthe\s+the\b/gi, 'the');
+  const seoDescription = serviceMetaDescription(locationSlug, serviceSlug) || cleanDescription;
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -282,7 +284,7 @@ export default function ServiceTemplate({
     <PageShell>
       <SEO
         title={`${cleanTitle} | Tantalus Geomatics Land Surveying`}
-        description={cleanDescription}
+        description={seoDescription}
         canonicalUrl={canonicalUrl}
         schema={serviceSchema}
       />

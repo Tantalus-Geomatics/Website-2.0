@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ClipboardList, MapPinned, FileCheck, Phone } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 
 const CANONICAL = 'https://www.tantalusgeomatics.com/sea-to-sky-property-line-and-boundary-staking/';
@@ -80,7 +81,7 @@ export default function PropertyLineStaking() {
     <PageShell>
       <SEO
         title="Sea to Sky Property Line Staking | Fences, Walls & Trees"
-        description="Confirm your property line before you build a fence or cut down a tree. Only a BC Land Surveyor (BCLS) can legally re-establish and mark property boundaries in British Columbia."
+        description={STATIC_META_DESCRIPTIONS['/sea-to-sky-property-line-and-boundary-staking/']}
         canonicalUrl={CANONICAL}
         schema={pageSchema}
       />

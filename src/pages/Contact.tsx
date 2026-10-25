@@ -2,6 +2,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import LeadQuoteForm from '../components/LeadQuoteForm';
 import PageShell from '../components/PageShell';
 import SEO from '../components/SEO';
+import { STATIC_META_DESCRIPTIONS } from '../data/staticMetaDescriptions';
 import { GeoDirectAnswer } from '../components/GeoDirectAnswer';
 import { useLeadForm } from '../hooks/useLeadForm';
 
@@ -63,7 +64,7 @@ export default function Contact() {
     <PageShell>
       <SEO 
         title="Contact a BC Land Surveyor | Request a Quote"
-        description="Get in touch with Tantalus Geomatics for your land surveying needs in Squamish, Whistler, Pemberton, Lillooet, North Vancouver, West Vancouver, and Bowen Island."
+        description={STATIC_META_DESCRIPTIONS['/contact/']}
         canonicalUrl="https://www.tantalusgeomatics.com/contact/"
         schema={contactSchema}
       />
