@@ -34,7 +34,7 @@ const priceFactors = [
   },
   {
     factor: 'Rigorous Regulatory Framework',
-    description: 'The cost of land surveying in BC is linked to the province\'s rigorous regulatory framework focused on protection of the public interest. The Association of BC Land Surveyors (ABCLS) enforces strict rules and standards on all activities carried out by a BC Land Surveyor. A British Columbia Land Surveyor (BCLS) cannot "cut corners" to lower a price; they are legally bound to follow a prescribed process of due dilligence, field investigation, and documentation.',
+    description: 'The cost of land surveying in BC is linked to the province\'s rigorous regulatory framework focused on protection of the public interest. The Association of BC Land Surveyors (ABCLS) enforces strict rules and standards on all activities carried out by a BC Land Surveyor. A British Columbia Land Surveyor (BCLS) cannot "cut corners" to lower a price; they are legally bound to follow a prescribed process of due diligence, field investigation, and documentation.',
   },
   {
     factor: 'Professional Judgement and Liability',
@@ -204,7 +204,7 @@ export default function SurveyPricing() {
               {
                 step: '2',
                 title: 'Terrain & Evidence Assessment',
-                body: 'The physical difficulty of a site directly impacts the amount of on-site time required to complete the survey. We assess topography, the size of the site, line-of-sight and the full scope of the site features we to survey.',
+                body: 'The physical difficulty of a site directly impacts the amount of on-site time required to complete the survey. We assess topography, the size of the site, line-of-sight and the full scope of the site features we survey.',
                 icon: Trees,
               },
               {
@@ -318,7 +318,7 @@ export default function SurveyPricing() {
                   <div>
                     <h4 className="text-slate-900 font-semibold mb-2 text-base sm:text-lg">Topographic Survey Effort</h4>
                     <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                      A topographic survey of this magnitude required the integration of modern advanced survey methods. We utilize drone-based LiDAR to penetrate the dense forest canopy and map the ground surface. While this mitigates weeks of manual field labor, the increasesd volume of data processing, QA/QC, storage and hosting, in addition to the high capital cost of equipment, heavily factor into the project's economics.
+                      A topographic survey of this magnitude required the integration of modern advanced survey methods. We utilize drone-based LiDAR to penetrate the dense forest canopy and map the ground surface. While this mitigates weeks of manual field labor, the increased volume of data processing, QA/QC, storage and hosting, in addition to the high capital cost of equipment, heavily factor into the project's economics.
                     </p>
                   </div>
                 </div>

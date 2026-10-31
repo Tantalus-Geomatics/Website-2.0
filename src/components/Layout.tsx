@@ -228,6 +228,15 @@ export default function Layout() {
     { name: 'Contact', path: '/contact/' },
   ];
 
+  const guideLinks = [
+    { name: 'Subdivision', path: '/subdivision/' },
+    { name: 'Survey pricing', path: '/survey-pricing/' },
+    { name: 'Residential surveys', path: '/residential/' },
+    { name: 'Surveys and title insurance', path: '/surveys-and-title-insurance/' },
+    { name: 'Topographic surveys', path: '/topographic-surveys/' },
+    { name: 'Property line staking', path: '/sea-to-sky-property-line-and-boundary-staking/' },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col font-sans text-slate-900 bg-brand-black">
       {/* SEO Structured Data Injection */}
@@ -540,6 +549,23 @@ export default function Layout() {
                 </GoogleMap>
               </LoadScript>
             </ClientOnly>
+          </div>
+        </div>
+
+        {/* Guides: pages that are otherwise easy to miss from the main nav */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+          <h3 className="text-white font-medium text-center mb-4">Guides</h3>
+          <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-sm">
+            {guideLinks.map((guide, index) => (
+              <React.Fragment key={guide.path}>
+                <Link to={guide.path} className="text-brand-green hover:text-brand-green-dark transition-colors font-medium">
+                  {guide.name}
+                </Link>
+                {index < guideLinks.length - 1 && (
+                  <span className="text-slate-300">|</span>
+                )}
+              </React.Fragment>
+            ))}
           </div>
         </div>
 
