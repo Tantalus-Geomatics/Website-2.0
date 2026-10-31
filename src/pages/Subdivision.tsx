@@ -195,8 +195,8 @@ export default function Subdivisions() {
       <section className="relative py-16 md:py-24 flex flex-col justify-center overflow-hidden border-b-2 border-brand-green bg-brand-dark">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/subdivision.webp"
-            alt="Surveying equipment on a residential property subdivision"
+            src="/images/land-development.webp"
+            alt="Cleared development site with survey stakes and a crane, mountains in the background"
             className="w-full h-full object-cover opacity-50 mix-blend-overlay"
             referrerPolicy="no-referrer"
           />

@@ -25,7 +25,7 @@ const faqCategories = SERVICE_CATEGORIES.map((category) => {
           question: faq.question,
           answer: faq.answer,
           callout: faq.callout,
-          serviceLink: { label: serviceName, href: `/services/${slug}/` }
+          serviceLink: { label: serviceName, href: `/the-sea-to-sky/services/${slug}/` }
         });
       });
     }

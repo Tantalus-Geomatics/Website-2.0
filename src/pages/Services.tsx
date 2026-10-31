@@ -275,7 +275,7 @@ export default function Services() {
         '@type': 'Service',
         'name': service.title,
         'description': service.description,
-        'url': `https://www.tantalusgeomatics.com${service.href}`,
+        'url': `https://www.tantalusgeomatics.com/the-sea-to-sky/services/${service.slug}/`,
         'areaServed': SERVICE_AREAS.map(area => ({
           '@type': 'City',
           'name': area
@@ -343,6 +343,14 @@ export default function Services() {
             <p className="text-lg text-slate-600 max-w-2xl mx-auto font-light">
               Explore our comprehensive range of land surveying, geomatics engineering, and 3D reality capture solutions.
             </p>
+            <p className="text-base text-slate-600 max-w-2xl mx-auto font-light mt-4">
+              Related guides:{' '}
+              <Link to="/survey-pricing/" className="text-brand-green-dark hover:underline">survey pricing</Link>,{' '}
+              <Link to="/residential/" className="text-brand-green-dark hover:underline">residential surveys</Link>,{' '}
+              <Link to="/surveys-and-title-insurance/" className="text-brand-green-dark hover:underline">surveys and title insurance</Link>,{' '}
+              <Link to="/topographic-surveys/" className="text-brand-green-dark hover:underline">topographic surveys</Link> and{' '}
+              <Link to="/sea-to-sky-property-line-and-boundary-staking/" className="text-brand-green-dark hover:underline">property line staking</Link>.
+            </p>
           </div>
 
           <div className="space-y-8">
@@ -393,7 +401,7 @@ export default function Services() {
                           return (
                             <Link
                               key={slug}
-                              to={locationSlug ? `/${locationSlug}/services/${service.slug}/` : `/services/${service.slug}/`}
+                              to={locationSlug ? `/${locationSlug}/services/${service.slug}/` : `/the-sea-to-sky/services/${service.slug}/`}
                               className="text-brand-green-dark font-medium hover:underline flex items-center gap-2 mt-2"
                             >
                               <ArrowRight className="w-4 h-4" />

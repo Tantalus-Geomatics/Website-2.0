@@ -334,6 +334,14 @@ export default function Home() {
                 Supporting your projects from conception to completion.
               </div>
             </GeoDirectAnswer>
+            <p className="text-base text-slate-700 max-w-2xl mx-auto font-light mt-4">
+              Read our guides to{' '}
+              <Link to="/residential/" className="text-brand-green-dark hover:underline">residential surveys</Link>,{' '}
+              <Link to="/survey-pricing/" className="text-brand-green-dark hover:underline">survey pricing</Link>,{' '}
+              <Link to="/surveys-and-title-insurance/" className="text-brand-green-dark hover:underline">title insurance</Link>,{' '}
+              <Link to="/topographic-surveys/" className="text-brand-green-dark hover:underline">topographic surveys</Link> and{' '}
+              <Link to="/sea-to-sky-property-line-and-boundary-staking/" className="text-brand-green-dark hover:underline">property line staking</Link>.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

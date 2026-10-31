@@ -351,7 +351,7 @@ export default function PropertyLineStaking() {
             Ready to talk about a boundary survey?
           </h2>
           <p className="text-slate-700 font-light leading-relaxed mb-10 max-w-xl mx-auto">
-          Survey plans are prepared and signed by a BC Land Surveyor (BCLS) at Tantalus Geomatics, in the Sea-to-Sky corridor. Tell us about your property so we can help with the next step.
+          All work is carried out by a BC Land Surveyor (BCLS) at Tantalus Geomatics, based in Squamish. Tell us about your property so we can help with the next step. See our <Link to="/the-sea-to-sky/services/boundary-surveys/" className="text-brand-green-dark hover:underline">boundary surveys service</Link>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
             <Link
