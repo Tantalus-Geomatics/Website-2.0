@@ -344,12 +344,11 @@ export default function Services() {
               Explore our comprehensive range of land surveying, geomatics engineering, and 3D reality capture solutions.
             </p>
             <p className="text-base text-slate-600 max-w-2xl mx-auto font-light mt-4">
-              Related reading:{' '}
-              <Link to="/subdivision/" className="text-brand-green-dark hover:underline">subdivision</Link>,{' '}
+              Related guides:{' '}
               <Link to="/survey-pricing/" className="text-brand-green-dark hover:underline">survey pricing</Link>,{' '}
               <Link to="/residential/" className="text-brand-green-dark hover:underline">residential surveys</Link>,{' '}
               <Link to="/surveys-and-title-insurance/" className="text-brand-green-dark hover:underline">surveys and title insurance</Link>,{' '}
-              <Link to="/topographic-surveys/" className="text-brand-green-dark hover:underline">topographic surveys</Link>, and{' '}
+              <Link to="/topographic-surveys/" className="text-brand-green-dark hover:underline">topographic surveys</Link> and{' '}
               <Link to="/sea-to-sky-property-line-and-boundary-staking/" className="text-brand-green-dark hover:underline">property line staking</Link>.
             </p>
           </div>
