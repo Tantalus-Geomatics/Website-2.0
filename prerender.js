@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import express from 'express';
 import Critters from 'critters';
+import { isPhase1NoindexPath, phase1NoindexPaths } from './src/config/indexingPolicy.ts';
+import { assertPhase1Indexing } from './scripts/phase1-indexing-guard.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbs = (p) => path.resolve(__dirname, p);
@@ -77,6 +79,8 @@ const REDIRECT_STUB_PATHS = new Set(REDIRECT_STUBS.map((stub) => stub.path));
 // but they are not submitted in the sitemap. Their canonical stays on the
 // Sea to Sky URL. The two stubs below are written as static HTML instead.
 const prerenderOnly = [];
+// Phase 1 town × service pages are still prerendered. They are not sitemap or IndexNow URLs.
+const phase1HiddenRoutes = [];
 
 // 2. Dynamically discover all localized and base fallback routes
 function generateRouteMatrix() {
@@ -125,7 +129,13 @@ function generateRouteMatrix() {
         const shortPath = `/${routePrefix}/${slug}/`;
         const localizedPath = `/${location}/${routePrefix}/${slug}/`;
 
-        sitemapFeeds[feedKey].push(localizedPath);
+        // Phase 1 only. Phase 2 is not in the policy, so those pages stay in the sitemap.
+        // Nothing here is dropped or redirected.
+        if (isPhase1NoindexPath(localizedPath)) {
+          phase1HiddenRoutes.push(localizedPath);
+        } else {
+          sitemapFeeds[feedKey].push(localizedPath);
+        }
         if (!REDIRECT_STUB_PATHS.has(shortPath)) {
           prerenderOnly.push(shortPath);
         }
@@ -142,15 +152,24 @@ function generateRouteMatrix() {
   sitemapFeeds.services = [...new Set(sitemapFeeds.services)];
   sitemapFeeds.blog = [...new Set(sitemapFeeds.blog)];
   sitemapFeeds.projects = [...new Set(sitemapFeeds.projects)];
+  const hidden = [...new Set(phase1HiddenRoutes)];
+  phase1HiddenRoutes.length = 0;
+  phase1HiddenRoutes.push(...hidden);
 
-  // Combine into a master list for the Puppeteer prerender crawler loop
+  // Combine into a master list for the Puppeteer prerender crawler loop.
+  // Hidden phase 1 routes are rendered, then left out of the sitemap feeds above.
   return [
     ...sitemapFeeds.pages,
     ...sitemapFeeds.services,
     ...sitemapFeeds.blog,
     ...sitemapFeeds.projects,
+    ...phase1HiddenRoutes,
     ...new Set(prerenderOnly),
   ];
+}
+
+function urlsForIndexNow(urls) {
+  return urls.filter((url) => !isPhase1NoindexPath(url));
 }
 
 // Pipeline demos (_EXAMPLE_insight.txt, _EXAMPLE_project.txt) are not pages.
@@ -687,16 +706,30 @@ async function generate() {
       }
     }
     const firstPartyHttpErrors = reportHttpErrors(httpErrors);
-    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0 || loadingPages.length > 0 || firstPartyHttpErrors > 0) {
+    const indexNowList = urlsForIndexNow(routesToPrerender);
+    const indexingFailures = assertPhase1Indexing({
+      distDir: toAbs('dist'),
+      hostname,
+      policyPaths: phase1NoindexPaths(),
+      hiddenRoutes: phase1HiddenRoutes,
+      indexNowList,
+      sitemapRoutes: collectSitemapRoutes(),
+    });
+    if (indexingFailures.length > 0) {
+      console.error(`\nPhase 1 indexing checks failed (${indexingFailures.length}):`);
+      for (const failure of indexingFailures) console.error(` - ${failure}`);
+    }
+    if (failedRoutes.length > 0 || missingRoutes.length > 0 || missingLinks.length > 0 || loadingPages.length > 0 || firstPartyHttpErrors > 0 || indexingFailures.length > 0) {
       process.exit(1);
     }
     console.log(`Route coverage ok: ${expectedRoutes.size} renderable and sitemap URLs have a prerendered page.`);
     console.log('Loading placeholders: 0');
     console.log('First-party failed responses: 0');
+    console.log(`Phase 1 noindex: ${phase1HiddenRoutes.length} pages omitted from sitemap-services.xml and IndexNow (${indexNowList.length} IndexNow candidates).`);
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
-      await notifyIndexNow(routesToPrerender);
+      await notifyIndexNow(indexNowList);
     }
   });
 }

@@ -1,5 +1,6 @@
 import { useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { isPhase1NoindexPath, NOINDEX_ROBOTS } from '../config/indexingPolicy';
 
 const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://www.tantalusgeomatics.com').replace(/\/$/, '');
 const DEFAULT_OG_IMAGE = 'https://tantalusgeomatics.com/images/Squamish-Garibaldi-Estates-Property-Survey.webp';
@@ -101,16 +102,33 @@ function setMetaTag(attrName: 'name' | 'property', attrValue: string, content: s
   element.setAttribute('content', content);
 }
 
+function currentPath(canonicalUrl?: string): string {
+  if (typeof window !== 'undefined' && window.location?.pathname) {
+    return window.location.pathname;
+  }
+  return canonicalUrl || '';
+}
+
 export default function SEO({ title, description, canonicalUrl, schema, ogImage, ogType }: SEOProps) {
   const finalTitle = computeFinalTitle(title);
   const finalDescription = computeFinalDescription(description);
   const finalUrl = computeFinalUrl(canonicalUrl);
   const finalImage = ogImage || DEFAULT_OG_IMAGE;
+  const noindex = isPhase1NoindexPath(currentPath(canonicalUrl));
 
   useLayoutEffect(() => {
     document.title = finalTitle;
 
     setMetaTag('name', 'description', finalDescription);
+
+    // Phase 1 pages only. Other pages keep whatever robots tag they already had,
+    // except a leftover noindex,follow from a client-side visit to a phase 1 page.
+    const robots = document.querySelector('meta[name="robots"]');
+    if (noindex) {
+      setMetaTag('name', 'robots', NOINDEX_ROBOTS);
+    } else if (robots?.getAttribute('content') === NOINDEX_ROBOTS) {
+      robots.remove();
+    }
 
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
@@ -129,7 +147,7 @@ export default function SEO({ title, description, canonicalUrl, schema, ogImage,
     setMetaTag('name', 'twitter:title', finalTitle);
     setMetaTag('name', 'twitter:description', finalDescription);
     setMetaTag('name', 'twitter:image', finalImage);
-  }, [finalTitle, finalDescription, finalUrl, finalImage, ogType]);
+  }, [finalTitle, finalDescription, finalUrl, finalImage, ogType, noindex]);
 
   const schemaScript = schema ? (
     <script
