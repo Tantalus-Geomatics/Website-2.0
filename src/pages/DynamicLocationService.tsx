@@ -108,8 +108,8 @@ export default function DynamicLocationService() {
       */}
       {localizedSchema && (
         <SEO
-          title={data.meta.title || ''}
-          description={serviceMetaDescription(locationSlug, serviceSlug) || data.meta.description || ''}
+          title={data.meta.pageTitle || data.meta.title || ''}
+          description={data.meta.metaDescription || serviceMetaDescription(locationSlug, serviceSlug) || data.meta.description || ''}
           canonicalUrl={`https://www.tantalusgeomatics.com/${locationSlug}/services/${serviceSlug}/`}
           schema={localizedSchema}
         />

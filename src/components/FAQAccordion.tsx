@@ -9,6 +9,8 @@ export interface FAQItem {
 interface FAQAccordionProps {
   faqs: FAQItem[];
   locationName?: string;
+  /** When true, answers are in the initial HTML. Other pages stay click-to-reveal. */
+  renderAnswers?: boolean;
 }
 
 function highlightLocation(text: string, locationName?: string): ReactNode {
@@ -29,8 +31,33 @@ function highlightLocation(text: string, locationName?: string): ReactNode {
   );
 }
 
-export default function FAQAccordion({ faqs, locationName }: FAQAccordionProps) {
+export default function FAQAccordion({ faqs, locationName, renderAnswers = false }: FAQAccordionProps) {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  if (renderAnswers) {
+    return (
+      <div className="space-y-4">
+        {faqs.map((faq, index) => (
+          <div
+            key={index}
+            className="border border-slate-200 rounded-xl overflow-hidden"
+          >
+            <div className="w-full flex items-center p-6 text-left bg-slate-50">
+              <span className="font-semibold text-slate-900 pr-4 flex items-center gap-3 text-lg">
+                <HelpCircle size={20} className="text-brand-green-dark shrink-0" />
+                {faq.question}
+              </span>
+            </div>
+            <div className="p-6 bg-white border-t border-slate-200">
+              <p className="text-slate-700 font-light leading-relaxed text-base">
+                {highlightLocation(faq.answer, locationName)}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);

@@ -8,6 +8,7 @@ import {
   LOCATION_IMAGES_MAP,
   LOCATION_GEO_DATA
 } from '../src/config/resourceMapping.ts';
+import { localSectionProblems } from './check-local-sections.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -82,6 +83,102 @@ function removeDoubleThe(content) {
     current = current.replace(regex, (match, p1) => p1);
   } while (current !== previous);
   return current;
+}
+
+function loadLocalOverride(locationSlug, serviceSlug) {
+  const filePath = path.join(__dirname, `../src/content/local/${locationSlug}/${serviceSlug}.mdx`);
+  if (!fs.existsSync(filePath)) return null;
+
+  const raw = fs.readFileSync(filePath, 'utf8');
+  const match = raw.match(/export const localOverride = (\{[\s\S]*?\n\})/);
+  if (!match) {
+    throw new Error(`${filePath} must include export const localOverride = { ... } as JSON.`);
+  }
+
+  let data;
+  try {
+    data = JSON.parse(match[1]);
+  } catch (error) {
+    throw new Error(`${filePath} has invalid JSON in localOverride: ${error.message}`);
+  }
+
+  const body = raw.slice(match.index + match[0].length).trim();
+  if (data.heroImage && !data.heroImageAlt) {
+    throw new Error(`${filePath}: heroImage requires heroImageAlt`);
+  }
+  if (Array.isArray(data.gallery)) {
+    data.gallery.forEach((image, index) => {
+      if (!image || !image.src || !image.alt) {
+        throw new Error(`${filePath}: gallery image ${index + 1} needs src and alt`);
+      }
+    });
+  }
+  if (Array.isArray(data.faqs)) {
+    data.faqs.forEach((faq, index) => {
+      if (!faq || !faq.question || !faq.answer) {
+        throw new Error(`${filePath}: local FAQ ${index + 1} needs question and answer`);
+      }
+    });
+  }
+
+  return { data, body, filePath };
+}
+
+function unwrapIntro(content, dropIntro) {
+  const pattern = /\{\{INTRO_START\}\}\r?\n?([\s\S]*?)\{\{INTRO_END\}\}\r?\n?/;
+  if (!pattern.test(content)) {
+    if (dropIntro) {
+      throw new Error('dropIntro is set but the template has no {{INTRO_START}} / {{INTRO_END}} block');
+    }
+    return content;
+  }
+  const next = content.replace(pattern, dropIntro ? '' : '$1');
+  if (next.includes('{{INTRO_START}}') || next.includes('{{INTRO_END}}') || next.includes('{{LOCAL_SECTION}}')) {
+    throw new Error('Unresolved {{INTRO_START}}, {{INTRO_END}}, or {{LOCAL_SECTION}} placeholder');
+  }
+  return next;
+}
+
+function applyLocalMetadata(content, localOverride) {
+  if (!localOverride) return content;
+  const data = localOverride.data;
+  let next = content;
+
+  // pageTitle is separate from title. The hub and the sitewide FAQ read title
+  // and faqs, so a pilot title or local FAQ must not rewrite those fields.
+  const fields = [];
+  if (data.title) fields.push(['pageTitle', JSON.stringify(data.title)]);
+  if (data.metaDescription) fields.push(['metaDescription', JSON.stringify(data.metaDescription)]);
+  if (data.heroImageAlt) fields.push(['heroImageAlt', JSON.stringify(data.heroImageAlt)]);
+  if (data.heroObjectPosition) fields.push(['heroObjectPosition', JSON.stringify(data.heroObjectPosition)]);
+  if (data.dropIntro === true) fields.push(['dropIntro', 'true']);
+  if (data.renderFaqAnswers === true) fields.push(['renderFaqAnswers', 'true']);
+  if (Array.isArray(data.gallery) && data.gallery.length > 0) {
+    const pretty = JSON.stringify(data.gallery, null, 2).replace(/\n/g, '\n  ');
+    fields.push(['galleryImages', pretty]);
+  }
+  if (Array.isArray(data.faqs) && data.faqs.length > 0) {
+    const pretty = JSON.stringify(data.faqs, null, 2).replace(/\n/g, '\n  ');
+    fields.push(['localFaqs', pretty]);
+  }
+
+  if (fields.length > 0) {
+    const marker = 'export const metadata = {';
+    const start = next.indexOf(marker);
+    if (start === -1) throw new Error('export const metadata block not found');
+    const insertAt = start + marker.length;
+    const block = fields.map(([key, value]) => `\n  ${key}: ${value},`).join('');
+    next = next.slice(0, insertAt) + block + next.slice(insertAt);
+  }
+
+  return next;
+}
+
+const localCheckFailures = localSectionProblems(path.join(__dirname, '..'));
+if (localCheckFailures.length > 0) {
+  console.error('Local section check failed:');
+  for (const failure of localCheckFailures) console.error(` - ${failure}`);
+  process.exit(1);
 }
 
 function getImagesForLocation(locationSlug) {
@@ -407,6 +504,12 @@ baseTemplates.forEach(templateFile => {
       ? directLocationImages[0].src
       : "/images/Squamish-Garibaldi-Estates-Property-Survey.webp";
 
+    const localOverride = loadLocalOverride(locationSlug, serviceSlug);
+    if (localOverride?.body && !templateContent.includes('{{LOCAL_SECTION}}')) {
+      throw new Error(`src/content/local/${locationSlug}/${serviceSlug}.mdx has a local section, but ${templateFile} has no {{LOCAL_SECTION}} placeholder.`);
+    }
+    const pageHeroImage = localOverride?.data?.heroImage || computedHeroImage;
+
     const cleanServiceName = getCleanServiceName(serviceSlug);
     const serviceLocationName = locationData.SERVICE_LOCATION_NAME || locationData.LOCATION_NAME;
     const dynamicAlt = `BC Land Surveyor conducting ${cleanServiceName} in ${serviceLocationName}, BC`;
@@ -423,7 +526,7 @@ baseTemplates.forEach(templateFile => {
 
     const data = {
       ...locationData,
-      HERO_IMAGE: computedHeroImage,
+      HERO_IMAGE: pageHeroImage,
       HERO_IMAGE_ALT: dynamicAlt,
       SERVICE_LINKS: JSON.stringify(serviceLinks, null, 2),
       LOCATION_LINKS: JSON.stringify(locationLinks, null, 2),
@@ -431,12 +534,23 @@ baseTemplates.forEach(templateFile => {
       LOCATION_IMAGES: JSON.stringify(dynamicLocationImages, null, 2)
     };
 
-    // Replace placeholders
+    // Replace placeholders. {{LOCAL_SECTION}} is filled from src/content/local
+    // after the shared tokens, so a local section cannot be rewritten by them.
     let localizedContent = templateContent;
     Object.entries(data).forEach(([key, value]) => {
       const placeholder = new RegExp(`{{${key}}}`, 'g');
       localizedContent = localizedContent.replace(placeholder, value);
     });
+
+    if (localizedContent.includes('{{LOCAL_SECTION}}')) {
+      if (localOverride?.body) {
+        localizedContent = localizedContent.replace(/\{\{LOCAL_SECTION\}\}/g, `\n${localOverride.body}\n`);
+      } else {
+        // Remove the placeholder line. Towns without a local file stay unchanged.
+        localizedContent = localizedContent.replace(/[ \t]*\{\{LOCAL_SECTION\}\}[ \t]*\r?\n?/g, '');
+      }
+    }
+    localizedContent = unwrapIntro(localizedContent, Boolean(localOverride?.data?.dropIntro));
 
     if (locationData.SERVICE_LOCATION_NAME) {
       localizedContent = localizedContent.replace(
@@ -456,9 +570,9 @@ baseTemplates.forEach(templateFile => {
       : geoData?.locality || locationData.LOCATION_NAME;
     
     // Normalize image paths to absolute URLs as required strictly by schema protocol engines
-    const absoluteSchemaImage = computedHeroImage.startsWith('http')
-      ? computedHeroImage
-      : `https://www.tantalusgeomatics.com${computedHeroImage}`;
+    const absoluteSchemaImage = pageHeroImage.startsWith('http')
+      ? pageHeroImage
+      : `https://www.tantalusgeomatics.com${pageHeroImage}`;
 
     const localizedSchema = geoData ? {
       "@context": "https://schema.org",
@@ -498,6 +612,11 @@ baseTemplates.forEach(templateFile => {
     localizedContent = sanitizeFrontmatter(localizedContent);
     localizedContent = sanitizeMetadata(localizedContent);
     localizedContent = removeDoubleThe(localizedContent);
+    localizedContent = applyLocalMetadata(localizedContent, localOverride);
+
+    if (localOverride && /\[(?:VERIFY|CONFIRM)\]/i.test(localizedContent)) {
+      throw new Error(`Generated ${locationSlug}/${serviceSlug} still contains [VERIFY] or [CONFIRM]`);
+    }
 
     // Define output directory and file path
     const outputDir = path.join(__dirname, `../src/content/services/${locationSlug}`);

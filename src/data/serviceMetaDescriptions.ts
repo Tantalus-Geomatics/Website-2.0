@@ -323,7 +323,7 @@ export const SERVICE_META_DESCRIPTIONS: Record<string, string> = {
   "/sechelt/services/strata-surveys/": "Strata Surveys in Sechelt: defining strata lots and common property for strata-titled buildings. BCLS-led Tantalus Geomatics, for District of Sechelt.",
   "/powell-river/services/strata-surveys/": "Strata Surveys in Powell River: defining strata lots and common property for strata-titled buildings. BCLS-led Tantalus Geomatics, for City of Powell River.",
   "/the-sea-to-sky/services/strata-surveys/": "Strata Surveys in the Sea to Sky: defining strata lots and common property for strata-titled buildings. BCLS-led Tantalus Geomatics, across the corridor.",
-  "/squamish/services/subdivisions-surveys/": "Subdivision Surveys in Squamish: from initial design through to Land Title Office plan filing. BCLS-led Tantalus Geomatics, from our Squamish office.",
+  "/squamish/services/subdivisions-surveys/": "Subdivision surveys in Squamish by a BC Land Surveyor: parcel research, field work and plans for the District of Squamish Approving Officer and the LTSA.",
   "/whistler/services/subdivisions-surveys/": "Subdivision Surveys in Whistler: from initial design through to Land Title Office plan filing. BCLS-led Tantalus Geomatics, for RMOW permits.",
   "/pemberton/services/subdivisions-surveys/": "Subdivision Surveys in Pemberton: from initial design through to Land Title Office plan filing. BCLS-led Tantalus Geomatics, for Village of Pemberton.",
   "/lillooet/services/subdivisions-surveys/": "Subdivision Surveys in Lillooet: from initial design through to Land Title Office plan filing. BCLS-led Tantalus Geomatics, for District of Lillooet.",
