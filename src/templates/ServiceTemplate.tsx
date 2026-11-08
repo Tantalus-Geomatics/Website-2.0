@@ -40,9 +40,16 @@ export interface ServiceTemplateProps {
   category?: string;
   heroImage?: string;
   heroImageAlt?: string;
+  heroObjectPosition?: string;
+  pageTitle?: string;
+  metaDescription?: string;
+  renderFaqAnswers?: boolean;
+  dropIntro?: boolean;
+  galleryImages?: LocalImage[];
   steps?: { title: string; description: string }[];
   deliverables?: string[];
   faqs?: { question: string; answer: string }[];
+  localFaqs?: { question: string; answer: string }[];
   serviceLinks?: { label: string; href: string }[];
   locationLinks?: { label: string; href: string }[];
   serviceImages?: LocalImage[];
@@ -151,18 +158,18 @@ function formatLocalExpertise(locationName: string): string {
   return locationName.replace(/^the\s+/i, '').trim();
 }
 
-function highlightLocation(text: string, locationName?: string): ReactNode {
+function highlightLocation(text: string, locationName?: string, className = 'text-brand-green-dark font-semibold'): ReactNode {
   if (!text) return text;
   const targetLocation = locationName || 'the Sea to Sky';
   const cleanedText = text
     .replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky')
     .replace(/\bthe\s+the\b/gi, 'the');
-  const parts = cleanedText.split(new RegExp(`(${targetLocation})`, 'gi'));
+  const parts = cleanedText.split(new RegExp(`(${targetLocation.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'));
   return (
     <>
       {parts.map((part, index) => 
         part.toLowerCase() === targetLocation.toLowerCase() ? (
-          <span key={index} className="text-brand-green-dark font-semibold">{part}</span>
+          <span key={index} className={className}>{part}</span>
         ) : (
           part
         )
@@ -178,13 +185,19 @@ export default function ServiceTemplate({
   category,
   heroImage = HERO_FALLBACK,
   heroImageAlt,
+  heroObjectPosition = 'object-top',
+  pageTitle,
+  metaDescription,
+  renderFaqAnswers = false,
   steps = defaultSteps,
   deliverables = defaultDeliverables,
   faqs = defaultFaqs,
+  localFaqs = [],
   serviceLinks = defaultServiceLinks,
   locationLinks,
   serviceImages = [],
   locationImages = [],
+  galleryImages: suppliedGallery = [],
   formVariant = 'embedded',
   locationName,
   localAuthorityName,
@@ -256,11 +269,14 @@ export default function ServiceTemplate({
     }
   });
 
-  const galleryImages = getDeterministicImages(derivedServiceName, uniqueCombinedPool);
+  const seededGallery = getDeterministicImages(derivedServiceName, uniqueCombinedPool);
+  const usingLocalGallery = suppliedGallery.length > 0;
+  const galleryImages = usingLocalGallery ? suppliedGallery : seededGallery;
 
   const cleanTitle = title.replace(/<[^>]+>/g, '').replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky').replace(/\bthe\s+the\b/gi, 'the');
   const cleanDescription = description.replace(/\b(?:the\s+)?Sea\s+To\s+Sky\b/gi, 'the Sea to Sky').replace(/\bthe\s+the\b/gi, 'the');
-  const seoDescription = serviceMetaDescription(locationSlug, serviceSlug) || cleanDescription;
+  const seoTitleBase = pageTitle || cleanTitle;
+  const seoDescription = metaDescription || serviceMetaDescription(locationSlug, serviceSlug) || cleanDescription;
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -283,7 +299,7 @@ export default function ServiceTemplate({
   return (
     <PageShell>
       <SEO
-        title={`${cleanTitle} | Tantalus Geomatics Land Surveying`}
+        title={`${seoTitleBase} | Tantalus Geomatics Land Surveying`}
         description={seoDescription}
         canonicalUrl={canonicalUrl}
         schema={serviceSchema}
@@ -297,7 +313,7 @@ export default function ServiceTemplate({
             alt={heroImageAlt || cleanTitle.replace(/<[^>]+>/g, '')}
             width={1200}
             height={800}
-            className="w-full h-full object-cover object-top opacity-40 mix-blend-overlay"
+            className={`w-full h-full object-cover ${heroObjectPosition === 'object-center' ? 'object-center' : 'object-top'} opacity-40 mix-blend-overlay`}
             referrerPolicy="no-referrer"
             onError={() => setHeroSrc(HERO_FALLBACK)}
             fetchPriority="high"
@@ -310,7 +326,9 @@ export default function ServiceTemplate({
             Professional Land Surveying Services
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
-            {derivedServiceName} in <span className="text-brand-green">{locationName || 'the Sea to Sky'}</span>
+            {pageTitle
+              ? highlightLocation(pageTitle, locationName || 'the Sea to Sky', 'text-brand-green')
+              : <>{derivedServiceName} in <span className="text-brand-green">{locationName || 'the Sea to Sky'}</span></>}
           </h1>
           <p className="text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-md max-w-2xl mx-auto font-light mb-10">
             {highlightLocation(description, locationName || 'the Sea to Sky')}
@@ -506,7 +524,11 @@ export default function ServiceTemplate({
           </div>
 
           <Suspense fallback={<div className="animate-pulse text-brand-green text-center py-4">Loading FAQs...</div>}>
-            <FAQAccordion faqs={faqs} locationName={locationName || 'the Sea to Sky'} />
+            <FAQAccordion
+              faqs={localFaqs.length > 0 ? [...localFaqs, ...faqs] : faqs}
+              locationName={locationName || 'the Sea to Sky'}
+              renderAnswers={renderFaqAnswers}
+            />
           </Suspense>
         </div>
       </section>
@@ -635,7 +657,9 @@ export default function ServiceTemplate({
                     </div>
                   </div>
                   {image.caption && (
-                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white text-xs font-light opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className={usingLocalGallery
+                      ? "absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white text-xs font-light opacity-100"
+                      : "absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white text-xs font-light opacity-0 group-hover:opacity-100 transition-opacity"}>
                       {image.caption}
                     </div>
                   )}
