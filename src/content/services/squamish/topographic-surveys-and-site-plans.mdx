@@ -2,7 +2,7 @@
 title: "Topographic Surveys And Site Plans in Squamish"
 description: "Professional Topographic Surveys And Site Plans in Squamish, mapping detailed ground elevations, structural contours, visible utility networks, and landmarks to anchor architectural design blueprints."
 locationName: 'Squamish'
-heroImage: '/images/tantalus-hero-banner.webp'
+heroImage: '/images/Garibaldi-Estates-gnss-topographic-survey.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "Topographic Surveys And Site Plans"
@@ -11,6 +11,43 @@ serviceName: "Topographic Surveys And Site Plans"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  pageTitle: "Topographic Surveys in Squamish: Site Plans, Elevations and Contours",
+  metaDescription: "Topographic surveys and site plans in Squamish by a BC Land Surveyor: elevations, contours and site features for District of Squamish permits.",
+  heroImageAlt: "GNSS receiver on a tripod in a driveway in Garibaldi Estates, Squamish, with snow-covered mountains behind the house.",
+  heroObjectPosition: "object-center",
+  dropIntro: true,
+  renderFaqAnswers: true,
+  galleryImages: [
+    {
+      "src": "/images/Garibaldi-Estates-gnss-topographic-survey.webp",
+      "alt": "GNSS receiver on a tripod in a driveway in Garibaldi Estates, Squamish, with snow-covered mountains behind the house.",
+      "caption": "A GNSS receiver in a driveway in Garibaldi Estates, Squamish."
+    },
+    {
+      "src": "/images/DS-TS-1.webp",
+      "alt": "Surveyor, seen from behind, operating a total station, with snow-covered mountains beyond.",
+      "caption": "A total station set up for field work, with the mountains behind."
+    },
+    {
+      "src": "/images/squamish-site-hedge.webp",
+      "alt": "A tall cedar hedge beside a gravel shoulder and a residential street.",
+      "caption": "A cedar hedge on a Squamish tree survey. Site plans often locate hedges like this."
+    }
+  ],
+  localFaqs: [
+    {
+      "question": "Is a Squamish site plan filed at the Land Title Office?",
+      "answer": "No. A site plan or plan of topography is drawn for your designer and for the District application. A plan that places a new post at a property corner is a boundary survey, and that plan is a separate document."
+    },
+    {
+      "question": "Will the elevations match the District flood mapping?",
+      "answer": "The plan names the vertical datum, so the numbers can be set beside the District's Flood Construction Level mapping. [CONFIRM] Whether Squamish drawings are issued on CGVD28, on CGVD2013, or on whichever datum the current bylaw names. The District and your engineer decide what the floodplain bylaw requires for the site."
+    },
+    {
+      "question": "What should I send before you quote a Squamish site plan?",
+      "answer": "The civic address or Parcel Identifier (PID), what the permit or the design is, and any survey or District letter you already have."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +56,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/topographic-surveys-and-site-plans/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/tantalus-hero-banner.webp",
+  "image": "https://www.tantalusgeomatics.com/images/Garibaldi-Estates-gnss-topographic-survey.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -44,7 +81,7 @@ export const metadata = {
   title: "Topographic Surveys And Site Plans in Squamish",
   description: "Professional Topographic Surveys And Site Plans in Squamish, mapping detailed ground elevations, structural contours, visible utility networks, and landmarks to anchor architectural design blueprints.",
   locationName: 'Squamish',
-  heroImage: '/images/tantalus-hero-banner.webp',
+  heroImage: '/images/Garibaldi-Estates-gnss-topographic-survey.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "Topographic Surveys And Site Plans",
@@ -134,13 +171,24 @@ export default ({ children }) => (
   </ServiceTemplate>
 )
 
-Topographic surveys and site plans form the critical baseline for any architectural design, engineering, or real estate development in <span className="text-brand-green font-semibold">Squamish</span>. A plan of topography is a survey plan prepared by a commissioned *British Columbia Land Surveyor* (*BCLS*), which illustrates topographic and site details, and information gathered during a field survey. The plans often combine the field survey data with data from other sources such as as-built records, service location records, and underground utility records. 
+**What our survey provides.** For a topographic survey or site plan in Squamish, the survey usually covers:
 
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/topographic-surveys-and-site-plans.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/topographic-surveys-and-site-plans.webp" alt="BC Land Surveyor performing Topographic Surveys and Site Plans in Squamish, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>
+- **Existing conditions.** Buildings, driveways, retaining walls, fences, the visible surface utilities, and the trees a designer has asked us to locate, with spot elevations and contours.
+- **Lot lines and charges.** Distances from those features to the lot lines, and to rights of way, covenants and easements on title, after the lines have been retraced.
+- **Elevations on a named datum.** Ground and floor elevations on a geodetic datum written on the plan, so they can be compared with the District's Flood Construction Level mapping. \[CONFIRM\] The District's published FCL layer is labelled CGVD28. A 2021 consolidation of Subdivision and Development Control Bylaw No. 2649 asked design-drawing elevations to be on CGVD2013. We read the current bylaw, and we ask which datum this drawing should use, before field work starts.
+- **Water and banks.** Top of bank, watercourses and the present natural boundary, where the District or a Qualified Environmental Professional asks for them.
 
-Site plans and plans of topography carry legal and regulatory significance as they frequently accompany municipal development permits, zoning amendments, and building applications. Tantalus Geomatics Land Surveying provides the professional services necessary to accurately capture, depict and certify these plans. Additionally, we work with local government to ensure these plans conform to local bylaws in <span className="text-brand-green font-semibold">Squamish</span>, ensuring that physical features and structures are depicted and labeled in exact conformity with municipal definitions and setback requirements.
+**How a topographic survey works in Squamish.** The plan is a drawing of the ground for a building permit, a development permit, or a design. It is not filed at the Land Title Office. The District's submission list changes, so we read the current [building permit](https://squamish.ca/building-and-land-development/building-permit/) and [development permit](https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/development-permits/) pages at the start of each job.
 
-To achieve the appropriate data format and accuracy standards required by your design team, our firm deploys state-of-the-art measurement technologies. We utilize Aerial Drone Photogrammetry and Aerial Drone LiDAR to penetrate dense vegetation and generate accurate 3D topographic terrain models of large sites. Additionally we use Static GNSS and RTK GNSS, Terrestrial LiDAR, and Robotic Total Stations to capture site features and topography at a variety of data densities and levels of accuracy.
+1. **Research.** The title, the registered plan, and the charges that limit where a building can sit. We also look up the parcel on the District's [flood and hazard map](https://gis.squamish.ca/map/index.html).
+2. **What the drawing needs.** We agree the features, the contour interval and the datum with you and, where there is one, with your designer. A building-permit drawing often has to show the building, the setbacks, grades at the building and the floor elevation. \[CONFIRM\] The District's "Minimum Requirements for Building" PDF lists those items, and it says the building official may waive the survey plan. We check the current PDF. We do not decide a waiver.
+3. **Field work.** We search for the posts that define the lot, then measure the features with GNSS, a total station, or both. On a large or heavily treed site we may add a drone flight. That work is on the [UAV mapping](/squamish/services/uav-mapping/) page.
+4. **The plan.** We draft the site plan or plan of topography, name the datums, and a BC Land Surveyor signs it for the application.
+
+**Who the plan is for.** Your designer uses it to draw the project. The District uses it to read the application against zoning, flood construction levels and development permit areas. A survey that posts a missing property corner is a different job, described on the [boundary surveys](/squamish/services/boundary-surveys/) page.
+
+**Which bylaws apply.** The drawing is read against the [Zoning Bylaw No. 2200, 2011](https://squamish.civicweb.net/filepro/documents/68132/). Where the land is in the mapped floodplain, the [Floodplain Management Bylaw No. 3184](https://squamish.civicweb.net/filepro/documents/19302/) and Development Permit Area 2 in the [Squamish2040 Official Community Plan](https://squamish.ca/projects-plans-and-initiatives/master-plans/ocp/) are part of the review. Development Permit Area 1, Environmental Protection, is the area that usually puts a watercourse or a top of bank on the plan. We do not summarise the bylaws. We check the current versions, and which development permit areas cover the site.
+
+**The ground.** Squamish sits where the Squamish, Mamquam, Cheakamus and Stawamus rivers meet the head of Howe Sound. On the valley floor the survey is often about fill and flood construction levels: the plan has to show ground and floor elevations on a datum that can be set beside the District's FCL mapping. The District publishes those levels on its [map viewer](https://gis.squamish.ca/map/index.html), following its [Integrated Flood Hazard Management Plan](https://squamish.ca/building-and-land-development/home-land-and-property-development/integrated-flood-hazard-management-plan/). Neighbourhoods higher on the valley sides, such as Garibaldi Highlands and Valleycliffe, are steeper, with rock, creek ravines and long hedges. Land on the [Cheekye River debris-flow fan near Brackendale](https://squamish.ca/building-and-land-development/home-land-and-property-development/cheekye-fan/) is mapped by the District as a debris-flow hazard area.
+
+**Hedges, walls and fill.** A Squamish site plan often spends as much time on a cedar hedge, a retaining wall or buried grade as on the house. On the valley floor, later fill can bury both the original ground and the survey posts, so the search for posts is part of this survey.

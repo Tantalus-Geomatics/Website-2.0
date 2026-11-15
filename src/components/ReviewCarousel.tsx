@@ -71,14 +71,16 @@ export function ReviewCarousel() {
               ))}
             </div>
             {/* Body */}
-            <p className="text-sm text-white/70 font-light leading-relaxed mb-4">
+            <p className="text-sm text-white/70 font-light leading-relaxed mb-4 whitespace-pre-line">
               "{review.body}"
             </p>
             {/* Footer row */}
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-semibold text-white">{review.author}</p>
-                <p className="text-xs text-white/40">{review.date}</p>
+                {review.date ? (
+                  <p className="text-xs text-white/40">{review.date}</p>
+                ) : null}
               </div>
               <span
                 className="text-xs font-medium px-2 py-0.5 rounded-full"

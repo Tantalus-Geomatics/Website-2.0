@@ -9,9 +9,12 @@ Boundary, Posting, and Staking Surveys in <span className="text-brand-green font
 
 ### **Body**
 
+{{INTRO_START}}
 Accurately establishing your property lines is foundational for any real estate transaction, fence construction, or land development project in <span className="text-brand-green font-semibold">{{LOCATION_NAME}}</span>. Relying on unlicensed contractors to "stake" a line exposes you to severe legal and financial liabilities. Whether you require a boundary survey to resolve a neighbour dispute or a staking survey for a construction layout, a commissioned BC Land Surveyor is the only professional qualified to determine, locate, define, establish, or re-establish property boundaries.
 
 When clients request a "staking survey" to physically mark their property lines for a new fence or building footprint, and one or more corner posts are missing, professional standards and regulations mandate a formal boundary resolution process known as a posting survey. Under Section 68(1) of the **Land Title Act**, if the angle of a parcel is redefined on the ground by a post or monument, the redefinition must be made by a *BCLS* and shown on a Certified Posting Plan, which is filed in the Land Title Office within two months after completing the field work. This creates a permanent public record of the survey evidence, ensuring that your property lines are legally documented, highly transparent, and protected against future disputes. On occasion, the survey reveals significant boundary discrepancies compared to the underlying registered plan. Under these circumstances, we prepare a Reference Plan under Section 100(1)(a) of the **Land Title Act** to formally re-establish the boundaries and update the registered title.
+{{INTRO_END}}
+{{LOCAL_SECTION}}
 
 ### **Steps**
 

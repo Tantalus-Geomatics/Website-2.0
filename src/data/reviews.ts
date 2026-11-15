@@ -2,7 +2,7 @@ export interface Review {
   id: number;
   author: string;
   rating: number; // 1–5
-  date: string;   // e.g. "May 2025"
+  date?: string;  // omitted when the source review has no date we are allowed to publish
   body: string;
   source: "google" | "facebook" | "other";
 }
@@ -38,6 +38,20 @@ export const reviews: Review[] = [
     rating: 5,
     date: "March 2026",
     body: "If you need quality surveying look no further. The owner was very helpful and quick to respond when we were buying our house and had issues with the sellers previous survey work. He quickly and professionally resolved the issues we were having and made the process painless. Would 10 out of 10 recommend, highly professional and knowledgeable. 5 stars for sure.",
+    source: "google",
+  },
+  {
+    id: 5,
+    author: "Daniel D'Angelo",
+    rating: 5,
+    body: "Dennis was helpful, prompt and has a real passion for getting things right. Highly recommend!",
+    source: "google",
+  },
+  {
+    id: 6,
+    author: "Dawn Ding",
+    rating: 5,
+    body: "We had a great experience working with Dennis and the Tantalus Geomatics team on the topographic survey for our property on Bowen Island. Dennis was professional, responsive, patient, and very clear throughout the entire process.\n\nOur property is quite large and heavily vegetated, which made the survey more challenging than expected, but Dennis and his team handled everything carefully and kept us well informed along the way.\n\nThey were also very helpful in answering our questions, locating important site features, and making sure the final survey package included what we needed for the next stage of our project.\n\nWe really appreciated the care, communication, and professionalism throughout the entire process, and we would be very happy to work with Dennis and his team again in the future.",
     source: "google",
   },
 ];

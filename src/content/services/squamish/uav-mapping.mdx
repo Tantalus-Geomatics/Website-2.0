@@ -2,7 +2,7 @@
 title: "UAV Mapping in Squamish"
 description: "Professional UAV Mapping in Squamish, deploying aerial photogrammetry and LiDAR sensors to safely map large-scale, steep, or inaccessible areas."
 locationName: 'Squamish'
-heroImage: '/images/tantalus-hero-banner.webp'
+heroImage: '/images/reality-capture.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "UAV Mapping"
@@ -11,6 +11,38 @@ serviceName: "UAV Mapping"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  pageTitle: "UAV Mapping in Squamish: LiDAR and Photo Flights",
+  metaDescription: "UAV mapping in Squamish by a BC Land Surveyor: LiDAR from a DJI M400 and photos from a Mavic Pro, tied to marks measured on the ground.",
+  heroImageAlt: "Overhead photograph of a house, driveway, garden and street from a mapping flight.",
+  heroObjectPosition: "object-center",
+  dropIntro: true,
+  renderFaqAnswers: true,
+  galleryImages: [
+    {
+      "src": "/images/reality-capture.webp",
+      "alt": "Overhead photograph of a house, driveway, garden and street from a mapping flight.",
+      "caption": "An overhead photograph from a mapping flight."
+    },
+    {
+      "src": "/images/squamish-steep-timber.webp",
+      "alt": "Steep rock, tree trunks and mossy ground in coastal forest.",
+      "caption": "Steep timber and rock. A flight is used on ground like this when walking it is the slow part."
+    }
+  ],
+  localFaqs: [
+    {
+      "question": "Do you fly a drone on every Squamish topographic survey?",
+      "answer": "No. We use a flight when the site is large, steep or hard to walk, or when you need an orthophoto. A small lot on an open street is often a ground survey only."
+    },
+    {
+      "question": "Can you fly anywhere in Squamish?",
+      "answer": "We check Transport Canada's rules and the airspace for that parcel before we schedule a flight, including sites near Squamish Airport. [CONFIRM] The airport identifier, the airspace class, and what authorization a flight in a given neighbourhood needs. Some sites we will not fly."
+    },
+    {
+      "question": "Is the LiDAR the property line?",
+      "answer": "No. Property lines come from a boundary survey on the ground. The LiDAR is a measurement of the surface. The aircraft does not find an iron post under fill."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +51,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/uav-mapping/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/tantalus-hero-banner.webp",
+  "image": "https://www.tantalusgeomatics.com/images/reality-capture.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -44,7 +76,7 @@ export const metadata = {
   title: "UAV Mapping in Squamish",
   description: "Professional UAV Mapping in Squamish, deploying aerial photogrammetry and LiDAR sensors to safely map large-scale, steep, or inaccessible areas.",
   locationName: 'Squamish',
-  heroImage: '/images/tantalus-hero-banner.webp',
+  heroImage: '/images/reality-capture.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "UAV Mapping",
@@ -129,6 +161,23 @@ export default ({ children }) => (
   </ServiceTemplate>
 )
 
-In <span className="text-brand-green font-semibold">Squamish</span>, utilizing Unmanned Aerial Systems (UAS) for geospatial data collection delivers immense volumes of rich 3D data with unprecedented speed and efficiency. Relying on unlicensed drone operators to map your critical infrastructure or development sites exposes your project to boundary encroachment risks, municipal rejections, and significant liability.
+**What our survey provides.** A UAV survey in Squamish measures the site from the air and brings that measurement onto the same drawing as the ground survey. It usually covers:
 
-Tantalus Geomatics Land Surveying provides the professional services required to accurately capture Aerial survey data and relate them to your project's coordinate reference system. We strictly adhere to Transport Canada’s *Canadian Aviation Regulations* (CARs).
+- **LiDAR.** Dennis Sherman, BCLS, P.Eng., of Tantalus Geomatics Land Surveying Ltd., flies a DJI M400 with a Zenmuse L3 sensor. The point cloud is the source for ground elevations under and between the trees, and for a surface a designer can use.
+- **Photographs.** From the M400, or from a Mavic Pro on a smaller photo flight. The photos become an orthophoto and, on open ground, a surface.
+- **Ground control.** Marks measured by GNSS or a total station, so the flight sits on the same datum as the lot lines and the District's mapping.
+- **A signed plan, when the job needs one.** Contours and an orthophoto, and a plan signed by a BC Land Surveyor when the flight is part of a site plan or another survey.
+
+**How a UAV survey works in Squamish.**
+
+1. **Whether the aircraft can fly the site.** We check Transport Canada's rules for remotely piloted aircraft, and the airspace over that parcel, before we schedule the flight. Squamish Airport is on the valley floor. \[CONFIRM\] The airport identifier, the airspace class, and what authorization a flight in a given neighbourhood needs. We look up the current airspace for the site. We do not fly a job the current rules do not allow.
+2. **The flight plan.** The area, the height and the overlap, and whether the sensor is the L3 or the Mavic Pro camera. A flight on the steep ground above Valleycliffe is not the same flight as a flight on the valley floor.
+3. **Marks on the ground.** We set and measure control, and we tie the work to the lot when the product has to show legal lines. The aircraft does not find an iron post under fill. That search is done on foot. It is the same search described on the [boundary surveys](/squamish/services/boundary-surveys/) page.
+4. **The flight.** The M400 carries the L3. The Mavic Pro is the photo aircraft. \[CONFIRM\] Which jobs use which aircraft. Both are in use. The choice is made for the site, not fixed for every job.
+5. **Processing.** We classify the LiDAR so the ground can be separated from the canopy, build the surface and the orthophoto, and compare them with the ground control. Then we draft what the project needs. \[CONFIRM\] The firm has not published a standing accuracy figure for the L3. The tolerance is agreed for the job.
+
+**Where a flight helps.** Large lots, steep banks, creek ravines, and bush where walking the ground is the slow part. A small lot on an open street is often still a ground survey. LiDAR helps where the laser can reach the ground between the trees. It does not replace a boundary survey.
+
+**The ground.** Squamish sits where the Squamish, Mamquam, Cheakamus and Stawamus rivers meet the head of Howe Sound. The valley floor is diked and, in places, filled. The benches, including Garibaldi Highlands and Valleycliffe, are steeper, with rock and timber. Those two kinds of ground ask for different flights. The valley walls, the timber and Squamish Airport are all on the flight plan for a site. The details come from the airspace check for that parcel. Land on the [Cheekye River debris-flow fan near Brackendale](https://squamish.ca/building-and-land-development/home-land-and-property-development/cheekye-fan/) is mapped by the District as a debris-flow hazard area, and a surface of that ground is one of the things a flight can measure.
+
+**What the flight is not.** It is not a property line, and it is not a flood construction level. The District's FCL mapping and [Floodplain Management Bylaw No. 3184](https://squamish.civicweb.net/filepro/documents/19302/) decide the flood question. The flight supplies ground elevations those numbers can be compared with, on a datum named on the drawing. When the flight is part of a site plan, that drawing is described on the [topographic surveys](/squamish/services/topographic-surveys-and-site-plans/) page.
