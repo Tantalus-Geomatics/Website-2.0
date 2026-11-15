@@ -72,6 +72,12 @@ const REDIRECT_STUBS = [
     path: '/squamish/services/property-line-surveys/',
     target: 'https://www.tantalusgeomatics.com/squamish/services/boundary-surveys/',
   },
+  // The article lives at the Squamish insights URL. The short insights path
+  // is not a second page.
+  {
+    path: '/insights/vertical-datum-modernization/',
+    target: 'https://www.tantalusgeomatics.com/squamish/insights/vertical-datum-modernization/',
+  },
 ];
 const REDIRECT_STUB_PATHS = new Set(REDIRECT_STUBS.map((stub) => stub.path));
 

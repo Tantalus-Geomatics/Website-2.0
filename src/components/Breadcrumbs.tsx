@@ -42,6 +42,7 @@ const SERVICE_NAME_MAP: Record<string, string> = {
   'topographic-surveys-and-site-plans': 'Topographic Surveys & Site Plans',
   'topographic-surveys': 'Topographic Surveys',
   'uav-mapping': 'UAV Mapping',
+  'vertical-datum-modernization': 'Vertical Datum Modernization',
   'volume-and-earthwork-surveys': 'Volume & Earthwork Surveys',
   
   // Other pages and routes
@@ -100,8 +101,13 @@ export default function Breadcrumbs() {
     
     // Special case: if 'services' is nested under a location, link to the main '/services/' page
     // since there is no intermediate '/:locationSlug/services/' landing page
+    let linkable = true;
     if (chunk === 'services' && index > 0 && isValidLocation(paths[index - 1])) {
       href = '/services/';
+    }
+    // There is no /:location/insights/ index. Keep the label, and do not link it.
+    if (chunk === 'insights' && index > 0 && isValidLocation(paths[index - 1])) {
+      linkable = false;
     }
 
     // Resolve human-readable label
@@ -114,7 +120,7 @@ export default function Breadcrumbs() {
       label = titleCase(chunk);
     }
 
-    return { label, href, isLast };
+    return { label, href, isLast, linkable };
   });
 
   return (
@@ -144,6 +150,10 @@ export default function Breadcrumbs() {
                 </span>
                 <meta itemProp="item" content={`https://www.tantalusgeomatics.com${crumb.href}`} />
               </>
+            ) : crumb.linkable === false ? (
+              <span itemProp="name" className="truncate max-w-[150px] sm:max-w-none">
+                {crumb.label}
+              </span>
             ) : (
               <Link 
                 to={crumb.href} 

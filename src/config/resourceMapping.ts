@@ -127,7 +127,8 @@ export const LOCATION_LINKS_MAP: Record<string, ResourceLink[]> = {
     { label: 'Squamish Development Permits', href: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/development-permits/' },
     { label: 'Squamish Subdivision Requirements', href: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/subdivision/' },
     { label: 'Squamish Subdivision & Development Control Bylaw', href: 'https://squamish.civicweb.net/filepro/document/200228/Subdivision%20and%20Development%20Control%20Bylaw%202649,%202018%20(Updated%20October%202022).pdf' },
-    { label: 'District of Squamish GIS Map', href: 'https://squamish.ca/gis' }
+    { label: 'District of Squamish GIS Map', href: 'https://squamish.ca/gis' },
+    { label: 'Vertical Datum Modernization (CGVD28 to CGVD2013)', href: '/squamish/insights/vertical-datum-modernization/' }
   ],
   'whistler': [
     { label: 'Whistler Building Permits', href: 'https://www.whistler.ca/business-development/building-and-development-permits/' },

@@ -365,7 +365,7 @@ export const SERVICE_META_DESCRIPTIONS: Record<string, string> = {
   "/sechelt/services/topographic-surveys-and-site-plans/": "Topographic Surveys and Site Plans in Sechelt: elevations, contours and utilities mapped for design and permits. Tantalus Geomatics, for District of Sechelt.",
   "/powell-river/services/topographic-surveys-and-site-plans/": "Topographic Surveys and Site Plans in Powell River: elevations, contours and utilities mapped for design and permits. By Tantalus Geomatics.",
   "/the-sea-to-sky/services/topographic-surveys-and-site-plans/": "Topographic Surveys and Site Plans in the Sea to Sky: elevations, contours and utilities mapped for design and permits. Tantalus Geomatics, across the corridor.",
-  "/squamish/services/uav-mapping/": "UAV mapping in Squamish by a BC Land Surveyor: LiDAR from a DJI M400 and photos from a Mavic Pro, tied to marks measured on the ground.",
+  "/squamish/services/uav-mapping/": "UAV mapping in Squamish by a BC Land Surveyor: a DJI M400 with LiDAR and imaging sensors, tied to marks measured on the ground before the flight.",
   "/whistler/services/uav-mapping/": "UAV (Drone) Mapping in Whistler: aerial photogrammetry and LiDAR for large, steep or remote sites, with orthomosaics. BCLS-led Tantalus Geomatics.",
   "/pemberton/services/uav-mapping/": "UAV (Drone) Mapping in Pemberton: aerial photogrammetry and LiDAR for large, steep or remote sites, with orthomosaics. BCLS-led Tantalus Geomatics.",
   "/lillooet/services/uav-mapping/": "UAV (Drone) Mapping in Lillooet: aerial photogrammetry and LiDAR for large, steep or remote sites, with orthomosaics. BCLS-led Tantalus Geomatics.",
