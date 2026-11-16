@@ -9,11 +9,14 @@ Topographic Surveys and Site Plans
 
 ### **Body**
 
+{{INTRO_START}}
 Topographic surveys and site plans form the critical baseline for any architectural design, engineering, or real estate development in <span className="text-brand-green font-semibold">{{LOCATION_NAME}}</span>. A plan of topography is a survey plan prepared by a commissioned *British Columbia Land Surveyor* (*BCLS*), which illustrates topographic and site details, and information gathered during a field survey. The plans often combine the field survey data with data from other sources such as as-built records, service location records, and underground utility records. 
 
 Site plans and plans of topography carry legal and regulatory significance as they frequently accompany municipal development permits, zoning amendments, and building applications. Tantalus Geomatics Land Surveying provides the professional services necessary to accurately capture, depict and certify these plans. Additionally, we work with local government to ensure these plans conform to local bylaws in <span className="text-brand-green font-semibold">{{LOCATION_NAME}}</span>, ensuring that physical features and structures are depicted and labeled in exact conformity with municipal definitions and setback requirements.
 
 To achieve the appropriate data format and accuracy standards required by your design team, our firm deploys state-of-the-art measurement technologies. We utilize Aerial Drone Photogrammetry and Aerial Drone LiDAR to penetrate dense vegetation and generate accurate 3D topographic terrain models of large sites. Additionally we use Static GNSS and RTK GNSS, Terrestrial LiDAR, and Robotic Total Stations to capture site features and topography at a variety of data densities and levels of accuracy.
+{{INTRO_END}}
+{{LOCAL_SECTION}}
 
 ### **Steps**
 

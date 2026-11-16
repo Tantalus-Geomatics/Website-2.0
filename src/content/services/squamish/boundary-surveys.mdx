@@ -2,7 +2,7 @@
 title: "Boundary Surveys in Squamish"
 description: "Professional Boundary Surveys in Squamish, re-establishing original survey monuments to mark legal boundaries ahead of major structural landscaping or home renovations."
 locationName: 'Squamish'
-heroImage: '/images/tantalus-hero-banner.webp'
+heroImage: '/images/squamish-property-line.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "Boundary Surveys"
@@ -11,6 +11,43 @@ serviceName: "Boundary Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  pageTitle: "Boundary Surveys in Squamish: Finding and Marking Lot Lines",
+  metaDescription: "Boundary surveys in Squamish by a BC Land Surveyor: research, a search for the original posts, and marks on the lot lines for a fence or a building.",
+  heroImageAlt: "A wooden witness stake marked IP WT 2.0 standing beside a wooden fence and a gate.",
+  heroObjectPosition: "object-center",
+  dropIntro: true,
+  renderFaqAnswers: true,
+  galleryImages: [
+    {
+      "src": "/images/squamish-property-line.webp",
+      "alt": "A wooden witness stake marked IP WT 2.0 standing beside a wooden fence and a gate.",
+      "caption": "A witness stake marked IP WT 2.0 beside a fence."
+    },
+    {
+      "src": "/images/survey-marker-post.webp",
+      "alt": "A white sign reading Legal Survey Post, 30 cm from this reference stake, do not disturb.",
+      "caption": "A sign marking a legal survey post, 30 cm from the reference stake."
+    },
+    {
+      "src": "/images/fence-boundary-staking.webp",
+      "alt": "An orange marker lathe standing on cleared gravel, with forest and steep mountains behind.",
+      "caption": "A marker lathe on cleared ground, with a granite valley wall behind."
+    }
+  ],
+  localFaqs: [
+    {
+      "question": "Will you mark the line so I can build a fence?",
+      "answer": "Yes, once the BC Land Surveyor has decided where the line is from the evidence. A stake you can see while the fence is built is not the same thing as the legal post at the corner."
+    },
+    {
+      "question": "My fence has been there for years. Is that the line?",
+      "answer": "Not by itself. We compare the fence with the posts we find and with the registered plan. In Squamish the fence and the plan often do not match, especially where the valley floor has been filled."
+    },
+    {
+      "question": "What should I send before you quote a boundary survey?",
+      "answer": "The civic address or Parcel Identifier (PID), which lines you need marked, and whether a corner post is already missing."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +56,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/boundary-surveys/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/tantalus-hero-banner.webp",
+  "image": "https://www.tantalusgeomatics.com/images/squamish-property-line.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -44,7 +81,7 @@ export const metadata = {
   title: "Boundary Surveys in Squamish",
   description: "Professional Boundary Surveys in Squamish, re-establishing original survey monuments to mark legal boundaries ahead of major structural landscaping or home renovations.",
   locationName: 'Squamish',
-  heroImage: '/images/tantalus-hero-banner.webp',
+  heroImage: '/images/squamish-property-line.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "Boundary Surveys",
@@ -86,7 +123,7 @@ export const metadata = {
     },
     {
       "question": "Can you just stake my property line without filing a survey plan?",
-      "answer": "While marking a boundary without filing a plan is sometimes requested to save costs, it carries significant liability and contravenes professional statutes. Section 68 of the Land Title Act legally mandates that if a parcel corner is redefined by a post or monument, a posting plan must be certified and filed within two months. Filing the plan protects your investment by formally documenting the boundary in the public registry."
+      "answer": "If a BC land surveyor redefines a property corner by placing a post or monument, section 68 of the Land Title Act requires the surveyor to certify a posting plan and file it in the land title office within two months after that redefinition is completed. Filing the plan creates a public record of the monuments; it does not change your registered title."
     }
   ],
   serviceLinks: [],
@@ -110,6 +147,10 @@ export const metadata = {
   {
     "label": "District of Squamish GIS Map",
     "href": "https://squamish.ca/gis"
+  },
+  {
+    "label": "Vertical Datum Modernization (CGVD28 to CGVD2013)",
+    "href": "/squamish/insights/vertical-datum-modernization/"
   }
 ],
   serviceImages: [
@@ -134,11 +175,31 @@ export default ({ children }) => (
   </ServiceTemplate>
 )
 
-Accurately establishing your property lines is foundational for any real estate transaction, fence construction, or land development project in <span className="text-brand-green font-semibold">Squamish</span>. Relying on unlicensed contractors to "stake" a line exposes you to severe legal and financial liabilities. Whether you require a boundary survey to resolve a neighbour dispute or a staking survey for a construction layout, a commissioned BC Land Surveyor is the only professional qualified to determine, locate, define, establish, or re-establish property boundaries.
+**What our survey provides.** For a boundary survey in Squamish, the survey usually covers:
 
 <picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
   <source srcSet="/images/boundary-surveys.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
   <img src="/images/boundary-surveys.webp" alt="BC Land Surveyor performing Boundary Surveys in Squamish, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
 </picture>
 
-When clients request a "staking survey" to physically mark their property lines for a new fence or building footprint, and one or more corner posts are missing, professional standards and regulations mandate a formal boundary resolution process known as a posting survey. Under Section 68(1) of the **Land Title Act**, if the angle of a parcel is redefined on the ground by a post or monument, the redefinition must be made by a *BCLS* and shown on a Certified Posting Plan, which is filed in the Land Title Office within two months after completing the field work. This creates a permanent public record of the survey evidence, ensuring that your property lines are legally documented, highly transparent, and protected against future disputes. On occasion, the survey reveals significant boundary discrepancies compared to the underlying registered plan. Under these circumstances, we prepare a Reference Plan under Section 100(1)(a) of the **Land Title Act** to formally re-establish the boundaries and update the registered title.
+- **The record.** The title, the plan that created the lot, and the plans and field notes behind it.
+- **The lines.** The lot lines the BC Land Surveyor adopts from the posts and the other evidence on the ground. When you need it, the plan also shows the distance from a fence, a building or a driveway to those lines.
+- **Marks you can see.** A post at a corner that needs one, and stakes for a fence or a layout. A wooden stake is not the legal post.
+- **A plan when a corner is posted.** When a new post replaces a missing corner, we prepare a posting plan and file it at the Land Title Office.
+
+**How a boundary survey works in Squamish.** Marking an existing lot is not a subdivision. The District's Approving Officer is not the person who decides where an existing line is. The order below is the survey itself.
+
+1. **Research.** The title, the plan that created the lot, and the charges that run along a line, such as a statutory right of way, so a fence is not put across one.
+2. **The search.** On the valley floor, original posts are often buried under later fill. On the benches, in places such as Garibaldi Highlands and Valleycliffe, a post may be in rock, bush or a hedge. How long the search takes depends on the age of the plan and on the ground.
+3. **The decision.** The BC Land Surveyor weighs the posts that are found, the marks that are gone, and occupation such as an old fence. The bearings and distances on the plan are part of that evidence. A fence does not, by itself, move the line.
+4. **Marking.** Corners that need a legal post get one. Corners you need to see while a fence is built get a stake as well.
+5. **The plan.** When a new post replaces a missing corner, we prepare a posting plan that records the posts found and the posts set, a BC Land Surveyor signs it, and we file it at the Land Title Office.
+
+**What people ask us to mark.** A fence on the line. A building that has to sit off the line. A hedge or a driveway that may already cross it. The [Zoning Bylaw No. 2200, 2011](https://squamish.civicweb.net/filepro/documents/68132/) is where the setback distance is written. The survey shows where the line is. We do not give you the setback number. The District reads that number when you apply for a [building permit](https://squamish.ca/building-and-land-development/building-permit/).
+
+**Who the plan is for.** You, your builder, and your lawyer or notary. The District sees the line when a permit application needs it. A survey that only marks an existing lot does not create a new lot. Creating lots is a [subdivision survey](/squamish/services/subdivisions-surveys/).
+
+**The ground.** Squamish sits where the Squamish, Mamquam, Cheakamus and Stawamus rivers meet the head of Howe Sound. Fill on the valley floor is the usual reason a post is hard to find. Higher up, at Garibaldi Highlands, Valleycliffe and along the creek ravines, the search is in rock and bush. Land on the [Cheekye River debris-flow fan near Brackendale](https://squamish.ca/building-and-land-development/home-land-and-property-development/cheekye-fan/) has its own history of deposition. We treat that ground as part of the search, not as a reason to skip it.
+
+**Older plans.** Re-establishing older boundaries in Squamish often involves two issues. On the valley floor, original survey posts are often buried under later fill, so finding them takes careful searching. Older plans also may not match what is on the ground today, such as fences, buildings or driveways. We research the plan history and reconcile it with the evidence we find before any line is marked.
+

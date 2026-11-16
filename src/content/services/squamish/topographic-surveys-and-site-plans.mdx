@@ -2,7 +2,7 @@
 title: "Topographic Surveys And Site Plans in Squamish"
 description: "Professional Topographic Surveys And Site Plans in Squamish, mapping detailed ground elevations, structural contours, visible utility networks, and landmarks to anchor architectural design blueprints."
 locationName: 'Squamish'
-heroImage: '/images/tantalus-hero-banner.webp'
+heroImage: '/images/Garibaldi-Estates-gnss-topographic-survey.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "Topographic Surveys And Site Plans"
@@ -11,6 +11,47 @@ serviceName: "Topographic Surveys And Site Plans"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  pageTitle: "Topographic Surveys in Squamish: Site Plans, Elevations and Contours",
+  metaDescription: "Topographic surveys and site plans in Squamish by a BC Land Surveyor: elevations, contours and site features for District of Squamish permits.",
+  heroImageAlt: "GNSS receiver on a tripod in a driveway in Garibaldi Estates, Squamish, with snow-covered mountains behind the house.",
+  heroObjectPosition: "object-center",
+  dropIntro: true,
+  renderFaqAnswers: true,
+  galleryImages: [
+    {
+      "src": "/images/Garibaldi-Estates-gnss-topographic-survey.webp",
+      "alt": "GNSS receiver on a tripod in a driveway in Garibaldi Estates, Squamish, with snow-covered mountains behind the house.",
+      "caption": "A GNSS receiver in a driveway in Garibaldi Estates, Squamish."
+    },
+    {
+      "src": "/images/DS-TS-1.webp",
+      "alt": "Surveyor, seen from behind, operating a total station, with snow-covered mountains beyond.",
+      "caption": "A total station set up for field work, with the mountains behind."
+    },
+    {
+      "src": "/images/squamish-site-hedge.webp",
+      "alt": "A tall cedar hedge beside a gravel shoulder and a residential street.",
+      "caption": "A cedar hedge on a Squamish tree survey. Site plans often locate hedges like this."
+    }
+  ],
+  localFaqs: [
+    {
+      "question": "Is a Squamish site plan filed at the Land Title Office?",
+      "answer": "No. A site plan or plan of topography is drawn for your designer and for the District application. A plan that places a new post at a property corner is a boundary survey, and that plan is a separate document."
+    },
+    {
+      "question": "Will the elevations match the District flood mapping?",
+      "answer": "Squamish drawings use CGVD28 until vertical datum modernization becomes official, which is expected in 2030. The plan names that datum, so the numbers can be set beside the District's Flood Construction Level mapping. The change is explained at /squamish/insights/vertical-datum-modernization/. The District and your engineer decide what the floodplain bylaw requires for the site."
+    },
+    {
+      "question": "When does a Squamish building permit need a survey plan?",
+      "answer": "For a complex building, generally a Part 3 building, Building Bylaw No. 1822 includes a survey plan prepared by a British Columbia land surveyor with the application. For a simple building, generally a Part 9 building, it includes that plan unless the building official waives it. A foundation survey is separate: the building official may require one in writing. At occupancy, a building survey showing height is required unless a building official waives it. Under Floodplain Management Bylaw No. 3184, the building inspector may require a land surveyor's certificate for the flood construction level and the setback."
+    },
+    {
+      "question": "What should I send before you quote a Squamish site plan?",
+      "answer": "The civic address or Parcel Identifier (PID), what the permit or the design is, and any survey or District letter you already have."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +60,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/topographic-surveys-and-site-plans/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/tantalus-hero-banner.webp",
+  "image": "https://www.tantalusgeomatics.com/images/Garibaldi-Estates-gnss-topographic-survey.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -44,7 +85,7 @@ export const metadata = {
   title: "Topographic Surveys And Site Plans in Squamish",
   description: "Professional Topographic Surveys And Site Plans in Squamish, mapping detailed ground elevations, structural contours, visible utility networks, and landmarks to anchor architectural design blueprints.",
   locationName: 'Squamish',
-  heroImage: '/images/tantalus-hero-banner.webp',
+  heroImage: '/images/Garibaldi-Estates-gnss-topographic-survey.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "Topographic Surveys And Site Plans",
@@ -110,6 +151,10 @@ export const metadata = {
   {
     "label": "District of Squamish GIS Map",
     "href": "https://squamish.ca/gis"
+  },
+  {
+    "label": "Vertical Datum Modernization (CGVD28 to CGVD2013)",
+    "href": "/squamish/insights/vertical-datum-modernization/"
   }
 ],
   serviceImages: [
@@ -134,13 +179,75 @@ export default ({ children }) => (
   </ServiceTemplate>
 )
 
-Topographic surveys and site plans form the critical baseline for any architectural design, engineering, or real estate development in <span className="text-brand-green font-semibold">Squamish</span>. A plan of topography is a survey plan prepared by a commissioned *British Columbia Land Surveyor* (*BCLS*), which illustrates topographic and site details, and information gathered during a field survey. The plans often combine the field survey data with data from other sources such as as-built records, service location records, and underground utility records. 
+**What our survey provides.** For a topographic survey or site plan in Squamish, the survey usually covers:
 
 <picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
   <source srcSet="/images/topographic-surveys-and-site-plans.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
   <img src="/images/topographic-surveys-and-site-plans.webp" alt="BC Land Surveyor performing Topographic Surveys and Site Plans in Squamish, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
 </picture>
 
-Site plans and plans of topography carry legal and regulatory significance as they frequently accompany municipal development permits, zoning amendments, and building applications. Tantalus Geomatics Land Surveying provides the professional services necessary to accurately capture, depict and certify these plans. Additionally, we work with local government to ensure these plans conform to local bylaws in <span className="text-brand-green font-semibold">Squamish</span>, ensuring that physical features and structures are depicted and labeled in exact conformity with municipal definitions and setback requirements.
+- **Existing conditions.** Buildings, driveways, retaining walls, fences, the visible surface utilities, and the trees a designer has asked us to locate, with spot elevations and contours.
+- **Lot lines and charges.** Distances from those features to the lot lines, and to rights of way, covenants and easements on title, after the lines have been retraced.
+- **Elevations on a named datum.** Ground and floor elevations on CGVD28, written on the plan, so they can be compared with the District's Flood Construction Level mapping. Squamish drawings use CGVD28 until vertical datum modernization becomes official, which is expected in 2030. That change is explained on the [vertical datum](/squamish/insights/vertical-datum-modernization/) page.
+- **Water and banks.** Top of bank, watercourses and the present natural boundary, where the District or a Qualified Environmental Professional asks for them.
 
-To achieve the appropriate data format and accuracy standards required by your design team, our firm deploys state-of-the-art measurement technologies. We utilize Aerial Drone Photogrammetry and Aerial Drone LiDAR to penetrate dense vegetation and generate accurate 3D topographic terrain models of large sites. Additionally we use Static GNSS and RTK GNSS, Terrestrial LiDAR, and Robotic Total Stations to capture site features and topography at a variety of data densities and levels of accuracy.
+**How a topographic survey works in Squamish.** The plan is a drawing of the ground for a building permit, a development permit, or a design. It is not filed at the Land Title Office. The District's submission list changes, so we read the current [building permit](https://squamish.ca/building-and-land-development/building-permit/) and [development permit](https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/development-permits/) pages at the start of each job.
+
+1. **Research.** The title, the registered plan, and the charges that limit where a building can sit. We also look up the parcel on the District's [flood and hazard map](https://gis.squamish.ca/map/index.html).
+2. **What the drawing needs.** We agree the features, the contour interval and the datum with you and, where there is one, with your designer. When the job is a building permit, the Building Bylaw states when the application includes a survey plan, and what the site plan is to show. Those rules are set out below.
+3. **Field work.** We search for the posts that define the lot, then measure the features with GNSS, a total station, or both. On a large or heavily treed site we may add a drone flight. That work is on the [UAV mapping](/squamish/services/uav-mapping/) page.
+4. **The plan.** We draft the site plan or plan of topography, name the datums, and a BC Land Surveyor signs it for the application.
+
+**When a building permit includes a survey plan.** The District states this in [Building Bylaw No. 1822, 2004](https://squamish.civicweb.net/document/158787). The copy on the District's site is a convenience consolidation. We read the current copy at the start of a job.
+
+For a complex building, which is generally a Part 3 building, the application includes a survey plan prepared by a British Columbia land surveyor. That section does not contain a waiver for the survey plan.
+
+For a simple building, which is generally a Part 9 building, the application includes a survey plan prepared by a British Columbia land surveyor, unless the building official waives the requirement, in whole or in part, where conditions warrant. A waiver is not automatic for an addition or an accessory building that still needs a permit.
+
+An accessory building under 10 square metres is outside the Building Bylaw when the bylaw's conditions are met. It has to comply with the Zoning Bylaw's siting requirements, and it is not outside the bylaw if it contains an unsafe condition, a hazard or a home occupation. When it is outside the bylaw, the survey-plan rules above do not apply.
+
+The building official may, in writing, require a further up-to-date plan of survey prepared by a British Columbia land surveyor. That written requirement may be for the site before construction, for the building after completion, for an existing building, or for the foundation before and after concrete is placed. If the official issues it, it has to be met.
+
+The [residential building-permit checklist](https://squamish.ca/assets/BLDG/RESIDENTIAL-BP-Document-Checklist-Revised-FEB-FILLABLE_2022.pdf) asks, where relevant, for survey details provided by a registered BC Land Surveyor. The commercial checklist and the certified professional program checklist do as well. Those are checklists. The bylaw sections above are the requirement.
+
+**What the site plan shows.** For a complex building and for a simple building, the Building Bylaw lists what the site plan includes. The building official may waive the site plan, in whole or in part, when the permit is for repair or alteration of an existing building. In short, the list covers:
+
+- bearings and dimensions taken from the registered subdivision plan, the legal description, the civic address, and the names of the adjoining streets and lanes
+- existing and proposed buildings, and the setbacks to the property lines
+- existing and proposed statutory rights of way, easements and setback requirements
+- setbacks to the natural boundary of a lake, swamp, pond or watercourse, and the top of bank
+- natural and finished grade at the building corners, and a floor elevation
+- where land-use rules or provincial flood mapping set a minimum floor elevation, the geodetic elevation of the underside of a wood floor system, or of the top of a finished concrete slab
+- retaining walls, steps, stairs and decks, with their location, setbacks and elevations
+- parking, services, curbs and sidewalks, fire-fighting access, and a storm-water management plan
+
+The two lists are not identical. A complex-building site plan asks for the first-storey floor elevation, and for grade at significant breaks in the building as well as at the corners, so the foundation height can be read. A simple-building site plan asks for the main-floor elevation, and for natural and finished grade at the building corners and at the datum determination points named in the Zoning Bylaw.
+
+The residential checklist also asks, where relevant, for the building location, lot area, footprint, lot coverage, floor area ratio, driveway and building height, as survey details provided by a BC Land Surveyor. The commercial checklist asks for a similar group, where relevant. Its items are not the same list.
+
+**Surveys during construction.** A survey at the foundation is something the District may require. The Building Bylaw does not make a foundation survey part of every permit.
+
+The bylaw requires an inspection of the foundation and footing forms before concrete is poured. That inspection section does not name a form survey. A plan of survey at the foundation becomes a bylaw requirement when the building official requires one in writing, including before and after the concrete, showing the elevation at the proposed top of concrete.
+
+The District's [Master Building Inspection List](https://squamish.ca/assets/Uploads/52ad344ada/BP-Master-Building-Inspection-List-May-2018.pdf) was last updated in May 2017. The [request an inspection](https://squamish.ca/building-and-land-development/building-permit/request-an-inspection/) page points readers to it. The list asks for a form survey before the footing and foundation inspection, to confirm the forms are inside the setbacks. At the framing inspection, the list includes a building survey to confirm building height, setbacks and lot coverage. At occupancy, the list asks for a final survey showing lot grading, setbacks, building height and the flood construction level. None of those three entries names a land surveyor. The list is an inspection checklist. It does not, by itself, require a BC Land Surveyor for the form survey, the framing survey or the final survey.
+
+At occupancy, the Building Bylaw is the rule that names a land surveyor. An occupancy permit will not be issued unless the owner has provided a building survey prepared by a British Columbia land surveyor, showing the building height under the District's land-use regulations, unless a building official waives that survey. The bylaw also requires as-built drawings at occupancy. That clause does not say a land surveyor has to prepare the as-built drawings.
+
+**Flood construction levels and river setbacks.** Where the land is in the floodplain under [Floodplain Management Bylaw No. 3184, 2025](https://squamish.civicweb.net/document/257860), a habitable area is not to be built, rebuilt, altered, moved or extended so that the underside of its floor system, or the top of the pad that supports it, sits lower than the flood construction level in the bylaw. Where more than one flood construction level applies, the highest one governs.
+
+The same bylaw sets floodplain setbacks, and where more than one applies, the greater one governs. The setback is 30 metres from the natural boundary of the Squamish, Mamquam, Cheakamus, Cheekeye and Stawamus rivers. It is 15 metres from the natural boundary of any other watercourse, or 30 metres if the development is in a secondary floodway. The bylaw also sets setbacks from District dikes and the sea dike. No building, structure, obstruction, habitable area or fill is to be built, rebuilt, altered, moved or extended inside the floodplain setback.
+
+The building inspector may require a certificate from a British Columbia land surveyor, at the owner's cost, to verify the site against a primary or secondary floodway, the flood construction level and the floodplain setback. That certificate is something the inspector may ask for. The bylaw does not make it part of every permit, and it does not name a stage of construction.
+
+The bylaw's schedule notes say the flood construction levels shown on the map are geodetic elevations to CGVD28, and that they include 0.6 metres of freeboard. Squamish drawings use CGVD28 until vertical datum modernization becomes official, which is expected in 2030. The change is explained on the [vertical datum](/squamish/insights/vertical-datum-modernization/) page. The District publishes the mapped levels on its [map viewer](https://gis.squamish.ca/map/index.html).
+
+The bylaw lists exemptions from the flood construction level, and it sets conditions for some renovations and limited additions below that level. Those are exemptions from the flood construction level. They are not a waiver of a survey plan under the Building Bylaw.
+
+**Who the plan is for.** Your designer uses it to draw the project. The District uses it to read the application against zoning, flood construction levels and development permit areas. A survey that posts a missing property corner is a different job, described on the [boundary surveys](/squamish/services/boundary-surveys/) page.
+
+**Which bylaws apply.** The drawing is read against the [Zoning Bylaw No. 2200, 2011](https://squamish.civicweb.net/filepro/documents/68132/). The survey-plan, site-plan and occupancy-survey rules in the Building Bylaw, and the flood construction levels and setbacks in [Floodplain Management Bylaw No. 3184](https://squamish.civicweb.net/document/257860), are summarised above. Where the land is in the mapped floodplain, that floodplain bylaw and Development Permit Area 2 in the [Squamish2040 Official Community Plan](https://squamish.ca/projects-plans-and-initiatives/master-plans/ocp/) are part of the review. Development Permit Area 1, Environmental Protection, is the area that usually puts a watercourse or a top of bank on the plan. Zoning setbacks and development permit area rules are amended from time to time. We check the current versions, and which development permit areas cover the site.
+
+**The ground.** Squamish sits where the Squamish, Mamquam, Cheakamus and Stawamus rivers meet the head of Howe Sound. On the valley floor the survey is often about fill and flood construction levels: the plan has to show ground and floor elevations on CGVD28, so they can be set beside the District's FCL mapping. The District publishes those levels on its [map viewer](https://gis.squamish.ca/map/index.html), following its [Integrated Flood Hazard Management Plan](https://squamish.ca/building-and-land-development/home-land-and-property-development/integrated-flood-hazard-management-plan/). Neighbourhoods higher on the valley sides, such as Garibaldi Highlands and Valleycliffe, are steeper, with rock, creek ravines and long hedges. Land on the [Cheekye River debris-flow fan near Brackendale](https://squamish.ca/building-and-land-development/home-land-and-property-development/cheekye-fan/) is mapped by the District as a debris-flow hazard area.
+
+**Hedges, walls and fill.** A Squamish site plan often spends as much time on a cedar hedge, a retaining wall or buried grade as on the house. On the valley floor, later fill can bury both the original ground and the survey posts, so the search for posts is part of this survey.
+

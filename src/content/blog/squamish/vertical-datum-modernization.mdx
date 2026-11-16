@@ -1,0 +1,93 @@
+---
+title: "Vertical Datum Modernization: CGVD28 and CGVD2013"
+description: "British Columbia still uses CGVD28. This page explains the move toward CGVD2013, expected around 2030, and what it means for Squamish survey elevations."
+publishDate: "2026-11-15"
+tags: ["Vertical Datum", "CGVD28", "CGVD2013", "Squamish", "Elevations"]
+heroImage: "/images/Garibaldi-Estates-gnss-topographic-survey.webp"
+glossary: [{"term": "CGVD28", "definition": "The Canadian Geodetic Vertical Datum of 1928. British Columbia still uses it. Its heights come from levelling."}, {"term": "CGVD2013", "definition": "The Canadian Geodetic Vertical Datum of 2013, a gravity-based national height system. A newer realization of the same datum is in preparation."}, {"term": "Geoid", "definition": "The reference surface that turns a GNSS height above an ellipsoid into an orthometric elevation."}, {"term": "Flood construction level", "definition": "An elevation used so a building in a floodplain can be compared with a mapped flood level. The number needs a named vertical datum."}]
+---
+
+export const metadata = {
+  title: "Vertical Datum Modernization: CGVD28 and CGVD2013",
+  description: "British Columbia still uses CGVD28. This page explains the move toward CGVD2013, expected around 2030, and what it means for Squamish survey elevations.",
+  publishDate: "2026-11-15",
+  tags: [
+    "Vertical Datum",
+    "CGVD28",
+    "CGVD2013",
+    "Squamish",
+    "Elevations"
+  ],
+  heroImage: "/images/Garibaldi-Estates-gnss-topographic-survey.webp",
+  glossary: [
+    {
+      "term": "CGVD28",
+      "definition": "The Canadian Geodetic Vertical Datum of 1928. British Columbia still uses it. Its heights come from levelling."
+    },
+    {
+      "term": "CGVD2013",
+      "definition": "The Canadian Geodetic Vertical Datum of 2013, a gravity-based national height system. A newer realization of the same datum is in preparation."
+    },
+    {
+      "term": "Geoid",
+      "definition": "The reference surface that turns a GNSS height above an ellipsoid into an orthometric elevation."
+    },
+    {
+      "term": "Flood construction level",
+      "definition": "An elevation used so a building in a floodplain can be compared with a mapped flood level. The number needs a named vertical datum."
+    }
+  ],
+}
+
+export default function Content({ children }) { return <>{children}</> }
+
+British Columbia still measures heights on CGVD28, the Canadian Geodetic Vertical Datum of 1928. A newer national height system, CGVD2013, is already the gravity-based datum used for Canada, and GeoBC anticipates adopting new vertical and horizontal datums in 2030. Until that adoption, survey drawings from Tantalus Geomatics in Squamish are on CGVD28. We can provide a transformation to another datum on request.
+
+This page is for landowners, designers and engineers who have to read an elevation on a plan, or set one beside a flood construction level. It follows the four public sources linked at the end.
+
+## What is changing
+
+A vertical datum is the starting surface for a height. CGVD28 was built by spirit levelling, working inland from tide gauges. The Province's [height-transformation page](https://www2.gov.bc.ca/gov/content/data/geographic-data-services/geo-spatial-referencing/height-transformations), updated 10 March 2026, still names CGVD28 as British Columbia's current vertical datum.
+
+Nationally, Natural Resources Canada adopted CGVD2013 in place of that levelling datum. The current modernization does not rename it. It prepares a new realization, CGVD2013 version 1, from a continental geoid model called GEOID2022. The same program replaces the horizontal system NAD83(CSRS) with NATRF2022.
+
+None of this moves a house, a benchmark or a river bank. It changes the numbers used to write down where something is, and how high it is.
+
+<RichImage src="Garibaldi-Estates-gnss-topographic-survey.webp" float="right" width={42} caption="A GNSS receiver on a site in Garibaldi Estates, Squamish. A satellite height is not an elevation on a drawing until it is named on a vertical datum." />
+
+## Why the change is being made
+
+The Province's [information paper](https://www2.gov.bc.ca/assets/gov/data/geographic/georeferencing/vertical_modernization_info_paper.pdf) on Canadian height modernization sets out the limits of CGVD28. The benchmark network is costly to maintain, and federal levelling has been minimal since 2001. The network does not reach remote parts of the province. The paper reports regional distortions of up to one metre on the primary network, and larger differences, a few metres to several metres, on local networks in remote parts of British Columbia. CGVD28 also fits poorly with satellite positioning. A GNSS receiver measures a height above an ellipsoid. A geoid model is what turns that into an elevation.
+
+CGVD2013 was built so heights could come from that geoid, and so they would agree with GNSS. The Province's current page says the HTv2.0 model is what to use when a GNSS height has to be brought onto approximate CGVD28 elevations.
+
+## When it is expected
+
+[Natural Resources Canada](https://natural-resources.canada.ca/science-data/science-research/geomatics/geodetic-reference-systems/canadian-spatial-reference-system-csrs-modernization) describes a phased change, not one switch-over day. Federal geodetic work is planned to start using NATRF2022 in early 2027. Provincial and territorial adoption of NATRF2022 is planned for 2030, with NAD83(CSRS) still in use beside it during the change. The [Surveyor General's report](https://ltsa.ca/surveyor-generals-report-abcls-agm-2026/) to the Association of British Columbia Land Surveyors in March 2026 says the fieldwork to improve physical control monuments is finished, and that GeoBC anticipates adopting the new vertical and horizontal datums in 2030.
+
+The older provincial information paper expected a federal geoid datum around 2009, and provincial adoption over a long transition it wrote as 2009 to 2020/30. The date used here for Squamish work is the later one: GeoBC's anticipated adoption in 2030.
+
+## What it means for an elevation on a drawing
+
+An elevation without a datum name is not a complete number. The same point has a different height on CGVD28 than on CGVD2013. The information paper expected the new primary-network heights to differ from published CGVD28 heights by less than one metre at any one point in Canada, and by more than 10 centimetres at most places. On secondary networks in British Columbia it allowed for larger differences, a few metres to several metres in remote areas. As an illustration, with heights near Toronto held fixed, it expected about 55 centimetres higher in Vancouver, about 5 centimetres lower in Montreal, and about 30 centimetres lower in Halifax. Those figures are that paper's estimate of the size of the change. They are not the shift on a particular lot in Squamish. The shift for a site is a transformation.
+
+The height of a floor above the ground beside it was expected to stay at the precision of the survey that measured it. What changes is the number written when that height has to be stated against the national datum.
+
+## Flood construction levels
+
+A flood construction level is an elevation. The information paper lists floodplain work among the uses of a height system. A drawing can be set beside a flood construction level only when both elevations name the same datum. These sources do not say that the District of Squamish has republished its flood construction levels on a new datum, and this page does not say that it has. On a Squamish drawing from this office, the elevations are on CGVD28 until the new datums are adopted.
+
+## What we do now
+
+Squamish drawings use CGVD28 until vertical datum modernization becomes official, which is expected in 2030. If a designer or an engineer needs the same points on another datum, we can provide that transformation on request.
+
+Public tools already cover part of this. The Province publishes HTv2.0 for approximate CGVD28 elevations, including a Metro Vancouver hybrid model, and points to Natural Resources Canada's GPS-H software for reading those files. Natural Resources Canada is also releasing beta tools for NATRF2022 and for CGVD2013 version 1. It says those beta products are for preparation, and that they should not be used for production work until they are officially adopted.
+
+How elevations are shown on a Squamish site plan is on the [topographic surveys](/squamish/services/topographic-surveys-and-site-plans/) page.
+
+## Sources
+
+- [Canadian Spatial Reference System modernization](https://natural-resources.canada.ca/science-data/science-research/geomatics/geodetic-reference-systems/canadian-spatial-reference-system-csrs-modernization), Natural Resources Canada.
+- [Height transformations](https://www2.gov.bc.ca/gov/content/data/geographic-data-services/geo-spatial-referencing/height-transformations), Province of British Columbia, updated 10 March 2026.
+- [The Canadian Height Modernization Initiative](https://www2.gov.bc.ca/assets/gov/data/geographic/georeferencing/vertical_modernization_info_paper.pdf), Province of British Columbia stakeholders' information paper.
+- [Surveyor General's report, ABCLS AGM 2026](https://ltsa.ca/surveyor-generals-report-abcls-agm-2026/), Land Title and Survey Authority, March 2026.
