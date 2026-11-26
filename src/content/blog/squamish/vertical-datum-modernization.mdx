@@ -1,6 +1,6 @@
 ---
 title: "Vertical Datum Modernization: CGVD28 and CGVD2013"
-description: "British Columbia still uses CGVD28. This page explains the move toward CGVD2013, expected around 2030, and what it means for Squamish survey elevations."
+description: "British Columbia still uses CGVD28. This page explains the move toward CGVD2013, anticipated around 2030, and what it means for Squamish survey elevations."
 publishDate: "2026-11-15"
 tags: ["Vertical Datum", "CGVD28", "CGVD2013", "Squamish", "Elevations"]
 heroImage: "/images/Garibaldi-Estates-gnss-topographic-survey.webp"
@@ -9,7 +9,7 @@ glossary: [{"term": "CGVD28", "definition": "The Canadian Geodetic Vertical Datu
 
 export const metadata = {
   title: "Vertical Datum Modernization: CGVD28 and CGVD2013",
-  description: "British Columbia still uses CGVD28. This page explains the move toward CGVD2013, expected around 2030, and what it means for Squamish survey elevations.",
+  description: "British Columbia still uses CGVD28. This page explains the move toward CGVD2013, anticipated around 2030, and what it means for Squamish survey elevations.",
   publishDate: "2026-11-15",
   tags: [
     "Vertical Datum",
@@ -41,7 +41,7 @@ export const metadata = {
 
 export default function Content({ children }) { return <>{children}</> }
 
-British Columbia still measures heights on CGVD28, the Canadian Geodetic Vertical Datum of 1928. A newer national height system, CGVD2013, is already the gravity-based datum used for Canada, and GeoBC anticipates adopting new vertical and horizontal datums in 2030. Until that adoption, survey drawings from Tantalus Geomatics in Squamish are on CGVD28. We can provide a transformation to another datum on request.
+British Columbia still measures heights on CGVD28, the Canadian Geodetic Vertical Datum of 1928. A newer national height system, CGVD2013, is already the gravity-based datum used for Canada, and GeoBC anticipates adopting new vertical and horizontal datums in 2030. Tantalus Geomatics does all of its survey work in CGVD28 unless a client explicitly requests another datum. We will adopt CGVD2013 only once it is the official vertical datum in use in British Columbia.
 
 This page is for landowners, designers and engineers who have to read an elevation on a plan, or set one beside a flood construction level. It follows the four public sources linked at the end.
 
@@ -61,7 +61,7 @@ The Province's [information paper](https://www2.gov.bc.ca/assets/gov/data/geogra
 
 CGVD2013 was built so heights could come from that geoid, and so they would agree with GNSS. The Province's current page says the HTv2.0 model is what to use when a GNSS height has to be brought onto approximate CGVD28 elevations.
 
-## When it is expected
+## When the change is anticipated
 
 [Natural Resources Canada](https://natural-resources.canada.ca/science-data/science-research/geomatics/geodetic-reference-systems/canadian-spatial-reference-system-csrs-modernization) describes a phased change, not one switch-over day. Federal geodetic work is planned to start using NATRF2022 in early 2027. Provincial and territorial adoption of NATRF2022 is planned for 2030, with NAD83(CSRS) still in use beside it during the change. The [Surveyor General's report](https://ltsa.ca/surveyor-generals-report-abcls-agm-2026/) to the Association of British Columbia Land Surveyors in March 2026 says the fieldwork to improve physical control monuments is finished, and that GeoBC anticipates adopting the new vertical and horizontal datums in 2030.
 
@@ -75,11 +75,11 @@ The height of a floor above the ground beside it was expected to stay at the pre
 
 ## Flood construction levels
 
-A flood construction level is an elevation. The information paper lists floodplain work among the uses of a height system. A drawing can be set beside a flood construction level only when both elevations name the same datum. These sources do not say that the District of Squamish has republished its flood construction levels on a new datum, and this page does not say that it has. On a Squamish drawing from this office, the elevations are on CGVD28 until the new datums are adopted.
+A flood construction level is an elevation. The information paper lists floodplain work among the uses of a height system. A drawing can be set beside a flood construction level only when both elevations name the same datum. The District of Squamish flood construction level maps are CGVD28. These sources do not say that the District has republished those maps on CGVD2013, and this page does not say that a District-wide CGVD2013 requirement is in force.
 
 ## What we do now
 
-Squamish drawings use CGVD28 until vertical datum modernization becomes official, which is expected in 2030. If a designer or an engineer needs the same points on another datum, we can provide that transformation on request.
+Tantalus Geomatics does all of its survey work in CGVD28 unless a client explicitly requests another datum. We will adopt CGVD2013 only once it is the official vertical datum in use in British Columbia. A change to that official vertical datum is anticipated in 2030. If a designer or an engineer needs the same points on another datum, we can provide that transformation on request.
 
 Public tools already cover part of this. The Province publishes HTv2.0 for approximate CGVD28 elevations, including a Metro Vancouver hybrid model, and points to Natural Resources Canada's GPS-H software for reading those files. Natural Resources Canada is also releasing beta tools for NATRF2022 and for CGVD2013 version 1. It says those beta products are for preparation, and that they should not be used for production work until they are officially adopted.
 

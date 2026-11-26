@@ -152,6 +152,7 @@ function applyLocalMetadata(content, localOverride) {
   if (data.heroImageAlt) fields.push(['heroImageAlt', JSON.stringify(data.heroImageAlt)]);
   if (data.heroObjectPosition) fields.push(['heroObjectPosition', JSON.stringify(data.heroObjectPosition)]);
   if (data.dropIntro === true) fields.push(['dropIntro', 'true']);
+  if (data.concise === true) fields.push(['concise', 'true']);
   if (data.renderFaqAnswers === true) fields.push(['renderFaqAnswers', 'true']);
   if (Array.isArray(data.gallery) && data.gallery.length > 0) {
     const pretty = JSON.stringify(data.gallery, null, 2).replace(/\n/g, '\n  ');
