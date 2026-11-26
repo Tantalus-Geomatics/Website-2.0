@@ -2,12 +2,15 @@
  * Approved trim boundaries for the phase 1 noindex build.
  * Generated from the Nov 7, 2026 trim list. prerender.js fails the build
  * when the live policy, sitemap, IndexNow list, or HTML disagree with this.
- * Pilot, control, Sea to Sky, Squamish, and phase 2 pages stay indexable.
+ * Pilot, control, Sea to Sky, and Squamish pages stay indexable.
+ * Phase 2 pages that Dennis approved on Nov 26, 2026 are noindex,follow
+ * and stay in the sitemap. The remaining phase 2 hold stays indexable.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 
 export const EXPECTED_PHASE1_COUNT = 140;
+export const EXPECTED_PHASE2_COUNT = 27;
 
 export const PHASE1_PATHS = [
   '/bowen-island/services/air-space-subdivision-surveys/',
@@ -212,47 +215,24 @@ export const DENNIS_CALL_PATHS = [
   '/squamish/services/uav-mapping/',
   '/squamish/services/volume-and-earthwork-surveys/',
 ];
-export const PHASE2_HOLD_PATHS = [
+export const PHASE2_PATHS = [
   '/bowen-island/services/3d-settlement-monitoring/',
-  '/bowen-island/services/covenant-surveys/',
   '/bowen-island/services/gridline-and-construction-layout-surveys/',
   '/bowen-island/services/proposed-strata-plans/',
-  '/bowen-island/services/strata-surveys/',
-  '/bowen-island/services/uav-mapping/',
-  '/britannia-beach/services/bare-land-strata-surveys/',
-  '/britannia-beach/services/proposed-strata-plans/',
   '/britannia-beach/services/road-surveys/',
   '/britannia-beach/services/strata-surveys/',
-  '/city-north-vancouver/services/covenant-surveys/',
-  '/city-north-vancouver/services/land-act-surveys/',
-  '/city-north-vancouver/services/proposed-strata-plans/',
-  '/city-north-vancouver/services/road-surveys/',
-  '/city-north-vancouver/services/volume-and-earthwork-surveys/',
-  '/district-north-vancouver/services/statutory-rights-of-way-surveys/',
   '/furry-creek/services/3d-settlement-monitoring/',
-  '/furry-creek/services/block-outline-surveys/',
-  '/furry-creek/services/consolidation-surveys/',
   '/furry-creek/services/excavation-layout-surveys/',
   '/furry-creek/services/proposed-strata-plans/',
-  '/furry-creek/services/terrestrial-lidar-scanning/',
   '/gibsons/services/covenant-surveys/',
   '/gibsons/services/easement-surveys/',
-  '/gibsons/services/proposed-strata-plans/',
   '/gibsons/services/strata-surveys/',
   '/lillooet/services/air-space-subdivision-surveys/',
   '/lillooet/services/phased-strata-surveys/',
   '/lillooet/services/proposed-strata-plans/',
-  '/lillooet/services/terrestrial-lidar-scanning/',
   '/lillooet/services/volume-and-earthwork-surveys/',
-  '/pemberton/services/air-space-subdivision-surveys/',
-  '/pemberton/services/block-outline-surveys/',
-  '/pemberton/services/gridline-and-construction-layout-surveys/',
-  '/pemberton/services/strata-plan-amendment-surveys/',
-  '/pemberton/services/terrestrial-lidar-scanning/',
-  '/pemberton/services/volume-and-earthwork-surveys/',
   '/powell-river/services/3d-settlement-monitoring/',
   '/powell-river/services/block-outline-surveys/',
-  '/powell-river/services/consolidation-surveys/',
   '/powell-river/services/covenant-surveys/',
   '/powell-river/services/gridline-and-construction-layout-surveys/',
   '/powell-river/services/road-surveys/',
@@ -261,11 +241,36 @@ export const PHASE2_HOLD_PATHS = [
   '/sechelt/services/proposed-strata-plans/',
   '/sechelt/services/strata-plan-amendment-surveys/',
   '/sechelt/services/strata-surveys/',
-  '/sechelt/services/uav-mapping/',
   '/west-vancouver/services/3d-settlement-monitoring/',
+  '/west-vancouver/services/road-surveys/',
+];
+export const PHASE2_HOLD_PATHS = [
+  '/bowen-island/services/covenant-surveys/',
+  '/bowen-island/services/strata-surveys/',
+  '/bowen-island/services/uav-mapping/',
+  '/britannia-beach/services/bare-land-strata-surveys/',
+  '/britannia-beach/services/proposed-strata-plans/',
+  '/city-north-vancouver/services/covenant-surveys/',
+  '/city-north-vancouver/services/land-act-surveys/',
+  '/city-north-vancouver/services/proposed-strata-plans/',
+  '/city-north-vancouver/services/road-surveys/',
+  '/city-north-vancouver/services/volume-and-earthwork-surveys/',
+  '/district-north-vancouver/services/statutory-rights-of-way-surveys/',
+  '/furry-creek/services/block-outline-surveys/',
+  '/furry-creek/services/consolidation-surveys/',
+  '/furry-creek/services/terrestrial-lidar-scanning/',
+  '/gibsons/services/proposed-strata-plans/',
+  '/lillooet/services/terrestrial-lidar-scanning/',
+  '/pemberton/services/air-space-subdivision-surveys/',
+  '/pemberton/services/block-outline-surveys/',
+  '/pemberton/services/gridline-and-construction-layout-surveys/',
+  '/pemberton/services/strata-plan-amendment-surveys/',
+  '/pemberton/services/terrestrial-lidar-scanning/',
+  '/pemberton/services/volume-and-earthwork-surveys/',
+  '/powell-river/services/consolidation-surveys/',
+  '/sechelt/services/uav-mapping/',
   '/west-vancouver/services/air-space-subdivision-surveys/',
   '/west-vancouver/services/consolidation-surveys/',
-  '/west-vancouver/services/road-surveys/',
   '/west-vancouver/services/volume-and-earthwork-surveys/',
   '/whistler/services/proposed-strata-plans/',
   '/whistler/services/volume-and-earthwork-surveys/',
@@ -348,18 +353,20 @@ export function assertPhase1Indexing({
   distDir,
   hostname,
   policyPaths,
+  phase2Paths = [],
   hiddenRoutes,
   indexNowList,
   sitemapRoutes,
 }) {
   const failures = [];
   const policy = sortedUnique(policyPaths);
+  const phase2 = sortedUnique(phase2Paths);
   const protectedGroups = [
     ['pilot', PILOT_PATHS, 5],
     ['control', CONTROL_PATHS, 11],
     ['Sea to Sky', SEA_TO_SKY_PATHS, 28],
     ["Dennis's call", DENNIS_CALL_PATHS, 9],
-    ['phase 2', PHASE2_HOLD_PATHS, 56],
+    ['phase 2 hold', PHASE2_HOLD_PATHS, 29],
   ];
 
   if (PHASE1_PATHS.length !== EXPECTED_PHASE1_COUNT) {
@@ -377,11 +384,31 @@ export function assertPhase1Indexing({
   if (!samePaths(hiddenRoutes, PHASE1_PATHS)) {
     failures.push('prerender hid a different set of routes than the approved phase 1 list');
   }
+  if (PHASE2_PATHS.length !== EXPECTED_PHASE2_COUNT) {
+    failures.push(`approved phase 2 list has ${PHASE2_PATHS.length} paths, expected ${EXPECTED_PHASE2_COUNT}`);
+  }
+  if (!samePaths(phase2, PHASE2_PATHS)) {
+    const approved = new Set(PHASE2_PATHS);
+    const live = new Set(phase2);
+    const missing = PHASE2_PATHS.filter((p) => !live.has(p));
+    const extra = phase2.filter((p) => !approved.has(p));
+    failures.push(`phase 2 paths are not the approved 27 (missing ${missing.length}, extra ${extra.length})`);
+    for (const p of missing.slice(0, 8)) failures.push(`missing from phase 2: ${p}`);
+    for (const p of extra.slice(0, 8)) failures.push(`unexpected phase 2 path: ${p}`);
+  }
+  const hidden = new Set(hiddenRoutes);
+  for (const p of PHASE2_PATHS) {
+    if (policy.includes(p)) failures.push(`phase 2 page is also on the phase 1 list: ${p}`);
+    if (hidden.has(p)) failures.push(`phase 2 page was omitted from the sitemap: ${p}`);
+    if (p.startsWith('/squamish/') || p.startsWith('/whistler/') || p.startsWith('/pemberton/') || p.startsWith('/the-sea-to-sky/')) {
+      failures.push(`protected town page is in phase 2: ${p}`);
+    }
+  }
 
   for (const [label, paths, count] of protectedGroups) {
     if (paths.length !== count) failures.push(`${label} list has ${paths.length} paths, expected ${count}`);
     for (const p of paths) {
-      if (policy.includes(p)) failures.push(`${label} page is on the noindex list: ${p}`);
+      if (policy.includes(p) || phase2.includes(p)) failures.push(`${label} page is on a noindex list: ${p}`);
     }
   }
 
@@ -404,6 +431,10 @@ export function assertPhase1Indexing({
     if (sitemap.has(p)) failures.push(`sitemap still includes ${p}`);
     if (serviceSitemap.has(p)) failures.push(`sitemap-services.xml still includes ${p}`);
   }
+  for (const p of PHASE2_PATHS) {
+    if (!sitemap.has(p)) failures.push(`phase 2 page left the sitemap: ${p}`);
+    if (!serviceSitemap.has(p)) failures.push(`phase 2 page left sitemap-services.xml: ${p}`);
+  }
   for (const [label, paths] of [
     ["Dennis's call", DENNIS_CALL_PATHS],
     ['phase 2', PHASE2_HOLD_PATHS],
@@ -422,7 +453,8 @@ export function assertPhase1Indexing({
     if (!routePath) continue;
     const html = fs.readFileSync(file, 'utf8');
     const robots = robotsContents(html);
-    const expectNoindex = policy.includes(routePath);
+    const phase2Page = phase2.includes(routePath);
+    const expectNoindex = policy.includes(routePath) || phase2Page;
     if (expectNoindex) {
       if (robots.length !== 1 || robots[0] !== NOINDEX_ROBOTS) {
         failures.push(`${routePath}: expected one "${NOINDEX_ROBOTS}" robots meta, found ${JSON.stringify(robots)}`);
@@ -431,10 +463,10 @@ export function assertPhase1Indexing({
         failures.push(`${routePath}: canonical is not self-referencing (${canonicalHref(html) || 'missing'})`);
       }
       if (/http-equiv\s*=\s*(["'])refresh\1/i.test(html)) {
-        failures.push(`${routePath}: phase 1 page was turned into a redirect`);
+        failures.push(`${routePath}: noindex page was turned into a redirect`);
       }
       if (/<h1[^>]*>\s*404\s*<\/h1>/i.test(html)) {
-        failures.push(`${routePath}: phase 1 page rendered as a 404`);
+        failures.push(`${routePath}: noindex page rendered as a 404`);
       }
       const town = routePath.split('/')[1];
       const hubFile = htmlFile(distDir, `/${town}/`);
@@ -448,10 +480,17 @@ export function assertPhase1Indexing({
     }
   }
 
-  if (!samePaths(seenNoindex, PHASE1_PATHS)) {
-    failures.push(`built HTML noindex set does not match the approved 140 (found ${seenNoindex.length})`);
+  if (!samePaths(seenNoindex.filter((p) => policy.includes(p)), PHASE1_PATHS)) {
+    failures.push(`built HTML phase 1 noindex set does not match the approved 140 (found ${seenNoindex.filter((p) => policy.includes(p)).length})`);
+  }
+  if (!samePaths(seenNoindex.filter((p) => phase2.includes(p)), PHASE2_PATHS)) {
+    failures.push(`built HTML phase 2 noindex set does not match the approved 27 (found ${seenNoindex.filter((p) => phase2.includes(p)).length})`);
+  }
+  if (seenNoindex.length !== PHASE1_PATHS.length + PHASE2_PATHS.length) {
+    failures.push(`built HTML noindex count is ${seenNoindex.length}, expected ${PHASE1_PATHS.length + PHASE2_PATHS.length}`);
   }
 
+  const phase2Set = new Set(PHASE2_PATHS);
   for (const routePath of sitemap) {
     const file = htmlFile(distDir, routePath);
     if (!fs.existsSync(file)) {
@@ -459,7 +498,12 @@ export function assertPhase1Indexing({
       continue;
     }
     const robots = robotsContents(fs.readFileSync(file, 'utf8'));
-    if (robots.some((value) => /noindex/i.test(value))) {
+    const hasNoindex = robots.some((value) => /noindex/i.test(value));
+    if (phase2Set.has(routePath)) {
+      if (robots.length !== 1 || robots[0] !== NOINDEX_ROBOTS) {
+        failures.push(`phase 2 sitemap URL is not noindex, follow: ${routePath}`);
+      }
+    } else if (hasNoindex) {
       failures.push(`sitemap URL carries noindex: ${routePath}`);
     }
   }

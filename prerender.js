@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import express from 'express';
 import Critters from 'critters';
-import { isPhase1NoindexPath, phase1NoindexPaths } from './src/config/indexingPolicy.ts';
+import { isPhase1NoindexPath, phase1NoindexPaths, phase2NoindexPaths } from './src/config/indexingPolicy.ts';
 import { assertPhase1Indexing } from './scripts/phase1-indexing-guard.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -173,7 +173,7 @@ function generateRouteMatrix() {
         const shortPath = `/${routePrefix}/${slug}/`;
         const localizedPath = `/${location}/${routePrefix}/${slug}/`;
 
-        // Phase 1 only. Phase 2 is not in the policy, so those pages stay in the sitemap.
+        // Phase 1 only. Phase 2 is noindex but stays in the sitemap.
         // Nothing here is dropped or redirected.
         if (isPhase1NoindexPath(localizedPath)) {
           phase1HiddenRoutes.push(localizedPath);
@@ -755,6 +755,7 @@ async function generate() {
       distDir: toAbs('dist'),
       hostname,
       policyPaths: phase1NoindexPaths(),
+      phase2Paths: phase2NoindexPaths(),
       hiddenRoutes: phase1HiddenRoutes,
       indexNowList,
       sitemapRoutes: collectSitemapRoutes(),
@@ -770,6 +771,7 @@ async function generate() {
     console.log('Loading placeholders: 0');
     console.log('First-party failed responses: 0');
     console.log(`Phase 1 noindex: ${phase1HiddenRoutes.length} pages omitted from sitemap-services.xml and IndexNow (${indexNowList.length} IndexNow candidates).`);
+    console.log(`Phase 2 noindex: ${phase2NoindexPaths().length} pages kept in sitemap-services.xml.`);
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
