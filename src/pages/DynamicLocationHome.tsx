@@ -9,9 +9,24 @@ import SEO from '../components/SEO';
 const localizedModules = import.meta.glob('../content/services/*/*.mdx');
 const SITE_URL = 'https://www.tantalusgeomatics.com';
 
+const SQUAMISH_HUB_PHOTOS = [
+  {
+    src: '/images/squamish/hub-valley.webp',
+    alt: 'A rock bluff and a transmission tower beside a cleared roadside, with conifers and snow-covered mountains beyond.',
+  },
+  {
+    src: '/images/squamish/hub-survey-rod.webp',
+    alt: 'GNSS receiver on a tripod in brush beside a river, with forest and mountains beyond.',
+  },
+  {
+    src: '/images/squamish/hub-excavator.webp',
+    alt: 'An excavator beside a gravel pad, with a survey tripod, pink paint marks and a sports field beyond.',
+  },
+];
+
 // Previous hero subtitles. The meta description is separate so this visible line stays as it was.
 const HUB_HERO: Partial<Record<ValidLocation, string>> = {
-  squamish: 'Land surveying by a BC Land Surveyor (BCLS) in Squamish, BC — boundary surveys, subdivision plans, and strata development tailored to District of Squamish permitting and the Garibaldi Estates corridor.',
+  squamish: 'Land surveying by a BC Land Surveyor (BCLS) in Squamish, BC — boundary surveys, topographic site plans, and subdivision plans for District of Squamish permits.',
   whistler: 'Land surveying by a BC Land Surveyor (BCLS) in Whistler, BC — strata conversions, easement plans, and topographic surveys tailored to Resort Municipality of Whistler permitting requirements.',
   pemberton: 'Land surveying by a BC Land Surveyor (BCLS) in Pemberton, BC — rural subdivisions, agricultural lot surveys, and Crown land applications tailored to Village of Pemberton requirements.',
   'district-north-vancouver': 'Land surveying by a BC Land Surveyor (BCLS) in the District of North Vancouver — boundary surveys, subdivision plans, and covenant work tailored to DNV Development Services permitting requirements.',
@@ -20,7 +35,7 @@ const HUB_HERO: Partial<Record<ValidLocation, string>> = {
 
 // One distinct clause per hub so this paragraph is not the same sentence in every town.
 const HUB_WORK: Record<ValidLocation, string> = {
-  squamish: 'boundary surveys, subdivision plans and strata plans for District of Squamish permits',
+  squamish: 'boundary surveys, topographic site plans, subdivision plans and strata plans for District of Squamish permits',
   whistler: 'boundary and topographic surveys for Resort Municipality of Whistler permits',
   pemberton: 'boundary, topographic and subdivision surveys for Village of Pemberton and SLRD applications',
   lillooet: 'boundary surveys, topographic mapping and legal plans for District of Lillooet applications',
@@ -141,15 +156,30 @@ export default function DynamicLocationHome() {
       locationName={displayName}
       localAuthorityName={localAuthorityName}
       municipalLink={municipalLink}
-      locationImages={locationImages}
+      locationImages={locationSlug === 'squamish' ? SQUAMISH_HUB_PHOTOS : locationImages}
+      galleryImages={locationSlug === 'squamish' ? SQUAMISH_HUB_PHOTOS : undefined}
     >
-      <h2>Professional Land Surveying in {displayName}, BC</h2>
-      <p>
-        Tantalus Geomatics provides comprehensive land surveying and geomatics services across {displayName} and the surrounding region. Our team of British Columbia Land Surveyors (BCLS) and Professional Engineers (P.Eng.) prepares {HUB_WORK[locationSlug]}.
-      </p>
-      <p>
-        Whether you are planning a residential build, a commercial development, or a complex subdivision, we work closely with local architects, builders, and municipal planning staff to ensure full compliance with local zoning bylaws and development guidelines.
-      </p>
+      {locationSlug === 'squamish' ? (
+        <>
+          <h2>Professional Land Surveying in Squamish, BC</h2>
+          <p>
+            Tantalus Geomatics is based in Squamish. A BC Land Surveyor prepares boundary surveys, topographic site plans, subdivision plans and strata plans for District of Squamish applications.
+          </p>
+          <p>
+            A topographic survey or site plan is a drawing of the ground for a designer or a permit. It is not filed at the Land Title Office. What that drawing covers in Squamish is on the <Link to="/squamish/services/topographic-surveys-and-site-plans/">topographic surveys</Link> page.
+          </p>
+        </>
+      ) : (
+        <>
+          <h2>Professional Land Surveying in {displayName}, BC</h2>
+          <p>
+            Tantalus Geomatics provides comprehensive land surveying and geomatics services across {displayName} and the surrounding region. Our team of British Columbia Land Surveyors (BCLS) and Professional Engineers (P.Eng.) prepares {HUB_WORK[locationSlug]}.
+          </p>
+          <p>
+            Whether you are planning a residential build, a commercial development, or a complex subdivision, we work closely with local architects, builders, and municipal planning staff to ensure full compliance with local zoning bylaws and development guidelines.
+          </p>
+        </>
+      )}
     </HubTemplate>
   );
 }

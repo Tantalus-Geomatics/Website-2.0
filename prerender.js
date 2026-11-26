@@ -79,6 +79,44 @@ const REDIRECT_STUBS = [
     target: 'https://www.tantalusgeomatics.com/squamish/insights/vertical-datum-modernization/',
   },
 ];
+
+// The old region slug and two retired service slugs still appear in Search
+// Console as 404s. They are not pages. A static refresh file is what Google
+// can follow; the SPA 404.html is an HTTP 404.
+function addLegacyRedirects() {
+  const hostname = 'https://www.tantalusgeomatics.com';
+  const already = new Set(REDIRECT_STUBS.map((stub) => stub.path));
+  function add(path, targetPath) {
+    if (already.has(path)) return;
+    already.add(path);
+    REDIRECT_STUBS.push({ path, target: `${hostname}${targetPath}` });
+  }
+
+  add('/sea-to-sky/', '/the-sea-to-sky/');
+
+  const seaToSkyDir = toAbs('src/content/services/the-sea-to-sky');
+  if (fs.existsSync(seaToSkyDir)) {
+    for (const name of fs.readdirSync(seaToSkyDir)) {
+      if (!name.endsWith('.mdx')) continue;
+      const slug = name.replace(/\.mdx$/, '');
+      add(`/sea-to-sky/services/${slug}/`, `/the-sea-to-sky/services/${slug}/`);
+    }
+  }
+
+  // property-line-surveys and topographic-surveys are not generated slugs.
+  // Squamish property-line already has a stub above. Other towns use the same targets.
+  const servicesRoot = toAbs('src/content/services');
+  if (fs.existsSync(servicesRoot)) {
+    for (const town of fs.readdirSync(servicesRoot)) {
+      const townDir = path.join(servicesRoot, town);
+      if (!fs.statSync(townDir).isDirectory() || town === 'the-sea-to-sky') continue;
+      add(`/${town}/services/property-line-surveys/`, `/${town}/services/boundary-surveys/`);
+      add(`/${town}/services/topographic-surveys/`, `/${town}/services/topographic-surveys-and-site-plans/`);
+    }
+  }
+}
+addLegacyRedirects();
+
 const REDIRECT_STUB_PATHS = new Set(REDIRECT_STUBS.map((stub) => stub.path));
 
 // Short /services/{slug}/ URLs are prerendered so existing links still resolve,

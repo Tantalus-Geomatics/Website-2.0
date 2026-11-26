@@ -560,8 +560,10 @@ baseTemplates.forEach(templateFile => {
       localizedContent = localizedContent.replace(/\bin Sea to Sky\b/g, 'in the Sea to Sky');
     }
 
-    // Inject inline service image if available
-    localizedContent = injectServiceImage(localizedContent, serviceSlug, serviceLocationName);
+    // A page with its own gallery does not also get the shared service stock photo.
+    if (!localOverride?.data?.gallery?.length) {
+      localizedContent = injectServiceImage(localizedContent, serviceSlug, serviceLocationName);
+    }
 
     // Construct localized schema
     const geoData = LOCATION_GEO_DATA[locationSlug];
