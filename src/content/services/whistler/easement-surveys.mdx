@@ -2,7 +2,7 @@
 title: "Easement Surveys in Whistler"
 description: "Professional Easement Surveys in Whistler, defining the extent of rights of one parcel over another."
 locationName: 'Whistler'
-heroImage: '/images/black-tusk.webp'
+heroImage: '/images/whistler/easement.webp'
 localAuthorityName: 'Resort Municipality of Whistler'
 municipalLink: 'https://www.whistler.ca/business-development/'
 serviceName: "Easement Surveys"
@@ -11,6 +11,14 @@ serviceName: "Easement Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  heroImageAlt: "Pink flagging tied along a cedar trunk.",
+  galleryImages: [
+    {
+      "src": "/images/whistler/easement.webp",
+      "alt": "Pink flagging tied along a cedar trunk.",
+      "caption": "Flagging on a cedar trunk."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +27,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/whistler/services/easement-surveys/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/black-tusk.webp",
+  "image": "https://www.tantalusgeomatics.com/images/whistler/easement.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Whistler",
@@ -44,7 +52,7 @@ export const metadata = {
   title: "Easement Surveys in Whistler",
   description: "Professional Easement Surveys in Whistler, defining the extent of rights of one parcel over another.",
   locationName: 'Whistler',
-  heroImage: '/images/black-tusk.webp',
+  heroImage: '/images/whistler/easement.webp',
   localAuthorityName: 'Resort Municipality of Whistler',
   municipalLink: 'https://www.whistler.ca/business-development/',
   serviceName: "Easement Surveys",
@@ -131,9 +139,3 @@ export default ({ children }) => (
 )
 
 Developing real estate, sharing infrastructure, or securing access across a neighbour’s parcel requires establishing clear, legally binding property rights. In <span className="text-brand-green font-semibold">Whistler</span>, an easement is a specialized right that one person may exercise with respect to the land of another, requiring both a "dominant tenement" (the property benefiting from the right) and a "servient tenement" (the property burdened by it). Whether you are securing a critical access corridor, registering shared utility services, or resolving an encroachment, ensuring these rights are accurately mapped and legally defined is primary to the success of your real estate investment. Tantalus Geomatics Land Surveying provides the services required to accurately delineate your easement areas and protect your property rights.
-
-
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/easement-surveys.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/easement-surveys.webp" alt="BC Land Surveyor performing Easement Surveys in Whistler, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>

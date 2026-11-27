@@ -9,6 +9,21 @@ import SEO from '../components/SEO';
 const localizedModules = import.meta.glob('../content/services/*/*.mdx');
 const SITE_URL = 'https://www.tantalusgeomatics.com';
 
+const WHISTLER_HUB_PHOTOS = [
+  {
+    src: '/images/black-tusk.webp',
+    alt: 'The Black Tusk, a rock spire above snow-covered peaks near Whistler.',
+  },
+  {
+    src: '/images/tree.webp',
+    alt: 'A sunlit rocky peak above a forested mountain valley.',
+  },
+  {
+    src: '/images/whistler/hub-forest-road.webp',
+    alt: 'A gravel road through a stand of tall conifers.',
+  },
+];
+
 const SQUAMISH_HUB_PHOTOS = [
   {
     src: '/images/squamish/hub-valley.webp',
@@ -36,7 +51,7 @@ const HUB_HERO: Partial<Record<ValidLocation, string>> = {
 // One distinct clause per hub so this paragraph is not the same sentence in every town.
 const HUB_WORK: Record<ValidLocation, string> = {
   squamish: 'boundary surveys, topographic site plans, subdivision plans and strata plans for District of Squamish permits',
-  whistler: 'boundary and topographic surveys for Resort Municipality of Whistler permits',
+  whistler: 'boundary surveys, topographic site plans, subdivision plans and strata plans, including strata conversions, for the Resort Municipality of Whistler',
   pemberton: 'boundary, topographic and subdivision surveys for Village of Pemberton and SLRD applications',
   lillooet: 'boundary surveys, topographic mapping and legal plans for District of Lillooet applications',
   'west-vancouver': 'boundary, topographic and building location surveys for District of West Vancouver permits',
@@ -156,8 +171,9 @@ export default function DynamicLocationHome() {
       locationName={displayName}
       localAuthorityName={localAuthorityName}
       municipalLink={municipalLink}
-      locationImages={locationSlug === 'squamish' ? SQUAMISH_HUB_PHOTOS : locationImages}
-      galleryImages={locationSlug === 'squamish' ? SQUAMISH_HUB_PHOTOS : undefined}
+      locationImages={locationSlug === 'squamish' ? SQUAMISH_HUB_PHOTOS : locationSlug === 'whistler' ? WHISTLER_HUB_PHOTOS : locationImages}
+      galleryImages={locationSlug === 'squamish' ? SQUAMISH_HUB_PHOTOS : locationSlug === 'whistler' ? WHISTLER_HUB_PHOTOS : undefined}
+      heroImageAlt={locationSlug === 'whistler' ? WHISTLER_HUB_PHOTOS[0].alt : undefined}
     >
       {locationSlug === 'squamish' ? (
         <>
@@ -167,6 +183,16 @@ export default function DynamicLocationHome() {
           </p>
           <p>
             A topographic survey or site plan is a drawing of the ground for a designer or a permit. It is not a plan deposited at the Land Title Office. What that drawing covers in Squamish is on the <Link to="/squamish/services/topographic-surveys-and-site-plans/">topographic surveys</Link> page.
+          </p>
+        </>
+      ) : locationSlug === 'whistler' ? (
+        <>
+          <h2>Professional Land Surveying in Whistler, BC</h2>
+          <p>
+            Tantalus Geomatics prepares boundary surveys, topographic site plans, and subdivision and strata plans for the Resort Municipality of Whistler, including strata conversions of buildings that have already been occupied.
+          </p>
+          <p>
+            A topographic survey or site plan is a drawing of the ground for a designer or a permit. It is not a plan deposited at the Land Title Office. What that drawing covers in Whistler is on the <Link to="/whistler/services/topographic-surveys-and-site-plans/">topographic surveys</Link> page. Strata conversions are on the <Link to="/whistler/services/strata-surveys/">strata surveys</Link> page.
           </p>
         </>
       ) : (

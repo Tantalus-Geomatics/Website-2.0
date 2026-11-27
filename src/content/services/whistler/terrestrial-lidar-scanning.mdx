@@ -2,7 +2,7 @@
 title: "Terrestrial LiDAR Scanning in Whistler"
 description: "Professional Terrestrial LiDAR Scanning in Whistler, capturing high-density digital twins and high-precision 3D point clouds of complex architectural facades, mechanical plants, and civil works."
 locationName: 'Whistler'
-heroImage: '/images/black-tusk.webp'
+heroImage: '/images/whistler/lidar.webp'
 localAuthorityName: 'Resort Municipality of Whistler'
 municipalLink: 'https://www.whistler.ca/business-development/'
 serviceName: "Terrestrial LiDAR Scanning"
@@ -11,6 +11,14 @@ serviceName: "Terrestrial LiDAR Scanning"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  heroImageAlt: "A sidewalk and a grass boulevard beside a road, with trees and houses beyond.",
+  galleryImages: [
+    {
+      "src": "/images/whistler/lidar.webp",
+      "alt": "A sidewalk and a grass boulevard beside a road, with trees and houses beyond.",
+      "caption": "A sidewalk and boulevard."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +27,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/whistler/services/terrestrial-lidar-scanning/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/black-tusk.webp",
+  "image": "https://www.tantalusgeomatics.com/images/whistler/lidar.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Whistler",
@@ -44,7 +52,7 @@ export const metadata = {
   title: "Terrestrial LiDAR Scanning in Whistler",
   description: "Professional Terrestrial LiDAR Scanning in Whistler, capturing high-density digital twins and high-precision 3D point clouds of complex architectural facades, mechanical plants, and civil works.",
   locationName: 'Whistler',
-  heroImage: '/images/black-tusk.webp',
+  heroImage: '/images/whistler/lidar.webp',
   localAuthorityName: 'Resort Municipality of Whistler',
   municipalLink: 'https://www.whistler.ca/business-development/',
   serviceName: "Terrestrial LiDAR Scanning",
@@ -132,10 +140,5 @@ export default ({ children }) => (
 )
 
 When undertaking intricate architectural retrofits, mapping highly detailed heritage facades, or analyzing complex infrastructure in <span className="text-brand-green font-semibold">Whistler</span>, conventional surveying methods may lack the density and speed required to capture the complete physical reality of your site. Terrestrial LiDAR (3D laser scanning) is a reality capture technology that performs hundreds of thousands of high-precision measurements per second, generating a accurate, colorized 3D point cloud of the as-built environment. 
-
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/terrestrial-lidar-scanning.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/terrestrial-lidar-scanning.webp" alt="BC Land Surveyor performing Terrestrial LiDAR Scanning in Whistler, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>
 
 Tantalus Geomatics Land Surveying accurately integrates 3D scanning data within our broader set of Land Surveying and Geomatics services. We adhere to strict regulatory requirements and data quality standards, allowing us to integrate 3D scanning data of your site into the project's reference coordinate system, providing you with millions of dense, high accuracy, colorized data points and full-colour panoramic images that capture the micro-details of the site.

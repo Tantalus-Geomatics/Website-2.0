@@ -122,6 +122,7 @@ export interface HubTemplateProps {
   municipalLink?: string;
   locationImages?: { src: string; alt: string; caption?: string }[];
   galleryImages?: { src: string; alt: string }[];
+  heroImageAlt?: string;
   children?: ReactNode;
 }
 
@@ -136,6 +137,7 @@ export default function HubTemplate({
   municipalLink,
   locationImages = [],
   galleryImages,
+  heroImageAlt,
   children
 }: HubTemplateProps) {
   const { locationSlug } = useParams<{ locationSlug?: string }>();
@@ -159,7 +161,7 @@ export default function HubTemplate({
         <div className="absolute inset-0 z-0">
           <img
             src={heroSrc}
-            alt={title}
+            alt={heroImageAlt || title}
             width={1200}
             height={800}
             fetchPriority="high"
