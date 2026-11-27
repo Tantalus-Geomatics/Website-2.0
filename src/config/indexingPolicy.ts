@@ -1,17 +1,20 @@
 /**
- * Phase 1 indexing policy for town × service pages.
- * Generated from the approved trim list (Dennis Sherman, Nov 7, 2026).
- * Each key is `town/service`. This file contains only phase 1.
- * Phase 2 pages are intentionally absent and stay indexable.
+ * Indexing policy for town × service pages.
+ * Phase 1: approved trim list (Dennis Sherman, Nov 7, 2026). Those pages are
+ * noindex,follow and omitted from the sitemap.
+ * Phase 2: approved trim list (Dennis Sherman, Nov 26, 2026). Those pages are
+ * noindex,follow and stay in the sitemap until a later removal.
+ * Each key is `town/service`.
  */
 
 export interface IndexingPolicyEntry {
-  phase: 1;
+  phase: 1 | 2;
   /** ISO date the noindex tag was introduced. */
   noindexSince: string;
 }
 
 export const PHASE1_NOINDEX_SINCE = '2026-11-08';
+export const PHASE2_NOINDEX_SINCE = '2026-11-26';
 
 export const INDEXING_POLICY: Record<string, IndexingPolicyEntry> = {
   'bowen-island/air-space-subdivision-surveys': { phase: 1, noindexSince: PHASE1_NOINDEX_SINCE },
@@ -154,6 +157,33 @@ export const INDEXING_POLICY: Record<string, IndexingPolicyEntry> = {
   'whistler/statutory-rights-of-way-surveys': { phase: 1, noindexSince: PHASE1_NOINDEX_SINCE },
   'whistler/strata-plan-amendment-surveys': { phase: 1, noindexSince: PHASE1_NOINDEX_SINCE },
   'whistler/uav-mapping': { phase: 1, noindexSince: PHASE1_NOINDEX_SINCE },
+  'bowen-island/3d-settlement-monitoring': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'bowen-island/gridline-and-construction-layout-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'bowen-island/proposed-strata-plans': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'britannia-beach/road-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'britannia-beach/strata-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'furry-creek/3d-settlement-monitoring': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'furry-creek/excavation-layout-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'furry-creek/proposed-strata-plans': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'gibsons/covenant-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'gibsons/easement-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'gibsons/strata-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'lillooet/air-space-subdivision-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'lillooet/phased-strata-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'lillooet/proposed-strata-plans': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'lillooet/volume-and-earthwork-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'powell-river/3d-settlement-monitoring': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'powell-river/block-outline-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'powell-river/covenant-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'powell-river/gridline-and-construction-layout-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'powell-river/road-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'powell-river/strata-plan-amendment-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'powell-river/volume-and-earthwork-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'sechelt/proposed-strata-plans': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'sechelt/strata-plan-amendment-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'sechelt/strata-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'west-vancouver/3d-settlement-monitoring': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
+  'west-vancouver/road-surveys': { phase: 2, noindexSince: PHASE2_NOINDEX_SINCE },
 };
 
 export const NOINDEX_ROBOTS = 'noindex, follow';
@@ -182,16 +212,33 @@ export function indexingPolicyForPath(input: string): IndexingPolicyEntry | null
   return INDEXING_POLICY[key] ?? null;
 }
 
-/** True only for a phase 1 entry. Phase 2 is not implemented. */
+/** True for phase 1 or phase 2. Both use `noindex, follow`. */
+export function isNoindexPath(input: string): boolean {
+  const phase = indexingPolicyForPath(input)?.phase;
+  return phase === 1 || phase === 2;
+}
+
+/** True only for a phase 1 entry. Phase 1 is omitted from the sitemap. */
 export function isPhase1NoindexPath(input: string): boolean {
   return indexingPolicyForPath(input)?.phase === 1;
 }
 
-export function phase1NoindexPaths(): string[] {
-  return Object.keys(INDEXING_POLICY)
+function pathsForPhase(phase: 1 | 2): string[] {
+  return Object.entries(INDEXING_POLICY)
+    .filter(([, entry]) => entry.phase === phase)
+    .map(([key]) => key)
     .sort()
     .map((key) => {
       const [town, service] = key.split('/');
       return `/${town}/services/${service}/`;
     });
+}
+
+export function phase1NoindexPaths(): string[] {
+  return pathsForPhase(1);
+}
+
+/** Phase 2 stays in the sitemap. These paths are noindex only. */
+export function phase2NoindexPaths(): string[] {
+  return pathsForPhase(2);
 }

@@ -1,8 +1,8 @@
 ---
 title: "Strata Surveys in Squamish"
-description: "Professional Strata Surveys in Squamish, creating strata lots, common property and limited common property to define ownership boundaries within strata-titled residential or commercial developments."
+description: "Strata surveys in Squamish define strata lots and common property for new buildings, bare land strata and conversions."
 locationName: 'Squamish'
-heroImage: '/images/tantalus-hero-banner.webp'
+heroImage: '/images/squamish/strata-1.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "Strata Surveys"
@@ -11,6 +11,33 @@ serviceName: "Strata Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  pageTitle: "Strata Surveys in Squamish: Strata Lots and Common Property",
+  metaDescription: "Strata surveys in Squamish by a BC Land Surveyor: new buildings, bare land strata and conversions reviewed by Council or the Approving Officer.",
+  heroImageAlt: "A total station on a yellow tripod in an open field, with forest and houses beyond.",
+  dropIntro: true,
+  concise: true,
+  renderFaqAnswers: true,
+  galleryImages: [
+    {
+      "src": "/images/squamish/strata-2.webp",
+      "alt": "A shovel and a white tag beside a rock, with a pink pin nearby.",
+      "caption": "A shovel and a tag beside a rock."
+    }
+  ],
+  localFaqs: [
+    {
+      "question": "Who approves a strata conversion in Squamish?",
+      "answer": "Council considers a conversion of a previously occupied building. For a commercial building of five units or fewer, or a residential building of up to two dwellings, the Land Development Procedures Bylaw lets the Approving Officer decide."
+    },
+    {
+      "question": "When does a phased strata approval lapse?",
+      "answer": "An approving officer approves the phased strata plan declaration. That approval expires after one year unless the first phase is deposited."
+    },
+    {
+      "question": "What should I send before you quote a Squamish strata survey?",
+      "answer": "The civic address or Parcel Identifier (PID), whether the building is new or already occupied, and any survey or District letter you already have."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +46,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/strata-surveys/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/tantalus-hero-banner.webp",
+  "image": "https://www.tantalusgeomatics.com/images/squamish/strata-1.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -42,9 +69,9 @@ export const metadata = {
   }
 },
   title: "Strata Surveys in Squamish",
-  description: "Professional Strata Surveys in Squamish, creating strata lots, common property and limited common property to define ownership boundaries within strata-titled residential or commercial developments.",
+  description: "Strata surveys in Squamish define strata lots and common property for new buildings, bare land strata and conversions.",
   locationName: 'Squamish',
-  heroImage: '/images/tantalus-hero-banner.webp',
+  heroImage: '/images/squamish/strata-1.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "Strata Surveys",
@@ -106,14 +133,14 @@ export const metadata = {
   },
   {
     "label": "Squamish Subdivision & Development Control Bylaw",
-    "href": "https://squamish.civicweb.net/filepro/document/200228/Subdivision%20and%20Development%20Control%20Bylaw%202649,%202018%20(Updated%20October%202022).pdf"
+    "href": "https://squamish.civicweb.net/document/200228"
   },
   {
     "label": "District of Squamish GIS Map",
     "href": "https://squamish.ca/gis"
   },
   {
-    "label": "Vertical Datum Modernization (CGVD28 to CGVD2013)",
+    "label": "Vertical datum modernization (CGVD28 and what comes next)",
     "href": "/squamish/insights/vertical-datum-modernization/"
   }
 ],
@@ -139,11 +166,10 @@ export default ({ children }) => (
   </ServiceTemplate>
 )
 
-Over the lifespan of a development in <span className="text-brand-green font-semibold">Squamish</span>, the **Strata Property Act** provides a powerful mechanism to create individual ownership of units while maintaining communal governance over common property. Creating or altering strata lots is a complex and strictly regulated process. Tantalus Geomatics Land Surveying provides the professional services necessary to support all aspects of your strata development, from the initial planning to strata plan certification.
 
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/strata-surveys.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/strata-surveys.webp" alt="BC Land Surveyor performing Strata Surveys in Squamish, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>
+**What our survey provides.** A strata survey in Squamish defines the strata lots and the common property. For a new building, a BC land surveyor certifies that the building has not been previously occupied. That endorsement is dated no more than 180 days before the plan is tendered for deposit.
 
-Our comprehensive strata surveying services cover all classifications of strata developments, offering solutions tailored to your specific project need including support for **Building Strata** developments, **Bare Land Strata** developments, **Phased Strata** developments, and **Strata Plan Amendments**. We guide developers and strata corporations through voting and registration requirements, interpreting strata bylaws, defining extents of strata lots and limited common property (LCP), and converting common property to other ownership forms by preparing amending sheets for LTSA registration.
+**The District.** A conversion of a previously occupied building is considered by [Council](https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/strata-conversion/). For a small building, [Land Development Procedures Bylaw No. 2632](https://squamish.civicweb.net/document/195835) lets the Approving Officer decide: a commercial building of five units or fewer, or a residential building of up to two dwellings. Bare land strata needs an approving officer's approval before the plan is deposited, and the lots have to meet the zone's minimum lot size. The fee to subdivide bare land strata is $1,000 a lot, with a $3,000 minimum. A strata conversion fee is $1,000 a lot, with a $1,000 minimum, under [Fees and Charges Bylaw No. 3185](https://squamish.civicweb.net/document/259432).
+
+**Phased strata and amendments.** An approving officer approves the phased strata plan declaration. That approval expires after one year unless the first phase is deposited. A schedule of voting rights is filed only if voting rights are set out in a schedule. Consolidating strata lots, and designating limited common property, each need a unanimous vote.
+

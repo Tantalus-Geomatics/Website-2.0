@@ -1,8 +1,8 @@
 ---
 title: "Natural Boundary Surveys in Squamish"
-description: "Professional Natural Boundary Surveys in Squamish, identifying riparian setbacks, high-water marks, present natural boundaries and changes due to accretion or erosion limits."
+description: "Natural boundary surveys in Squamish locate the present bank of Howe Sound and the rivers, for setbacks and for the line on title."
 locationName: 'Squamish'
-heroImage: '/images/natural-boundary.webp'
+heroImage: '/images/squamish/natural-1.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "Natural Boundary Surveys"
@@ -12,35 +12,36 @@ import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
   pageTitle: "Natural Boundary Surveys in Squamish: Banks, Rivers and Setbacks",
-  metaDescription: "Natural boundary surveys in Squamish by a BC Land Surveyor: the present bank of Howe Sound and the rivers, drawn for setbacks and for title.",
-  heroImageAlt: "A total station on a yellow tripod on a rocky shoreline, with calm water and a forested far shore.",
+  metaDescription: "Natural boundary surveys in Squamish by a BC Land Surveyor: the present bank of Howe Sound and the rivers, and the District's 30-metre and 15-metre setbacks.",
+  heroImageAlt: "Cedars and shrubs beside a gravel path, with a building partly hidden behind the trees.",
   heroObjectPosition: "object-center",
   dropIntro: true,
+  concise: true,
   renderFaqAnswers: true,
   galleryImages: [
     {
-      "src": "/images/natural-boundary.webp",
-      "alt": "A total station on a yellow tripod on a rocky shoreline, with calm water and a forested far shore.",
-      "caption": "A total station on a shoreline. The waterline in the photo is not, by itself, the natural boundary."
+      "src": "/images/squamish/natural-2.webp",
+      "alt": "Overhead view of mossy rock, dry grass and a dirt track.",
+      "caption": "An overhead view of rock and a dirt track."
     },
     {
-      "src": "/images/spea-rar.webp",
-      "alt": "A sign for the Mamquam River reunion spawning channel, with the river channel and mountains behind.",
-      "caption": "The Mamquam River reunion spawning channel in Squamish."
+      "src": "/images/squamish/natural-3.webp",
+      "alt": "A small white stake label in leaf litter under cedar branches.",
+      "caption": "A stake label in the leaf litter."
     }
   ],
   localFaqs: [
     {
       "question": "Is the water's edge today my property line?",
-      "answer": "Not necessarily. We locate the present natural boundary, the mark left by the ordinary action of the water, and we compare it with the line on the title. On a tidal shore the boundary is not the waterline on the day of the survey."
+      "answer": "Not necessarily. The Land Act natural boundary is the visible high water mark left by the ordinary action of the water over ordinary years. On a tidal shore that line is not the waterline on the day of the survey."
     },
     {
       "question": "I placed fill or a wall on the beach. Did my lot get bigger?",
-      "answer": "On the plan, no. Fill or a wall, and the natural boundary, are drawn as separate lines. Fill does not move the boundary. Ground added slowly from the bank can belong to the upland. Ground lost slowly can go back to the owner of the bed, often the Crown and not always. A sudden change does not move the boundary. We locate the lines. We do not decide the title in the field."
+      "answer": "The plan shows the fill or the wall as its own line. We do not draw it as a new natural boundary. Who holds any added ground is not decided in the field."
     },
     {
       "question": "Who sets the setback from the river or the sound?",
-      "answer": "The District of Squamish, and often a Qualified Environmental Professional. We locate the line the setback is measured from. We do not set the setback distance."
+      "answer": "The District of Squamish. Floodplain Management Bylaw No. 3184 measures 30 metres from the natural boundary of the Squamish, Mamquam, Cheakamus, Cheekeye and Stawamus rivers, and 15 metres from other watercourses. We locate the line the setback is measured from."
     }
   ],
   schema: {
@@ -51,7 +52,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/natural-boundary-surveys/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/natural-boundary.webp",
+  "image": "https://www.tantalusgeomatics.com/images/squamish/natural-1.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -74,9 +75,9 @@ export const metadata = {
   }
 },
   title: "Natural Boundary Surveys in Squamish",
-  description: "Professional Natural Boundary Surveys in Squamish, identifying riparian setbacks, high-water marks, present natural boundaries and changes due to accretion or erosion limits.",
+  description: "Natural boundary surveys in Squamish locate the present bank of Howe Sound and the rivers, for setbacks and for the line on title.",
   locationName: 'Squamish',
-  heroImage: '/images/natural-boundary.webp',
+  heroImage: '/images/squamish/natural-1.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "Natural Boundary Surveys",
@@ -138,14 +139,14 @@ export const metadata = {
   },
   {
     "label": "Squamish Subdivision & Development Control Bylaw",
-    "href": "https://squamish.civicweb.net/filepro/document/200228/Subdivision%20and%20Development%20Control%20Bylaw%202649,%202018%20(Updated%20October%202022).pdf"
+    "href": "https://squamish.civicweb.net/document/200228"
   },
   {
     "label": "District of Squamish GIS Map",
     "href": "https://squamish.ca/gis"
   },
   {
-    "label": "Vertical Datum Modernization (CGVD28 to CGVD2013)",
+    "label": "Vertical datum modernization (CGVD28 and what comes next)",
     "href": "/squamish/insights/vertical-datum-modernization/"
   }
 ],
@@ -171,36 +172,10 @@ export default ({ children }) => (
   </ServiceTemplate>
 )
 
-**What our survey provides.** For a natural boundary survey in Squamish, the survey usually covers:
 
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/natural-boundary-surveys.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/natural-boundary-surveys.webp" alt="BC Land Surveyor performing Natural Boundary Surveys in Squamish, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>
+**What our survey provides.** A natural boundary survey in Squamish locates the present bank and compares it with the line on the title. The Land Act defines a natural boundary as the visible high water mark of any lake, river, stream or other body of water where the presence and action of the water are so common and usual, and so long continued in all ordinary years, as to mark on the soil of the bed of the body of water a character distinct from that of its banks, in vegetation, as well as in the nature of the soil itself.
 
-- **The present natural boundary.** The line where the ordinary action of the water has marked the bank, in the soil and in the vegetation. We locate it on Howe Sound and on the Squamish, Mamquam, Cheakamus and Stawamus rivers, and on creeks that cross a lot.
-- **The line on title.** Where the registered plan shows the natural boundary, and how that line sits against the present bank.
-- **What has changed.** Ground added or lost slowly, a channel that moved at once, or fill and walls placed on the foreshore. We show which of those we can see. Who holds the ground is set out below. We do not decide it on site.
-- **A plan the next step can use.** The present bank on a site plan, so a setback can be measured from it. When the titled line has to be redrawn on a plan deposited at the Land Title Office, that plan is a subdivision plan or a reference plan. The application goes to the Surveyor General before the plan is submitted. The [Land Title Practice Manual, section 94](https://ltpm.ltsa.ca/94-endorsement-certificate) describes that endorsement.
+**The District.** [Floodplain Management Bylaw No. 3184, 2025](https://squamish.civicweb.net/document/257860) measures floodplain setbacks from the natural boundary: 30 metres from the Squamish, Mamquam, Cheakamus, Cheekeye and Stawamus rivers, and 15 metres from other watercourses. Where more than one setback applies, the greater one governs. Land less than 1.5 metres above the natural boundary of an adjacent watercourse is floodplain. The building inspector may require a certificate from a BC land surveyor for the floodway, the flood construction level and the setback. The District's flood construction level maps are CGVD28.
 
-**How a natural boundary survey works in Squamish.**
-
-1. **Research.** We read the plan that made the water a boundary, and the Crown grant where a copy can be had, and we check whether the water was inside the parcel. Older air photos, when we can get them, show an earlier bank.
-2. **The bank.** We walk the present bank and locate the natural boundary. On a tidal shore that line is not the water's edge on the day of the survey. On a river it is not the edge of the water after a storm.
-3. **Fill, dikes and walls.** Fill or a wall on the foreshore is drawn as its own line. It is not drawn as a new natural boundary. A dike and a Flood Construction Level can both matter to a building under the [Floodplain Management Bylaw No. 3184](https://squamish.civicweb.net/filepro/documents/19302/). Neither one is the property line at the water.
-4. **The plan.** For a [building permit](https://squamish.ca/building-and-land-development/building-permit/) or a [development permit](https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/development-permits/), the present natural boundary goes on the site plan. The setback distance is set by the District, and often by a Qualified Environmental Professional, not by the survey. If the boundary on the title has to be redrawn, we prepare a subdivision plan or a reference plan and apply to the Surveyor General for an endorsement. The land title office is not where that application starts. After the Surveyor General signs, the plan is submitted to the land title office. The practice manual points to Circular Letter No. 477A, 6 April 2020, for the material that application asks for.
-
-**Who uses the line.** The District, when a water setback is part of a permit. A Qualified Environmental Professional, when a streamside setback is measured from the top of bank or from the natural boundary. Your lawyer or notary, when the title still shows an old bank. Development Permit Area 1, Environmental Protection, in the [Squamish2040 Official Community Plan](https://squamish.ca/projects-plans-and-initiatives/master-plans/ocp/) is the area that usually raises the watercourse question. Development Permit Area 2 raises the flood question. Those are different lines from the natural boundary. A site plan that carries the bank for a building application is described on the [topographic surveys](/squamish/services/topographic-surveys-and-site-plans/) page.
-
-**The ground.** The Squamish, Mamquam, Cheakamus and Stawamus rivers meet Howe Sound at Squamish. The Mamquam, including the reunion spawning channel, the Cheakamus, the Stawamus, and the creeks in the ravines above Valleycliffe and the Highlands, each have a bank that moves. The survey records the bank we find on the day of the field work. Dikes and training works along the rivers are mapped when they stand on or beside the parcel. They are not a substitute for the natural boundary. The District's flood mapping is published on its [map viewer](https://gis.squamish.ca/map/index.html).
-
-**Fill is not a new line.** Placing fill, rock or a retaining wall out from the bank does not move the natural boundary out to the new edge. An excavation, such as a boat basin cut through the bank, does not move it either. The plan shows the wall or the cut, and the natural boundary, as separate lines. A line left by fill, a cut, a flood or a landslide is not, by itself, the natural boundary.
-
-**Accretion, erosion and a sudden change.** These words describe how the bank moves. They are not a decision we make in the field about who owns the ground. The description follows the Land Title Practice Manual and the Association of British Columbia Land Surveyors' 2026 natural-boundary course. It is not a legal opinion on a particular title.
-
-- **Accretion.** Land added slowly, so slowly that you cannot watch it happen from hour to hour, growing out from the existing bank by the ordinary action of the water. The water may drop back, or soil may settle against the bank. That added land can belong to the upland parcel even when the title still shows the older bank. It is not accretion if a channel separates the new ground from the bank, if the ground was placed as fill to make new land, or if it arrived all at once.
-- **Erosion.** Land lost slowly, in that same gradual way, from the existing bank, by natural processes rather than by a machine. As that happens, the lost ground goes back to whoever owns the bed. That owner is often the Crown. It is not always the Crown.
-- **A sudden change.** A sudden loss or gain, including a channel that moves at once, does not move the natural boundary. The boundary stays where it was before the event. Years later the new edge can look like a natural bank, so the survey looks for the older line.
-
-**Who holds the ground between the lines.** If the change was slow accretion, the added land can be part of the upland. If it was slow erosion, it can return to the owner of the bed. If it was sudden, or if it was fill or a wall, the boundary does not move to the new edge. When a plan of the new line is deposited at the Land Title Office, the Surveyor General may endorse it, if that is in the public interest. For accreted land next to Crown land, the endorsement is that the land has lawfully accreted. For a water boundary that differs from the plan the title is based on, the endorsement is that the line is the natural boundary, where the Surveyor General is satisfied the new line is the correct one and the older plan was short on detail or wrong for another good reason. The registrar does not open a separate title for accreted land. It is brought into the title for the adjoining upland. On an accretion plan the old bank is still shown. On a natural-boundary adjustment the plan shows the present bank. There is a separate rule for some subdivision plans and reference plans that leave a remainder partly under water, next to provincial Crown land: that covered part of the remainder can return to the Crown when the plan is deposited. We locate the lines. We do not decide the title.
+**The plan.** Fill or a wall on the foreshore is drawn as its own line. We do not draw it as a new bank. When the line on the title has to change, the Surveyor General may endorse the plan. We locate the lines. We do not decide the title.
 

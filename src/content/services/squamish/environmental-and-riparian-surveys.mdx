@@ -2,7 +2,7 @@
 title: "Environmental And Riparian Surveys in Squamish"
 description: "Professional Environmental And Riparian Surveys in Squamish, delivering certified legal boundary definitions, advanced geomatics positioning, and professional municipal development compliance mapping."
 locationName: 'Squamish'
-heroImage: '/images/tantalus-hero-banner.webp'
+heroImage: '/images/squamish/environmental-1.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "Environmental And Riparian Surveys"
@@ -11,6 +11,14 @@ serviceName: "Environmental And Riparian Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  heroImageAlt: "A white stake lying beside a gravel shoulder and trees.",
+  galleryImages: [
+    {
+      "src": "/images/squamish/environmental-2.webp",
+      "alt": "A house wall, shrubs and a stake in a garden bed.",
+      "caption": "A stake in a garden bed beside a house."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +27,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/environmental-and-riparian-surveys/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/tantalus-hero-banner.webp",
+  "image": "https://www.tantalusgeomatics.com/images/squamish/environmental-1.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -44,7 +52,7 @@ export const metadata = {
   title: "Environmental And Riparian Surveys in Squamish",
   description: "Professional Environmental And Riparian Surveys in Squamish, delivering certified legal boundary definitions, advanced geomatics positioning, and professional municipal development compliance mapping.",
   locationName: 'Squamish',
-  heroImage: '/images/tantalus-hero-banner.webp',
+  heroImage: '/images/squamish/environmental-1.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "Environmental And Riparian Surveys",
@@ -105,14 +113,14 @@ export const metadata = {
   },
   {
     "label": "Squamish Subdivision & Development Control Bylaw",
-    "href": "https://squamish.civicweb.net/filepro/document/200228/Subdivision%20and%20Development%20Control%20Bylaw%202649,%202018%20(Updated%20October%202022).pdf"
+    "href": "https://squamish.civicweb.net/document/200228"
   },
   {
     "label": "District of Squamish GIS Map",
     "href": "https://squamish.ca/gis"
   },
   {
-    "label": "Vertical Datum Modernization (CGVD28 to CGVD2013)",
+    "label": "Vertical datum modernization (CGVD28 and what comes next)",
     "href": "/squamish/insights/vertical-datum-modernization/"
   }
 ],
@@ -139,10 +147,5 @@ export default ({ children }) => (
 )
 
 In <span className="text-brand-green font-semibold">Squamish</span>, developing land near sensitive ecosystems, managing natural watercourses, or remediating contaminated sites requires precise spatial data and strict adherence to overlapping provincial environmental legislation. Whether you are working alongside Qualified Environmental Professionals (QEPs) to map critical fish habitat, or delineating the exact spatial limits of a contaminated site for a Site Disclosure Statement, absolute spatial certainty is primary.
-
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/environmental-and-riparian-surveys.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/environmental-and-riparian-surveys.webp" alt="BC Land Surveyor performing Environmental and Riparian Surveys in Squamish, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>
 
 At Tantalus Geomatics Land Surveying, we navigate the requirements of the *Riparian Areas Protection Act* and the *Riparian Areas Protection Regulation*, ensuring that riparian assessment areas and SPEA setbacks are accurately marked to protect the natural features, functions, and conditions that support protected fish populations. Additionally, for industrial or commercial sites, we support your compliance with the **Environmental Management Act** by precisely locating boundaries for preliminary site investigations, detailed site investigations, and remediation plans, which are subsequently recorded in the provincial Site Registry. We also prepare any necessary metes and bounds descriptions for various environmental purposes when they form a required part of your project's documentation.

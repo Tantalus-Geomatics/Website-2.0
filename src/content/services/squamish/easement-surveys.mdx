@@ -2,7 +2,7 @@
 title: "Easement Surveys in Squamish"
 description: "Professional Easement Surveys in Squamish, defining the extent of rights of one parcel over another."
 locationName: 'Squamish'
-heroImage: '/images/tantalus-hero-banner.webp'
+heroImage: '/images/squamish/easement-1.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "Easement Surveys"
@@ -11,6 +11,14 @@ serviceName: "Easement Surveys"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  heroImageAlt: "White stakes along the edge of brush beside a gravel path.",
+  galleryImages: [
+    {
+      "src": "/images/squamish/easement-2.webp",
+      "alt": "White stakes in front of a cedar hedge.",
+      "caption": "Stakes in front of a hedge."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +27,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/easement-surveys/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/tantalus-hero-banner.webp",
+  "image": "https://www.tantalusgeomatics.com/images/squamish/easement-1.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -44,7 +52,7 @@ export const metadata = {
   title: "Easement Surveys in Squamish",
   description: "Professional Easement Surveys in Squamish, defining the extent of rights of one parcel over another.",
   locationName: 'Squamish',
-  heroImage: '/images/tantalus-hero-banner.webp',
+  heroImage: '/images/squamish/easement-1.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "Easement Surveys",
@@ -105,14 +113,14 @@ export const metadata = {
   },
   {
     "label": "Squamish Subdivision & Development Control Bylaw",
-    "href": "https://squamish.civicweb.net/filepro/document/200228/Subdivision%20and%20Development%20Control%20Bylaw%202649,%202018%20(Updated%20October%202022).pdf"
+    "href": "https://squamish.civicweb.net/document/200228"
   },
   {
     "label": "District of Squamish GIS Map",
     "href": "https://squamish.ca/gis"
   },
   {
-    "label": "Vertical Datum Modernization (CGVD28 to CGVD2013)",
+    "label": "Vertical datum modernization (CGVD28 and what comes next)",
     "href": "/squamish/insights/vertical-datum-modernization/"
   }
 ],
@@ -139,9 +147,3 @@ export default ({ children }) => (
 )
 
 Developing real estate, sharing infrastructure, or securing access across a neighbour’s parcel requires establishing clear, legally binding property rights. In <span className="text-brand-green font-semibold">Squamish</span>, an easement is a specialized right that one person may exercise with respect to the land of another, requiring both a "dominant tenement" (the property benefiting from the right) and a "servient tenement" (the property burdened by it). Whether you are securing a critical access corridor, registering shared utility services, or resolving an encroachment, ensuring these rights are accurately mapped and legally defined is primary to the success of your real estate investment. Tantalus Geomatics Land Surveying provides the services required to accurately delineate your easement areas and protect your property rights.
-
-
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/easement-surveys.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/easement-surveys.webp" alt="BC Land Surveyor performing Easement Surveys in Squamish, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>

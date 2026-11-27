@@ -9,9 +9,13 @@ Form, Foundation, and Site Benchmark Surveys in <span className="text-brand-gree
 
 ### **Body**
 
+{{INTRO_START}}
 Before pouring concrete for a major commercial or residential development in <span className="text-brand-green font-semibold">{{LOCATION_NAME}}</span>, confirming the exact location of your formwork and foundation is critical to preventing significant boundary encroachments and failed municipal inspections. Under the **Land Surveyors Act**, determining the location of any artificial feature—such as concrete forms, footings, or poured foundation walls relative to a property boundary for the purpose of certifying it in writing is exclusively defined as the "practice of land surveying". Only a commissioned *British Columbia Land Surveyor* (*BCLS*) holds the authority to provide this certification, protecting your project from the immense financial and legal liabilities associated with relying on unlicensed contractors.
 
 A foundational element of our process the establishment of vertical control. Before construction begins, our professionals establish local site benchmarks at permanent and secure locations near your parcel. We strictly avoid unstable features like utility poles, and whenever required, our elevations are rigorously derived from ties to two independent geodetic benchmarks to ensure vertical accuracy. We adhere to modern geodetic datums, such as CGVD28 or CGVD2013, to integrate your site accurately with federal and municipal vertical networks.
+{{INTRO_END}}
+{{LOCAL_SECTION}}
+
 ### **Steps**
 
 1. **Research** The *BCLS* requests the complete set of architectural and engineering drawings explicitly marked "Issued for Construction" prior to commencing the layout or verification work. We also conduct extensive research through the Land Title and Survey Authority of British Columbia (LTSA) to retrieve the registered subdivision plans that legally created your parcel.

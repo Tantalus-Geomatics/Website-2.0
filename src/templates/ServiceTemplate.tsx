@@ -45,6 +45,8 @@ export interface ServiceTemplateProps {
   metaDescription?: string;
   renderFaqAnswers?: boolean;
   dropIntro?: boolean;
+  /** Squamish pages that should stay short: hide the shared process, deliverables, sales blurb, and stock FAQs. */
+  concise?: boolean;
   galleryImages?: LocalImage[];
   steps?: { title: string; description: string }[];
   deliverables?: string[];
@@ -189,6 +191,7 @@ export default function ServiceTemplate({
   pageTitle,
   metaDescription,
   renderFaqAnswers = false,
+  concise = false,
   steps = defaultSteps,
   deliverables = defaultDeliverables,
   faqs = defaultFaqs,
@@ -369,13 +372,14 @@ export default function ServiceTemplate({
             {children}
           </div>
 
-          {/* Value Proposition Callout */}
+          {!concise && (
           <div className="mt-16 p-8 bg-stone-100 border-l-4 border-brand-green rounded-r-2xl shadow-sm">
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Why Choose Tantalus Geomatics?</h3>
             <p className="text-slate-700 text-lg font-light leading-relaxed">
               We combine {locationName ? `local ${formatLocalExpertise(locationName)} expertise` : 'local Sea to Sky expertise'} with modern surveying technology. We deliver highly accurate plans signed by a BC Land Surveyor (BCLS) that streamline your municipal permit approvals and protect your property investments.
             </p>
           </div>
+          )}
         </div>
       </section>
 
@@ -404,7 +408,7 @@ export default function ServiceTemplate({
         </section>
       )}
 
-      {/* 3. 3-Step Process Section */}
+      {!concise && (
       <section className="py-16 md:py-24 bg-slate-50 border-t border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -446,8 +450,9 @@ export default function ServiceTemplate({
           </div>
         </div>
       </section>
+      )}
 
-      {/* 4. Deliverables We Offer Section */}
+      {!concise && (
       <section className="py-16 md:py-24 bg-brand-dark text-white border-b-2 border-brand-green">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -505,6 +510,7 @@ export default function ServiceTemplate({
           </div>
         </div>
       </section>
+      )}
 
       {/* 5. FAQ Accordion Section */}
       <section className="py-16 md:py-24 bg-white border-b border-slate-200">
@@ -525,7 +531,7 @@ export default function ServiceTemplate({
 
           <Suspense fallback={<div className="animate-pulse text-brand-green text-center py-4">Loading FAQs...</div>}>
             <FAQAccordion
-              faqs={localFaqs.length > 0 ? [...localFaqs, ...faqs] : faqs}
+              faqs={concise ? localFaqs : (localFaqs.length > 0 ? [...localFaqs, ...faqs] : faqs)}
               locationName={locationName || 'the Sea to Sky'}
               renderAnswers={renderFaqAnswers}
             />

@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import express from 'express';
 import Critters from 'critters';
-import { isPhase1NoindexPath, phase1NoindexPaths } from './src/config/indexingPolicy.ts';
+import { isPhase1NoindexPath, phase1NoindexPaths, phase2NoindexPaths } from './src/config/indexingPolicy.ts';
 import { assertPhase1Indexing } from './scripts/phase1-indexing-guard.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -79,6 +79,44 @@ const REDIRECT_STUBS = [
     target: 'https://www.tantalusgeomatics.com/squamish/insights/vertical-datum-modernization/',
   },
 ];
+
+// The old region slug and two retired service slugs still appear in Search
+// Console as 404s. They are not pages. A static refresh file is what Google
+// can follow; the SPA 404.html is an HTTP 404.
+function addLegacyRedirects() {
+  const hostname = 'https://www.tantalusgeomatics.com';
+  const already = new Set(REDIRECT_STUBS.map((stub) => stub.path));
+  function add(path, targetPath) {
+    if (already.has(path)) return;
+    already.add(path);
+    REDIRECT_STUBS.push({ path, target: `${hostname}${targetPath}` });
+  }
+
+  add('/sea-to-sky/', '/the-sea-to-sky/');
+
+  const seaToSkyDir = toAbs('src/content/services/the-sea-to-sky');
+  if (fs.existsSync(seaToSkyDir)) {
+    for (const name of fs.readdirSync(seaToSkyDir)) {
+      if (!name.endsWith('.mdx')) continue;
+      const slug = name.replace(/\.mdx$/, '');
+      add(`/sea-to-sky/services/${slug}/`, `/the-sea-to-sky/services/${slug}/`);
+    }
+  }
+
+  // property-line-surveys and topographic-surveys are not generated slugs.
+  // Squamish property-line already has a stub above. Other towns use the same targets.
+  const servicesRoot = toAbs('src/content/services');
+  if (fs.existsSync(servicesRoot)) {
+    for (const town of fs.readdirSync(servicesRoot)) {
+      const townDir = path.join(servicesRoot, town);
+      if (!fs.statSync(townDir).isDirectory() || town === 'the-sea-to-sky') continue;
+      add(`/${town}/services/property-line-surveys/`, `/${town}/services/boundary-surveys/`);
+      add(`/${town}/services/topographic-surveys/`, `/${town}/services/topographic-surveys-and-site-plans/`);
+    }
+  }
+}
+addLegacyRedirects();
+
 const REDIRECT_STUB_PATHS = new Set(REDIRECT_STUBS.map((stub) => stub.path));
 
 // Short /services/{slug}/ URLs are prerendered so existing links still resolve,
@@ -135,7 +173,7 @@ function generateRouteMatrix() {
         const shortPath = `/${routePrefix}/${slug}/`;
         const localizedPath = `/${location}/${routePrefix}/${slug}/`;
 
-        // Phase 1 only. Phase 2 is not in the policy, so those pages stay in the sitemap.
+        // Phase 1 only. Phase 2 is noindex but stays in the sitemap.
         // Nothing here is dropped or redirected.
         if (isPhase1NoindexPath(localizedPath)) {
           phase1HiddenRoutes.push(localizedPath);
@@ -717,6 +755,7 @@ async function generate() {
       distDir: toAbs('dist'),
       hostname,
       policyPaths: phase1NoindexPaths(),
+      phase2Paths: phase2NoindexPaths(),
       hiddenRoutes: phase1HiddenRoutes,
       indexNowList,
       sitemapRoutes: collectSitemapRoutes(),
@@ -732,6 +771,7 @@ async function generate() {
     console.log('Loading placeholders: 0');
     console.log('First-party failed responses: 0');
     console.log(`Phase 1 noindex: ${phase1HiddenRoutes.length} pages omitted from sitemap-services.xml and IndexNow (${indexNowList.length} IndexNow candidates).`);
+    console.log(`Phase 2 noindex: ${phase2NoindexPaths().length} pages kept in sitemap-services.xml.`);
 
     if (INDEXNOW_KEY) {
       fs.writeFileSync(toAbs(`dist/${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);

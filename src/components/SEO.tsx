@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { isPhase1NoindexPath, NOINDEX_ROBOTS } from '../config/indexingPolicy';
+import { isNoindexPath, NOINDEX_ROBOTS } from '../config/indexingPolicy';
 
 const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://www.tantalusgeomatics.com').replace(/\/$/, '');
 const DEFAULT_OG_IMAGE = 'https://tantalusgeomatics.com/images/Squamish-Garibaldi-Estates-Property-Survey.webp';
@@ -114,15 +114,15 @@ export default function SEO({ title, description, canonicalUrl, schema, ogImage,
   const finalDescription = computeFinalDescription(description);
   const finalUrl = computeFinalUrl(canonicalUrl);
   const finalImage = ogImage || DEFAULT_OG_IMAGE;
-  const noindex = isPhase1NoindexPath(currentPath(canonicalUrl));
+  const noindex = isNoindexPath(currentPath(canonicalUrl));
 
   useLayoutEffect(() => {
     document.title = finalTitle;
 
     setMetaTag('name', 'description', finalDescription);
 
-    // Phase 1 pages only. Other pages keep whatever robots tag they already had,
-    // except a leftover noindex,follow from a client-side visit to a phase 1 page.
+    // Phase 1 and phase 2 pages. Other pages keep whatever robots tag they already had,
+    // except a leftover noindex,follow from a client-side visit to a noindex page.
     const robots = document.querySelector('meta[name="robots"]');
     if (noindex) {
       setMetaTag('name', 'robots', NOINDEX_ROBOTS);

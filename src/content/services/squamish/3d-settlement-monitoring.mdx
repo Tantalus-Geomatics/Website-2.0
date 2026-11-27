@@ -2,7 +2,7 @@
 title: "3D Settlement Monitoring in Squamish"
 description: "Professional 3D Settlement Monitoring in Squamish, deploying high-precision monitoring networks to track structural shifts, shoring deflections, and ground movements throughout construction."
 locationName: 'Squamish'
-heroImage: '/images/tantalus-hero-banner.webp'
+heroImage: '/images/squamish/settlement-1.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "3D Settlement Monitoring"
@@ -11,6 +11,14 @@ serviceName: "3D Settlement Monitoring"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  heroImageAlt: "A rock outcrop and plants beside a disturbed bank.",
+  galleryImages: [
+    {
+      "src": "/images/squamish/settlement-2.webp",
+      "alt": "Cut logs and brush on a slope.",
+      "caption": "Cut logs on a slope."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +27,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/3d-settlement-monitoring/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/tantalus-hero-banner.webp",
+  "image": "https://www.tantalusgeomatics.com/images/squamish/settlement-1.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -44,7 +52,7 @@ export const metadata = {
   title: "3D Settlement Monitoring in Squamish",
   description: "Professional 3D Settlement Monitoring in Squamish, deploying high-precision monitoring networks to track structural shifts, shoring deflections, and ground movements throughout construction.",
   locationName: 'Squamish',
-  heroImage: '/images/tantalus-hero-banner.webp',
+  heroImage: '/images/squamish/settlement-1.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "3D Settlement Monitoring",
@@ -106,14 +114,14 @@ export const metadata = {
   },
   {
     "label": "Squamish Subdivision & Development Control Bylaw",
-    "href": "https://squamish.civicweb.net/filepro/document/200228/Subdivision%20and%20Development%20Control%20Bylaw%202649,%202018%20(Updated%20October%202022).pdf"
+    "href": "https://squamish.civicweb.net/document/200228"
   },
   {
     "label": "District of Squamish GIS Map",
     "href": "https://squamish.ca/gis"
   },
   {
-    "label": "Vertical Datum Modernization (CGVD28 to CGVD2013)",
+    "label": "Vertical datum modernization (CGVD28 and what comes next)",
     "href": "/squamish/insights/vertical-datum-modernization/"
   }
 ],
@@ -140,10 +148,5 @@ export default ({ children }) => (
 )
 
 In <span className="text-brand-green font-semibold">Squamish</span>, 3D settlement monitoring is required to track structural stability, deep excavations, and adjacent properties. 3D settlement monitoring surveys are processes designed to identify and track the minute movement of construction elements over time, including slope stability, ground settlement, and structural deformation. Engaging Tantalus Geomatics Land Surveying ensures your monitoring program possesses the geomatics expertise required to support your project.
-
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/3d-settlement-monitoring.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/3d-settlement-monitoring.webp" alt="BC Land Surveyor performing 3D Settlement Monitoring in Squamish, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>
 
 Monitoring surveys involve collecting the measurements required to calculate the exact differences between one set of monitoring data and the next. Since the foundation of any monitoring program is the accuracy and stability of its control network, our survey crews deploy high-precision Robotic Total Stations to establish accurate control around the site. When structural monitoring is required, we utilize Terrestrial 3D Laser Scanning to capture high-density point clouds of the as-built conditions. This is useful when monitoring rockfaces, complex structures, and inaccessible terrain. Unmanned Aerial Systems (UAS) equipped with Aerial Drone LiDAR and photogrammetry can also be deployed to model expansive slopes and terrain changes over time.

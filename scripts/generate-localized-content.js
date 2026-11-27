@@ -152,6 +152,7 @@ function applyLocalMetadata(content, localOverride) {
   if (data.heroImageAlt) fields.push(['heroImageAlt', JSON.stringify(data.heroImageAlt)]);
   if (data.heroObjectPosition) fields.push(['heroObjectPosition', JSON.stringify(data.heroObjectPosition)]);
   if (data.dropIntro === true) fields.push(['dropIntro', 'true']);
+  if (data.concise === true) fields.push(['concise', 'true']);
   if (data.renderFaqAnswers === true) fields.push(['renderFaqAnswers', 'true']);
   if (Array.isArray(data.gallery) && data.gallery.length > 0) {
     const pretty = JSON.stringify(data.gallery, null, 2).replace(/\n/g, '\n  ');
@@ -169,6 +170,14 @@ function applyLocalMetadata(content, localOverride) {
     const insertAt = start + marker.length;
     const block = fields.map(([key, value]) => `\n  ${key}: ${value},`).join('');
     next = next.slice(0, insertAt) + block + next.slice(insertAt);
+  }
+
+  // The hero prints metadata.description. A local hero line replaces both
+  // copies so the visible subtitle matches the page, without touching other towns.
+  if (typeof data.heroDescription === 'string' && data.heroDescription.length > 0) {
+    const serialized = JSON.stringify(data.heroDescription);
+    next = next.replace(/^description: ".*"$/gm, `description: ${serialized}`);
+    next = next.replace(/^([ \t]*)description: ".*",$/gm, `$1description: ${serialized},`);
   }
 
   return next;
@@ -560,8 +569,10 @@ baseTemplates.forEach(templateFile => {
       localizedContent = localizedContent.replace(/\bin Sea to Sky\b/g, 'in the Sea to Sky');
     }
 
-    // Inject inline service image if available
-    localizedContent = injectServiceImage(localizedContent, serviceSlug, serviceLocationName);
+    // A page with its own gallery does not also get the shared service stock photo.
+    if (!localOverride?.data?.gallery?.length) {
+      localizedContent = injectServiceImage(localizedContent, serviceSlug, serviceLocationName);
+    }
 
     // Construct localized schema
     const geoData = LOCATION_GEO_DATA[locationSlug];

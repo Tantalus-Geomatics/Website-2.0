@@ -121,6 +121,7 @@ export interface HubTemplateProps {
   localAuthorityName?: string;
   municipalLink?: string;
   locationImages?: { src: string; alt: string; caption?: string }[];
+  galleryImages?: { src: string; alt: string }[];
   children?: ReactNode;
 }
 
@@ -134,6 +135,7 @@ export default function HubTemplate({
   localAuthorityName,
   municipalLink,
   locationImages = [],
+  galleryImages,
   children
 }: HubTemplateProps) {
   const { locationSlug } = useParams<{ locationSlug?: string }>();
@@ -219,7 +221,10 @@ export default function HubTemplate({
             {/* Deterministic 3-Image Sub-Gallery Row */}
             {locationName && (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
-                {getDeterministicImages(locationName, MASTER_IMAGE_POOL).map((image, idx) => (
+                {(galleryImages && galleryImages.length > 0
+                  ? galleryImages
+                  : getDeterministicImages(locationName, MASTER_IMAGE_POOL)
+                ).map((image, idx) => (
                   <div key={idx} className="relative aspect-video rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
                     <img
                       src={image.src}

@@ -1,8 +1,8 @@
 ---
 title: "Proposed Strata Plans in Squamish"
-description: "Professional Proposed Strata Plans in Squamish, preliminary strata lot boundaries and floor areas from architectural drawings to support pre-construction sales and disclosures."
+description: "Proposed strata plans in Squamish show the intended strata lots before the building is finished. The plan does not create title."
 locationName: 'Squamish'
-heroImage: '/images/tantalus-hero-banner.webp'
+heroImage: '/images/squamish/proposed-strata-1.webp'
 localAuthorityName: 'District of Squamish'
 municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/'
 serviceName: "Proposed Strata Plans"
@@ -11,6 +11,33 @@ serviceName: "Proposed Strata Plans"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  pageTitle: "Proposed Strata Plans in Squamish: Lots Before the Building Is Finished",
+  metaDescription: "Proposed strata plans in Squamish by a BC Land Surveyor: intended strata lots and habitable area before the strata plan is deposited at the Land Title Office.",
+  heroImageAlt: "A dark survey vehicle parked on a residential street.",
+  dropIntro: true,
+  concise: true,
+  renderFaqAnswers: true,
+  galleryImages: [
+    {
+      "src": "/images/squamish/proposed-strata-2.webp",
+      "alt": "A survey truck parked outside École Garibaldi Highlands Elementary, with flags along the road.",
+      "caption": "A survey truck outside a Squamish school."
+    }
+  ],
+  localFaqs: [
+    {
+      "question": "Does a proposed strata plan create title in Squamish?",
+      "answer": "No. A proposed plan is a drawing for the design and for disclosure. Title arises when the strata plan is deposited at the Land Title Office."
+    },
+    {
+      "question": "How is unit entitlement calculated?",
+      "answer": "For a residential strata lot that is not bare land, the Strata Property Act allows the habitable area measured by a BC land surveyor, the same whole number for every lot, or a number the superintendent approves."
+    },
+    {
+      "question": "How many strata units can one Squamish lot have?",
+      "answer": "In the R-1 and R-4 zones, Zoning Bylaw No. 2200 allows no more than four strata-titled dwelling units on a lot. A secondary suite or an accessory dwelling unit cannot be strata-titled."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +46,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/squamish/services/proposed-strata-plans/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/tantalus-hero-banner.webp",
+  "image": "https://www.tantalusgeomatics.com/images/squamish/proposed-strata-1.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Squamish",
@@ -42,9 +69,9 @@ export const metadata = {
   }
 },
   title: "Proposed Strata Plans in Squamish",
-  description: "Professional Proposed Strata Plans in Squamish, preliminary strata lot boundaries and floor areas from architectural drawings to support pre-construction sales and disclosures.",
+  description: "Proposed strata plans in Squamish show the intended strata lots before the building is finished. The plan does not create title.",
   locationName: 'Squamish',
-  heroImage: '/images/tantalus-hero-banner.webp',
+  heroImage: '/images/squamish/proposed-strata-1.webp',
   localAuthorityName: 'District of Squamish',
   municipalLink: 'https://squamish.ca/building-and-land-development/home-land-and-property-development/land-development-applications/',
   serviceName: "Proposed Strata Plans",
@@ -101,14 +128,14 @@ export const metadata = {
   },
   {
     "label": "Squamish Subdivision & Development Control Bylaw",
-    "href": "https://squamish.civicweb.net/filepro/document/200228/Subdivision%20and%20Development%20Control%20Bylaw%202649,%202018%20(Updated%20October%202022).pdf"
+    "href": "https://squamish.civicweb.net/document/200228"
   },
   {
     "label": "District of Squamish GIS Map",
     "href": "https://squamish.ca/gis"
   },
   {
-    "label": "Vertical Datum Modernization (CGVD28 to CGVD2013)",
+    "label": "Vertical datum modernization (CGVD28 and what comes next)",
     "href": "/squamish/insights/vertical-datum-modernization/"
   }
 ],
@@ -134,11 +161,10 @@ export default ({ children }) => (
   </ServiceTemplate>
 )
 
-When launching a multi-family or mixed-use development in <span className="text-brand-green font-semibold">Squamish</span>, initiating pre-sales early in the development lifecycle is critical to securing your construction financing. To market and sell future strata lots before the building is completed, developers must file a Disclosure Statement with the Superintendent of Real Estate, which includes a **Proposed Strata Plan** depicting the proposed strata lots, limited common property (LCP), and preliminary unit entitlements. These plans are highly regulated under the **Real Estate Development Marketing Act (REDMA)** and carry immense financial weight as they allow developers to enter into binding contracts of purchase and sale prior to completion of construction.
 
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/proposed-strata-plans.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/proposed-strata-plans.webp" alt="BC Land Surveyor performing Proposed Strata Plans in Squamish, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>
+**What our survey provides.** A proposed strata plan in Squamish shows the intended strata lots for the design and for a disclosure statement. It does not create title. Title arises when the strata plan is deposited at the Land Title Office.
 
-Under **REDMA** policies, if the final constructed area of a strata lot deviates significantly from the area represented in the Disclosure Statement it can be deemed a "material change", granting the purchaser the legal right to cancel their pre-sale agreement, posing a massive financial risk to the developer. Tantalus Geomatics Land Surveying helps clients mitigate this risk by carefully translating designs into the proposed of strata lot boundaries and accurately calculating habitable areas.
+**Unit entitlement.** For a residential strata lot that is not bare land, the Strata Property Act allows three bases: the habitable area measured by a BC land surveyor, the same whole number for every lot, or a number the superintendent approves.
+
+**Squamish limits.** In the R-1 and R-4 zones, [Zoning Bylaw No. 2200, 2011](https://squamish.civicweb.net/document/269651) allows no more than four strata-titled dwelling units on a lot. A secondary suite or an accessory dwelling unit cannot be strata-titled.
+
