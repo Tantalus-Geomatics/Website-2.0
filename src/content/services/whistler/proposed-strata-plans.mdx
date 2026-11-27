@@ -1,8 +1,8 @@
 ---
 title: "Proposed Strata Plans in Whistler"
-description: "Professional Proposed Strata Plans in Whistler, preliminary strata lot boundaries and floor areas from architectural drawings to support pre-construction sales and disclosures."
+description: "Proposed strata plans in Whistler show the intended strata lots before the plan is deposited. The plan does not create title."
 locationName: 'Whistler'
-heroImage: '/images/black-tusk.webp'
+heroImage: '/images/whistler/proposed-wood-structure.webp'
 localAuthorityName: 'Resort Municipality of Whistler'
 municipalLink: 'https://www.whistler.ca/business-development/'
 serviceName: "Proposed Strata Plans"
@@ -11,6 +11,33 @@ serviceName: "Proposed Strata Plans"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  pageTitle: "Proposed Strata Plans in Whistler: Lots Before the Plan Is Deposited",
+  metaDescription: "Proposed strata plans in Whistler by a BC Land Surveyor: intended strata lots before deposit. Title starts when the strata plan is registered.",
+  heroImageAlt: "A small wooden structure beside a forest path, with a GNSS pole leaning against it.",
+  dropIntro: true,
+  concise: true,
+  renderFaqAnswers: true,
+  galleryImages: [
+    {
+      "src": "/images/whistler/proposed-wood-angle.webp",
+      "alt": "A wooden structure in the forest, seen from above, with a green pole beside it.",
+      "caption": "A wooden structure beside a forest path."
+    }
+  ],
+  localFaqs: [
+    {
+      "question": "Does a proposed strata plan create title in Whistler?",
+      "answer": "No. A proposed plan is a drawing for the design. Title arises when the strata plan is deposited at the Land Title Office."
+    },
+    {
+      "question": "Who endorses a new Whistler building that has not been lived in?",
+      "answer": "A British Columbia land surveyor endorses the strata plan, certifying that the building has not been previously occupied. That endorsement is dated no more than 180 days before the plan is tendered for deposit. The Strata Property Act does not assign that endorsement to the Surveyor General."
+    },
+    {
+      "question": "What should I send before you quote a proposed Whistler strata plan?",
+      "answer": "The civic address or Parcel Identifier (PID), the drawings of the intended lots, and whether the building is new or already occupied."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +46,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/whistler/services/proposed-strata-plans/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/black-tusk.webp",
+  "image": "https://www.tantalusgeomatics.com/images/whistler/proposed-wood-structure.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Whistler",
@@ -42,9 +69,9 @@ export const metadata = {
   }
 },
   title: "Proposed Strata Plans in Whistler",
-  description: "Professional Proposed Strata Plans in Whistler, preliminary strata lot boundaries and floor areas from architectural drawings to support pre-construction sales and disclosures.",
+  description: "Proposed strata plans in Whistler show the intended strata lots before the plan is deposited. The plan does not create title.",
   locationName: 'Whistler',
-  heroImage: '/images/black-tusk.webp',
+  heroImage: '/images/whistler/proposed-wood-structure.webp',
   localAuthorityName: 'Resort Municipality of Whistler',
   municipalLink: 'https://www.whistler.ca/business-development/',
   serviceName: "Proposed Strata Plans",
@@ -126,11 +153,10 @@ export default ({ children }) => (
   </ServiceTemplate>
 )
 
-When launching a multi-family or mixed-use development in <span className="text-brand-green font-semibold">Whistler</span>, initiating pre-sales early in the development lifecycle is critical to securing your construction financing. To market and sell future strata lots before the building is completed, developers must file a Disclosure Statement with the Superintendent of Real Estate, which includes a **Proposed Strata Plan** depicting the proposed strata lots, limited common property (LCP), and preliminary unit entitlements. These plans are highly regulated under the **Real Estate Development Marketing Act (REDMA)** and carry immense financial weight as they allow developers to enter into binding contracts of purchase and sale prior to completion of construction.
 
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/proposed-strata-plans.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/proposed-strata-plans.webp" alt="BC Land Surveyor performing Proposed Strata Plans in Whistler, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>
+**What our survey provides.** A proposed strata plan in Whistler shows the intended strata lots for the design. It does not create title. Title arises when the strata plan is deposited at the Land Title Office.
 
-Under **REDMA** policies, if the final constructed area of a strata lot deviates significantly from the area represented in the Disclosure Statement it can be deemed a "material change", granting the purchaser the legal right to cancel their pre-sale agreement, posing a massive financial risk to the developer. Tantalus Geomatics Land Surveying helps clients mitigate this risk by carefully translating designs into the proposed of strata lot boundaries and accurately calculating habitable areas.
+**A new building.** If the strata plan includes a building that has not been previously occupied, a British Columbia land surveyor endorses the plan, certifying that the building has not been previously occupied. The endorsement is dated no more than 180 days before the plan is tendered for deposit. That endorsement is the surveyor's. The Strata Property Act does not assign it to the Surveyor General.
+
+**A conversion.** A strata plan that includes a previously occupied building is submitted to Municipal Council. Council may approve it, approve it with terms, or refuse it. The survey for that application is on the [strata surveys](/whistler/services/strata-surveys/) page.
+

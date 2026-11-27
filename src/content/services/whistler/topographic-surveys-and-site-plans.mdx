@@ -1,8 +1,8 @@
 ---
 title: "Topographic Surveys And Site Plans in Whistler"
-description: "Professional Topographic Surveys And Site Plans in Whistler, mapping detailed ground elevations, structural contours, visible utility networks, and landmarks to anchor architectural design blueprints."
+description: "A topographic survey or site plan in Whistler is a drawing of the ground for a permit or a design."
 locationName: 'Whistler'
-heroImage: '/images/black-tusk.webp'
+heroImage: '/images/whistler/topo-gnss-lake.webp'
 localAuthorityName: 'Resort Municipality of Whistler'
 municipalLink: 'https://www.whistler.ca/business-development/'
 serviceName: "Topographic Surveys And Site Plans"
@@ -11,6 +11,42 @@ serviceName: "Topographic Surveys And Site Plans"
 import ServiceTemplate from '../../../templates/ServiceTemplate'
 
 export const metadata = {
+  pageTitle: "Topographic Surveys in Whistler: Site Plans, Grades and Contours",
+  metaDescription: "Topographic surveys and site plans in Whistler by a BC Land Surveyor: geodetic grades, steep-lot contours and watercourse setbacks for RMOW permits.",
+  heroImageAlt: "A GNSS receiver on a tripod at the edge of a forested lake, with mountains beyond.",
+  dropIntro: true,
+  concise: true,
+  renderFaqAnswers: true,
+  galleryImages: [
+    {
+      "src": "/images/whistler/topo-shore.webp",
+      "alt": "A GNSS pole on a tripod at the shore of a forested lake.",
+      "caption": "A GNSS setup on a forested lakeshore."
+    },
+    {
+      "src": "/images/steep-slope.webp",
+      "alt": "Mossy rock and tree trunks on a steep forest slope.",
+      "caption": "Rock and trees on a steep slope."
+    }
+  ],
+  localFaqs: [
+    {
+      "question": "Is a Whistler site plan filed at the Land Title Office?",
+      "answer": "No. A site plan or plan of topography is drawn for your designer and for the Resort Municipality application. It is not a plan deposited at the Land Title Office. A plan that places a new post at a property corner is a boundary survey, and that plan is a separate document."
+    },
+    {
+      "question": "Which vertical datum does a Whistler site plan use?",
+      "answer": "Tantalus does the survey in CGVD28 unless you explicitly ask for another datum. We will adopt CGVD2013 only once it is the official vertical datum in use in British Columbia. The Resort Municipality's building bylaw asks for geodetic elevations. It does not name CGVD28 or CGVD2013. The plan names the datum we used."
+    },
+    {
+      "question": "When does a steep Whistler lot need contours?",
+      "answer": "Where the parcel has slopes of more than 15 percent, the Building Official may ask for 0.5 metre contours of the existing ground and the proposed grading."
+    },
+    {
+      "question": "What should I send before you quote a Whistler site plan?",
+      "answer": "The civic address or Parcel Identifier (PID), what the permit or the design is, and any survey or municipal letter you already have."
+    }
+  ],
   schema: {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -19,7 +55,7 @@ export const metadata = {
   "url": "https://www.tantalusgeomatics.com/whistler/services/topographic-surveys-and-site-plans/",
   "telephone": "+16042139934",
   "priceRange": "$$",
-  "image": "https://www.tantalusgeomatics.com/images/black-tusk.webp",
+  "image": "https://www.tantalusgeomatics.com/images/whistler/topo-gnss-lake.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Whistler",
@@ -42,9 +78,9 @@ export const metadata = {
   }
 },
   title: "Topographic Surveys And Site Plans in Whistler",
-  description: "Professional Topographic Surveys And Site Plans in Whistler, mapping detailed ground elevations, structural contours, visible utility networks, and landmarks to anchor architectural design blueprints.",
+  description: "A topographic survey or site plan in Whistler is a drawing of the ground for a permit or a design.",
   locationName: 'Whistler',
-  heroImage: '/images/black-tusk.webp',
+  heroImage: '/images/whistler/topo-gnss-lake.webp',
   localAuthorityName: 'Resort Municipality of Whistler',
   municipalLink: 'https://www.whistler.ca/business-development/',
   serviceName: "Topographic Surveys And Site Plans",
@@ -130,13 +166,12 @@ export default ({ children }) => (
   </ServiceTemplate>
 )
 
-Topographic surveys and site plans form the critical baseline for any architectural design, engineering, or real estate development in <span className="text-brand-green font-semibold">Whistler</span>. A plan of topography is a survey plan prepared by a commissioned *British Columbia Land Surveyor* (*BCLS*), which illustrates topographic and site details, and information gathered during a field survey. The plans often combine the field survey data with data from other sources such as as-built records, service location records, and underground utility records. 
 
-<picture className="w-full md:w-1/2 md:float-right mb-6 md:ml-8 md:mb-8 block">
-  <source srcSet="/images/topographic-surveys-and-site-plans.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 600px" />
-  <img src="/images/topographic-surveys-and-site-plans.webp" alt="BC Land Surveyor performing Topographic Surveys and Site Plans in Whistler, BC" width="600" height="400" fetchPriority="high" className="w-full h-auto rounded-2xl shadow-lg border border-slate-200 object-cover" />
-</picture>
+**What our survey provides.** A topographic survey or site plan in Whistler is a drawing of the ground for a building permit, a development permit, or a design. It is not a plan deposited at the Land Title Office. It shows the ground and the features the design needs, and how those sit relative to the lot lines.
 
-Site plans and plans of topography carry legal and regulatory significance as they frequently accompany municipal development permits, zoning amendments, and building applications. Tantalus Geomatics Land Surveying provides the professional services necessary to accurately capture, depict and certify these plans. Additionally, we work with local government to ensure these plans conform to local bylaws in <span className="text-brand-green font-semibold">Whistler</span>, ensuring that physical features and structures are depicted and labeled in exact conformity with municipal definitions and setback requirements.
+Tantalus does this work in CGVD28 unless you explicitly ask for another datum. We will adopt CGVD2013 only once it is the official vertical datum in use in British Columbia. [Building Regulation Bylaw No. 2482, 2025](https://www.whistler.ca/wp-content/uploads/CBYL0002482-2026-10-20-1.pdf) asks for geodetic elevations. It does not name CGVD28 or CGVD2013. The plan names the datum so the elevations can be read beside the design.
 
-To achieve the appropriate data format and accuracy standards required by your design team, our firm deploys state-of-the-art measurement technologies. We utilize Aerial Drone Photogrammetry and Aerial Drone LiDAR to penetrate dense vegetation and generate accurate 3D topographic terrain models of large sites. Additionally we use Static GNSS and RTK GNSS, Terrestrial LiDAR, and Robotic Total Stations to capture site features and topography at a variety of data densities and levels of accuracy.
+**The Resort Municipality.** A building permit application includes a survey plan prepared by a Land Surveyor. In that bylaw, a Land Surveyor is a British Columbia land surveyor, or an ASTTBC member registered in site improvement surveys. The site plan shows setbacks to the natural boundary of a lake, swamp, pond, stream or watercourse, and natural and finished grades in geodetic elevations. Where a flood elevation applies, it shows the geodetic elevation of the underside of a wood floor or the top of a finished concrete slab. Where the parcel slopes more than 15 percent, the Building Official may ask for 0.5 metre contours.
+
+**The ground.** Floodproofing is in [Zoning and Parking Bylaw No. 303, 2015](https://www.whistler.ca/wp-content/uploads/Zoning-_and_Parking_Bylaw_303_2015_2026-08-07.pdf), not in a separate floodplain bylaw. Setbacks are measured from the high water mark. A house on a detached or duplex lot is often exempt from a development permit, except where the lot is in an environmental development permit area and within 30 metres of the high water mark of a stream.
+
