@@ -172,6 +172,14 @@ function applyLocalMetadata(content, localOverride) {
     next = next.slice(0, insertAt) + block + next.slice(insertAt);
   }
 
+  // The hero prints metadata.description. A local hero line replaces both
+  // copies so the visible subtitle matches the page, without touching other towns.
+  if (typeof data.heroDescription === 'string' && data.heroDescription.length > 0) {
+    const serialized = JSON.stringify(data.heroDescription);
+    next = next.replace(/^description: ".*"$/gm, `description: ${serialized}`);
+    next = next.replace(/^([ \t]*)description: ".*",$/gm, `$1description: ${serialized},`);
+  }
+
   return next;
 }
 

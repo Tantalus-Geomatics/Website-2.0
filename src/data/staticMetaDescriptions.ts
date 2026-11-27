@@ -11,7 +11,7 @@ export const STATIC_META_DESCRIPTIONS = {
   "/subdivision/": "How to subdivide a parcel in BC: municipal approvals, field surveys and Land Title Office plan registration, explained by BCLS-led Tantalus Geomatics.",
   "/topographic-surveys/": "Why a topographic survey is the first step to building in BC, and how Tantalus Geomatics works with designers and municipal staff through construction.",
   "/sea-to-sky-property-line-and-boundary-staking/": "Building a fence, wall or removing a tree in the Sea to Sky? Tantalus Geomatics re-marks your legal property line before you build. BC Land Surveyor (BCLS).",
-  "/squamish/": "Squamish land surveyor: Tantalus Geomatics is based in Squamish, providing boundary, topographic and subdivision plans for District of Squamish permits.",
+  "/squamish/": "Squamish land surveyor: Tantalus Geomatics is based in Squamish, providing boundary, topographic and subdivision plans for District of Squamish applications.",
   "/whistler/": "Boundary and topographic surveys in Whistler by Tantalus Geomatics, with strata conversions and easement plans for Resort Municipality of Whistler permits.",
   "/pemberton/": "Tantalus Geomatics surveys Pemberton and area: boundary, topographic and subdivision surveys for Village of Pemberton and SLRD applications.",
   "/the-sea-to-sky/": "Land surveying across the Sea to Sky corridor, from Squamish to Whistler and Pemberton. Tantalus Geomatics delivers legal, topographic and construction surveys.",
